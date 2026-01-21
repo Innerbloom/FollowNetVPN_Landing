@@ -1,0 +1,46 @@
+.footer {
+  background: rgba(0, 0, 0, 0.18);
+  color: var(--muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.9rem;
+}
+
+.links {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.footer a {
+  display: inline-block;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Light theme */
+:host-context(.light) .footer {
+  background: #ffffff;
+  color: rgba(0,0,0,0.62);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+:host-context(.light) .sep {
+  color: rgba(0,0,0,0.22);
+}
+
+:host-context(.light) .footer a {
+  color: #111;
+}

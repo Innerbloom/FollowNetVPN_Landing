@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  background: #ffffff;
+  color: #121212;
+  border-radius: 18px;
+  padding: 22px 22px;
+}
+
+.doc {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.doc-header h1 {
+  font-size: 2.2rem;
+  letter-spacing: -0.4px;
+}
+
+.muted {
+  color: rgba(0,0,0,0.62);
+  margin-top: 10px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.card {
+  margin-top: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+h2 {
+  margin-top: 18px;
+  font-size: 1.25rem;
+}
+
+ul {
+  margin-top: 10px;
+  padding-left: 18px;
+  color: rgba(0,0,0,0.70);
+}
+
+li {
+  margin: 6px 0;
+}
+
+

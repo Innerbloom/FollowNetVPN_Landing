@@ -1,0 +1,366 @@
+<div class="landing" id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1>
+          {{ i18n.t('HERO_TITLE_1') }}<br />
+          <span class="accent">{{ i18n.t('HERO_TITLE_2') }}</span> {{ i18n.t('HERO_TITLE_3') }}
+        </h1>
+
+        <p class="lead">
+          {{ i18n.t('HERO_LEAD') }}
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#download">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
+          <a class="btn ghost" href="#features">{{ i18n.t('HERO_CTA_SECONDARY') }}</a>
+        </div>
+
+        <div class="bullets">
+          <div class="bullet">
+                  <span class="b-ic"><lucide-icon class="ui-icon" name="shield-check"></lucide-icon></span>
+            <div>
+              <div class="b-title">{{ i18n.t('BULLET_SECURITY') }}</div>
+              <div class="b-sub">{{ i18n.t('BULLET_SECURITY_SUB') }}</div>
+            </div>
+          </div>
+          <div class="bullet">
+                  <span class="b-ic"><lucide-icon class="ui-icon" name="zap"></lucide-icon></span>
+            <div>
+              <div class="b-title">{{ i18n.t('BULLET_SPEED') }}</div>
+              <div class="b-sub">{{ i18n.t('BULLET_SPEED_SUB') }}</div>
+            </div>
+          </div>
+          <div class="bullet">
+                  <span class="b-ic"><lucide-icon class="ui-icon" name="globe"></lucide-icon></span>
+            <div>
+              <div class="b-title">{{ i18n.t('BULLET_WORLD') }}</div>
+              <div class="b-sub">{{ i18n.t('BULLET_WORLD_SUB') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <div class="device">
+          <div class="device-frame">
+            <div class="device-screen">
+              <div
+                class="shots"
+                (pointerdown)="onUserPointer()"
+                (touchstart)="onUserPointer()"
+              >
+                <img
+                  *ngFor="let src of shots; let i = index"
+                  class="shot"
+                  [src]="src"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  [class.active]="i === activeIndex"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="dots" aria-hidden="true">
+            <button
+              type="button"
+              class="dot"
+              *ngFor="let _ of shots; let i = index"
+              [class.active]="i === activeIndex"
+              (click)="goTo(i)"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="container strip-grid">
+      <div class="chip">{{ i18n.t('CHIP_CODE') }}</div>
+      <div class="chip">{{ i18n.t('CHIP_WIDGETS') }}</div>
+      <div class="chip">{{ i18n.t('CHIP_SPEEDTEST') }}</div>
+      <div class="chip">{{ i18n.t('CHIP_DNS') }}</div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('FEATURES_KICKER') }}</div>
+        <h2>{{ i18n.t('FEATURES_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('FEATURES_SUB') }}</p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-ic"><lucide-icon class="ui-icon" name="shield-check"></lucide-icon></div>
+          <div class="trust-title">WireGuard + IKEv2</div>
+          <div class="trust-text">{{ i18n.t('TRUST_WG_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-ic"><lucide-icon class="ui-icon" name="shield-off"></lucide-icon></div>
+          <div class="trust-title">Kill Switch</div>
+          <div class="trust-text">{{ i18n.t('TRUST_KILLSWITCH_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-ic"><lucide-icon class="ui-icon" name="server"></lucide-icon></div>
+          <div class="trust-title">{{ i18n.t('TRUST_DNS_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('TRUST_DNS_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-ic"><lucide-icon class="ui-icon" name="chart-line"></lucide-icon></div>
+          <div class="trust-title">{{ i18n.t('TRUST_STATS_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('TRUST_STATS_TEXT') }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section countries" aria-label="Countries">
+    <div class="container">
+      <div class="countries-head">
+        <h2 class="countries-title">{{ i18n.t('COUNTRIES_TITLE') }}</h2>
+        <p class="countries-sub">{{ i18n.t('COUNTRIES_SUB') }}</p>
+      </div>
+      <div class="flags" aria-hidden="true">
+        <div class="flags-row">
+          <span
+            class="flag"
+            *ngFor="let f of flagsRow1"
+            [style.--s]="f.s"
+            [style.--o]="f.o"
+          >{{ f.emoji }}</span>
+        </div>
+        <div class="flags-row flags-row--2">
+          <span
+            class="flag"
+            *ngFor="let f of flagsRow2"
+            [style.--s]="f.s"
+            [style.--o]="f.o"
+          >{{ f.emoji }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (removed duplicate features grid to avoid repeating the same content) -->
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('HOW_KICKER') }}</div>
+        <h2>{{ i18n.t('HOW_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('HOW_SUB') }}</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-no">1</div>
+          <div class="step-title">{{ i18n.t('STEP1_TITLE') }}</div>
+          <div class="step-text">{{ i18n.t('STEP1_TEXT') }}</div>
+        </div>
+        <div class="step">
+          <div class="step-no">2</div>
+          <div class="step-title">{{ i18n.t('STEP2_TITLE') }}</div>
+          <div class="step-text">{{ i18n.t('STEP2_TEXT') }}</div>
+        </div>
+        <div class="step">
+          <div class="step-no">3</div>
+          <div class="step-title">{{ i18n.t('STEP3_TITLE') }}</div>
+          <div class="step-text">{{ i18n.t('STEP3_TEXT') }}</div>
+        </div>
+        <div class="step">
+          <div class="step-no">4</div>
+          <div class="step-title">{{ i18n.t('STEP4_TITLE') }}</div>
+          <div class="step-text">{{ i18n.t('STEP4_TEXT') }}</div>
+        </div>
+        <div class="step">
+          <div class="step-no">5</div>
+          <div class="step-title">{{ i18n.t('STEP5_TITLE') }}</div>
+          <div class="step-text">{{ i18n.t('STEP5_TEXT') }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('APPS_KICKER') }}</div>
+        <h2>{{ i18n.t('APPS_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('APPS_SUB') }}</p>
+      </div>
+
+      <div class="apps">
+        <div class="app-card">
+          <div class="app-top">
+            <div class="app-ic"><span class="brand-icon brand-icon--apple" aria-hidden="true"></span></div>
+            <div class="app-meta">
+              <div class="app-title">iOS</div>
+              <div class="app-sub">{{ i18n.t('IOS_SUB') }}</div>
+            </div>
+            <div class="app-badge ok">{{ i18n.t('STATUS_AVAILABLE') }}</div>
+          </div>
+          <a class="app-btn primary" href="#download">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+        </div>
+
+        <div class="app-card muted">
+          <div class="app-top">
+            <div class="app-ic"><span class="brand-icon brand-icon--android" aria-hidden="true"></span></div>
+            <div class="app-meta">
+              <div class="app-title">Android</div>
+              <div class="app-sub">{{ i18n.t('DEV_SUB') }}</div>
+            </div>
+            <div class="app-badge">{{ i18n.t('STATUS_SOON') }}</div>
+          </div>
+          <button class="app-btn" type="button" disabled>{{ i18n.t('STATUS_SOON') }}</button>
+        </div>
+
+        <div class="app-card muted">
+          <div class="app-top">
+            <div class="app-ic"><span class="brand-icon brand-icon--apple" aria-hidden="true"></span></div>
+            <div class="app-meta">
+              <div class="app-title">macOS</div>
+              <div class="app-sub">{{ i18n.t('DEV_SUB') }}</div>
+            </div>
+            <div class="app-badge">{{ i18n.t('STATUS_SOON') }}</div>
+          </div>
+          <button class="app-btn" type="button" disabled>{{ i18n.t('STATUS_SOON') }}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('PRICING_KICKER') }}</div>
+        <h2>{{ i18n.t('PRICING_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('PRICING_SUB') }}</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan">
+          <div class="plan-name">{{ i18n.t('PRICING_FREE') }}</div>
+          <div class="plan-desc">{{ i18n.t('PRICING_FREE_DESC') }}</div>
+          <div class="price">$0 <span>/{{ i18n.t('PRICE_FOREVER') }}</span></div>
+          <ul>
+            <li>{{ i18n.t('FREE_FEATURE_1') }}</li>
+            <li>{{ i18n.t('FREE_FEATURE_2') }}</li>
+            <li>{{ i18n.t('FREE_FEATURE_3') }}</li>
+          </ul>
+          <a class="btn ghost full" href="#download">{{ i18n.t('PRICING_FREE_CTA') }}</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="plan-name">Premium</div>
+          <div class="plan-desc">{{ i18n.t('PREMIUM_DESC') }}</div>
+
+          <div class="price">
+            {{ selectedPremiumPlan.total }}
+            <span>/ {{ premiumLabel(selectedPremiumPlan) }}</span>
+          </div>
+          <div class="per-month">
+            {{ premiumPerMonth(selectedPremiumPlan) }}
+            <span class="save-text" *ngIf="premiumSave(selectedPremiumPlan)">· {{ premiumSave(selectedPremiumPlan) }}</span>
+          </div>
+
+          <div class="plan-tabs" [attr.aria-label]="i18n.t('PREMIUM_PLANS_ARIA')">
+            <button
+              type="button"
+              class="plan-tab"
+              *ngFor="let p of premiumPlans"
+              (click)="selectPremiumPlan(p.id)"
+              [class.active]="p.id === selectedPremiumPlanId"
+            >
+              {{ premiumLabel(p) }}
+            </button>
+          </div>
+
+          <div class="trial-note">{{ i18n.t('PRICING_TRIAL') }}</div>
+          <ul>
+            <li>{{ i18n.t('PREMIUM_FEATURE_1') }}</li>
+            <li>{{ i18n.t('PREMIUM_FEATURE_2') }}</li>
+            <li>{{ i18n.t('PREMIUM_FEATURE_3') }}</li>
+            <li>{{ i18n.t('PREMIUM_FEATURE_4') }}</li>
+          </ul>
+          <a class="btn primary full" href="#download">{{ i18n.t('PRICING_TRIAL_CTA') }}</a>
+          <div class="note">{{ i18n.t('PRICING_NOTE') }}</div>
+        </div>
+      </div>
+
+      <span id="download" class="anchor"></span>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('FAQ_KICKER') }}</div>
+        <h2>{{ i18n.t('FAQ_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('FAQ_SUB') }}</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q1') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A1') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q2') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A2') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q3') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A3') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q4') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A4') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q5') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A5') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q6') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A6') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q7') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A7') }}</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{{ i18n.t('FAQ_Q8') }}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <p>{{ i18n.t('FAQ_A8') }}</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>

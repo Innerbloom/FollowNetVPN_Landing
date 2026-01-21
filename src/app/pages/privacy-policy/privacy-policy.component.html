@@ -1,0 +1,834 @@
+<ng-container [ngSwitch]="i18n.current">
+  <!-- RU -->
+  <section class="doc" *ngSwitchCase="'ru'">
+    <div class="doc-header">
+      <h1>Политика конфиденциальности FollowNet VPN</h1>
+      <p class="muted">Дата обновления: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Эта политика описывает, какие данные мы обрабатываем в приложении FollowNet VPN и на сайте, зачем они нужны и какие у вас есть права.
+        Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Кто мы</h2>
+      <p class="muted">
+        FollowNet VPN — это VPN‑сервис. Контакт по вопросам приватности: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. Кратко о “логах”</h2>
+      <p class="muted">
+        Мы не записываем историю посещений и содержимое трафика (какие сайты/страницы вы открываете, содержимое сообщений и т.д.).
+        Для работы VPN и управления тарифами мы обрабатываем технические метаданные (например, время сессии и объём трафика).
+      </p>
+      <p class="muted">
+        Важно: если вы выбираете стороннего DNS‑провайдера в настройках, DNS‑запросы обрабатываются выбранным провайдером по его политике.
+        Со своей стороны мы не стремимся собирать содержимое DNS‑запросов в наших сервисах.
+      </p>
+
+      <h2>3. Какие данные мы обрабатываем</h2>
+      <h3>3.1 Аккаунт</h3>
+      <ul>
+        <li><b>Email</b> (если вы входите по коду на email).</li>
+        <li><b>User ID</b> (технический идентификатор аккаунта).</li>
+        <li><b>Идентификаторы устройств</b> (deviceId) — чтобы контролировать лимит устройств и повышать безопасность.</li>
+      </ul>
+      <p class="muted">
+        Также вы можете входить через <b>Sign in with Apple</b> и/или <b>Google Sign‑In</b> (если эта опция доступна в приложении).
+        В этом случае мы получаем данные, необходимые для авторизации, от соответствующего провайдера.
+      </p>
+
+      <h3>3.2 Подписка (App Store)</h3>
+      <ul>
+        <li>Тип/статус подписки (free/trial/premium), даты начала/окончания.</li>
+        <li>Идентификаторы транзакций Apple (например, original transaction id) и данные для валидации/восстановления покупок.</li>
+        <li>Мы не получаем реквизиты вашей карты — оплату обрабатывает Apple.</li>
+      </ul>
+
+      <h3>3.3 Данные для работы VPN</h3>
+      <ul>
+        <li>Выбранный протокол (IKEv2/WireGuard) и выбранный сервер/локация.</li>
+        <li>Таймстемпы подключения/отключения, длительность сессии.</li>
+        <li>Счётчики трафика (bytes in/out) — для статистики и лимитов бесплатного плана.</li>
+        <li>Технические сетевые параметры, необходимые для установления соединения (например, IP на уровне транспорта/маршрутизации).</li>
+      </ul>
+      <p class="muted">
+        DNS‑провайдер (если вы выбираете его в приложении): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Поддержка</h3>
+      <ul>
+        <li>Тикеты и сообщения в поддержку (если вы пишете нам), а также данные, которые вы сами предоставляете (скриншоты/логи/описание проблемы).</li>
+      </ul>
+      <p class="muted">
+        Для оперативной обработки тикетов мы можем использовать Telegram‑бота (если включён на стороне сервиса). В этом случае содержимое обращений может обрабатываться Telegram.
+      </p>
+
+      <h3>3.5 Аналитика приложения</h3>
+      <p class="muted">
+        В iOS‑приложении используется <b>Firebase Analytics</b> (Google) для событий продукта (например, открытие экрана, нажатия, успешность покупки/восстановления, запуск speed test).
+        Это помогает улучшать UX и стабильность.
+      </p>
+
+      <h3>3.6 IP‑адрес и User‑Agent</h3>
+      <p class="muted">
+        IP‑адрес и User‑Agent могут обрабатываться для защиты от злоупотреблений (rate‑limit) и безопасности. Мы стремимся не хранить их дольше, чем необходимо для этих целей.
+      </p>
+
+      <h2>4. Зачем мы используем данные</h2>
+      <ul>
+        <li>Предоставление VPN‑сервиса и выдача VPN‑учётных данных.</li>
+        <li>Авторизация (код на email), безопасность и предотвращение злоупотреблений.</li>
+        <li>Лимиты Free и условия Premium (трафик/устройства), проверка подписок и восстановление покупок.</li>
+        <li>Поддержка пользователей и улучшение продукта (аналитика).</li>
+      </ul>
+
+      <h2>5. С кем мы делимся данными</h2>
+      <ul>
+        <li><b>Apple</b> — покупки и подписки (App Store).</li>
+        <li><b>Apple / Google</b> — если вы используете вход через Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Провайдер email</b> (SMTP) — отправка кода входа.</li>
+        <li><b>Инфраструктура/хостинг</b> — размещение backend и VPN‑серверов.</li>
+        <li><b>Google Firebase</b> — аналитика приложения (если включена в сборке).</li>
+        <li><b>Telegram</b> — если вы пишете в поддержку и Telegram‑интеграция включена для обработки тикетов.</li>
+      </ul>
+      <p class="muted">Мы не продаём персональные данные.</p>
+
+      <h2>6. Хранение данных</h2>
+      <ul>
+        <li>Данные аккаунта и подписки — пока аккаунт активен или пока это необходимо по законным основаниям.</li>
+        <li>Технические данные сессий/трафика — минимально необходимое время для работы сервиса, лимитов и безопасности.</li>
+        <li>Тикеты поддержки — пока это нужно для обработки обращения и последующих разбирательств/качества сервиса.</li>
+      </ul>
+
+      <h2>7. Удаление аккаунта</h2>
+      <p class="muted">
+        Вы можете удалить аккаунт в приложении. При удалении мы удаляем данные аккаунта и связанные данные (устройства, VPN‑учётные данные, подписочные записи, тикеты поддержки и связанные технические записи),
+        кроме случаев, когда хранение требуется законом или для защиты от злоупотреблений.
+      </p>
+
+      <h2>8. Ваши права</h2>
+      <p class="muted">
+        Вы можете запросить доступ/исправление/удаление данных — напишите нам: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Изменения</h2>
+      <p class="muted">
+        Мы можем обновлять эту политику. Дата обновления указывается вверху страницы.
+      </p>
+    </div>
+  </section>
+
+  <!-- UK -->
+  <section class="doc" *ngSwitchCase="'uk'">
+    <div class="doc-header">
+      <h1>Політика конфіденційності FollowNet VPN</h1>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Ця політика описує, які дані ми обробляємо в застосунку FollowNet VPN і на сайті, навіщо вони потрібні та які у вас є права.
+        Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Хто ми</h2>
+      <p class="muted">
+        FollowNet VPN — це VPN‑сервіс. Контакт із питань приватності: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. Коротко про “логи”</h2>
+      <p class="muted">
+        Ми не записуємо історію відвідувань і вміст трафіку (які сайти/сторінки ви відкриваєте, вміст повідомлень тощо).
+        Для роботи VPN і керування тарифами ми обробляємо технічні метадані (наприклад, час сесії та обсяг трафіку).
+      </p>
+      <p class="muted">
+        Важливо: якщо ви обираєте стороннього DNS‑провайдера в налаштуваннях, DNS‑запити обробляються обраним провайдером відповідно до його політики.
+        Зі свого боку ми не прагнемо збирати вміст DNS‑запитів у наших сервісах.
+      </p>
+
+      <h2>3. Які дані ми обробляємо</h2>
+      <h3>3.1 Акаунт</h3>
+      <ul>
+        <li><b>Email</b> (якщо ви входите за кодом на email).</li>
+        <li><b>User ID</b> (технічний ідентифікатор акаунта).</li>
+        <li><b>Ідентифікатори пристроїв</b> (deviceId) — щоб контролювати ліміт пристроїв і підвищувати безпеку.</li>
+      </ul>
+      <p class="muted">
+        Також може бути доступний вхід через <b>Sign in with Apple</b> та/або <b>Google Sign‑In</b>.
+        У цьому випадку ми отримуємо дані, необхідні для авторизації, від відповідного провайдера.
+      </p>
+
+      <h3>3.2 Підписка (App Store)</h3>
+      <ul>
+        <li>Тип/статус підписки (free/trial/premium), дати початку/закінчення.</li>
+        <li>Ідентифікатори транзакцій Apple (наприклад, original transaction id) для перевірки та відновлення покупок.</li>
+        <li>Ми не отримуємо дані вашої картки — оплату обробляє Apple.</li>
+      </ul>
+
+      <h3>3.3 Дані для роботи VPN</h3>
+      <ul>
+        <li>Обраний протокол (IKEv2/WireGuard) та обраний сервер/локація.</li>
+        <li>Таймстемпи підключення/відключення, тривалість сесії.</li>
+        <li>Лічильники трафіку (bytes in/out) — для статистики та лімітів безкоштовного плану.</li>
+        <li>Технічні мережеві параметри, потрібні для встановлення з’єднання (наприклад, IP на рівні транспорту/маршрутизації).</li>
+      </ul>
+      <p class="muted">
+        DNS‑провайдер (якщо ви обираєте його в застосунку): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Підтримка</h3>
+      <ul>
+        <li>Тікети та повідомлення в підтримку (якщо ви пишете нам), а також дані, які ви самі надаєте (скріншоти/логи/опис проблеми).</li>
+      </ul>
+      <p class="muted">
+        Для оперативної обробки тікетів ми можемо використовувати Telegram‑бота (якщо увімкнено на стороні сервісу). У такому разі вміст звернень може оброблятися Telegram.
+      </p>
+
+      <h3>3.5 Аналітика застосунку</h3>
+      <p class="muted">
+        В iOS‑застосунку використовується <b>Firebase Analytics</b> (Google) для подій продукту (наприклад, відкриття екранів, натискання, успішність покупок/відновлення, запуск speed test).
+        Це допомагає покращувати UX та стабільність.
+      </p>
+
+      <h3>3.6 IP‑адреса та User‑Agent</h3>
+      <p class="muted">
+        IP‑адреса та User‑Agent можуть оброблятися для захисту від зловживань (rate‑limit) і безпеки. Ми прагнемо не зберігати їх довше, ніж необхідно для цих цілей.
+      </p>
+
+      <h2>4. Навіщо ми використовуємо дані</h2>
+      <ul>
+        <li>Надання VPN‑сервісу та видача VPN‑облікових даних.</li>
+        <li>Авторизація (код на email), безпека та запобігання зловживанням.</li>
+        <li>Ліміти Free та умови Premium (трафік/пристрої), перевірка підписок і відновлення покупок.</li>
+        <li>Підтримка користувачів та покращення продукту (аналітика).</li>
+      </ul>
+
+      <h2>5. З ким ми ділимося даними</h2>
+      <ul>
+        <li><b>Apple</b> — покупки та підписки (App Store).</li>
+        <li><b>Apple / Google</b> — якщо ви використовуєте Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Провайдер email</b> (SMTP) — відправка коду входу.</li>
+        <li><b>Інфраструктура/хостинг</b> — розміщення backend та VPN‑серверів.</li>
+        <li><b>Google Firebase</b> — аналітика застосунку (якщо увімкнено у збірці).</li>
+        <li><b>Telegram</b> — якщо підтримка через Telegram‑інтеграцію увімкнена.</li>
+      </ul>
+      <p class="muted">Ми не продаємо персональні дані.</p>
+
+      <h2>6. Зберігання даних</h2>
+      <ul>
+        <li>Дані акаунта та підписки — поки акаунт активний або поки це потрібно на законних підставах.</li>
+        <li>Технічні дані сесій/трафіку — мінімально необхідний час для роботи сервісу, лімітів і безпеки.</li>
+        <li>Тікети підтримки — поки це потрібно для обробки звернення та якості сервісу.</li>
+      </ul>
+
+      <h2>7. Видалення акаунта</h2>
+      <p class="muted">
+        Ви можете видалити акаунт у застосунку. Після видалення ми видаляємо дані акаунта та пов’язані дані (пристрої, VPN‑облікові дані, записи підписки, тікети підтримки та пов’язані технічні записи),
+        окрім випадків, коли зберігання вимагається законом або необхідне для запобігання зловживанням.
+      </p>
+
+      <h2>8. Ваші права</h2>
+      <p class="muted">
+        Ви можете запросити доступ/виправлення/видалення даних — напишіть нам: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Зміни</h2>
+      <p class="muted">
+        Ми можемо оновлювати цю політику. Дата оновлення вказується вгорі сторінки.
+      </p>
+    </div>
+  </section>
+
+  <!-- DE -->
+  <section class="doc" *ngSwitchCase="'de'">
+    <div class="doc-header">
+      <h1>FollowNet VPN Datenschutzerklärung</h1>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Diese Erklärung beschreibt, welche Daten wir in der FollowNet VPN App und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
+        Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Wer wir sind</h2>
+      <p class="muted">
+        FollowNet VPN ist ein VPN‑Dienst. Datenschutz‑Kontakt: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. Hinweis zu “Logs”</h2>
+      <p class="muted">
+        Wir zeichnen weder Browserverlauf noch Inhalte des Datenverkehrs auf (besuchte Seiten, Nachrichteninhalte usw.).
+        Für den VPN‑Betrieb und Plan‑Management verarbeiten wir begrenzte technische Metadaten (z. B. Sitzungszeit und Traffic‑Volumen).
+      </p>
+      <p class="muted">
+        Wichtig: Wenn Sie in der App einen Drittanbieter‑DNS wählen, werden Ihre DNS‑Anfragen von diesem Anbieter gemäß seiner eigenen Richtlinie verarbeitet.
+        Wir versuchen nicht, DNS‑Inhalte in unseren Systemen zu sammeln.
+      </p>
+
+      <h2>3. Welche Daten wir verarbeiten</h2>
+      <h3>3.1 Konto</h3>
+      <ul>
+        <li><b>E‑Mail</b> (wenn Sie sich per E‑Mail‑Code anmelden).</li>
+        <li><b>User ID</b> (technische Konto‑ID).</li>
+        <li><b>Geräte‑IDs</b> (deviceId) zur Durchsetzung von Geräte‑Limits und für Sicherheit.</li>
+      </ul>
+      <p class="muted">
+        Anmeldung über <b>Sign in with Apple</b> und/oder <b>Google Sign‑In</b> kann verfügbar sein. Dann erhalten wir die für die Authentifizierung notwendigen Daten vom jeweiligen Anbieter.
+      </p>
+
+      <h3>3.2 Abos (App Store)</h3>
+      <ul>
+        <li>Plan/Status (free/trial/premium) und Start/Enddaten.</li>
+        <li>Apple‑Transaktions‑IDs (z. B. original transaction id) zur Validierung und Wiederherstellung.</li>
+        <li>Wir erhalten keine Kartendaten — Zahlungen werden von Apple verarbeitet.</li>
+      </ul>
+
+      <h3>3.3 VPN‑Dienst‑Daten</h3>
+      <ul>
+        <li>Ausgewähltes Protokoll (IKEv2/WireGuard) und Server/Standort.</li>
+        <li>Verbindungs‑/Trennzeitpunkte und Sitzungsdauer.</li>
+        <li>Traffic‑Zähler (bytes in/out) für Statistiken und Free‑Limits.</li>
+        <li>Netzwerk‑Parameter, die zur Verbindung/Weiterleitung nötig sind (z. B. IP auf Transport/Routing‑Ebene).</li>
+      </ul>
+      <p class="muted">
+        DNS‑Anbieter (falls ausgewählt): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Support</h3>
+      <ul>
+        <li>Support‑Tickets und Nachrichten sowie Informationen, die Sie freiwillig teilen (Logs/Screenshots/Problembeschreibung).</li>
+      </ul>
+      <p class="muted">
+        Für schnellere Ticket‑Bearbeitung können wir einen Telegram‑Bot nutzen (falls aktiviert). Dann kann Ticket‑Inhalt von Telegram verarbeitet werden.
+      </p>
+
+      <h3>3.5 App‑Analytics</h3>
+      <p class="muted">
+        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events (z. B. Screen‑Opens, Taps, Kauf/Restore‑Ergebnisse, Speed‑Test‑Start), um UX und Zuverlässigkeit zu verbessern.
+      </p>
+
+      <h3>3.6 IP‑Adresse und User‑Agent</h3>
+      <p class="muted">
+        IP‑Adresse und User‑Agent können für Abuse‑Prevention (Rate‑Limiting) und Sicherheit verarbeitet werden. Wir versuchen, diese Daten nicht länger als nötig aufzubewahren.
+      </p>
+
+      <h2>4. Zwecke</h2>
+      <ul>
+        <li>Bereitstellung des VPN‑Dienstes und Ausgabe von VPN‑Zugangsdaten.</li>
+        <li>Anmeldung (E‑Mail‑Code), Sicherheit und Abuse‑Prevention.</li>
+        <li>Free‑Limits und Premium‑Durchsetzung (Traffic/Geräte), Abo‑Validierung und Restore.</li>
+        <li>Support und Produktverbesserungen (Analytics).</li>
+      </ul>
+
+      <h2>5. Weitergabe</h2>
+      <ul>
+        <li><b>Apple</b> — Käufe und Abos (App Store).</li>
+        <li><b>Apple / Google</b> — bei Sign in with Apple / Google Sign‑In.</li>
+        <li><b>E‑Mail‑Provider</b> (SMTP) — Versand von Login‑Codes.</li>
+        <li><b>Hosting/Infrastructure</b> — Backend und VPN‑Server.</li>
+        <li><b>Google Firebase</b> — App‑Analytics (falls aktiviert).</li>
+        <li><b>Telegram</b> — falls Support‑Integration aktiviert ist.</li>
+      </ul>
+      <p class="muted">Wir verkaufen keine personenbezogenen Daten.</p>
+
+      <h2>6. Aufbewahrung</h2>
+      <ul>
+        <li>Konto/Abo‑Daten — solange das Konto aktiv ist oder für legitime Zwecke erforderlich.</li>
+        <li>Sitzungs/Traffic‑Metadaten — minimal notwendig für Betrieb, Limits und Sicherheit.</li>
+        <li>Support‑Tickets — soweit nötig für Bearbeitung und Servicequalität.</li>
+      </ul>
+
+      <h2>7. Konto‑Löschung</h2>
+      <p class="muted">
+        Sie können Ihr Konto in der App löschen. Wir löschen Konto‑ und zugehörige Daten (Geräte, VPN‑Credentials, Abo‑Records, Support‑Tickets und technische Records),
+        außer wo Aufbewahrung gesetzlich erforderlich oder für Abuse‑Prevention nötig ist.
+      </p>
+
+      <h2>8. Ihre Rechte</h2>
+      <p class="muted">
+        Sie können Auskunft/Berichtigung/Löschung anfragen: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Änderungen</h2>
+      <p class="muted">
+        Wir können diese Erklärung aktualisieren. Das Datum oben zeigt die letzte Version.
+      </p>
+    </div>
+  </section>
+
+  <!-- ES -->
+  <section class="doc" *ngSwitchCase="'es'">
+    <div class="doc-header">
+      <h1>Política de privacidad de FollowNet VPN</h1>
+      <p class="muted">Última actualización: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Esta política explica qué datos procesamos en la app y el sitio de FollowNet VPN, por qué los necesitamos y qué derechos tienes.
+        Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Quiénes somos</h2>
+      <p class="muted">
+        FollowNet VPN es un servicio de VPN. Contacto de privacidad: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. Nota sobre “logs”</h2>
+      <p class="muted">
+        No registramos el historial de navegación ni el contenido del tráfico (sitios/páginas visitadas, contenido de mensajes, etc.).
+        Para operar la VPN y gestionar planes, procesamos metadatos técnicos limitados (por ejemplo, duración de sesión y volumen de tráfico).
+      </p>
+      <p class="muted">
+        Importante: si eliges un proveedor DNS de terceros en la app, tus consultas DNS serán procesadas por ese proveedor según su propia política.
+        Por nuestra parte, no buscamos recopilar el contenido de las consultas DNS en nuestros sistemas.
+      </p>
+
+      <h2>3. Datos que procesamos</h2>
+      <h3>3.1 Cuenta</h3>
+      <ul>
+        <li><b>Email</b> (si inicias sesión por código).</li>
+        <li><b>User ID</b> (identificador técnico).</li>
+        <li><b>Identificadores de dispositivo</b> (deviceId) para límites de dispositivos y seguridad.</li>
+      </ul>
+      <p class="muted">
+        Puede estar disponible el inicio de sesión con <b>Sign in with Apple</b> y/o <b>Google Sign‑In</b>. En ese caso, recibimos los datos necesarios para autenticarte del proveedor correspondiente.
+      </p>
+
+      <h3>3.2 Suscripciones (App Store)</h3>
+      <ul>
+        <li>Plan/estado (free/trial/premium) y fechas de inicio/expiración.</li>
+        <li>Identificadores de transacción de Apple (p. ej., original transaction id) para validación y restauración.</li>
+        <li>No recibimos datos de tu tarjeta — los pagos los procesa Apple.</li>
+      </ul>
+
+      <h3>3.3 Datos del servicio VPN</h3>
+      <ul>
+        <li>Protocolo (IKEv2/WireGuard) y servidor/ubicación seleccionados.</li>
+        <li>Marcas de tiempo de conexión/desconexión y duración de sesión.</li>
+        <li>Contadores de tráfico (bytes in/out) para estadísticas y límites del plan Free.</li>
+        <li>Parámetros de red necesarios para establecer/enrutar la conexión (p. ej., IP a nivel de transporte/enrutamiento).</li>
+      </ul>
+      <p class="muted">
+        Proveedor DNS (si se selecciona): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Soporte</h3>
+      <ul>
+        <li>Tickets y mensajes de soporte, y cualquier información que compartas (logs/capturas/descripción del problema).</li>
+      </ul>
+      <p class="muted">
+        Podemos usar un bot de Telegram para gestionar tickets más rápido (si está habilitado). En ese caso, el contenido del ticket puede ser procesado por Telegram.
+      </p>
+
+      <h3>3.5 Analítica</h3>
+      <p class="muted">
+        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos del producto (p. ej., aperturas de pantallas, toques, resultados de compra/restauración, inicio de speed test) para mejorar UX y fiabilidad.
+      </p>
+
+      <h3>3.6 IP y User‑Agent</h3>
+      <p class="muted">
+        La IP y el User‑Agent pueden procesarse para prevención de abuso (rate‑limit) y seguridad. Intentamos no conservarlos más tiempo del necesario.
+      </p>
+
+      <h2>4. Finalidades</h2>
+      <ul>
+        <li>Proporcionar el servicio VPN y emitir credenciales VPN.</li>
+        <li>Inicio de sesión (código), seguridad y prevención de abuso.</li>
+        <li>Límites Free y control de Premium (tráfico/dispositivos), validación de suscripción y restauración.</li>
+        <li>Soporte y mejoras del producto (analítica).</li>
+      </ul>
+
+      <h2>5. Compartición</h2>
+      <ul>
+        <li><b>Apple</b> — compras y suscripciones (App Store).</li>
+        <li><b>Apple / Google</b> — si usas Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Proveedor de email</b> (SMTP) — envío de códigos.</li>
+        <li><b>Infraestructura/hosting</b> — backend y servidores VPN.</li>
+        <li><b>Google Firebase</b> — analítica (si está habilitada).</li>
+        <li><b>Telegram</b> — si la integración de soporte está habilitada.</li>
+      </ul>
+      <p class="muted">No vendemos datos personales.</p>
+
+      <h2>6. Conservación</h2>
+      <ul>
+        <li>Datos de cuenta/suscripción — mientras la cuenta esté activa o sea necesario por fines legítimos.</li>
+        <li>Metadatos técnicos de sesión/tráfico — el mínimo necesario para operación, límites y seguridad.</li>
+        <li>Tickets de soporte — según sea necesario para atender solicitudes y calidad del servicio.</li>
+      </ul>
+
+      <h2>7. Eliminación de cuenta</h2>
+      <p class="muted">
+        Puedes eliminar tu cuenta en la app. Eliminamos datos de cuenta y registros relacionados (dispositivos, credenciales VPN, registros de suscripción, tickets de soporte y registros técnicos),
+        excepto cuando la retención sea requerida por ley o necesaria para prevenir abusos.
+      </p>
+
+      <h2>8. Tus derechos</h2>
+      <p class="muted">
+        Puedes solicitar acceso/corrección/eliminación contactando a: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Cambios</h2>
+      <p class="muted">
+        Podemos actualizar esta política. La fecha arriba indica la última revisión.
+      </p>
+    </div>
+  </section>
+
+  <!-- FR -->
+  <section class="doc" *ngSwitchCase="'fr'">
+    <div class="doc-header">
+      <h1>Politique de confidentialité FollowNet VPN</h1>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Cette politique explique quelles données nous traitons dans l’application et sur le site FollowNet VPN, pourquoi, et quels sont vos droits.
+        Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Qui sommes‑nous</h2>
+      <p class="muted">
+        FollowNet VPN est un service VPN. Contact confidentialité : <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. À propos des “logs”</h2>
+      <p class="muted">
+        Nous n’enregistrons pas l’historique de navigation ni le contenu du trafic (sites/pages visités, contenu des messages, etc.).
+        Pour opérer le VPN et gérer les plans, nous traitons des métadonnées techniques limitées (ex. durée de session et volume de trafic).
+      </p>
+      <p class="muted">
+        Important : si vous choisissez un fournisseur DNS tiers dans l’app, vos requêtes DNS sont traitées par ce fournisseur selon sa propre politique.
+        De notre côté, nous ne cherchons pas à collecter le contenu des requêtes DNS dans nos systèmes.
+      </p>
+
+      <h2>3. Données traitées</h2>
+      <h3>3.1 Compte</h3>
+      <ul>
+        <li><b>Email</b> (si connexion par code).</li>
+        <li><b>User ID</b> (identifiant technique).</li>
+        <li><b>Identifiants d’appareil</b> (deviceId) pour les limites d’appareils et la sécurité.</li>
+      </ul>
+      <p class="muted">
+        La connexion via <b>Sign in with Apple</b> et/ou <b>Google Sign‑In</b> peut être disponible. Dans ce cas, nous recevons les données nécessaires à l’authentification du fournisseur concerné.
+      </p>
+
+      <h3>3.2 Abonnements (App Store)</h3>
+      <ul>
+        <li>Plan/statut (free/trial/premium) et dates de début/expiration.</li>
+        <li>Identifiants de transaction Apple (ex. original transaction id) pour validation et restauration.</li>
+        <li>Nous ne recevons pas les données de carte — les paiements sont traités par Apple.</li>
+      </ul>
+
+      <h3>3.3 Données du service VPN</h3>
+      <ul>
+        <li>Protocole (IKEv2/WireGuard) et serveur/emplacement sélectionnés.</li>
+        <li>Horodatages de connexion/déconnexion et durée de session.</li>
+        <li>Compteurs de trafic (bytes in/out) pour stats et limites Free.</li>
+        <li>Paramètres réseau nécessaires pour établir/acheminer la connexion (ex. IP au niveau transport/routage).</li>
+      </ul>
+      <p class="muted">
+        Fournisseur DNS (si sélectionné) : Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Support</h3>
+      <ul>
+        <li>Tickets et messages de support, ainsi que toute information que vous partagez (logs/captures/description).</li>
+      </ul>
+      <p class="muted">
+        Nous pouvons utiliser un bot Telegram pour traiter les tickets plus rapidement (si activé). Le contenu des tickets peut alors être traité par Telegram.
+      </p>
+
+      <h3>3.5 Analytique</h3>
+      <p class="muted">
+        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit (ex. ouvertures d’écrans, clics, résultats d’achat/restauration, démarrage du speed test) afin d’améliorer l’UX et la fiabilité.
+      </p>
+
+      <h3>3.6 Adresse IP et User‑Agent</h3>
+      <p class="muted">
+        L’adresse IP et le User‑Agent peuvent être traités pour la prévention des abus (rate‑limit) et la sécurité. Nous essayons de ne pas les conserver plus longtemps que nécessaire.
+      </p>
+
+      <h2>4. Finalités</h2>
+      <ul>
+        <li>Fournir le service VPN et émettre des identifiants VPN.</li>
+        <li>Connexion (code), sécurité et prévention des abus.</li>
+        <li>Limites Free et contrôle Premium (trafic/appareils), validation d’abonnement et restauration.</li>
+        <li>Support et amélioration du produit (analytique).</li>
+      </ul>
+
+      <h2>5. Partage</h2>
+      <ul>
+        <li><b>Apple</b> — achats et abonnements (App Store).</li>
+        <li><b>Apple / Google</b> — si vous utilisez Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Fournisseur email</b> (SMTP) — envoi des codes.</li>
+        <li><b>Infrastructure/hébergement</b> — backend et serveurs VPN.</li>
+        <li><b>Google Firebase</b> — analytique (si activée).</li>
+        <li><b>Telegram</b> — si l’intégration support est activée.</li>
+      </ul>
+      <p class="muted">Nous ne vendons pas de données personnelles.</p>
+
+      <h2>6. Conservation</h2>
+      <ul>
+        <li>Données de compte/abonnement — tant que le compte est actif ou nécessaire pour des finalités légitimes.</li>
+        <li>Métadonnées session/trafic — le minimum nécessaire pour l’exploitation, les limites et la sécurité.</li>
+        <li>Tickets de support — selon la nécessité pour traiter les demandes et assurer la qualité.</li>
+      </ul>
+
+      <h2>7. Suppression du compte</h2>
+      <p class="muted">
+        Vous pouvez supprimer votre compte dans l’app. Nous supprimons les données du compte et les enregistrements associés (appareils, identifiants VPN, abonnements, tickets et enregistrements techniques),
+        sauf si la conservation est requise par la loi ou nécessaire pour prévenir les abus.
+      </p>
+
+      <h2>8. Vos droits</h2>
+      <p class="muted">
+        Vous pouvez demander accès/correction/suppression : <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Modifications</h2>
+      <p class="muted">
+        Nous pouvons mettre à jour cette politique. La date ci‑dessus reflète la dernière version.
+      </p>
+    </div>
+  </section>
+
+  <!-- PT -->
+  <section class="doc" *ngSwitchCase="'pt'">
+    <div class="doc-header">
+      <h1>Política de privacidade do FollowNet VPN</h1>
+      <p class="muted">Última atualização: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        Esta política explica quais dados processamos no app e no site do FollowNet VPN, por que precisamos deles e quais são seus direitos.
+        Buscamos coletar o mínimo necessário para operar o serviço com segurança.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Quem somos</h2>
+      <p class="muted">
+        FollowNet VPN é um serviço de VPN. Contato de privacidade: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. Nota sobre “logs”</h2>
+      <p class="muted">
+        Não registramos histórico de navegação nem o conteúdo do tráfego (sites/páginas visitadas, conteúdo de mensagens etc.).
+        Para operar a VPN e gerenciar planos, processamos metadados técnicos limitados (por exemplo, tempo de sessão e volume de tráfego).
+      </p>
+      <p class="muted">
+        Importante: se você escolher um provedor DNS de terceiros nas configurações do app, suas consultas DNS serão processadas por esse provedor conforme a própria política.
+        Do nosso lado, não buscamos coletar o conteúdo das consultas DNS em nossos sistemas.
+      </p>
+
+      <h2>3. Dados que processamos</h2>
+      <h3>3.1 Conta</h3>
+      <ul>
+        <li><b>Email</b> (se o login for por código).</li>
+        <li><b>User ID</b> (identificador técnico).</li>
+        <li><b>Identificadores de dispositivo</b> (deviceId) para limites de dispositivos e segurança.</li>
+      </ul>
+      <p class="muted">
+        O login via <b>Sign in with Apple</b> e/ou <b>Google Sign‑In</b> pode estar disponível. Nesse caso, recebemos os dados necessários para autenticação do provedor correspondente.
+      </p>
+
+      <h3>3.2 Assinaturas (App Store)</h3>
+      <ul>
+        <li>Plano/status (free/trial/premium) e datas de início/expiração.</li>
+        <li>IDs de transação da Apple (ex.: original transaction id) para validação e restauração.</li>
+        <li>Não recebemos dados do seu cartão — pagamentos são processados pela Apple.</li>
+      </ul>
+
+      <h3>3.3 Dados do serviço VPN</h3>
+      <ul>
+        <li>Protocolo (IKEv2/WireGuard) e servidor/local selecionados.</li>
+        <li>Carimbos de tempo de conexão/desconexão e duração da sessão.</li>
+        <li>Contadores de tráfego (bytes in/out) para estatísticas e limites do Free.</li>
+        <li>Parâmetros de rede necessários para estabelecer/rotear a conexão (ex.: IP em nível de transporte/roteamento).</li>
+      </ul>
+      <p class="muted">
+        Provedor DNS (se selecionado): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Suporte</h3>
+      <ul>
+        <li>Tickets e mensagens de suporte, e qualquer informação que você compartilhar (logs/capturas/descrição do problema).</li>
+      </ul>
+      <p class="muted">
+        Podemos usar um bot do Telegram para agilizar o suporte (se ativado). Nesse caso, o conteúdo do ticket pode ser processado pelo Telegram.
+      </p>
+
+      <h3>3.5 Analytics</h3>
+      <p class="muted">
+        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos do produto (ex.: aberturas de telas, toques, resultado de compra/restauração, início do speed test) para melhorar UX e confiabilidade.
+      </p>
+
+      <h3>3.6 Endereço IP e User‑Agent</h3>
+      <p class="muted">
+        Endereço IP e User‑Agent podem ser processados para prevenção de abuso (rate‑limit) e segurança. Tentamos não retê-los por mais tempo do que o necessário.
+      </p>
+
+      <h2>4. Finalidades</h2>
+      <ul>
+        <li>Fornecer o serviço VPN e emitir credenciais VPN.</li>
+        <li>Login (código), segurança e prevenção de abuso.</li>
+        <li>Limites do Free e controle do Premium (tráfego/dispositivos), validação de assinatura e restauração.</li>
+        <li>Suporte e melhorias do produto (analytics).</li>
+      </ul>
+
+      <h2>5. Compartilhamento</h2>
+      <ul>
+        <li><b>Apple</b> — compras e assinaturas (App Store).</li>
+        <li><b>Apple / Google</b> — se você usar Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Provedor de email</b> (SMTP) — envio de códigos.</li>
+        <li><b>Infra/hosting</b> — backend e servidores VPN.</li>
+        <li><b>Google Firebase</b> — analytics (se habilitado).</li>
+        <li><b>Telegram</b> — se a integração de suporte estiver habilitada.</li>
+      </ul>
+      <p class="muted">Não vendemos dados pessoais.</p>
+
+      <h2>6. Retenção</h2>
+      <ul>
+        <li>Dados de conta/assinatura — enquanto a conta estiver ativa ou conforme necessário para finalidades legítimas.</li>
+        <li>Metadados técnicos de sessão/tráfego — o mínimo necessário para operação, limites e segurança.</li>
+        <li>Tickets de suporte — conforme necessário para atender solicitações e garantir qualidade.</li>
+      </ul>
+
+      <h2>7. Exclusão de conta</h2>
+      <p class="muted">
+        Você pode excluir sua conta no app. Excluímos dados da conta e registros relacionados (dispositivos, credenciais VPN, registros de assinatura, tickets de suporte e registros técnicos),
+        exceto quando a retenção for exigida por lei ou necessária para prevenção de abuso.
+      </p>
+
+      <h2>8. Seus direitos</h2>
+      <p class="muted">
+        Você pode solicitar acesso/correção/exclusão: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Alterações</h2>
+      <p class="muted">
+        Podemos atualizar esta política. A data acima reflete a última revisão.
+      </p>
+    </div>
+  </section>
+
+  <!-- Default (EN) -->
+  <section class="doc" *ngSwitchDefault>
+    <div class="doc-header">
+      <h1>FollowNet VPN Privacy Policy</h1>
+      <p class="muted">Last updated: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">
+        This policy explains what data we process in the FollowNet VPN app and on our website, why we need it, and what rights you have.
+        We aim to collect the minimum data required to operate the service securely.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>1. Who we are</h2>
+      <p class="muted">
+        FollowNet VPN is a VPN service. Privacy contact: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>2. A note on “logs”</h2>
+      <p class="muted">
+        We do not record browsing history or traffic contents (the websites/pages you visit, message contents, etc.).
+        To operate a VPN service and manage plans, we process limited technical metadata (for example, session timing and traffic volume).
+      </p>
+      <p class="muted">
+        Important: if you choose a third‑party DNS provider in the app settings, your DNS queries are processed by that provider under its own policy.
+        On our side, we do not aim to collect DNS query contents in our services.
+      </p>
+
+      <h2>3. Data we process</h2>
+      <h3>3.1 Account</h3>
+      <ul>
+        <li><b>Email</b> (if you sign in via email code).</li>
+        <li><b>User ID</b> (a technical account identifier).</li>
+        <li><b>Device identifiers</b> (deviceId) to enforce device limits and improve security.</li>
+      </ul>
+      <p class="muted">
+        You may also sign in via <b>Sign in with Apple</b> and/or <b>Google Sign‑In</b> (if available in the app). In that case we receive the data needed for authentication from the respective provider.
+      </p>
+
+      <h3>3.2 Subscriptions (App Store)</h3>
+      <ul>
+        <li>Plan/status (free/trial/premium) and start/expiry dates.</li>
+        <li>Apple transaction identifiers (e.g., original transaction id) for validation and purchase restore.</li>
+        <li>We do not receive your card details — payments are processed by Apple.</li>
+      </ul>
+
+      <h3>3.3 VPN service data</h3>
+      <ul>
+        <li>Selected protocol (IKEv2/WireGuard) and selected server/location.</li>
+        <li>Connection/disconnection timestamps and session duration.</li>
+        <li>Traffic counters (bytes in/out) for stats and free plan limits.</li>
+        <li>Network-level parameters required to establish and route VPN traffic (e.g., IP at transport/routing level).</li>
+      </ul>
+      <p class="muted">
+        DNS provider (if selected in the app): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
+      </p>
+
+      <h3>3.4 Support</h3>
+      <ul>
+        <li>Support tickets and messages, plus any information you choose to share (logs/screenshots/issue details).</li>
+      </ul>
+      <p class="muted">
+        We may use a Telegram bot for faster ticket handling (if enabled on the service side). In that case, ticket content may be processed by Telegram.
+      </p>
+
+      <h3>3.5 App analytics</h3>
+      <p class="muted">
+        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events (e.g., screen opens, taps, purchase/restore outcomes, speed test start),
+        to improve UX and reliability.
+      </p>
+
+      <h3>3.6 IP address and User-Agent</h3>
+      <p class="muted">
+        IP address and User-Agent may be processed for abuse prevention (rate-limiting) and security. We aim not to retain them longer than necessary for these purposes.
+      </p>
+
+      <h2>4. How we use data</h2>
+      <ul>
+        <li>Provide the VPN service and issue VPN credentials.</li>
+        <li>Passwordless login (email code), security, and abuse prevention.</li>
+        <li>Free limits and Premium enforcement (traffic/devices), subscription validation and purchase restore.</li>
+        <li>Support and product improvements (analytics).</li>
+      </ul>
+
+      <h2>5. Sharing</h2>
+      <ul>
+        <li><b>Apple</b> — purchases and subscriptions (App Store).</li>
+        <li><b>Apple / Google</b> — if you use Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Email provider</b> (SMTP) — sending login codes.</li>
+        <li><b>Infrastructure/hosting</b> — backend and VPN servers.</li>
+        <li><b>Google Firebase</b> — app analytics (if enabled in the build).</li>
+        <li><b>Telegram</b> — if support ticket handling via Telegram integration is enabled.</li>
+      </ul>
+      <p class="muted">We do not sell personal data.</p>
+
+      <h2>6. Retention</h2>
+      <ul>
+        <li>Account/subscription data — while the account remains active or as required for legitimate purposes.</li>
+        <li>Session/traffic technical metadata — the minimum time needed for operations, limits, and security.</li>
+        <li>Support tickets — as needed to handle requests and maintain service quality.</li>
+      </ul>
+
+      <h2>7. Account deletion</h2>
+      <p class="muted">
+        You can delete your account in the app. We delete account data and related records (devices, VPN credentials, subscription records, support tickets and related technical records),
+        except where retention is required by law or necessary for abuse prevention.
+      </p>
+
+      <h2>8. Your rights</h2>
+      <p class="muted">
+        You can request access/correction/deletion by contacting: <span class="mono">noreply&#64;follow-net.com</span>.
+      </p>
+
+      <h2>9. Changes</h2>
+      <p class="muted">
+        We may update this policy from time to time. The “Last updated” date above reflects the latest revision.
+      </p>
+    </div>
+  </section>
+</ng-container>
+
+

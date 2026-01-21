@@ -1,0 +1,61 @@
+<header class="header">
+  <div class="container">
+    <div class="nav-pill">
+      <a class="logo" routerLink="/">
+        <img class="logo-img" [src]="logoSrc" (error)="onLogoError()" alt="FollowNet" />
+        <span class="logo-text">
+          <span class="brand">FollowNet</span>
+          <span class="brand-suffix">VPN</span>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a [routerLink]="['/']" fragment="top" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
+        <a [routerLink]="['/']" fragment="features" [class.active]="activeSection==='features'">{{ i18n.t('NAV_FEATURES') }}</a>
+        <a [routerLink]="['/']" fragment="pricing" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
+        <a routerLink="/privacy">{{ i18n.t('NAV_PRIVACY') }}</a>
+        <a routerLink="/terms">{{ i18n.t('NAV_TERMS') }}</a>
+      </nav>
+
+      <div class="right">
+        <div class="lang-dd">
+          <button class="lang" type="button" (click)="toggleLangMenu($event)" aria-label="Language" [attr.aria-expanded]="isLangOpen">
+            {{ i18n.current.toUpperCase() }}
+          </button>
+          <div class="lang-menu" *ngIf="isLangOpen" role="menu" aria-label="Languages">
+            <button
+              type="button"
+              class="lang-item"
+              *ngFor="let l of langs"
+              (click)="setLang(l)"
+              [class.active]="l === i18n.current"
+            >
+              <span class="lang-code">{{ l.toUpperCase() }}</span>
+              <span class="lang-name">{{ i18n.langLabel(l) }}</span>
+            </button>
+          </div>
+        </div>
+        <a class="cta" [routerLink]="['/']" fragment="download">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+        <button class="burger" type="button" (click)="toggleMenu()" aria-label="Menu" [attr.aria-expanded]="isMenuOpen" [class.open]="isMenuOpen">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile" *ngIf="isMenuOpen" (click)="closeMenu()">
+    <div class="mobile-panel" (click)="$event.stopPropagation()">
+      <div class="mobile-group">
+        <a [routerLink]="['/']" fragment="top" (click)="closeMenu()" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
+        <a [routerLink]="['/']" fragment="features" (click)="closeMenu()" [class.active]="activeSection==='features'">{{ i18n.t('NAV_FEATURES') }}</a>
+        <a [routerLink]="['/']" fragment="pricing" (click)="closeMenu()" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
+        <a [routerLink]="['/']" fragment="download" (click)="closeMenu()" [class.active]="activeSection==='download'">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+      </div>
+
+      <div class="mobile-group">
+        <a routerLink="/privacy" (click)="closeMenu()">{{ i18n.t('NAV_PRIVACY') }}</a>
+        <a routerLink="/terms" (click)="closeMenu()">{{ i18n.t('NAV_TERMS') }}</a>
+      </div>
+    </div>
+  </div>
+</header>

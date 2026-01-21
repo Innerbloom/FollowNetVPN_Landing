@@ -1,0 +1,33 @@
+.page {
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: -20vh -20vw;
+  z-index: 0;
+  pointer-events: none;
+  /* Big soft blobs instead of sharp bands */
+  display: none; /* remove green glow background completely */
+}
+
+.page.light {
+  background: #f6f7f9;
+}
+
+.shell {
+  position: relative;
+  z-index: 1; /* above starfield */
+  margin: 0 auto;
+  background: transparent;
+}
+
+.shell.light {
+  background: transparent;
+}
+
+.main {
+  padding: 28px 0 10px;
+}
