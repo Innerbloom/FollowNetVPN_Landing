@@ -29,6 +29,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "new_logo.png",
+                "input": "src/assets",
+                "output": "icons"
               }
             ],
             "styles": [

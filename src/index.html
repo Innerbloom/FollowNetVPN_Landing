@@ -24,11 +24,33 @@
   <meta name="twitter:title" content="FollowNet VPN — быстрый VPN для iOS" />
   <meta name="twitter:description" content="Быстрый VPN для iOS: WireGuard и IKEv2, Kill Switch, выбор DNS, статистика и виджеты." />
   <meta name="twitter:image" content="https://follow-net.com/og/og.png" />
-  <!-- Icons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-master-512.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="/icons/favicon-128.png">
-  <link rel="shortcut icon" href="/icons/favicon-128.png">
+  <!-- Favicon: размер во вкладке задаёт только браузер. Как выглядит иконка — зависит от самого файла (см. комментарий ниже). -->
+  <link rel="icon" type="image/png" href="/icons/new_logo.png">
+  <link rel="shortcut icon" type="image/png" href="/icons/new_logo.png">
+  <link rel="apple-touch-icon" href="/icons/new_logo.png">
+  <!-- Structured data for search (Organization + WebSite) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://follow-net.com/#organization",
+        "name": "FollowNet VPN",
+        "url": "https://follow-net.com/",
+        "logo": "https://follow-net.com/og/og.png",
+        "description": "Быстрый VPN для iOS: WireGuard и IKEv2, Kill Switch, выбор DNS, статистика и виджеты."
+      },
+      {
+        "@type": "WebSite",
+        "name": "FollowNet VPN",
+        "url": "https://follow-net.com/",
+        "description": "FollowNet VPN — быстрый VPN для iOS. WireGuard, IKEv2, Kill Switch, DNS, виджеты.",
+        "publisher": { "@id": "https://follow-net.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <app-root></app-root>
