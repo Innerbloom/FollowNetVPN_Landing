@@ -177,43 +177,43 @@ export class MainLayoutComponent {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — быстрый VPN для iOS',
         description:
-          'Быстрый VPN для iOS: WireGuard и IKEv2, Kill Switch, выбор DNS, статистика и виджеты. Premium — внутри приложения.',
+          'Быстрый VPN для iOS: WireGuard и IKEv2, автоподключение, выбор DNS, статистика и виджеты. Premium — внутри приложения.',
       },
       uk: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — швидкий VPN для iOS',
         description:
-          'Швидкий VPN для iOS: WireGuard та IKEv2, Kill Switch, вибір DNS, статистика і віджети. Premium — у застосунку.',
+          'Швидкий VPN для iOS: WireGuard та IKEv2, автопідключення, вибір DNS, статистика і віджети. Premium — у застосунку.',
       },
       en: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — fast VPN for iOS',
         description:
-          'Fast VPN for iOS: WireGuard and IKEv2, Kill Switch, DNS profiles, stats and widgets. Premium is inside the app.',
+          'Fast VPN for iOS: WireGuard and IKEv2, auto-connect, DNS profiles, stats and widgets. Premium is inside the app.',
       },
       de: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — schneller VPN für iOS',
         description:
-          'Schneller VPN für iOS: WireGuard und IKEv2, Kill Switch, DNS‑Profile, Statistiken und Widgets. Premium in der App.',
+          'Schneller VPN für iOS: WireGuard und IKEv2, Auto-Verbindung, DNS‑Profile, Statistiken und Widgets. Premium in der App.',
       },
       es: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — VPN rápido para iOS',
         description:
-          'VPN rápido para iOS: WireGuard e IKEv2, Kill Switch, perfiles DNS, estadísticas y widgets. Premium dentro de la app.',
+          'VPN rápido para iOS: WireGuard e IKEv2, auto-conexión, perfiles DNS, estadísticas y widgets. Premium dentro de la app.',
       },
       fr: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — VPN rapide pour iOS',
         description:
-          'VPN rapide pour iOS : WireGuard et IKEv2, Kill Switch, profils DNS, statistiques et widgets. Premium dans l’app.',
+          'VPN rapide pour iOS : WireGuard et IKEv2, connexion auto, profils DNS, statistiques et widgets. Premium dans l’app.',
       },
       pt: {
         title: 'FollowNet VPN',
         ogTitle: 'FollowNet VPN — VPN rápido para iOS',
         description:
-          'VPN rápido para iOS: WireGuard e IKEv2, Kill Switch, perfis DNS, estatísticas e widgets. Premium dentro do app.',
+          'VPN rápido para iOS: WireGuard e IKEv2, conexão automática, perfis DNS, estatísticas e widgets. Premium dentro do app.',
       },
     };
     return byLang[lang] ?? byLang.en;

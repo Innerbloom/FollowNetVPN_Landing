@@ -18,21 +18,21 @@
 
         <div class="bullets">
           <div class="bullet">
-                  <span class="b-ic"><lucide-icon class="ui-icon" name="shield-check"></lucide-icon></span>
+            <span class="b-ic"><i class="fa-solid fa-shield accent-icon ui-icon" aria-hidden="true"></i></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_SECURITY') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_SECURITY_SUB') }}</div>
             </div>
           </div>
           <div class="bullet">
-                  <span class="b-ic"><lucide-icon class="ui-icon" name="zap"></lucide-icon></span>
+            <span class="b-ic"><i class="fa-solid fa-bolt accent-icon ui-icon" aria-hidden="true"></i></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_SPEED') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_SPEED_SUB') }}</div>
             </div>
           </div>
           <div class="bullet">
-                  <span class="b-ic"><lucide-icon class="ui-icon" name="globe"></lucide-icon></span>
+            <span class="b-ic"><i class="fa-solid fa-globe accent-icon ui-icon" aria-hidden="true"></i></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_WORLD') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_WORLD_SUB') }}</div>
@@ -78,10 +78,22 @@
 
   <section class="strip">
     <div class="container strip-grid">
-      <div class="chip">{{ i18n.t('CHIP_CODE') }}</div>
-      <div class="chip">{{ i18n.t('CHIP_WIDGETS') }}</div>
-      <div class="chip">{{ i18n.t('CHIP_SPEEDTEST') }}</div>
-      <div class="chip">{{ i18n.t('CHIP_DNS') }}</div>
+      <div class="chip">
+        <span class="chip-ic"><i class="fa-solid fa-envelope accent-icon" aria-hidden="true"></i></span>
+        <span>{{ i18n.t('CHIP_CODE') }}</span>
+      </div>
+      <div class="chip">
+        <span class="chip-ic"><i class="fa-solid fa-rectangle-list accent-icon" aria-hidden="true"></i></span>
+        <span>{{ i18n.t('CHIP_WIDGETS') }}</span>
+      </div>
+      <div class="chip">
+        <span class="chip-ic"><i class="fa-solid fa-gauge-high accent-icon" aria-hidden="true"></i></span>
+        <span>{{ i18n.t('CHIP_SPEEDTEST') }}</span>
+      </div>
+      <div class="chip">
+        <span class="chip-ic"><i class="fa-solid fa-filter accent-icon" aria-hidden="true"></i></span>
+        <span>{{ i18n.t('CHIP_DNS') }}</span>
+      </div>
     </div>
   </section>
 
@@ -95,22 +107,22 @@
 
       <div class="trust-grid">
         <div class="trust-card">
-          <div class="trust-ic"><lucide-icon class="ui-icon" name="shield-check"></lucide-icon></div>
+          <div class="trust-ic"><i class="fa-solid fa-shield accent-icon ui-icon" aria-hidden="true"></i></div>
           <div class="trust-title">WireGuard + IKEv2</div>
           <div class="trust-text">{{ i18n.t('TRUST_WG_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><lucide-icon class="ui-icon" name="shield-off"></lucide-icon></div>
-          <div class="trust-title">Kill Switch</div>
-          <div class="trust-text">{{ i18n.t('TRUST_KILLSWITCH_TEXT') }}</div>
+          <div class="trust-ic"><i class="fa-solid fa-rotate accent-icon ui-icon" aria-hidden="true"></i></div>
+          <div class="trust-title">{{ i18n.t('TRUST_AUTOCONNECT_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('TRUST_AUTOCONNECT_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><lucide-icon class="ui-icon" name="server"></lucide-icon></div>
+          <div class="trust-ic"><i class="fa-solid fa-filter accent-icon ui-icon" aria-hidden="true"></i></div>
           <div class="trust-title">{{ i18n.t('TRUST_DNS_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_DNS_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><lucide-icon class="ui-icon" name="chart-line"></lucide-icon></div>
+          <div class="trust-ic"><i class="fa-solid fa-chart-simple accent-icon ui-icon" aria-hidden="true"></i></div>
           <div class="trust-title">{{ i18n.t('TRUST_STATS_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_STATS_TEXT') }}</div>
         </div>
@@ -157,27 +169,27 @@
 
       <div class="steps">
         <div class="step">
-          <div class="step-no">1</div>
+          <div class="step-ic"><i class="fa-solid fa-link accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP1_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP1_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-no">2</div>
+          <div class="step-ic"><i class="fa-solid fa-road accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP2_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP2_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-no">3</div>
+          <div class="step-ic"><i class="fa-solid fa-lock accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP3_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP3_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-no">4</div>
+          <div class="step-ic"><i class="fa-solid fa-server accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP4_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP4_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-no">5</div>
+          <div class="step-ic"><i class="fa-solid fa-globe accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP5_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP5_TEXT') }}</div>
         </div>
@@ -196,7 +208,7 @@
       <div class="apps">
         <div class="app-card">
           <div class="app-top">
-            <div class="app-ic"><span class="brand-icon brand-icon--apple" aria-hidden="true"></span></div>
+            <div class="app-ic"><i class="fa-brands fa-apple accent-icon" aria-hidden="true"></i></div>
             <div class="app-meta">
               <div class="app-title">iOS</div>
               <div class="app-sub">{{ i18n.t('IOS_SUB') }}</div>
@@ -208,7 +220,7 @@
 
         <div class="app-card muted">
           <div class="app-top">
-            <div class="app-ic"><span class="brand-icon brand-icon--android" aria-hidden="true"></span></div>
+            <div class="app-ic"><i class="fa-brands fa-android accent-icon" aria-hidden="true"></i></div>
             <div class="app-meta">
               <div class="app-title">Android</div>
               <div class="app-sub">{{ i18n.t('DEV_SUB') }}</div>
@@ -220,7 +232,7 @@
 
         <div class="app-card muted">
           <div class="app-top">
-            <div class="app-ic"><span class="brand-icon brand-icon--apple" aria-hidden="true"></span></div>
+            <div class="app-ic"><i class="fa-brands fa-apple accent-icon" aria-hidden="true"></i></div>
             <div class="app-meta">
               <div class="app-title">macOS</div>
               <div class="app-sub">{{ i18n.t('DEV_SUB') }}</div>
@@ -290,6 +302,8 @@
           <div class="note">{{ i18n.t('PRICING_NOTE') }}</div>
         </div>
       </div>
+
+      <p class="note pricing-regional-note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
 
       <span id="download" class="anchor"></span>
     </div>

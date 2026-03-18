@@ -3,12 +3,11 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { LucideAngularModule } from 'lucide-angular';
 import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-main',
-  imports: [NgFor, NgIf, LucideAngularModule],
+  imports: [NgFor, NgIf],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
   standalone: true,
