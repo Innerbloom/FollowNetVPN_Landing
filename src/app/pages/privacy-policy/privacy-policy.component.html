@@ -3,7 +3,7 @@
   <section class="doc" *ngSwitchCase="'ru'">
     <div class="doc-header">
       <h1>Политика конфиденциальности FollowNet VPN</h1>
-      <p class="muted">Дата обновления: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Дата обновления: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Эта политика описывает, какие данные мы обрабатываем в приложении FollowNet VPN и на сайте, зачем они нужны и какие у вас есть права.
         Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
@@ -30,8 +30,8 @@
       <h3>3.1 Аккаунт</h3>
       <ul>
         <li><b>Email</b> (если вы входите по коду на email).</li>
-        <li><b>User ID</b> (технический идентификатор аккаунта).</li>
-        <li><b>Идентификаторы устройств</b> (deviceId) — чтобы контролировать лимит устройств и повышать безопасность.</li>
+        <li><b>User ID</b> — идентификатор вашего аккаунта на наших серверах (присваивается при регистрации).</li>
+        <li><b>deviceId</b> — уникальный идентификатор установки приложения: случайный UUID, создаётся при первом запуске и хранится в связке ключей iOS (Keychain); передаётся нашим серверам для учёта лимита устройств и защиты аккаунта. Рекламный идентификатор Apple (IDFA) и идентификатор разработчика для группы приложений (IDFV) для этого не используются.</li>
       </ul>
       <p class="muted">
         Также вы можете входить через <b>Sign in with Apple</b> и/или <b>Google Sign‑In</b> (если эта опция доступна в приложении).
@@ -50,6 +50,7 @@
         <li>Выбранный протокол (IKEv2/WireGuard) и выбранный сервер/локация.</li>
         <li>Таймстемпы подключения/отключения, длительность сессии.</li>
         <li>Счётчики трафика (bytes in/out) — для статистики и лимитов бесплатного плана.</li>
+        <li>Идентификатор часового пояса устройства — для отображения статистики и лимитов в вашем времени.</li>
         <li>Технические сетевые параметры, необходимые для установления соединения (например, IP на уровне транспорта/маршрутизации).</li>
       </ul>
       <p class="muted">
@@ -60,17 +61,19 @@
       <ul>
         <li>Тикеты и сообщения в поддержку (если вы пишете нам), а также данные, которые вы сами предоставляете (скриншоты/логи/описание проблемы).</li>
       </ul>
-      <p class="muted">
-        Для оперативной обработки тикетов мы можем использовать Telegram‑бота (если включён на стороне сервиса). В этом случае содержимое обращений может обрабатываться Telegram.
-      </p>
-
       <h3>3.5 Аналитика приложения</h3>
       <p class="muted">
-        В iOS‑приложении используется <b>Firebase Analytics</b> (Google) для событий продукта (например, открытие экрана, нажатия, успешность покупки/восстановления, запуск speed test).
-        Это помогает улучшать UX и стабильность.
+        В iOS‑приложении используется <b>Firebase Analytics</b> (Google) для продуктовых событий: успех/ошибка подключения VPN, выбор сервера, экраны покупки и подписки, результат покупки или восстановления, запуск speed test.
+        Отправляются только такие события, без истории просмотров и без привязки к личности помимо вашего аккаунта. Это помогает улучшать UX и стабильность.
       </p>
 
-      <h3>3.6 IP‑адрес и User‑Agent</h3>
+      <h3>3.6 Серверные логи событий</h3>
+      <p class="muted">
+        На серверах сохраняются технические логи событий для работы сервиса и поддержки: факт подключения к VPN (идентификатор сервера), события от Apple (тип уведомления, productId, originalTransactionId, среда), админ‑действия.
+        Содержимое трафика не логируется; данные хранятся не дольше, чем необходимо для работы сервиса и безопасности.
+      </p>
+
+      <h3>3.7 IP‑адрес и User‑Agent</h3>
       <p class="muted">
         IP‑адрес и User‑Agent могут обрабатываться для защиты от злоупотреблений (rate‑limit) и безопасности. Мы стремимся не хранить их дольше, чем необходимо для этих целей.
       </p>
@@ -90,7 +93,6 @@
         <li><b>Провайдер email</b> (SMTP) — отправка кода входа.</li>
         <li><b>Инфраструктура/хостинг</b> — размещение backend и VPN‑серверов.</li>
         <li><b>Google Firebase</b> — аналитика приложения (если включена в сборке).</li>
-        <li><b>Telegram</b> — если вы пишете в поддержку и Telegram‑интеграция включена для обработки тикетов.</li>
       </ul>
       <p class="muted">Мы не продаём персональные данные.</p>
 
@@ -98,6 +100,7 @@
       <ul>
         <li>Данные аккаунта и подписки — пока аккаунт активен или пока это необходимо по законным основаниям.</li>
         <li>Технические данные сессий/трафика — минимально необходимое время для работы сервиса, лимитов и безопасности.</li>
+        <li>Серверные логи событий (подключения, вебхуки Apple, админ‑действия) — не дольше, чем необходимо для работы сервиса и поддержки.</li>
         <li>Тикеты поддержки — пока это нужно для обработки обращения и последующих разбирательств/качества сервиса.</li>
       </ul>
 
@@ -123,7 +126,7 @@
   <section class="doc" *ngSwitchCase="'uk'">
     <div class="doc-header">
       <h1>Політика конфіденційності FollowNet VPN</h1>
-      <p class="muted">Дата оновлення: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Ця політика описує, які дані ми обробляємо в застосунку FollowNet VPN і на сайті, навіщо вони потрібні та які у вас є права.
         Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
@@ -150,8 +153,8 @@
       <h3>3.1 Акаунт</h3>
       <ul>
         <li><b>Email</b> (якщо ви входите за кодом на email).</li>
-        <li><b>User ID</b> (технічний ідентифікатор акаунта).</li>
-        <li><b>Ідентифікатори пристроїв</b> (deviceId) — щоб контролювати ліміт пристроїв і підвищувати безпеку.</li>
+        <li><b>User ID</b> — ідентифікатор вашого акаунта на наших серверах (присвоюється під час реєстрації).</li>
+        <li><b>deviceId</b> — унікальний ідентифікатор інсталяції застосунку: випадковий UUID, генерується при першому запуску та зберігається в Keychain iOS; передається нашим серверам для ліміту пристроїв і захисту акаунта. IDFA та IDFV для цього не використовуються.</li>
       </ul>
       <p class="muted">
         Також може бути доступний вхід через <b>Sign in with Apple</b> та/або <b>Google Sign‑In</b>.
@@ -170,6 +173,7 @@
         <li>Обраний протокол (IKEv2/WireGuard) та обраний сервер/локація.</li>
         <li>Таймстемпи підключення/відключення, тривалість сесії.</li>
         <li>Лічильники трафіку (bytes in/out) — для статистики та лімітів безкоштовного плану.</li>
+        <li>Ідентифікатор часового поясу пристрою — для відображення статистики та лімітів у вашому часі.</li>
         <li>Технічні мережеві параметри, потрібні для встановлення з’єднання (наприклад, IP на рівні транспорту/маршрутизації).</li>
       </ul>
       <p class="muted">
@@ -180,17 +184,19 @@
       <ul>
         <li>Тікети та повідомлення в підтримку (якщо ви пишете нам), а також дані, які ви самі надаєте (скріншоти/логи/опис проблеми).</li>
       </ul>
-      <p class="muted">
-        Для оперативної обробки тікетів ми можемо використовувати Telegram‑бота (якщо увімкнено на стороні сервісу). У такому разі вміст звернень може оброблятися Telegram.
-      </p>
-
       <h3>3.5 Аналітика застосунку</h3>
       <p class="muted">
-        В iOS‑застосунку використовується <b>Firebase Analytics</b> (Google) для подій продукту (наприклад, відкриття екранів, натискання, успішність покупок/відновлення, запуск speed test).
-        Це допомагає покращувати UX та стабільність.
+        В iOS‑застосунку використовується <b>Firebase Analytics</b> (Google) для продуктових подій: успіх/помилка підключення VPN, вибір сервера, екрани покупки та підписки, результат покупки або відновлення, запуск speed test.
+        Надсилаються лише такі події, без історії перегляду та без прив’язки до особи поза вашим акаунтом. Це допомагає покращувати UX та стабільність.
       </p>
 
-      <h3>3.6 IP‑адреса та User‑Agent</h3>
+      <h3>3.6 Серверні логи подій</h3>
+      <p class="muted">
+        На серверах зберігаються технічні логи подій для роботи сервісу та підтримки: факт підключення до VPN (ідентифікатор сервера), події від Apple (тип сповіщення, productId, originalTransactionId, середовище), адмін‑дії.
+        Вміст трафіку не логується; дані зберігаються не довше, ніж потрібно для роботи сервісу та безпеки.
+      </p>
+
+      <h3>3.7 IP‑адреса та User‑Agent</h3>
       <p class="muted">
         IP‑адреса та User‑Agent можуть оброблятися для захисту від зловживань (rate‑limit) і безпеки. Ми прагнемо не зберігати їх довше, ніж необхідно для цих цілей.
       </p>
@@ -210,7 +216,6 @@
         <li><b>Провайдер email</b> (SMTP) — відправка коду входу.</li>
         <li><b>Інфраструктура/хостинг</b> — розміщення backend та VPN‑серверів.</li>
         <li><b>Google Firebase</b> — аналітика застосунку (якщо увімкнено у збірці).</li>
-        <li><b>Telegram</b> — якщо підтримка через Telegram‑інтеграцію увімкнена.</li>
       </ul>
       <p class="muted">Ми не продаємо персональні дані.</p>
 
@@ -218,6 +223,7 @@
       <ul>
         <li>Дані акаунта та підписки — поки акаунт активний або поки це потрібно на законних підставах.</li>
         <li>Технічні дані сесій/трафіку — мінімально необхідний час для роботи сервісу, лімітів і безпеки.</li>
+        <li>Серверні логи подій (підключення, вебхуки Apple, адмін‑дії) — не довше, ніж потрібно для роботи сервісу та підтримки.</li>
         <li>Тікети підтримки — поки це потрібно для обробки звернення та якості сервісу.</li>
       </ul>
 
@@ -243,7 +249,7 @@
   <section class="doc" *ngSwitchCase="'de'">
     <div class="doc-header">
       <h1>FollowNet VPN Datenschutzerklärung</h1>
-      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Diese Erklärung beschreibt, welche Daten wir in der FollowNet VPN App und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
         Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
@@ -270,8 +276,8 @@
       <h3>3.1 Konto</h3>
       <ul>
         <li><b>E‑Mail</b> (wenn Sie sich per E‑Mail‑Code anmelden).</li>
-        <li><b>User ID</b> (technische Konto‑ID).</li>
-        <li><b>Geräte‑IDs</b> (deviceId) zur Durchsetzung von Geräte‑Limits und für Sicherheit.</li>
+        <li><b>User ID</b> — serverseitige Konto‑ID (bei Registrierung vergeben).</li>
+        <li><b>deviceId</b> — eindeutige Installations‑ID der App: zufällige UUID, beim ersten Start erzeugt und im iOS‑Schlüsselbund (Keychain) gespeichert; wird an unsere Server für Geräte‑Limits und Kontosicherheit übertragen. IDFA und IDFV werden dafür nicht verwendet.</li>
       </ul>
       <p class="muted">
         Anmeldung über <b>Sign in with Apple</b> und/oder <b>Google Sign‑In</b> kann verfügbar sein. Dann erhalten wir die für die Authentifizierung notwendigen Daten vom jeweiligen Anbieter.
@@ -289,6 +295,7 @@
         <li>Ausgewähltes Protokoll (IKEv2/WireGuard) und Server/Standort.</li>
         <li>Verbindungs‑/Trennzeitpunkte und Sitzungsdauer.</li>
         <li>Traffic‑Zähler (bytes in/out) für Statistiken und Free‑Limits.</li>
+        <li>Zeitzonen‑ID des Geräts — für Anzeige von Statistiken und Limits in Ihrer Zeit.</li>
         <li>Netzwerk‑Parameter, die zur Verbindung/Weiterleitung nötig sind (z. B. IP auf Transport/Routing‑Ebene).</li>
       </ul>
       <p class="muted">
@@ -299,16 +306,17 @@
       <ul>
         <li>Support‑Tickets und Nachrichten sowie Informationen, die Sie freiwillig teilen (Logs/Screenshots/Problembeschreibung).</li>
       </ul>
-      <p class="muted">
-        Für schnellere Ticket‑Bearbeitung können wir einen Telegram‑Bot nutzen (falls aktiviert). Dann kann Ticket‑Inhalt von Telegram verarbeitet werden.
-      </p>
-
       <h3>3.5 App‑Analytics</h3>
       <p class="muted">
-        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events (z. B. Screen‑Opens, Taps, Kauf/Restore‑Ergebnisse, Speed‑Test‑Start), um UX und Zuverlässigkeit zu verbessern.
+        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events: VPN‑Verbindungserfolg/‑fehler, Serverauswahl, Kauf‑/Abo‑Screens, Kauf‑/Restore‑Ergebnis, Speed‑Test‑Start. Es werden nur solche Events gesendet, keine Browsing‑Historie und keine Identifikation außer Ihrem Konto. Das hilft, UX und Zuverlässigkeit zu verbessern.
       </p>
 
-      <h3>3.6 IP‑Adresse und User‑Agent</h3>
+      <h3>3.6 Server‑Ereignislogs</h3>
+      <p class="muted">
+        Auf Servern werden technische Ereignislogs für Betrieb und Support gespeichert: VPN‑Verbindungsereignis (Server‑ID), Apple‑Webhook‑Events (Typ, productId, originalTransactionId, Umgebung), Admin‑Aktionen. Kein Traffic‑Inhalt; Daten nur so lange wie für Betrieb und Sicherheit nötig.
+      </p>
+
+      <h3>3.7 IP‑Adresse und User‑Agent</h3>
       <p class="muted">
         IP‑Adresse und User‑Agent können für Abuse‑Prevention (Rate‑Limiting) und Sicherheit verarbeitet werden. Wir versuchen, diese Daten nicht länger als nötig aufzubewahren.
       </p>
@@ -328,7 +336,6 @@
         <li><b>E‑Mail‑Provider</b> (SMTP) — Versand von Login‑Codes.</li>
         <li><b>Hosting/Infrastructure</b> — Backend und VPN‑Server.</li>
         <li><b>Google Firebase</b> — App‑Analytics (falls aktiviert).</li>
-        <li><b>Telegram</b> — falls Support‑Integration aktiviert ist.</li>
       </ul>
       <p class="muted">Wir verkaufen keine personenbezogenen Daten.</p>
 
@@ -336,6 +343,7 @@
       <ul>
         <li>Konto/Abo‑Daten — solange das Konto aktiv ist oder für legitime Zwecke erforderlich.</li>
         <li>Sitzungs/Traffic‑Metadaten — minimal notwendig für Betrieb, Limits und Sicherheit.</li>
+        <li>Server‑Ereignislogs (Verbindungen, Apple‑Webhooks, Admin‑Aktionen) — nicht länger als für Betrieb und Support nötig.</li>
         <li>Support‑Tickets — soweit nötig für Bearbeitung und Servicequalität.</li>
       </ul>
 
@@ -361,7 +369,7 @@
   <section class="doc" *ngSwitchCase="'es'">
     <div class="doc-header">
       <h1>Política de privacidad de FollowNet VPN</h1>
-      <p class="muted">Última actualización: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Última actualización: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Esta política explica qué datos procesamos en la app y el sitio de FollowNet VPN, por qué los necesitamos y qué derechos tienes.
         Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
@@ -388,8 +396,8 @@
       <h3>3.1 Cuenta</h3>
       <ul>
         <li><b>Email</b> (si inicias sesión por código).</li>
-        <li><b>User ID</b> (identificador técnico).</li>
-        <li><b>Identificadores de dispositivo</b> (deviceId) para límites de dispositivos y seguridad.</li>
+        <li><b>User ID</b> — identificador de tu cuenta en nuestros servidores (asignado al registrarte).</li>
+        <li><b>deviceId</b> — ID única de la instalación de la app: UUID aleatorio, generado en el primer inicio y guardado en el llavero (Keychain) de iOS; se envía a nuestros servidores para límites de dispositivos y seguridad de la cuenta. No usamos IDFA ni IDFV para esto.</li>
       </ul>
       <p class="muted">
         Puede estar disponible el inicio de sesión con <b>Sign in with Apple</b> y/o <b>Google Sign‑In</b>. En ese caso, recibimos los datos necesarios para autenticarte del proveedor correspondiente.
@@ -407,6 +415,7 @@
         <li>Protocolo (IKEv2/WireGuard) y servidor/ubicación seleccionados.</li>
         <li>Marcas de tiempo de conexión/desconexión y duración de sesión.</li>
         <li>Contadores de tráfico (bytes in/out) para estadísticas y límites del plan Free.</li>
+        <li>Identificador de zona horaria del dispositivo — para mostrar estadísticas y límites en tu hora local.</li>
         <li>Parámetros de red necesarios para establecer/enrutar la conexión (p. ej., IP a nivel de transporte/enrutamiento).</li>
       </ul>
       <p class="muted">
@@ -417,16 +426,17 @@
       <ul>
         <li>Tickets y mensajes de soporte, y cualquier información que compartas (logs/capturas/descripción del problema).</li>
       </ul>
-      <p class="muted">
-        Podemos usar un bot de Telegram para gestionar tickets más rápido (si está habilitado). En ese caso, el contenido del ticket puede ser procesado por Telegram.
-      </p>
-
       <h3>3.5 Analítica</h3>
       <p class="muted">
-        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos del producto (p. ej., aperturas de pantallas, toques, resultados de compra/restauración, inicio de speed test) para mejorar UX y fiabilidad.
+        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos de producto: éxito/fallo de conexión VPN, selección de servidor, pantallas de compra/suscripción, resultado de compra o restauración, inicio de speed test. Solo se envían estos eventos, sin historial de navegación ni identificación más allá de tu cuenta. Ayuda a mejorar UX y fiabilidad.
       </p>
 
-      <h3>3.6 IP y User‑Agent</h3>
+      <h3>3.6 Logs de eventos en servidor</h3>
+      <p class="muted">
+        En los servidores se guardan logs técnicos de eventos para operación y soporte: evento de conexión VPN (id de servidor), eventos de webhook de Apple (tipo, productId, originalTransactionId, entorno), acciones de administración. No se registra contenido del tráfico; los datos se conservan solo el tiempo necesario para operación y seguridad.
+      </p>
+
+      <h3>3.7 IP y User‑Agent</h3>
       <p class="muted">
         La IP y el User‑Agent pueden procesarse para prevención de abuso (rate‑limit) y seguridad. Intentamos no conservarlos más tiempo del necesario.
       </p>
@@ -446,7 +456,6 @@
         <li><b>Proveedor de email</b> (SMTP) — envío de códigos.</li>
         <li><b>Infraestructura/hosting</b> — backend y servidores VPN.</li>
         <li><b>Google Firebase</b> — analítica (si está habilitada).</li>
-        <li><b>Telegram</b> — si la integración de soporte está habilitada.</li>
       </ul>
       <p class="muted">No vendemos datos personales.</p>
 
@@ -454,6 +463,7 @@
       <ul>
         <li>Datos de cuenta/suscripción — mientras la cuenta esté activa o sea necesario por fines legítimos.</li>
         <li>Metadatos técnicos de sesión/tráfico — el mínimo necesario para operación, límites y seguridad.</li>
+        <li>Logs de eventos en servidor (conexiones, webhooks Apple, acciones admin) — no más de lo necesario para operación y soporte.</li>
         <li>Tickets de soporte — según sea necesario para atender solicitudes y calidad del servicio.</li>
       </ul>
 
@@ -479,7 +489,7 @@
   <section class="doc" *ngSwitchCase="'fr'">
     <div class="doc-header">
       <h1>Politique de confidentialité FollowNet VPN</h1>
-      <p class="muted">Dernière mise à jour : <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Cette politique explique quelles données nous traitons dans l’application et sur le site FollowNet VPN, pourquoi, et quels sont vos droits.
         Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
@@ -506,8 +516,8 @@
       <h3>3.1 Compte</h3>
       <ul>
         <li><b>Email</b> (si connexion par code).</li>
-        <li><b>User ID</b> (identifiant technique).</li>
-        <li><b>Identifiants d’appareil</b> (deviceId) pour les limites d’appareils et la sécurité.</li>
+        <li><b>User ID</b> — identifiant de votre compte sur nos serveurs (attribué à l’inscription).</li>
+        <li><b>deviceId</b> — identifiant unique d’installation de l’app : UUID aléatoire, créé au premier lancement et stocké dans le trousseau (Keychain) iOS ; envoyé à nos serveurs pour les limites d’appareils et la sécurité du compte. L’IDFA et l’IDFV ne sont pas utilisés à cette fin.</li>
       </ul>
       <p class="muted">
         La connexion via <b>Sign in with Apple</b> et/ou <b>Google Sign‑In</b> peut être disponible. Dans ce cas, nous recevons les données nécessaires à l’authentification du fournisseur concerné.
@@ -525,6 +535,7 @@
         <li>Protocole (IKEv2/WireGuard) et serveur/emplacement sélectionnés.</li>
         <li>Horodatages de connexion/déconnexion et durée de session.</li>
         <li>Compteurs de trafic (bytes in/out) pour stats et limites Free.</li>
+        <li>Identifiant de fuseau horaire de l’appareil — pour afficher stats et limites dans votre heure.</li>
         <li>Paramètres réseau nécessaires pour établir/acheminer la connexion (ex. IP au niveau transport/routage).</li>
       </ul>
       <p class="muted">
@@ -535,16 +546,17 @@
       <ul>
         <li>Tickets et messages de support, ainsi que toute information que vous partagez (logs/captures/description).</li>
       </ul>
-      <p class="muted">
-        Nous pouvons utiliser un bot Telegram pour traiter les tickets plus rapidement (si activé). Le contenu des tickets peut alors être traité par Telegram.
-      </p>
-
       <h3>3.5 Analytique</h3>
       <p class="muted">
-        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit (ex. ouvertures d’écrans, clics, résultats d’achat/restauration, démarrage du speed test) afin d’améliorer l’UX et la fiabilité.
+        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit : succès/échec de connexion VPN, choix du serveur, écrans achat/abonnement, résultat d’achat ou restauration, démarrage du speed test. Seuls ces événements sont envoyés, sans historique de navigation ni identification au-delà de votre compte. Cela permet d’améliorer l’UX et la fiabilité.
       </p>
 
-      <h3>3.6 Adresse IP et User‑Agent</h3>
+      <h3>3.6 Logs d’événements serveur</h3>
+      <p class="muted">
+        Les serveurs enregistrent des logs techniques d’événements pour l’exploitation et le support : événement de connexion VPN (id serveur), événements webhook Apple (type, productId, originalTransactionId, environnement), actions admin. Aucun contenu de trafic ; les données ne sont conservées que le temps nécessaire à l’exploitation et à la sécurité.
+      </p>
+
+      <h3>3.7 Adresse IP et User‑Agent</h3>
       <p class="muted">
         L’adresse IP et le User‑Agent peuvent être traités pour la prévention des abus (rate‑limit) et la sécurité. Nous essayons de ne pas les conserver plus longtemps que nécessaire.
       </p>
@@ -564,7 +576,6 @@
         <li><b>Fournisseur email</b> (SMTP) — envoi des codes.</li>
         <li><b>Infrastructure/hébergement</b> — backend et serveurs VPN.</li>
         <li><b>Google Firebase</b> — analytique (si activée).</li>
-        <li><b>Telegram</b> — si l’intégration support est activée.</li>
       </ul>
       <p class="muted">Nous ne vendons pas de données personnelles.</p>
 
@@ -572,6 +583,7 @@
       <ul>
         <li>Données de compte/abonnement — tant que le compte est actif ou nécessaire pour des finalités légitimes.</li>
         <li>Métadonnées session/trafic — le minimum nécessaire pour l’exploitation, les limites et la sécurité.</li>
+        <li>Logs d’événements serveur (connexions, webhooks Apple, actions admin) — pas plus longtemps que nécessaire pour l’exploitation et le support.</li>
         <li>Tickets de support — selon la nécessité pour traiter les demandes et assurer la qualité.</li>
       </ul>
 
@@ -597,7 +609,7 @@
   <section class="doc" *ngSwitchCase="'pt'">
     <div class="doc-header">
       <h1>Política de privacidade do FollowNet VPN</h1>
-      <p class="muted">Última atualização: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Última atualização: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         Esta política explica quais dados processamos no app e no site do FollowNet VPN, por que precisamos deles e quais são seus direitos.
         Buscamos coletar o mínimo necessário para operar o serviço com segurança.
@@ -624,8 +636,8 @@
       <h3>3.1 Conta</h3>
       <ul>
         <li><b>Email</b> (se o login for por código).</li>
-        <li><b>User ID</b> (identificador técnico).</li>
-        <li><b>Identificadores de dispositivo</b> (deviceId) para limites de dispositivos e segurança.</li>
+        <li><b>User ID</b> — identificador da sua conta nos nossos servidores (atribuído no cadastro).</li>
+        <li><b>deviceId</b> — ID único de instalação do app: UUID aleatório, gerado na primeira abertura e armazenado no Keychain do iOS; enviado aos nossos servidores para limites de dispositivos e segurança da conta. IDFA e IDFV não são usados para isso.</li>
       </ul>
       <p class="muted">
         O login via <b>Sign in with Apple</b> e/ou <b>Google Sign‑In</b> pode estar disponível. Nesse caso, recebemos os dados necessários para autenticação do provedor correspondente.
@@ -643,6 +655,7 @@
         <li>Protocolo (IKEv2/WireGuard) e servidor/local selecionados.</li>
         <li>Carimbos de tempo de conexão/desconexão e duração da sessão.</li>
         <li>Contadores de tráfego (bytes in/out) para estatísticas e limites do Free.</li>
+        <li>Identificador de fuso horário do dispositivo — para exibir estatísticas e limites no seu horário.</li>
         <li>Parâmetros de rede necessários para estabelecer/rotear a conexão (ex.: IP em nível de transporte/roteamento).</li>
       </ul>
       <p class="muted">
@@ -653,16 +666,17 @@
       <ul>
         <li>Tickets e mensagens de suporte, e qualquer informação que você compartilhar (logs/capturas/descrição do problema).</li>
       </ul>
-      <p class="muted">
-        Podemos usar um bot do Telegram para agilizar o suporte (se ativado). Nesse caso, o conteúdo do ticket pode ser processado pelo Telegram.
-      </p>
-
       <h3>3.5 Analytics</h3>
       <p class="muted">
-        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos do produto (ex.: aberturas de telas, toques, resultado de compra/restauração, início do speed test) para melhorar UX e confiabilidade.
+        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos de produto: sucesso/erro de conexão VPN, seleção de servidor, telas de compra/assinatura, resultado de compra ou restauração, início do speed test. Apenas esses eventos são enviados, sem histórico de navegação nem identificação além da sua conta. Isso ajuda a melhorar UX e confiabilidade.
       </p>
 
-      <h3>3.6 Endereço IP e User‑Agent</h3>
+      <h3>3.6 Logs de eventos no servidor</h3>
+      <p class="muted">
+        Nos servidores são armazenados logs técnicos de eventos para operação e suporte: evento de conexão VPN (id do servidor), eventos de webhook da Apple (tipo, productId, originalTransactionId, ambiente), ações de administração. Conteúdo do tráfego não é registrado; os dados são mantidos apenas o tempo necessário para operação e segurança.
+      </p>
+
+      <h3>3.7 Endereço IP e User‑Agent</h3>
       <p class="muted">
         Endereço IP e User‑Agent podem ser processados para prevenção de abuso (rate‑limit) e segurança. Tentamos não retê-los por mais tempo do que o necessário.
       </p>
@@ -682,7 +696,6 @@
         <li><b>Provedor de email</b> (SMTP) — envio de códigos.</li>
         <li><b>Infra/hosting</b> — backend e servidores VPN.</li>
         <li><b>Google Firebase</b> — analytics (se habilitado).</li>
-        <li><b>Telegram</b> — se a integração de suporte estiver habilitada.</li>
       </ul>
       <p class="muted">Não vendemos dados pessoais.</p>
 
@@ -690,6 +703,7 @@
       <ul>
         <li>Dados de conta/assinatura — enquanto a conta estiver ativa ou conforme necessário para finalidades legítimas.</li>
         <li>Metadados técnicos de sessão/tráfego — o mínimo necessário para operação, limites e segurança.</li>
+        <li>Logs de eventos no servidor (conexões, webhooks Apple, ações admin) — não mais do que o necessário para operação e suporte.</li>
         <li>Tickets de suporte — conforme necessário para atender solicitações e garantir qualidade.</li>
       </ul>
 
@@ -715,7 +729,7 @@
   <section class="doc" *ngSwitchDefault>
     <div class="doc-header">
       <h1>FollowNet VPN Privacy Policy</h1>
-      <p class="muted">Last updated: <span class="mono">2026‑01‑21</span></p>
+      <p class="muted">Last updated: <span class="mono">2026‑02‑27</span></p>
       <p class="muted">
         This policy explains what data we process in the FollowNet VPN app and on our website, why we need it, and what rights you have.
         We aim to collect the minimum data required to operate the service securely.
@@ -742,8 +756,8 @@
       <h3>3.1 Account</h3>
       <ul>
         <li><b>Email</b> (if you sign in via email code).</li>
-        <li><b>User ID</b> (a technical account identifier).</li>
-        <li><b>Device identifiers</b> (deviceId) to enforce device limits and improve security.</li>
+        <li><b>User ID</b> — your account identifier on our servers (assigned when you sign up).</li>
+        <li><b>deviceId</b> — a per‑installation app identifier: a random UUID generated on first launch and stored in the iOS Keychain; sent to our servers for device limits and account security. We do not use Apple’s advertising identifier (IDFA) or vendor identifier (IDFV) for deviceId.</li>
       </ul>
       <p class="muted">
         You may also sign in via <b>Sign in with Apple</b> and/or <b>Google Sign‑In</b> (if available in the app). In that case we receive the data needed for authentication from the respective provider.
@@ -761,6 +775,7 @@
         <li>Selected protocol (IKEv2/WireGuard) and selected server/location.</li>
         <li>Connection/disconnection timestamps and session duration.</li>
         <li>Traffic counters (bytes in/out) for stats and free plan limits.</li>
+        <li>Device timezone identifier — to display stats and limits in your local time.</li>
         <li>Network-level parameters required to establish and route VPN traffic (e.g., IP at transport/routing level).</li>
       </ul>
       <p class="muted">
@@ -771,17 +786,17 @@
       <ul>
         <li>Support tickets and messages, plus any information you choose to share (logs/screenshots/issue details).</li>
       </ul>
-      <p class="muted">
-        We may use a Telegram bot for faster ticket handling (if enabled on the service side). In that case, ticket content may be processed by Telegram.
-      </p>
-
       <h3>3.5 App analytics</h3>
       <p class="muted">
-        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events (e.g., screen opens, taps, purchase/restore outcomes, speed test start),
-        to improve UX and reliability.
+        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events: VPN connection success/failure, server selection, purchase/subscription screens, purchase or restore outcome, speed test start. Only these events are sent; no browsing history and no identification beyond your account. This helps improve UX and reliability.
       </p>
 
-      <h3>3.6 IP address and User-Agent</h3>
+      <h3>3.6 Server event logs</h3>
+      <p class="muted">
+        Servers store technical event logs for operation and support: VPN connection event (server id), Apple webhook events (notification type, productId, originalTransactionId, environment), admin actions. No traffic content is logged; data is retained only as long as needed for operation and security.
+      </p>
+
+      <h3>3.7 IP address and User-Agent</h3>
       <p class="muted">
         IP address and User-Agent may be processed for abuse prevention (rate-limiting) and security. We aim not to retain them longer than necessary for these purposes.
       </p>
@@ -801,7 +816,6 @@
         <li><b>Email provider</b> (SMTP) — sending login codes.</li>
         <li><b>Infrastructure/hosting</b> — backend and VPN servers.</li>
         <li><b>Google Firebase</b> — app analytics (if enabled in the build).</li>
-        <li><b>Telegram</b> — if support ticket handling via Telegram integration is enabled.</li>
       </ul>
       <p class="muted">We do not sell personal data.</p>
 
@@ -809,6 +823,7 @@
       <ul>
         <li>Account/subscription data — while the account remains active or as required for legitimate purposes.</li>
         <li>Session/traffic technical metadata — the minimum time needed for operations, limits, and security.</li>
+        <li>Server event logs (connections, Apple webhooks, admin actions) — no longer than needed for operation and support.</li>
         <li>Support tickets — as needed to handle requests and maintain service quality.</li>
       </ul>
 
