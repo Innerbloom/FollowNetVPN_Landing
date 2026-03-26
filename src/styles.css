@@ -8,26 +8,44 @@
 }
 
 :root {
-  --bg: #1e1e1e;
-  /* more minimal / monochrome (closer to Kakadu) */
-  --surface: rgba(255, 255, 255, 0.028);
-  --surface-2: rgba(255, 255, 255, 0.042);
-  --border: rgba(255, 255, 255, 0.075);
-  --border-2: rgba(255, 255, 255, 0.11);
-  --text: rgba(255, 255, 255, 0.92);
+  --bg: #161616;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-2: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.94);
   --muted: rgba(255, 255, 255, 0.68);
-  --muted-2: rgba(255, 255, 255, 0.55);
+  --muted-2: rgba(255, 255, 255, 0.52);
   --green: #9AB541;
   --green-2: #7ea543;
   --red: #F63E3E;
 
   /* shared shape tokens */
-  --r-card: 20px;
-  --r-control: 16px;
+  --r-card: 22px;
+  --r-control: 14px;
+  --container-max: 1180px;
 
   /* icon container */
   --icon-surface: rgba(255, 255, 255, 0.04);
   --icon-border: rgba(255, 255, 255, 0.085);
+
+  /* Landing typography scale (unified h1 / h2 / body) */
+  --type-kicker: 0.8125rem;
+  --type-label: 0.875rem;
+  --type-body-sm: 0.9375rem;
+  --type-body: 1rem;
+  --type-card-title: 1.0625rem;
+  --type-lead: clamp(1.0625rem, 1.65vw, 1.1875rem);
+  --type-h1: clamp(2.25rem, 4.6vw, 3.65rem);
+  --type-h2: clamp(1.75rem, 3.25vw, 2.5rem);
+  --type-h2-soft: clamp(1.65rem, 2.8vw, 2.15rem);
+  --type-stat: clamp(1.2rem, 2.1vw, 1.55rem);
+
+  /* Vertical rhythm (8px grid) */
+  --section-pad-y: 5.5rem;
+  --section-pad-y-tight: 4rem;
+  --strip-pad-y: 3rem;
+  --strip-gap: 1.125rem;
 }
 
 html, body {
@@ -38,7 +56,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  line-height: 1.4;
+  font-size: var(--type-body);
+  line-height: 1.5;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

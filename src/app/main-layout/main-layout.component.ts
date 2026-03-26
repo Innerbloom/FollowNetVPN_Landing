@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import {HeaderComponent} from '../components/header/header.component';
-import {FooterComponent} from '../components/footer/footer.component';
+import { HeaderComponent } from '../shared/header/header.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 import { filter } from 'rxjs';
-import { StarfieldComponent } from '../components/starfield/starfield.component';
+import { StarfieldComponent } from '../shared/starfield/starfield.component';
 import { DOCUMENT, NgIf } from '@angular/common';
 import { I18nService, AppLang } from '../core/i18n.service';
 

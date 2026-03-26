@@ -108,4 +108,24 @@ export class HeaderComponent {
     ev.stopPropagation();
     this.isLangOpen = !this.isLangOpen;
   }
+
+  mobileDownloadLabel(): string {
+    switch (this.i18n.current) {
+      case 'ru':
+        return 'Скачать';
+      case 'de':
+        return 'Download';
+      case 'es':
+        return 'Descargar';
+      case 'fr':
+        return 'Telecharger';
+      case 'pt':
+        return 'Baixar';
+      case 'uk':
+        return 'Скачати';
+      case 'en':
+      default:
+        return 'Download';
+    }
+  }
 }

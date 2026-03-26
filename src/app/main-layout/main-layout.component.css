@@ -22,6 +22,10 @@
   z-index: 1; /* above starfield */
   margin: 0 auto;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .shell.light {
@@ -29,5 +33,9 @@
 }
 
 .main {
-  padding: 28px 0 10px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 2.5rem 0 3.5rem;
 }

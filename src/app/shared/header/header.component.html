@@ -35,7 +35,10 @@
             </button>
           </div>
         </div>
-        <a class="cta" [routerLink]="['/']" fragment="download">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+        <a class="cta" [routerLink]="['/']" fragment="download">
+          <span class="cta-desktop">{{ i18n.t('NAV_DOWNLOAD') }}</span>
+          <span class="cta-mobile">{{ mobileDownloadLabel() }}</span>
+        </a>
         <button class="burger" type="button" (click)="toggleMenu()" aria-label="Menu" [attr.aria-expanded]="isMenuOpen" [class.open]="isMenuOpen">
           <span></span><span></span>
         </button>

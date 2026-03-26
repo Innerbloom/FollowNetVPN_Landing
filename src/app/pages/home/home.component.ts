@@ -1,28 +1,34 @@
 import {
+  AfterViewInit,
   Component,
+  NgZone,
   OnDestroy,
 } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
+import { PREMIUM_PLANS } from '../../core/premium-plans';
 
 @Component({
-  selector: 'app-main',
-  imports: [NgFor, NgIf],
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  selector: 'app-home',
+  imports: [NgFor, NgIf, RouterLink],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
   standalone: true,
 })
-export class MainComponent implements OnDestroy {
-  constructor(public i18n: I18nService) {
+export class HomeComponent implements AfterViewInit, OnDestroy {
+  /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
+  heroParallaxPx = 0;
+
+  constructor(
+    public i18n: I18nService,
+    private readonly ngZone: NgZone,
+  ) {
     // Start autoplay; pause when user interacts.
     this.autoplayId = window.setInterval(() => this.autoplayStep(), 3200);
   }
 
-  readonly premiumPlans = [
-    { id: 'm1', labelRu: '1 месяц', labelEn: '1 month', total: '$4.99', perMonthRu: '$4.99/мес', perMonthEn: '$4.99/mo', saveRu: null as string | null, saveEn: null as string | null },
-    { id: 'm3', labelRu: '3 месяца', labelEn: '3 months', total: '$12.99', perMonthRu: '$4.33/мес', perMonthEn: '$4.33/mo', saveRu: 'экономия 13%', saveEn: 'save 13%' },
-    { id: 'm6', labelRu: '6 месяцев', labelEn: '6 months', total: '$21.99', perMonthRu: '$3.67/мес', perMonthEn: '$3.67/mo', saveRu: 'экономия 27%', saveEn: 'save 27%' },
-  ] as const;
+  readonly premiumPlans = PREMIUM_PLANS;
 
   selectedPremiumPlanId: (typeof this.premiumPlans)[number]['id'] = 'm1';
 
@@ -32,6 +38,17 @@ export class MainComponent implements OnDestroy {
 
   get selectedPremiumPlan() {
     return this.premiumPlans.find(p => p.id === this.selectedPremiumPlanId) ?? this.premiumPlans[0];
+  }
+
+  premiumPeriodBadgeText(): string {
+    switch (this.selectedPremiumPlanId) {
+      case 'm3':
+        return this.i18n.t('PRICING_BADGE_M3');
+      case 'm6':
+        return this.i18n.t('PRICING_BADGE_M6');
+      default:
+        return this.i18n.t('PRICING_BADGE_M1');
+    }
   }
 
   premiumLabel(p: (typeof this.premiumPlans)[number]) {
@@ -46,18 +63,21 @@ export class MainComponent implements OnDestroy {
     return this.i18n.current === 'ru' ? p.saveRu : p.saveEn;
   }
 
+  /** App Store marketing screenshots (portrait), see `src/assets/screenshots/README.md` */
   readonly shots = [
-    'assets/IMG_5810-portrait.png',
-    'assets/IMG_5811-portrait.png',
-    'assets/IMG_5813-portrait.png',
-    'assets/IMG_5814-portrait.png',
-    'assets/IMG_5816-portrait.png',
+    'assets/screenshots/IMG_5810-portrait.png',
+    'assets/screenshots/IMG_5811-portrait.png',
+    'assets/screenshots/IMG_5813-portrait.png',
+    'assets/screenshots/IMG_5814-portrait.png',
+    'assets/screenshots/IMG_5816-portrait.png',
   ];
 
   activeIndex = 0;
 
   private autoplayId: number | null = null;
   private stopAutoplayUntil = 0;
+  private scrollRaf = 0;
+  private onScrollBound: (() => void) | null = null;
   readonly flagsRow1 = this.buildFlagRow([
     // keep 🇺🇸 centered (odd count)
     '🇬🇧','🇦🇪','🇹🇷','🇨🇭','🇸🇪','🇰🇷','🇸🇬','🇭🇰','🇷🇴',
@@ -83,10 +103,40 @@ export class MainComponent implements OnDestroy {
     });
   }
 
+  ngAfterViewInit() {
+    if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+    this.ngZone.runOutsideAngular(() => {
+      this.onScrollBound = () => {
+        if (this.scrollRaf) return;
+        this.scrollRaf = window.requestAnimationFrame(() => {
+          this.scrollRaf = 0;
+          const y = Math.min(window.scrollY, 420);
+          const next = Math.round(y * 0.09);
+          if (next === this.heroParallaxPx) return;
+          this.ngZone.run(() => {
+            this.heroParallaxPx = next;
+          });
+        });
+      };
+      window.addEventListener('scroll', this.onScrollBound, { passive: true });
+      this.onScrollBound();
+    });
+  }
+
   ngOnDestroy() {
     if (this.autoplayId != null) {
       window.clearInterval(this.autoplayId);
       this.autoplayId = null;
+    }
+    if (this.scrollRaf) {
+      window.cancelAnimationFrame(this.scrollRaf);
+      this.scrollRaf = 0;
+    }
+    if (this.onScrollBound) {
+      window.removeEventListener('scroll', this.onScrollBound);
+      this.onScrollBound = null;
     }
   }
 

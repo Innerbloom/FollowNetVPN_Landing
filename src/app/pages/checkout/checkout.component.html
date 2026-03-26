@@ -1,0 +1,116 @@
+<section class="checkout-page">
+  <div class="checkout-wrap">
+    <a class="back-link" routerLink="/" fragment="pricing">{{ i18n.t('CHECKOUT_BACK') }}</a>
+
+    <div class="checkout-status checkout-status--ok" *ngIf="checkoutStatus === 'success'">
+      <div class="checkout-status-body">
+        <div class="checkout-status-title">{{ i18n.t('CHECKOUT_SUCCESS_TITLE') }}</div>
+        <div class="checkout-status-text">{{ i18n.t('CHECKOUT_SUCCESS_TEXT') }}</div>
+      </div>
+      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" aria-label="Close">
+        ×
+      </button>
+    </div>
+
+    <div class="checkout-status checkout-status--warn" *ngIf="checkoutStatus === 'cancel'">
+      <div class="checkout-status-body">
+        <div class="checkout-status-title">{{ i18n.t('CHECKOUT_CANCEL_TITLE') }}</div>
+        <div class="checkout-status-text">{{ i18n.t('CHECKOUT_CANCEL_TEXT') }}</div>
+      </div>
+      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" aria-label="Close">
+        ×
+      </button>
+    </div>
+
+    <div class="checkout-card">
+      <div class="checkout-layout">
+        <section class="checkout-main">
+          <header class="checkout-head">
+            <p class="checkout-kicker">Premium</p>
+            <h1>{{ i18n.t('CHECKOUT_TITLE') }}</h1>
+            <p class="sub">{{ i18n.t('CHECKOUT_SUB') }}</p>
+          </header>
+
+          <p class="checkout-trust">
+            <i class="fa-solid fa-lock checkout-trust-ic" aria-hidden="true"></i>
+            <span>{{ i18n.t('CHECKOUT_TRUST') }}</span>
+          </p>
+
+          <div class="checkout-section">
+            <p class="checkout-section-label">{{ i18n.t('CHECKOUT_SECTION_PLAN') }}</p>
+            <div class="plan-tabs" [attr.aria-label]="i18n.t('PREMIUM_PLANS_ARIA')">
+              <button
+                type="button"
+                class="plan-tab"
+                *ngFor="let p of premiumPlans"
+                (click)="selectPremiumPlan(p.id)"
+                [class.active]="p.id === selectedPremiumPlanId"
+              >
+                {{ premiumLabel(p) }}
+              </button>
+            </div>
+          </div>
+
+          <div class="pricing-block">
+            <div class="price">
+              {{ selectedPremiumPlan.total }}
+              <span>/ {{ premiumLabel(selectedPremiumPlan) }}</span>
+            </div>
+            <p class="per-month">
+              {{ premiumPerMonth(selectedPremiumPlan) }}
+              <span class="save-text" *ngIf="premiumSave(selectedPremiumPlan)">
+                · {{ premiumSave(selectedPremiumPlan) }}
+              </span>
+            </p>
+            <p class="trial-note">{{ i18n.t('PRICING_TRIAL') }}</p>
+            <p class="trial-paddle-note">{{ i18n.t('PADDLE_TRIAL_HINT') }}</p>
+          </div>
+
+          <div class="checkout-section checkout-section--account">
+            <label class="paddle-label" for="paddle-email">{{ i18n.t('PADDLE_EMAIL_LABEL') }}</label>
+            <input
+              id="paddle-email"
+              class="paddle-input"
+              [class.invalid]="paddleEmail.trim().length > 0 && !isPaddleEmailValid"
+              type="email"
+              name="paddleEmail"
+              autocomplete="email"
+              spellcheck="false"
+              [placeholder]="i18n.t('PADDLE_EMAIL_PLACEHOLDER')"
+              [(ngModel)]="paddleEmail"
+              (ngModelChange)="onPaddleEmailChange($event)"
+            />
+            <p class="paddle-hint">{{ i18n.t('PADDLE_EMAIL_HINT') }}</p>
+            <p class="note paddle-inline-msg" *ngIf="paddleEmail.trim().length > 0 && !isPaddleEmailValid">
+              {{ i18n.t('PADDLE_NEED_EMAIL') }}
+            </p>
+
+            <div
+              class="checkout-status checkout-status--warn paddle-eligibility"
+              *ngIf="paddleBlockActive && isPaddleEmailValid"
+              role="status"
+            >
+              <div class="checkout-status-body">
+                <div class="checkout-status-text">{{ paddleActiveBlockText() }}</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn primary full"
+              (click)="openPaddleWebCheckout()"
+              [disabled]="!canOpenCheckout"
+            >
+              {{ paddleCheckoutLoading ? '…' : i18n.t('PADDLE_PAY_WEB_CTA') }}
+            </button>
+            <p class="note paddle-inline-msg" *ngIf="paddleInlineMessage">{{ paddleInlineMessage }}</p>
+            <ng-container *ngIf="!paddleWebConfigured">
+              <p class="note paddle-config-hint">{{ i18n.t('PADDLE_NOT_CONFIGURED') }}</p>
+              <p class="note paddle-config-hint small">{{ i18n.t('PADDLE_NOT_CONFIGURED_HELP') }}</p>
+            </ng-container>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

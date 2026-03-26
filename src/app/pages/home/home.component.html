@@ -1,5 +1,5 @@
 <div class="landing" id="top">
-  <section class="hero">
+  <section class="hero" [style.--hero-parallax.px]="heroParallaxPx">
     <div class="container hero-grid">
       <div class="hero-left">
         <h1>
@@ -18,21 +18,21 @@
 
         <div class="bullets">
           <div class="bullet">
-            <span class="b-ic"><i class="fa-solid fa-shield accent-icon ui-icon" aria-hidden="true"></i></span>
+            <span class="bullet-mark" aria-hidden="true"></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_SECURITY') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_SECURITY_SUB') }}</div>
             </div>
           </div>
           <div class="bullet">
-            <span class="b-ic"><i class="fa-solid fa-bolt accent-icon ui-icon" aria-hidden="true"></i></span>
+            <span class="bullet-mark" aria-hidden="true"></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_SPEED') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_SPEED_SUB') }}</div>
             </div>
           </div>
           <div class="bullet">
-            <span class="b-ic"><i class="fa-solid fa-globe accent-icon ui-icon" aria-hidden="true"></i></span>
+            <span class="bullet-mark" aria-hidden="true"></span>
             <div>
               <div class="b-title">{{ i18n.t('BULLET_WORLD') }}</div>
               <div class="b-sub">{{ i18n.t('BULLET_WORLD_SUB') }}</div>
@@ -76,23 +76,75 @@
     </div>
   </section>
 
+  <section class="sales-value" aria-labelledby="sales-value-title">
+    <div class="container container--narrow">
+      <p class="sales-kicker">{{ i18n.t('SALES_VALUE_KICKER') }}</p>
+      <h2 id="sales-value-title" class="sales-title">{{ i18n.t('SALES_VALUE_TITLE') }}</h2>
+      <p class="sales-sub">{{ i18n.t('SALES_VALUE_SUB') }}</p>
+    </div>
+  </section>
+
+  <section class="trust-strip" [attr.aria-label]="i18n.t('TRUST_STRIP_ARIA')">
+    <div class="container">
+      <div class="trust-strip-grid">
+        <div class="trust-stat">
+          <div class="trust-stat-value">{{ i18n.t('TRUST_STRIP_1') }}</div>
+          <div class="trust-stat-label">{{ i18n.t('TRUST_STRIP_1_SUB') }}</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-value">{{ i18n.t('TRUST_STRIP_2') }}</div>
+          <div class="trust-stat-label">{{ i18n.t('TRUST_STRIP_2_SUB') }}</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-value">{{ i18n.t('TRUST_STRIP_3') }}</div>
+          <div class="trust-stat-label">{{ i18n.t('TRUST_STRIP_3_SUB') }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="strip">
     <div class="container strip-grid">
       <div class="chip">
-        <span class="chip-ic"><i class="fa-solid fa-envelope accent-icon" aria-hidden="true"></i></span>
         <span>{{ i18n.t('CHIP_CODE') }}</span>
       </div>
       <div class="chip">
-        <span class="chip-ic"><i class="fa-solid fa-rectangle-list accent-icon" aria-hidden="true"></i></span>
         <span>{{ i18n.t('CHIP_WIDGETS') }}</span>
       </div>
       <div class="chip">
-        <span class="chip-ic"><i class="fa-solid fa-gauge-high accent-icon" aria-hidden="true"></i></span>
         <span>{{ i18n.t('CHIP_SPEEDTEST') }}</span>
       </div>
       <div class="chip">
-        <span class="chip-ic"><i class="fa-solid fa-filter accent-icon" aria-hidden="true"></i></span>
         <span>{{ i18n.t('CHIP_DNS') }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section" id="why" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{{ i18n.t('WHY_KICKER') }}</div>
+        <h2 id="why-title">{{ i18n.t('WHY_TITLE') }}</h2>
+        <p class="sub">{{ i18n.t('WHY_SUB') }}</p>
+      </div>
+
+      <div class="trust-grid why-grid">
+        <div class="trust-card">
+          <div class="trust-title">{{ i18n.t('WHY_1_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('WHY_1_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-title">{{ i18n.t('WHY_2_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('WHY_2_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-title">{{ i18n.t('WHY_3_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('WHY_3_TEXT') }}</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-title">{{ i18n.t('WHY_4_TITLE') }}</div>
+          <div class="trust-text">{{ i18n.t('WHY_4_TEXT') }}</div>
+        </div>
       </div>
     </div>
   </section>
@@ -107,22 +159,22 @@
 
       <div class="trust-grid">
         <div class="trust-card">
-          <div class="trust-ic"><i class="fa-solid fa-shield accent-icon ui-icon" aria-hidden="true"></i></div>
-          <div class="trust-title">WireGuard + IKEv2</div>
+          <div class="trust-ic"><i class="fa-solid fa-shield accent-icon" aria-hidden="true"></i></div>
+          <div class="trust-title">{{ i18n.t('TRUST_WG_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_WG_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><i class="fa-solid fa-rotate accent-icon ui-icon" aria-hidden="true"></i></div>
+          <div class="trust-ic"><i class="fa-solid fa-rotate accent-icon" aria-hidden="true"></i></div>
           <div class="trust-title">{{ i18n.t('TRUST_AUTOCONNECT_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_AUTOCONNECT_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><i class="fa-solid fa-filter accent-icon ui-icon" aria-hidden="true"></i></div>
+          <div class="trust-ic"><i class="fa-solid fa-filter accent-icon" aria-hidden="true"></i></div>
           <div class="trust-title">{{ i18n.t('TRUST_DNS_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_DNS_TEXT') }}</div>
         </div>
         <div class="trust-card">
-          <div class="trust-ic"><i class="fa-solid fa-chart-simple accent-icon ui-icon" aria-hidden="true"></i></div>
+          <div class="trust-ic"><i class="fa-solid fa-chart-simple accent-icon" aria-hidden="true"></i></div>
           <div class="trust-title">{{ i18n.t('TRUST_STATS_TITLE') }}</div>
           <div class="trust-text">{{ i18n.t('TRUST_STATS_TEXT') }}</div>
         </div>
@@ -169,27 +221,22 @@
 
       <div class="steps">
         <div class="step">
-          <div class="step-ic"><i class="fa-solid fa-link accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP1_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP1_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-ic"><i class="fa-solid fa-road accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP2_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP2_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-ic"><i class="fa-solid fa-lock accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP3_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP3_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-ic"><i class="fa-solid fa-server accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP4_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP4_TEXT') }}</div>
         </div>
         <div class="step">
-          <div class="step-ic"><i class="fa-solid fa-globe accent-icon step-icon" aria-hidden="true"></i></div>
           <div class="step-title">{{ i18n.t('STEP5_TITLE') }}</div>
           <div class="step-text">{{ i18n.t('STEP5_TEXT') }}</div>
         </div>
@@ -267,6 +314,9 @@
         </div>
 
         <div class="plan featured">
+          <div class="plan-badge-row">
+            <span class="plan-popular-badge">{{ premiumPeriodBadgeText() }}</span>
+          </div>
           <div class="plan-name">Premium</div>
           <div class="plan-desc">{{ i18n.t('PREMIUM_DESC') }}</div>
 
@@ -298,7 +348,18 @@
             <li>{{ i18n.t('PREMIUM_FEATURE_3') }}</li>
             <li>{{ i18n.t('PREMIUM_FEATURE_4') }}</li>
           </ul>
-          <a class="btn primary full" href="#download">{{ i18n.t('PRICING_TRIAL_CTA') }}</a>
+
+          <div class="paddle-actions">
+            <a
+              class="btn primary full"
+              [routerLink]="['/checkout']"
+              [queryParams]="{ plan: selectedPremiumPlanId }"
+            >
+              {{ i18n.t('PADDLE_OPEN_CHECKOUT_PAGE') }}
+            </a>
+            <a class="btn ghost full" href="#download">{{ i18n.t('PRICING_TRIAL_CTA') }}</a>
+          </div>
+
           <div class="note">{{ i18n.t('PRICING_NOTE') }}</div>
         </div>
       </div>
