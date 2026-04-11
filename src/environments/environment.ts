@@ -17,6 +17,11 @@ export const environment = {
   /** Same host as the iOS app (`Config.baseURL`). Used for Paddle checkout eligibility. */
   apiBaseUrl: 'https://api.follow-net.com',
 
+  /**
+   * Временно скрыть веб‑оплату (Paddle) на лендинге. На API дополнительно выставь `WEB_PADDLE_CHECKOUT_DISABLED=true`.
+   */
+  webPaddleCheckoutEnabled: false,
+
   paddle: {
     clientToken: paddleSecrets.clientToken,
     priceIds: paddleSecrets.priceIds,

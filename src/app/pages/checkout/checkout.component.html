@@ -22,7 +22,16 @@
       </button>
     </div>
 
-    <div class="checkout-card">
+    <div class="checkout-card checkout-card--paused" *ngIf="webCheckoutPaused">
+      <header class="checkout-head">
+        <p class="checkout-kicker">Premium</p>
+        <h1>{{ i18n.t('WEB_CHECKOUT_PAUSED_TITLE') }}</h1>
+        <p class="sub">{{ i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT') }}</p>
+      </header>
+      <p class="note">{{ i18n.t('WEB_CHECKOUT_PAUSED_APP_HINT') }}</p>
+    </div>
+
+    <div class="checkout-card" *ngIf="!webCheckoutPaused">
       <div class="checkout-layout">
         <section class="checkout-main">
           <header class="checkout-head">
@@ -87,11 +96,21 @@
 
             <div
               class="checkout-status checkout-status--warn paddle-eligibility"
-              *ngIf="paddleBlockActive && isPaddleEmailValid"
+              *ngIf="paddleBlockActive && isPaddleEmailValid && !apiSaysWebCheckoutDisabled"
               role="status"
             >
               <div class="checkout-status-body">
                 <div class="checkout-status-text">{{ paddleActiveBlockText() }}</div>
+              </div>
+            </div>
+
+            <div
+              class="checkout-status checkout-status--warn paddle-eligibility"
+              *ngIf="apiSaysWebCheckoutDisabled && isPaddleEmailValid"
+              role="status"
+            >
+              <div class="checkout-status-body">
+                <div class="checkout-status-text">{{ i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT') }}</div>
               </div>
             </div>
 

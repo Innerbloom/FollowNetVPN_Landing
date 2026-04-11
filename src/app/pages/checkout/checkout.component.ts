@@ -16,6 +16,7 @@ import { I18nService, type AppLang } from '../../core/i18n.service';
 import { PaddleCheckoutService } from '../../core/paddle-checkout.service';
 import { PaddleCheckoutEligibilityService } from '../../core/paddle-checkout-eligibility.service';
 import { PREMIUM_PLANS, type PremiumPlanId } from '../../core/premium-plans';
+import { environment } from '../../../environments/environment';
 
 const PADDLE_EMAIL_STORAGE_KEY = 'follownet_paddle_email';
 
@@ -30,6 +31,10 @@ export class CheckoutComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   private readonly emailEligibility$ = new Subject<string>();
+
+  /** Сайт: флаг в `environment`. API: ответ `webCheckoutDisabled`. */
+  readonly envWebPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
+  apiSaysWebCheckoutDisabled = false;
 
   constructor(
     public i18n: I18nService,
@@ -96,6 +101,7 @@ export class CheckoutComponent implements OnInit {
         }),
       )
       .subscribe((res) => {
+        this.apiSaysWebCheckoutDisabled = !!res.webCheckoutDisabled;
         this.paddleBlockActive = !res.canStartNewCheckout;
         this.paddleActiveUntilIso = res.activePaddlePeriodEndsAt;
       });
@@ -126,12 +132,17 @@ export class CheckoutComponent implements OnInit {
 
   get canOpenCheckout(): boolean {
     return (
+      this.envWebPaddleCheckoutEnabled &&
       this.paddleWebConfigured &&
       !this.paddleCheckoutLoading &&
       !this.paddleEligibilityLoading &&
       this.isPaddleEmailValid &&
       !this.paddleBlockActive
     );
+  }
+
+  get webCheckoutPaused(): boolean {
+    return !this.envWebPaddleCheckoutEnabled || this.apiSaysWebCheckoutDisabled;
   }
 
   dismissCheckoutStatus(): void {
@@ -210,6 +221,10 @@ export class CheckoutComponent implements OnInit {
 
   async openPaddleWebCheckout(): Promise<void> {
     this.paddleInlineMessage = '';
+    if (!this.envWebPaddleCheckoutEnabled) {
+      this.paddleInlineMessage = this.i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT');
+      return;
+    }
     if (!this.paddleCheckout.isConfigured()) {
       this.paddleInlineMessage = this.i18n.t('PADDLE_NOT_CONFIGURED');
       return;

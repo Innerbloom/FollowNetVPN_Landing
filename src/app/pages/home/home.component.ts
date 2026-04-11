@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS } from '../../core/premium-plans';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ import { PREMIUM_PLANS } from '../../core/premium-plans';
   standalone: true,
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
+  readonly webPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
+
   /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
   heroParallaxPx = 0;
 

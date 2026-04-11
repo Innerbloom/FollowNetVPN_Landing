@@ -5,6 +5,9 @@ export const environment = {
 
   apiBaseUrl: 'https://api.follow-net.com',
 
+  /** Временно скрыть веб‑оплату; на API: `WEB_PADDLE_CHECKOUT_DISABLED=true`. */
+  webPaddleCheckoutEnabled: false,
+
   paddle: {
     clientToken: paddleSecrets.clientToken,
     priceIds: paddleSecrets.priceIds,

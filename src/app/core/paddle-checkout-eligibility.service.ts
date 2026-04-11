@@ -7,6 +7,8 @@ import { environment } from '../../environments/environment';
 export interface PaddleCheckoutEligibility {
   readonly canStartNewCheckout: boolean;
   readonly activePaddlePeriodEndsAt: string | null;
+  /** Сервер отключил веб‑checkout (`WEB_PADDLE_CHECKOUT_DISABLED`). */
+  readonly webCheckoutDisabled?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })

@@ -351,12 +351,16 @@
 
           <div class="paddle-actions">
             <a
+              *ngIf="webPaddleCheckoutEnabled"
               class="btn primary full"
               [routerLink]="['/checkout']"
               [queryParams]="{ plan: selectedPremiumPlanId }"
             >
               {{ i18n.t('PADDLE_OPEN_CHECKOUT_PAGE') }}
             </a>
+            <p *ngIf="!webPaddleCheckoutEnabled" class="note web-checkout-paused">
+              {{ i18n.t('WEB_CHECKOUT_PAUSED_HOME') }}
+            </p>
             <a class="btn ghost full" href="#download">{{ i18n.t('PRICING_TRIAL_CTA') }}</a>
           </div>
 
