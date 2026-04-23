@@ -3,7 +3,7 @@
   <section class="doc" *ngSwitchCase="'ru'">
     <div class="doc-header">
       <h1>Политика конфиденциальности FollowNet VPN</h1>
-      <p class="muted">Дата обновления: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Дата обновления: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Эта политика описывает, какие данные мы обрабатываем в приложении FollowNet VPN и на сайте, зачем они нужны и какие у вас есть права.
         Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
@@ -11,14 +11,15 @@
     </div>
 
     <div class="card">
-      <h2>1. Кто мы</h2>
+      <h2>1. Оператор данных (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN — это VPN‑сервис. Контакт по вопросам приватности: <span class="mono">noreply&#64;follow-net.com</span>.
+        Оператором обработки данных в значении GDPR является <strong>FollowNet</strong> (далее — «FollowNet», «мы»).
+        Контакт по вопросам конфиденциальности и запросов субъекта данных: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
-      <h2>2. Кратко о “логах”</h2>
+      <h2>2. Кратко о «логах»</h2>
       <p class="muted">
-        Мы не записываем историю посещений и содержимое трафика (какие сайты/страницы вы открываете, содержимое сообщений и т.д.).
+        Мы не записываем историю посещений и содержимое трафика (какие сайты/страницы вы открываете, содержимое сообщений и т. д.).
         Для работы VPN и управления тарифами мы обрабатываем технические метаданные (например, время сессии и объём трафика).
       </p>
       <p class="muted">
@@ -31,22 +32,18 @@
       <ul>
         <li><b>Email</b> (если вы входите по коду на email).</li>
         <li><b>User ID</b> — идентификатор вашего аккаунта на наших серверах (присваивается при регистрации).</li>
-        <li><b>deviceId</b> — уникальный идентификатор установки приложения: случайный UUID, создаётся при первом запуске и хранится в связке ключей iOS (Keychain); передаётся нашим серверам для учёта лимита устройств и защиты аккаунта. Рекламный идентификатор Apple (IDFA) и идентификатор разработчика для группы приложений (IDFV) для этого не используются.</li>
+        <li><b>deviceId</b> — случайный UUID, генерируется при первом запуске и хранится в Keychain iOS; передаётся нашим серверам для учёта лимита устройств и защиты аккаунта. IDFA/IDFV для этого не используются.</li>
       </ul>
       <p class="muted">
-        Также вы можете входить через <b>Sign in with Apple</b> и/или <b>Google Sign‑In</b> (если эта опция доступна в приложении).
-        В этом случае мы получаем данные, необходимые для авторизации, от соответствующего провайдера.
+        Также может быть доступен вход через <b>Sign in with Apple</b> и/или <b>Google Sign‑In</b>; в этом случае мы получаем данные, необходимые для авторизации, от соответствующего провайдера.
       </p>
 
       <h3>3.2 Подписка (App Store)</h3>
       <ul>
         <li>Тип/статус подписки (free/trial/premium), даты начала/окончания.</li>
-        <li>Идентификаторы транзакций Apple (например, original transaction id) и данные для валидации/восстановления покупок.</li>
-        <li>Мы не получаем реквизиты вашей карты — оплату обрабатывает Apple.</li>
+        <li>Идентификаторы транзакций Apple (например, original transaction id) для валидации и восстановления покупок.</li>
+        <li>Мы не получаем реквизиты карты — оплату обрабатывает Apple.</li>
       </ul>
-      <p class="muted">
-        Платная подписка оформляется только в iOS‑приложении через App Store; на сайте follow-net.com мы не принимаем оплату за подписку.
-      </p>
 
       <h3>3.3 Данные для работы VPN</h3>
       <ul>
@@ -64,61 +61,119 @@
       <ul>
         <li>Тикеты и сообщения в поддержку (если вы пишете нам), а также данные, которые вы сами предоставляете (скриншоты/логи/описание проблемы).</li>
       </ul>
-      <h3>3.5 Аналитика приложения</h3>
+
+      <h3>3.5 Аналитика приложения (Firebase Analytics)</h3>
       <p class="muted">
         В iOS‑приложении используется <b>Firebase Analytics</b> (Google) для продуктовых событий: успех/ошибка подключения VPN, выбор сервера, экраны покупки и подписки, результат покупки или восстановления, запуск speed test.
-        Отправляются только такие события, без истории просмотров и без привязки к личности помимо вашего аккаунта. Это помогает улучшать UX и стабильность.
+        Передаётся только набор таких событий; история сайтов и содержимое трафика не собираются.
+        Мы <b>не связываем</b> события Analytics с вашим аккаунтом FollowNet в консоли Firebase (например, <span class="mono">setUserId</span> для Firebase <b>не используется</b>): на стороне Google они привязаны к анонимному идентификатору установки/экземпляра приложения и отделены от вашего User ID и email в нашей системе.
+        Политика конфиденциальности Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Серверные логи событий</h3>
+      <h3>3.6 Сообщения о сбоях (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Для диагностики падений и стабильности используется <b>Firebase Crashlytics</b> (Google). Он может получать технические данные о сбое (модель устройства, версия ОС, трассировка стека, время события).
+        Пока мы не сопоставляем Crashlytics с вашим User ID/email FollowNet в SDK, отчёты обычно не содержат ваших учётных данных FollowNet; обработка регулируется политиками Google/Firebase.
+      </p>
+
+      <h3>3.7 Серверные логи событий</h3>
       <p class="muted">
         На серверах сохраняются технические логи событий для работы сервиса и поддержки: факт подключения к VPN (идентификатор сервера), события от Apple (тип уведомления, productId, originalTransactionId, среда), админ‑действия.
         Содержимое трафика не логируется; данные хранятся не дольше, чем необходимо для работы сервиса и безопасности.
       </p>
 
-      <h3>3.7 IP‑адрес и User‑Agent</h3>
+      <h3>3.8 IP‑адрес и User‑Agent</h3>
       <p class="muted">
-        IP‑адрес и User‑Agent могут обрабатываться для защиты от злоупотреблений (rate‑limit) и безопасности. Мы стремимся не хранить их дольше, чем необходимо для этих целей.
+        IP‑адрес и User‑Agent могут учитываться на стороне backend для защиты от злоупотреблений (rate‑limit) и безопасности <b>в моменте обработки запроса</b>, без записи в постоянные логи и без целенаправленного хранения для маркетинга.
       </p>
 
-      <h2>4. Зачем мы используем данные</h2>
+      <h2>4. Правовые основания обработки (GDPR Art. 6)</h2>
+      <ul>
+        <li><b>Исполнение договора (Art. 6(1)(b))</b> — создание аккаунта, предоставление VPN‑сервиса, выдача VPN‑учётных данных, управление подпиской.</li>
+        <li><b>Законный интерес (Art. 6(1)(f))</b> — безопасность и защита от злоупотреблений (в т.ч. эфемерный rate‑limit без постоянного хранения IP/UA), агрегированная аналитика и отчёты о сбоях через Firebase без сопоставления с аккаунтом FollowNet в консоли разработчика.</li>
+        <li><b>Согласие (Art. 6(1)(a))</b> — где это явно запрошено (например, необязательные уведомления).</li>
+        <li><b>Юридическая обязанность (Art. 6(1)(c))</b> — ответ на законные запросы уполномоченных органов.</li>
+      </ul>
+
+      <h2>5. Зачем мы используем данные</h2>
       <ul>
         <li>Предоставление VPN‑сервиса и выдача VPN‑учётных данных.</li>
         <li>Авторизация (код на email), безопасность и предотвращение злоупотреблений.</li>
         <li>Лимиты Free и условия Premium (трафик/устройства), проверка подписок и восстановление покупок.</li>
-        <li>Поддержка пользователей и улучшение продукта (аналитика).</li>
+        <li>Поддержка пользователей и улучшение продукта (аналитика и диагностика сбоёв).</li>
       </ul>
 
-      <h2>5. С кем мы делимся данными</h2>
+      <h2>6. С кем мы делимся данными</h2>
       <ul>
         <li><b>Apple</b> — покупки и подписки (App Store).</li>
-        <li><b>Apple / Google</b> — если вы используете вход через Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple / Google</b> — если вы используете Sign in with Apple / Google Sign‑In.</li>
         <li><b>Провайдер email</b> (SMTP) — отправка кода входа.</li>
         <li><b>Инфраструктура/хостинг</b> — размещение backend и VPN‑серверов.</li>
-        <li><b>Google Firebase</b> — аналитика приложения (если включена в сборке).</li>
+        <li><b>Google Firebase</b> — Analytics и Crashlytics (если включено в сборке).</li>
       </ul>
-      <p class="muted">Мы не продаём персональные данные.</p>
+      <p class="muted">Мы не продаём и не «share» персональные данные (в значении CCPA/CPRA).</p>
 
-      <h2>6. Хранение данных</h2>
+      <h2>7. Международная передача данных</h2>
+      <p class="muted">
+        Для работы сервиса данные могут передаваться и храниться за пределами Европейской экономической зоны (ЕЭЗ), в том числе в странах размещения VPN‑серверов и у поставщиков (например, Google/Firebase в США).
+        Такие передачи выполняются на основании применимых юридических механизмов, включая <em>Standard Contractual Clauses</em> Европейской комиссии, и с принятием разумных мер по защите данных.
+      </p>
+
+      <h2>8. Хранение данных</h2>
       <ul>
         <li>Данные аккаунта и подписки — пока аккаунт активен или пока это необходимо по законным основаниям.</li>
         <li>Технические данные сессий/трафика — минимально необходимое время для работы сервиса, лимитов и безопасности.</li>
         <li>Серверные логи событий (подключения, вебхуки Apple, админ‑действия) — не дольше, чем необходимо для работы сервиса и поддержки.</li>
         <li>Тикеты поддержки — пока это нужно для обработки обращения и последующих разбирательств/качества сервиса.</li>
+        <li>Диагностика Firebase (Analytics, Crashlytics) — согласно срокам и настройкам хранения Google/Firebase.</li>
       </ul>
 
-      <h2>7. Удаление аккаунта</h2>
+      <h2>9. Безопасность</h2>
+      <p class="muted">
+        Мы применяем разумные технические и организационные меры: шифрование данных при передаче (TLS), шифрование VPN‑туннелей (IKEv2/WireGuard), хранение токенов на устройстве в Keychain iOS, ограниченный доступ администраторов, журналирование админ‑действий.
+      </p>
+
+      <h2>10. Cookies и сайт</h2>
+      <p class="muted">
+        Сайт follow-net.com — это лендинг. Мы не используем cookies для рекламного трекинга на сайте. Технические/служебные cookies могут использоваться только для корректной работы страниц.
+      </p>
+
+      <h2>11. Дети</h2>
+      <p class="muted">
+        Сервис не предназначен для лиц младше 13 лет (либо младше возраста цифрового согласия в вашей стране). Мы сознательно не собираем данные таких лиц. Если вы узнали, что ребёнок предоставил нам данные без согласия родителей/опекунов, напишите нам — мы их удалим.
+      </p>
+
+      <h2>12. Удаление аккаунта</h2>
       <p class="muted">
         Вы можете удалить аккаунт в приложении. При удалении мы удаляем данные аккаунта и связанные данные (устройства, VPN‑учётные данные, подписочные записи, тикеты поддержки и связанные технические записи),
         кроме случаев, когда хранение требуется законом или для защиты от злоупотреблений.
       </p>
 
-      <h2>8. Ваши права</h2>
+      <h2>13. Ваши права (GDPR / CCPA)</h2>
+      <p class="muted">В соответствии с применимым законодательством вы имеете право:</p>
+      <ul>
+        <li><b>Доступ</b> к своим данным и получение их копии.</li>
+        <li><b>Исправление</b> неточных или неполных данных.</li>
+        <li><b>Удаление</b> данных («право быть забытым»).</li>
+        <li><b>Ограничение</b> обработки в определённых случаях.</li>
+        <li><b>Переносимость</b> данных в структурированном формате.</li>
+        <li><b>Возражение</b> против обработки на основании законного интереса.</li>
+        <li><b>Отзыв согласия</b> в любое время (если обработка основана на согласии).</li>
+        <li><b>Подача жалобы</b> в надзорный орган по защите данных вашей страны ЕС/ЕЭЗ.</li>
+      </ul>
       <p class="muted">
-        Вы можете запросить доступ/исправление/удаление данных — напишите нам: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Для резидентов Калифорнии (CCPA/CPRA):</strong> у вас есть право знать, какие категории данных мы собираем, право удаления, право на «opt‑out» от продажи/«share» данных (мы не продаём и не «share» данные), а также право на недискриминацию при реализации прав.
+      </p>
+      <p class="muted">
+        Чтобы воспользоваться правами, напишите нам на <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Мы отвечаем в разумный срок в соответствии с законом.
       </p>
 
-      <h2>9. Изменения</h2>
+      <h2>14. Условия использования</h2>
+      <p class="muted">
+        Настоящая политика дополняет наши Условия использования: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Изменения</h2>
       <p class="muted">
         Мы можем обновлять эту политику. Дата обновления указывается вверху страницы.
       </p>
@@ -129,7 +184,7 @@
   <section class="doc" *ngSwitchCase="'uk'">
     <div class="doc-header">
       <h1>Політика конфіденційності FollowNet VPN</h1>
-      <p class="muted">Дата оновлення: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Ця політика описує, які дані ми обробляємо в застосунку FollowNet VPN і на сайті, навіщо вони потрібні та які у вас є права.
         Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
@@ -137,12 +192,13 @@
     </div>
 
     <div class="card">
-      <h2>1. Хто ми</h2>
+      <h2>1. Оператор даних (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN — це VPN‑сервіс. Контакт із питань приватності: <span class="mono">noreply&#64;follow-net.com</span>.
+        Оператором обробки даних у значенні GDPR є <strong>FollowNet</strong> (далі — «FollowNet», «ми»).
+        Контакт із питань конфіденційності та запитів суб'єкта даних: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
-      <h2>2. Коротко про “логи”</h2>
+      <h2>2. Коротко про «логи»</h2>
       <p class="muted">
         Ми не записуємо історію відвідувань і вміст трафіку (які сайти/сторінки ви відкриваєте, вміст повідомлень тощо).
         Для роботи VPN і керування тарифами ми обробляємо технічні метадані (наприклад, час сесії та обсяг трафіку).
@@ -157,11 +213,10 @@
       <ul>
         <li><b>Email</b> (якщо ви входите за кодом на email).</li>
         <li><b>User ID</b> — ідентифікатор вашого акаунта на наших серверах (присвоюється під час реєстрації).</li>
-        <li><b>deviceId</b> — унікальний ідентифікатор інсталяції застосунку: випадковий UUID, генерується при першому запуску та зберігається в Keychain iOS; передається нашим серверам для ліміту пристроїв і захисту акаунта. IDFA та IDFV для цього не використовуються.</li>
+        <li><b>deviceId</b> — випадковий UUID, генерується при першому запуску та зберігається в Keychain iOS; передається нашим серверам для ліміту пристроїв і захисту акаунта. IDFA/IDFV для цього не використовуються.</li>
       </ul>
       <p class="muted">
-        Також може бути доступний вхід через <b>Sign in with Apple</b> та/або <b>Google Sign‑In</b>.
-        У цьому випадку ми отримуємо дані, необхідні для авторизації, від відповідного провайдера.
+        Також може бути доступний вхід через <b>Sign in with Apple</b> та/або <b>Google Sign‑In</b>; у цьому випадку ми отримуємо дані, необхідні для авторизації, від відповідного провайдера.
       </p>
 
       <h3>3.2 Підписка (App Store)</h3>
@@ -170,9 +225,6 @@
         <li>Ідентифікатори транзакцій Apple (наприклад, original transaction id) для перевірки та відновлення покупок.</li>
         <li>Ми не отримуємо дані вашої картки — оплату обробляє Apple.</li>
       </ul>
-      <p class="muted">
-        Платна підписка оформлюється лише в iOS‑застосунку через App Store; на сайті follow-net.com ми не приймаємо оплату за підписку.
-      </p>
 
       <h3>3.3 Дані для роботи VPN</h3>
       <ul>
@@ -190,61 +242,119 @@
       <ul>
         <li>Тікети та повідомлення в підтримку (якщо ви пишете нам), а також дані, які ви самі надаєте (скріншоти/логи/опис проблеми).</li>
       </ul>
-      <h3>3.5 Аналітика застосунку</h3>
+
+      <h3>3.5 Аналітика застосунку (Firebase Analytics)</h3>
       <p class="muted">
         В iOS‑застосунку використовується <b>Firebase Analytics</b> (Google) для продуктових подій: успіх/помилка підключення VPN, вибір сервера, екрани покупки та підписки, результат покупки або відновлення, запуск speed test.
-        Надсилаються лише такі події, без історії перегляду та без прив’язки до особи поза вашим акаунтом. Це допомагає покращувати UX та стабільність.
+        Передається лише набір таких подій; історія сайтів і вміст трафіку не збираються.
+        Ми <b>не пов’язуємо</b> події Analytics з вашим акаунтом FollowNet у консолі Firebase (наприклад, <span class="mono">setUserId</span> для Firebase <b>не використовується</b>): на стороні Google вони прив’язані до анонімного ідентифікатора інсталяції/екземпляра застосунку і відокремлені від вашого User ID та email у нашій системі.
+        Політика конфіденційності Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Серверні логи подій</h3>
+      <h3>3.6 Повідомлення про збої (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Для діагностики падінь і стабільності використовується <b>Firebase Crashlytics</b> (Google). Він може отримувати технічні дані про збій (модель пристрою, версія ОС, стек трасування, час події).
+        Поки ми не зіставляємо Crashlytics з вашим User ID/email FollowNet у SDK, звіти зазвичай не містять ваших облікових даних FollowNet; обробка регулюється політиками Google/Firebase.
+      </p>
+
+      <h3>3.7 Серверні логи подій</h3>
       <p class="muted">
         На серверах зберігаються технічні логи подій для роботи сервісу та підтримки: факт підключення до VPN (ідентифікатор сервера), події від Apple (тип сповіщення, productId, originalTransactionId, середовище), адмін‑дії.
         Вміст трафіку не логується; дані зберігаються не довше, ніж потрібно для роботи сервісу та безпеки.
       </p>
 
-      <h3>3.7 IP‑адреса та User‑Agent</h3>
+      <h3>3.8 IP‑адреса та User‑Agent</h3>
       <p class="muted">
-        IP‑адреса та User‑Agent можуть оброблятися для захисту від зловживань (rate‑limit) і безпеки. Ми прагнемо не зберігати їх довше, ніж необхідно для цих цілей.
+        IP‑адреса та User‑Agent можуть враховуватися на стороні backend для захисту від зловживань (rate‑limit) і безпеки <b>в моменті обробки запиту</b>, без запису в постійні логи і без цілеспрямованого зберігання для маркетингу.
       </p>
 
-      <h2>4. Навіщо ми використовуємо дані</h2>
+      <h2>4. Правові підстави обробки (GDPR Art. 6)</h2>
+      <ul>
+        <li><b>Виконання договору (Art. 6(1)(b))</b> — створення акаунта, надання VPN‑сервісу, видача VPN‑облікових даних, керування підпискою.</li>
+        <li><b>Законний інтерес (Art. 6(1)(f))</b> — безпека та захист від зловживань (у т.ч. ефемерний rate‑limit без постійного зберігання IP/UA), агрегована аналітика та звіти про збої через Firebase без зіставлення з акаунтом FollowNet у консолі розробника.</li>
+        <li><b>Згода (Art. 6(1)(a))</b> — коли це явно запитано (наприклад, необов’язкові сповіщення).</li>
+        <li><b>Юридичний обов’язок (Art. 6(1)(c))</b> — відповідь на законні запити уповноважених органів.</li>
+      </ul>
+
+      <h2>5. Навіщо ми використовуємо дані</h2>
       <ul>
         <li>Надання VPN‑сервісу та видача VPN‑облікових даних.</li>
         <li>Авторизація (код на email), безпека та запобігання зловживанням.</li>
         <li>Ліміти Free та умови Premium (трафік/пристрої), перевірка підписок і відновлення покупок.</li>
-        <li>Підтримка користувачів та покращення продукту (аналітика).</li>
+        <li>Підтримка користувачів та покращення продукту (аналітика та діагностика збоїв).</li>
       </ul>
 
-      <h2>5. З ким ми ділимося даними</h2>
+      <h2>6. З ким ми ділимося даними</h2>
       <ul>
         <li><b>Apple</b> — покупки та підписки (App Store).</li>
         <li><b>Apple / Google</b> — якщо ви використовуєте Sign in with Apple / Google Sign‑In.</li>
         <li><b>Провайдер email</b> (SMTP) — відправка коду входу.</li>
         <li><b>Інфраструктура/хостинг</b> — розміщення backend та VPN‑серверів.</li>
-        <li><b>Google Firebase</b> — аналітика застосунку (якщо увімкнено у збірці).</li>
+        <li><b>Google Firebase</b> — Analytics і Crashlytics (якщо увімкнено у збірці).</li>
       </ul>
-      <p class="muted">Ми не продаємо персональні дані.</p>
+      <p class="muted">Ми не продаємо і не «share» персональні дані (у значенні CCPA/CPRA).</p>
 
-      <h2>6. Зберігання даних</h2>
+      <h2>7. Міжнародна передача даних</h2>
+      <p class="muted">
+        Для роботи сервісу дані можуть передаватися та зберігатися за межами Європейського економічного простору (ЄЕП), зокрема в країнах розташування VPN‑серверів і у постачальників (наприклад, Google/Firebase у США).
+        Такі передачі здійснюються на підставі застосовних юридичних механізмів, зокрема <em>Standard Contractual Clauses</em> Європейської комісії, із вжиттям розумних заходів захисту даних.
+      </p>
+
+      <h2>8. Зберігання даних</h2>
       <ul>
         <li>Дані акаунта та підписки — поки акаунт активний або поки це потрібно на законних підставах.</li>
         <li>Технічні дані сесій/трафіку — мінімально необхідний час для роботи сервісу, лімітів і безпеки.</li>
         <li>Серверні логи подій (підключення, вебхуки Apple, адмін‑дії) — не довше, ніж потрібно для роботи сервісу та підтримки.</li>
         <li>Тікети підтримки — поки це потрібно для обробки звернення та якості сервісу.</li>
+        <li>Діагностика Firebase (Analytics, Crashlytics) — згідно зі строками та налаштуваннями зберігання Google/Firebase.</li>
       </ul>
 
-      <h2>7. Видалення акаунта</h2>
+      <h2>9. Безпека</h2>
+      <p class="muted">
+        Ми застосовуємо розумні технічні та організаційні заходи: шифрування даних під час передачі (TLS), шифрування VPN‑тунелів (IKEv2/WireGuard), зберігання токенів у Keychain iOS, обмежений доступ адміністраторів, журналювання адмін‑дій.
+      </p>
+
+      <h2>10. Cookies і сайт</h2>
+      <p class="muted">
+        Сайт follow-net.com — це лендинг. Ми не використовуємо cookies для рекламного трекінгу на сайті. Технічні/службові cookies можуть використовуватися лише для коректної роботи сторінок.
+      </p>
+
+      <h2>11. Діти</h2>
+      <p class="muted">
+        Сервіс не призначений для осіб молодше 13 років (або молодше віку цифрової згоди у вашій країні). Ми свідомо не збираємо дані таких осіб. Якщо ви дізналися, що дитина надала нам дані без згоди батьків/опікунів, напишіть нам — ми їх видалимо.
+      </p>
+
+      <h2>12. Видалення акаунта</h2>
       <p class="muted">
         Ви можете видалити акаунт у застосунку. Після видалення ми видаляємо дані акаунта та пов’язані дані (пристрої, VPN‑облікові дані, записи підписки, тікети підтримки та пов’язані технічні записи),
         окрім випадків, коли зберігання вимагається законом або необхідне для запобігання зловживанням.
       </p>
 
-      <h2>8. Ваші права</h2>
+      <h2>13. Ваші права (GDPR / CCPA)</h2>
+      <p class="muted">Відповідно до застосовного законодавства ви маєте право:</p>
+      <ul>
+        <li><b>Доступ</b> до своїх даних і отримання їх копії.</li>
+        <li><b>Виправлення</b> неточних або неповних даних.</li>
+        <li><b>Видалення</b> даних («право бути забутим»).</li>
+        <li><b>Обмеження</b> обробки в певних випадках.</li>
+        <li><b>Переносимість</b> даних у структурованому форматі.</li>
+        <li><b>Заперечення</b> проти обробки на підставі законного інтересу.</li>
+        <li><b>Відкликати згоду</b> в будь‑який час (якщо обробка ґрунтується на згоді).</li>
+        <li><b>Подати скаргу</b> до наглядового органу із захисту даних вашої країни ЄС/ЄЕП.</li>
+      </ul>
       <p class="muted">
-        Ви можете запросити доступ/виправлення/видалення даних — напишіть нам: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Для резидентів Каліфорнії (CCPA/CPRA):</strong> ви маєте право знати, які категорії даних ми збираємо, право на видалення, право «opt‑out» від продажу/«share» даних (ми не продаємо і не «share» дані), а також право на недискримінацію при реалізації прав.
+      </p>
+      <p class="muted">
+        Щоб скористатися правами, напишіть на <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Ми відповідаємо у розумний строк згідно із законом.
       </p>
 
-      <h2>9. Зміни</h2>
+      <h2>14. Умови використання</h2>
+      <p class="muted">
+        Ця політика доповнює наші Умови використання: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Зміни</h2>
       <p class="muted">
         Ми можемо оновлювати цю політику. Дата оновлення вказується вгорі сторінки.
       </p>
@@ -255,7 +365,7 @@
   <section class="doc" *ngSwitchCase="'de'">
     <div class="doc-header">
       <h1>FollowNet VPN Datenschutzerklärung</h1>
-      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Diese Erklärung beschreibt, welche Daten wir in der FollowNet VPN App und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
         Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
@@ -263,12 +373,13 @@
     </div>
 
     <div class="card">
-      <h2>1. Wer wir sind</h2>
+      <h2>1. Verantwortlicher (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN ist ein VPN‑Dienst. Datenschutz‑Kontakt: <span class="mono">noreply&#64;follow-net.com</span>.
+        Verantwortlicher im Sinne der DSGVO ist <strong>FollowNet</strong> („FollowNet“, „wir“).
+        Datenschutz‑Kontakt und Anfragen betroffener Personen: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
-      <h2>2. Hinweis zu “Logs”</h2>
+      <h2>2. Hinweis zu „Logs“</h2>
       <p class="muted">
         Wir zeichnen weder Browserverlauf noch Inhalte des Datenverkehrs auf (besuchte Seiten, Nachrichteninhalte usw.).
         Für den VPN‑Betrieb und Plan‑Management verarbeiten wir begrenzte technische Metadaten (z. B. Sitzungszeit und Traffic‑Volumen).
@@ -283,7 +394,7 @@
       <ul>
         <li><b>E‑Mail</b> (wenn Sie sich per E‑Mail‑Code anmelden).</li>
         <li><b>User ID</b> — serverseitige Konto‑ID (bei Registrierung vergeben).</li>
-        <li><b>deviceId</b> — eindeutige Installations‑ID der App: zufällige UUID, beim ersten Start erzeugt und im iOS‑Schlüsselbund (Keychain) gespeichert; wird an unsere Server für Geräte‑Limits und Kontosicherheit übertragen. IDFA und IDFV werden dafür nicht verwendet.</li>
+        <li><b>deviceId</b> — zufällige UUID, beim ersten Start erzeugt und im iOS‑Schlüsselbund (Keychain) gespeichert; wird an unsere Server für Geräte‑Limits und Kontosicherheit übertragen. IDFA/IDFV werden dafür nicht verwendet.</li>
       </ul>
       <p class="muted">
         Anmeldung über <b>Sign in with Apple</b> und/oder <b>Google Sign‑In</b> kann verfügbar sein. Dann erhalten wir die für die Authentifizierung notwendigen Daten vom jeweiligen Anbieter.
@@ -295,9 +406,6 @@
         <li>Apple‑Transaktions‑IDs (z. B. original transaction id) zur Validierung und Wiederherstellung.</li>
         <li>Wir erhalten keine Kartendaten — Zahlungen werden von Apple verarbeitet.</li>
       </ul>
-      <p class="muted">
-        Kostenpflichtige Abonnements werden ausschließlich in der iOS‑App über den App Store abgeschlossen; auf follow-net.com bieten wir keine Abo‑Zahlung an.
-      </p>
 
       <h3>3.3 VPN‑Dienst‑Daten</h3>
       <ul>
@@ -315,59 +423,117 @@
       <ul>
         <li>Support‑Tickets und Nachrichten sowie Informationen, die Sie freiwillig teilen (Logs/Screenshots/Problembeschreibung).</li>
       </ul>
-      <h3>3.5 App‑Analytics</h3>
+
+      <h3>3.5 App‑Analytics (Firebase Analytics)</h3>
       <p class="muted">
-        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events: VPN‑Verbindungserfolg/‑fehler, Serverauswahl, Kauf‑/Abo‑Screens, Kauf‑/Restore‑Ergebnis, Speed‑Test‑Start. Es werden nur solche Events gesendet, keine Browsing‑Historie und keine Identifikation außer Ihrem Konto. Das hilft, UX und Zuverlässigkeit zu verbessern.
+        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events: VPN‑Verbindungserfolg/‑fehler, Serverauswahl, Kauf‑/Abo‑Screens, Kauf‑/Restore‑Ergebnis, Speed‑Test‑Start. Es werden nur solche Events übertragen; kein Browserverlauf und kein Inhalt des Datenverkehrs.
+        Wir <b>verknüpfen</b> Analytics‑Events <b>nicht</b> mit Ihrem FollowNet‑Konto in der Firebase‑Konsole (z. B. wird <span class="mono">setUserId</span> für Firebase <b>nicht</b> verwendet): auf Googles Seite sind sie mit einer anonymen Installations‑/App‑Instanz‑ID verknüpft und von Ihrer User ID und E‑Mail in unserem System getrennt.
+        Datenschutzhinweise zu Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Server‑Ereignislogs</h3>
+      <h3>3.6 Absturzberichte (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Zur Diagnose von Abstürzen und Stabilität wird <b>Firebase Crashlytics</b> (Google) genutzt. Es können technische Absturzdaten übermittelt werden (Gerätemodell, OS‑Version, Stacktrace, Zeitpunkt).
+        Solange wir Crashlytics nicht mit Ihrer FollowNet User ID/E‑Mail im SDK verknüpfen, enthalten Berichte in der Regel keine FollowNet‑Kontodaten; die Verarbeitung richtet sich nach den Richtlinien von Google/Firebase.
+      </p>
+
+      <h3>3.7 Server‑Ereignislogs</h3>
       <p class="muted">
         Auf Servern werden technische Ereignislogs für Betrieb und Support gespeichert: VPN‑Verbindungsereignis (Server‑ID), Apple‑Webhook‑Events (Typ, productId, originalTransactionId, Umgebung), Admin‑Aktionen. Kein Traffic‑Inhalt; Daten nur so lange wie für Betrieb und Sicherheit nötig.
       </p>
 
-      <h3>3.7 IP‑Adresse und User‑Agent</h3>
+      <h3>3.8 IP‑Adresse und User‑Agent</h3>
       <p class="muted">
-        IP‑Adresse und User‑Agent können für Abuse‑Prevention (Rate‑Limiting) und Sicherheit verarbeitet werden. Wir versuchen, diese Daten nicht länger als nötig aufzubewahren.
+        IP‑Adresse und User‑Agent können auf dem Backend für Abuse‑Prevention (Rate‑Limiting) und Sicherheit <b>im Rahmen der Request‑Verarbeitung</b> berücksichtigt werden, <b>ohne</b> dauerhafte Protokollierung und ohne zweckgebundene Speicherung für Marketing.
       </p>
 
-      <h2>4. Zwecke</h2>
+      <h2>4. Rechtsgrundlagen (DSGVO Art. 6)</h2>
+      <ul>
+        <li><b>Vertragserfüllung (Art. 6(1)(b))</b> — Kontoerstellung, VPN‑Dienst, VPN‑Credentials, Abo‑Verwaltung.</li>
+        <li><b>Berechtigte Interessen (Art. 6(1)(f))</b> — Sicherheit und Abuse‑Prevention (u. a. ephemeres Rate‑Limiting ohne dauerhafte Speicherung von IP/UA), aggregierte Analytics und Absturzberichte über Firebase ohne Zuordnung zum FollowNet‑Konto in der Entwicklerkonsole.</li>
+        <li><b>Einwilligung (Art. 6(1)(a))</b> — wenn ausdrücklich abgefragt (z. B. optionale Benachrichtigungen).</li>
+        <li><b>Rechtliche Verpflichtung (Art. 6(1)(c))</b> — Antwort auf rechtmäßige Anfragen von Behörden.</li>
+      </ul>
+
+      <h2>5. Zwecke</h2>
       <ul>
         <li>Bereitstellung des VPN‑Dienstes und Ausgabe von VPN‑Zugangsdaten.</li>
         <li>Anmeldung (E‑Mail‑Code), Sicherheit und Abuse‑Prevention.</li>
         <li>Free‑Limits und Premium‑Durchsetzung (Traffic/Geräte), Abo‑Validierung und Restore.</li>
-        <li>Support und Produktverbesserungen (Analytics).</li>
+        <li>Support und Produktverbesserungen (Analytics und Absturzdiagnose).</li>
       </ul>
 
-      <h2>5. Weitergabe</h2>
+      <h2>6. Weitergabe</h2>
       <ul>
         <li><b>Apple</b> — Käufe und Abos (App Store).</li>
         <li><b>Apple / Google</b> — bei Sign in with Apple / Google Sign‑In.</li>
         <li><b>E‑Mail‑Provider</b> (SMTP) — Versand von Login‑Codes.</li>
         <li><b>Hosting/Infrastructure</b> — Backend und VPN‑Server.</li>
-        <li><b>Google Firebase</b> — App‑Analytics (falls aktiviert).</li>
+        <li><b>Google Firebase</b> — Analytics und Crashlytics (falls aktiviert).</li>
       </ul>
-      <p class="muted">Wir verkaufen keine personenbezogenen Daten.</p>
+      <p class="muted">Wir verkaufen oder „sharen“ keine personenbezogenen Daten (im Sinne von CCPA/CPRA).</p>
 
-      <h2>6. Aufbewahrung</h2>
+      <h2>7. Internationaler Datentransfer</h2>
+      <p class="muted">
+        Für den Betrieb des Dienstes können Daten außerhalb des Europäischen Wirtschaftsraums (EWR) übertragen und gespeichert werden, u. a. in Ländern, in denen VPN‑Server stehen, sowie bei Anbietern (z. B. Google/Firebase in den USA).
+        Solche Übertragungen erfolgen auf Grundlage geeigneter Rechtsmechanismen, insbesondere der <em>Standard Contractual Clauses</em> der Europäischen Kommission, mit angemessenen Schutzmaßnahmen.
+      </p>
+
+      <h2>8. Aufbewahrung</h2>
       <ul>
         <li>Konto/Abo‑Daten — solange das Konto aktiv ist oder für legitime Zwecke erforderlich.</li>
         <li>Sitzungs/Traffic‑Metadaten — minimal notwendig für Betrieb, Limits und Sicherheit.</li>
         <li>Server‑Ereignislogs (Verbindungen, Apple‑Webhooks, Admin‑Aktionen) — nicht länger als für Betrieb und Support nötig.</li>
         <li>Support‑Tickets — soweit nötig für Bearbeitung und Servicequalität.</li>
+        <li>Firebase‑Diagnose (Analytics, Crashlytics) — gemäß Aufbewahrungsfristen und Einstellungen von Google/Firebase.</li>
       </ul>
 
-      <h2>7. Konto‑Löschung</h2>
+      <h2>9. Sicherheit</h2>
+      <p class="muted">
+        Wir setzen angemessene technische und organisatorische Maßnahmen ein: Verschlüsselung bei der Übertragung (TLS), Verschlüsselung der VPN‑Tunnel (IKEv2/WireGuard), Speicherung von Tokens im iOS‑Keychain, eingeschränkter Admin‑Zugriff, Protokollierung von Admin‑Aktionen.
+      </p>
+
+      <h2>10. Cookies und Website</h2>
+      <p class="muted">
+        Die Website follow-net.com ist eine Landingpage. Wir verwenden keine Cookies für Werbe‑Tracking. Technische/Dienstcookies können ausschließlich zum ordnungsgemäßen Betrieb der Seiten eingesetzt werden.
+      </p>
+
+      <h2>11. Kinder</h2>
+      <p class="muted">
+        Der Dienst ist nicht für Personen unter 13 Jahren (bzw. unter dem digitalen Einwilligungsalter in Ihrem Land) bestimmt. Wir sammeln wissentlich keine Daten solcher Personen. Falls Sie erfahren, dass ein Kind uns ohne Zustimmung der Erziehungsberechtigten Daten übermittelt hat, kontaktieren Sie uns — wir löschen die Daten.
+      </p>
+
+      <h2>12. Konto‑Löschung</h2>
       <p class="muted">
         Sie können Ihr Konto in der App löschen. Wir löschen Konto‑ und zugehörige Daten (Geräte, VPN‑Credentials, Abo‑Records, Support‑Tickets und technische Records),
         außer wo Aufbewahrung gesetzlich erforderlich oder für Abuse‑Prevention nötig ist.
       </p>
 
-      <h2>8. Ihre Rechte</h2>
+      <h2>13. Ihre Rechte (DSGVO / CCPA)</h2>
+      <p class="muted">Nach geltendem Recht haben Sie folgende Rechte:</p>
+      <ul>
+        <li><b>Auskunft</b> und Erhalt einer Kopie Ihrer Daten.</li>
+        <li><b>Berichtigung</b> unrichtiger oder unvollständiger Daten.</li>
+        <li><b>Löschung</b> („Recht auf Vergessenwerden“).</li>
+        <li><b>Einschränkung</b> der Verarbeitung in bestimmten Fällen.</li>
+        <li><b>Datenübertragbarkeit</b> in strukturiertem Format.</li>
+        <li><b>Widerspruch</b> gegen die Verarbeitung auf Grundlage berechtigter Interessen.</li>
+        <li><b>Widerruf der Einwilligung</b> jederzeit (bei auf Einwilligung beruhender Verarbeitung).</li>
+        <li><b>Beschwerde</b> bei der Datenschutzaufsichtsbehörde Ihres EU/EWR‑Landes.</li>
+      </ul>
       <p class="muted">
-        Sie können Auskunft/Berichtigung/Löschung anfragen: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Für Einwohner Kaliforniens (CCPA/CPRA):</strong> Sie haben das Recht zu erfahren, welche Datenkategorien wir erheben, auf Löschung, auf „Opt‑out“ vom Verkauf/„Sharing“ (wir verkaufen/sharen keine Daten) sowie das Recht auf Nicht‑Diskriminierung.
+      </p>
+      <p class="muted">
+        Zur Ausübung Ihrer Rechte schreiben Sie an <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Wir antworten fristgemäß gemäß geltendem Recht.
       </p>
 
-      <h2>9. Änderungen</h2>
+      <h2>14. Nutzungsbedingungen</h2>
+      <p class="muted">
+        Diese Erklärung ergänzt unsere Nutzungsbedingungen: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Änderungen</h2>
       <p class="muted">
         Wir können diese Erklärung aktualisieren. Das Datum oben zeigt die letzte Version.
       </p>
@@ -378,7 +544,7 @@
   <section class="doc" *ngSwitchCase="'es'">
     <div class="doc-header">
       <h1>Política de privacidad de FollowNet VPN</h1>
-      <p class="muted">Última actualización: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Última actualización: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Esta política explica qué datos procesamos en la app y el sitio de FollowNet VPN, por qué los necesitamos y qué derechos tienes.
         Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
@@ -386,9 +552,10 @@
     </div>
 
     <div class="card">
-      <h2>1. Quiénes somos</h2>
+      <h2>1. Responsable del tratamiento (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN es un servicio de VPN. Contacto de privacidad: <span class="mono">noreply&#64;follow-net.com</span>.
+        El responsable del tratamiento en el sentido del RGPD es <strong>FollowNet</strong> (“FollowNet”, “nosotros”).
+        Contacto de privacidad y solicitudes de interesados: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
       <h2>2. Nota sobre “logs”</h2>
@@ -406,7 +573,7 @@
       <ul>
         <li><b>Email</b> (si inicias sesión por código).</li>
         <li><b>User ID</b> — identificador de tu cuenta en nuestros servidores (asignado al registrarte).</li>
-        <li><b>deviceId</b> — ID única de la instalación de la app: UUID aleatorio, generado en el primer inicio y guardado en el llavero (Keychain) de iOS; se envía a nuestros servidores para límites de dispositivos y seguridad de la cuenta. No usamos IDFA ni IDFV para esto.</li>
+        <li><b>deviceId</b> — UUID aleatorio, generado en el primer inicio y guardado en el llavero (Keychain) de iOS; se envía a nuestros servidores para límites de dispositivos y seguridad. No usamos IDFA ni IDFV para esto.</li>
       </ul>
       <p class="muted">
         Puede estar disponible el inicio de sesión con <b>Sign in with Apple</b> y/o <b>Google Sign‑In</b>. En ese caso, recibimos los datos necesarios para autenticarte del proveedor correspondiente.
@@ -418,9 +585,6 @@
         <li>Identificadores de transacción de Apple (p. ej., original transaction id) para validación y restauración.</li>
         <li>No recibimos datos de tu tarjeta — los pagos los procesa Apple.</li>
       </ul>
-      <p class="muted">
-        La suscripción de pago solo se contrata en la app iOS mediante App Store; en follow-net.com no cobramos la suscripción.
-      </p>
 
       <h3>3.3 Datos del servicio VPN</h3>
       <ul>
@@ -438,59 +602,117 @@
       <ul>
         <li>Tickets y mensajes de soporte, y cualquier información que compartas (logs/capturas/descripción del problema).</li>
       </ul>
-      <h3>3.5 Analítica</h3>
+
+      <h3>3.5 Analítica (Firebase Analytics)</h3>
       <p class="muted">
-        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos de producto: éxito/fallo de conexión VPN, selección de servidor, pantallas de compra/suscripción, resultado de compra o restauración, inicio de speed test. Solo se envían estos eventos, sin historial de navegación ni identificación más allá de tu cuenta. Ayuda a mejorar UX y fiabilidad.
+        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos de producto: éxito/fallo de conexión VPN, selección de servidor, pantallas de compra/suscripción, resultado de compra o restauración, inicio de speed test. Solo se transmite este conjunto de eventos; no hay historial de sitios ni contenido del tráfico.
+        <b>No vinculamos</b> los eventos de Analytics con tu cuenta FollowNet en la consola de Firebase (por ejemplo, <span class="mono">setUserId</span> <b>no se utiliza</b> para Firebase): en el lado de Google se asocian a un identificador anónimo de instalación/instancia de la app y están separados de tu User ID y email en nuestro sistema.
+        Política de Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Logs de eventos en servidor</h3>
+      <h3>3.6 Informes de fallos (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Para diagnosticar cierres y estabilidad se usa <b>Firebase Crashlytics</b> (Google). Puede recibir datos técnicos del fallo (modelo del dispositivo, versión del SO, traza de pila, momento del evento).
+        Mientras no emparejemos Crashlytics con tu User ID/email FollowNet en el SDK, los informes normalmente no incluyen tus credenciales FollowNet; el tratamiento se rige por las políticas de Google/Firebase.
+      </p>
+
+      <h3>3.7 Logs de eventos en servidor</h3>
       <p class="muted">
         En los servidores se guardan logs técnicos de eventos para operación y soporte: evento de conexión VPN (id de servidor), eventos de webhook de Apple (tipo, productId, originalTransactionId, entorno), acciones de administración. No se registra contenido del tráfico; los datos se conservan solo el tiempo necesario para operación y seguridad.
       </p>
 
-      <h3>3.7 IP y User‑Agent</h3>
+      <h3>3.8 IP y User‑Agent</h3>
       <p class="muted">
-        La IP y el User‑Agent pueden procesarse para prevención de abuso (rate‑limit) y seguridad. Intentamos no conservarlos más tiempo del necesario.
+        La IP y el User‑Agent pueden tenerse en cuenta en el backend para prevención de abuso (rate‑limit) y seguridad <b>durante el procesamiento de la solicitud</b>, sin escribirse en logs persistentes ni conservarse con fines de marketing.
       </p>
 
-      <h2>4. Finalidades</h2>
+      <h2>4. Bases legales (RGPD Art. 6)</h2>
+      <ul>
+        <li><b>Ejecución de contrato (Art. 6(1)(b))</b> — creación de cuenta, servicio VPN, credenciales VPN, gestión de suscripción.</li>
+        <li><b>Interés legítimo (Art. 6(1)(f))</b> — seguridad y prevención de abuso (incl. rate‑limit efímero sin almacenamiento permanente de IP/UA), analítica agregada e informes de fallos vía Firebase sin emparejar con la cuenta FollowNet en la consola del desarrollador.</li>
+        <li><b>Consentimiento (Art. 6(1)(a))</b> — cuando se solicita expresamente (p. ej., notificaciones opcionales).</li>
+        <li><b>Obligación legal (Art. 6(1)(c))</b> — respuestas a solicitudes legítimas de autoridades.</li>
+      </ul>
+
+      <h2>5. Finalidades</h2>
       <ul>
         <li>Proporcionar el servicio VPN y emitir credenciales VPN.</li>
         <li>Inicio de sesión (código), seguridad y prevención de abuso.</li>
         <li>Límites Free y control de Premium (tráfico/dispositivos), validación de suscripción y restauración.</li>
-        <li>Soporte y mejoras del producto (analítica).</li>
+        <li>Soporte y mejoras del producto (analítica y diagnóstico de fallos).</li>
       </ul>
 
-      <h2>5. Compartición</h2>
+      <h2>6. Compartición</h2>
       <ul>
         <li><b>Apple</b> — compras y suscripciones (App Store).</li>
         <li><b>Apple / Google</b> — si usas Sign in with Apple / Google Sign‑In.</li>
         <li><b>Proveedor de email</b> (SMTP) — envío de códigos.</li>
         <li><b>Infraestructura/hosting</b> — backend y servidores VPN.</li>
-        <li><b>Google Firebase</b> — analítica (si está habilitada).</li>
+        <li><b>Google Firebase</b> — Analytics y Crashlytics (si está habilitado).</li>
       </ul>
-      <p class="muted">No vendemos datos personales.</p>
+      <p class="muted">No vendemos ni “compartimos” datos personales (en el sentido de CCPA/CPRA).</p>
 
-      <h2>6. Conservación</h2>
+      <h2>7. Transferencias internacionales</h2>
+      <p class="muted">
+        Para operar el servicio, los datos pueden transferirse y almacenarse fuera del Espacio Económico Europeo (EEE), incluyendo los países donde se ubican los servidores VPN y proveedores (p. ej., Google/Firebase en EE. UU.).
+        Estas transferencias se realizan con base en mecanismos legales aplicables, como las <em>Cláusulas Contractuales Tipo</em> de la Comisión Europea, adoptando medidas razonables de protección.
+      </p>
+
+      <h2>8. Conservación</h2>
       <ul>
         <li>Datos de cuenta/suscripción — mientras la cuenta esté activa o sea necesario por fines legítimos.</li>
         <li>Metadatos técnicos de sesión/tráfico — el mínimo necesario para operación, límites y seguridad.</li>
         <li>Logs de eventos en servidor (conexiones, webhooks Apple, acciones admin) — no más de lo necesario para operación y soporte.</li>
         <li>Tickets de soporte — según sea necesario para atender solicitudes y calidad del servicio.</li>
+        <li>Diagnóstico de Firebase (Analytics, Crashlytics) — según plazos y configuración de retención de Google/Firebase.</li>
       </ul>
 
-      <h2>7. Eliminación de cuenta</h2>
+      <h2>9. Seguridad</h2>
+      <p class="muted">
+        Aplicamos medidas técnicas y organizativas razonables: cifrado en tránsito (TLS), cifrado de túneles VPN (IKEv2/WireGuard), almacenamiento de tokens en Keychain iOS, acceso restringido de administradores, registro de acciones administrativas.
+      </p>
+
+      <h2>10. Cookies y sitio web</h2>
+      <p class="muted">
+        El sitio follow-net.com es una landing page. No utilizamos cookies para seguimiento publicitario. Las cookies técnicas/operativas solo se usan para el correcto funcionamiento de las páginas.
+      </p>
+
+      <h2>11. Menores</h2>
+      <p class="muted">
+        El servicio no está dirigido a menores de 13 años (o por debajo de la edad de consentimiento digital en tu país). No recopilamos datos de estos menores conscientemente. Si descubres que un menor nos ha proporcionado datos sin consentimiento de sus padres/tutores, escríbenos y los eliminaremos.
+      </p>
+
+      <h2>12. Eliminación de cuenta</h2>
       <p class="muted">
         Puedes eliminar tu cuenta en la app. Eliminamos datos de cuenta y registros relacionados (dispositivos, credenciales VPN, registros de suscripción, tickets de soporte y registros técnicos),
         excepto cuando la retención sea requerida por ley o necesaria para prevenir abusos.
       </p>
 
-      <h2>8. Tus derechos</h2>
+      <h2>13. Tus derechos (RGPD / CCPA)</h2>
+      <p class="muted">Conforme a la ley aplicable, tienes derecho a:</p>
+      <ul>
+        <li><b>Acceso</b> a tus datos y obtención de una copia.</li>
+        <li><b>Rectificación</b> de datos inexactos o incompletos.</li>
+        <li><b>Supresión</b> (“derecho al olvido”).</li>
+        <li><b>Limitación</b> del tratamiento en ciertos casos.</li>
+        <li><b>Portabilidad</b> de datos en formato estructurado.</li>
+        <li><b>Oposición</b> al tratamiento basado en interés legítimo.</li>
+        <li><b>Retirar el consentimiento</b> en cualquier momento (si el tratamiento se basa en él).</li>
+        <li><b>Presentar una reclamación</b> ante la autoridad de protección de datos de tu país de la UE/EEE.</li>
+      </ul>
       <p class="muted">
-        Puedes solicitar acceso/corrección/eliminación contactando a: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Para residentes de California (CCPA/CPRA):</strong> tienes derecho a saber qué categorías de datos recopilamos, a la supresión, al “opt‑out” de la venta/“share” (no vendemos ni compartimos datos) y a la no discriminación en el ejercicio de tus derechos.
+      </p>
+      <p class="muted">
+        Para ejercer tus derechos, escribe a <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Respondemos en plazo razonable conforme a la ley.
       </p>
 
-      <h2>9. Cambios</h2>
+      <h2>14. Términos de uso</h2>
+      <p class="muted">
+        Esta política complementa nuestros Términos de uso: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Cambios</h2>
       <p class="muted">
         Podemos actualizar esta política. La fecha arriba indica la última revisión.
       </p>
@@ -501,7 +723,7 @@
   <section class="doc" *ngSwitchCase="'fr'">
     <div class="doc-header">
       <h1>Politique de confidentialité FollowNet VPN</h1>
-      <p class="muted">Dernière mise à jour : <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Cette politique explique quelles données nous traitons dans l’application et sur le site FollowNet VPN, pourquoi, et quels sont vos droits.
         Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
@@ -509,12 +731,13 @@
     </div>
 
     <div class="card">
-      <h2>1. Qui sommes‑nous</h2>
+      <h2>1. Responsable du traitement (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN est un service VPN. Contact confidentialité : <span class="mono">noreply&#64;follow-net.com</span>.
+        Le responsable du traitement au sens du RGPD est <strong>FollowNet</strong> (« FollowNet », « nous »).
+        Contact confidentialité et demandes des personnes concernées : <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
-      <h2>2. À propos des “logs”</h2>
+      <h2>2. À propos des « logs »</h2>
       <p class="muted">
         Nous n’enregistrons pas l’historique de navigation ni le contenu du trafic (sites/pages visités, contenu des messages, etc.).
         Pour opérer le VPN et gérer les plans, nous traitons des métadonnées techniques limitées (ex. durée de session et volume de trafic).
@@ -529,7 +752,7 @@
       <ul>
         <li><b>Email</b> (si connexion par code).</li>
         <li><b>User ID</b> — identifiant de votre compte sur nos serveurs (attribué à l’inscription).</li>
-        <li><b>deviceId</b> — identifiant unique d’installation de l’app : UUID aléatoire, créé au premier lancement et stocké dans le trousseau (Keychain) iOS ; envoyé à nos serveurs pour les limites d’appareils et la sécurité du compte. L’IDFA et l’IDFV ne sont pas utilisés à cette fin.</li>
+        <li><b>deviceId</b> — UUID aléatoire, créé au premier lancement et stocké dans le trousseau (Keychain) iOS ; envoyé à nos serveurs pour les limites d’appareils et la sécurité. L’IDFA et l’IDFV ne sont pas utilisés à cette fin.</li>
       </ul>
       <p class="muted">
         La connexion via <b>Sign in with Apple</b> et/ou <b>Google Sign‑In</b> peut être disponible. Dans ce cas, nous recevons les données nécessaires à l’authentification du fournisseur concerné.
@@ -541,9 +764,6 @@
         <li>Identifiants de transaction Apple (ex. original transaction id) pour validation et restauration.</li>
         <li>Nous ne recevons pas les données de carte — les paiements sont traités par Apple.</li>
       </ul>
-      <p class="muted">
-        L’abonnement payant est souscrit uniquement dans l’app iOS via l’App Store ; nous n’acceptons pas de paiement d’abonnement sur follow-net.com.
-      </p>
 
       <h3>3.3 Données du service VPN</h3>
       <ul>
@@ -561,59 +781,117 @@
       <ul>
         <li>Tickets et messages de support, ainsi que toute information que vous partagez (logs/captures/description).</li>
       </ul>
-      <h3>3.5 Analytique</h3>
+
+      <h3>3.5 Analytique (Firebase Analytics)</h3>
       <p class="muted">
-        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit : succès/échec de connexion VPN, choix du serveur, écrans achat/abonnement, résultat d’achat ou restauration, démarrage du speed test. Seuls ces événements sont envoyés, sans historique de navigation ni identification au-delà de votre compte. Cela permet d’améliorer l’UX et la fiabilité.
+        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit : succès/échec de connexion VPN, choix du serveur, écrans achat/abonnement, résultat d’achat ou restauration, démarrage du speed test. Seul cet ensemble d’événements est transmis ; pas d’historique de sites ni de contenu de trafic.
+        Nous <b>ne lions pas</b> les événements Analytics à votre compte FollowNet dans la console Firebase (par ex. <span class="mono">setUserId</span> n’est <b>pas</b> utilisé pour Firebase) : côté Google, ils sont associés à un identifiant anonyme d’installation/instance d’app et sont séparés de votre User ID et de votre e‑mail dans notre système.
+        Politique Google Firebase : <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Logs d’événements serveur</h3>
+      <h3>3.6 Rapports de plantage (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Pour diagnostiquer les plantages et la stabilité, <b>Firebase Crashlytics</b> (Google) est utilisé. Il peut recevoir des données techniques sur le plantage (modèle d’appareil, version OS, trace de pile, horodatage).
+        Tant que nous n’associons pas Crashlytics à votre User ID/e‑mail FollowNet dans le SDK, les rapports ne contiennent en principe pas vos identifiants FollowNet ; le traitement est régi par les politiques Google/Firebase.
+      </p>
+
+      <h3>3.7 Logs d’événements serveur</h3>
       <p class="muted">
         Les serveurs enregistrent des logs techniques d’événements pour l’exploitation et le support : événement de connexion VPN (id serveur), événements webhook Apple (type, productId, originalTransactionId, environnement), actions admin. Aucun contenu de trafic ; les données ne sont conservées que le temps nécessaire à l’exploitation et à la sécurité.
       </p>
 
-      <h3>3.7 Adresse IP et User‑Agent</h3>
+      <h3>3.8 Adresse IP et User‑Agent</h3>
       <p class="muted">
-        L’adresse IP et le User‑Agent peuvent être traités pour la prévention des abus (rate‑limit) et la sécurité. Nous essayons de ne pas les conserver plus longtemps que nécessaire.
+        L’adresse IP et le User‑Agent peuvent être pris en compte côté backend pour la prévention des abus (rate‑limit) et la sécurité <b>pendant le traitement de la requête</b>, sans écriture dans des logs persistants ni conservation à des fins marketing.
       </p>
 
-      <h2>4. Finalités</h2>
+      <h2>4. Bases légales (RGPD Art. 6)</h2>
+      <ul>
+        <li><b>Exécution du contrat (Art. 6(1)(b))</b> — création de compte, service VPN, identifiants VPN, gestion d’abonnement.</li>
+        <li><b>Intérêt légitime (Art. 6(1)(f))</b> — sécurité et prévention des abus (y compris rate‑limit éphémère sans stockage permanent d’IP/UA), analytique agrégée et rapports de plantage via Firebase sans rapprochement avec le compte FollowNet dans la console développeur.</li>
+        <li><b>Consentement (Art. 6(1)(a))</b> — quand explicitement demandé (ex. notifications optionnelles).</li>
+        <li><b>Obligation légale (Art. 6(1)(c))</b> — réponse aux demandes légitimes d’autorités.</li>
+      </ul>
+
+      <h2>5. Finalités</h2>
       <ul>
         <li>Fournir le service VPN et émettre des identifiants VPN.</li>
         <li>Connexion (code), sécurité et prévention des abus.</li>
         <li>Limites Free et contrôle Premium (trafic/appareils), validation d’abonnement et restauration.</li>
-        <li>Support et amélioration du produit (analytique).</li>
+        <li>Support et amélioration du produit (analytique et diagnostic des plantages).</li>
       </ul>
 
-      <h2>5. Partage</h2>
+      <h2>6. Partage</h2>
       <ul>
         <li><b>Apple</b> — achats et abonnements (App Store).</li>
         <li><b>Apple / Google</b> — si vous utilisez Sign in with Apple / Google Sign‑In.</li>
         <li><b>Fournisseur email</b> (SMTP) — envoi des codes.</li>
         <li><b>Infrastructure/hébergement</b> — backend et serveurs VPN.</li>
-        <li><b>Google Firebase</b> — analytique (si activée).</li>
+        <li><b>Google Firebase</b> — Analytics et Crashlytics (si activés).</li>
       </ul>
-      <p class="muted">Nous ne vendons pas de données personnelles.</p>
+      <p class="muted">Nous ne vendons ni ne « partageons » de données personnelles (au sens CCPA/CPRA).</p>
 
-      <h2>6. Conservation</h2>
+      <h2>7. Transferts internationaux</h2>
+      <p class="muted">
+        Pour faire fonctionner le service, les données peuvent être transférées et stockées hors de l’Espace économique européen (EEE), notamment dans les pays où se trouvent les serveurs VPN et chez des prestataires (ex. Google/Firebase aux États‑Unis).
+        Ces transferts s’appuient sur des mécanismes juridiques applicables, notamment les <em>Clauses Contractuelles Types</em> de la Commission européenne, avec des mesures de protection raisonnables.
+      </p>
+
+      <h2>8. Conservation</h2>
       <ul>
         <li>Données de compte/abonnement — tant que le compte est actif ou nécessaire pour des finalités légitimes.</li>
         <li>Métadonnées session/trafic — le minimum nécessaire pour l’exploitation, les limites et la sécurité.</li>
         <li>Logs d’événements serveur (connexions, webhooks Apple, actions admin) — pas plus longtemps que nécessaire pour l’exploitation et le support.</li>
         <li>Tickets de support — selon la nécessité pour traiter les demandes et assurer la qualité.</li>
+        <li>Diagnostics Firebase (Analytics, Crashlytics) — selon les délais et paramètres de conservation Google/Firebase.</li>
       </ul>
 
-      <h2>7. Suppression du compte</h2>
+      <h2>9. Sécurité</h2>
+      <p class="muted">
+        Nous appliquons des mesures techniques et organisationnelles raisonnables : chiffrement en transit (TLS), chiffrement des tunnels VPN (IKEv2/WireGuard), stockage des jetons dans le Keychain iOS, accès administrateur restreint, journalisation des actions admin.
+      </p>
+
+      <h2>10. Cookies et site</h2>
+      <p class="muted">
+        Le site follow-net.com est une landing page. Nous n’utilisons pas de cookies pour le tracking publicitaire. Les cookies techniques/de service peuvent être utilisés uniquement pour le bon fonctionnement des pages.
+      </p>
+
+      <h2>11. Enfants</h2>
+      <p class="muted">
+        Le service n’est pas destiné aux personnes de moins de 13 ans (ou en dessous de l’âge de consentement numérique dans votre pays). Nous ne collectons pas sciemment de données de tels mineurs. Si vous apprenez qu’un enfant nous a fourni des données sans accord parental, contactez‑nous — nous les supprimerons.
+      </p>
+
+      <h2>12. Suppression du compte</h2>
       <p class="muted">
         Vous pouvez supprimer votre compte dans l’app. Nous supprimons les données du compte et les enregistrements associés (appareils, identifiants VPN, abonnements, tickets et enregistrements techniques),
         sauf si la conservation est requise par la loi ou nécessaire pour prévenir les abus.
       </p>
 
-      <h2>8. Vos droits</h2>
+      <h2>13. Vos droits (RGPD / CCPA)</h2>
+      <p class="muted">Selon la loi applicable, vous avez le droit :</p>
+      <ul>
+        <li><b>D’accès</b> à vos données et d’obtenir une copie.</li>
+        <li><b>De rectification</b> des données inexactes ou incomplètes.</li>
+        <li><b>À l’effacement</b> (« droit à l’oubli »).</li>
+        <li><b>À la limitation</b> du traitement dans certains cas.</li>
+        <li><b>À la portabilité</b> dans un format structuré.</li>
+        <li><b>D’opposition</b> au traitement fondé sur l’intérêt légitime.</li>
+        <li><b>De retirer votre consentement</b> à tout moment (si le traitement s’y fonde).</li>
+        <li><b>De déposer une réclamation</b> auprès de l’autorité de protection des données de votre pays de l’UE/EEE.</li>
+      </ul>
       <p class="muted">
-        Vous pouvez demander accès/correction/suppression : <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Pour les résidents de Californie (CCPA/CPRA) :</strong> vous avez le droit de savoir quelles catégories de données nous collectons, à la suppression, à l’« opt‑out » de la vente/« share » (nous ne vendons ni ne partageons de données) et à la non‑discrimination.
+      </p>
+      <p class="muted">
+        Pour exercer vos droits, écrivez à <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Nous répondons dans un délai raisonnable conforme à la loi.
       </p>
 
-      <h2>9. Modifications</h2>
+      <h2>14. Conditions d’utilisation</h2>
+      <p class="muted">
+        Cette politique complète nos Conditions d’utilisation : <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Modifications</h2>
       <p class="muted">
         Nous pouvons mettre à jour cette politique. La date ci‑dessus reflète la dernière version.
       </p>
@@ -624,7 +902,7 @@
   <section class="doc" *ngSwitchCase="'pt'">
     <div class="doc-header">
       <h1>Política de privacidade do FollowNet VPN</h1>
-      <p class="muted">Última atualização: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Última atualização: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         Esta política explica quais dados processamos no app e no site do FollowNet VPN, por que precisamos deles e quais são seus direitos.
         Buscamos coletar o mínimo necessário para operar o serviço com segurança.
@@ -632,9 +910,10 @@
     </div>
 
     <div class="card">
-      <h2>1. Quem somos</h2>
+      <h2>1. Controlador de dados (Data Controller)</h2>
       <p class="muted">
-        FollowNet VPN é um serviço de VPN. Contato de privacidade: <span class="mono">noreply&#64;follow-net.com</span>.
+        O controlador de dados, nos termos do GDPR, é a <strong>FollowNet</strong> (“FollowNet”, “nós”).
+        Contato de privacidade e pedidos de titulares: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
       <h2>2. Nota sobre “logs”</h2>
@@ -652,7 +931,7 @@
       <ul>
         <li><b>Email</b> (se o login for por código).</li>
         <li><b>User ID</b> — identificador da sua conta nos nossos servidores (atribuído no cadastro).</li>
-        <li><b>deviceId</b> — ID único de instalação do app: UUID aleatório, gerado na primeira abertura e armazenado no Keychain do iOS; enviado aos nossos servidores para limites de dispositivos e segurança da conta. IDFA e IDFV não são usados para isso.</li>
+        <li><b>deviceId</b> — UUID aleatório, gerado na primeira abertura e armazenado no Keychain do iOS; enviado aos nossos servidores para limites de dispositivos e segurança. IDFA e IDFV não são usados para isso.</li>
       </ul>
       <p class="muted">
         O login via <b>Sign in with Apple</b> e/ou <b>Google Sign‑In</b> pode estar disponível. Nesse caso, recebemos os dados necessários para autenticação do provedor correspondente.
@@ -664,9 +943,6 @@
         <li>IDs de transação da Apple (ex.: original transaction id) para validação e restauração.</li>
         <li>Não recebemos dados do seu cartão — pagamentos são processados pela Apple.</li>
       </ul>
-      <p class="muted">
-        A assinatura paga é contratada somente no app iOS pela App Store; em follow-net.com não cobramos assinatura.
-      </p>
 
       <h3>3.3 Dados do serviço VPN</h3>
       <ul>
@@ -684,59 +960,117 @@
       <ul>
         <li>Tickets e mensagens de suporte, e qualquer informação que você compartilhar (logs/capturas/descrição do problema).</li>
       </ul>
-      <h3>3.5 Analytics</h3>
+
+      <h3>3.5 Analytics (Firebase Analytics)</h3>
       <p class="muted">
-        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos de produto: sucesso/erro de conexão VPN, seleção de servidor, telas de compra/assinatura, resultado de compra ou restauração, início do speed test. Apenas esses eventos são enviados, sem histórico de navegação nem identificação além da sua conta. Isso ajuda a melhorar UX e confiabilidade.
+        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos de produto: sucesso/erro de conexão VPN, seleção de servidor, telas de compra/assinatura, resultado de compra ou restauração, início do speed test. Apenas esse conjunto de eventos é transmitido; não há histórico de sites nem conteúdo de tráfego.
+        <b>Não vinculamos</b> os eventos do Analytics à sua conta FollowNet no console do Firebase (por exemplo, <span class="mono">setUserId</span> <b>não é usado</b> para o Firebase): do lado da Google, eles ficam associados a um identificador anônimo de instalação/instância do app e separados do seu User ID e e‑mail no nosso sistema.
+        Política do Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Logs de eventos no servidor</h3>
+      <h3>3.6 Relatórios de falhas (Firebase Crashlytics)</h3>
+      <p class="muted">
+        Para diagnosticar encerramentos e estabilidade, usamos <b>Firebase Crashlytics</b> (Google). Ele pode receber dados técnicos sobre a falha (modelo do dispositivo, versão do SO, stack trace, horário do evento).
+        Enquanto não associarmos o Crashlytics ao seu User ID/e‑mail FollowNet no SDK, os relatórios normalmente não incluem suas credenciais FollowNet; o tratamento segue as políticas da Google/Firebase.
+      </p>
+
+      <h3>3.7 Logs de eventos no servidor</h3>
       <p class="muted">
         Nos servidores são armazenados logs técnicos de eventos para operação e suporte: evento de conexão VPN (id do servidor), eventos de webhook da Apple (tipo, productId, originalTransactionId, ambiente), ações de administração. Conteúdo do tráfego não é registrado; os dados são mantidos apenas o tempo necessário para operação e segurança.
       </p>
 
-      <h3>3.7 Endereço IP e User‑Agent</h3>
+      <h3>3.8 Endereço IP e User‑Agent</h3>
       <p class="muted">
-        Endereço IP e User‑Agent podem ser processados para prevenção de abuso (rate‑limit) e segurança. Tentamos não retê-los por mais tempo do que o necessário.
+        Endereço IP e User‑Agent podem ser considerados no backend para prevenção de abuso (rate‑limit) e segurança <b>durante o processamento da solicitação</b>, sem gravação em logs persistentes nem retenção para marketing.
       </p>
 
-      <h2>4. Finalidades</h2>
+      <h2>4. Bases legais (GDPR Art. 6)</h2>
+      <ul>
+        <li><b>Execução de contrato (Art. 6(1)(b))</b> — criação de conta, serviço VPN, credenciais VPN, gestão de assinatura.</li>
+        <li><b>Interesse legítimo (Art. 6(1)(f))</b> — segurança e prevenção de abuso (incl. rate‑limit efêmero sem armazenamento permanente de IP/UA), analytics agregado e relatórios de falha via Firebase sem cruzamento com a conta FollowNet no console do desenvolvedor.</li>
+        <li><b>Consentimento (Art. 6(1)(a))</b> — quando explicitamente solicitado (ex.: notificações opcionais).</li>
+        <li><b>Obrigação legal (Art. 6(1)(c))</b> — resposta a solicitações legais de autoridades.</li>
+      </ul>
+
+      <h2>5. Finalidades</h2>
       <ul>
         <li>Fornecer o serviço VPN e emitir credenciais VPN.</li>
         <li>Login (código), segurança e prevenção de abuso.</li>
         <li>Limites do Free e controle do Premium (tráfego/dispositivos), validação de assinatura e restauração.</li>
-        <li>Suporte e melhorias do produto (analytics).</li>
+        <li>Suporte e melhorias do produto (analytics e diagnóstico de falhas).</li>
       </ul>
 
-      <h2>5. Compartilhamento</h2>
+      <h2>6. Compartilhamento</h2>
       <ul>
         <li><b>Apple</b> — compras e assinaturas (App Store).</li>
         <li><b>Apple / Google</b> — se você usar Sign in with Apple / Google Sign‑In.</li>
         <li><b>Provedor de email</b> (SMTP) — envio de códigos.</li>
         <li><b>Infra/hosting</b> — backend e servidores VPN.</li>
-        <li><b>Google Firebase</b> — analytics (se habilitado).</li>
+        <li><b>Google Firebase</b> — Analytics e Crashlytics (se habilitado).</li>
       </ul>
-      <p class="muted">Não vendemos dados pessoais.</p>
+      <p class="muted">Não vendemos nem “compartilhamos” dados pessoais (no sentido de CCPA/CPRA).</p>
 
-      <h2>6. Retenção</h2>
+      <h2>7. Transferências internacionais</h2>
+      <p class="muted">
+        Para operar o serviço, os dados podem ser transferidos e armazenados fora do Espaço Econômico Europeu (EEE), inclusive em países onde ficam os servidores VPN e em provedores (ex.: Google/Firebase nos EUA).
+        Tais transferências ocorrem com base em mecanismos jurídicos aplicáveis, incluindo as <em>Cláusulas Contratuais Padrão</em> da Comissão Europeia, com salvaguardas razoáveis.
+      </p>
+
+      <h2>8. Retenção</h2>
       <ul>
         <li>Dados de conta/assinatura — enquanto a conta estiver ativa ou conforme necessário para finalidades legítimas.</li>
         <li>Metadados técnicos de sessão/tráfego — o mínimo necessário para operação, limites e segurança.</li>
         <li>Logs de eventos no servidor (conexões, webhooks Apple, ações admin) — não mais do que o necessário para operação e suporte.</li>
         <li>Tickets de suporte — conforme necessário para atender solicitações e garantir qualidade.</li>
+        <li>Diagnóstico Firebase (Analytics, Crashlytics) — conforme prazos e configurações de retenção da Google/Firebase.</li>
       </ul>
 
-      <h2>7. Exclusão de conta</h2>
+      <h2>9. Segurança</h2>
+      <p class="muted">
+        Aplicamos medidas técnicas e organizacionais razoáveis: criptografia em trânsito (TLS), criptografia de túneis VPN (IKEv2/WireGuard), armazenamento de tokens no Keychain do iOS, acesso administrativo restrito e registro de ações de administração.
+      </p>
+
+      <h2>10. Cookies e site</h2>
+      <p class="muted">
+        O site follow-net.com é uma landing page. Não usamos cookies para rastreamento publicitário. Cookies técnicos/operacionais podem ser usados apenas para o funcionamento correto das páginas.
+      </p>
+
+      <h2>11. Crianças</h2>
+      <p class="muted">
+        O serviço não se destina a menores de 13 anos (ou abaixo da idade de consentimento digital no seu país). Não coletamos intencionalmente dados de tais menores. Se souber que uma criança nos forneceu dados sem o consentimento dos pais/responsáveis, entre em contato — excluiremos os dados.
+      </p>
+
+      <h2>12. Exclusão de conta</h2>
       <p class="muted">
         Você pode excluir sua conta no app. Excluímos dados da conta e registros relacionados (dispositivos, credenciais VPN, registros de assinatura, tickets de suporte e registros técnicos),
         exceto quando a retenção for exigida por lei ou necessária para prevenção de abuso.
       </p>
 
-      <h2>8. Seus direitos</h2>
+      <h2>13. Seus direitos (GDPR / CCPA)</h2>
+      <p class="muted">Conforme a lei aplicável, você tem direito a:</p>
+      <ul>
+        <li><b>Acesso</b> aos seus dados e obtenção de cópia.</li>
+        <li><b>Correção</b> de dados inexatos ou incompletos.</li>
+        <li><b>Exclusão</b> (“direito ao esquecimento”).</li>
+        <li><b>Limitação</b> do tratamento em determinados casos.</li>
+        <li><b>Portabilidade</b> em formato estruturado.</li>
+        <li><b>Oposição</b> ao tratamento com base em interesse legítimo.</li>
+        <li><b>Retirar o consentimento</b> a qualquer momento (se o tratamento se basear nele).</li>
+        <li><b>Apresentar reclamação</b> à autoridade de proteção de dados do seu país na UE/EEE.</li>
+      </ul>
       <p class="muted">
-        Você pode solicitar acesso/correção/exclusão: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>Para residentes da Califórnia (CCPA/CPRA):</strong> você tem direito de saber quais categorias de dados coletamos, à exclusão, ao “opt‑out” da venda/“share” (não vendemos nem compartilhamos dados) e à não discriminação.
+      </p>
+      <p class="muted">
+        Para exercer seus direitos, escreva para <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. Respondemos em prazo razoável conforme a lei.
       </p>
 
-      <h2>9. Alterações</h2>
+      <h2>14. Termos de uso</h2>
+      <p class="muted">
+        Esta política complementa nossos Termos de uso: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Alterações</h2>
       <p class="muted">
         Podemos atualizar esta política. A data acima reflete a última revisão.
       </p>
@@ -747,7 +1081,7 @@
   <section class="doc" *ngSwitchDefault>
     <div class="doc-header">
       <h1>FollowNet VPN Privacy Policy</h1>
-      <p class="muted">Last updated: <span class="mono">2026‑04‑21</span></p>
+      <p class="muted">Last updated: <span class="mono">2026‑04‑24</span></p>
       <p class="muted">
         This policy explains what data we process in the FollowNet VPN app and on our website, why we need it, and what rights you have.
         We aim to collect the minimum data required to operate the service securely.
@@ -755,9 +1089,10 @@
     </div>
 
     <div class="card">
-      <h2>1. Who we are</h2>
+      <h2>1. Data Controller</h2>
       <p class="muted">
-        FollowNet VPN is a VPN service. Privacy contact: <span class="mono">noreply&#64;follow-net.com</span>.
+        The data controller under GDPR is <strong>FollowNet</strong> (“FollowNet”, “we”, “us”).
+        Privacy contact and data subject requests: <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>.
       </p>
 
       <h2>2. A note on “logs”</h2>
@@ -775,7 +1110,7 @@
       <ul>
         <li><b>Email</b> (if you sign in via email code).</li>
         <li><b>User ID</b> — your account identifier on our servers (assigned when you sign up).</li>
-        <li><b>deviceId</b> — a per‑installation app identifier: a random UUID generated on first launch and stored in the iOS Keychain; sent to our servers for device limits and account security. We do not use Apple’s advertising identifier (IDFA) or vendor identifier (IDFV) for deviceId.</li>
+        <li><b>deviceId</b> — a random UUID generated on first launch and stored in the iOS Keychain; sent to our servers for device limits and account security. We do not use Apple’s advertising identifier (IDFA) or vendor identifier (IDFV) for deviceId.</li>
       </ul>
       <p class="muted">
         You may also sign in via <b>Sign in with Apple</b> and/or <b>Google Sign‑In</b> (if available in the app). In that case we receive the data needed for authentication from the respective provider.
@@ -787,9 +1122,6 @@
         <li>Apple transaction identifiers (e.g., original transaction id) for validation and purchase restore.</li>
         <li>We do not receive your card details — payments are processed by Apple.</li>
       </ul>
-      <p class="muted">
-        Paid subscriptions are purchased only in the iOS app through the App Store; we do not take subscription payments on follow-net.com.
-      </p>
 
       <h3>3.3 VPN service data</h3>
       <ul>
@@ -797,7 +1129,7 @@
         <li>Connection/disconnection timestamps and session duration.</li>
         <li>Traffic counters (bytes in/out) for stats and free plan limits.</li>
         <li>Device timezone identifier — to display stats and limits in your local time.</li>
-        <li>Network-level parameters required to establish and route VPN traffic (e.g., IP at transport/routing level).</li>
+        <li>Network‑level parameters required to establish and route VPN traffic (e.g., IP at transport/routing level).</li>
       </ul>
       <p class="muted">
         DNS provider (if selected in the app): Cloudflare (1.1.1.1), Google (8.8.8.8), AdGuard, AdGuard Family, Quad9.
@@ -807,64 +1139,120 @@
       <ul>
         <li>Support tickets and messages, plus any information you choose to share (logs/screenshots/issue details).</li>
       </ul>
-      <h3>3.5 App analytics</h3>
+
+      <h3>3.5 App analytics (Firebase Analytics)</h3>
       <p class="muted">
-        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events: VPN connection success/failure, server selection, purchase/subscription screens, purchase or restore outcome, speed test start. Only these events are sent; no browsing history and no identification beyond your account. This helps improve UX and reliability.
+        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events: VPN connection success/failure, server selection, purchase/subscription screens, purchase or restore outcome, speed test start. Only this set of events is transmitted; no browsing history and no traffic content.
+        We <b>do not link</b> Analytics events to your FollowNet account in the Firebase console (for example, <span class="mono">setUserId</span> is <b>not</b> used for Firebase): on Google’s side they are tied to an anonymous installation/app instance identifier and are separate from your User ID and email in our systems.
+        Google Firebase privacy information: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
 
-      <h3>3.6 Server event logs</h3>
+      <h3>3.6 Crash reporting (Firebase Crashlytics)</h3>
+      <p class="muted">
+        We use <b>Firebase Crashlytics</b> (Google) to diagnose crashes and stability. It may receive technical crash data (device model, OS version, stack trace, event time).
+        As long as we do not pair Crashlytics with your FollowNet User ID/email in the SDK, reports typically do not contain your FollowNet account credentials; processing is governed by Google/Firebase policies.
+      </p>
+
+      <h3>3.7 Server event logs</h3>
       <p class="muted">
         Servers store technical event logs for operation and support: VPN connection event (server id), Apple webhook events (notification type, productId, originalTransactionId, environment), admin actions. No traffic content is logged; data is retained only as long as needed for operation and security.
       </p>
 
-      <h3>3.7 IP address and User-Agent</h3>
+      <h3>3.8 IP address and User‑Agent</h3>
       <p class="muted">
-        IP address and User-Agent may be processed for abuse prevention (rate-limiting) and security. We aim not to retain them longer than necessary for these purposes.
+        IP address and User‑Agent may be considered on the backend for abuse prevention (rate‑limiting) and security <b>during request handling</b>, without writing them to persistent logs and without retention for marketing purposes.
       </p>
 
-      <h2>4. How we use data</h2>
+      <h2>4. Legal bases (GDPR Art. 6)</h2>
+      <ul>
+        <li><b>Performance of a contract (Art. 6(1)(b))</b> — account creation, providing the VPN service, issuing VPN credentials, managing subscriptions.</li>
+        <li><b>Legitimate interests (Art. 6(1)(f))</b> — security and abuse prevention (including ephemeral rate‑limiting without persistent storage of IP/UA), aggregated analytics and crash reports via Firebase without mapping to the FollowNet account in the developer console.</li>
+        <li><b>Consent (Art. 6(1)(a))</b> — where explicitly requested (e.g., optional notifications).</li>
+        <li><b>Legal obligation (Art. 6(1)(c))</b> — responding to lawful requests from authorities.</li>
+      </ul>
+
+      <h2>5. How we use data</h2>
       <ul>
         <li>Provide the VPN service and issue VPN credentials.</li>
         <li>Passwordless login (email code), security, and abuse prevention.</li>
         <li>Free limits and Premium enforcement (traffic/devices), subscription validation and purchase restore.</li>
-        <li>Support and product improvements (analytics).</li>
+        <li>Support and product improvements (analytics and crash diagnostics).</li>
       </ul>
 
-      <h2>5. Sharing</h2>
+      <h2>6. Sharing</h2>
       <ul>
         <li><b>Apple</b> — purchases and subscriptions (App Store).</li>
         <li><b>Apple / Google</b> — if you use Sign in with Apple / Google Sign‑In.</li>
         <li><b>Email provider</b> (SMTP) — sending login codes.</li>
         <li><b>Infrastructure/hosting</b> — backend and VPN servers.</li>
-        <li><b>Google Firebase</b> — app analytics (if enabled in the build).</li>
+        <li><b>Google Firebase</b> — Analytics and Crashlytics (if enabled in the build).</li>
       </ul>
-      <p class="muted">We do not sell personal data.</p>
+      <p class="muted">We do not sell or “share” personal data (within the meaning of CCPA/CPRA).</p>
 
-      <h2>6. Retention</h2>
+      <h2>7. International data transfers</h2>
+      <p class="muted">
+        To operate the service, data may be transferred to and stored outside the European Economic Area (EEA), including in countries where VPN servers are located and with service providers (e.g., Google/Firebase in the U.S.).
+        Such transfers rely on applicable legal mechanisms, including the European Commission’s <em>Standard Contractual Clauses</em>, with reasonable safeguards.
+      </p>
+
+      <h2>8. Retention</h2>
       <ul>
         <li>Account/subscription data — while the account remains active or as required for legitimate purposes.</li>
         <li>Session/traffic technical metadata — the minimum time needed for operations, limits, and security.</li>
         <li>Server event logs (connections, Apple webhooks, admin actions) — no longer than needed for operation and support.</li>
         <li>Support tickets — as needed to handle requests and maintain service quality.</li>
+        <li>Firebase diagnostics (Analytics, Crashlytics) — according to Google/Firebase retention periods and settings.</li>
       </ul>
 
-      <h2>7. Account deletion</h2>
+      <h2>9. Security</h2>
+      <p class="muted">
+        We apply reasonable technical and organizational measures: encryption in transit (TLS), encrypted VPN tunnels (IKEv2/WireGuard), token storage in iOS Keychain, restricted administrator access, and logging of admin actions.
+      </p>
+
+      <h2>10. Cookies and the website</h2>
+      <p class="muted">
+        The follow-net.com website is a landing page. We do not use cookies for advertising tracking. Technical/operational cookies may be used only for the proper functioning of the pages.
+      </p>
+
+      <h2>11. Children</h2>
+      <p class="muted">
+        The Service is not directed to individuals under the age of 13 (or under the digital consent age in your country). We do not knowingly collect data from such individuals. If you become aware that a child has provided us with data without parental/guardian consent, contact us and we will delete it.
+      </p>
+
+      <h2>12. Account deletion</h2>
       <p class="muted">
         You can delete your account in the app. We delete account data and related records (devices, VPN credentials, subscription records, support tickets and related technical records),
         except where retention is required by law or necessary for abuse prevention.
       </p>
 
-      <h2>8. Your rights</h2>
+      <h2>13. Your rights (GDPR / CCPA)</h2>
+      <p class="muted">Under applicable law you have the right to:</p>
+      <ul>
+        <li><b>Access</b> your data and obtain a copy.</li>
+        <li><b>Rectify</b> inaccurate or incomplete data.</li>
+        <li><b>Erase</b> your data (“right to be forgotten”).</li>
+        <li><b>Restrict</b> processing in certain cases.</li>
+        <li><b>Data portability</b> in a structured format.</li>
+        <li><b>Object</b> to processing based on legitimate interests.</li>
+        <li><b>Withdraw consent</b> at any time (where processing is based on consent).</li>
+        <li><b>Lodge a complaint</b> with the data protection authority in your EU/EEA country.</li>
+      </ul>
       <p class="muted">
-        You can request access/correction/deletion by contacting: <span class="mono">noreply&#64;follow-net.com</span>.
+        <strong>For California residents (CCPA/CPRA):</strong> you have the right to know what categories of data we collect, the right to deletion, the right to opt out of the sale/“sharing” of personal data (we do not sell or share personal data), and the right to non‑discrimination for exercising your rights.
+      </p>
+      <p class="muted">
+        To exercise your rights, contact us at <a href="mailto:support&#64;follow-net.com" class="mono">support&#64;follow-net.com</a>. We respond within a reasonable time as required by law.
       </p>
 
-      <h2>9. Changes</h2>
+      <h2>14. Terms of Service</h2>
+      <p class="muted">
+        This policy supplements our Terms of Service: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+      </p>
+
+      <h2>15. Changes</h2>
       <p class="muted">
         We may update this policy from time to time. The “Last updated” date above reflects the latest revision.
       </p>
     </div>
   </section>
 </ng-container>
-
-
