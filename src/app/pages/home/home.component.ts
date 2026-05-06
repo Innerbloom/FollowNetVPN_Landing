@@ -19,6 +19,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   readonly webPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
+  readonly iosAppStoreUrl = environment.iosAppStoreUrl;
 
   /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
   heroParallaxPx = 0;

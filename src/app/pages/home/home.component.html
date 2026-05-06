@@ -12,7 +12,13 @@
         </p>
 
         <div class="cta-row">
-          <a class="btn primary" href="#download">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
+          <a
+            class="btn primary"
+            [href]="iosAppStoreUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
+          >
           <a class="btn ghost" href="#features">{{ i18n.t('HERO_CTA_SECONDARY') }}</a>
         </div>
 
@@ -245,6 +251,7 @@
   </section>
 
   <section class="section" id="apps">
+    <span id="download" class="anchor"></span>
     <div class="container">
       <div class="section-head">
         <div class="kicker">{{ i18n.t('APPS_KICKER') }}</div>
@@ -262,7 +269,13 @@
             </div>
             <div class="app-badge ok">{{ i18n.t('STATUS_AVAILABLE') }}</div>
           </div>
-          <a class="app-btn primary" href="#download">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+          <a
+            class="app-btn primary"
+            [href]="iosAppStoreUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ i18n.t('NAV_DOWNLOAD') }}</a
+          >
         </div>
 
         <div class="app-card muted">
@@ -310,7 +323,13 @@
             <li>{{ i18n.t('FREE_FEATURE_2') }}</li>
             <li>{{ i18n.t('FREE_FEATURE_3') }}</li>
           </ul>
-          <a class="btn ghost full" href="#download">{{ i18n.t('PRICING_FREE_CTA') }}</a>
+          <a
+            class="btn ghost full"
+            [href]="iosAppStoreUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ i18n.t('PRICING_FREE_CTA') }}</a
+          >
         </div>
 
         <div class="plan featured">
@@ -361,7 +380,13 @@
             <p *ngIf="!webPaddleCheckoutEnabled" class="note web-checkout-paused">
               {{ i18n.t('WEB_CHECKOUT_PAUSED_HOME') }}
             </p>
-            <a class="btn ghost full" href="#download">{{ i18n.t('PRICING_TRIAL_CTA') }}</a>
+            <a
+              class="btn ghost full"
+              [href]="iosAppStoreUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ i18n.t('PRICING_TRIAL_CTA') }}</a
+            >
           </div>
 
           <div class="note">{{ i18n.t('PRICING_NOTE') }}</div>
@@ -369,8 +394,6 @@
       </div>
 
       <p class="note pricing-regional-note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
-
-      <span id="download" class="anchor"></span>
     </div>
   </section>
 

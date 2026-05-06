@@ -35,7 +35,7 @@
             </button>
           </div>
         </div>
-        <a class="cta" [routerLink]="['/']" fragment="download">
+        <a class="cta" [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer">
           <span class="cta-desktop">{{ i18n.t('NAV_DOWNLOAD') }}</span>
           <span class="cta-mobile">{{ mobileDownloadLabel() }}</span>
         </a>
@@ -52,7 +52,7 @@
         <a [routerLink]="['/']" fragment="top" (click)="closeMenu()" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
         <a [routerLink]="['/']" fragment="features" (click)="closeMenu()" [class.active]="activeSection==='features'">{{ i18n.t('NAV_FEATURES') }}</a>
         <a [routerLink]="['/']" fragment="pricing" (click)="closeMenu()" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
-        <a [routerLink]="['/']" fragment="download" (click)="closeMenu()" [class.active]="activeSection==='download'">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+        <a [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD') }}</a>
       </div>
 
       <div class="mobile-group">

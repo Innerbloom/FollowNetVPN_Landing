@@ -3,6 +3,7 @@ import { DOCUMENT, NgFor, NgIf } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
   standalone: true,
 })
 export class HeaderComponent {
+  readonly iosAppStoreUrl = environment.iosAppStoreUrl;
   logoSrc = '/assets/new_logo.png';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;

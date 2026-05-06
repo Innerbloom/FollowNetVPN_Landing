@@ -319,7 +319,7 @@ button.btn:disabled {
 }
 
 .device {
-  width: min(380px, 100%);
+  width: min(550px, 100%);
   position: relative;
   animation: hero-device-float 6.5s ease-in-out 1.1s infinite;
 }

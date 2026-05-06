@@ -14,6 +14,10 @@ const paddleJsEnv: 'production' | 'sandbox' = paddleSecrets.clientToken
 export const environment = {
   production: false,
 
+  /** Public App Store listing (iOS). */
+  iosAppStoreUrl:
+    'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',
+
   /** Same host as the iOS app (`Config.baseURL`). Used for Paddle checkout eligibility. */
   apiBaseUrl: 'https://api.follow-net.com',
 
