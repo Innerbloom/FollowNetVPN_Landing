@@ -1,4 +1,5 @@
 import { AppLang } from './i18n.service';
+import { getGuidesHubSeoCopy, getLandingSeoCopy, landingSlugFromPath } from './seo-landing.meta';
 
 export type SeoCopy = {
   title: string;
@@ -13,18 +14,25 @@ const APP_STORE =
 export { APP_STORE };
 
 export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
-  const isPrivacy = path.startsWith('/privacy');
-  const isTerms = path.startsWith('/terms');
-  const isCheckout = path.startsWith('/checkout');
+  const clean = (path.split('?')[0] || '/').replace(/\/+$/, '') || '/';
 
-  if (isCheckout) {
-    return checkoutByLang[lang] ?? checkoutByLang.en;
+  if (clean === '/ios-vpn-guides') {
+    return getGuidesHubSeoCopy(lang);
   }
-  if (isPrivacy) {
+
+  const landingSlug = landingSlugFromPath(clean);
+  if (landingSlug) {
+    return getLandingSeoCopy(landingSlug, lang);
+  }
+
+  if (clean.startsWith('/privacy')) {
     return privacyByLang[lang] ?? privacyByLang.en;
   }
-  if (isTerms) {
+  if (clean.startsWith('/terms')) {
     return termsByLang[lang] ?? termsByLang.en;
+  }
+  if (clean.startsWith('/checkout')) {
+    return checkoutByLang[lang] ?? checkoutByLang.en;
   }
   return homeByLang[lang] ?? homeByLang.en;
 }
@@ -43,10 +51,10 @@ const homeByLang: Record<AppLang, SeoCopy> = {
       'VPN для iPhone: Smart Connect, IKEv2, WireGuard і AmneziaWG безкоштовно. DNS‑профілі, Speed Test, віджети. Premium — преміум‑сервери та безліміт у App Store.',
   },
   en: {
-    title: 'FollowNet VPN — iOS VPN for iPhone | WireGuard, AmneziaWG',
-    ogTitle: 'FollowNet VPN — fast VPN for iOS',
+    title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & IKEv2',
+    ogTitle: 'FollowNet — VPN for iPhone & iOS',
     description:
-      'iOS VPN with Smart Connect, IKEv2, WireGuard, and AmneziaWG on Free. DNS profiles, Speed Test, widgets. Premium adds premium servers and unlimited traffic via App Store.',
+      'Free VPN for iPhone: WireGuard, IKEv2, and Smart Connect for blocked networks. Kill Switch, DNS profiles, Speed Test. Download on the US App Store — Premium optional.',
   },
   de: {
     title: 'FollowNet VPN — iOS VPN für iPhone | WireGuard, AmneziaWG',

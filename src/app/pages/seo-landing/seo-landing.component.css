@@ -1,0 +1,139 @@
+.seo-landing {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 0 4rem;
+}
+
+.container {
+  max-width: var(--container-max, 720px);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.breadcrumb {
+  font-size: var(--type-label);
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--green);
+}
+
+.hero-block h1 {
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.lead {
+  font-size: var(--type-body);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 1.5rem;
+}
+
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: #041008;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bullets {
+  margin: 2rem 0;
+  padding-left: 1.2rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section h2 {
+  font-size: var(--type-h3);
+  margin: 0 0 0.75rem;
+}
+
+.section p {
+  margin: 0;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.faq {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq h2 {
+  font-size: var(--type-h3);
+  margin: 0 0 1rem;
+}
+
+.faq dt {
+  font-weight: 750;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.faq dd {
+  margin: 0.35rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.6;
+}
+
+.back {
+  margin-top: 2.5rem;
+}
+
+.back a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.related {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.related h2 {
+  font-size: var(--type-h3);
+  margin: 0 0 1rem;
+}
+
+.related ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.related a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.related a:hover {
+  text-decoration: underline;
+}

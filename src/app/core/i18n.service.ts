@@ -1,12 +1,12 @@
 import { DOCUMENT, isPlatformBrowser, Location } from '@angular/common';
-import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID, REQUEST } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export type AppLang = 'en' | 'de' | 'es' | 'fr' | 'pt' | 'ru' | 'uk';
 
 type Dict = Record<string, Record<AppLang, string>>;
 
-export const SUPPORTED_LANGS: readonly AppLang[] = ['ru', 'en', 'de', 'es', 'fr', 'pt', 'uk'] as const;
+export const SUPPORTED_LANGS: readonly AppLang[] = ['en', 'ru', 'de', 'es', 'fr', 'pt', 'uk'] as const;
 
 export const LANG_LABELS: Record<AppLang, string> = {
   ru: 'Русский',
@@ -698,19 +698,101 @@ const DICT: Dict = {
     pt: 'O modo inteligente nas configurações de protocolo escolhe servidor e protocolo (IKEv2, WireGuard ou AmneziaWG) para sua rede—Wi‑Fi ou celular, estabilidade e restrições comuns da operadora. Você pode escolher manualmente quando quiser.',
     uk: 'Це розумний режим у налаштуваннях протоколу: додаток сам підбирає сервер і протокол (IKEv2, WireGuard або AmneziaWG) під вашу мережу — Wi‑Fi чи мобільну, стабільність і типові обмеження оператора. Протокол завжди можна вибрати вручну.',
   },
+  SEO_LANDING_BACK_HOME: {
+    ru: '← На главную',
+    en: '← Back to home',
+    de: '← Zur Startseite',
+    es: '← Volver al inicio',
+    fr: '← Retour à l’accueil',
+    pt: '← Voltar ao início',
+    uk: '← На головну',
+  },
+  SEO_LANDING_ALL_GUIDES: {
+    ru: 'Все гайды',
+    en: 'All guides',
+    de: 'Alle Guides',
+    es: 'Todas las guías',
+    fr: 'Tous les guides',
+    pt: 'Todos os guias',
+    uk: 'Усі гайди',
+  },
+  SEO_LANDING_RELATED: {
+    ru: 'Похожие гайды',
+    en: 'Related guides',
+    de: 'Verwandte Guides',
+    es: 'Guías relacionadas',
+    fr: 'Guides associés',
+    pt: 'Guias relacionados',
+    uk: 'Схожі гайди',
+  },
+  SEO_GUIDES_TITLE: {
+    ru: 'Гайды VPN для iOS',
+    en: 'iOS VPN guides',
+    de: 'iOS VPN Guides',
+    es: 'Guías VPN para iOS',
+    fr: 'Guides VPN iOS',
+    pt: 'Guias VPN para iOS',
+    uk: 'Гайди VPN для iOS',
+  },
+  SEO_GUIDES_LEAD: {
+    ru: '15 страниц о FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, путешествия и безопасность.',
+    en: '15 guides about FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, travel, and security.',
+    de: '15 Guides zu FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, Reisen und Sicherheit.',
+    es: '15 guías sobre FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, viajes y seguridad.',
+    fr: '15 guides FollowNet : iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, voyage et sécurité.',
+    pt: '15 guias sobre FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, viagem e segurança.',
+    uk: '15 гайдів про FollowNet: iPhone, iPad, WireGuard, Smart Connect, Wi‑Fi, подорожі та безпека.',
+  },
+  FOOTER_ALL_GUIDES: {
+    ru: 'Гайды iOS VPN',
+    en: 'iOS VPN guides',
+    de: 'iOS VPN Guides',
+    es: 'Guías VPN iOS',
+    fr: 'Guides VPN iOS',
+    pt: 'Guias VPN iOS',
+    uk: 'Гайди VPN iOS',
+  },
+  FOOTER_VPN_IPHONE: {
+    ru: 'VPN для iPhone',
+    en: 'VPN for iPhone',
+    de: 'VPN für iPhone',
+    es: 'VPN para iPhone',
+    fr: 'VPN pour iPhone',
+    pt: 'VPN para iPhone',
+    uk: 'VPN для iPhone',
+  },
+  FOOTER_FREE_VPN: {
+    ru: 'Бесплатный VPN',
+    en: 'Free VPN',
+    de: 'Kostenloser VPN',
+    es: 'VPN gratis',
+    fr: 'VPN gratuit',
+    pt: 'VPN grátis',
+    uk: 'Безкоштовний VPN',
+  },
+  FOOTER_WIREGUARD_IOS: {
+    ru: 'WireGuard для iOS',
+    en: 'WireGuard for iOS',
+    de: 'WireGuard für iOS',
+    es: 'WireGuard para iOS',
+    fr: 'WireGuard pour iOS',
+    pt: 'WireGuard para iOS',
+    uk: 'WireGuard для iOS',
+  },
 };
 
 const STORAGE_KEY = 'follownet_lang';
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
-  private lang: AppLang = 'ru';
+  private lang: AppLang = 'en';
   readonly lang$ = new BehaviorSubject<AppLang>(this.lang);
 
   constructor(
     @Inject(PLATFORM_ID) private readonly platformId: object,
     @Inject(DOCUMENT) private readonly document: Document,
     @Optional() private readonly location: Location | null,
+    @Optional() @Inject(REQUEST) private readonly request: { url?: string } | null,
   ) {
     this.lang = this.readInitialLang();
     this.lang$.next(this.lang);
@@ -757,6 +839,15 @@ export class I18nService {
   }
 
   private readInitialLang(): AppLang {
+    if (!isPlatformBrowser(this.platformId) && this.request?.url) {
+      try {
+        const fromReq = this.langFromQuery(new URL(this.request.url, 'http://prerender.local').search);
+        if (fromReq) return fromReq;
+      } catch {
+        // ignore
+      }
+    }
+
     const fromUrl = this.langFromQuery(this.currentSearch());
     if (fromUrl) return fromUrl;
 
@@ -778,7 +869,7 @@ export class I18nService {
       return 'en';
     }
 
-    return 'ru';
+    return 'en';
   }
 
   private currentSearch(): string {

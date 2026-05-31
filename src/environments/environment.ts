@@ -14,6 +14,10 @@ const paddleJsEnv: 'production' | 'sandbox' = paddleSecrets.clientToken
 export const environment = {
   production: false,
 
+  siteUrl: 'https://follow-net.com',
+
+  googleSiteVerification: '',
+
   /** Public App Store listing (iOS). */
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',

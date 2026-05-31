@@ -1,0 +1,55 @@
+<article class="seo-landing" *ngIf="content as c">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">FollowNet</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ c.h1 }}</span>
+    </nav>
+
+    <header class="hero-block">
+      <h1>{{ c.h1 }}</h1>
+      <p class="lead">{{ c.lead }}</p>
+      <a
+        class="btn primary"
+        [href]="iosAppStoreUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{{ c.cta }}</a
+      >
+    </header>
+
+    <ul class="bullets">
+      <li *ngFor="let b of c.bullets">{{ b }}</li>
+    </ul>
+
+    <section *ngFor="let s of c.sections" class="section">
+      <h2>{{ s.title }}</h2>
+      <p>{{ s.body }}</p>
+    </section>
+
+    <section class="faq" *ngIf="c.faq.length">
+      <h2>FAQ</h2>
+      <dl>
+        <ng-container *ngFor="let item of c.faq">
+          <dt>{{ item.q }}</dt>
+          <dd>{{ item.a }}</dd>
+        </ng-container>
+      </dl>
+    </section>
+
+    <p class="back">
+      <a routerLink="/">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
+      ·
+      <a routerLink="/ios-vpn-guides">{{ i18n.t('SEO_LANDING_ALL_GUIDES') }}</a>
+    </p>
+
+    <nav class="related" *ngIf="related.length" aria-label="Related guides">
+      <h2>{{ i18n.t('SEO_LANDING_RELATED') }}</h2>
+      <ul>
+        <li *ngFor="let r of related">
+          <a [routerLink]="'/' + r">{{ relatedLabel(r) }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</article>
