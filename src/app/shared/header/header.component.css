@@ -129,8 +129,10 @@
 }
 
 .logo-img {
-  width: 56px;
-  height: auto;
+  height: 36px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
   border-radius: 0;
   object-fit: contain;
   filter: none;
@@ -319,7 +321,7 @@
 @media (max-width: 520px) {
   .nav-pill { padding: 8px 10px; gap: 10px; width: auto; }
   .logo { padding: 4px 6px; gap: 8px; }
-  .logo-img { width: 48px; }
+  .logo-img { height: 32px; }
   .logo-text { font-size: 0.98rem; }
   .brand-suffix { display: none; }
 

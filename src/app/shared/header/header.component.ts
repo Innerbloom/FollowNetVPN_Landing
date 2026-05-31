@@ -14,7 +14,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HeaderComponent {
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
-  logoSrc = '/assets/new_logo.png';
+  logoSrc = '/assets/logo.png';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
   readonly langs = SUPPORTED_LANGS;
