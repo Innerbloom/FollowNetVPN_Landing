@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /checkout
 
 Sitemap: https://follow-net.com/sitemap.xml

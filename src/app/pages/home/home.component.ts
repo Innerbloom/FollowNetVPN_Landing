@@ -3,8 +3,10 @@ import {
   Component,
   NgZone,
   OnDestroy,
+  PLATFORM_ID,
+  inject,
 } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS } from '../../core/premium-plans';
@@ -20,6 +22,7 @@ import { environment } from '../../../environments/environment';
 export class HomeComponent implements AfterViewInit, OnDestroy {
   readonly webPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
+  private readonly platformId = inject(PLATFORM_ID);
 
   /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
   heroParallaxPx = 0;
@@ -27,10 +30,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   constructor(
     public i18n: I18nService,
     private readonly ngZone: NgZone,
-  ) {
-    // Start autoplay; pause when user interacts.
-    this.autoplayId = window.setInterval(() => this.autoplayStep(), 3200);
-  }
+  ) {}
 
   readonly premiumPlans = PREMIUM_PLANS;
 
@@ -67,13 +67,13 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return this.i18n.current === 'ru' ? p.saveRu : p.saveEn;
   }
 
-  /** App Store marketing screenshots (portrait), see `src/assets/screenshots/README.md` */
+  /** App Store marketing screenshots (portrait) */
   readonly shots = [
-    'assets/screenshots/IMG_5810-portrait.png',
-    'assets/screenshots/IMG_5811-portrait.png',
-    'assets/screenshots/IMG_5813-portrait.png',
-    'assets/screenshots/IMG_5814-portrait.png',
-    'assets/screenshots/IMG_5816-portrait.png',
+    'assets/screenshots/IMG_6290-portrait.png',
+    'assets/screenshots/IMG_6291-portrait.png',
+    'assets/screenshots/IMG_6292-portrait.png',
+    'assets/screenshots/IMG_6293-portrait.png',
+    'assets/screenshots/IMG_6294-portrait.png',
   ];
 
   activeIndex = 0;
@@ -108,7 +108,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.autoplayId = window.setInterval(() => this.autoplayStep(), 3200);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
     this.ngZone.runOutsideAngular(() => {
@@ -148,6 +152,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     const clamped = Math.max(0, Math.min(index, this.shots.length - 1));
     this.activeIndex = clamped;
     this.pauseAutoplay(6000);
+  }
+
+  screenshotAlt(index: number): string {
+    const keys = [
+      'SCREENSHOT_ALT_1',
+      'SCREENSHOT_ALT_2',
+      'SCREENSHOT_ALT_3',
+      'SCREENSHOT_ALT_4',
+      'SCREENSHOT_ALT_5',
+    ] as const;
+    const key = keys[index] ?? 'SCREENSHOT_ALT_1';
+    return this.i18n.t(key);
   }
 
   onUserPointer() {

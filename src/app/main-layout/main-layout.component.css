@@ -13,10 +13,6 @@
   display: none; /* remove green glow background completely */
 }
 
-.page.light {
-  background: #f6f7f9;
-}
-
 .shell {
   position: relative;
   z-index: 1; /* above starfield */
@@ -26,10 +22,6 @@
   flex-direction: column;
   min-height: 100vh;
   min-height: 100dvh;
-}
-
-.shell.light {
-  background: transparent;
 }
 
 .main {

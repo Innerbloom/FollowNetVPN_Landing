@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser, Location } from '@angular/common';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export type AppLang = 'en' | 'de' | 'es' | 'fr' | 'pt' | 'ru' | 'uk';
@@ -63,13 +64,13 @@ const DICT: Dict = {
     uk: '— стабільний VPN для iOS',
   },
   HERO_LEAD: {
-    ru: 'Скачивайте бесплатно: Free с лимитом или Premium с полным доступом. DNS, виджеты, статистика и Speed Test — в одном приложении.',
-    en: 'Start free: a real Free tier or upgrade to Premium. DNS profiles, widgets, stats, and Speed Test — in one iOS app.',
-    de: 'Starten Sie gratis: echtes Free‑Limit oder Premium. DNS‑Profile, Widgets, Statistik und Speedtest — in einer iOS‑App.',
-    es: 'Empieza gratis: plan Free real o Premium. Perfiles DNS, widgets, estadísticas y Speed Test — en una app iOS.',
-    fr: 'Commencez gratuitement : vrai plan Free ou Premium. Profils DNS, widgets, stats et Speed Test — dans une app iOS.',
-    pt: 'Comece grátis: Free real ou Premium. Perfis DNS, widgets, estatísticas e Speed Test — num app iOS.',
-    uk: 'Почніть безкоштовно: Free з лімітом або Premium. DNS, віджети, статистика та Speed Test — в одному додатку.',
+    ru: 'Free с лимитом или Premium с полным доступом. Smart Connect, три протокола (включая AmneziaWG), DNS‑профили, виджеты и Speed Test — в одном приложении.',
+    en: 'Free with limits or full Premium. Smart Connect, three protocols (including AmneziaWG), DNS profiles, widgets, and Speed Test — in one iOS app.',
+    de: 'Free mit Limit oder volles Premium. Smart Connect, drei Protokolle (inkl. AmneziaWG), DNS‑Profile, Widgets und Speedtest — in einer iOS‑App.',
+    es: 'Free con límites o Premium completo. Smart Connect, tres protocolos (incl. AmneziaWG), perfiles DNS, widgets y Speed Test — en una app iOS.',
+    fr: 'Free avec limites ou Premium complet. Smart Connect, trois protocoles (dont AmneziaWG), profils DNS, widgets et Speed Test — dans une app iOS.',
+    pt: 'Free com limites ou Premium completo. Smart Connect, três protocolos (incl. AmneziaWG), perfis DNS, widgets e Speed Test — num app iOS.',
+    uk: 'Free з лімітом або повний Premium. Smart Connect, три протоколи (зокрема AmneziaWG), DNS‑профілі, віджети та Speed Test — в одному додатку.',
   },
   HERO_CTA_PRIMARY: {
     ru: 'Скачать бесплатно для iOS',
@@ -81,6 +82,52 @@ const DICT: Dict = {
     uk: 'Завантажити безкоштовно для iOS',
   },
   HERO_CTA_SECONDARY: { ru: 'Что внутри', en: "What's inside", de: 'Was drin ist', es: 'Qué incluye', fr: 'Ce qui est inclus', pt: 'O que tem', uk: 'Що всередині' },
+
+  SCREENSHOT_ALT_1: {
+    ru: 'FollowNet VPN на iPhone — главный экран подключения',
+    en: 'FollowNet VPN on iPhone — main connect screen',
+    de: 'FollowNet VPN auf iPhone — Hauptbildschirm Verbindung',
+    es: 'FollowNet VPN en iPhone — pantalla principal de conexión',
+    fr: 'FollowNet VPN sur iPhone — écran principal de connexion',
+    pt: 'FollowNet VPN no iPhone — tela principal de conexão',
+    uk: 'FollowNet VPN на iPhone — головний екран підключення',
+  },
+  SCREENSHOT_ALT_2: {
+    ru: 'FollowNet VPN — выбор сервера и локации',
+    en: 'FollowNet VPN — server and location picker',
+    de: 'FollowNet VPN — Server- und Standortauswahl',
+    es: 'FollowNet VPN — selector de servidor y ubicación',
+    fr: 'FollowNet VPN — choix du serveur et de la localisation',
+    pt: 'FollowNet VPN — seleção de servidor e localização',
+    uk: 'FollowNet VPN — вибір сервера та локації',
+  },
+  SCREENSHOT_ALT_3: {
+    ru: 'FollowNet VPN — Smart Connect и протоколы VPN',
+    en: 'FollowNet VPN — Smart Connect and VPN protocols',
+    de: 'FollowNet VPN — Smart Connect und VPN-Protokolle',
+    es: 'FollowNet VPN — Smart Connect y protocolos VPN',
+    fr: 'FollowNet VPN — Smart Connect et protocoles VPN',
+    pt: 'FollowNet VPN — Smart Connect e protocolos VPN',
+    uk: 'FollowNet VPN — Smart Connect і протоколи VPN',
+  },
+  SCREENSHOT_ALT_4: {
+    ru: 'FollowNet VPN — DNS‑профили и настройки',
+    en: 'FollowNet VPN — DNS profiles and settings',
+    de: 'FollowNet VPN — DNS-Profile und Einstellungen',
+    es: 'FollowNet VPN — perfiles DNS y ajustes',
+    fr: 'FollowNet VPN — profils DNS et réglages',
+    pt: 'FollowNet VPN — perfis DNS e configurações',
+    uk: 'FollowNet VPN — DNS‑профілі та налаштування',
+  },
+  SCREENSHOT_ALT_5: {
+    ru: 'FollowNet VPN — статистика и Speed Test',
+    en: 'FollowNet VPN — statistics and Speed Test',
+    de: 'FollowNet VPN — Statistiken und Speedtest',
+    es: 'FollowNet VPN — estadísticas y Speed Test',
+    fr: 'FollowNet VPN — statistiques et Speed Test',
+    pt: 'FollowNet VPN — estatísticas e Speed Test',
+    uk: 'FollowNet VPN — статистика та Speed Test',
+  },
 
   // Sales / value (ClearVPN-style clarity, own copy)
   SALES_VALUE_KICKER: { ru: 'FollowNet VPN', en: 'FollowNet VPN', de: 'FollowNet VPN', es: 'FollowNet VPN', fr: 'FollowNet VPN', pt: 'FollowNet VPN', uk: 'FollowNet VPN' },
@@ -102,6 +149,15 @@ const DICT: Dict = {
     pt: 'Um VPN iOS direto: velocidade, privacidade e UI clara — sem ruído.',
     uk: 'Зосереджений VPN для iOS: швидкість, приватність і зрозумілий інтерфейс — без зайвого шуму.',
   },
+  SALES_VALUE_POINTS: {
+    ru: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · вход по коду · App Store',
+    en: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · passwordless login · App Store',
+    de: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · Login per Code · App Store',
+    es: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · acceso por código · App Store',
+    fr: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · connexion par code · App Store',
+    pt: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · login por código · App Store',
+    uk: 'IKEv2 · WireGuard · AmneziaWG · Smart Connect · DNS · вхід за кодом · App Store',
+  },
   TRUST_STRIP_1: { ru: '1 тап', en: '1 tap', de: '1 Tap', es: '1 toque', fr: '1 tap', pt: '1 toque', uk: '1 дотик' },
   TRUST_STRIP_1_SUB: {
     ru: 'до защищённого соединения',
@@ -113,32 +169,32 @@ const DICT: Dict = {
     uk: 'до захищеного з’єднання',
   },
   TRUST_STRIP_2: {
-    ru: 'WireGuard + IKEv2',
-    en: 'WireGuard + IKEv2',
-    de: 'WireGuard + IKEv2',
-    es: 'WireGuard + IKEv2',
-    fr: 'WireGuard + IKEv2',
-    pt: 'WireGuard + IKEv2',
-    uk: 'WireGuard + IKEv2',
+    ru: '3 протокола',
+    en: '3 protocols',
+    de: '3 Protokolle',
+    es: '3 protocolos',
+    fr: '3 protocoles',
+    pt: '3 protocolos',
+    uk: '3 протоколи',
   },
   TRUST_STRIP_2_SUB: {
-    ru: 'IKEv2 в Free, WireGuard — в Premium',
-    en: 'IKEv2 on Free; WireGuard with Premium',
-    de: 'IKEv2 in Free; WireGuard mit Premium',
-    es: 'IKEv2 en Free; WireGuard en Premium',
-    fr: 'IKEv2 en Free ; WireGuard avec Premium',
-    pt: 'IKEv2 no Free; WireGuard no Premium',
-    uk: 'IKEv2 у Free, WireGuard — у Premium',
+    ru: 'IKEv2, WireGuard и AmneziaWG',
+    en: 'IKEv2, WireGuard, and AmneziaWG',
+    de: 'IKEv2, WireGuard und AmneziaWG',
+    es: 'IKEv2, WireGuard y AmneziaWG',
+    fr: 'IKEv2, WireGuard et AmneziaWG',
+    pt: 'IKEv2, WireGuard e AmneziaWG',
+    uk: 'IKEv2, WireGuard та AmneziaWG',
   },
-  TRUST_STRIP_3: { ru: 'Сайт + iOS', en: 'Web + iOS', de: 'Web + iOS', es: 'Web + iOS', fr: 'Web + iOS', pt: 'Web + iOS', uk: 'Сайт + iOS' },
+  TRUST_STRIP_3: { ru: 'App Store', en: 'App Store', de: 'App Store', es: 'App Store', fr: 'App Store', pt: 'App Store', uk: 'App Store' },
   TRUST_STRIP_3_SUB: {
-    ru: 'подписка на сайте или в App Store',
-    en: 'subscribe on the web or in the App Store',
-    de: 'Abo im Web oder im App Store',
-    es: 'suscripción en la web o en App Store',
-    fr: 'abonnement sur le web ou sur l’App Store',
-    pt: 'assinatura na web ou na App Store',
-    uk: 'підписка на сайті або в App Store',
+    ru: 'скачайте бесплатно, Premium — в приложении',
+    en: 'download free; Premium in the app',
+    de: 'kostenlos laden; Premium in der App',
+    es: 'descarga gratis; Premium en la app',
+    fr: 'téléchargement gratuit ; Premium dans l’app',
+    pt: 'baixe grátis; Premium no app',
+    uk: 'завантажте безкоштовно, Premium — у додатку',
   },
   TRUST_STRIP_ARIA: {
     ru: 'Ключевые преимущества в цифрах',
@@ -170,13 +226,13 @@ const DICT: Dict = {
     uk: 'Чому FollowNet',
   },
   WHY_SUB: {
-    ru: 'Проверяйте скорость сами: встроенный Speed Test и статистика. Мы не публикуем выдуманные «1000+ пользователей» — зато правила Free и Premium понятны заранее.',
-    en: 'Verify speed yourself with the built‑in Speed Test and stats. We don’t publish made‑up “1000+ users”—but Free vs Premium rules are clear upfront.',
-    de: 'Prüfen Sie die Geschwindigkeit mit integriertem Speedtest und Statistik. Keine erfundenen „1000+ Nutzer“—dafür klare Free‑ und Premium‑Regeln.',
-    es: 'Comprueba la velocidad con Speed Test y estadísticas integradas. Sin cifras inventadas de “1000+ usuarios”: las reglas Free y Premium están claras.',
-    fr: 'Vérifiez la vitesse avec Speed Test et statistiques intégrés. Pas de faux “1000+ utilisateurs”—les règles Free et Premium sont claires.',
-    pt: 'Confira a velocidade com Speed Test e estatísticas no app. Sem números inventados de “1000+ usuários”—regras Free e Premium claras.',
-    uk: 'Перевіряйте швидкість самі: вбудований Speed Test і статистика. Без вигаданих «1000+ користувачів» — натомість зрозумілі правила Free і Premium.',
+    ru: 'Speed Test, статистика, DNS‑профили и три протокола — в приложении. Правила Free и Premium понятны заранее, без выдуманных цифр.',
+    en: 'Speed Test, stats, DNS profiles, and three protocols—in the app. Free vs Premium rules are clear upfront, with no made‑up numbers.',
+    de: 'Speedtest, Statistik, DNS‑Profile und drei Protokolle—in der App. Free‑ und Premium‑Regeln sind klar, ohne erfundene Zahlen.',
+    es: 'Speed Test, estadísticas, perfiles DNS y tres protocolos—en la app. Reglas Free y Premium claras, sin cifras inventadas.',
+    fr: 'Speed Test, stats, profils DNS et trois protocoles—dans l’app. Règles Free et Premium claires, sans chiffres inventés.',
+    pt: 'Speed Test, estatísticas, perfis DNS e três protocolos—no app. Regras Free e Premium claras, sem números inventados.',
+    uk: 'Speed Test, статистика, DNS‑профілі та три протоколи — у додатку. Правила Free і Premium зрозумілі заздалегідь, без вигаданих цифр.',
   },
   WHY_1_TITLE: {
     ru: 'Вход без пароля',
@@ -206,51 +262,50 @@ const DICT: Dict = {
     uk: 'Зрозумілі ліміти',
   },
   WHY_2_TEXT: {
-    ru: 'Free с реальным лимитом трафика и IKEv2. Premium добавляет WireGuard, премиум‑серверы и безлимит. Без скрытых сюрпризов в интерфейсе.',
-    en: 'Free has a real traffic cap and IKEv2. Premium adds WireGuard, premium servers, and unlimited traffic. No surprise paywalls mid‑flow.',
-    de: 'Free mit Datenlimit und IKEv2. Premium ergänzt WireGuard, Premium‑Server und unbegrenzten Traffic. Keine versteckten Paywalls.',
-    es: 'Free con límite real e IKEv2. Premium añade WireGuard, servidores premium y tráfico ilimitado. Sin paywalls sorpresa.',
-    fr: 'Free avec plafond et IKEv2. Premium ajoute WireGuard, serveurs premium et trafic illimité. Pas de paywalls surprises.',
-    pt: 'Free com limite real e IKEv2. Premium inclui WireGuard, servidores premium e tráfego ilimitado. Sem paywalls surpresa.',
-    uk: 'Free з реальним лімітом трафіку та IKEv2. Premium додає WireGuard, преміум‑сервери та безліміт. Без прихованих сюрпризів.',
+    ru: 'IKEv2, WireGuard и AmneziaWG — у всех. Free: бесплатные серверы и лимит трафика. Premium: премиум‑серверы и безлимит.',
+    en: 'IKEv2, WireGuard, and AmneziaWG for everyone. Free: free servers and a traffic cap. Premium: premium servers and unlimited traffic.',
+    de: 'IKEv2, WireGuard und AmneziaWG für alle. Free: kostenlose Server und Traffic‑Limit. Premium: Premium‑Server und unbegrenzter Traffic.',
+    es: 'IKEv2, WireGuard y AmneziaWG para todos. Free: servidores gratis y límite de tráfico. Premium: servidores premium y tráfico ilimitado.',
+    fr: 'IKEv2, WireGuard et AmneziaWG pour tous. Free : serveurs gratuits et plafond de trafic. Premium : serveurs premium et trafic illimité.',
+    pt: 'IKEv2, WireGuard e AmneziaWG para todos. Free: servidores grátis e limite de tráfego. Premium: servidores premium e tráfego ilimitado.',
+    uk: 'IKEv2, WireGuard і AmneziaWG — у всіх. Free: безкоштовні сервери та ліміт трафіку. Premium: преміум‑сервери та безліміт.',
   },
   WHY_3_TITLE: {
-    ru: 'Два протокола — разные тарифы',
-    en: 'Two protocols, two tiers',
-    de: 'Zwei Protokolle, zwei Stufen',
-    es: 'Dos protocolos, dos planes',
-    fr: 'Deux protocoles, deux offres',
-    pt: 'Dois protocolos, dois planos',
-    uk: 'Два протоколи — різні тарифи',
+    ru: 'Smart Connect',
+    en: 'Smart Connect',
+    de: 'Smart Connect',
+    es: 'Smart Connect',
+    fr: 'Smart Connect',
+    pt: 'Smart Connect',
+    uk: 'Smart Connect',
   },
   WHY_3_TEXT: {
-    ru: 'IKEv2 в Free для стабильного подключения. WireGuard — с Premium, когда нужна максимальная скорость.',
-    en: 'IKEv2 on Free for stable connectivity. WireGuard unlocks with Premium when you want maximum speed.',
-    de: 'IKEv2 in Free für stabile Verbindung. WireGuard mit Premium für maximale Geschwindigkeit.',
-    es: 'IKEv2 en Free para conexión estable. WireGuard con Premium para máxima velocidad.',
-    fr: 'IKEv2 en Free pour une connexion stable. WireGuard avec Premium pour la vitesse maximale.',
-    pt: 'IKEv2 no Free para conexão estável. WireGuard no Premium para velocidade máxima.',
-    uk: 'IKEv2 у Free для стабільного з’єднання. WireGuard — з Premium, коли потрібна максимальна швидкість.',
+    ru: 'Умное подключение подбирает сервер и протокол под вашу сеть — Wi‑Fi или мобильную, стабильность и ограничения у провайдера. Можно доверить выбор приложению или настроить вручную.',
+    en: 'Smart Connect picks the server and protocol that fit your network—Wi‑Fi or cellular, stability, and carrier restrictions. Let the app choose or set it manually.',
+    de: 'Smart Connect wählt Server und Protokoll passend zu Ihrem Netz—WLAN oder Mobilfunk, Stabilität und Anbieter‑Limits. App entscheiden lassen oder manuell einstellen.',
+    es: 'Smart Connect elige servidor y protocolo según tu red—Wi‑Fi o datos, estabilidad y restricciones del operador. Deja que la app elija o configúralo tú.',
+    fr: 'Smart Connect choisit serveur et protocole selon votre réseau—Wi‑Fi ou mobile, stabilité et limites opérateur. Laisser l’app choisir ou régler manuellement.',
+    pt: 'Smart Connect escolhe servidor e protocolo para sua rede—Wi‑Fi ou celular, estabilidade e restrições da operadora. Deixe o app escolher ou configure manualmente.',
+    uk: 'Розумне підключення підбирає сервер і протокол під вашу мережу — Wi‑Fi чи мобільну, стабільність і обмеження оператора. Можна довірити вибір додатку або налаштувати вручну.',
   },
   WHY_4_TITLE: {
-    ru: 'Прозрачная политика',
-    en: 'Transparent policy',
-    de: 'Transparente Richtlinie',
-    es: 'Política transparente',
-    fr: 'Politique transparente',
-    pt: 'Política transparente',
-    uk: 'Прозора політика',
+    ru: 'DNS профили',
+    en: 'DNS profiles',
+    de: 'DNS‑Profile',
+    es: 'Perfiles DNS',
+    fr: 'Profils DNS',
+    pt: 'Perfis DNS',
+    uk: 'Профілі DNS',
   },
   WHY_4_TEXT: {
-    ru: 'В политике конфиденциальности описано, какие данные нужны для аккаунта и биллинга — без размытых обещаний.',
-    en: 'Privacy policy explains what account and billing need—no hand‑wavy promises.',
-    de: 'Die Datenschutzerklärung erklärt, was Konto und Abrechnung brauchen—ohne leere Versprechen.',
-    es: 'La privacidad explica qué necesitan cuenta y facturación—sin promesas vagas.',
-    fr: 'La confidentialité détaille compte et facturation—sans promesses floues.',
-    pt: 'A privacidade explica o que conta e cobrança precisam—sem promessas vagas.',
-    uk: 'У політиці конфіденційності — що потрібно для акаунта й оплати, без розмитих обіцянок.',
+    ru: 'AdGuard, Cloudflare или Google — выбирайте под задачу: блокировка, скорость или совместимость.',
+    en: 'AdGuard, Cloudflare, or Google—pick blocking, speed, or compatibility.',
+    de: 'AdGuard, Cloudflare oder Google—Blockierung, Speed oder Kompatibilität.',
+    es: 'AdGuard, Cloudflare o Google—bloqueo, velocidad o compatibilidad.',
+    fr: 'AdGuard, Cloudflare ou Google—blocage, vitesse ou compatibilité.',
+    pt: 'AdGuard, Cloudflare ou Google—bloqueio, velocidade ou compatibilidade.',
+    uk: 'AdGuard, Cloudflare або Google — під задачу: блокування, швидкість чи сумісність.',
   },
-
   PRICING_BADGE_M1: { ru: 'Популярный выбор', en: 'Popular choice', de: 'Beliebte Wahl', es: 'Opción popular', fr: 'Choix populaire', pt: 'Escolha popular', uk: 'Популярний вибір' },
   PRICING_BADGE_M3: {
     ru: 'Выгодно на квартал',
@@ -276,13 +331,13 @@ const DICT: Dict = {
   BULLET_SECURITY_SUB: { ru: 'AES‑256, автоподключение, защита DNS', en: 'AES‑256, auto-connect, DNS protection', de: 'AES‑256, Auto-Verbindung, DNS‑Schutz', es: 'AES‑256, auto-conexión, protección DNS', fr: 'AES‑256, connexion auto, protection DNS', pt: 'AES‑256, conexão automática, proteção DNS', uk: 'AES‑256, автопідключення, захист DNS' },
   BULLET_SPEED: { ru: 'Скорость', en: 'Speed', de: 'Geschwindigkeit', es: 'Velocidad', fr: 'Vitesse', pt: 'Velocidade', uk: 'Швидкість' },
   BULLET_SPEED_SUB: {
-    ru: 'IKEv2 в Free; WireGuard — в Premium',
-    en: 'IKEv2 on Free; WireGuard with Premium',
-    de: 'IKEv2 in Free; WireGuard mit Premium',
-    es: 'IKEv2 en Free; WireGuard en Premium',
-    fr: 'IKEv2 en Free ; WireGuard avec Premium',
-    pt: 'IKEv2 no Free; WireGuard no Premium',
-    uk: 'IKEv2 у Free; WireGuard — у Premium',
+    ru: 'Smart Connect и три протокола: IKEv2, WireGuard, AmneziaWG',
+    en: 'Smart Connect plus IKEv2, WireGuard, and AmneziaWG',
+    de: 'Smart Connect plus IKEv2, WireGuard und AmneziaWG',
+    es: 'Smart Connect más IKEv2, WireGuard y AmneziaWG',
+    fr: 'Smart Connect plus IKEv2, WireGuard et AmneziaWG',
+    pt: 'Smart Connect com IKEv2, WireGuard e AmneziaWG',
+    uk: 'Smart Connect і три протоколи: IKEv2, WireGuard, AmneziaWG',
   },
   BULLET_WORLD: { ru: 'Доступ по миру', en: 'Worldwide access', de: 'Weltweiter Zugriff', es: 'Acceso global', fr: 'Accès mondial', pt: 'Acesso global', uk: 'Доступ по світу' },
   BULLET_WORLD_SUB: { ru: 'Выбор локации и низкий пинг', en: 'Choose a location with low ping', de: 'Standortwahl mit niedrigem Ping', es: 'Elige ubicación con bajo ping', fr: 'Choisissez un lieu à faible ping', pt: 'Escolha locais com baixo ping', uk: 'Вибір локації та низький пінг' },
@@ -300,35 +355,79 @@ const DICT: Dict = {
     pt: 'Escolha do perfil DNS',
     uk: 'Вибір DNS‑профілю',
   },
+  CHIP_SMART_CONNECT: {
+    ru: 'Smart Connect',
+    en: 'Smart Connect',
+    de: 'Smart Connect',
+    es: 'Smart Connect',
+    fr: 'Smart Connect',
+    pt: 'Smart Connect',
+    uk: 'Smart Connect',
+  },
+  CHIP_PROTOCOLS: {
+    ru: 'IKEv2 · WireGuard · AmneziaWG',
+    en: 'IKEv2 · WireGuard · AmneziaWG',
+    de: 'IKEv2 · WireGuard · AmneziaWG',
+    es: 'IKEv2 · WireGuard · AmneziaWG',
+    fr: 'IKEv2 · WireGuard · AmneziaWG',
+    pt: 'IKEv2 · WireGuard · AmneziaWG',
+    uk: 'IKEv2 · WireGuard · AmneziaWG',
+  },
 
   // Features section
   FEATURES_KICKER: { ru: 'Преимущества', en: 'Features', de: 'Vorteile', es: 'Funciones', fr: 'Fonctionnalités', pt: 'Recursos', uk: 'Переваги' },
   FEATURES_TITLE: { ru: 'Фокус на скорости, приватности и UX', en: 'Focused on speed, privacy, and UX', de: 'Fokus auf Speed, Privatsphäre und UX', es: 'Enfoque en velocidad, privacidad y UX', fr: 'Focus sur vitesse, confidentialité et UX', pt: 'Foco em velocidade, privacidade e UX', uk: 'Фокус на швидкості, приватності та UX' },
   FEATURES_SUB: { ru: 'Собрали самые важные вещи в одном месте — без перегруза.', en: 'Everything important in one place — without overload.', de: 'Das Wichtigste an einem Ort — ohne Überladung.', es: 'Lo esencial en un solo lugar — sin exceso.', fr: "L’essentiel au même endroit — sans surcharge.", pt: 'O essencial em um só lugar — sem excesso.', uk: 'Найважливіше в одному місці — без перевантаження.' },
-  TRUST_WG_TITLE: {
-    ru: 'IKEv2 и WireGuard',
-    en: 'IKEv2 and WireGuard',
-    de: 'IKEv2 und WireGuard',
-    es: 'IKEv2 y WireGuard',
-    fr: 'IKEv2 et WireGuard',
-    pt: 'IKEv2 e WireGuard',
-    uk: 'IKEv2 і WireGuard',
+  TRUST_PROTOCOLS_TITLE: {
+    ru: 'Три протокола',
+    en: 'Three protocols',
+    de: 'Drei Protokolle',
+    es: 'Tres protocolos',
+    fr: 'Trois protocoles',
+    pt: 'Três protocolos',
+    uk: 'Три протоколи',
   },
-  TRUST_WG_TEXT: {
-    ru: 'IKEv2 в Free для стабильного VPN. WireGuard — в Premium, когда важна скорость.',
-    en: 'IKEv2 on Free for stable VPN. WireGuard is included with Premium when speed matters.',
-    de: 'IKEv2 in Free für stabiles VPN. WireGuard mit Premium, wenn Speed zählt.',
-    es: 'IKEv2 en Free para VPN estable. WireGuard en Premium cuando importa la velocidad.',
-    fr: 'IKEv2 en Free pour un VPN stable. WireGuard avec Premium quand la vitesse compte.',
-    pt: 'IKEv2 no Free para VPN estável. WireGuard no Premium quando a velocidade importa.',
-    uk: 'IKEv2 у Free для стабільного VPN. WireGuard — у Premium, коли важлива швидкість.',
+  TRUST_PROTOCOLS_TEXT: {
+    ru: 'IKEv2, WireGuard и AmneziaWG — бесплатно для всех. Переключайте в настройках протокола под задачу: скорость, стабильность или обход блокировок.',
+    en: 'IKEv2, WireGuard, and AmneziaWG are free for everyone. Switch in protocol settings for speed, stability, or bypassing blocks.',
+    de: 'IKEv2, WireGuard und AmneziaWG — für alle kostenlos. In den Protokolleinstellungen je nach Bedarf: Speed, Stabilität oder Blockierungen umgehen.',
+    es: 'IKEv2, WireGuard y AmneziaWG gratis para todos. Cambia en ajustes de protocolo según necesites: velocidad, estabilidad o evitar bloqueos.',
+    fr: 'IKEv2, WireGuard et AmneziaWG gratuits pour tous. Changez dans les réglages protocole : vitesse, stabilité ou contournement.',
+    pt: 'IKEv2, WireGuard e AmneziaWG grátis para todos. Alterne nas configurações de protocolo: velocidade, estabilidade ou contornar bloqueios.',
+    uk: 'IKEv2, WireGuard і AmneziaWG — безкоштовно для всіх. Перемикайте в налаштуваннях протоколу: швидкість, стабільність або обхід блокувань.',
+  },
+  TRUST_SMART_CONNECT_TITLE: {
+    ru: 'Smart Connect',
+    en: 'Smart Connect',
+    de: 'Smart Connect',
+    es: 'Smart Connect',
+    fr: 'Smart Connect',
+    pt: 'Smart Connect',
+    uk: 'Smart Connect',
+  },
+  TRUST_SMART_CONNECT_TEXT: {
+    ru: 'Умный режим сам подбирает сервер и протокол под Wi‑Fi или мобильную сеть, стабильность и ограничения у провайдера.',
+    en: 'Smart mode picks the server and protocol for Wi‑Fi or cellular, stability, and typical carrier restrictions.',
+    de: 'Der Smart‑Modus wählt Server und Protokoll für WLAN oder Mobilfunk, Stabilität und übliche Anbieter‑Limits.',
+    es: 'El modo inteligente elige servidor y protocolo según Wi‑Fi o datos, estabilidad y restricciones del operador.',
+    fr: 'Le mode intelligent choisit serveur et protocole selon Wi‑Fi ou mobile, stabilité et limites de l’opérateur.',
+    pt: 'O modo inteligente escolhe servidor e protocolo para Wi‑Fi ou celular, estabilidade e restrições da operadora.',
+    uk: 'Розумний режим сам підбирає сервер і протокол під Wi‑Fi чи мобільну мережу, стабільність і обмеження оператора.',
   },
   TRUST_AUTOCONNECT_TITLE: { ru: 'Автоподключение', en: 'Auto-connect', de: 'Auto-Verbindung', es: 'Auto-conexión', fr: 'Connexion auto', pt: 'Conexão automática', uk: 'Автопідключення' },
   TRUST_AUTOCONNECT_TEXT: { ru: 'Автоматическое восстановление соединения при обрывах и смене сети.', en: 'Automatic reconnection on dropouts and network changes.', de: 'Automatische Wiederverbindung bei Abbrüchen und Netzwerkwechsel.', es: 'Reconexión automática ante cortes y cambios de red.', fr: 'Reconnexion automatique en cas de coupure ou changement de réseau.', pt: 'Reconexão automática em quedas e mudanças de rede.', uk: 'Автоматичне відновлення з’єднання при розривах та зміні мережі.' },
   TRUST_DNS_TITLE: { ru: 'DNS профили', en: 'DNS profiles', de: 'DNS‑Profile', es: 'Perfiles DNS', fr: 'Profils DNS', pt: 'Perfis DNS', uk: 'Профілі DNS' },
   TRUST_DNS_TEXT: { ru: 'AdGuard / Cloudflare / Google — под задачу.', en: 'AdGuard / Cloudflare / Google — pick what you need.', de: 'AdGuard / Cloudflare / Google — passend zur Aufgabe.', es: 'AdGuard / Cloudflare / Google — según tu necesidad.', fr: 'AdGuard / Cloudflare / Google — selon vos besoins.', pt: 'AdGuard / Cloudflare / Google — conforme a sua necessidade.', uk: 'AdGuard / Cloudflare / Google — під задачу.' },
-  TRUST_STATS_TITLE: { ru: 'Статистика + Speed Test', en: 'Stats + Speed Test', de: 'Statistik + Speedtest', es: 'Estadísticas + Speed Test', fr: 'Statistiques + Speed Test', pt: 'Estatísticas + Speed Test', uk: 'Статистика + Speed Test' },
-  TRUST_STATS_TEXT: { ru: 'Пинг, скорость, сессии — удобно и красиво.', en: 'Ping, speed, sessions — clean and handy.', de: 'Ping, Speed, Sessions — übersichtlich und praktisch.', es: 'Ping, velocidad, sesiones — claro y útil.', fr: 'Ping, vitesse, sessions — clair et pratique.', pt: 'Ping, velocidade, sessões — simples e útil.', uk: 'Пінг, швидкість, сесії — зручно і красиво.' },
+  TRUST_STATS_TITLE: { ru: 'Статистика и Speed Test', en: 'Stats and Speed Test', de: 'Statistik und Speedtest', es: 'Estadísticas y Speed Test', fr: 'Statistiques et Speed Test', pt: 'Estatísticas e Speed Test', uk: 'Статистика та Speed Test' },
+  TRUST_STATS_TEXT: {
+    ru: 'История сессий, пинг и скорость. Speed Test — до и после VPN, чтобы увидеть разницу без сторонних сервисов.',
+    en: 'Session history, ping, and speed. Speed Test before and after VPN—see the difference without third‑party tools.',
+    de: 'Session‑Verlauf, Ping und Speed. Speedtest vor und nach VPN—Unterschied ohne Drittanbieter sehen.',
+    es: 'Historial de sesiones, ping y velocidad. Speed Test antes y después del VPN—sin herramientas externas.',
+    fr: 'Historique des sessions, ping et débit. Speed Test avant/après VPN—sans outils tiers.',
+    pt: 'Histórico de sessões, ping e velocidade. Speed Test antes e depois do VPN—sem ferramentas externas.',
+    uk: 'Історія сесій, пінг і швидкість. Speed Test — до і після VPN, щоб побачити різницю без сторонніх сервісів.',
+  },
 
   // Countries
   COUNTRIES_TITLE: { ru: 'Мгновенное подключение. В любом уголке мира.', en: 'Instant connection. Anywhere in the world.', de: 'Sofort verbunden. Überall auf der Welt.', es: 'Conexión instantánea. En cualquier lugar.', fr: 'Connexion instantanée. Partout.', pt: 'Conexão instantânea. Em qualquer lugar.', uk: 'Миттєве підключення. У будь‑якому куточку світу.' },
@@ -344,25 +443,28 @@ const DICT: Dict = {
 
   // How
   HOW_KICKER: { ru: 'Как работает VPN', en: 'How VPN works', de: 'Wie VPN funktioniert', es: 'Cómo funciona VPN', fr: 'Comment fonctionne un VPN', pt: 'Como funciona um VPN', uk: 'Як працює VPN' },
-  HOW_TITLE: { ru: 'Что происходит после нажатия «Connect»', en: 'What happens after you tap “Connect”', de: 'Was passiert nach dem Tippen auf „Connect“', es: 'Qué pasa después de tocar “Connect”', fr: 'Que se passe‑t‑il après “Connect”', pt: 'O que acontece após tocar “Connect”', uk: 'Що відбувається після натискання «Connect»' },
-  HOW_SUB: { ru: 'Соединение → туннель → шифрование → сервер → новый IP.', en: 'Connection → tunnel → encryption → server → new IP.', de: 'Verbindung → Tunnel → Verschlüsselung → Server → neue IP.', es: 'Conexión → túnel → cifrado → servidor → nueva IP.', fr: 'Connexion → tunnel → chiffrement → serveur → nouvelle IP.', pt: 'Conexão → túnel → criptografia → servidor → novo IP.', uk: 'З’єднання → тунель → шифрування → сервер → новий IP.' },
-  STEP1_TITLE: { ru: 'VPN‑соединение', en: 'VPN connection', de: 'VPN‑Verbindung', es: 'Conexión VPN', fr: 'Connexion VPN', pt: 'Conexão VPN', uk: 'VPN‑з’єднання' },
-  STEP1_TEXT: { ru: 'Приложение устанавливает защищённое соединение с сервером.', en: 'The app establishes a secure connection to a server.', de: 'Die App baut eine sichere Verbindung zum Server auf.', es: 'La app establece una conexión segura con un servidor.', fr: 'L’app établit une connexion sécurisée à un serveur.', pt: 'O app estabelece uma conexão segura com um servidor.', uk: 'Додаток встановлює захищене з’єднання із сервером.' },
+  HOW_TITLE: { ru: 'Что происходит, когда вы нажимаете Connect', en: 'What happens when you tap Connect', de: 'Was passiert, wenn Sie Connect tippen', es: 'Qué pasa cuando tocas Connect', fr: 'Ce qui se passe quand vous appuyez sur Connect', pt: 'O que acontece quando você toca em Connect', uk: 'Що відбувається, коли ви натискаєте Connect' },
+  HOW_SUB: { ru: 'Пять шагов — от iPhone до защищённого выхода в интернет. Коротко и по делу.', en: 'Five steps—from your iPhone to a protected connection online. Short and clear.', de: 'Fünf Schritte—vom iPhone zum geschützten Internetzugang. Kurz und klar.', es: 'Cinco pasos: del iPhone a una conexión protegida. Breve y claro.', fr: 'Cinq étapes—de l’iPhone à une connexion protégée. Court et clair.', pt: 'Cinco passos—do iPhone à conexão protegida. Breve e claro.', uk: 'П’ять кроків — від iPhone до захищеного виходу в інтернет. Коротко та по суті.' },
+  STEP1_TITLE: { ru: 'Подключение', en: 'Connection', de: 'Verbindung', es: 'Conexión', fr: 'Connexion', pt: 'Conexão', uk: 'Підключення' },
+  STEP1_TEXT: { ru: 'FollowNet связывает ваш iPhone с VPN‑сервером в выбранной стране.', en: 'FollowNet links your iPhone to a VPN server in the country you picked.', de: 'FollowNet verbindet Ihr iPhone mit einem VPN‑Server im gewählten Land.', es: 'FollowNet conecta tu iPhone con un servidor VPN en el país elegido.', fr: 'FollowNet relie votre iPhone à un serveur VPN dans le pays choisi.', pt: 'FollowNet liga seu iPhone a um servidor VPN no país escolhido.', uk: 'FollowNet з’єднує ваш iPhone з VPN‑сервером у вибраній країні.' },
   STEP2_TITLE: { ru: 'Туннель', en: 'Tunnel', de: 'Tunnel', es: 'Túnel', fr: 'Tunnel', pt: 'Túnel', uk: 'Тунель' },
-  STEP2_TEXT: { ru: 'Трафик “упаковывается” и идёт через защищённый канал.', en: 'Your traffic is routed through a protected tunnel.', de: 'Der Datenverkehr läuft durch einen geschützten Tunnel.', es: 'Tu tráfico va por un túnel protegido.', fr: 'Votre trafic passe par un tunnel protégé.', pt: 'Seu tráfego passa por um túnel protegido.', uk: 'Трафік проходить через захищений тунель.' },
+  STEP2_TEXT: { ru: 'Весь трафик идёт через защищённый канал — не напрямую через Wi‑Fi или мобильную сеть.', en: 'All traffic goes through a protected channel—not straight over Wi‑Fi or cellular.', de: 'Der gesamte Traffic läuft durch einen geschützten Kanal—nicht direkt über WLAN oder Mobilfunk.', es: 'Todo el tráfico pasa por un canal protegido—no directo por Wi‑Fi o datos móviles.', fr: 'Tout le trafic passe par un canal protégé—pas directement via Wi‑Fi ou mobile.', pt: 'Todo o tráfego passa por um canal protegido—não direto pelo Wi‑Fi ou celular.', uk: 'Уесь трафік іде через захищений канал — не напряму через Wi‑Fi чи мобільну мережу.' },
   STEP3_TITLE: { ru: 'Шифрование', en: 'Encryption', de: 'Verschlüsselung', es: 'Cifrado', fr: 'Chiffrement', pt: 'Criptografia', uk: 'Шифрування' },
-  STEP3_TEXT: { ru: 'Данные становятся нечитаемыми для наблюдателей в сети.', en: 'Your data becomes unreadable to observers on the network.', de: 'Daten werden für Beobachter im Netzwerk unlesbar.', es: 'Tus datos se vuelven ilegibles para observadores en la red.', fr: 'Vos données deviennent illisibles pour les observateurs.', pt: 'Seus dados ficam ilegíveis para observadores na rede.', uk: 'Дані стають нечитабельними для спостерігачів у мережі.' },
+  STEP3_TEXT: { ru: 'AES‑256 шифрует данные — их не прочитать ни провайдеру, ни в публичном Wi‑Fi.', en: 'AES‑256 encrypts your data—neither your ISP nor public Wi‑Fi can read it.', de: 'AES‑256 verschlüsselt Ihre Daten—weder Provider noch öffentliches WLAN lesen mit.', es: 'AES‑256 cifra tus datos—ni tu operador ni el Wi‑Fi público pueden leerlos.', fr: 'AES‑256 chiffre vos données—ni l’opérateur ni le Wi‑Fi public ne peuvent les lire.', pt: 'AES‑256 criptografa seus dados—nem a operadora nem o Wi‑Fi público conseguem ler.', uk: 'AES‑256 шифрує дані — їх не прочитає ні провайдер, ні в публічному Wi‑Fi.' },
   STEP4_TITLE: { ru: 'VPN‑сервер', en: 'VPN server', de: 'VPN‑Server', es: 'Servidor VPN', fr: 'Serveur VPN', pt: 'Servidor VPN', uk: 'VPN‑сервер' },
-  STEP4_TEXT: { ru: 'Сервер отправляет запросы в интернет от вашего имени.', en: 'The server sends requests to the internet on your behalf.', de: 'Der Server sendet Anfragen ins Internet in Ihrem Namen.', es: 'El servidor envía solicitudes a internet en tu nombre.', fr: 'Le serveur envoie les requêtes sur internet à votre place.', pt: 'O servidor envia requisições à internet em seu nome.', uk: 'Сервер надсилає запити в інтернет від вашого імені.' },
+  STEP4_TEXT: { ru: 'Сервер выходит в интернет за вас — запросы уходят уже из выбранной локации.', en: 'The server reaches the internet for you—requests leave from your chosen location.', de: 'Der Server geht für Sie ins Internet—Anfragen starten am gewählten Standort.', es: 'El servidor accede a internet por ti—las peticiones salen desde la ubicación elegida.', fr: 'Le serveur accède à internet pour vous—les requêtes partent du lieu choisi.', pt: 'O servidor acessa a internet por você—as requisições saem do local escolhido.', uk: 'Сервер виходить в інтернет за вас — запити йдуть уже з обраної локації.' },
   STEP5_TITLE: { ru: 'Новый IP', en: 'New IP', de: 'Neue IP', es: 'Nueva IP', fr: 'Nouvelle IP', pt: 'Novo IP', uk: 'Новий IP' },
-  STEP5_TEXT: { ru: 'Сайты видят IP сервера, а не ваш реальный адрес.', en: 'Websites see the server IP, not your real address.', de: 'Websites sehen die IP des Servers, nicht Ihre echte Adresse.', es: 'Los sitios ven la IP del servidor, no tu dirección real.', fr: 'Les sites voient l’IP du serveur, pas votre adresse réelle.', pt: 'Os sites veem a IP do servidor, não seu endereço real.', uk: 'Сайти бачать IP сервера, а не вашу реальну адресу.' },
+  STEP5_TEXT: { ru: 'Сайты и приложения видят IP сервера, а не ваш домашний или мобильный адрес.', en: 'Sites and apps see the server’s IP—not your home or mobile address.', de: 'Websites und Apps sehen die Server‑IP—nicht Ihre Heim‑ oder Mobilfunkadresse.', es: 'Sitios y apps ven la IP del servidor—no tu dirección de casa o móvil.', fr: 'Sites et apps voient l’IP du serveur—pas votre adresse domicile ou mobile.', pt: 'Sites e apps veem o IP do servidor—não seu endereço de casa ou celular.', uk: 'Сайти й додатки бачать IP сервера, а не ваш домашній чи мобільний адрес.' },
 
   // Apps
   APPS_KICKER: { ru: 'Приложения', en: 'Apps', de: 'Apps', es: 'Apps', fr: 'Apps', pt: 'Apps', uk: 'Додатки' },
   APPS_TITLE: { ru: 'Доступно на устройствах', en: 'Available on devices', de: 'Verfügbar auf Geräten', es: 'Disponible en dispositivos', fr: 'Disponible sur appareils', pt: 'Disponível em dispositivos', uk: 'Доступно на пристроях' },
-  APPS_SUB: { ru: 'Стартуем с iOS. Остальные платформы — по мере роста.', en: 'Starting with iOS. More platforms soon.', de: 'Start mit iOS. Weitere Plattformen folgen.', es: 'Empezamos con iOS. Más plataformas pronto.', fr: 'On commence avec iOS. Plus de plateformes bientôt.', pt: 'Começamos com iOS. Mais plataformas em breve.', uk: 'Починаємо з iOS. Інші платформи — згодом.' },
+  APPS_SUB: { ru: 'iOS уже в App Store. Расширение для Chrome — на проверке. macOS — скоро.', en: 'iOS is on the App Store. The Chrome extension is in review. macOS — soon.', de: 'iOS im App Store. Chrome‑Erweiterung in Prüfung. macOS — bald.', es: 'iOS en App Store. La extensión de Chrome en revisión. macOS — pronto.', fr: 'iOS sur l’App Store. Extension Chrome en revue. macOS — bientôt.', pt: 'iOS na App Store. Extensão Chrome em revisão. macOS — em breve.', uk: 'iOS уже в App Store. Розширення для Chrome — на перевірці. macOS — скоро.' },
   STATUS_AVAILABLE: { ru: 'Доступно', en: 'Available', de: 'Verfügbar', es: 'Disponible', fr: 'Disponible', pt: 'Disponível', uk: 'Доступно' },
   STATUS_SOON: { ru: 'Скоро', en: 'Soon', de: 'Bald', es: 'Pronto', fr: 'Bientôt', pt: 'Em breve', uk: 'Скоро' },
+  STATUS_IN_REVIEW: { ru: 'В ревью', en: 'In review', de: 'In Prüfung', es: 'En revisión', fr: 'En revue', pt: 'Em revisão', uk: 'На рев’ю' },
+  CHROME_EXT_TITLE: { ru: 'Chrome', en: 'Chrome', de: 'Chrome', es: 'Chrome', fr: 'Chrome', pt: 'Chrome', uk: 'Chrome' },
+  CHROME_EXT_SUB: { ru: 'Расширение для браузера — на проверке в Chrome Web Store', en: 'Browser extension — under Chrome Web Store review', de: 'Browser‑Erweiterung — Prüfung im Chrome Web Store', es: 'Extensión de navegador — revisión en Chrome Web Store', fr: 'Extension navigateur — revue Chrome Web Store', pt: 'Extensão do navegador — revisão na Chrome Web Store', uk: 'Розширення для браузера — на перевірці в Chrome Web Store' },
   IOS_SUB: { ru: 'Уже доступно в App Store', en: 'Available on the App Store', de: 'Im App Store verfügbar', es: 'Disponible en App Store', fr: "Disponible sur l’App Store", pt: 'Disponível na App Store', uk: 'Вже доступно в App Store' },
   DEV_SUB: { ru: 'В разработке', en: 'In development', de: 'In Entwicklung', es: 'En desarrollo', fr: 'En développement', pt: 'Em desenvolvimento', uk: 'У розробці' },
 
@@ -371,7 +473,7 @@ const DICT: Dict = {
   PRICING_TITLE: { ru: 'Premium в приложении (App Store)', en: 'Premium in the app (App Store)', de: 'Premium in der App (App Store)', es: 'Premium en la app (App Store)', fr: 'Premium dans l’app (App Store)', pt: 'Premium no app (App Store)', uk: 'Premium у додатку (App Store)' },
   PRICING_SUB: { ru: 'Оформление и оплата подписки — только в iOS‑приложении через App Store. Пробный период и восстановление покупки — в приложении.', en: 'Subscribe and pay only in the iOS app via the App Store. Trial and restore purchases happen in the app.', de: 'Abo‑Abschluss und Zahlung nur in der iOS‑App über den App Store. Testphase und Wiederherstellung in der App.', es: 'Contratación y pago solo en la app iOS con App Store. Prueba y restauración en la app.', fr: 'Souscription et paiement uniquement dans l’app iOS via l’App Store. Essai et restauration dans l’app.', pt: 'Assinatura e pagamento somente no app iOS pela App Store. Teste e restauração no app.', uk: 'Оформлення та оплата підписки — лише в iOS‑додатку через App Store. Trial і відновлення покупки — у додатку.' },
   PRICING_FREE: { ru: 'Free', en: 'Free', de: 'Free', es: 'Gratis', fr: 'Gratuit', pt: 'Grátis', uk: 'Free' },
-  PRICING_FREE_DESC: { ru: 'Базовые серверы и лимит.', en: 'Basic servers and limits.', de: 'Basis‑Server und Limits.', es: 'Servidores básicos y límites.', fr: 'Serveurs de base et limites.', pt: 'Servidores básicos e limites.', uk: 'Базові сервери та ліміти.' },
+  PRICING_FREE_DESC: { ru: 'Все протоколы, бесплатные серверы и лимит трафика.', en: 'All protocols, free servers, and a traffic cap.', de: 'Alle Protokolle, kostenlose Server und Traffic‑Limit.', es: 'Todos los protocolos, servidores gratis y límite de tráfico.', fr: 'Tous les protocoles, serveurs gratuits et plafond de trafic.', pt: 'Todos os protocolos, servidores grátis e limite de tráfego.', uk: 'Усі протоколи, безкоштовні сервери та ліміт трафіку.' },
   PRICING_FREE_CTA: {
     ru: 'Начать бесплатно',
     en: 'Start for free',
@@ -548,11 +650,10 @@ const DICT: Dict = {
     uk: 'Ви можете обрати план і спробувати знову у будь-який момент.',
   },
   PRICE_FOREVER: { ru: 'навсегда', en: 'forever', de: 'für immer', es: 'para siempre', fr: 'à vie', pt: 'para sempre', uk: 'назавжди' },
-  FREE_FEATURE_1: { ru: 'IKEv2', en: 'IKEv2', de: 'IKEv2', es: 'IKEv2', fr: 'IKEv2', pt: 'IKEv2', uk: 'IKEv2' },
+  FREE_FEATURE_1: { ru: 'IKEv2 · WireGuard · AmneziaWG', en: 'IKEv2 · WireGuard · AmneziaWG', de: 'IKEv2 · WireGuard · AmneziaWG', es: 'IKEv2 · WireGuard · AmneziaWG', fr: 'IKEv2 · WireGuard · AmneziaWG', pt: 'IKEv2 · WireGuard · AmneziaWG', uk: 'IKEv2 · WireGuard · AmneziaWG' },
   FREE_FEATURE_2: { ru: 'Бесплатные сервера', en: 'Free servers', de: 'Kostenlose Server', es: 'Servidores gratis', fr: 'Serveurs gratuits', pt: 'Servidores grátis', uk: 'Безкоштовні сервери' },
   FREE_FEATURE_3: { ru: 'Лимит трафика', en: 'Traffic limit', de: 'Traffic‑Limit', es: 'Límite de tráfico', fr: 'Limite de trafic', pt: 'Limite de tráfego', uk: 'Ліміт трафіку' },
   PREMIUM_DESC: { ru: 'Максимум скорости и функций.', en: 'Maximum speed and features.', de: 'Maximale Geschwindigkeit und Funktionen.', es: 'Máxima velocidad y funciones.', fr: 'Vitesse et fonctionnalités maximales.', pt: 'Velocidade e recursos máximos.', uk: 'Максимум швидкості та функцій.' },
-  PREMIUM_FEATURE_1: { ru: 'WireGuard', en: 'WireGuard', de: 'WireGuard', es: 'WireGuard', fr: 'WireGuard', pt: 'WireGuard', uk: 'WireGuard' },
   PREMIUM_FEATURE_2: { ru: 'Премиум‑серверы', en: 'Premium servers', de: 'Premium‑Server', es: 'Servidores Premium', fr: 'Serveurs Premium', pt: 'Servidores Premium', uk: 'Преміум‑сервери' },
   PREMIUM_FEATURE_3: { ru: 'Безлимитный трафик', en: 'Unlimited traffic', de: 'Unbegrenzter Traffic', es: 'Tráfico ilimitado', fr: 'Trafic illimité', pt: 'Tráfego ilimitado', uk: 'Безлімітний трафік' },
   PREMIUM_FEATURE_4: { ru: 'До 5 устройств', en: 'Up to 5 devices', de: 'Bis zu 5 Geräte', es: 'Hasta 5 dispositivos', fr: "Jusqu’à 5 appareils", pt: 'Até 5 dispositivos', uk: 'До 5 пристроїв' },
@@ -561,42 +662,59 @@ const DICT: Dict = {
   // FAQ
   FAQ_KICKER: { ru: 'FAQ', en: 'FAQ', de: 'FAQ', es: 'FAQ', fr: 'FAQ', pt: 'FAQ', uk: 'FAQ' },
   FAQ_TITLE: { ru: 'Частые вопросы', en: 'Common questions', de: 'Häufige Fragen', es: 'Preguntas frecuentes', fr: 'Questions fréquentes', pt: 'Perguntas frequentes', uk: 'Поширені питання' },
-  FAQ_SUB: { ru: 'Про вход по коду, подписку, trial и подключение — коротко и по делу.', en: 'About passwordless login, subscription, trial, and connection — quick and clear.', de: 'Über Login per Code, Abo, Testphase und Verbindung — kurz und klar.', es: 'Sobre acceso por código, suscripción, prueba y conexión — breve y claro.', fr: 'Sur la connexion par code, l’abonnement, l’essai et la connexion — clair et bref.', pt: 'Sobre login por código, assinatura, teste e conexão — rápido e claro.', uk: 'Про вхід за кодом, підписку, trial і підключення — коротко та по суті.' },
+  FAQ_SUB: { ru: 'Про Free и Premium, протоколы, Smart Connect, Chrome и подключение — коротко и по делу.', en: 'About Free and Premium, protocols, Smart Connect, Chrome, and connection — quick and clear.', de: 'Über Free und Premium, Protokolle, Smart Connect, Chrome und Verbindung — kurz und klar.', es: 'Sobre Free y Premium, protocolos, Smart Connect, Chrome y conexión — breve y claro.', fr: 'Sur Free et Premium, protocoles, Smart Connect, Chrome et connexion — clair et bref.', pt: 'Sobre Free e Premium, protocolos, Smart Connect, Chrome e conexão — rápido e claro.', uk: 'Про Free і Premium, протоколи, Smart Connect, Chrome і підключення — коротко та по суті.' },
 
   FAQ_Q1: { ru: 'Можно пользоваться бесплатно?', en: 'Can I use it for free?', de: 'Kann ich es kostenlos nutzen?', es: '¿Se puede usar gratis?', fr: 'Peut‑on l’utiliser gratuitement ?', pt: 'Posso usar de graça?', uk: 'Чи можна користуватися безкоштовно?' },
-  FAQ_A1: { ru: 'Да. Free план подойдёт, чтобы попробовать FollowNet: базовые сервера и лимиты. Premium открывает максимум скорости и функций.', en: 'Yes. The Free plan is great to try FollowNet: basic servers and limits. Premium unlocks maximum speed and features.', de: 'Ja. Der Free‑Plan eignet sich zum Testen: Basis‑Server und Limits. Premium schaltet maximale Geschwindigkeit und Funktionen frei.', es: 'Sí. El plan Gratis sirve para probar: servidores básicos y límites. Premium desbloquea máxima velocidad y funciones.', fr: 'Oui. Le plan Gratuit est idéal pour essayer : serveurs de base et limites. Premium débloque la vitesse max et les fonctions.', pt: 'Sim. O plano Grátis é para testar: servidores básicos e limites. Premium libera velocidade máxima e recursos.', uk: 'Так. Free план підходить, щоб спробувати FollowNet: базові сервери та ліміти. Premium відкриває максимум швидкості та функцій.' },
+  FAQ_A1: { ru: 'Да. В Free — все протоколы (IKEv2, WireGuard, AmneziaWG), Smart Connect, бесплатные серверы и лимит трафика. Premium добавляет премиум‑серверы, безлимит и до 5 устройств.', en: 'Yes. Free includes all protocols (IKEv2, WireGuard, AmneziaWG), Smart Connect, free servers, and a traffic cap. Premium adds premium servers, unlimited traffic, and up to 5 devices.', de: 'Ja. Free: alle Protokolle (IKEv2, WireGuard, AmneziaWG), Smart Connect, kostenlose Server und Traffic‑Limit. Premium: Premium‑Server, unbegrenzter Traffic, bis zu 5 Geräte.', es: 'Sí. Free incluye todos los protocolos (IKEv2, WireGuard, AmneziaWG), Smart Connect, servidores gratis y límite de tráfico. Premium: servidores premium, tráfico ilimitado y hasta 5 dispositivos.', fr: 'Oui. Free : tous les protocoles (IKEv2, WireGuard, AmneziaWG), Smart Connect, serveurs gratuits et plafond de trafic. Premium : serveurs premium, trafic illimité et jusqu’à 5 appareils.', pt: 'Sim. Free inclui todos os protocolos (IKEv2, WireGuard, AmneziaWG), Smart Connect, servidores grátis e limite de tráfego. Premium: servidores premium, tráfego ilimitado e até 5 dispositivos.', uk: 'Так. У Free — усі протоколи (IKEv2, WireGuard, AmneziaWG), Smart Connect, безкоштовні сервери та ліміт трафіку. Premium додає преміум‑сервери, безліміт і до 5 пристроїв.' },
 
   FAQ_Q2: { ru: 'Как работает вход без пароля?', en: 'How does passwordless login work?', de: 'Wie funktioniert Login ohne Passwort?', es: '¿Cómo funciona el acceso sin contraseña?', fr: 'Comment fonctionne la connexion sans mot de passe ?', pt: 'Como funciona o login sem senha?', uk: 'Як працює вхід без пароля?' },
   FAQ_A2: { ru: 'Вы вводите email — мы отправляем код. Вводите код в приложении и входите. Пароль не нужен.', en: 'Enter your email — we send a code. Enter the code in the app to sign in. No password needed.', de: 'Sie geben Ihre E‑Mail ein — wir senden einen Code. Code in der App eingeben und einloggen. Kein Passwort nötig.', es: 'Ingresas tu email y enviamos un código. Lo introduces en la app y entras. Sin contraseña.', fr: "Vous saisissez votre email — nous envoyons un code. Saisissez-le dans l’app pour vous connecter. Pas de mot de passe.", pt: 'Você informa o email — enviamos um código. Digite o código no app e entre. Sem senha.', uk: 'Ви вводите email — ми надсилаємо код. Вводите код у додатку і входите. Пароль не потрібен.' },
 
   FAQ_Q3: { ru: 'Что входит в Premium?', en: "What's included in Premium?", de: 'Was ist in Premium enthalten?', es: '¿Qué incluye Premium?', fr: 'Que contient Premium ?', pt: 'O que inclui o Premium?', uk: 'Що входить у Premium?' },
-  FAQ_A3: { ru: 'Премиум‑серверы, WireGuard + IKEv2, безлимитный трафик, максимум скорости и до 5 устройств на аккаунт.', en: 'Premium servers, WireGuard + IKEv2, unlimited traffic, maximum speed, and up to 5 devices per account.', de: 'Premium‑Server, WireGuard + IKEv2, unbegrenzter Traffic, maximale Geschwindigkeit und bis zu 5 Geräte pro Account.', es: 'Servidores Premium, WireGuard + IKEv2, tráfico ilimitado, máxima velocidad y hasta 5 dispositivos por cuenta.', fr: 'Serveurs Premium, WireGuard + IKEv2, trafic illimité, vitesse maximale et jusqu’à 5 appareils par compte.', pt: 'Servidores Premium, WireGuard + IKEv2, tráfego ilimitado, velocidade máxima e até 5 dispositivos por conta.', uk: 'Преміум‑сервери, WireGuard + IKEv2, безлімітний трафік, максимум швидкості та до 5 пристроїв на акаунт.' },
+  FAQ_A3: { ru: 'Премиум‑серверы, безлимитный трафик и до 5 устройств на аккаунт. Оформление — только в iOS‑приложении через App Store.', en: 'Premium servers, unlimited traffic, and up to 5 devices per account. Subscribe only in the iOS app via the App Store.', de: 'Premium‑Server, unbegrenzter Traffic und bis zu 5 Geräte pro Account. Abo nur in der iOS‑App über den App Store.', es: 'Servidores Premium, tráfico ilimitado y hasta 5 dispositivos por cuenta. Suscripción solo en la app iOS vía App Store.', fr: 'Serveurs Premium, trafic illimité et jusqu’à 5 appareils par compte. Abonnement uniquement dans l’app iOS via l’App Store.', pt: 'Servidores Premium, tráfego ilimitado e até 5 dispositivos por conta. Assinatura somente no app iOS pela App Store.', uk: 'Преміум‑сервери, безлімітний трафік і до 5 пристроїв на акаунт. Оформлення — лише в iOS‑додатку через App Store.' },
 
-  FAQ_Q4: { ru: 'Что такое DNS профили и зачем они?', en: 'What are DNS profiles and why do they matter?', de: 'Was sind DNS‑Profile und wozu?', es: '¿Qué son los perfiles DNS y para qué sirven?', fr: 'Que sont les profils DNS et à quoi servent‑ils ?', pt: 'O que são perfis DNS e por quê?', uk: 'Що таке профілі DNS і навіщо вони?' },
-  FAQ_A4: { ru: 'В приложении можно выбрать DNS (AdGuard / Cloudflare / Google). Это влияет на блокировки/скорость/приватность в зависимости от профиля.', en: 'In the app you can pick DNS (AdGuard / Cloudflare / Google). It affects blocking, speed, and privacy depending on the profile.', de: 'In der App können Sie DNS wählen (AdGuard / Cloudflare / Google). Das beeinflusst Blockierung, Geschwindigkeit und Privatsphäre.', es: 'En la app puedes elegir DNS (AdGuard / Cloudflare / Google). Afecta bloqueo, velocidad y privacidad según el perfil.', fr: 'Dans l’app, vous pouvez choisir le DNS (AdGuard / Cloudflare / Google). Cela influence blocage, vitesse et confidentialité.', pt: 'No app você escolhe DNS (AdGuard / Cloudflare / Google). Isso afeta bloqueio, velocidade e privacidade.', uk: 'У додатку можна вибрати DNS (AdGuard / Cloudflare / Google). Це впливає на блокування/швидкість/приватність залежно від профілю.' },
+  FAQ_Q4: { ru: 'Что такое DNS‑профили?', en: 'What are DNS profiles?', de: 'Was sind DNS‑Profile?', es: '¿Qué son los perfiles DNS?', fr: 'Que sont les profils DNS ?', pt: 'O que são perfis DNS?', uk: 'Що таке DNS‑профілі?' },
+  FAQ_A4: { ru: 'В настройках можно выбрать DNS: AdGuard, Cloudflare или Google — под блокировку рекламы, скорость или совместимость.', en: 'In settings you can pick AdGuard, Cloudflare, or Google DNS—for blocking, speed, or compatibility.', de: 'In den Einstellungen wählen Sie AdGuard, Cloudflare oder Google DNS—für Blockierung, Speed oder Kompatibilität.', es: 'En ajustes puedes elegir AdGuard, Cloudflare o Google DNS—para bloqueo, velocidad o compatibilidad.', fr: 'Dans les réglages, choisissez AdGuard, Cloudflare ou Google DNS—blocage, vitesse ou compatibilité.', pt: 'Nas configurações, escolha AdGuard, Cloudflare ou Google DNS—bloqueio, velocidade ou compatibilidade.', uk: 'У налаштуваннях можна вибрати DNS: AdGuard, Cloudflare або Google — під блокування, швидкість чи сумісність.' },
 
-  FAQ_Q5: { ru: 'Какие виджеты есть?', en: 'What widgets do you have?', de: 'Welche Widgets gibt es?', es: '¿Qué widgets hay?', fr: 'Quels widgets avez‑vous ?', pt: 'Quais widgets existem?', uk: 'Які є віджети?' },
-  FAQ_A5: { ru: 'На iOS доступны виджеты со статусом подключения и таймером сессии — удобно видеть VPN без открытия приложения.', en: 'On iOS, widgets show your connection status and session timer — useful to see VPN state without opening the app.', de: 'Auf iOS gibt es Widgets mit Verbindungsstatus und Session‑Timer — praktisch ohne App‑Öffnen.', es: 'En iOS hay widgets con estado y temporizador de sesión — útil sin abrir la app.', fr: 'Sur iOS, des widgets affichent le statut et le minuteur de session — pratique sans ouvrir l’app.', pt: 'No iOS, os widgets mostram o status e o timer da sessão — útil sem abrir o app.', uk: 'На iOS є віджети зі статусом підключення і таймером сесії — зручно без відкриття додатка.' },
+  FAQ_Q5: { ru: 'Когда будет расширение для Chrome?', en: 'When will the Chrome extension be available?', de: 'Wann kommt die Chrome‑Erweiterung?', es: '¿Cuándo estará la extensión de Chrome?', fr: 'Quand l’extension Chrome sera‑t‑elle disponible ?', pt: 'Quando sai a extensão do Chrome?', uk: 'Коли буде розширення для Chrome?' },
+  FAQ_A5: { ru: 'Сейчас оно на проверке в Chrome Web Store. После одобрения появится в Store — обновим блок «Приложения» на сайте.', en: 'It’s currently under Chrome Web Store review. Once approved, it will appear in the Store—we’ll update the Apps section here.', de: 'Derzeit in Prüfung im Chrome Web Store. Nach Freigabe im Store — wir aktualisieren den Apps‑Bereich hier.', es: 'Ahora está en revisión en Chrome Web Store. Tras la aprobación aparecerá en la Store—actualizaremos la sección Apps aquí.', fr: 'Actuellement en revue sur le Chrome Web Store. Après approbation, disponible dans le Store—nous mettrons à jour la section Apps.', pt: 'Está em revisão na Chrome Web Store. Após aprovação, aparecerá na Store—atualizaremos a seção Apps aqui.', uk: 'Зараз воно на перевірці в Chrome Web Store. Після схвалення з’явиться в Store — оновимо блок «Додатки» на сайті.' },
 
   FAQ_Q6: { ru: 'Как работает trial 3 дня?', en: 'How does the 3‑day trial work?', de: 'Wie funktioniert der 3‑Tage‑Test?', es: '¿Cómo funciona la prueba de 3 días?', fr: "Comment fonctionne l’essai de 3 jours ?", pt: 'Como funciona o teste de 3 dias?', uk: 'Як працює trial 3 дні?' },
-  FAQ_A6: { ru: 'Trial активируется при оформлении Premium в приложении. Управление и отмена — в подписках Apple (Settings → Apple ID → Subscriptions).', en: 'The trial starts when you activate Premium in the app. Manage and cancel via Apple subscriptions (Settings → Apple ID → Subscriptions).', de: 'Der Test startet, wenn Sie Premium in der App aktivieren. Verwaltung/Abbruch in Apple‑Abos (Settings → Apple ID → Subscriptions).', es: 'La prueba inicia al activar Premium en la app. Gestionar/cancelar en Suscripciones de Apple (Settings → Apple ID → Subscriptions).', fr: "L’essai démarre lors de l’activation de Premium. Gérez/annulez via Abonnements Apple (Settings → Apple ID → Subscriptions).", pt: 'O teste começa ao ativar Premium no app. Gerencie/cancele em Assinaturas Apple (Settings → Apple ID → Subscriptions).', uk: 'Trial активується при оформленні Premium у додатку. Керування/скасування — в підписках Apple (Settings → Apple ID → Subscriptions).' },
+  FAQ_A6: { ru: 'Trial 3 дня доступен при первой подписке Premium в приложении. Управление и отмена — в подписках Apple (Настройки → Apple ID → Подписки).', en: 'A 3‑day trial is available with your first Premium subscription in the app. Manage or cancel in Apple subscriptions (Settings → Apple ID → Subscriptions).', de: '3 Tage Test bei der ersten Premium‑Aktivierung in der App. Verwaltung/Kündigung in Apple‑Abos (Einstellungen → Apple ID → Abonnements).', es: 'Prueba de 3 días con la primera suscripción Premium en la app. Gestionar/cancelar en Suscripciones de Apple (Ajustes → Apple ID → Suscripciones).', fr: 'Essai de 3 jours lors du premier abonnement Premium dans l’app. Gérer/annuler dans Abonnements Apple (Réglages → Apple ID → Abonnements).', pt: 'Teste de 3 dias na primeira assinatura Premium no app. Gerencie/cancele em Assinaturas Apple (Ajustes → Apple ID → Assinaturas).', uk: 'Trial 3 дні доступний при першій підписці Premium у додатку. Керування та скасування — в підписках Apple (Налаштування → Apple ID → Підписки).' },
 
   FAQ_Q7: { ru: 'Какие протоколы поддерживаются?', en: 'Which protocols are supported?', de: 'Welche Protokolle werden unterstützt?', es: '¿Qué protocolos se admiten?', fr: 'Quels protocoles sont pris en charge ?', pt: 'Quais protocolos são suportados?', uk: 'Які протоколи підтримуються?' },
-  FAQ_A7: { ru: 'FollowNet поддерживает WireGuard и IKEv2. Можно выбрать подходящий вариант под сеть и стабильность.', en: 'FollowNet supports WireGuard and IKEv2. You can choose what fits your network and stability.', de: 'FollowNet unterstützt WireGuard und IKEv2. Sie können je nach Netzwerk/Stabilität wählen.', es: 'FollowNet admite WireGuard e IKEv2. Puedes elegir según red y estabilidad.', fr: 'FollowNet prend en charge WireGuard et IKEv2. Choisissez selon réseau et stabilité.', pt: 'FollowNet suporta WireGuard e IKEv2. Você pode escolher conforme rede/estabilidade.', uk: 'FollowNet підтримує WireGuard та IKEv2. Можна вибрати варіант під мережу та стабільність.' },
+  FAQ_A7: { ru: 'IKEv2, WireGuard и AmneziaWG доступны бесплатно (AmneziaWG — на серверах, где поддерживается). Протокол можно выбрать вручную или доверить Smart Connect.', en: 'IKEv2, WireGuard, and AmneziaWG are free (AmneziaWG on supported servers). Pick a protocol manually or use Smart Connect.', de: 'IKEv2, WireGuard und AmneziaWG sind kostenlos (AmneziaWG auf unterstützten Servern). Manuell wählen oder Smart Connect nutzen.', es: 'IKEv2, WireGuard y AmneziaWG son gratis (AmneziaWG en servidores compatibles). Elige manualmente o usa Smart Connect.', fr: 'IKEv2, WireGuard et AmneziaWG sont gratuits (AmneziaWG sur serveurs pris en charge). Choix manuel ou Smart Connect.', pt: 'IKEv2, WireGuard e AmneziaWG são grátis (AmneziaWG em servidores compatíveis). Escolha manualmente ou use Smart Connect.', uk: 'IKEv2, WireGuard і AmneziaWG доступні безкоштовно (AmneziaWG — на серверах, де підтримується). Протокол можна вибрати вручну або довірити Smart Connect.' },
 
-  FAQ_Q8: { ru: 'Если VPN не подключается — что делать?', en: "If VPN doesn't connect — what should I do?", de: 'Wenn VPN nicht verbindet — was tun?', es: 'Si no conecta — ¿qué hago?', fr: 'Si ça не se connecte pas — que faire ?', pt: 'Se não conectar — o que fazer?', uk: 'Якщо VPN не підключається — що робити?' },
-  FAQ_A8: { ru: 'Попробуйте сменить сервер или протокол, переключить Wi‑Fi/сотовую сеть и перезапустить приложение. Если не помогло — проверьте интернет и попробуйте позже.', en: 'Try switching server or protocol, toggle Wi‑Fi/cellular, and restart the app. If it still fails, check your internet and try again later.', de: 'Wechseln Sie Server oder Protokoll, schalten Sie WLAN/Mobilfunk um und starten Sie die App neu. Wenn es weiterhin nicht funktioniert, prüfen Sie die Internetverbindung und versuchen Sie es später erneut.', es: 'Cambia servidor o protocolo, alterna Wi‑Fi/datos y reinicia la app. Si sigue, revisa internet y prueba más tarde.', fr: 'Essayez un autre serveur/protocole, basculez Wi‑Fi/4G et redémarrez l’app. Si ça persiste, vérifiez internet et réessayez plus tard.', pt: 'Troque servidor/protocolo, alterne Wi‑Fi/dados e reinicie o app. Se continuar, verifique a internet e tente novamente depois.', uk: 'Спробуйте змінити сервер або протокол, перемкнути Wi‑Fi/мобільну мережу і перезапустити додаток. Якщо не допомогло — перевірте інтернет і спробуйте пізніше.' },
+  FAQ_Q8: { ru: 'Если VPN не подключается — что делать?', en: "If VPN doesn't connect — what should I do?", de: 'Wenn VPN nicht verbindet — was tun?', es: 'Si no conecta — ¿qué hago?', fr: 'Si ça ne se connecte pas — que faire ?', pt: 'Se não conectar — o que fazer?', uk: 'Якщо VPN не підключається — що робити?' },
+  FAQ_A8: { ru: 'Попробуйте сменить сервер или протокол, включить Smart Connect, переключить Wi‑Fi/сотовую сеть и перезапустить приложение. Если не помогло — проверьте интернет и попробуйте позже.', en: 'Try switching server or protocol, enable Smart Connect, toggle Wi‑Fi/cellular, and restart the app. If it still fails, check your internet and try again later.', de: 'Wechseln Sie Server oder Protokoll, aktivieren Sie Smart Connect, schalten Sie WLAN/Mobilfunk um und starten Sie die App neu. Wenn es weiterhin nicht funktioniert, prüfen Sie die Internetverbindung und versuchen Sie es später erneut.', es: 'Cambia servidor o protocolo, activa Smart Connect, alterna Wi‑Fi/datos y reinicia la app. Si sigue, revisa internet y prueba más tarde.', fr: 'Essayez un autre serveur/protocole, activez Smart Connect, basculez Wi‑Fi/4G et redémarrez l’app. Si ça persiste, vérifiez internet et réessayez plus tard.', pt: 'Troque servidor/protocolo, ative Smart Connect, alterne Wi‑Fi/dados e reinicie o app. Se continuar, verifique a internet e tente novamente depois.', uk: 'Спробуйте змінити сервер або протокол, увімкнути Smart Connect, перемкнути Wi‑Fi/мобільну мережу і перезапустити додаток. Якщо не допомогло — перевірте інтернет і спробуйте пізніше.' },
+
+  FAQ_Q9: { ru: 'Как работает Smart Connect?', en: 'How does Smart Connect work?', de: 'Wie funktioniert Smart Connect?', es: '¿Cómo funciona Smart Connect?', fr: 'Comment fonctionne Smart Connect ?', pt: 'Como funciona o Smart Connect?', uk: 'Як працює Smart Connect?' },
+  FAQ_A9: {
+    ru: 'Это умный режим в настройках протокола: приложение само подбирает сервер и протокол (IKEv2, WireGuard или AmneziaWG) под вашу сеть — Wi‑Fi или мобильную, стабильность и типичные ограничения у провайдера. Вы всегда можете выбрать протокол вручную.',
+    en: 'Smart mode in protocol settings lets the app pick the server and protocol (IKEv2, WireGuard, or AmneziaWG) for your network—Wi‑Fi or cellular, stability, and common carrier restrictions. You can always choose a protocol manually.',
+    de: 'Der Smart‑Modus in den Protokolleinstellungen wählt Server und Protokoll (IKEv2, WireGuard oder AmneziaWG) für Ihr Netz—WLAN oder Mobilfunk, Stabilität und übliche Anbieter‑Limits. Manuell wählen geht jederzeit.',
+    es: 'El modo inteligente en ajustes de protocolo elige servidor y protocolo (IKEv2, WireGuard o AmneziaWG) según tu red—Wi‑Fi o datos, estabilidad y restricciones habituales del operador. Siempre puedes elegir manualmente.',
+    fr: 'Le mode intelligent dans les réglages protocole choisit serveur et protocole (IKEv2, WireGuard ou AmneziaWG) selon votre réseau—Wi‑Fi ou mobile, stabilité et limites courantes de l’opérateur. Choix manuel possible à tout moment.',
+    pt: 'O modo inteligente nas configurações de protocolo escolhe servidor e protocolo (IKEv2, WireGuard ou AmneziaWG) para sua rede—Wi‑Fi ou celular, estabilidade e restrições comuns da operadora. Você pode escolher manualmente quando quiser.',
+    uk: 'Це розумний режим у налаштуваннях протоколу: додаток сам підбирає сервер і протокол (IKEv2, WireGuard або AmneziaWG) під вашу мережу — Wi‑Fi чи мобільну, стабільність і типові обмеження оператора. Протокол завжди можна вибрати вручну.',
+  },
 };
 
 const STORAGE_KEY = 'follownet_lang';
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
-  private lang: AppLang = this.readInitialLang();
+  private lang: AppLang = 'ru';
   readonly lang$ = new BehaviorSubject<AppLang>(this.lang);
 
-  constructor() {
-    document.documentElement.lang = this.lang;
+  constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: object,
+    @Inject(DOCUMENT) private readonly document: Document,
+    @Optional() private readonly location: Location | null,
+  ) {
+    this.lang = this.readInitialLang();
+    this.lang$.next(this.lang);
+    this.applyHtmlLang(this.lang);
   }
 
   get current(): AppLang {
@@ -605,12 +723,14 @@ export class I18nService {
 
   setLang(next: AppLang) {
     this.lang = next;
-    try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      // ignore
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch {
+        // ignore
+      }
     }
-    document.documentElement.lang = next;
+    this.applyHtmlLang(next);
     this.lang$.next(next);
   }
 
@@ -628,30 +748,58 @@ export class I18nService {
     return LANG_LABELS[lang] ?? lang.toUpperCase();
   }
 
+  private applyHtmlLang(lang: AppLang): void {
+    this.document.documentElement.lang = lang;
+  }
+
+  private isSupported(lang: string): lang is AppLang {
+    return (SUPPORTED_LANGS as readonly string[]).includes(lang);
+  }
+
   private readInitialLang(): AppLang {
-    // 1) URL override: ?lang=ru|en|de|es|fr|pt|uk
-    try {
-      const fromUrl = new URLSearchParams(window.location.search).get('lang')?.toLowerCase();
-      if (fromUrl && (SUPPORTED_LANGS as readonly string[]).includes(fromUrl)) return fromUrl as AppLang;
-    } catch {
-      // ignore
+    const fromUrl = this.langFromQuery(this.currentSearch());
+    if (fromUrl) return fromUrl;
+
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY) as AppLang | null;
+        if (saved && this.isSupported(saved)) return saved;
+      } catch {
+        // ignore
+      }
+
+      const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+      if (nav.startsWith('ru')) return 'ru';
+      if (nav.startsWith('uk')) return 'uk';
+      if (nav.startsWith('de')) return 'de';
+      if (nav.startsWith('es')) return 'es';
+      if (nav.startsWith('fr')) return 'fr';
+      if (nav.startsWith('pt')) return 'pt';
+      return 'en';
     }
 
+    return 'ru';
+  }
+
+  private currentSearch(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      return window.location.search;
+    }
+    const path = this.location?.path() ?? '';
+    const q = path.indexOf('?');
+    return q >= 0 ? path.slice(q) : '';
+  }
+
+  private langFromQuery(search: string): AppLang | null {
+    if (!search) return null;
     try {
-      const saved = localStorage.getItem(STORAGE_KEY) as AppLang | null;
-      if (saved && (SUPPORTED_LANGS as readonly string[]).includes(saved)) return saved;
+      const raw = search.startsWith('?') ? search.slice(1) : search;
+      const fromUrl = new URLSearchParams(raw).get('lang')?.toLowerCase();
+      if (fromUrl && this.isSupported(fromUrl)) return fromUrl;
     } catch {
       // ignore
     }
-    const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
-    // map navigator languages to supported set (e.g. en-US -> en)
-    if (nav.startsWith('ru')) return 'ru';
-    if (nav.startsWith('uk')) return 'uk';
-    if (nav.startsWith('de')) return 'de';
-    if (nav.startsWith('es')) return 'es';
-    if (nav.startsWith('fr')) return 'fr';
-    if (nav.startsWith('pt')) return 'pt';
-    return 'en';
+    return null;
   }
 }
 

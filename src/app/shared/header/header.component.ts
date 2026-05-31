@@ -1,5 +1,5 @@
-import { Component, HostListener, Inject } from '@angular/core';
-import { DOCUMENT, NgFor, NgIf } from '@angular/common';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
@@ -27,16 +27,15 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: object,
     public i18n: I18nService,
   ) {
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
         this.closeMenu();
-        // Only track anchors on the landing page
         const url = this.router.url;
-        if (!url.startsWith('/privacy') && !url.startsWith('/terms')) {
-          // allow scroll handler to set activeSection
+        if (!url.startsWith('/privacy') && !url.startsWith('/terms') && isPlatformBrowser(this.platformId)) {
           setTimeout(() => this.updateActiveSection(), 0);
         } else {
           this.activeSection = null;
@@ -73,6 +72,8 @@ export class HeaderComponent {
   }
 
   private updateActiveSection() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const sections: Array<{ id: 'top' | 'features' | 'pricing' | 'download' }> = [
       { id: 'top' },
       { id: 'features' },
@@ -92,7 +93,8 @@ export class HeaderComponent {
   }
 
   private setScrollLock(locked: boolean) {
-    // Prevent background scroll when mobile menu is open
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const el = this.document.documentElement;
     if (locked) {
       el.style.overflow = 'hidden';

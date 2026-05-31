@@ -3,8 +3,11 @@ import {
   Component,
   ElementRef,
   OnDestroy,
+  PLATFORM_ID,
   ViewChild,
+  inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 type Star = {
   x: number; // 0..1
@@ -38,6 +41,8 @@ export class StarfieldComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
 
+  private readonly platformId = inject(PLATFORM_ID);
+
   private readonly symbols = ['✦', '✶'];
   private readonly starCount = 220;
   private readonly seed = 42;
@@ -49,6 +54,8 @@ export class StarfieldComponent implements AfterViewInit, OnDestroy {
   private resizeObserver: ResizeObserver | null = null;
 
   ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     this.initStars();
     this.handleResize();
 

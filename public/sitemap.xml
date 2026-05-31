@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://follow-net.com/</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/"/>
   </url>
   <url>
     <loc>https://follow-net.com/privacy</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/privacy?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/privacy?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/privacy?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/privacy?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/privacy?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/privacy"/>
   </url>
   <url>
     <loc>https://follow-net.com/terms</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/terms?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/terms?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/terms?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/terms?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/terms?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/terms"/>
   </url>
 </urlset>

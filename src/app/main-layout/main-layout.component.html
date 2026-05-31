@@ -1,7 +1,7 @@
-<div class="page" [class.light]="isLegalRoute">
-  <div class="bg-glow" *ngIf="!isLegalRoute" aria-hidden="true"></div>
-  <app-starfield *ngIf="!isLegalRoute"></app-starfield>
-  <div class="shell" [class.light]="isLegalRoute">
+<div class="page">
+  <div class="bg-glow" aria-hidden="true"></div>
+  <app-starfield></app-starfield>
+  <div class="shell">
     <app-header></app-header>
     <main class="main">
       <router-outlet></router-outlet>

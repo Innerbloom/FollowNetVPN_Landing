@@ -5,10 +5,13 @@
 
 /* ClearVPN-style value block: centered, spacious */
 .sales-value {
-  padding: 4rem 0 3rem;
+  padding: 4rem 0 3.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(0, 0, 0, 0.2);
+}
+
+.why-section {
+  padding-top: 2.75rem;
 }
 
 .sales-kicker {
@@ -39,49 +42,36 @@
   margin-right: auto;
 }
 
-.trust-strip {
-  padding: 2.75rem 0 1.25rem;
-}
-
-.trust-strip-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.trust-stat {
+.sales-points {
+  margin: 1.375rem auto 0;
+  max-width: 48rem;
+  font-size: calc(var(--type-label) - 1px);
+  line-height: 1.55;
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.48);
   text-align: center;
-  padding: 1.5rem 1.25rem;
-  border-radius: var(--r-card);
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-
-.trust-stat-value {
-  font-size: var(--type-stat);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.trust-stat-label {
-  margin-top: 10px;
-  font-size: var(--type-label);
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.58);
-  line-height: 1.4;
 }
 
 @media (max-width: 720px) {
-  .trust-strip-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
   .sales-value {
     padding: 3rem 0 2.5rem;
+  }
+
+  .countries-band {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .apps-band {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .faq-band {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .sales-points {
+    font-size: calc(var(--type-label) - 2px);
+    line-height: 1.5;
   }
 }
 
@@ -409,36 +399,6 @@ button.btn:disabled {
   text-align: center;
 }
 
-.strip {
-  padding: var(--strip-pad-y) 0 2.75rem;
-  margin-top: 0;
-}
-
-.strip-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--strip-gap);
-  align-items: stretch;
-  max-width: var(--container-max, 1180px);
-  margin: 0 auto;
-}
-
-.chip {
-  padding: 1rem 1.125rem;
-  border-radius: var(--r-card);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: rgba(255,255,255,0.70);
-  font-weight: 800;
-  font-size: var(--type-label);
-  min-height: 3.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.35;
-}
-
 .section {
   padding: var(--section-pad-y) 0;
 }
@@ -449,15 +409,6 @@ button.btn:disabled {
 
 .why-grid {
   margin-top: 2rem;
-}
-
-#features .trust-ic {
-  border: 1px solid var(--icon-border);
-  background: var(--icon-surface);
-}
-
-#features .trust-ic .accent-icon {
-  font-size: 1.1rem;
 }
 
 .section-head .kicker {
@@ -573,36 +524,19 @@ button.btn:disabled {
 }
 
 /* Countries (flags) section */
-.countries {
-  padding-top: 0;
-}
-
-.countries-head {
+.countries-band {
+  padding: 3.5rem 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
   text-align: center;
-  max-width: 1120px;
-  margin: 0 auto;
 }
 
-.countries-title {
-  font-size: var(--type-h2-soft);
-  letter-spacing: -0.03em;
-  font-weight: 900;
-  line-height: 1.15;
-}
-
-.countries-sub {
-  margin-top: 14px;
-  color: rgba(255,255,255,0.62);
-  font-weight: 700;
-  font-size: var(--type-body-sm);
-  line-height: 1.55;
-  max-width: 62ch;
-  margin-left: auto;
-  margin-right: auto;
+.countries-band .sales-sub {
+  margin-bottom: 0;
 }
 
 .flags {
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   display: grid;
   gap: 1.25rem;
 }
@@ -667,18 +601,36 @@ button.btn:disabled {
   gap: 12px;
 }
 
+.apps-band {
+  padding: 3.5rem 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.section-head--center {
+  text-align: center;
+}
+
+.section-head--center .sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .apps {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .app-card {
   border-radius: var(--r-card);
   padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -745,6 +697,11 @@ button.btn:disabled {
 .app-badge.ok {
   border-color: rgba(154,181,65,0.35);
   color: rgba(154,181,65,0.88);
+}
+
+.app-badge.review {
+  border-color: rgba(255, 193, 7, 0.32);
+  color: rgba(255, 208, 80, 0.92);
 }
 
 .app-btn {
@@ -933,28 +890,37 @@ button.btn:disabled {
   scroll-margin-top: 96px;
 }
 
+.faq-band {
+  padding: 3.5rem 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .faq {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: grid;
   gap: 10px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .faq-item {
   border-radius: var(--r-card);
   padding: 14px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   transition: background 140ms ease, border-color 140ms ease;
 }
 
 .faq-item:hover {
-  background: var(--surface-2);
-  border-color: var(--border-2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .faq-item[open] {
-  background: var(--surface-2);
-  border-color: var(--border-2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(154, 181, 65, 0.18);
 }
 
 .faq-item summary {
@@ -1046,7 +1012,6 @@ button.btn:disabled {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-right { justify-content: center; }
   .dots { bottom: -14px; }
-  .strip-grid { grid-template-columns: 1fr 1fr; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
   .cards { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; }
@@ -1057,7 +1022,6 @@ button.btn:disabled {
 }
 
 @media (max-width: 520px) {
-  .strip-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; }
