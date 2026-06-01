@@ -58,6 +58,7 @@ export class AnalyticsService {
       link_url: environment.iosAppStoreUrl,
       event_category: 'engagement',
       event_label: source ?? 'app_store',
+      transport_type: 'beacon',
       ...this.campaignParams(),
     });
 
@@ -109,7 +110,19 @@ export class AnalyticsService {
     if (!(anchor instanceof HTMLAnchorElement)) return;
     if (!this.isAppStoreLink(anchor.href)) return;
 
+    // Give gtag time to send before the browser opens App Store in a new tab.
+    if (!this.initialized) return;
+    ev.preventDefault();
     this.trackAppStoreClick(this.linkLabel(anchor));
+    const href = anchor.href;
+    const targetAttr = anchor.target;
+    window.setTimeout(() => {
+      if (targetAttr === '_blank') {
+        window.open(href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.assign(href);
+      }
+    }, 150);
   }
 
   private isAppStoreLink(href: string): boolean {
