@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -10,5 +11,7 @@ import { I18nService } from '../../core/i18n.service';
   standalone: true,
 })
 export class FooterComponent {
+  readonly chromeWebStoreUrl = environment.chromeWebStoreUrl;
+
   constructor(public i18n: I18nService) {}
 }

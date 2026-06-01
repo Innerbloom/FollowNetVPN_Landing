@@ -211,16 +211,22 @@
             >
           </div>
 
-          <div class="app-card muted">
+          <div class="app-card">
             <div class="app-top">
               <div class="app-ic"><i class="fa-brands fa-chrome accent-icon" aria-hidden="true"></i></div>
               <div class="app-meta">
                 <div class="app-title">{{ i18n.t('CHROME_EXT_TITLE') }}</div>
                 <div class="app-sub">{{ i18n.t('CHROME_EXT_SUB') }}</div>
               </div>
-              <div class="app-badge review">{{ i18n.t('STATUS_IN_REVIEW') }}</div>
+              <div class="app-badge ok">{{ i18n.t('STATUS_AVAILABLE') }}</div>
             </div>
-            <button class="app-btn" type="button" disabled>{{ i18n.t('STATUS_SOON') }}</button>
+            <a
+              class="app-btn primary"
+              [href]="chromeWebStoreUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ i18n.t('CHROME_EXT_CTA') }}</a
+            >
           </div>
 
           <div class="app-card muted">

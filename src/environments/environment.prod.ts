@@ -16,6 +16,10 @@ export const environment = {
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',
 
+  /** Chrome Web Store listing (extension). */
+  chromeWebStoreUrl:
+    'https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk',
+
   apiBaseUrl: 'https://api.follow-net.com',
 
   /** Временно скрыть веб‑оплату; на API: `WEB_PADDLE_CHECKOUT_DISABLED=true`. */

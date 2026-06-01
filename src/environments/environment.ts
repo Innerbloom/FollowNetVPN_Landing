@@ -22,6 +22,9 @@ export const environment = {
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',
 
+  chromeWebStoreUrl:
+    'https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk',
+
   /** Same host as the iOS app (`Config.baseURL`). Used for Paddle checkout eligibility. */
   apiBaseUrl: 'https://api.follow-net.com',
 
