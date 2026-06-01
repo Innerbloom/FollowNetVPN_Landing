@@ -58,6 +58,7 @@ export class AnalyticsService {
       link_url: environment.iosAppStoreUrl,
       event_category: 'engagement',
       event_label: source ?? 'app_store',
+      ...this.campaignParams(),
     });
 
     if (this.adsSendTo) {
@@ -138,6 +139,19 @@ export class AnalyticsService {
 
   private siteOrigin(): string {
     return environment.siteUrl?.replace(/\/$/, '') || this.document.location?.origin || '';
+  }
+
+  /** UTM / gclid from landing URL — passed to GA4 on App Store clicks. */
+  private campaignParams(): Record<string, string> {
+    if (!isPlatformBrowser(this.platformId)) return {};
+
+    const params = new URLSearchParams(this.document.defaultView?.location.search ?? '');
+    const out: Record<string, string> = {};
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid']) {
+      const value = params.get(key)?.trim();
+      if (value) out[key] = value;
+    }
+    return out;
   }
 
   private gtag(...args: unknown[]): void {

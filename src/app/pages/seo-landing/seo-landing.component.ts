@@ -6,6 +6,7 @@ import { SeoService } from '../../core/seo.service';
 import { landingContent, LANDING_RELATED, type LandingContent } from '../../core/seo-landing.content';
 import { isLandingSlug, landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
 import { environment } from '../../../environments/environment';
+import { appStoreUrl } from '../../core/app-store-url';
 
 @Component({
   selector: 'app-seo-landing',
@@ -16,6 +17,10 @@ import { environment } from '../../../environments/environment';
 })
 export class SeoLandingComponent implements OnInit {
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
+
+  appStoreHref(): string {
+    return appStoreUrl(this.slug ?? undefined);
+  }
   content: LandingContent | null = null;
   slug: LandingSlug | null = null;
   related: LandingSlug[] = [];

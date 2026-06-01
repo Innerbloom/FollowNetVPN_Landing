@@ -1,0 +1,196 @@
+{
+  "site": "https://follow-net.com",
+  "ga4": "G-QYGHZ1XNEF",
+  "conversionAction": "App Store click (configure AW- tag in environment.prod.ts)",
+  "campaigns": [
+    {
+      "name": "FN | Search | EN | iPhone VPN",
+      "type": "Search",
+      "budgetUsdPerDay": 25,
+      "locations": ["United States", "United Kingdom", "Canada", "Australia"],
+      "languages": ["English"],
+      "bidding": "Maximize clicks (first 7 days) → Maximize conversions after AW- tag verified",
+      "adGroups": [
+        {
+          "name": "VPN for iPhone",
+          "finalUrl": "https://follow-net.com/vpn-for-iphone",
+          "keywords": [
+            "[vpn for iphone]",
+            "[iphone vpn]",
+            "[vpn ios]",
+            "\"best vpn for iphone\"",
+            "\"vpn app iphone\""
+          ],
+          "headlines": [
+            "VPN for iPhone — FollowNet",
+            "Free VPN for iOS",
+            "WireGuard & IKEv2",
+            "Smart Connect Built In",
+            "Download on App Store"
+          ],
+          "descriptions": [
+            "Native iOS VPN: WireGuard, IKEv2, AmneziaWG. Free tier with Smart Connect & DNS.",
+            "One tap to connect. Auto-connect on Wi‑Fi. Speed Test in app. Try free on iPhone."
+          ]
+        },
+        {
+          "name": "Free VPN iPhone",
+          "finalUrl": "https://follow-net.com/free-vpn-iphone",
+          "keywords": [
+            "[free vpn iphone]",
+            "[free vpn ios]",
+            "\"free vpn for iphone\"",
+            "\"vpn free iphone app\""
+          ],
+          "headlines": [
+            "Free VPN for iPhone",
+            "FollowNet — Try Free",
+            "All Protocols on Free",
+            "Smart Connect Included",
+            "No Password Login"
+          ],
+          "descriptions": [
+            "Test real VPN speed free: WireGuard, IKEv2, Smart Connect, DNS & Speed Test.",
+            "Free servers + daily limit. Upgrade to Premium in app. Download on App Store."
+          ]
+        },
+        {
+          "name": "WireGuard iOS",
+          "finalUrl": "https://follow-net.com/wireguard-vpn-ios",
+          "keywords": [
+            "[wireguard iphone]",
+            "[wireguard ios vpn]",
+            "\"wireguard vpn iphone\""
+          ],
+          "headlines": [
+            "WireGuard VPN for iOS",
+            "Fast WireGuard on iPhone",
+            "FollowNet — App Store",
+            "Smart Connect Fallback",
+            "Free to Try"
+          ],
+          "descriptions": [
+            "Native WireGuard on iPhone via FollowNet. Smart Connect picks best protocol.",
+            "IKEv2 & AmneziaWG too. DNS profiles & Speed Test. Download free for iOS."
+          ]
+        },
+        {
+          "name": "Public Wi-Fi VPN",
+          "finalUrl": "https://follow-net.com/vpn-for-wifi",
+          "keywords": [
+            "[vpn for public wifi]",
+            "[wifi vpn iphone]",
+            "\"hotel wifi vpn\"",
+            "\"airport wifi vpn\""
+          ],
+          "headlines": [
+            "VPN for Public Wi‑Fi",
+            "Encrypt on Any Hotspot",
+            "Auto-connect on Wi‑Fi",
+            "FollowNet for iPhone",
+            "One Tap Connect"
+          ],
+          "descriptions": [
+            "Coffee shop, hotel & airport Wi‑Fi — encrypt traffic with FollowNet on iOS.",
+            "Auto-connect + Smart Connect for tricky networks. Free download on App Store."
+          ]
+        },
+        {
+          "name": "Smart Connect",
+          "finalUrl": "https://follow-net.com/smart-connect-vpn",
+          "keywords": [
+            "[smart connect vpn]",
+            "\"vpn blocked network\"",
+            "\"vpn not connecting iphone\""
+          ],
+          "headlines": [
+            "Smart Connect VPN",
+            "Auto Protocol for iOS",
+            "WireGuard · IKEv2 · AWG",
+            "Works on Restricted Networks",
+            "FollowNet — Free Tier"
+          ],
+          "descriptions": [
+            "FollowNet picks protocol & server for your network — Wi‑Fi, LTE, censorship.",
+            "AmneziaWG when WireGuard is blocked. Manual override anytime. App Store."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FN | Search | RU | VPN iPhone",
+      "type": "Search",
+      "budgetUsdPerDay": 15,
+      "locations": ["Russia", "Ukraine", "Kazakhstan", "Belarus"],
+      "languages": ["Russian", "Ukrainian"],
+      "adGroups": [
+        {
+          "name": "VPN для iPhone",
+          "finalUrl": "https://follow-net.com/vpn-for-iphone?lang=ru",
+          "keywords": [
+            "[vpn для iphone]",
+            "[vpn ios]",
+            "\"бесплатный vpn iphone\"",
+            "\"vpn на айфон\""
+          ],
+          "headlines": [
+            "VPN для iPhone — FollowNet",
+            "Бесплатный VPN для iOS",
+            "WireGuard и IKEv2",
+            "Smart Connect в приложении",
+            "Скачать в App Store"
+          ],
+          "descriptions": [
+            "Нативный VPN для iOS: WireGuard, IKEv2, AmneziaWG. Free с Smart Connect.",
+            "Автоподключение на Wi‑Fi. Speed Test и DNS. Скачайте бесплатно."
+          ]
+        },
+        {
+          "name": "Бесплатный VPN",
+          "finalUrl": "https://follow-net.com/free-vpn-iphone?lang=ru",
+          "keywords": [
+            "[бесплатный vpn]",
+            "[vpn бесплатно iphone]",
+            "\"бесплатный vpn ios\""
+          ],
+          "headlines": [
+            "Бесплатный VPN для iPhone",
+            "FollowNet — попробуйте Free",
+            "Все протоколы бесплатно",
+            "Вход по email-коду",
+            "App Store"
+          ],
+          "descriptions": [
+            "Free: WireGuard, IKEv2, Smart Connect, DNS и Speed Test. Лимит трафика.",
+            "Premium — безлимит в приложении. Скачайте в App Store."
+          ]
+        }
+      ]
+    }
+  ],
+  "negativeKeywords": [
+    "android",
+    "apk",
+    "crack",
+    "torrent",
+    "porn",
+    "free download pc",
+    "windows vpn",
+    "mac vpn download"
+  ],
+  "extensions": {
+    "sitelinks": [
+      { "text": "Free VPN", "url": "https://follow-net.com/free-vpn-iphone" },
+      { "text": "WireGuard iOS", "url": "https://follow-net.com/wireguard-vpn-ios" },
+      { "text": "Smart Connect", "url": "https://follow-net.com/smart-connect-vpn" },
+      { "text": "Auto-connect", "url": "https://follow-net.com/auto-connect-vpn-ios" }
+    ],
+    "callouts": [
+      "Free tier available",
+      "Smart Connect",
+      "WireGuard & IKEv2",
+      "App Store native",
+      "3-day Premium trial"
+    ]
+  }
+}

@@ -24,6 +24,12 @@ export const environment = {
    */
   googleAdsConversionSendTo: '',
 
+  /**
+   * App Store Connect → Marketing → Campaign Links → Provider ID (pt=…).
+   * With ct on each page, installs from ads show in App Analytics by campaign.
+   */
+  iosAppStoreProviderToken: '',
+
   /** Public App Store listing (iOS). */
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',

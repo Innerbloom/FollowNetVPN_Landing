@@ -11,7 +11,8 @@ import { RouterLink } from '@angular/router';
 import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
-import { landingLabel, LandingSlug, landingSlugs } from '../../core/seo-landing.slugs';
+import { appStoreUrl } from '../../core/app-store-url';
+import { landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
 
 type FaqItem = {
   q: string;
@@ -29,6 +30,10 @@ type FaqItem = {
 export class HomeComponent implements AfterViewInit, OnDestroy {
   readonly webPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
+
+  appStoreHref(source = 'home'): string {
+    return appStoreUrl(source);
+  }
   readonly chromeWebStoreUrl = environment.chromeWebStoreUrl;
   private readonly platformId = inject(PLATFORM_ID);
 

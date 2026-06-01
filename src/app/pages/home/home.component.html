@@ -14,7 +14,7 @@
         <div class="cta-row">
           <a
             class="btn primary"
-            [href]="iosAppStoreUrl"
+            [href]="appStoreHref('home-hero')"
             target="_blank"
             rel="noopener noreferrer"
             >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
@@ -204,7 +204,7 @@
             </div>
             <a
               class="app-btn primary"
-              [href]="iosAppStoreUrl"
+              [href]="appStoreHref('home-download')"
               target="_blank"
               rel="noopener noreferrer"
               >{{ i18n.t('NAV_DOWNLOAD') }}</a
@@ -265,7 +265,7 @@
           </ul>
           <a
             class="btn ghost full"
-            [href]="iosAppStoreUrl"
+            [href]="appStoreHref('home-pricing-free')"
             target="_blank"
             rel="noopener noreferrer"
             >{{ i18n.t('PRICING_FREE_CTA') }}</a
@@ -321,7 +321,7 @@
             </p>
             <a
               class="btn ghost full"
-              [href]="iosAppStoreUrl"
+              [href]="appStoreHref('home-pricing-trial')"
               target="_blank"
               rel="noopener noreferrer"
               >{{ i18n.t('PRICING_TRIAL_CTA') }}</a
