@@ -1,4 +1,6 @@
 /ios-vpn-guides  /  301
+/kill-switch-vpn-ios  /auto-connect-vpn-ios  301
+/kill-switch-vpn-ios/*  /auto-connect-vpn-ios/:splat  301
 /privacy    /privacy/index.html    200
 /terms      /terms/index.html      200
 /*          /index.html            200

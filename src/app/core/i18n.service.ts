@@ -664,6 +664,7 @@ const DICT: Dict = {
   FAQ_KICKER: { ru: 'FAQ', en: 'FAQ', de: 'FAQ', es: 'FAQ', fr: 'FAQ', pt: 'FAQ', uk: 'FAQ' },
   FAQ_TITLE: { ru: 'Частые вопросы', en: 'Common questions', de: 'Häufige Fragen', es: 'Preguntas frecuentes', fr: 'Questions fréquentes', pt: 'Perguntas frequentes', uk: 'Поширені питання' },
   FAQ_SUB: { ru: 'Про Free и Premium, протоколы, Smart Connect, Chrome и подключение — коротко и по делу.', en: 'About Free and Premium, protocols, Smart Connect, Chrome, and connection — quick and clear.', de: 'Über Free und Premium, Protokolle, Smart Connect, Chrome und Verbindung — kurz und klar.', es: 'Sobre Free y Premium, protocolos, Smart Connect, Chrome y conexión — breve y claro.', fr: 'Sur Free et Premium, protocoles, Smart Connect, Chrome et connexion — clair et bref.', pt: 'Sobre Free e Premium, protocolos, Smart Connect, Chrome e conexão — rápido e claro.', uk: 'Про Free і Premium, протоколи, Smart Connect, Chrome і підключення — коротко та по суті.' },
+  FAQ_READ_MORE: { ru: 'Подробнее', en: 'Read more', de: 'Mehr erfahren', es: 'Más información', fr: 'En savoir plus', pt: 'Saiba mais', uk: 'Докладніше' },
 
   FAQ_Q1: { ru: 'Можно пользоваться бесплатно?', en: 'Can I use it for free?', de: 'Kann ich es kostenlos nutzen?', es: '¿Se puede usar gratis?', fr: 'Peut‑on l’utiliser gratuitement ?', pt: 'Posso usar de graça?', uk: 'Чи можна користуватися безкоштовно?' },
   FAQ_A1: { ru: 'Да. В Free — все протоколы (IKEv2, WireGuard, AmneziaWG), Smart Connect, бесплатные серверы и лимит трафика. Premium добавляет премиум‑серверы, безлимит и до 5 устройств.', en: 'Yes. Free includes all protocols (IKEv2, WireGuard, AmneziaWG), Smart Connect, free servers, and a traffic cap. Premium adds premium servers, unlimited traffic, and up to 5 devices.', de: 'Ja. Free: alle Protokolle (IKEv2, WireGuard, AmneziaWG), Smart Connect, kostenlose Server und Traffic‑Limit. Premium: Premium‑Server, unbegrenzter Traffic, bis zu 5 Geräte.', es: 'Sí. Free incluye todos los protocolos (IKEv2, WireGuard, AmneziaWG), Smart Connect, servidores gratis y límite de tráfico. Premium: servidores premium, tráfico ilimitado y hasta 5 dispositivos.', fr: 'Oui. Free : tous les protocoles (IKEv2, WireGuard, AmneziaWG), Smart Connect, serveurs gratuits et plafond de trafic. Premium : serveurs premium, trafic illimité et jusqu’à 5 appareils.', pt: 'Sim. Free inclui todos os protocolos (IKEv2, WireGuard, AmneziaWG), Smart Connect, servidores grátis e limite de tráfego. Premium: servidores premium, tráfego ilimitado e até 5 dispositivos.', uk: 'Так. У Free — усі протоколи (IKEv2, WireGuard, AmneziaWG), Smart Connect, безкоштовні сервери та ліміт трафіку. Premium додає преміум‑сервери, безліміт і до 5 пристроїв.' },
@@ -725,6 +726,24 @@ const DICT: Dict = {
     fr: 'Guides associés',
     pt: 'Guias relacionados',
     uk: 'Схожі гайди',
+  },
+  SEO_LANDING_FAQ_TITLE: {
+    ru: 'Частые вопросы',
+    en: 'FAQ',
+    de: 'FAQ',
+    es: 'Preguntas frecuentes',
+    fr: 'FAQ',
+    pt: 'Perguntas frequentes',
+    uk: 'Поширені питання',
+  },
+  SEO_LANDING_BREADCRUMB: {
+    ru: 'FollowNet',
+    en: 'FollowNet',
+    de: 'FollowNet',
+    es: 'FollowNet',
+    fr: 'FollowNet',
+    pt: 'FollowNet',
+    uk: 'FollowNet',
   },
   SEO_GUIDES_TITLE: {
     ru: 'Гайды VPN для iOS',

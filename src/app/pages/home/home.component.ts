@@ -8,9 +8,16 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { I18nService } from '../../core/i18n.service';
+import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
+import { landingLabel, LandingSlug, landingSlugs } from '../../core/seo-landing.slugs';
+
+type FaqItem = {
+  q: string;
+  a: string;
+  guides?: LandingSlug[];
+};
 
 @Component({
   selector: 'app-home',
@@ -34,6 +41,26 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   readonly premiumPlans = PREMIUM_PLANS;
+
+  readonly faqItems: FaqItem[] = [
+    { q: 'FAQ_Q1', a: 'FAQ_A1', guides: ['free-vpn-iphone', 'vpn-for-iphone'] },
+    { q: 'FAQ_Q2', a: 'FAQ_A2' },
+    { q: 'FAQ_Q3', a: 'FAQ_A3', guides: ['best-vpn-iphone'] },
+    { q: 'FAQ_Q4', a: 'FAQ_A4', guides: ['dns-vpn-ios'] },
+    { q: 'FAQ_Q5', a: 'FAQ_A5' },
+    { q: 'FAQ_Q6', a: 'FAQ_A6' },
+    {
+      q: 'FAQ_Q7',
+      a: 'FAQ_A7',
+      guides: ['wireguard-vpn-ios', 'ikev2-vpn-ios', 'amneziawg-vpn-ios'],
+    },
+    { q: 'FAQ_Q8', a: 'FAQ_A8', guides: ['smart-connect-vpn', 'vpn-for-wifi'] },
+    { q: 'FAQ_Q9', a: 'FAQ_A9', guides: ['smart-connect-vpn'] },
+  ];
+
+  guideLabel(slug: LandingSlug): string {
+    return landingLabel(slug, this.i18n.current as AppLang);
+  }
 
   selectedPremiumPlanId: (typeof this.premiumPlans)[number]['id'] = 'm1';
 

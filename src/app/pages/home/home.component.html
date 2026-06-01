@@ -346,69 +346,22 @@
         </div>
 
         <div class="faq">
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q1') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A1') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q2') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A2') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q3') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A3') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q4') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A4') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q5') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A5') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q6') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A6') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q7') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A7') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q8') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A8') }}</p>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">{{ i18n.t('FAQ_Q9') }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
-          <p>{{ i18n.t('FAQ_A9') }}</p>
-        </details>
+          <details class="faq-item" *ngFor="let item of faqItems">
+            <summary>
+              <span class="faq-q">{{ i18n.t(item.q) }}</span>
+              <span class="faq-toggle" aria-hidden="true"></span>
+            </summary>
+            <p>{{ i18n.t(item.a) }}</p>
+            <p class="faq-more" *ngIf="item.guides?.length">
+              <span class="faq-more-label">{{ i18n.t('FAQ_READ_MORE') }}:</span>
+              <a
+                *ngFor="let slug of item.guides; let last = last"
+                [routerLink]="['/', slug]"
+              >
+                {{ guideLabel(slug) }}<span *ngIf="!last" class="faq-more-sep"> · </span>
+              </a>
+            </p>
+          </details>
         </div>
       </div>
     </div>

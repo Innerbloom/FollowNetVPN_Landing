@@ -50,7 +50,7 @@ const homeByLang: Record<AppLang, SeoCopy> = {
     title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & IKEv2',
     ogTitle: 'FollowNet — VPN for iPhone & iOS',
     description:
-      'Free VPN for iPhone: WireGuard, IKEv2, and Smart Connect for blocked networks. Kill Switch, DNS profiles, Speed Test. Download on the US App Store — Premium optional.',
+      'Free VPN for iPhone: WireGuard, IKEv2, and Smart Connect for blocked networks. Auto-connect, DNS profiles, Speed Test. Download on the US App Store — Premium optional.',
   },
   de: {
     title: 'FollowNet VPN — iOS VPN für iPhone | WireGuard, AmneziaWG',

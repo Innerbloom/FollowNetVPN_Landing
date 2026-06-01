@@ -38,13 +38,13 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'Free VPN for iPhone — FollowNet | Daily Data, No Card',
       ogTitle: 'Free VPN for iPhone — FollowNet',
       description:
-        'Try FollowNet free on iPhone: daily data, WireGuard & IKEv2, Smart Connect, Kill Switch, and DNS profiles. Upgrade to Premium for unlimited traffic.',
+        'Try FollowNet free on iPhone: daily data, WireGuard & IKEv2, Smart Connect, Auto-connect, and DNS profiles. Upgrade to Premium for unlimited traffic.',
     },
     ru: {
       title: 'Бесплатный VPN для iPhone — FollowNet',
       ogTitle: 'Бесплатный VPN для iPhone — FollowNet',
       description:
-        'FollowNet бесплатно на iPhone: дневной лимит, WireGuard и IKEv2, Smart Connect, Kill Switch и DNS. Premium — безлимит.',
+        'FollowNet бесплатно на iPhone: дневной лимит, WireGuard и IKEv2, Smart Connect, автоподключение и DNS. Premium — безлимит.',
     },
   },
   'vpn-for-ipad': {
@@ -52,13 +52,13 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'VPN for iPad — FollowNet | Same iOS App, Full Screen UI',
       ogTitle: 'VPN for iPad — FollowNet',
       description:
-        'FollowNet runs on iPad with the same iOS VPN app: WireGuard, IKEv2, Smart Connect, Kill Switch, and global servers from the App Store.',
+        'FollowNet runs on iPad with the same iOS VPN app: WireGuard, IKEv2, Smart Connect, Auto-connect, and global servers from the App Store.',
     },
     ru: {
       title: 'VPN для iPad — FollowNet',
       ogTitle: 'VPN для iPad — FollowNet',
       description:
-        'FollowNet на iPad — то же iOS-приложение: WireGuard, IKEv2, Smart Connect, Kill Switch и серверы по всему миру.',
+        'FollowNet на iPad — то же iOS-приложение: WireGuard, IKEv2, Smart Connect, автоподключение и серверы по всему миру.',
     },
   },
   'ikev2-vpn-ios': {
@@ -80,13 +80,13 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'VPN for Public Wi‑Fi on iPhone — FollowNet',
       ogTitle: 'VPN for Public Wi‑Fi — FollowNet',
       description:
-        'Encrypt traffic on coffee-shop, airport, and hotel Wi‑Fi with FollowNet for iOS. One tap, Kill Switch, and Smart Connect for tricky networks.',
+        'Encrypt traffic on coffee-shop, airport, and hotel Wi‑Fi with FollowNet for iOS. One tap, Auto-connect, and Smart Connect for tricky networks.',
     },
     ru: {
       title: 'VPN для публичного Wi‑Fi на iPhone — FollowNet',
       ogTitle: 'VPN для публичного Wi‑Fi — FollowNet',
       description:
-        'Шифруйте трафик в кафе, аэропорту и отеле с FollowNet для iOS. Kill Switch и Smart Connect для сложных сетей.',
+        'Шифруйте трафик в кафе, аэропорту и отеле с FollowNet для iOS. Автоподключение и Smart Connect для сложных сетей.',
     },
   },
   'smart-connect-vpn': {
@@ -131,18 +131,18 @@ const M: Record<LandingSlug, LandingMeta> = {
         'FollowNet минимизирует сбор данных. Как мы обрабатываем VPN-метаданные, DNS и аналитику — политика no logs для iOS.',
     },
   },
-  'kill-switch-vpn-ios': {
+  'auto-connect-vpn-ios': {
     en: {
-      title: 'Kill Switch VPN for iOS — FollowNet | Block Leaks',
-      ogTitle: 'Kill Switch on iOS — FollowNet',
+      title: 'Auto-connect VPN for iOS — FollowNet | Wi‑Fi & Cellular',
+      ogTitle: 'Auto-connect on iOS — FollowNet',
       description:
-        'FollowNet Kill Switch helps prevent traffic leaks if the VPN drops on iPhone or iPad. Configure auto-connect rules for Wi‑Fi and cellular.',
+        'FollowNet Auto-connect starts VPN on Wi‑Fi, LTE, or any network on iPhone and iPad. Choose Wi‑Fi Only, LTE Only, or Always in Settings.',
     },
     ru: {
-      title: 'Kill Switch VPN для iOS — FollowNet',
-      ogTitle: 'Kill Switch на iOS — FollowNet',
+      title: 'Автоподключение VPN для iOS — FollowNet',
+      ogTitle: 'Автоподключение на iOS — FollowNet',
       description:
-        'Kill Switch в FollowNet помогает избежать утечек при обрыве VPN на iPhone и iPad. Автоподключение для Wi‑Fi и мобильной сети.',
+        'Автоподключение FollowNet запускает VPN на Wi‑Fi, LTE или любой сети на iPhone и iPad. Режимы: только Wi‑Fi, только LTE или всегда.',
     },
   },
   'dns-vpn-ios': {
@@ -178,13 +178,13 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'Best VPN for iPhone — FollowNet Features Compared',
       ogTitle: 'Best VPN for iPhone — FollowNet',
       description:
-        'Why choose FollowNet on iPhone: native iOS VPN, free tier, WireGuard & IKEv2, Smart Connect, Kill Switch, DNS profiles, Speed Test, and Shortcuts.',
+        'Why choose FollowNet on iPhone: native iOS VPN, free tier, WireGuard & IKEv2, Smart Connect, Auto-connect, DNS profiles, Speed Test, and Shortcuts.',
     },
     ru: {
       title: 'Лучший VPN для iPhone — возможности FollowNet',
       ogTitle: 'Лучший VPN для iPhone — FollowNet',
       description:
-        'Почему FollowNet на iPhone: нативный iOS VPN, бесплатный тариф, WireGuard и IKEv2, Smart Connect, Kill Switch, DNS и Speed Test.',
+        'Почему FollowNet на iPhone: нативный iOS VPN, бесплатный тариф, WireGuard и IKEv2, Smart Connect, автоподключение, DNS и Speed Test.',
     },
   },
   'vpn-speed-test-ios': {
@@ -206,13 +206,13 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'Secure VPN for iPhone — FollowNet Encryption & Privacy',
       ogTitle: 'Secure VPN for iPhone — FollowNet',
       description:
-        'FollowNet encrypts traffic with WireGuard, IKEv2, or AmneziaWG on iOS. Kill Switch, DNS hardening, and a clear Privacy Policy for iPhone users.',
+        'FollowNet encrypts traffic with WireGuard, IKEv2, or AmneziaWG on iOS. Auto-connect, DNS hardening, and a clear Privacy Policy for iPhone users.',
     },
     ru: {
       title: 'Безопасный VPN для iPhone — FollowNet',
       ogTitle: 'Безопасный VPN для iPhone — FollowNet',
       description:
-        'FollowNet шифрует трафик через WireGuard, IKEv2 или AmneziaWG на iOS. Kill Switch, DNS и прозрачная политика конфиденциальности.',
+        'FollowNet шифрует трафик через WireGuard, IKEv2 или AmneziaWG на iOS. Автоподключение, DNS и прозрачная политика конфиденциальности.',
     },
   },
 };
@@ -229,13 +229,13 @@ export function getGuidesHubSeoCopy(lang: AppLang): SeoCopy {
     title: 'iOS VPN Guides — FollowNet | iPhone & iPad Help',
     ogTitle: 'iOS VPN Guides — FollowNet',
     description:
-      'Browse FollowNet guides: VPN for iPhone, free VPN, WireGuard, IKEv2, Smart Connect, Kill Switch, DNS, travel Wi‑Fi, and more.',
+      'Browse FollowNet guides: VPN for iPhone, free VPN, WireGuard, IKEv2, Smart Connect, Auto-connect, DNS, travel Wi‑Fi, and more.',
   };
   const ru: SeoCopy = {
     title: 'Гайды VPN для iOS — FollowNet',
     ogTitle: 'Гайды VPN для iOS — FollowNet',
     description:
-      'Гайды FollowNet: VPN для iPhone, бесплатный VPN, WireGuard, IKEv2, Smart Connect, Kill Switch, DNS, Wi‑Fi в поездках и другое.',
+      'Гайды FollowNet: VPN для iPhone, бесплатный VPN, WireGuard, IKEv2, Smart Connect, автоподключение, DNS, Wi‑Fi в поездках и другое.',
   };
   if (lang === 'ru') return ru;
   if (lang === 'uk') return { ...ru, title: 'Гайди VPN для iOS — FollowNet', ogTitle: 'Гайди VPN для iOS — FollowNet' };

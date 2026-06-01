@@ -1,5 +1,6 @@
 import { AppLang } from './i18n.service';
 import { LandingSlug, LANDING_SLUGS } from './seo-landing.slugs';
+import { RU } from './seo-landing.content.ru';
 
 export interface LandingSection {
   title: string;
@@ -36,7 +37,7 @@ const EN: Record<LandingSlug, LandingContent> = {
       {
         title: 'Built for iOS, not a generic clone',
         body:
-          'FollowNet uses native iOS VPN APIs (Network Extension), supports Shortcuts and automation, Kill Switch, custom DNS, and server locations worldwide — with a UI designed for iPhone.',
+          'FollowNet uses native iOS VPN APIs (Network Extension), supports Shortcuts and automation, Auto-connect, custom DNS, and server locations worldwide — with a UI designed for iPhone.',
       },
     ],
     bullets: [
@@ -73,7 +74,7 @@ const EN: Record<LandingSlug, LandingContent> = {
     lead:
       'Looking for a free VPN on iPhone without a credit card? FollowNet Free includes daily data, core servers, WireGuard and IKEv2, and Smart Connect — upgrade only if you need unlimited traffic.',
     sections: [
-      { title: 'What you get on the free plan', body: 'FollowNet Free lets you test real VPN performance on iOS: encrypted tunnel, server selection, DNS profiles, Speed Test, and Kill Switch. Premium removes daily limits and unlocks all premium server locations.' },
+      { title: 'What you get on the free plan', body: 'FollowNet Free lets you test real VPN performance on iOS: encrypted tunnel, server selection, DNS profiles, Speed Test, and Auto-connect. Premium removes daily limits and unlocks all premium server locations.' },
       { title: 'Free vs sketchy “100% free” VPNs', body: 'Some free VPN apps monetize your data or show aggressive ads. FollowNet is transparent: a limited free tier plus optional Premium via the App Store. Read our Privacy Policy before you connect.' },
     ],
     bullets: ['No credit card required for Free', 'Daily data allowance — enough to evaluate the service', 'Same protocols as Premium: WireGuard, IKEv2, Smart Connect', 'Upgrade in-app when you need unlimited traffic'],
@@ -90,7 +91,7 @@ const EN: Record<LandingSlug, LandingContent> = {
       'FollowNet is a universal iOS app: install once on iPad and iPhone with one Apple ID. Full-screen UI, WireGuard and IKEv2, Smart Connect, and all settings sync through your account.',
     sections: [
       { title: 'Why use VPN on iPad?', body: 'iPad is often used on the same public Wi‑Fi as your phone — travel, coworking, and home guest networks. A VPN helps protect Safari, apps, and downloads on cellular and Wi‑Fi.' },
-      { title: 'iPad-specific advantages', body: 'FollowNet supports iPad multitasking and landscape layout. Use Shortcuts to toggle VPN before video calls or banking. Kill Switch and custom DNS work the same as on iPhone.' },
+      { title: 'iPad-specific advantages', body: 'FollowNet supports iPad multitasking and landscape layout. Use Shortcuts to toggle VPN before video calls or banking. Auto-connect and custom DNS work the same as on iPhone.' },
     ],
     bullets: ['Universal iOS app — iPhone and iPad', 'Native Network Extension VPN', 'Smart Connect for restrictive networks', 'Free tier and Premium via App Store'],
     cta: CTA,
@@ -108,7 +109,7 @@ const EN: Record<LandingSlug, LandingContent> = {
       { title: 'When to choose IKEv2 on iOS', body: 'IKEv2 handles network changes well — commuting, elevators, and switching between LTE and Wi‑Fi. It is a solid choice when WireGuard is throttled or blocked on your carrier.' },
       { title: 'IKEv2 in FollowNet', body: 'Select IKEv2 manually in Settings → Protocol, or let Smart Connect pick IKEv2 when it detects mobile instability or provider restrictions. All server locations support IKEv2.' },
     ],
-    bullets: ['Stable reconnects on cellular handoffs', 'Available on Free and Premium', 'Works with Kill Switch and custom DNS', 'Smart Connect can auto-select IKEv2'],
+    bullets: ['Stable reconnects on cellular handoffs', 'Available on Free and Premium', 'Works with Auto-connect and custom DNS', 'Smart Connect can auto-select IKEv2'],
     cta: CTA,
     faq: [
       { q: 'Is IKEv2 secure on iPhone?', a: 'IKEv2 uses strong encryption when configured correctly. FollowNet implements it inside Apple’s VPN framework.' },
@@ -122,9 +123,9 @@ const EN: Record<LandingSlug, LandingContent> = {
       'Coffee shops, airports, hotels, and guest networks are convenient but risky. FollowNet encrypts your iPhone and iPad traffic on any Wi‑Fi network with one tap.',
     sections: [
       { title: 'Risks on open Wi‑Fi', body: 'Shared hotspots can expose unencrypted traffic to others on the same network. Even password-protected guest Wi‑Fi may be operated by untrusted parties. VPN adds a layer of encryption between your device and the internet.' },
-      { title: 'Auto-connect on Wi‑Fi', body: 'FollowNet supports automation profiles and Kill Switch settings so VPN can connect when you join Wi‑Fi or always stay on. Combine with Smart Connect when traveling abroad.' },
+      { title: 'Auto-connect on Wi‑Fi', body: 'FollowNet supports automation profiles and Auto-connect settings so VPN can connect when you join Wi‑Fi or always stay on. Combine with Smart Connect when traveling abroad.' },
     ],
-    bullets: ['Encrypt traffic on any Wi‑Fi SSID', 'Kill Switch helps prevent leaks if VPN drops', 'Smart Connect for captive portals and restricted hotspots', 'Speed Test to pick the fastest server'],
+    bullets: ['Encrypt traffic on any Wi‑Fi SSID', 'Auto-connect when you join Wi‑Fi or switch networks', 'Smart Connect for captive portals and restricted hotspots', 'Speed Test to pick the fastest server'],
     cta: CTA,
     faq: [
       { q: 'Do I need VPN on home Wi‑Fi?', a: 'Home networks are usually safer, but VPN still helps with privacy from ISP tracking if you want it.' },
@@ -180,20 +181,20 @@ const EN: Record<LandingSlug, LandingContent> = {
       { q: 'Does Apple see my VPN usage?', a: 'Apple processes App Store subscriptions; VPN tunnel runs in iOS Network Extension sandbox.' },
     ],
   },
-  'kill-switch-vpn-ios': {
-    h1: 'Kill Switch VPN for iOS — block traffic leaks',
+  'auto-connect-vpn-ios': {
+    h1: 'Auto-connect VPN for iOS — connect when your network changes',
     lead:
-      'FollowNet Kill Switch helps ensure that if the VPN tunnel drops, your iPhone does not silently send traffic outside the encrypted tunnel — reducing accidental exposure on Wi‑Fi and cellular.',
+      'FollowNet Auto-connect starts VPN automatically on Wi‑Fi, mobile data, or any network — so you do not need to tap Connect every time you join a hotspot or switch from Wi‑Fi to LTE.',
     sections: [
-      { title: 'Why Kill Switch on iPhone', body: 'Brief VPN disconnects can happen when switching networks or when iOS suspends background tasks. Kill Switch blocks non-VPN traffic until the tunnel is restored or you disconnect intentionally.' },
-      { title: 'Configure auto-connect + Kill Switch', body: 'Combine Kill Switch with auto-connect rules for Wi‑Fi, cellular, or always-on profiles. Useful on public Wi‑Fi and when traveling with sensitive work on iPad.' },
+      { title: 'Why auto-connect on iPhone?', body: 'Public Wi‑Fi and travel networks are when people need VPN most — and when they forget to turn it on. Auto-connect watches your network and launches FollowNet when your chosen rule matches.' },
+      { title: 'Auto-connect modes in FollowNet', body: 'Pick Disabled, Wi‑Fi Only, LTE Only, or Always in Settings → Auto-connect. Pair with Smart Connect so the best protocol and server are selected after VPN starts.' },
     ],
-    bullets: ['System-level leak protection when enabled', 'Works with WireGuard, IKEv2, and AmneziaWG', 'Pair with automation and Shortcuts', 'Settings available in FollowNet app'],
+    bullets: ['Wi‑Fi Only, LTE Only, or Always', 'Works with WireGuard, IKEv2, and Smart Connect', 'Available on Free and Premium', 'Set up in Settings → Auto-connect'],
     cta: CTA,
     faq: [
-      { q: 'How do I enable Kill Switch?', a: 'Open FollowNet → Settings → Kill Switch and choose your preferred mode.' },
-      { q: 'Will Kill Switch block calls?', a: 'VPN affects IP traffic; cellular voice typically uses separate bearers — test your setup if you rely on VoIP apps.' },
-      { q: 'Does iOS have a built-in Kill Switch?', a: 'FollowNet implements Kill Switch within its VPN profile per Apple Network Extension rules.' },
+      { q: 'How do I enable Auto-connect?', a: 'Open FollowNet → Settings → Auto-connect and choose Wi‑Fi Only, LTE Only, Always, or Disabled.' },
+      { q: 'Will Auto-connect run on home Wi‑Fi?', a: 'Only if you select Wi‑Fi Only or Always. Many users pick Wi‑Fi Only for cafes and hotels while leaving home networks off.' },
+      { q: 'Is Auto-connect the same as Smart Connect?', a: 'No. Auto-connect decides when to start VPN; Smart Connect picks protocol and server after connecting.' },
     ],
   },
   'dns-vpn-ios': {
@@ -218,9 +219,9 @@ const EN: Record<LandingSlug, LandingContent> = {
       'Travel means unfamiliar Wi‑Fi, foreign SIMs, and sometimes filtered networks. FollowNet Smart Connect adapts protocols for your location while you use one familiar iOS app worldwide.',
     sections: [
       { title: 'Travel scenarios', body: 'Airport lounge Wi‑Fi, hotel captive portals, and local prepaid SIMs can all behave differently. VPN helps privacy; Smart Connect helps connectivity when protocols are restricted abroad.' },
-      { title: 'Tips for travelers', body: 'Download FollowNet before you leave, sign in with email, run Speed Test on Wi‑Fi vs cellular, and enable Kill Switch on untrusted networks. Premium unlocks all server regions if you need a specific exit country.' },
+      { title: 'Tips for travelers', body: 'Download FollowNet before you leave, sign in with email, run Speed Test on Wi‑Fi vs cellular, and enable Auto-connect on untrusted networks. Premium unlocks all server regions if you need a specific exit country.' },
     ],
-    bullets: ['Global server locations', 'Smart Connect for foreign carriers', 'Kill Switch on hotel and airport Wi‑Fi', 'Same app in every country — App Store download'],
+    bullets: ['Global server locations', 'Smart Connect for foreign carriers', 'Auto-connect on hotel and airport Wi‑Fi', 'Same app in every country — App Store download'],
     cta: CTA,
     faq: [
       { q: 'Will VPN work in every country?', a: 'Availability depends on local laws and network policies. Users are responsible for complying with local regulations.' },
@@ -233,10 +234,10 @@ const EN: Record<LandingSlug, LandingContent> = {
     lead:
       'The best iPhone VPN is native to iOS, transparent about privacy, fast on your networks, and honest about free vs paid tiers. Here is how FollowNet compares on features that matter.',
     sections: [
-      { title: 'Checklist for iPhone VPN apps', body: 'Look for App Store distribution, Network Extension (not browser-only “VPN”), clear Privacy Policy, modern protocols (WireGuard/IKEv2), Kill Switch, and responsive support. Avoid apps with no verifiable company behind them.' },
+      { title: 'Checklist for iPhone VPN apps', body: 'Look for App Store distribution, Network Extension (not browser-only “VPN”), clear Privacy Policy, modern protocols (WireGuard/IKEv2), Auto-connect, and responsive support. Avoid apps with no verifiable company behind them.' },
       { title: 'FollowNet highlights', body: 'Native iOS app, free tier with daily data, Smart Connect for restrictive networks, AmneziaWG, custom DNS, Speed Test, Shortcuts automation, and Premium via Apple subscriptions.' },
     ],
-    bullets: ['App Store native — not sideloaded profiles', 'WireGuard + IKEv2 + Smart Connect + AmneziaWG', 'Kill Switch, DNS, Speed Test, widgets', 'Free to try — Premium optional'],
+    bullets: ['App Store native — not sideloaded profiles', 'WireGuard + IKEv2 + Smart Connect + AmneziaWG', 'Auto-connect, DNS, Speed Test, widgets', 'Free to try — Premium optional'],
     cta: CTA,
     faq: [
       { q: 'Is FollowNet the best VPN for everyone?', a: 'No single VPN fits all users. FollowNet focuses on iOS, modern protocols, and Smart Connect — try the free tier to see if speeds and servers work for you.' },
@@ -261,14 +262,14 @@ const EN: Record<LandingSlug, LandingContent> = {
     ],
   },
   'secure-vpn-iphone': {
-    h1: 'Secure VPN for iPhone — encryption, Kill Switch, and DNS',
+    h1: 'Secure VPN for iPhone — encryption, Auto-connect, and DNS',
     lead:
-      'Security on iOS means more than a padlock icon. FollowNet combines WireGuard or IKEv2 encryption, optional Kill Switch, custom DNS, and a published Privacy Policy.',
+      'Security on iOS means more than a padlock icon. FollowNet combines WireGuard or IKEv2 encryption, optional Auto-connect, custom DNS, and a published Privacy Policy.',
     sections: [
-      { title: 'Layers of protection', body: 'VPN encrypts traffic to the VPN server. Kill Switch reduces leak risk on disconnect. DNS profiles can add blocking or privacy-focused resolvers. Together they harden everyday iPhone use on untrusted networks.' },
-      { title: 'Security best practices', body: 'Keep iOS updated, use Strong Passcode or Face ID, enable Kill Switch on public Wi‑Fi, and review FollowNet’s Privacy Policy. Premium does not mean “more encryption” — it unlocks capacity and servers.' },
+      { title: 'Layers of protection', body: 'VPN encrypts traffic to the VPN server. Auto-connect starts VPN on public Wi‑Fi or cellular without manual taps. DNS profiles can add blocking or privacy-focused resolvers. Together they harden everyday iPhone use on untrusted networks.' },
+      { title: 'Security best practices', body: 'Keep iOS updated, use Strong Passcode or Face ID, enable Auto-connect on public Wi‑Fi, and review FollowNet’s Privacy Policy. Premium does not mean “more encryption” — it unlocks capacity and servers.' },
     ],
-    bullets: ['Modern protocols: WireGuard, IKEv2, AmneziaWG', 'Kill Switch for leak protection', 'Custom DNS presets', 'App Store review and sandboxed VPN extension'],
+    bullets: ['Modern protocols: WireGuard, IKEv2, AmneziaWG', 'Auto-connect on Wi‑Fi or LTE', 'Custom DNS presets', 'App Store review and sandboxed VPN extension'],
     cta: CTA,
     faq: [
       { q: 'Is FollowNet safe for banking on iPhone?', a: 'VPN adds transport encryption, but use official banking apps and HTTPS sites. FollowNet is not a substitute for device security hygiene.' },
@@ -283,22 +284,23 @@ export const LANDING_RELATED: Record<LandingSlug, LandingSlug[]> = {
   'vpn-for-iphone': ['free-vpn-iphone', 'best-vpn-iphone', 'vpn-for-ipad', 'secure-vpn-iphone'],
   'wireguard-vpn-ios': ['amneziawg-vpn-ios', 'smart-connect-vpn', 'ikev2-vpn-ios', 'vpn-speed-test-ios'],
   'free-vpn-iphone': ['vpn-for-iphone', 'best-vpn-iphone', 'vpn-for-wifi', 'no-logs-vpn'],
-  'vpn-for-ipad': ['vpn-for-iphone', 'secure-vpn-iphone', 'dns-vpn-ios', 'kill-switch-vpn-ios'],
+  'vpn-for-ipad': ['vpn-for-iphone', 'secure-vpn-iphone', 'dns-vpn-ios', 'auto-connect-vpn-ios'],
   'ikev2-vpn-ios': ['wireguard-vpn-ios', 'smart-connect-vpn', 'vpn-for-travel', 'vpn-speed-test-ios'],
-  'vpn-for-wifi': ['kill-switch-vpn-ios', 'secure-vpn-iphone', 'free-vpn-iphone', 'smart-connect-vpn'],
+  'vpn-for-wifi': ['auto-connect-vpn-ios', 'secure-vpn-iphone', 'free-vpn-iphone', 'smart-connect-vpn'],
   'smart-connect-vpn': ['amneziawg-vpn-ios', 'wireguard-vpn-ios', 'ikev2-vpn-ios', 'vpn-for-travel'],
   'amneziawg-vpn-ios': ['smart-connect-vpn', 'wireguard-vpn-ios', 'vpn-for-travel', 'ikev2-vpn-ios'],
   'no-logs-vpn': ['secure-vpn-iphone', 'dns-vpn-ios', 'free-vpn-iphone', 'best-vpn-iphone'],
-  'kill-switch-vpn-ios': ['vpn-for-wifi', 'secure-vpn-iphone', 'vpn-for-travel', 'vpn-for-iphone'],
-  'dns-vpn-ios': ['secure-vpn-iphone', 'no-logs-vpn', 'kill-switch-vpn-ios', 'vpn-for-iphone'],
-  'vpn-for-travel': ['smart-connect-vpn', 'vpn-for-wifi', 'kill-switch-vpn-ios', 'amneziawg-vpn-ios'],
+  'auto-connect-vpn-ios': ['vpn-for-wifi', 'secure-vpn-iphone', 'vpn-for-travel', 'vpn-for-iphone'],
+  'dns-vpn-ios': ['secure-vpn-iphone', 'no-logs-vpn', 'auto-connect-vpn-ios', 'vpn-for-iphone'],
+  'vpn-for-travel': ['smart-connect-vpn', 'vpn-for-wifi', 'auto-connect-vpn-ios', 'amneziawg-vpn-ios'],
   'best-vpn-iphone': ['vpn-for-iphone', 'free-vpn-iphone', 'vpn-speed-test-ios', 'no-logs-vpn'],
   'vpn-speed-test-ios': ['wireguard-vpn-ios', 'ikev2-vpn-ios', 'best-vpn-iphone', 'vpn-for-iphone'],
-  'secure-vpn-iphone': ['kill-switch-vpn-ios', 'dns-vpn-ios', 'no-logs-vpn', 'vpn-for-wifi'],
+  'secure-vpn-iphone': ['auto-connect-vpn-ios', 'dns-vpn-ios', 'no-logs-vpn', 'vpn-for-wifi'],
 };
 
-export function landingContent(slug: LandingSlug, _lang: AppLang): LandingContent {
-  return EN[slug];
+export function landingContent(slug: LandingSlug, lang: AppLang): LandingContent {
+  const pack = lang === 'ru' || lang === 'uk' ? RU : EN;
+  return pack[slug];
 }
 
 export { LANDING_SLUGS as landingSlugsList };
