@@ -12,6 +12,18 @@ export const environment = {
    */
   googleSiteVerification: '',
 
+  /**
+   * GA4 Measurement ID (Admin → Data streams → Web → Measurement ID), e.g. G-XXXXXXXXXX.
+   * Leave empty until created — analytics stays off.
+   */
+  googleAnalyticsMeasurementId: 'G-QYGHZ1XNEF',
+
+  /**
+   * Google Ads conversion tag (Ads → Goals → Conversions → tag setup), e.g. AW-123456789/AbCdEfGh.
+   * Optional; enables conversion events on App Store clicks.
+   */
+  googleAdsConversionSendTo: '',
+
   /** Public App Store listing (iOS). */
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',

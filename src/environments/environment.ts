@@ -18,6 +18,9 @@ export const environment = {
 
   googleSiteVerification: '',
 
+  googleAnalyticsMeasurementId: '',
+  googleAdsConversionSendTo: '',
+
   /** Public App Store listing (iOS). */
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',
