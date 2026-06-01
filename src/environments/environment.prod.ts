@@ -1,4 +1,5 @@
 import { paddleSecrets } from './paddle.secrets';
+import { firebaseConfig } from './firebase.config';
 
 export const environment = {
   production: true,
@@ -13,10 +14,10 @@ export const environment = {
   googleSiteVerification: '',
 
   /**
-   * GA4 Measurement ID (Admin → Data streams → Web → Measurement ID), e.g. G-XXXXXXXXXX.
-   * Leave empty until created — analytics stays off.
+   * GA4 stream for follow-net.com (Firebase → FollowNet Website).
+   * Loaded via gtag in AnalyticsService — same events as Firebase getAnalytics().
    */
-  googleAnalyticsMeasurementId: 'G-QYGHZ1XNEF',
+  googleAnalyticsMeasurementId: firebaseConfig.measurementId,
 
   /**
    * Google Ads conversion tag (Ads → Goals → Conversions → tag setup), e.g. AW-123456789/AbCdEfGh.
