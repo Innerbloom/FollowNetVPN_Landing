@@ -6,5 +6,5 @@ export const firebaseConfig = {
   storageBucket: 'follownetvpn-a72ca.firebasestorage.app',
   messagingSenderId: '275955759541',
   appId: '1:275955759541:web:036f313c34f0ca6f7201fc',
-  measurementId: 'G-KCGVWDSTLW',
+  measurementId: 'G-SZXZQ38562',
 };
