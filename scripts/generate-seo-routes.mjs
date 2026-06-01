@@ -17,14 +17,14 @@ const LANGS = ['ru', 'en', 'de', 'es', 'fr', 'pt', 'uk'];
 const SITE = 'https://follow-net.com';
 const LASTMOD = '2026-06-01';
 
-const staticPaths = ['/', '/privacy', '/terms', '/ios-vpn-guides'];
+const staticPaths = ['/', '/privacy', '/terms'];
 const landingPaths = slugs.map((s) => `/${s}`);
 
 const lines = [];
 for (const p of [...staticPaths, ...landingPaths]) {
   lines.push(p);
 }
-for (const p of ['/', ...landingPaths, '/privacy', '/terms', '/ios-vpn-guides']) {
+for (const p of ['/', ...landingPaths, '/privacy', '/terms']) {
   for (const lang of LANGS) {
     lines.push(`${p}?lang=${lang}`);
   }
@@ -58,11 +58,10 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urlEntry('/', '1.0')}
 ${landingPaths.map((p) => urlEntry(p, '0.85')).join('\n')}
-${urlEntry('/ios-vpn-guides', '0.75')}
 ${urlEntry('/privacy', '0.5')}
 ${urlEntry('/terms', '0.5')}
 </urlset>
 `;
 
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap);
-console.log(`Generated ${lines.length} prerender routes and sitemap with ${landingPaths.length + 4} URLs.`);
+console.log(`Generated ${lines.length} prerender routes and sitemap with ${landingPaths.length + 3} URLs.`);

@@ -5,7 +5,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { TermsComponent } from './pages/terms/terms.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SeoLandingComponent } from './pages/seo-landing/seo-landing.component';
-import { SeoGuidesComponent } from './pages/seo-guides/seo-guides.component';
+import { GuidesRedirectComponent } from './pages/guides-redirect/guides-redirect.component';
 import { landingSlugs } from './core/seo-landing.slugs';
 
 const seoLandingRoutes: Routes = landingSlugs().map((slug) => ({
@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'ios-vpn-guides', component: SeoGuidesComponent },
+      { path: 'ios-vpn-guides', component: GuidesRedirectComponent },
       ...seoLandingRoutes,
       { path: 'checkout', component: CheckoutComponent },
       { path: 'privacy', component: PrivacyPolicyComponent },

@@ -1,7 +1,6 @@
 /
 /privacy
 /terms
-/ios-vpn-guides
 /vpn-for-iphone
 /wireguard-vpn-ios
 /free-vpn-iphone
@@ -143,10 +142,3 @@
 /terms?lang=fr
 /terms?lang=pt
 /terms?lang=uk
-/ios-vpn-guides?lang=ru
-/ios-vpn-guides?lang=en
-/ios-vpn-guides?lang=de
-/ios-vpn-guides?lang=es
-/ios-vpn-guides?lang=fr
-/ios-vpn-guides?lang=pt
-/ios-vpn-guides?lang=uk

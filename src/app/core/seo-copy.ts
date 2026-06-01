@@ -1,5 +1,5 @@
 import { AppLang } from './i18n.service';
-import { getGuidesHubSeoCopy, getLandingSeoCopy, landingSlugFromPath } from './seo-landing.meta';
+import { getLandingSeoCopy, landingSlugFromPath } from './seo-landing.meta';
 
 export type SeoCopy = {
   title: string;
@@ -15,10 +15,6 @@ export { APP_STORE };
 
 export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   const clean = (path.split('?')[0] || '/').replace(/\/+$/, '') || '/';
-
-  if (clean === '/ios-vpn-guides') {
-    return getGuidesHubSeoCopy(lang);
-  }
 
   const landingSlug = landingSlugFromPath(clean);
   if (landingSlug) {
