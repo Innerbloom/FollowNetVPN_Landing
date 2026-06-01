@@ -48,18 +48,31 @@ export class AnalyticsService {
     });
   }
 
-  trackAppStoreClick(source?: string): void {
+  trackAppStoreClick(source?: string, onSent?: () => void): void {
     if (!this.initialized) return;
 
     const path = this.normalizePath(this.router.url);
-
-    this.gtag('event', 'app_store_click', {
+    const linkUrl = environment.iosAppStoreUrl;
+    const params = {
       page_path: path,
-      link_url: environment.iosAppStoreUrl,
+      link_url: linkUrl,
+      link_domain: 'apps.apple.com',
+      outbound: true,
       event_category: 'engagement',
       event_label: source ?? 'app_store',
-      transport_type: 'beacon',
+      transport_type: 'beacon' as const,
+      event_callback: onSent,
+      event_timeout: 2000,
       ...this.campaignParams(),
+    };
+
+    // Custom event for FollowNet dashboards + Ads import.
+    this.gtag('event', 'app_store_click', params);
+
+    // Standard GA4 click — shows in Firebase/GA4 event lists and outbound reports.
+    this.gtag('event', 'click', {
+      ...params,
+      event_label: `app_store:${source ?? 'app_store'}`,
     });
 
     if (this.adsSendTo) {
@@ -109,20 +122,27 @@ export class AnalyticsService {
     const anchor = target.closest('a[href]');
     if (!(anchor instanceof HTMLAnchorElement)) return;
     if (!this.isAppStoreLink(anchor.href)) return;
-
-    // Give gtag time to send before the browser opens App Store in a new tab.
     if (!this.initialized) return;
+
     ev.preventDefault();
-    this.trackAppStoreClick(this.linkLabel(anchor));
+
     const href = anchor.href;
+    const label = this.linkLabel(anchor);
     const targetAttr = anchor.target;
-    window.setTimeout(() => {
+    let opened = false;
+
+    const openStore = (): void => {
+      if (opened) return;
+      opened = true;
       if (targetAttr === '_blank') {
         window.open(href, '_blank', 'noopener,noreferrer');
       } else {
         window.location.assign(href);
       }
-    }, 150);
+    };
+
+    this.trackAppStoreClick(label, openStore);
+    window.setTimeout(openStore, 800);
   }
 
   private isAppStoreLink(href: string): boolean {
