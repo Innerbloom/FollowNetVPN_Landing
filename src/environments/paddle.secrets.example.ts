@@ -14,15 +14,13 @@ export const paddleSecrets = {
 
   // priceIds: {
   //   m1: 'pri_01kmdrtgkw757e5m8pj8zy3j7e',
-  //   m3: 'pri_01kmdrxt9m702mjcf18phh4fn9',
-  //   m6: 'pri_01kmdrzkdgtd8ff5dazy7ar07c',
+  //   y1: 'pri_...',
   // },
 
 //sandbox
   priceIds: {
     m1: 'pri_01kmebae9wcrd9sybrx9ff6nft',
-    m3: 'pri_01kmebbn4h114craw091ar7v6h',
-    m6: 'pri_01kmebcma5ktn01jb7b1k86xhg',
+    y1: '',
   },
 
   successUrl: 'https://follow-net.com/checkout?checkout=success',

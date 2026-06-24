@@ -92,7 +92,7 @@ export class PaddleCheckoutService {
     );
   }
 
-  priceIdForPlan(planId: 'm1' | 'm3' | 'm6'): string {
+  priceIdForPlan(planId: 'm1' | 'y1'): string {
     return PADDLE_SETTINGS.priceIds[planId]?.trim() ?? '';
   }
 

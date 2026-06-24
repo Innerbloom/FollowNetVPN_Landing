@@ -13,7 +13,7 @@ export type PaddleJsEnvironment = 'production' | 'sandbox';
 export const PADDLE_SETTINGS: {
   readonly clientToken: string;
   readonly environment: PaddleJsEnvironment;
-  readonly priceIds: { readonly m1: string; readonly m3: string; readonly m6: string };
+  readonly priceIds: { readonly m1: string; readonly y1: string };
   readonly successUrl: string;
 } = {
   clientToken: environment.paddle.clientToken,
@@ -22,8 +22,7 @@ export const PADDLE_SETTINGS: {
 
   priceIds: {
     m1: environment.paddle.priceIds.m1,
-    m3: environment.paddle.priceIds.m3,
-    m6: environment.paddle.priceIds.m6,
+    y1: environment.paddle.priceIds.y1,
   },
 
   successUrl: environment.paddle.successUrl,

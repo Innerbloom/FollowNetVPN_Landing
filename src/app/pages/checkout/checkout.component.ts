@@ -46,7 +46,7 @@ export class CheckoutComponent implements OnInit {
 
   readonly premiumPlans = PREMIUM_PLANS;
 
-  selectedPremiumPlanId: PremiumPlanId = 'm1';
+  selectedPremiumPlanId: PremiumPlanId = 'y1';
   paddleEmail = '';
   paddleCheckoutLoading = false;
   paddleEligibilityLoading = false;

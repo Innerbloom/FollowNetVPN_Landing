@@ -67,7 +67,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return landingLabel(slug, this.i18n.current as AppLang);
   }
 
-  selectedPremiumPlanId: (typeof this.premiumPlans)[number]['id'] = 'm1';
+  selectedPremiumPlanId: (typeof this.premiumPlans)[number]['id'] = 'y1';
 
   selectPremiumPlan(id: (typeof this.premiumPlans)[number]['id']) {
     this.selectedPremiumPlanId = id;
@@ -79,10 +79,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   premiumPeriodBadgeText(): string {
     switch (this.selectedPremiumPlanId) {
-      case 'm3':
-        return this.i18n.t('PRICING_BADGE_M3');
-      case 'm6':
-        return this.i18n.t('PRICING_BADGE_M6');
+      case 'y1':
+        return this.i18n.t('PRICING_BADGE_Y1');
       default:
         return this.i18n.t('PRICING_BADGE_M1');
     }

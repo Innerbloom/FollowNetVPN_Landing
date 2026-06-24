@@ -306,25 +306,16 @@ const DICT: Dict = {
     pt: 'AdGuard, Cloudflare ou Google—bloqueio, velocidade ou compatibilidade.',
     uk: 'AdGuard, Cloudflare або Google — під задачу: блокування, швидкість чи сумісність.',
   },
-  PRICING_BADGE_M1: { ru: 'Популярный выбор', en: 'Popular choice', de: 'Beliebte Wahl', es: 'Opción popular', fr: 'Choix populaire', pt: 'Escolha popular', uk: 'Популярний вибір' },
-  PRICING_BADGE_M3: {
-    ru: 'Выгодно на квартал',
-    en: 'Great for 3 months',
-    de: 'Lohnt sich fürs Quartal',
-    es: 'Ideal por trimestre',
-    fr: 'Idéal sur 3 mois',
-    pt: 'Melhor no trimestre',
-    uk: 'Вигідно на квартал',
+  PRICING_BADGE_Y1: {
+    ru: 'Лучшее предложение',
+    en: 'Best value',
+    de: 'Bestes Angebot',
+    es: 'Mejor oferta',
+    fr: 'Meilleure offre',
+    pt: 'Melhor oferta',
+    uk: 'Найкраща пропозиція',
   },
-  PRICING_BADGE_M6: {
-    ru: 'Максимум экономии',
-    en: 'Maximum savings',
-    de: 'Maximale Ersparnis',
-    es: 'Máximo ahorro',
-    fr: 'Économie maximale',
-    pt: 'Máxima economia',
-    uk: 'Максимум економії',
-  },
+  PRICING_BADGE_M1: { ru: 'Гибкий план', en: 'Flexible plan', de: 'Flexibler Plan', es: 'Plan flexible', fr: 'Forfait flexible', pt: 'Plano flexível', uk: 'Гнучкий план' },
 
   // Bullets
   BULLET_SECURITY: { ru: 'Безопасность', en: 'Security', de: 'Sicherheit', es: 'Seguridad', fr: 'Sécurité', pt: 'Segurança', uk: 'Безпека' },
@@ -484,7 +475,7 @@ const DICT: Dict = {
     pt: 'Começar grátis',
     uk: 'Почати безкоштовно',
   },
-  PRICING_TRIAL: { ru: '3 дня бесплатно для первых пользователей.', en: '3-day free trial for early users.', de: '3 Tage kostenloser Test für frühe Nutzer.', es: 'Prueba gratuita de 3 días para los primeros usuarios.', fr: 'Essai gratuit de 3 jours pour les premiers utilisateurs.', pt: 'Teste grátis de 3 dias para os primeiros usuários.', uk: '3 дні безкоштовно для перших користувачів.' },
+  PRICING_TRIAL: { ru: '3 дня бесплатно на годовом плане (для подходящих пользователей).', en: '3-day free trial on the annual plan (for eligible users).', de: '3 Tage kostenlos im Jahresplan (für berechtigte Nutzer).', es: 'Prueba gratuita de 3 días en el plan anual (para usuarios elegibles).', fr: 'Essai gratuit de 3 jours sur le forfait annuel (pour les utilisateurs éligibles).', pt: 'Teste grátis de 3 dias no plano anual (para usuários elegíveis).', uk: '3 дні безкоштовно на річному плані (для відповідних користувачів).' },
   PRICING_TRIAL_CTA: {
     ru: 'Скачать и начать trial',
     en: 'Download to start trial',
@@ -682,7 +673,7 @@ const DICT: Dict = {
   FAQ_A5: { ru: 'Откройте FollowNet VPN в Chrome Web Store и нажмите «Установить». Войдите тем же аккаунтом, что в iOS — Premium подтягивается с подпиской App Store.', en: 'Open FollowNet VPN in the Chrome Web Store and click Add to Chrome. Sign in with the same account as iOS—Premium syncs with your App Store subscription.', de: 'Öffnen Sie FollowNet VPN im Chrome Web Store und klicken Sie auf Hinzufügen. Mit dem gleichen Konto wie iOS anmelden—Premium sync mit App Store.', es: 'Abre FollowNet VPN en Chrome Web Store y pulsa Añadir. Inicia sesión con la misma cuenta que en iOS—Premium se sincroniza con App Store.', fr: 'Ouvrez FollowNet VPN sur Chrome Web Store et cliquez Ajouter. Connectez‑vous avec le même compte qu’iOS—Premium suit l’abonnement App Store.', pt: 'Abra FollowNet VPN na Chrome Web Store e clique em Adicionar. Entre com a mesma conta do iOS—Premium sincroniza com a App Store.', uk: 'Відкрийте FollowNet VPN у Chrome Web Store і натисніть «Встановити». Увійдіть тим самим акаунтом, що в iOS — Premium підтягується з App Store.' },
 
   FAQ_Q6: { ru: 'Как работает trial 3 дня?', en: 'How does the 3‑day trial work?', de: 'Wie funktioniert der 3‑Tage‑Test?', es: '¿Cómo funciona la prueba de 3 días?', fr: "Comment fonctionne l’essai de 3 jours ?", pt: 'Como funciona o teste de 3 dias?', uk: 'Як працює trial 3 дні?' },
-  FAQ_A6: { ru: 'Trial 3 дня доступен при первой подписке Premium в приложении. Управление и отмена — в подписках Apple (Настройки → Apple ID → Подписки).', en: 'A 3‑day trial is available with your first Premium subscription in the app. Manage or cancel in Apple subscriptions (Settings → Apple ID → Subscriptions).', de: '3 Tage Test bei der ersten Premium‑Aktivierung in der App. Verwaltung/Kündigung in Apple‑Abos (Einstellungen → Apple ID → Abonnements).', es: 'Prueba de 3 días con la primera suscripción Premium en la app. Gestionar/cancelar en Suscripciones de Apple (Ajustes → Apple ID → Suscripciones).', fr: 'Essai de 3 jours lors du premier abonnement Premium dans l’app. Gérer/annuler dans Abonnements Apple (Réglages → Apple ID → Abonnements).', pt: 'Teste de 3 dias na primeira assinatura Premium no app. Gerencie/cancele em Assinaturas Apple (Ajustes → Apple ID → Assinaturas).', uk: 'Trial 3 дні доступний при першій підписці Premium у додатку. Керування та скасування — в підписках Apple (Налаштування → Apple ID → Підписки).' },
+  FAQ_A6: { ru: 'Пробный период 3 дня доступен на годовом плане при первой подписке Premium (для подходящих пользователей). После окончания trial подписка автоматически продлевается по цене плана в приложении. Управление и отмена — в подписках Apple (Настройки → Apple ID → Подписки).', en: 'A 3-day free trial is available on the annual plan with your first Premium subscription (for eligible users). After the trial, your subscription auto-renews at the in-app plan price. Manage or cancel in Apple subscriptions (Settings → Apple ID → Subscriptions).', de: '3 Tage Test im Jahresplan bei der ersten Premium‑Aktivierung (für berechtigte Nutzer). Nach dem Test verlängert sich das Abo automatisch zum Preis in der App. Verwaltung/Kündigung in Apple‑Abos (Einstellungen → Apple ID → Abonnements).', es: 'Prueba de 3 días en el plan anual con la primera suscripción Premium (para usuarios elegibles). Tras la prueba, la suscripción se renueva automáticamente al precio en la app. Gestionar/cancelar en Suscripciones de Apple (Ajustes → Apple ID → Suscripciones).', fr: 'Essai de 3 jours sur le forfait annuel lors du premier abonnement Premium (utilisateurs éligibles). Après l’essai, l’abonnement se renouvelle automatiquement au prix indiqué dans l’app. Gérer/annuler dans Abonnements Apple (Réglages → Apple ID → Abonnements).', pt: 'Teste de 3 dias no plano anual na primeira assinatura Premium (para usuários elegíveis). Após o teste, a assinatura renova automaticamente pelo preço no app. Gerencie/cancele em Assinaturas Apple (Ajustes → Apple ID → Assinaturas).', uk: 'Trial 3 дні доступний на річному плані при першій підписці Premium (для відповідних користувачів). Після trial підписка автоматично поновлюється за ціною плану в додатку. Керування та скасування — в підписках Apple (Налаштування → Apple ID → Підписки).' },
 
   FAQ_Q7: { ru: 'Какие протоколы поддерживаются?', en: 'Which protocols are supported?', de: 'Welche Protokolle werden unterstützt?', es: '¿Qué protocolos se admiten?', fr: 'Quels protocoles sont pris en charge ?', pt: 'Quais protocolos são suportados?', uk: 'Які протоколи підтримуються?' },
   FAQ_A7: { ru: 'IKEv2, WireGuard и AmneziaWG доступны бесплатно (AmneziaWG — на серверах, где поддерживается). Протокол можно выбрать вручную или доверить Smart Connect.', en: 'IKEv2, WireGuard, and AmneziaWG are free (AmneziaWG on supported servers). Pick a protocol manually or use Smart Connect.', de: 'IKEv2, WireGuard und AmneziaWG sind kostenlos (AmneziaWG auf unterstützten Servern). Manuell wählen oder Smart Connect nutzen.', es: 'IKEv2, WireGuard y AmneziaWG son gratis (AmneziaWG en servidores compatibles). Elige manualmente o usa Smart Connect.', fr: 'IKEv2, WireGuard et AmneziaWG sont gratuits (AmneziaWG sur serveurs pris en charge). Choix manuel ou Smart Connect.', pt: 'IKEv2, WireGuard e AmneziaWG são grátis (AmneziaWG em servidores compatíveis). Escolha manualmente ou use Smart Connect.', uk: 'IKEv2, WireGuard і AmneziaWG доступні безкоштовно (AmneziaWG — на серверах, де підтримується). Протокол можна вибрати вручну або довірити Smart Connect.' },
