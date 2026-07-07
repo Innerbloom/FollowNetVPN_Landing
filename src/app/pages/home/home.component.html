@@ -245,94 +245,140 @@
     </div>
   </section>
 
-  <section class="section" id="pricing">
+  <section class="pricing-section" id="pricing">
     <div class="container">
       <div class="section-head">
         <div class="kicker">{{ i18n.t('PRICING_KICKER') }}</div>
         <h2>{{ i18n.t('PRICING_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('PRICING_SUB') }}</p>
+        <div class="sub sub--stacked">
+          <span class="sub__line">{{ i18n.t('PRICING_SUB_1') }}</span>
+          <span class="sub__line">{{ i18n.t('PRICING_SUB_2') }}</span>
+        </div>
       </div>
 
-      <div class="pricing">
-        <div class="plan">
-          <div class="plan-name">{{ i18n.t('PRICING_FREE') }}</div>
-          <div class="plan-desc">{{ i18n.t('PRICING_FREE_DESC') }}</div>
-          <div class="price">$0 <span>/{{ i18n.t('PRICE_FOREVER') }}</span></div>
-          <ul>
-            <li>{{ i18n.t('FREE_FEATURE_1') }}</li>
-            <li>{{ i18n.t('FREE_FEATURE_2') }}</li>
-            <li>{{ i18n.t('FREE_FEATURE_3') }}</li>
-          </ul>
-          <a
-            class="btn ghost full"
-            [href]="appStoreHref('home-pricing-free')"
-            target="_blank"
-            rel="noopener noreferrer"
-            >{{ i18n.t('PRICING_FREE_CTA') }}</a
-          >
-        </div>
+      <div class="pricing-grid">
+        <article class="pricing-card pricing-card--free">
+          <div class="pricing-card__body">
+            <h3 class="pricing-card__name">{{ i18n.t('PRICING_FREE') }}</h3>
+            <p class="pricing-card__tagline">{{ i18n.t('PRICING_FREE_DESC') }}</p>
 
-        <div class="plan featured">
-          <div class="plan-badge-row">
-            <span class="plan-popular-badge">{{ premiumPeriodBadgeText() }}</span>
-          </div>
-          <div class="plan-name">Premium</div>
-          <div class="plan-desc">{{ i18n.t('PREMIUM_DESC') }}</div>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">$0</span>
+              <span class="pricing-card__period">/{{ i18n.t('PRICE_FOREVER') }}</span>
+            </div>
 
-          <div class="price">
-            {{ selectedPremiumPlan.total }}
-            <span>/ {{ premiumLabel(selectedPremiumPlan) }}</span>
-          </div>
-          <div class="per-month">
-            {{ premiumPerMonth(selectedPremiumPlan) }}
-            <span class="save-text" *ngIf="premiumSave(selectedPremiumPlan)">· {{ premiumSave(selectedPremiumPlan) }}</span>
+            <ul class="pricing-features" [attr.aria-label]="i18n.t('PRICING_FREE')">
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('FREE_FEATURE_1') }}</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('FREE_FEATURE_2') }}</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('FREE_FEATURE_3') }}</span>
+              </li>
+            </ul>
           </div>
 
-          <div class="plan-tabs" [attr.aria-label]="i18n.t('PREMIUM_PLANS_ARIA')">
-            <button
-              type="button"
-              class="plan-tab"
-              *ngFor="let p of premiumPlans"
-              (click)="selectPremiumPlan(p.id)"
-              [class.active]="p.id === selectedPremiumPlanId"
-            >
-              {{ premiumLabel(p) }}
-            </button>
-          </div>
-
-          <div class="trial-note">{{ i18n.t('PRICING_TRIAL') }}</div>
-          <ul>
-            <li>{{ i18n.t('PREMIUM_FEATURE_2') }}</li>
-            <li>{{ i18n.t('PREMIUM_FEATURE_3') }}</li>
-            <li>{{ i18n.t('PREMIUM_FEATURE_4') }}</li>
-          </ul>
-
-          <div class="paddle-actions">
+          <div class="pricing-card__footer">
             <a
-              *ngIf="webPaddleCheckoutEnabled"
-              class="btn primary full"
+              class="pricing-cta pricing-cta--outline"
+              [href]="appStoreHref('home-pricing-free')"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ i18n.t('PRICING_FREE_CTA') }}</a>
+          </div>
+        </article>
+
+        <article class="pricing-card pricing-card--featured">
+          <div class="pricing-card__ribbon">{{ i18n.t('PRICING_MOST_POPULAR') }}</div>
+
+          <div class="pricing-card__body">
+            <h3 class="pricing-card__name">Premium</h3>
+            <p class="pricing-card__tagline">{{ i18n.t('PREMIUM_DESC') }}</p>
+
+            <div
+              class="pricing-period-toggle"
+              role="tablist"
+              [attr.aria-label]="i18n.t('PREMIUM_PLANS_ARIA')"
+            >
+              <button
+                type="button"
+                class="pricing-period-toggle__btn"
+                role="tab"
+                *ngFor="let p of premiumPlans"
+                (click)="selectPremiumPlan(p.id)"
+                [class.is-active]="p.id === selectedPremiumPlanId"
+                [attr.aria-selected]="p.id === selectedPremiumPlanId"
+              >
+                {{ premiumLabel(p) }}
+                <span class="pricing-period-toggle__save" *ngIf="p.id === 'y1' && premiumSave(p)">
+                  −{{ premiumPlanSavePercent(p) }}%
+                </span>
+              </button>
+            </div>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">{{ premiumHeroAmount(selectedPremiumPlan) }}</span>
+              <span class="pricing-card__period">{{ premiumHeroPeriod(selectedPremiumPlan) }}</span>
+            </div>
+            <div class="pricing-card__meta">
+              <p class="pricing-card__billed">{{ premiumBilledLine(selectedPremiumPlan) }}</p>
+              <p
+                class="pricing-card__save"
+                [class.is-placeholder]="!premiumSave(selectedPremiumPlan)"
+              >{{ premiumSave(selectedPremiumPlan) || '\u00a0' }}</p>
+            </div>
+
+            <ul class="pricing-features" aria-label="Premium">
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('PREMIUM_FEATURE_2') }}</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('PREMIUM_FEATURE_3') }}</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check pricing-features__icon" aria-hidden="true"></i>
+                <span>{{ i18n.t('PREMIUM_FEATURE_4') }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pricing-card__footer">
+            <a
+              *ngIf="webCheckoutEnabled"
+              class="pricing-cta pricing-cta--primary"
               [routerLink]="['/checkout']"
               [queryParams]="{ plan: selectedPremiumPlanId }"
             >
-              {{ i18n.t('PADDLE_OPEN_CHECKOUT_PAGE') }}
+              {{ i18n.t('WEB_CHECKOUT_OPEN_PAGE') }}
             </a>
-            <p *ngIf="!webPaddleCheckoutEnabled" class="note web-checkout-paused">
+            <p *ngIf="!webCheckoutEnabled" class="pricing-footnote web-checkout-paused">
               {{ i18n.t('WEB_CHECKOUT_PAUSED_HOME') }}
             </p>
-            <a
-              class="btn ghost full"
-              [href]="appStoreHref('home-pricing-trial')"
-              target="_blank"
-              rel="noopener noreferrer"
-              >{{ i18n.t('PRICING_TRIAL_CTA') }}</a
-            >
-          </div>
 
-          <div class="note">{{ i18n.t('PRICING_NOTE') }}</div>
-        </div>
+            <div class="pricing-card__secondary" *ngIf="webCheckoutEnabled">
+              <a
+                class="pricing-cta pricing-cta--outline"
+                [href]="appStoreHref('home-pricing-trial')"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ i18n.t('PRICING_TRIAL_CTA') }}
+              </a>
+            </div>
+
+            <p class="pricing-footnote pricing-footnote--muted">{{ i18n.t('PRICING_NOTE') }}</p>
+          </div>
+        </article>
       </div>
 
-      <p class="note pricing-regional-note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
+      <p class="pricing-regional-note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
     </div>
   </section>
 

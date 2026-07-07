@@ -38,13 +38,13 @@ const homeByLang: Record<AppLang, SeoCopy> = {
     title: 'FollowNet VPN — VPN для iPhone и iOS | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — быстрый VPN для iOS',
     description:
-      'VPN для iPhone: Smart Connect, IKEv2, WireGuard и AmneziaWG бесплатно. DNS‑профили, Speed Test, виджеты. Premium — премиум‑серверы и безлимит в App Store.',
+      'VPN для iPhone: Smart Connect, IKEv2, WireGuard и AmneziaWG, Hysteria2 бесплатно. DNS‑профили, Speed Test, виджеты. Premium — премиум‑серверы и безлимит в App Store.',
   },
   uk: {
     title: 'FollowNet VPN — VPN для iPhone та iOS | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — швидкий VPN для iOS',
     description:
-      'VPN для iPhone: Smart Connect, IKEv2, WireGuard і AmneziaWG безкоштовно. DNS‑профілі, Speed Test, віджети. Premium — преміум‑сервери та безліміт у App Store.',
+      'VPN для iPhone: Smart Connect, IKEv2, WireGuard і AmneziaWG, Hysteria2 безкоштовно. DNS‑профілі, Speed Test, віджети. Premium — преміум‑сервери та безліміт у App Store.',
   },
   en: {
     title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & IKEv2',
@@ -56,25 +56,25 @@ const homeByLang: Record<AppLang, SeoCopy> = {
     title: 'FollowNet VPN — iOS VPN für iPhone | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — schneller VPN für iOS',
     description:
-      'iOS VPN mit Smart Connect, IKEv2, WireGuard und AmneziaWG in Free. DNS‑Profile, Speedtest, Widgets. Premium: Premium‑Server und unbegrenzter Traffic im App Store.',
+      'iOS VPN mit Smart Connect, IKEv2, WireGuard und AmneziaWG, Hysteria2 in Free. DNS‑Profile, Speedtest, Widgets. Premium: Premium‑Server und unbegrenzter Traffic im App Store.',
   },
   es: {
     title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — VPN rápido para iOS',
     description:
-      'VPN para iOS con Smart Connect, IKEv2, WireGuard y AmneziaWG en Free. Perfiles DNS, Speed Test y widgets. Premium: servidores premium y tráfico ilimitado en App Store.',
+      'VPN para iOS con Smart Connect, IKEv2, WireGuard y AmneziaWG, Hysteria2 en Free. Perfiles DNS, Speed Test y widgets. Premium: servidores premium y tráfico ilimitado en App Store.',
   },
   fr: {
     title: 'FollowNet VPN — VPN iOS pour iPhone | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — VPN rapide pour iOS',
     description:
-      'VPN iOS avec Smart Connect, IKEv2, WireGuard et AmneziaWG en Free. Profils DNS, Speed Test, widgets. Premium : serveurs premium et trafic illimité via l’App Store.',
+      'VPN iOS avec Smart Connect, IKEv2, WireGuard et AmneziaWG, Hysteria2 en Free. Profils DNS, Speed Test, widgets. Premium : serveurs premium et trafic illimité via l’App Store.',
   },
   pt: {
     title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, AmneziaWG',
     ogTitle: 'FollowNet VPN — VPN rápido para iOS',
     description:
-      'VPN iOS com Smart Connect, IKEv2, WireGuard e AmneziaWG no Free. Perfis DNS, Speed Test e widgets. Premium: servidores premium e tráfego ilimitado na App Store.',
+      'VPN iOS com Smart Connect, IKEv2, WireGuard e AmneziaWG, Hysteria2 no Free. Perfis DNS, Speed Test e widgets. Premium: servidores premium e tráfego ilimitado na App Store.',
   },
 };
 

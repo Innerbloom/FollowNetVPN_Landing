@@ -1,8 +1,8 @@
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { NgFor, NgIf, isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Component, DestroyRef, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   Subject,
   EMPTY,
@@ -13,12 +13,12 @@ import {
   firstValueFrom,
 } from 'rxjs';
 import { I18nService, type AppLang } from '../../core/i18n.service';
-import { PaddleCheckoutService } from '../../core/paddle-checkout.service';
-import { PaddleCheckoutEligibilityService } from '../../core/paddle-checkout-eligibility.service';
-import { PREMIUM_PLANS, type PremiumPlanId } from '../../core/premium-plans';
+import { WayForPayCheckoutService } from '../../core/wayforpay-checkout.service';
+import { WayForPayCheckoutEligibilityService } from '../../core/wayforpay-checkout-eligibility.service';
+import { PREMIUM_PLANS, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal, type PremiumPlanId } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
 
-const PADDLE_EMAIL_STORAGE_KEY = 'follownet_paddle_email';
+const CHECKOUT_EMAIL_STORAGE_KEY = 'follownet_checkout_email';
 
 @Component({
   selector: 'app-checkout',
@@ -29,33 +29,33 @@ const PADDLE_EMAIL_STORAGE_KEY = 'follownet_paddle_email';
 })
 export class CheckoutComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly platformId = inject(PLATFORM_ID);
   private readonly emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   private readonly emailEligibility$ = new Subject<string>();
 
-  /** Сайт: флаг в `environment`. API: ответ `webCheckoutDisabled`. */
-  readonly envWebPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
+  readonly envWebCheckoutEnabled = environment.webWayForPayCheckoutEnabled;
   apiSaysWebCheckoutDisabled = false;
 
   constructor(
     public i18n: I18nService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly paddleCheckout: PaddleCheckoutService,
-    private readonly paddleEligibility: PaddleCheckoutEligibilityService,
+    private readonly wayForPayCheckout: WayForPayCheckoutService,
+    private readonly wayForPayEligibility: WayForPayCheckoutEligibilityService,
   ) {}
 
   readonly premiumPlans = PREMIUM_PLANS;
 
   selectedPremiumPlanId: PremiumPlanId = 'y1';
-  paddleEmail = '';
-  paddleCheckoutLoading = false;
-  paddleEligibilityLoading = false;
-  paddleInlineMessage = '';
+  checkoutEmail = '';
+  checkoutLoading = false;
+  eligibilityLoading = false;
+  inlineMessage = '';
   checkoutStatus: 'success' | 'cancel' | null = null;
 
-  /** True when API says Paddle period still grants access — block second checkout. */
-  paddleBlockActive = false;
-  paddleActiveUntilIso: string | null = null;
+  checkoutBlockActive = false;
+  activeUntilIso: string | null = null;
+  checkoutBlockReason: 'apple' | 'wayforpay' | 'premium' | null = null;
 
   ngOnInit(): void {
     const checkout = (this.route.snapshot.queryParamMap.get('checkout') || '').trim().toLowerCase();
@@ -68,15 +68,12 @@ export class CheckoutComponent implements OnInit {
       this.selectedPremiumPlanId = plan;
     }
 
-    const fromStorage = window.localStorage.getItem(PADDLE_EMAIL_STORAGE_KEY)?.trim() ?? '';
-    const fromUrl = (
-      this.route.snapshot.queryParamMap.get('email') ||
-      ''
-    ).trim();
+    const fromStorage = this.readStoredCheckoutEmail();
+    const fromUrl = (this.route.snapshot.queryParamMap.get('email') || '').trim();
 
-    this.paddleEmail = fromUrl || fromStorage;
+    this.checkoutEmail = fromUrl || fromStorage;
     if (fromUrl) {
-      window.localStorage.setItem(PADDLE_EMAIL_STORAGE_KEY, fromUrl);
+      this.persistCheckoutEmail(fromUrl);
     }
 
     this.emailEligibility$
@@ -87,62 +84,46 @@ export class CheckoutComponent implements OnInit {
         switchMap((email) => {
           const trimmed = (email || '').trim();
           if (!this.emailRegex.test(trimmed)) {
-            this.paddleBlockActive = false;
-            this.paddleActiveUntilIso = null;
-            this.paddleEligibilityLoading = false;
+            this.checkoutBlockActive = false;
+            this.activeUntilIso = null;
+            this.checkoutBlockReason = null;
+            this.eligibilityLoading = false;
             return EMPTY;
           }
-          this.paddleEligibilityLoading = true;
-          return this.paddleEligibility.check(trimmed).pipe(
+          this.eligibilityLoading = true;
+          return this.wayForPayEligibility.check(trimmed).pipe(
             finalize(() => {
-              this.paddleEligibilityLoading = false;
+              this.eligibilityLoading = false;
             }),
           );
         }),
       )
       .subscribe((res) => {
         this.apiSaysWebCheckoutDisabled = !!res.webCheckoutDisabled;
-        this.paddleBlockActive = !res.canStartNewCheckout;
-        this.paddleActiveUntilIso = res.activePaddlePeriodEndsAt;
+        this.checkoutBlockActive = !res.canStartNewCheckout;
+        this.activeUntilIso = res.activeWayForPayPeriodEndsAt;
+        this.checkoutBlockReason = res.blockReason ?? null;
       });
 
-    this.emailEligibility$.next(this.paddleEmail);
-
-    this.paddleCheckout.checkoutError$
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((err) => {
-        const detail = typeof err.detail === 'string' ? err.detail.trim() : '';
-        const code = typeof err.code === 'string' ? err.code.trim() : '';
-        if (!detail && !code) {
-          return;
-        }
-        this.paddleInlineMessage = [detail, code ? `(${code})` : '']
-          .filter(Boolean)
-          .join(' ');
-      });
+    this.emailEligibility$.next(this.checkoutEmail);
   }
 
-  get paddleWebConfigured(): boolean {
-    return this.paddleCheckout.isConfigured();
-  }
-
-  get isPaddleEmailValid(): boolean {
-    return this.emailRegex.test((this.paddleEmail || '').trim());
+  get isCheckoutEmailValid(): boolean {
+    return this.emailRegex.test((this.checkoutEmail || '').trim());
   }
 
   get canOpenCheckout(): boolean {
     return (
-      this.envWebPaddleCheckoutEnabled &&
-      this.paddleWebConfigured &&
-      !this.paddleCheckoutLoading &&
-      !this.paddleEligibilityLoading &&
-      this.isPaddleEmailValid &&
-      !this.paddleBlockActive
+      this.envWebCheckoutEnabled &&
+      !this.checkoutLoading &&
+      !this.eligibilityLoading &&
+      this.isCheckoutEmailValid &&
+      !this.checkoutBlockActive
     );
   }
 
   get webCheckoutPaused(): boolean {
-    return !this.envWebPaddleCheckoutEnabled || this.apiSaysWebCheckoutDisabled;
+    return !this.envWebCheckoutEnabled || this.apiSaysWebCheckoutDisabled;
   }
 
   dismissCheckoutStatus(): void {
@@ -160,36 +141,58 @@ export class CheckoutComponent implements OnInit {
   }
 
   premiumLabel(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.labelRu : p.labelEn;
+    return p.id === 'y1' ? this.i18n.t('PREMIUM_PLAN_Y1') : this.i18n.t('PREMIUM_PLAN_M1');
   }
 
   premiumPerMonth(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.perMonthRu : p.perMonthEn;
+    return premiumPlanPerMonth(p, this.i18n.t('PRICE_PER_MONTH_SUFFIX'));
+  }
+
+  premiumTotal(p: (typeof this.premiumPlans)[number]) {
+    return premiumPlanTotal(p);
   }
 
   premiumSave(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.saveRu : p.saveEn;
+    const pct = premiumPlanSavePercent(p);
+    if (pct == null) return null;
+    return this.i18n.t('PREMIUM_SAVE_Y1').replace('{{PCT}}', String(pct));
   }
 
   selectPremiumPlan(id: PremiumPlanId) {
     this.selectedPremiumPlanId = id;
-    this.paddleInlineMessage = '';
+    this.inlineMessage = '';
   }
 
-  onPaddleEmailChange(value: string): void {
-    this.paddleInlineMessage = '';
+  onCheckoutEmailChange(value: string): void {
+    this.inlineMessage = '';
     const v = value?.trim() ?? '';
-    if (v) {
-      window.localStorage.setItem(PADDLE_EMAIL_STORAGE_KEY, v);
-    } else {
-      window.localStorage.removeItem(PADDLE_EMAIL_STORAGE_KEY);
-    }
+    this.persistCheckoutEmail(v || null);
     this.emailEligibility$.next(value ?? '');
   }
 
-  paddleActiveBlockText(): string {
-    const tpl = this.i18n.t('PADDLE_ACTIVE_SUBSCRIPTION_BLOCK');
-    const iso = this.paddleActiveUntilIso;
+  private readStoredCheckoutEmail(): string {
+    if (!isPlatformBrowser(this.platformId)) return '';
+    return window.localStorage.getItem(CHECKOUT_EMAIL_STORAGE_KEY)?.trim() ?? '';
+  }
+
+  private persistCheckoutEmail(email: string | null): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (email) {
+      window.localStorage.setItem(CHECKOUT_EMAIL_STORAGE_KEY, email);
+    } else {
+      window.localStorage.removeItem(CHECKOUT_EMAIL_STORAGE_KEY);
+    }
+  }
+
+  activeBlockText(): string {
+    const tplKey =
+      this.checkoutBlockReason === 'apple'
+        ? 'WEB_CHECKOUT_ACTIVE_APPLE_BLOCK'
+        : this.checkoutBlockReason === 'wayforpay'
+          ? 'WEB_CHECKOUT_ACTIVE_WAYFORPAY_BLOCK'
+          : 'WEB_CHECKOUT_ACTIVE_PREMIUM_BLOCK';
+    const tpl = this.i18n.t(tplKey);
+    const iso = this.activeUntilIso;
     if (!iso) {
       return tpl.replace(/\{\{DATE\}\}/g, '—');
     }
@@ -219,43 +222,69 @@ export class CheckoutComponent implements OnInit {
     return map[lang];
   }
 
-  async openPaddleWebCheckout(): Promise<void> {
-    this.paddleInlineMessage = '';
-    if (!this.envWebPaddleCheckoutEnabled) {
-      this.paddleInlineMessage = this.i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT');
+  private wayForPayLanguage(): string {
+    const lang = this.i18n.current;
+    if (lang === 'uk' || lang === 'ru') return 'UA';
+    if (lang === 'en') return 'EN';
+    if (lang === 'de') return 'DE';
+    if (lang === 'es') return 'ES';
+    if (lang === 'fr') return 'FR';
+    if (lang === 'pt') return 'PT';
+    return 'UA';
+  }
+
+  async openWebCheckout(): Promise<void> {
+    this.inlineMessage = '';
+    if (!this.envWebCheckoutEnabled) {
+      this.inlineMessage = this.i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT');
       return;
     }
-    if (!this.paddleCheckout.isConfigured()) {
-      this.paddleInlineMessage = this.i18n.t('PADDLE_NOT_CONFIGURED');
-      return;
-    }
-    const email = this.paddleEmail?.trim();
+    const email = this.checkoutEmail?.trim();
     if (!email || !this.emailRegex.test(email)) {
-      this.paddleInlineMessage = this.i18n.t('PADDLE_NEED_EMAIL');
-      return;
-    }
-    const priceId = this.paddleCheckout.priceIdForPlan(this.selectedPremiumPlanId);
-    if (!priceId) {
-      const plan = this.selectedPremiumPlanId;
-      this.paddleInlineMessage = this.i18n
-        .t('PADDLE_NEED_PRICE_ID')
-        .replace(/\{\{PLAN\}\}/g, plan);
+      this.inlineMessage = this.i18n.t('WEB_CHECKOUT_NEED_EMAIL');
       return;
     }
 
-    this.paddleCheckoutLoading = true;
+    this.checkoutLoading = true;
     try {
-      const elig = await firstValueFrom(this.paddleEligibility.check(email));
+      const elig = await firstValueFrom(this.wayForPayEligibility.check(email));
       if (!elig.canStartNewCheckout) {
-        this.paddleBlockActive = true;
-        this.paddleActiveUntilIso = elig.activePaddlePeriodEndsAt;
+        this.checkoutBlockActive = true;
+        this.activeUntilIso = elig.activeWayForPayPeriodEndsAt;
+        this.checkoutBlockReason = elig.blockReason ?? null;
         return;
       }
-      await this.paddleCheckout.openOverlayCheckout(priceId, email);
-    } catch {
-      this.paddleInlineMessage = this.i18n.t('PADDLE_CHECKOUT_ERROR');
+      await this.wayForPayCheckout.openWidgetCheckout(
+        email,
+        this.selectedPremiumPlanId,
+        this.wayForPayLanguage(),
+      );
+    } catch (err: unknown) {
+      const apiErr =
+        err && typeof err === 'object' && 'error' in err
+          ? (err as {
+              error?: {
+                code?: string;
+                message?: string;
+                activeWayForPayPeriodEndsAt?: string | null;
+                blockReason?: 'apple' | 'wayforpay' | 'premium' | null;
+              };
+            }).error
+          : undefined;
+      if (apiErr?.code === 'USER_NOT_FOUND') {
+        this.inlineMessage = this.i18n.t('WEB_CHECKOUT_USER_NOT_FOUND');
+      } else if (apiErr?.code === 'SUBSCRIPTION_ALREADY_ACTIVE') {
+        this.checkoutBlockActive = true;
+        this.activeUntilIso = apiErr.activeWayForPayPeriodEndsAt ?? null;
+        this.checkoutBlockReason = apiErr.blockReason ?? 'premium';
+        this.inlineMessage = '';
+      } else if (apiErr?.message) {
+        this.inlineMessage = apiErr.message;
+      } else {
+        this.inlineMessage = this.i18n.t('WEB_CHECKOUT_ERROR');
+      }
     } finally {
-      this.paddleCheckoutLoading = false;
+      this.checkoutLoading = false;
     }
   }
 }

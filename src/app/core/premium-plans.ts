@@ -1,41 +1,48 @@
 /**
- * Планы Premium на лендинге (информативно; покупка — в App Store).
- * Цены ориентировочные для US; фактические — в приложении.
+ * Premium plan pricing on the website (USD — aligned with App Store tiers).
+ * Actual charge amount comes from API (WAYFORPAY_PLAN_*_AMOUNT).
  */
 export type PremiumPlanId = 'y1' | 'm1';
 
 export type PremiumPlanRow = {
   id: PremiumPlanId;
-  labelRu: string;
-  labelEn: string;
-  /** Полная сумма за период (как на сайте) */
-  total: string;
-  perMonthRu: string;
-  perMonthEn: string;
-  saveRu: string | null;
-  saveEn: string | null;
+  /** Full period price in USD */
+  amountUsd: number;
 };
 
-/** USD: 1 мес $4.99; 1 год $39.99 (~$3.33/мес) */
 export const PREMIUM_PLANS: readonly PremiumPlanRow[] = [
-  {
-    id: 'y1',
-    labelRu: '1 год',
-    labelEn: '1 year',
-    total: '$39.99',
-    perMonthRu: '$3.33/мес',
-    perMonthEn: '$3.33/mo',
-    saveRu: 'экономия 33%',
-    saveEn: 'save 33%',
-  },
-  {
-    id: 'm1',
-    labelRu: '1 месяц',
-    labelEn: '1 month',
-    total: '$4.99',
-    perMonthRu: '$4.99/мес',
-    perMonthEn: '$4.99/mo',
-    saveRu: null,
-    saveEn: null,
-  },
+  { id: 'y1', amountUsd: 39.99 },
+  { id: 'm1', amountUsd: 4.99 },
 ] as const;
+
+const usdFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+export function formatPremiumUsd(amount: number): string {
+  return usdFormatter.format(amount);
+}
+
+export function premiumPlanTotal(plan: PremiumPlanRow): string {
+  return formatPremiumUsd(plan.amountUsd);
+}
+
+export function premiumPlanPerMonth(plan: PremiumPlanRow, suffix: string): string {
+  if (plan.id === 'm1') {
+    return `${formatPremiumUsd(plan.amountUsd)}${suffix}`;
+  }
+  const perMonth = plan.amountUsd / 12;
+  return `~${formatPremiumUsd(perMonth)}${suffix}`;
+}
+
+export function premiumPlanSavePercent(plan: PremiumPlanRow): number | null {
+  if (plan.id !== 'y1') return null;
+  const monthly = PREMIUM_PLANS.find((p) => p.id === 'm1');
+  if (!monthly) return null;
+  const yearlyIfMonthly = monthly.amountUsd * 12;
+  const saved = 1 - plan.amountUsd / yearlyIfMonthly;
+  return Math.round(saved * 100);
+}

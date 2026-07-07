@@ -9,7 +9,7 @@ import {
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AppLang, I18nService } from '../../core/i18n.service';
-import { PREMIUM_PLANS } from '../../core/premium-plans';
+import { PREMIUM_PLANS, formatPremiumUsd, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
 import { appStoreUrl } from '../../core/app-store-url';
 import { landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
@@ -28,7 +28,7 @@ type FaqItem = {
   standalone: true,
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
-  readonly webPaddleCheckoutEnabled = environment.webPaddleCheckoutEnabled;
+  readonly webCheckoutEnabled = environment.webWayForPayCheckoutEnabled;
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
 
   appStoreHref(source = 'home'): string {
@@ -46,6 +46,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   readonly premiumPlans = PREMIUM_PLANS;
+  readonly premiumPlanSavePercent = premiumPlanSavePercent;
 
   readonly faqItems: FaqItem[] = [
     { q: 'FAQ_Q1', a: 'FAQ_A1', guides: ['free-vpn-iphone', 'vpn-for-iphone'] },
@@ -77,25 +78,40 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return this.premiumPlans.find(p => p.id === this.selectedPremiumPlanId) ?? this.premiumPlans[0];
   }
 
-  premiumPeriodBadgeText(): string {
-    switch (this.selectedPremiumPlanId) {
-      case 'y1':
-        return this.i18n.t('PRICING_BADGE_Y1');
-      default:
-        return this.i18n.t('PRICING_BADGE_M1');
-    }
-  }
-
   premiumLabel(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.labelRu : p.labelEn;
+    return p.id === 'y1' ? this.i18n.t('PREMIUM_PLAN_Y1') : this.i18n.t('PREMIUM_PLAN_M1');
   }
 
   premiumPerMonth(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.perMonthRu : p.perMonthEn;
+    return premiumPlanPerMonth(p, this.i18n.t('PRICE_PER_MONTH_SUFFIX'));
+  }
+
+  premiumTotal(p: (typeof this.premiumPlans)[number]) {
+    return premiumPlanTotal(p);
   }
 
   premiumSave(p: (typeof this.premiumPlans)[number]) {
-    return this.i18n.current === 'ru' ? p.saveRu : p.saveEn;
+    const pct = premiumPlanSavePercent(p);
+    if (pct == null) return null;
+    return this.i18n.t('PREMIUM_SAVE_Y1').replace('{{PCT}}', String(pct));
+  }
+
+  /** Large hero price (monthly equivalent for annual plan). */
+  premiumHeroAmount(p: (typeof this.premiumPlans)[number]): string {
+    if (p.id === 'y1') {
+      return `~${formatPremiumUsd(p.amountUsd / 12)}`;
+    }
+    return premiumPlanTotal(p);
+  }
+
+  premiumHeroPeriod(_p: (typeof this.premiumPlans)[number]): string {
+    return this.i18n.t('PRICE_PER_MONTH_SUFFIX');
+  }
+
+  premiumBilledLine(p: (typeof this.premiumPlans)[number]): string {
+    const amount = premiumPlanTotal(p);
+    const key = p.id === 'y1' ? 'PRICING_BILLED_YEAR' : 'PRICING_BILLED_MONTH';
+    return this.i18n.t(key).replace('{{AMOUNT}}', amount);
   }
 
   /** App Store marketing screenshots (portrait) */
