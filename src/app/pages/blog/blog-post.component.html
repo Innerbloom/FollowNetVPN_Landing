@@ -1,0 +1,58 @@
+<article class="blog-post" *ngIf="post as p">
+  <header class="article-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">FollowNet</a>
+        <span aria-hidden="true">/</span>
+        <a routerLink="/blog">{{ i18n.t('BLOG_TITLE') }}</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ topicLabel(p) }}</span>
+      </nav>
+
+      <p class="kicker">{{ topicLabel(p) }}</p>
+      <h1>{{ p.title }}</h1>
+      <p class="lead">{{ p.excerpt }}</p>
+      <p class="meta">
+        {{ formatDate(p.date) }}
+        <span aria-hidden="true">·</span>
+        {{ readLabel(p.minutes) }}
+      </p>
+
+      <div class="cta-row">
+        <a
+          class="btn primary"
+          [href]="appStoreHref()"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
+        >
+        <a class="btn ghost" routerLink="/blog">{{ i18n.t('BLOG_ALL') }}</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container narrow body">
+    <div class="prose">
+      <section *ngFor="let s of p.sections" class="prose-block">
+        <h2>{{ s.title }}</h2>
+        <p>{{ s.body }}</p>
+      </section>
+    </div>
+
+    <nav class="related" *ngIf="related.length" aria-label="Related posts">
+      <div class="related-head">
+        <p class="related-kicker">FollowNet</p>
+        <h2>{{ i18n.t('SEO_LANDING_RELATED') }}</h2>
+      </div>
+      <div class="related-grid">
+        <a class="related-card" *ngFor="let r of related" [routerLink]="['/blog', r.slug]">
+          <span class="related-card-title">{{ r.title }}</span>
+          <span class="related-card-lead">{{ r.excerpt }}</span>
+          <span class="related-card-meta">
+            {{ formatDate(r.date) }} · {{ readLabel(r.minutes) }}
+          </span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>

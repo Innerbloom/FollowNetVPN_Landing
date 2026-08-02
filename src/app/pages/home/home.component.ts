@@ -7,12 +7,18 @@ import {
   inject,
 } from '@angular/core';
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS, formatPremiumUsd, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
 import { appStoreUrl } from '../../core/app-store-url';
 import { landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
+import {
+  blogTeaserTopicLabel,
+  homeLearnTeasers,
+  type BlogTeaser,
+} from '../../core/blog-teasers';
 
 type FaqItem = {
   q: string;
@@ -36,14 +42,22 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
   readonly chromeWebStoreUrl = environment.chromeWebStoreUrl;
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly router = inject(Router);
+  private langSub: Subscription | null = null;
 
   /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
   heroParallaxPx = 0;
 
+  /** Stable list — a getter recreates nodes every CD and cancels card clicks. */
+  learnPosts: BlogTeaser[] = [];
+
   constructor(
     public i18n: I18nService,
     private readonly ngZone: NgZone,
-  ) {}
+  ) {
+    this.refreshLearnPosts();
+    this.langSub = this.i18n.lang$.subscribe(() => this.refreshLearnPosts());
+  }
 
   readonly premiumPlans = PREMIUM_PLANS;
   readonly premiumPlanSavePercent = premiumPlanSavePercent;
@@ -66,6 +80,47 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   guideLabel(slug: LandingSlug): string {
     return landingLabel(slug, this.i18n.current as AppLang);
+  }
+
+  trackLearnPost(_index: number, post: BlogTeaser): string {
+    return post.slug;
+  }
+
+  openLearnPost(post: BlogTeaser, event: Event): void {
+    event.preventDefault();
+    void this.router.navigate(['/blog', post.slug]);
+  }
+
+  private refreshLearnPosts(): void {
+    this.learnPosts = homeLearnTeasers(this.i18n.current);
+  }
+
+  blogTopic(post: BlogTeaser): string {
+    return blogTeaserTopicLabel(post.topic, this.i18n.current);
+  }
+
+  blogDate(iso: string): string {
+    const locale =
+      this.i18n.current === 'ru' || this.i18n.current === 'uk'
+        ? 'ru-RU'
+        : this.i18n.current === 'de'
+          ? 'de-DE'
+          : this.i18n.current === 'es'
+            ? 'es-ES'
+            : this.i18n.current === 'fr'
+              ? 'fr-FR'
+              : this.i18n.current === 'pt'
+                ? 'pt-PT'
+                : 'en-US';
+    return new Intl.DateTimeFormat(locale, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(`${iso}T12:00:00Z`));
+  }
+
+  blogRead(minutes: number): string {
+    return this.i18n.t('BLOG_READ_TIME').replace('{n}', String(minutes));
   }
 
   selectedPremiumPlanId: (typeof this.premiumPlans)[number]['id'] = 'y1';
@@ -181,6 +236,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.langSub?.unsubscribe();
+    this.langSub = null;
     if (this.autoplayId != null) {
       window.clearInterval(this.autoplayId);
       this.autoplayId = null;

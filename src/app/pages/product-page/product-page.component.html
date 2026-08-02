@@ -1,0 +1,50 @@
+<article class="product-page" *ngIf="page as p">
+  <header class="article-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">FollowNet</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ p.kicker }}</span>
+      </nav>
+
+      <p class="kicker">{{ p.kicker }}</p>
+      <h1>{{ p.h1 }}</h1>
+      <p class="lead">{{ p.lead }}</p>
+
+      <div class="cta-row">
+        <a
+          class="btn primary"
+          [href]="resolvedPrimaryHref()"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ resolvedPrimaryLabel() }}</a
+        >
+        <a
+          *ngIf="showChromeCta"
+          class="btn ghost"
+          [href]="chromeUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ i18n.t('DOWNLOAD_CHROME_CTA') }}</a
+        >
+        <a class="btn ghost" [routerLink]="secondaryHref">{{ resolvedSecondaryLabel() }}</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container narrow body">
+    <div class="prose">
+      <section *ngFor="let b of p.blocks" class="prose-block">
+        <h2>{{ b.title }}</h2>
+        <p>{{ b.body }}</p>
+      </section>
+
+      <section class="prose-block" *ngIf="p.bullets.length">
+        <h2>{{ i18n.t('SEO_LANDING_KEYPOINTS') }}</h2>
+        <ul class="keypoints">
+          <li *ngFor="let item of p.bullets">{{ item }}</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</article>

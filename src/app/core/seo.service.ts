@@ -2,7 +2,6 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { AppLang, I18nService, SUPPORTED_LANGS } from './i18n.service';
-import { landingContent } from './seo-landing.content';
 import { landingSlugFromPath, LandingSlug } from './seo-landing.slugs';
 import { APP_STORE, getSeoCopy, OG_LOCALE } from './seo-copy';
 import { environment } from '../../environments/environment';
@@ -219,47 +218,49 @@ export class SeoService {
     pageUrl: string,
     copy: ReturnType<typeof getSeoCopy>,
   ): void {
-    const content = landingContent(slug, lang);
-    const faqItems = content.faq.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.a,
-      },
-    }));
+    void import('./seo-landing.content').then(({ landingContent }) => {
+      const content = landingContent(slug, lang);
+      const faqItems = content.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a,
+        },
+      }));
 
-    const payload = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'WebPage',
-          '@id': `${pageUrl}#webpage`,
-          url: pageUrl,
-          name: copy.ogTitle,
-          description: copy.description,
-          inLanguage: lang,
-          isPartOf: { '@id': `${origin}/#website` },
-        },
-        {
-          '@type': 'MobileApplication',
-          '@id': `${origin}/#app`,
-          name: 'FollowNet VPN',
-          operatingSystem: 'iOS',
-          applicationCategory: 'SecurityApplication',
-          downloadUrl: APP_STORE,
-          installUrl: APP_STORE,
-          image: ogImage,
-        },
-        {
-          '@type': 'FAQPage',
-          '@id': `${pageUrl}#faq`,
-          mainEntity: faqItems,
-        },
-      ],
-    };
+      const payload = {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebPage',
+            '@id': `${pageUrl}#webpage`,
+            url: pageUrl,
+            name: copy.ogTitle,
+            description: copy.description,
+            inLanguage: lang,
+            isPartOf: { '@id': `${origin}/#website` },
+          },
+          {
+            '@type': 'MobileApplication',
+            '@id': `${origin}/#app`,
+            name: 'FollowNet VPN',
+            operatingSystem: 'iOS',
+            applicationCategory: 'SecurityApplication',
+            downloadUrl: APP_STORE,
+            installUrl: APP_STORE,
+            image: ogImage,
+          },
+          {
+            '@type': 'FAQPage',
+            '@id': `${pageUrl}#faq`,
+            mainEntity: faqItems,
+          },
+        ],
+      };
 
-    this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
+      this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
+    });
   }
 
   private removeDynamicJsonLd(): void {

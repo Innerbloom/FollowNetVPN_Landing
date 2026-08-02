@@ -1,52 +1,41 @@
 <article class="seo-landing" *ngIf="content as c">
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a routerLink="/">{{ i18n.t('SEO_LANDING_BREADCRUMB') }}</a>
-          <span aria-hidden="true"> / </span>
-          <span>{{ c.h1 }}</span>
-        </nav>
+  <header class="article-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">{{ i18n.t('SEO_LANDING_BREADCRUMB') }}</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ relatedLabel(slug) }}</span>
+      </nav>
 
-        <h1>{{ c.h1 }}</h1>
-        <p class="lead">{{ c.lead }}</p>
+      <p class="kicker">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</p>
+      <h1>{{ c.h1 }}</h1>
+      <p class="lead">{{ c.lead }}</p>
 
-        <div class="cta-row">
-          <a
-            class="btn primary"
-            [href]="appStoreHref()"
-            target="_blank"
-            rel="noopener noreferrer"
-            >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
-          >
-          <a class="btn ghost" routerLink="/">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
-        </div>
-
-        <ul class="highlights">
-          <li *ngFor="let b of c.bullets">
-            <span class="mark" aria-hidden="true"></span>
-            <span>{{ b }}</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="device">
-          <div class="device-frame">
-            <div class="device-screen">
-              <img [src]="heroShot" [alt]="heroAlt()" loading="eager" decoding="async" />
-            </div>
-          </div>
-        </div>
+      <div class="cta-row">
+        <a
+          class="btn primary"
+          [href]="appStoreHref()"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
+        >
+        <a class="btn ghost" routerLink="/">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <div class="container body">
-    <div class="cards">
-      <section *ngFor="let s of c.sections" class="card">
+  <div class="container narrow body">
+    <div class="prose">
+      <section *ngFor="let s of c.sections" class="prose-block">
         <h2>{{ s.title }}</h2>
         <p>{{ s.body }}</p>
+      </section>
+
+      <section class="prose-block" *ngIf="c.bullets.length">
+        <h2>{{ i18n.t('SEO_LANDING_KEYPOINTS') }}</h2>
+        <ul class="keypoints">
+          <li *ngFor="let b of c.bullets">{{ b }}</li>
+        </ul>
       </section>
     </div>
 
@@ -64,9 +53,16 @@
     </section>
 
     <nav class="related" *ngIf="related.length" aria-label="Related guides">
-      <h2>{{ i18n.t('SEO_LANDING_RELATED') }}</h2>
-      <div class="related-links">
-        <a *ngFor="let r of related" [routerLink]="'/' + r">{{ relatedLabel(r) }}</a>
+      <div class="related-head">
+        <p class="related-kicker">FollowNet</p>
+        <h2>{{ i18n.t('SEO_LANDING_RELATED') }}</h2>
+      </div>
+      <div class="related-grid">
+        <a class="related-card" *ngFor="let r of related" [routerLink]="'/' + r">
+          <span class="related-card-title">{{ relatedLabel(r) }}</span>
+          <span class="related-card-lead">{{ relatedLead(r) }}</span>
+          <span class="related-card-meta">{{ i18n.t('SEO_LANDING_RELATED_META') }}</span>
+        </a>
       </div>
     </nav>
   </div>

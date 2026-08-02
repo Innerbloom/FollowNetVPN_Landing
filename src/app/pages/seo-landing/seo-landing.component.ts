@@ -24,18 +24,6 @@ export class SeoLandingComponent implements OnInit {
   content: LandingContent | null = null;
   slug: LandingSlug | null = null;
   related: LandingSlug[] = [];
-  heroShot = 'assets/screenshots/IMG_6290-portrait.png';
-
-  private readonly heroShots: Partial<Record<LandingSlug, string>> = {
-    'vpn-for-iphone': 'assets/screenshots/IMG_6290-portrait.png',
-    'wireguard-vpn-ios': 'assets/screenshots/IMG_6291-portrait.png',
-    'free-vpn-iphone': 'assets/screenshots/IMG_6290-portrait.png',
-    'smart-connect-vpn': 'assets/screenshots/IMG_6292-portrait.png',
-    'vpn-speed-test-ios': 'assets/screenshots/IMG_6293-portrait.png',
-    'best-vpn-iphone': 'assets/screenshots/IMG_6294-portrait.png',
-    'secure-vpn-iphone': 'assets/screenshots/IMG_6291-portrait.png',
-    'vpn-for-ipad': 'assets/screenshots/IMG_6294-portrait.png',
-  };
 
   constructor(
     private route: ActivatedRoute,
@@ -49,17 +37,17 @@ export class SeoLandingComponent implements OnInit {
     this.slug = slug;
     if (!slug) return;
     this.related = LANDING_RELATED[slug] ?? [];
-    this.heroShot = this.heroShots[slug] ?? this.heroShot;
     this.applyContent(slug);
     this.i18n.lang$.subscribe(() => this.applyContent(slug));
   }
 
-  relatedLabel(relatedSlug: LandingSlug): string {
+  relatedLabel(relatedSlug: LandingSlug | null): string {
+    if (!relatedSlug) return '';
     return landingLabel(relatedSlug, this.i18n.current);
   }
 
-  heroAlt(): string {
-    return this.content?.h1 ?? 'FollowNet VPN for iOS';
+  relatedLead(relatedSlug: LandingSlug): string {
+    return landingContent(relatedSlug, this.i18n.current).lead;
   }
 
   private applyContent(slug: LandingSlug): void {

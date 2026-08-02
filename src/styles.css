@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 * {
   margin: 0;
@@ -19,6 +18,9 @@
   --green: #9AB541;
   --green-2: #7ea543;
   --red: #F63E3E;
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
   /* shared shape tokens */
   --r-card: 22px;
@@ -55,12 +57,20 @@ html, body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: 1.5;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+.sales-title,
+.section-head h2 {
+  font-family: var(--font-display);
 }
 
 a {

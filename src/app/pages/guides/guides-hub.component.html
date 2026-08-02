@@ -1,0 +1,17 @@
+<section class="guides-hub">
+  <div class="container">
+    <header class="hub-hero">
+      <p class="kicker">FollowNet</p>
+      <h1>{{ i18n.t('GUIDES_TITLE') }}</h1>
+      <p class="lead">{{ i18n.t('GUIDES_LEAD') }}</p>
+    </header>
+
+    <div class="guide-grid">
+      <a class="guide-card" *ngFor="let g of guides" [routerLink]="['/', g.slug]">
+        <h2 class="guide-title">{{ g.title }}</h2>
+        <p class="guide-lead">{{ g.lead }}</p>
+        <span class="guide-meta">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</span>
+      </a>
+    </div>
+  </div>
+</section>

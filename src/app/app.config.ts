@@ -3,7 +3,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +15,9 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled',
       }),
-    ), provideClientHydration(withEventReplay()),
+    ),
+    // Event replay + client language switch breaks routerLink clicks
+    // (prerendered jsaction="click:;" swallows navigation after i18n DOM updates).
+    provideClientHydration(),
   ],
 };

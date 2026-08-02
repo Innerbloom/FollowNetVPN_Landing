@@ -10,7 +10,7 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'VPN for iPhone — FollowNet | Free iOS VPN App',
       ogTitle: 'VPN for iPhone — FollowNet',
       description:
-        'Download a VPN built for iPhone: one-tap connect, WireGuard & IKEv2, free daily data, Smart Connect for restrictive networks. Available on the App Store.',
+        'Download a VPN built for iPhone: one-tap connect, WireGuard & IKEv2, free weekly traffic, Smart Connect for restrictive networks. Available on the App Store.',
     },
     ru: {
       title: 'VPN для iPhone — FollowNet | Бесплатный VPN для iOS',
@@ -35,16 +35,16 @@ const M: Record<LandingSlug, LandingMeta> = {
   },
   'free-vpn-iphone': {
     en: {
-      title: 'Free VPN for iPhone — FollowNet | Daily Data, No Card',
+      title: 'Free VPN for iPhone — FollowNet | Weekly Data, No Card',
       ogTitle: 'Free VPN for iPhone — FollowNet',
       description:
-        'Try FollowNet free on iPhone: daily data, WireGuard & IKEv2, Smart Connect, Auto-connect, and DNS profiles. Upgrade to Premium for unlimited traffic.',
+        'Try FollowNet free on iPhone: weekly traffic, WireGuard & IKEv2, Smart Connect, Auto-connect, and DNS profiles. Upgrade to Premium for unlimited traffic.',
     },
     ru: {
       title: 'Бесплатный VPN для iPhone — FollowNet',
       ogTitle: 'Бесплатный VPN для iPhone — FollowNet',
       description:
-        'FollowNet бесплатно на iPhone: дневной лимит, WireGuard и IKEv2, Smart Connect, автоподключение и DNS. Premium — безлимит.',
+        'FollowNet бесплатно на iPhone: недельный лимит, WireGuard и IKEv2, Smart Connect, автоподключение и DNS. Premium — безлимит.',
     },
   },
   'vpn-for-ipad': {
@@ -58,7 +58,7 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'VPN для iPad — FollowNet',
       ogTitle: 'VPN для iPad — FollowNet',
       description:
-        'FollowNet на iPad — то же iOS-приложение: WireGuard, IKEv2, Smart Connect, автоподключение и серверы по всему миру.',
+        'FollowNet на iPad — то же iOS-приложение: WireGuard, IKEv2, Smart Connect, автоподключение и доступные в приложении серверы.',
     },
   },
   'ikev2-vpn-ios': {
@@ -119,16 +119,16 @@ const M: Record<LandingSlug, LandingMeta> = {
   },
   'no-logs-vpn': {
     en: {
-      title: 'No-Logs VPN for iPhone — FollowNet Privacy Policy',
-      ogTitle: 'No-Logs VPN — FollowNet',
+      title: 'VPN Privacy on iPhone — FollowNet Data Policy',
+      ogTitle: 'VPN Privacy — FollowNet',
       description:
-        'FollowNet minimizes data collection. Read how we handle VPN metadata, DNS, analytics, and your rights — no-logs approach for iOS users.',
+        'Read how FollowNet handles account data, VPN metadata, DNS, analytics, retention, and privacy rights for iOS users.',
     },
     ru: {
-      title: 'VPN без логов для iPhone — FollowNet',
-      ogTitle: 'VPN без логов — FollowNet',
+      title: 'Приватность VPN на iPhone — политика FollowNet',
+      ogTitle: 'Приватность VPN — FollowNet',
       description:
-        'FollowNet минимизирует сбор данных. Как мы обрабатываем VPN-метаданные, DNS и аналитику — политика no logs для iOS.',
+        'Как FollowNet обрабатывает данные аккаунта, VPN-метаданные, DNS и аналитику: цели, сроки хранения и права пользователя.',
     },
   },
   'auto-connect-vpn-ios': {
@@ -215,6 +215,90 @@ const M: Record<LandingSlug, LandingMeta> = {
         'FollowNet шифрует трафик через WireGuard, IKEv2 или AmneziaWG на iOS. Автоподключение, DNS и прозрачная политика конфиденциальности.',
     },
   },
+  'hysteria2-vpn-ios': {
+    en: {
+      title: 'Hysteria2 VPN for iOS — FollowNet | When Networks Fight Tunnels',
+      ogTitle: 'Hysteria2 VPN for iOS — FollowNet',
+      description:
+        'Use Hysteria2 on iPhone and iPad with FollowNet alongside WireGuard, IKEv2, and AmneziaWG. Smart Connect or manual protocol selection for lossy networks.',
+    },
+    ru: {
+      title: 'Hysteria2 VPN для iOS — FollowNet',
+      ogTitle: 'Hysteria2 VPN для iOS — FollowNet',
+      description:
+        'Hysteria2 на iPhone и iPad в FollowNet рядом с WireGuard, IKEv2 и AmneziaWG. Smart Connect или ручной выбор для сложных сетей.',
+    },
+  },
+  'vpn-chrome-extension': {
+    en: {
+      title: 'VPN Chrome Extension — FollowNet | Same Account as iOS',
+      ogTitle: 'FollowNet VPN for Chrome',
+      description:
+        'FollowNet Chrome extension for desktop browsing with the same account as iPhone. Free weekly traffic, optional Premium, simple server flow.',
+    },
+    ru: {
+      title: 'VPN-расширение Chrome — FollowNet',
+      ogTitle: 'FollowNet VPN для Chrome',
+      description:
+        'Расширение FollowNet для Chrome: тот же аккаунт, что на iPhone, недельный лимит Free и опциональный Premium.',
+    },
+  },
+  'vpn-widgets-ios': {
+    en: {
+      title: 'VPN Widgets for iOS — FollowNet Home Screen Status',
+      ogTitle: 'VPN Widgets for iOS — FollowNet',
+      description:
+        'See FollowNet connection status on your iPhone Home Screen. Pair widgets with Auto-connect for public Wi‑Fi and travel networks.',
+    },
+    ru: {
+      title: 'Виджеты VPN для iOS — FollowNet',
+      ogTitle: 'Виджеты VPN для iOS — FollowNet',
+      description:
+        'Статус FollowNet на Home Screen iPhone. Сочетайте виджеты с автоподключением для публичного Wi‑Fi и поездок.',
+    },
+  },
+  'how-to-setup-vpn-iphone': {
+    en: {
+      title: 'How to Set Up VPN on iPhone — FollowNet Guide',
+      ogTitle: 'How to Set Up VPN on iPhone — FollowNet',
+      description:
+        'Install FollowNet from the App Store, sign in with email code, allow VPN configuration, and connect in one tap. Free weekly traffic, Smart Connect, Auto-connect.',
+    },
+    ru: {
+      title: 'Как настроить VPN на iPhone — гайд FollowNet',
+      ogTitle: 'Как настроить VPN на iPhone — FollowNet',
+      description:
+        'Установите FollowNet из App Store, войдите по email-коду, разрешите VPN и подключайтесь в одно касание. Free, Smart Connect, автоподключение.',
+    },
+  },
+  'vpn-for-streaming-iphone': {
+    en: {
+      title: 'VPN for Streaming on iPhone — FollowNet Speed & Servers',
+      ogTitle: 'VPN for Streaming on iPhone — FollowNet',
+      description:
+        'Stream more privately on iPhone with FollowNet: WireGuard, Smart Connect, Speed Test, and Auto-connect on Wi‑Fi — honest limits on catalog unlocks.',
+    },
+    ru: {
+      title: 'VPN для стриминга на iPhone — FollowNet',
+      ogTitle: 'VPN для стриминга на iPhone — FollowNet',
+      description:
+        'Более приватный стриминг на iPhone с FollowNet: WireGuard, Smart Connect, Speed Test и автоподключение — без ложных обещаний про каталоги.',
+    },
+  },
+  'vpn-for-gaming-iphone': {
+    en: {
+      title: 'VPN for Gaming on iPhone — FollowNet Latency Tips',
+      ogTitle: 'VPN for Gaming on iPhone — FollowNet',
+      description:
+        'Game on untrusted networks with FollowNet for iOS. WireGuard-first, Smart Connect when filtered, Speed Test for latency — Free and Premium.',
+    },
+    ru: {
+      title: 'VPN для игр на iPhone — FollowNet',
+      ogTitle: 'VPN для игр на iPhone — FollowNet',
+      description:
+        'Игры в ненадёжных сетях с FollowNet для iOS. Сначала WireGuard, Smart Connect при фильтрах, Speed Test для latency — Free и Premium.',
+    },
+  },
 };
 
 export { landingSlugFromPath };
@@ -225,19 +309,49 @@ export function getLandingSeoCopy(slug: LandingSlug, lang: AppLang): SeoCopy {
 }
 
 export function getGuidesHubSeoCopy(lang: AppLang): SeoCopy {
-  const en: SeoCopy = {
-    title: 'iOS VPN Guides — FollowNet | iPhone & iPad Help',
-    ogTitle: 'iOS VPN Guides — FollowNet',
-    description:
-      'Browse FollowNet guides: VPN for iPhone, free VPN, WireGuard, IKEv2, Smart Connect, Auto-connect, DNS, travel Wi‑Fi, and more.',
+  const copy: Record<AppLang, SeoCopy> = {
+    en: {
+      title: 'iOS VPN Guides — FollowNet | iPhone & iPad Help',
+      ogTitle: 'iOS VPN Guides — FollowNet',
+      description:
+        'Browse FollowNet guides for iPhone and iPad: setup, WireGuard, IKEv2, Smart Connect, DNS, public Wi‑Fi, travel, and more.',
+    },
+    ru: {
+      title: 'Гайды VPN для iOS — FollowNet',
+      ogTitle: 'Гайды VPN для iOS — FollowNet',
+      description:
+        'Гайды FollowNet для iPhone и iPad: настройка, WireGuard, IKEv2, Smart Connect, DNS, публичный Wi‑Fi, поездки и другие темы.',
+    },
+    uk: {
+      title: 'Гайди VPN для iOS — FollowNet',
+      ogTitle: 'Гайди VPN для iOS — FollowNet',
+      description:
+        'Гайди FollowNet для iPhone та iPad: налаштування, WireGuard, IKEv2, Smart Connect, DNS, публічний Wi‑Fi, подорожі та інші теми.',
+    },
+    de: {
+      title: 'VPN-Ratgeber für iOS — FollowNet',
+      ogTitle: 'iOS VPN-Ratgeber — FollowNet',
+      description:
+        'FollowNet-Ratgeber für iPhone und iPad: Einrichtung, WireGuard, IKEv2, Smart Connect, DNS, öffentliches WLAN, Reisen und mehr.',
+    },
+    es: {
+      title: 'Guías VPN para iOS — FollowNet',
+      ogTitle: 'Guías VPN para iOS — FollowNet',
+      description:
+        'Guías FollowNet para iPhone y iPad: configuración, WireGuard, IKEv2, Smart Connect, DNS, Wi‑Fi público, viajes y más.',
+    },
+    fr: {
+      title: 'Guides VPN pour iOS — FollowNet',
+      ogTitle: 'Guides VPN pour iOS — FollowNet',
+      description:
+        'Guides FollowNet pour iPhone et iPad : configuration, WireGuard, IKEv2, Smart Connect, DNS, Wi‑Fi public, voyages et plus.',
+    },
+    pt: {
+      title: 'Guias de VPN para iOS — FollowNet',
+      ogTitle: 'Guias de VPN para iOS — FollowNet',
+      description:
+        'Guias FollowNet para iPhone e iPad: configuração, WireGuard, IKEv2, Smart Connect, DNS, Wi‑Fi público, viagens e mais.',
+    },
   };
-  const ru: SeoCopy = {
-    title: 'Гайды VPN для iOS — FollowNet',
-    ogTitle: 'Гайды VPN для iOS — FollowNet',
-    description:
-      'Гайды FollowNet: VPN для iPhone, бесплатный VPN, WireGuard, IKEv2, Smart Connect, автоподключение, DNS, Wi‑Fi в поездках и другое.',
-  };
-  if (lang === 'ru') return ru;
-  if (lang === 'uk') return { ...ru, title: 'Гайди VPN для iOS — FollowNet', ogTitle: 'Гайди VPN для iOS — FollowNet' };
-  return en;
+  return copy[lang];
 }

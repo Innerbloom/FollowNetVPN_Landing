@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-/** Legacy /ios-vpn-guides → home (SEO landings stay on their own URLs). */
+/** Legacy /ios-vpn-guides → /guides hub. */
 @Component({
   selector: 'app-guides-redirect',
   standalone: true,
@@ -11,6 +11,6 @@ export class GuidesRedirectComponent implements OnInit {
   private readonly router = inject(Router);
 
   ngOnInit(): void {
-    void this.router.navigate(['/'], { replaceUrl: true });
+    void this.router.navigate(['/guides'], { replaceUrl: true });
   }
 }

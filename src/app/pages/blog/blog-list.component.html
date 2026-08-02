@@ -1,0 +1,22 @@
+<section class="blog-list">
+  <div class="container">
+    <header class="blog-hero">
+      <p class="kicker">FollowNet</p>
+      <h1>{{ i18n.t('BLOG_TITLE') }}</h1>
+      <p class="lead">{{ i18n.t('BLOG_LEAD') }}</p>
+    </header>
+
+    <div class="post-grid">
+      <a class="post-card" *ngFor="let post of posts" [routerLink]="['/blog', post.slug]">
+        <span class="post-topic">{{ topicLabel(post) }}</span>
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
+        <span class="post-meta">
+          {{ formatDate(post.date) }}
+          <span aria-hidden="true">·</span>
+          {{ readLabel(post.minutes) }}
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

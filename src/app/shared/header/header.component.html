@@ -11,10 +11,11 @@
 
       <nav class="nav">
         <a [routerLink]="['/']" fragment="top" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
-        <a [routerLink]="['/']" fragment="features" [class.active]="activeSection==='features'">{{ i18n.t('NAV_FEATURES') }}</a>
+        <a routerLink="/features">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
         <a [routerLink]="['/']" fragment="pricing" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
-        <a routerLink="/privacy">{{ i18n.t('NAV_PRIVACY') }}</a>
-        <a routerLink="/terms">{{ i18n.t('NAV_TERMS') }}</a>
+        <a routerLink="/guides">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a routerLink="/blog">{{ i18n.t('NAV_BLOG') }}</a>
+        <a routerLink="/download">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
       </nav>
 
       <div class="right">
@@ -50,14 +51,20 @@
     <div class="mobile-panel" (click)="$event.stopPropagation()">
       <div class="mobile-group">
         <a [routerLink]="['/']" fragment="top" (click)="closeMenu()" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
-        <a [routerLink]="['/']" fragment="features" (click)="closeMenu()" [class.active]="activeSection==='features'">{{ i18n.t('NAV_FEATURES') }}</a>
+        <a routerLink="/features" (click)="closeMenu()">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
         <a [routerLink]="['/']" fragment="pricing" (click)="closeMenu()" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
-        <a [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD') }}</a>
+        <a routerLink="/guides" (click)="closeMenu()">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a routerLink="/blog" (click)="closeMenu()">{{ i18n.t('NAV_BLOG') }}</a>
+        <a routerLink="/download" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
       </div>
 
       <div class="mobile-group">
+        <a routerLink="/about" (click)="closeMenu()">{{ i18n.t('NAV_ABOUT') }}</a>
+        <a routerLink="/support" (click)="closeMenu()">{{ i18n.t('NAV_SUPPORT') }}</a>
+        <a routerLink="/status" (click)="closeMenu()">{{ i18n.t('NAV_STATUS') }}</a>
         <a routerLink="/privacy" (click)="closeMenu()">{{ i18n.t('NAV_PRIVACY') }}</a>
         <a routerLink="/terms" (click)="closeMenu()">{{ i18n.t('NAV_TERMS') }}</a>
+        <a [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
       </div>
     </div>
   </div>

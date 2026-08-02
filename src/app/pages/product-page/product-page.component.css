@@ -1,0 +1,158 @@
+.product-page {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 5rem;
+}
+
+.container {
+  max-width: var(--container-max, 1180px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container.narrow {
+  max-width: 760px;
+}
+
+.article-header {
+  padding: 1.5rem 0 2.5rem;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--type-label);
+  color: var(--muted-2);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--green);
+}
+
+.kicker {
+  margin: 0 0 0.85rem;
+  font-size: var(--type-kicker);
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.article-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.lead {
+  margin-top: 1.2rem;
+  color: var(--muted);
+  font-size: var(--type-lead);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.cta-row {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: filter 120ms ease;
+}
+
+.btn.primary {
+  background: var(--green);
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.btn.ghost {
+  border: 1px solid var(--border-2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.prose {
+  display: grid;
+  gap: 2.75rem;
+}
+
+.prose-block h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.prose-block p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.keypoints {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.keypoints li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: var(--muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.keypoints li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--green);
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .cta-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

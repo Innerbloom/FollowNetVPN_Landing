@@ -1,10 +1,39 @@
 <footer class="footer">
-  <p>&copy; 2026 FollowNet. All rights reserved.</p>
-  <div class="links">
-    <a routerLink="/privacy">Privacy Policy</a>
-    <span class="sep">•</span>
-    <a routerLink="/terms">Terms</a>
-    <span class="sep">•</span>
-    <a href="mailto:support@follow-net.com">support&#64;follow-net.com</a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="footer-logo" routerLink="/">
+        <span class="footer-logo-mark">FollowNet</span>
+        <span class="footer-logo-suffix">VPN</span>
+      </a>
+      <p class="footer-tagline">{{ i18n.t('FOOTER_TAGLINE') }}</p>
+      <a class="footer-mail" href="mailto:support@follow-net.com">support&#64;follow-net.com</a>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="footer-col">
+        <p class="footer-col-title">{{ i18n.t('FOOTER_COL_PRODUCT') }}</p>
+        <a routerLink="/features">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
+        <a routerLink="/guides">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a routerLink="/blog">{{ i18n.t('NAV_BLOG') }}</a>
+        <a routerLink="/download">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">{{ i18n.t('FOOTER_COL_COMPANY') }}</p>
+        <a routerLink="/about">{{ i18n.t('NAV_ABOUT') }}</a>
+        <a routerLink="/support">{{ i18n.t('NAV_SUPPORT') }}</a>
+        <a routerLink="/status">{{ i18n.t('NAV_STATUS') }}</a>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">{{ i18n.t('FOOTER_COL_LEGAL') }}</p>
+        <a routerLink="/privacy">{{ i18n.t('NAV_PRIVACY') }}</a>
+        <a routerLink="/terms">{{ i18n.t('NAV_TERMS') }}</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">{{ i18n.t('FOOTER_COPY') }}</p>
   </div>
 </footer>
