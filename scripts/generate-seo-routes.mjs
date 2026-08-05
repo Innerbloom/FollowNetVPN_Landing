@@ -26,7 +26,8 @@ const blogSlugs = extractBlogSlugs(blogTs);
 
 const LANGS = ['ru', 'en', 'de', 'es', 'fr', 'pt', 'uk'];
 const SITE = 'https://follow-net.com';
-const LASTMOD = '2026-08-02';
+/** UTC calendar day — refresh on every `npm run build` / `seo:routes`. */
+const LASTMOD = new Date().toISOString().slice(0, 10);
 
 const staticPaths = [
   '/',

@@ -1,3 +1,7 @@
+# Keep SEO files as real static assets (never SPA-shell).
+/sitemap.xml  /sitemap.xml  200
+/robots.txt   /robots.txt   200
+
 /ios-vpn-guides  /guides  301
 /kill-switch-vpn-ios  /auto-connect-vpn-ios  301
 /kill-switch-vpn-ios/*  /auto-connect-vpn-ios/:splat  301
