@@ -48,6 +48,8 @@ export class CheckoutComponent implements OnInit {
 
   selectedPremiumPlanId: PremiumPlanId = 'y1';
   checkoutEmail = '';
+  checkoutTicket: string | null = null;
+  ticketInvalid = false;
   checkoutLoading = false;
   eligibilityLoading = false;
   inlineMessage = '';
@@ -70,6 +72,24 @@ export class CheckoutComponent implements OnInit {
 
     const fromStorage = this.readStoredCheckoutEmail();
     const fromUrl = (this.route.snapshot.queryParamMap.get('email') || '').trim();
+    const ticket = (this.route.snapshot.queryParamMap.get('ticket') || '').trim();
+
+    if (ticket) {
+      this.checkoutTicket = ticket;
+      this.eligibilityLoading = true;
+      this.wayForPayEligibility
+        .checkByTicket(ticket)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe((res) => {
+          this.eligibilityLoading = false;
+          this.apiSaysWebCheckoutDisabled = !!res.webCheckoutDisabled;
+          this.ticketInvalid = !!res.ticketInvalid;
+          this.checkoutBlockActive = !res.canStartNewCheckout && !res.ticketInvalid;
+          this.activeUntilIso = res.activeWayForPayPeriodEndsAt;
+          this.checkoutBlockReason = res.blockReason ?? null;
+        });
+      return;
+    }
 
     this.checkoutEmail = fromUrl || fromStorage;
     if (fromUrl) {
@@ -108,18 +128,27 @@ export class CheckoutComponent implements OnInit {
     this.emailEligibility$.next(this.checkoutEmail);
   }
 
+  get isSessionCheckout(): boolean {
+    return !!this.checkoutTicket;
+  }
+
   get isCheckoutEmailValid(): boolean {
     return this.emailRegex.test((this.checkoutEmail || '').trim());
   }
 
   get canOpenCheckout(): boolean {
-    return (
-      this.envWebCheckoutEnabled &&
-      !this.checkoutLoading &&
-      !this.eligibilityLoading &&
-      this.isCheckoutEmailValid &&
-      !this.checkoutBlockActive
-    );
+    if (
+      !this.envWebCheckoutEnabled ||
+      this.checkoutLoading ||
+      this.eligibilityLoading ||
+      this.checkoutBlockActive
+    ) {
+      return false;
+    }
+    if (this.isSessionCheckout) {
+      return !this.ticketInvalid && !!this.checkoutTicket;
+    }
+    return this.isCheckoutEmailValid;
   }
 
   get webCheckoutPaused(): boolean {
@@ -239,15 +268,23 @@ export class CheckoutComponent implements OnInit {
       this.inlineMessage = this.i18n.t('WEB_CHECKOUT_PAUSED_CHECKOUT');
       return;
     }
+    const ticket = this.checkoutTicket?.trim() || null;
     const email = this.checkoutEmail?.trim();
-    if (!email || !this.emailRegex.test(email)) {
+    if (!ticket && (!email || !this.emailRegex.test(email))) {
       this.inlineMessage = this.i18n.t('WEB_CHECKOUT_NEED_EMAIL');
       return;
     }
 
     this.checkoutLoading = true;
     try {
-      const elig = await firstValueFrom(this.wayForPayEligibility.check(email));
+      const elig = ticket
+        ? await firstValueFrom(this.wayForPayEligibility.checkByTicket(ticket))
+        : await firstValueFrom(this.wayForPayEligibility.check(email!));
+      if (elig.ticketInvalid) {
+        this.ticketInvalid = true;
+        this.inlineMessage = this.i18n.t('WEB_CHECKOUT_TICKET_INVALID');
+        return;
+      }
       if (!elig.canStartNewCheckout) {
         this.checkoutBlockActive = true;
         this.activeUntilIso = elig.activeWayForPayPeriodEndsAt;
@@ -255,7 +292,7 @@ export class CheckoutComponent implements OnInit {
         return;
       }
       await this.wayForPayCheckout.openWidgetCheckout(
-        email,
+        ticket ? { checkoutToken: ticket } : { email: email! },
         this.selectedPremiumPlanId,
         this.wayForPayLanguage(),
       );
@@ -273,6 +310,9 @@ export class CheckoutComponent implements OnInit {
           : undefined;
       if (apiErr?.code === 'USER_NOT_FOUND') {
         this.inlineMessage = this.i18n.t('WEB_CHECKOUT_USER_NOT_FOUND');
+      } else if (apiErr?.code === 'CHECKOUT_TICKET_EXPIRED') {
+        this.ticketInvalid = true;
+        this.inlineMessage = this.i18n.t('WEB_CHECKOUT_TICKET_INVALID');
       } else if (apiErr?.code === 'SUBSCRIPTION_ALREADY_ACTIVE') {
         this.checkoutBlockActive = true;
         this.activeUntilIso = apiErr.activeWayForPayPeriodEndsAt ?? null;

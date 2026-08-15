@@ -249,6 +249,28 @@ h1 {
   font-weight: 650;
 }
 
+.checkout-session {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: var(--r-control);
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.checkout-session-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(196, 214, 120, 0.95);
+  background: rgba(154, 181, 65, 0.16);
+}
+
 .checkout-footnote {
   margin: 0.35rem 0 0;
   color: rgba(255, 255, 255, 0.48);

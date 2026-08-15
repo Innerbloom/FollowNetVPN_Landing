@@ -11,6 +11,7 @@ export interface WayForPayCheckoutEligibility {
   readonly activeWayForPayPeriodEndsAt: string | null;
   readonly blockReason?: WebCheckoutBlockReason | null;
   readonly webCheckoutDisabled?: boolean;
+  readonly ticketInvalid?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -36,6 +37,32 @@ export class WayForPayCheckoutEligibilityService {
           of({
             canStartNewCheckout: true,
             activeWayForPayPeriodEndsAt: null,
+          }),
+        ),
+      );
+  }
+
+  checkByTicket(ticket: string): Observable<WayForPayCheckoutEligibility> {
+    const token = ticket.trim();
+    if (!token) {
+      return of({
+        canStartNewCheckout: false,
+        activeWayForPayPeriodEndsAt: null,
+        ticketInvalid: true,
+      });
+    }
+    const base = environment.apiBaseUrl.replace(/\/$/, '');
+    const url = `${base}/subscription/wayforpay-checkout-eligibility`;
+    return this.http
+      .get<WayForPayCheckoutEligibility>(url, {
+        params: { ticket: token },
+      })
+      .pipe(
+        catchError(() =>
+          of({
+            canStartNewCheckout: false,
+            activeWayForPayPeriodEndsAt: null,
+            ticketInvalid: true,
           }),
         ),
       );

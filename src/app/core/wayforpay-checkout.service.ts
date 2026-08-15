@@ -91,31 +91,38 @@ export class WayForPayCheckoutService {
   }
 
   async createCheckoutSession(
-    email: string,
+    identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
     language?: string,
   ): Promise<WayForPayWidgetPayload> {
+    const body: Record<string, string> = {
+      planId,
+      language: language ?? 'UA',
+      returnUrl: `${window.location.origin}/checkout?checkout=success`,
+    };
+    const token = identity.checkoutToken?.trim();
+    const email = identity.email?.trim().toLowerCase();
+    if (token) {
+      body.checkoutToken = token;
+    } else if (email) {
+      body.email = email;
+    }
     const res = await firstValueFrom(
       this.http.post<{ widget: WayForPayWidgetPayload }>(
         `${this.apiBase()}/subscription/wayforpay/checkout`,
-        {
-          email: email.trim().toLowerCase(),
-          planId,
-          language: language ?? 'UA',
-          returnUrl: `${window.location.origin}/checkout?checkout=success`,
-        },
+        body,
       ),
     );
     return res.widget;
   }
 
   async openWidgetCheckout(
-    email: string,
+    identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
     language?: string,
   ): Promise<void> {
     await this.loadScript();
-    const widget = await this.createCheckoutSession(email, planId, language);
+    const widget = await this.createCheckoutSession(identity, planId, language);
     const Wfp = window.Wayforpay;
     if (!Wfp) {
       throw new Error('WayForPay widget is not available');

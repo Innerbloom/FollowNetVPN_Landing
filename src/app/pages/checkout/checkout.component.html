@@ -35,7 +35,7 @@
       <header class="checkout-head">
         <p class="checkout-kicker">Premium</p>
         <h1>{{ i18n.t('CHECKOUT_TITLE') }}</h1>
-        <p class="sub">{{ i18n.t('CHECKOUT_SUB') }}</p>
+        <p class="sub">{{ i18n.t(isSessionCheckout ? 'CHECKOUT_SUB_SESSION' : 'CHECKOUT_SUB') }}</p>
       </header>
 
       <div class="checkout-plan-row">
@@ -68,6 +68,22 @@
       <p class="checkout-recurring">{{ i18n.t('WEB_CHECKOUT_RECURRING_HINT') }}</p>
 
       <div class="checkout-form">
+        <ng-container *ngIf="isSessionCheckout; else checkoutEmailFields">
+          <div class="checkout-session">
+            <span class="checkout-session-badge">{{ i18n.t('WEB_CHECKOUT_SESSION_BADGE') }}</span>
+            <p class="checkout-hint">{{ i18n.t('WEB_CHECKOUT_SESSION_HINT') }}</p>
+          </div>
+          <div
+            class="checkout-status checkout-status--warn checkout-eligibility"
+            *ngIf="ticketInvalid"
+            role="status"
+          >
+            <div class="checkout-status-body">
+              <div class="checkout-status-text">{{ i18n.t('WEB_CHECKOUT_TICKET_INVALID') }}</div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #checkoutEmailFields>
         <label class="checkout-label" for="checkout-email">{{ i18n.t('WEB_CHECKOUT_EMAIL_LABEL') }}</label>
         <input
           id="checkout-email"
@@ -85,10 +101,11 @@
         <p class="note checkout-inline-msg" *ngIf="checkoutEmail.trim().length > 0 && !isCheckoutEmailValid">
           {{ i18n.t('WEB_CHECKOUT_NEED_EMAIL') }}
         </p>
+        </ng-template>
 
         <div
           class="checkout-status checkout-status--warn checkout-eligibility"
-          *ngIf="checkoutBlockActive && isCheckoutEmailValid && !apiSaysWebCheckoutDisabled"
+          *ngIf="checkoutBlockActive && (isSessionCheckout || isCheckoutEmailValid) && !apiSaysWebCheckoutDisabled"
           role="status"
         >
           <div class="checkout-status-body">
@@ -98,7 +115,7 @@
 
         <div
           class="checkout-status checkout-status--warn checkout-eligibility"
-          *ngIf="apiSaysWebCheckoutDisabled && isCheckoutEmailValid"
+          *ngIf="apiSaysWebCheckoutDisabled && (isSessionCheckout || isCheckoutEmailValid)"
           role="status"
         >
           <div class="checkout-status-body">
