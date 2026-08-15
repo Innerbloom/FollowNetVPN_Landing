@@ -58,6 +58,7 @@ export class CheckoutComponent implements OnInit {
   checkoutBlockActive = false;
   activeUntilIso: string | null = null;
   checkoutBlockReason: 'apple' | 'wayforpay' | 'premium' | null = null;
+  private planFromUrl = false;
 
   ngOnInit(): void {
     const checkout = (this.route.snapshot.queryParamMap.get('checkout') || '').trim().toLowerCase();
@@ -68,6 +69,7 @@ export class CheckoutComponent implements OnInit {
     const plan = this.route.snapshot.queryParamMap.get('plan') as PremiumPlanId | null;
     if (plan && this.premiumPlans.some((p) => p.id === plan)) {
       this.selectedPremiumPlanId = plan;
+      this.planFromUrl = true;
     }
 
     const fromStorage = this.readStoredCheckoutEmail();
@@ -78,6 +80,7 @@ export class CheckoutComponent implements OnInit {
 
     if (ticket) {
       this.checkoutTicket = ticket;
+      this.stripCheckoutTicketFromUrl();
       this.eligibilityLoading = true;
       this.wayForPayEligibility
         .checkByTicket(ticket)
@@ -89,6 +92,12 @@ export class CheckoutComponent implements OnInit {
           this.checkoutBlockActive = !res.canStartNewCheckout && !res.ticketInvalid;
           this.activeUntilIso = res.activeWayForPayPeriodEndsAt;
           this.checkoutBlockReason = res.blockReason ?? null;
+          if (
+            !this.planFromUrl &&
+            (res.planId === 'm1' || res.planId === 'y1')
+          ) {
+            this.selectedPremiumPlanId = res.planId;
+          }
         });
       return;
     }
@@ -164,6 +173,24 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { checkout: null },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
+
+  private stripCheckoutTicketFromUrl(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has('ticket')) return;
+    url.searchParams.delete('ticket');
+    window.history.replaceState(
+      window.history.state,
+      '',
+      `${url.pathname}${url.search}${url.hash}`,
+    );
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { ticket: null },
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });
@@ -301,17 +328,7 @@ export class CheckoutComponent implements OnInit {
         this.wayForPayLanguage(),
       );
     } catch (err: unknown) {
-      const apiErr =
-        err && typeof err === 'object' && 'error' in err
-          ? (err as {
-              error?: {
-                code?: string;
-                message?: string;
-                activeWayForPayPeriodEndsAt?: string | null;
-                blockReason?: 'apple' | 'wayforpay' | 'premium' | null;
-              };
-            }).error
-          : undefined;
+      const apiErr = this.apiErrorFromUnknown(err);
       if (apiErr?.code === 'USER_NOT_FOUND') {
         this.inlineMessage = this.i18n.t('WEB_CHECKOUT_USER_NOT_FOUND');
       } else if (apiErr?.code === 'CHECKOUT_TICKET_EXPIRED') {
@@ -322,7 +339,7 @@ export class CheckoutComponent implements OnInit {
         this.activeUntilIso = apiErr.activeWayForPayPeriodEndsAt ?? null;
         this.checkoutBlockReason = apiErr.blockReason ?? 'premium';
         this.inlineMessage = '';
-      } else if (apiErr?.message) {
+      } else if (apiErr?.code && apiErr.message) {
         this.inlineMessage = apiErr.message;
       } else {
         this.inlineMessage = this.i18n.t('WEB_CHECKOUT_ERROR');
@@ -330,5 +347,33 @@ export class CheckoutComponent implements OnInit {
     } finally {
       this.checkoutLoading = false;
     }
+  }
+
+  private apiErrorFromUnknown(err: unknown): {
+    code?: string;
+    message?: string;
+    activeWayForPayPeriodEndsAt?: string | null;
+    blockReason?: 'apple' | 'wayforpay' | 'premium' | null;
+  } | undefined {
+    if (!err || typeof err !== 'object') return undefined;
+    const body =
+      'error' in err
+        ? (err as { error?: Record<string, unknown> }).error
+        : (err as Record<string, unknown>);
+    if (!body || typeof body !== 'object') return undefined;
+    const codeRaw = body['error'] ?? body['code'];
+    const code = typeof codeRaw === 'string' ? codeRaw : undefined;
+    const message = typeof body['message'] === 'string' ? body['message'] : undefined;
+    const until = body['activeWayForPayPeriodEndsAt'];
+    const reason = body['blockReason'];
+    return {
+      code,
+      message,
+      activeWayForPayPeriodEndsAt: typeof until === 'string' ? until : null,
+      blockReason:
+        reason === 'apple' || reason === 'wayforpay' || reason === 'premium'
+          ? reason
+          : null,
+    };
   }
 }

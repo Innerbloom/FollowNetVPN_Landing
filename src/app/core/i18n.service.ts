@@ -871,13 +871,13 @@ const DICT: Dict = {
     uk: 'Оплата привʼяжеться до акаунта, з якого ви відкрили цю сторінку.',
   },
   WEB_CHECKOUT_SESSION_BADGE: {
-    ru: 'Анонимный вход',
-    en: 'Anonymous account',
-    de: 'Anonymer Zugang',
-    es: 'Cuenta anónima',
-    fr: 'Compte anonyme',
-    pt: 'Conta anônima',
-    uk: 'Анонімний вхід',
+    ru: 'Сессия FollowNet',
+    en: 'FollowNet session',
+    de: 'FollowNet-Sitzung',
+    es: 'Sesión FollowNet',
+    fr: 'Session FollowNet',
+    pt: 'Sessão FollowNet',
+    uk: 'Сесія FollowNet',
   },
   WEB_CHECKOUT_SESSION_HINT: {
     ru: 'Чек на почту не придёт, пока не свяжете email в приложении. Premium всё равно окажется на этом аккаунте — как покупка в App Store.',
@@ -1053,6 +1053,7 @@ const DICT: Dict = {
     uk: 'Оплату на сайті тимчасово вимкнено — Premium у додатку для iOS (App Store).',
   },
   CHECKOUT_BACK: { ru: '← Назад к тарифам', en: '← Back to pricing', de: '← Zurück zu Preisen', es: '← Volver a precios', fr: '← Retour aux tarifs', pt: '← Voltar aos preços', uk: '← Назад до тарифів' },
+  CHECKOUT_CLOSE: { ru: 'Закрыть', en: 'Close', de: 'Schließen', es: 'Cerrar', fr: 'Fermer', pt: 'Fechar', uk: 'Закрити' },
   CHECKOUT_TITLE: { ru: 'Оплата Premium', en: 'Premium checkout', de: 'Premium-Zahlung', es: 'Pago Premium', fr: 'Paiement Premium', pt: 'Checkout Premium', uk: 'Оплата Premium' },
   CHECKOUT_SUB: { ru: 'Выберите план и завершите оплату на отдельной странице.', en: 'Pick a plan and complete payment on this dedicated page.', de: 'Wähle einen Plan und schließe die Zahlung hier ab.', es: 'Elige un plan y completa el pago en esta página.', fr: 'Choisissez un forfait et terminez le paiement sur cette page.', pt: 'Escolha um plano e conclua o pagamento nesta página.', uk: 'Оберіть план і завершіть оплату на окремій сторінці.' },
   CHECKOUT_SECTION_PLAN: {

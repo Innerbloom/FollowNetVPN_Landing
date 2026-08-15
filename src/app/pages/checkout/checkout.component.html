@@ -7,7 +7,7 @@
         <div class="checkout-status-title">{{ i18n.t('CHECKOUT_SUCCESS_TITLE') }}</div>
         <div class="checkout-status-text">{{ i18n.t('CHECKOUT_SUCCESS_TEXT') }}</div>
       </div>
-      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" aria-label="Close">
+      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" [attr.aria-label]="i18n.t('CHECKOUT_CLOSE')">
         ×
       </button>
     </div>
@@ -17,7 +17,7 @@
         <div class="checkout-status-title">{{ i18n.t('CHECKOUT_CANCEL_TITLE') }}</div>
         <div class="checkout-status-text">{{ i18n.t('CHECKOUT_CANCEL_TEXT') }}</div>
       </div>
-      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" aria-label="Close">
+      <button type="button" class="checkout-status-close" (click)="dismissCheckoutStatus()" [attr.aria-label]="i18n.t('CHECKOUT_CLOSE')">
         ×
       </button>
     </div>

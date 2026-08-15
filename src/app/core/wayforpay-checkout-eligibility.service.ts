@@ -12,6 +12,7 @@ export interface WayForPayCheckoutEligibility {
   readonly blockReason?: WebCheckoutBlockReason | null;
   readonly webCheckoutDisabled?: boolean;
   readonly ticketInvalid?: boolean;
+  readonly planId?: 'm1' | 'y1' | null;
 }
 
 @Injectable({ providedIn: 'root' })

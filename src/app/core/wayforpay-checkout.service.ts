@@ -122,25 +122,58 @@ export class WayForPayCheckoutService {
     return res.widget;
   }
 
+  async restoreCheckoutTicket(checkoutToken: string): Promise<void> {
+    const token = checkoutToken.trim();
+    if (!token) return;
+    await firstValueFrom(
+      this.http.post(`${this.apiBase()}/subscription/wayforpay/checkout-ticket/restore`, {
+        checkoutToken: token,
+      }),
+    ).catch(() => undefined);
+  }
+
+  async discardCheckoutTicketHold(checkoutToken: string): Promise<void> {
+    const token = checkoutToken.trim();
+    if (!token) return;
+    await firstValueFrom(
+      this.http.post(`${this.apiBase()}/subscription/wayforpay/checkout-ticket/ack`, {
+        checkoutToken: token,
+      }),
+    ).catch(() => undefined);
+  }
+
   async openWidgetCheckout(
     identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
     language?: string,
   ): Promise<void> {
     await this.loadScript();
-    const widget = await this.createCheckoutSession(identity, planId, language);
-    const Wfp = window.Wayforpay;
-    if (!Wfp) {
-      throw new Error('WayForPay widget is not available');
+    const token = identity.checkoutToken?.trim();
+    let minted = false;
+    try {
+      const widget = await this.createCheckoutSession(identity, planId, language);
+      minted = true;
+      const Wfp = window.Wayforpay;
+      if (!Wfp) {
+        throw new Error('WayForPay widget is not available');
+      }
+      const instance = new Wfp();
+      await new Promise<void>((resolve, reject) => {
+        instance.run(
+          widget as unknown as Record<string, unknown>,
+          () => resolve(),
+          () => reject(new Error('Payment declined')),
+          () => resolve(),
+        );
+      });
+      if (token) {
+        await this.discardCheckoutTicketHold(token);
+      }
+    } catch (e) {
+      if (token && minted) {
+        await this.restoreCheckoutTicket(token);
+      }
+      throw e;
     }
-    const instance = new Wfp();
-    return new Promise((resolve, reject) => {
-      instance.run(
-        widget as unknown as Record<string, unknown>,
-        () => resolve(),
-        () => reject(new Error('Payment declined')),
-        () => undefined,
-      );
-    });
   }
 }

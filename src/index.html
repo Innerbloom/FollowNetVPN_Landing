@@ -37,7 +37,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-SZXZQ38562');
+    (function () {
+      var page = new URL(location.href);
+      page.searchParams.delete('ticket');
+      gtag('config', 'G-SZXZQ38562', { page_location: page.toString() });
+    })();
   </script>
   <script type="application/ld+json">
   {
