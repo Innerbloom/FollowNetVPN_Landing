@@ -95,7 +95,13 @@ export class WayForPayCheckoutService {
     planId: PremiumPlanId,
     language?: string,
   ): Promise<WayForPayWidgetPayload> {
-    const body: Record<string, string> = {
+    const body: {
+      planId: PremiumPlanId;
+      language: string;
+      returnUrl: string;
+      checkoutToken?: string;
+      email?: string;
+    } = {
       planId,
       language: language ?? 'UA',
       returnUrl: `${window.location.origin}/checkout?checkout=success`,
