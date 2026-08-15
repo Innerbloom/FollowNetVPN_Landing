@@ -73,6 +73,8 @@ export class CheckoutComponent implements OnInit {
     const fromStorage = this.readStoredCheckoutEmail();
     const fromUrl = (this.route.snapshot.queryParamMap.get('email') || '').trim();
     const ticket = (this.route.snapshot.queryParamMap.get('ticket') || '').trim();
+    const fromExtension =
+      (this.route.snapshot.queryParamMap.get('utm_source') || '').trim() === 'chrome_extension';
 
     if (ticket) {
       this.checkoutTicket = ticket;
@@ -91,7 +93,9 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    this.checkoutEmail = fromUrl || fromStorage;
+    // Don't reuse a previous email when Chrome opens checkout without one:
+    // anonymous pay must not show the last registered address from this browser.
+    this.checkoutEmail = fromUrl || (fromExtension ? '' : fromStorage);
     if (fromUrl) {
       this.persistCheckoutEmail(fromUrl);
     }
