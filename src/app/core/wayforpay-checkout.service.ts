@@ -142,6 +142,16 @@ export class WayForPayCheckoutService {
     ).catch(() => undefined);
   }
 
+  async failPendingCheckoutOrder(orderReference: string): Promise<void> {
+    const ref = orderReference.trim();
+    if (!ref) return;
+    await firstValueFrom(
+      this.http.post(`${this.apiBase()}/subscription/wayforpay/checkout-order/fail`, {
+        orderReference: ref,
+      }),
+    ).catch(() => undefined);
+  }
+
   async openWidgetCheckout(
     identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
@@ -150,9 +160,11 @@ export class WayForPayCheckoutService {
     await this.loadScript();
     const token = identity.checkoutToken?.trim();
     let minted = false;
+    let orderReference: string | undefined;
     try {
       const widget = await this.createCheckoutSession(identity, planId, language);
       minted = true;
+      orderReference = widget.orderReference;
       const Wfp = window.Wayforpay;
       if (!Wfp) {
         throw new Error('WayForPay widget is not available');
@@ -170,6 +182,9 @@ export class WayForPayCheckoutService {
         await this.discardCheckoutTicketHold(token);
       }
     } catch (e) {
+      if (orderReference) {
+        await this.failPendingCheckoutOrder(orderReference);
+      }
       if (token && minted) {
         await this.restoreCheckoutTicket(token);
       }
