@@ -15,6 +15,7 @@ import {
 import { I18nService, type AppLang } from '../../core/i18n.service';
 import { WayForPayCheckoutService } from '../../core/wayforpay-checkout.service';
 import { WayForPayCheckoutEligibilityService } from '../../core/wayforpay-checkout-eligibility.service';
+import { FirstPromoterService } from '../../core/firstpromoter.service';
 import { PREMIUM_PLANS, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal, type PremiumPlanId } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
 
@@ -42,6 +43,7 @@ export class CheckoutComponent implements OnInit {
     private readonly router: Router,
     private readonly wayForPayCheckout: WayForPayCheckoutService,
     private readonly wayForPayEligibility: WayForPayCheckoutEligibilityService,
+    private readonly firstPromoter: FirstPromoterService,
   ) {}
 
   readonly premiumPlans = PREMIUM_PLANS;
@@ -322,6 +324,11 @@ export class CheckoutComponent implements OnInit {
         this.checkoutBlockReason = elig.blockReason ?? null;
         return;
       }
+      // Bind affiliate cookie → lead before payment (accounts are created in-app).
+      if (email) {
+        this.firstPromoter.trackReferral({ email });
+      }
+
       await this.wayForPayCheckout.openWidgetCheckout(
         ticket ? { checkoutToken: ticket } : { email: email! },
         this.selectedPremiumPlanId,
