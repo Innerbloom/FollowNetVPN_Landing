@@ -122,7 +122,7 @@ const M: Record<LandingSlug, LandingMeta> = {
       title: 'VPN Privacy on iPhone — FollowNet Data Policy',
       ogTitle: 'VPN Privacy — FollowNet',
       description:
-        'Read how FollowNet handles account data, VPN metadata, DNS, analytics, retention, and privacy rights for iOS users.',
+        'Read how FollowNet handles account data, VPN metadata, DNS, analytics, retention, and privacy rights for iOS and Android users.',
     },
     ru: {
       title: 'Приватность VPN на iPhone — политика FollowNet',

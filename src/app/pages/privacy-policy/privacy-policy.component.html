@@ -3,9 +3,9 @@
   <section class="doc" *ngSwitchCase="'ru'">
     <div class="doc-header">
       <h1>Политика конфиденциальности FollowNet VPN</h1>
-      <p class="muted">Дата обновления: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Дата обновления: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Эта политика описывает, какие данные мы обрабатываем в приложении FollowNet VPN и на сайте, зачем они нужны и какие у вас есть права.
+        Эта политика описывает, какие данные мы обрабатываем в приложениях FollowNet VPN (iOS и Android) и на сайте, зачем они нужны и какие у вас есть права.
         Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
       </p>
     </div>
@@ -32,22 +32,22 @@
       <ul>
         <li><b>Email</b> (если вы входите по коду на email).</li>
         <li><b>User ID</b> — идентификатор вашего аккаунта на наших серверах (присваивается при регистрации).</li>
-        <li><b>deviceId</b> — случайный UUID, генерируется при первом запуске и хранится в Keychain iOS; передаётся нашим серверам для учёта лимита устройств и защиты аккаунта. IDFA/IDFV для этого не используются.</li>
+        <li><b>deviceId</b> — случайный UUID, генерируется при первом запуске и хранится защищённо на устройстве (Keychain iOS / хранилище на базе Android Keystore); передаётся нашим серверам для учёта лимита устройств и защиты аккаунта. Рекламные идентификаторы (IDFA / GAID) для этого deviceId не используются.</li>
       </ul>
       <p class="muted">
         Также может быть доступен вход через <b>Sign in with Apple</b> и/или <b>Google Sign‑In</b>; в этом случае мы получаем данные, необходимые для авторизации, от соответствующего провайдера.
       </p>
 
-      <h3>3.2 Подписка (App Store)</h3>
+      <h3>3.2 Подписка (App Store / Google Play)</h3>
       <ul>
         <li>Тип/статус подписки (free/trial/premium), даты начала/окончания.</li>
-        <li>Идентификаторы транзакций Apple (например, original transaction id) для валидации и восстановления покупок.</li>
-        <li>Мы не получаем реквизиты карты — оплату обрабатывает Apple.</li>
+        <li>Идентификаторы транзакций магазина (Apple и/или Google Play) для валидации и восстановления покупок.</li>
+        <li>Мы не получаем реквизиты карты — оплату обрабатывают Apple или Google.</li>
       </ul>
 
       <h3>3.3 Данные для работы VPN</h3>
       <ul>
-        <li>Выбранный протокол (IKEv2/WireGuard) и выбранный сервер/локация.</li>
+        <li>Выбранный протокол (например, WireGuard, AmneziaWG, Hysteria2; IKEv2 на iOS, где доступен) и выбранный сервер/локация.</li>
         <li>Таймстемпы подключения/отключения, длительность сессии.</li>
         <li>Счётчики трафика (bytes in/out) — для статистики и лимитов бесплатного плана.</li>
         <li>Идентификатор часового пояса устройства — для отображения статистики и лимитов в вашем времени.</li>
@@ -64,7 +64,7 @@
 
       <h3>3.5 Аналитика приложения (Firebase Analytics)</h3>
       <p class="muted">
-        В iOS‑приложении используется <b>Firebase Analytics</b> (Google) для продуктовых событий: успех/ошибка подключения VPN, выбор сервера, экраны покупки и подписки, результат покупки или восстановления, запуск speed test.
+        В приложениях iOS и Android используется <b>Firebase Analytics</b> (Google) для продуктовых событий: успех/ошибка подключения VPN, выбор сервера, экраны покупки и подписки, результат покупки или восстановления, запуск speed test.
         Передаётся только набор таких событий; история сайтов и содержимое трафика не собираются.
         Мы <b>не связываем</b> события Analytics с вашим аккаунтом FollowNet в консоли Firebase (например, <span class="mono">setUserId</span> для Firebase <b>не используется</b>): на стороне Google они привязаны к анонимному идентификатору установки/экземпляра приложения и отделены от вашего User ID и email в нашей системе.
         Политика конфиденциальности Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
@@ -76,13 +76,24 @@
         Пока мы не сопоставляем Crashlytics с вашим User ID/email FollowNet в SDK, отчёты обычно не содержат ваших учётных данных FollowNet; обработка регулируется политиками Google/Firebase.
       </p>
 
-      <h3>3.7 Серверные логи событий</h3>
+      <h3>3.7 Push‑уведомления</h3>
       <p class="muted">
-        На серверах сохраняются технические логи событий для работы сервиса и поддержки: факт подключения к VPN (идентификатор сервера), события от Apple (тип уведомления, productId, originalTransactionId, среда), админ‑действия.
+        Если вы разрешили уведомления, мы обрабатываем push‑токен (<b>APNs</b> на iOS / <b>FCM</b> на Android) для сервисных сообщений (например, по аккаунту или подписке). Разрешение можно отозвать в настройках системы.
+      </p>
+
+      <h3>3.8 Атрибуция установок (AppsFlyer)</h3>
+      <p class="muted">
+        Если включено в сборке, мы используем <b>AppsFlyer</b> для атрибуции установок и маркетинговых измерений (например, какая кампания привела к установке). AppsFlyer может обрабатывать идентификаторы устройства/рекламы и события установки по своей политике. Это не используется для логирования содержимого VPN‑трафика или истории сайтов.
+        Политика AppsFlyer: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Серверные логи событий</h3>
+      <p class="muted">
+        На серверах сохраняются технические логи событий для работы сервиса и поддержки: факт подключения к VPN (идентификатор сервера), события биллинга магазина (Apple и/или Google Play: тип уведомления, productId, идентификаторы транзакций, среда), админ‑действия.
         Содержимое трафика не логируется; данные хранятся не дольше, чем необходимо для работы сервиса и безопасности.
       </p>
 
-      <h3>3.8 IP‑адрес и User‑Agent</h3>
+      <h3>3.10 IP‑адрес и User‑Agent</h3>
       <p class="muted">
         IP‑адрес и User‑Agent могут учитываться на стороне backend для защиты от злоупотреблений (rate‑limit) и безопасности <b>в моменте обработки запроса</b>, без записи в постоянные логи и без целенаправленного хранения для маркетинга.
       </p>
@@ -105,11 +116,13 @@
 
       <h2>6. С кем мы делимся данными</h2>
       <ul>
-        <li><b>Apple</b> — покупки и подписки (App Store).</li>
-        <li><b>Apple / Google</b> — если вы используете Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — покупки и подписки (App Store); доставка push (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (подписки Android); доставка push (FCM); Google Sign‑In при использовании.</li>
+        <li><b>Apple</b> — Sign in with Apple при использовании.</li>
         <li><b>Провайдер email</b> (SMTP) — отправка кода входа.</li>
         <li><b>Инфраструктура/хостинг</b> — размещение backend и VPN‑серверов.</li>
         <li><b>Google Firebase</b> — Analytics и Crashlytics (если включено в сборке).</li>
+        <li><b>AppsFlyer</b> — атрибуция установок (если включено в сборке).</li>
       </ul>
       <p class="muted">Мы не продаём и не «share» персональные данные (в значении CCPA/CPRA).</p>
 
@@ -123,14 +136,14 @@
       <ul>
         <li>Данные аккаунта и подписки — пока аккаунт активен или пока это необходимо по законным основаниям.</li>
         <li>Технические данные сессий/трафика — минимально необходимое время для работы сервиса, лимитов и безопасности.</li>
-        <li>Серверные логи событий (подключения, вебхуки Apple, админ‑действия) — не дольше, чем необходимо для работы сервиса и поддержки.</li>
+        <li>Серверные логи событий (подключения, биллинг Apple/Google Play, админ‑действия) — не дольше, чем необходимо для работы сервиса и поддержки.</li>
         <li>Тикеты поддержки — пока это нужно для обработки обращения и последующих разбирательств/качества сервиса.</li>
         <li>Диагностика Firebase (Analytics, Crashlytics) — согласно срокам и настройкам хранения Google/Firebase.</li>
       </ul>
 
       <h2>9. Безопасность</h2>
       <p class="muted">
-        Мы применяем разумные технические и организационные меры: шифрование данных при передаче (TLS), шифрование VPN‑туннелей (IKEv2/WireGuard), хранение токенов на устройстве в Keychain iOS, ограниченный доступ администраторов, журналирование админ‑действий.
+        Мы применяем разумные технические и организационные меры: шифрование данных при передаче (TLS), шифрование VPN‑туннелей (например, WireGuard / AmneziaWG / Hysteria2; IKEv2 где доступен), хранение токенов в Keychain iOS / защищённом хранилище Android Keystore, ограниченный доступ администраторов, журналирование админ‑действий.
       </p>
 
       <h2>10. Cookies и сайт</h2>
@@ -184,9 +197,9 @@
   <section class="doc" *ngSwitchCase="'uk'">
     <div class="doc-header">
       <h1>Політика конфіденційності FollowNet VPN</h1>
-      <p class="muted">Дата оновлення: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Ця політика описує, які дані ми обробляємо в застосунку FollowNet VPN і на сайті, навіщо вони потрібні та які у вас є права.
+        Ця політика описує, які дані ми обробляємо в застосунках FollowNet VPN (iOS та Android) і на сайті, навіщо вони потрібні та які у вас є права.
         Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
       </p>
     </div>
@@ -213,22 +226,22 @@
       <ul>
         <li><b>Email</b> (якщо ви входите за кодом на email).</li>
         <li><b>User ID</b> — ідентифікатор вашого акаунта на наших серверах (присвоюється під час реєстрації).</li>
-        <li><b>deviceId</b> — випадковий UUID, генерується при першому запуску та зберігається в Keychain iOS; передається нашим серверам для ліміту пристроїв і захисту акаунта. IDFA/IDFV для цього не використовуються.</li>
+        <li><b>deviceId</b> — випадковий UUID, генерується при першому запуску та зберігається захищено на пристрої (Keychain iOS / сховище на базі Android Keystore); передається нашим серверам для ліміту пристроїв і захисту акаунта. Рекламні ідентифікатори (IDFA / GAID) для цього deviceId не використовуються.</li>
       </ul>
       <p class="muted">
         Також може бути доступний вхід через <b>Sign in with Apple</b> та/або <b>Google Sign‑In</b>; у цьому випадку ми отримуємо дані, необхідні для авторизації, від відповідного провайдера.
       </p>
 
-      <h3>3.2 Підписка (App Store)</h3>
+      <h3>3.2 Підписка (App Store / Google Play)</h3>
       <ul>
         <li>Тип/статус підписки (free/trial/premium), дати початку/закінчення.</li>
-        <li>Ідентифікатори транзакцій Apple (наприклад, original transaction id) для перевірки та відновлення покупок.</li>
-        <li>Ми не отримуємо дані вашої картки — оплату обробляє Apple.</li>
+        <li>Ідентифікатори транзакцій магазину (Apple та/або Google Play) для перевірки та відновлення покупок.</li>
+        <li>Ми не отримуємо дані вашої картки — оплату обробляють Apple або Google.</li>
       </ul>
 
       <h3>3.3 Дані для роботи VPN</h3>
       <ul>
-        <li>Обраний протокол (IKEv2/WireGuard) та обраний сервер/локація.</li>
+        <li>Обраний протокол (наприклад, WireGuard, AmneziaWG, Hysteria2; IKEv2 на iOS, де доступний) та обраний сервер/локація.</li>
         <li>Таймстемпи підключення/відключення, тривалість сесії.</li>
         <li>Лічильники трафіку (bytes in/out) — для статистики та лімітів безкоштовного плану.</li>
         <li>Ідентифікатор часового поясу пристрою — для відображення статистики та лімітів у вашому часі.</li>
@@ -245,7 +258,7 @@
 
       <h3>3.5 Аналітика застосунку (Firebase Analytics)</h3>
       <p class="muted">
-        В iOS‑застосунку використовується <b>Firebase Analytics</b> (Google) для продуктових подій: успіх/помилка підключення VPN, вибір сервера, екрани покупки та підписки, результат покупки або відновлення, запуск speed test.
+        У застосунках iOS та Android використовується <b>Firebase Analytics</b> (Google) для продуктових подій: успіх/помилка підключення VPN, вибір сервера, екрани покупки та підписки, результат покупки або відновлення, запуск speed test.
         Передається лише набір таких подій; історія сайтів і вміст трафіку не збираються.
         Ми <b>не пов’язуємо</b> події Analytics з вашим акаунтом FollowNet у консолі Firebase (наприклад, <span class="mono">setUserId</span> для Firebase <b>не використовується</b>): на стороні Google вони прив’язані до анонімного ідентифікатора інсталяції/екземпляра застосунку і відокремлені від вашого User ID та email у нашій системі.
         Політика конфіденційності Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
@@ -257,13 +270,24 @@
         Поки ми не зіставляємо Crashlytics з вашим User ID/email FollowNet у SDK, звіти зазвичай не містять ваших облікових даних FollowNet; обробка регулюється політиками Google/Firebase.
       </p>
 
-      <h3>3.7 Серверні логи подій</h3>
+      <h3>3.7 Push‑сповіщення</h3>
       <p class="muted">
-        На серверах зберігаються технічні логи подій для роботи сервісу та підтримки: факт підключення до VPN (ідентифікатор сервера), події від Apple (тип сповіщення, productId, originalTransactionId, середовище), адмін‑дії.
+        Якщо ви дозволили сповіщення, ми обробляємо push‑токен (<b>APNs</b> на iOS / <b>FCM</b> на Android) для сервісних повідомлень (наприклад, щодо акаунта чи підписки). Дозвіл можна відкликати в налаштуваннях системи.
+      </p>
+
+      <h3>3.8 Атрибуція встановлень (AppsFlyer)</h3>
+      <p class="muted">
+        Якщо увімкнено у збірці, ми використовуємо <b>AppsFlyer</b> для атрибуції встановлень і маркетингових вимірювань (наприклад, яка кампанія призвела до встановлення). AppsFlyer може обробляти ідентифікатори пристрою/реклами та події встановлення за своєю політикою. Це не використовується для логування вмісту VPN‑трафіку чи історії сайтів.
+        Політика AppsFlyer: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Серверні логи подій</h3>
+      <p class="muted">
+        На серверах зберігаються технічні логи подій для роботи сервісу та підтримки: факт підключення до VPN (ідентифікатор сервера), події білінгу магазину (Apple та/або Google Play: тип сповіщення, productId, ідентифікатори транзакцій, середовище), адмін‑дії.
         Вміст трафіку не логується; дані зберігаються не довше, ніж потрібно для роботи сервісу та безпеки.
       </p>
 
-      <h3>3.8 IP‑адреса та User‑Agent</h3>
+      <h3>3.10 IP‑адреса та User‑Agent</h3>
       <p class="muted">
         IP‑адреса та User‑Agent можуть враховуватися на стороні backend для захисту від зловживань (rate‑limit) і безпеки <b>в моменті обробки запиту</b>, без запису в постійні логи і без цілеспрямованого зберігання для маркетингу.
       </p>
@@ -286,11 +310,13 @@
 
       <h2>6. З ким ми ділимося даними</h2>
       <ul>
-        <li><b>Apple</b> — покупки та підписки (App Store).</li>
-        <li><b>Apple / Google</b> — якщо ви використовуєте Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — покупки та підписки (App Store); доставка push (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (підписки Android); доставка push (FCM); Google Sign‑In за використання.</li>
+        <li><b>Apple</b> — Sign in with Apple за використання.</li>
         <li><b>Провайдер email</b> (SMTP) — відправка коду входу.</li>
         <li><b>Інфраструктура/хостинг</b> — розміщення backend та VPN‑серверів.</li>
         <li><b>Google Firebase</b> — Analytics і Crashlytics (якщо увімкнено у збірці).</li>
+        <li><b>AppsFlyer</b> — атрибуція встановлень (якщо увімкнено у збірці).</li>
       </ul>
       <p class="muted">Ми не продаємо і не «share» персональні дані (у значенні CCPA/CPRA).</p>
 
@@ -304,14 +330,14 @@
       <ul>
         <li>Дані акаунта та підписки — поки акаунт активний або поки це потрібно на законних підставах.</li>
         <li>Технічні дані сесій/трафіку — мінімально необхідний час для роботи сервісу, лімітів і безпеки.</li>
-        <li>Серверні логи подій (підключення, вебхуки Apple, адмін‑дії) — не довше, ніж потрібно для роботи сервісу та підтримки.</li>
+        <li>Серверні логи подій (підключення, білінг Apple/Google Play, адмін‑дії) — не довше, ніж потрібно для роботи сервісу та підтримки.</li>
         <li>Тікети підтримки — поки це потрібно для обробки звернення та якості сервісу.</li>
         <li>Діагностика Firebase (Analytics, Crashlytics) — згідно зі строками та налаштуваннями зберігання Google/Firebase.</li>
       </ul>
 
       <h2>9. Безпека</h2>
       <p class="muted">
-        Ми застосовуємо розумні технічні та організаційні заходи: шифрування даних під час передачі (TLS), шифрування VPN‑тунелів (IKEv2/WireGuard), зберігання токенів у Keychain iOS, обмежений доступ адміністраторів, журналювання адмін‑дій.
+        Ми застосовуємо розумні технічні та організаційні заходи: шифрування даних під час передачі (TLS), шифрування VPN‑тунелів (наприклад, WireGuard / AmneziaWG / Hysteria2; IKEv2 де доступний), зберігання токенів у Keychain iOS / захищеному сховищі Android Keystore, обмежений доступ адміністраторів, журналювання адмін‑дій.
       </p>
 
       <h2>10. Cookies і сайт</h2>
@@ -365,9 +391,9 @@
   <section class="doc" *ngSwitchCase="'de'">
     <div class="doc-header">
       <h1>FollowNet VPN Datenschutzerklärung</h1>
-      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Diese Erklärung beschreibt, welche Daten wir in der FollowNet VPN App und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
+        Diese Erklärung beschreibt, welche Daten wir in den FollowNet VPN Apps (iOS und Android) und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
         Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
       </p>
     </div>
@@ -394,22 +420,22 @@
       <ul>
         <li><b>E‑Mail</b> (wenn Sie sich per E‑Mail‑Code anmelden).</li>
         <li><b>User ID</b> — serverseitige Konto‑ID (bei Registrierung vergeben).</li>
-        <li><b>deviceId</b> — zufällige UUID, beim ersten Start erzeugt und im iOS‑Schlüsselbund (Keychain) gespeichert; wird an unsere Server für Geräte‑Limits und Kontosicherheit übertragen. IDFA/IDFV werden dafür nicht verwendet.</li>
+        <li><b>deviceId</b> — zufällige UUID, beim ersten Start erzeugt und sicher auf dem Gerät gespeichert (iOS‑Keychain / Android‑Keystore‑gestützter Speicher); wird an unsere Server für Geräte‑Limits und Kontosicherheit übertragen. Werbekennungen (IDFA / GAID) werden dafür nicht verwendet.</li>
       </ul>
       <p class="muted">
         Anmeldung über <b>Sign in with Apple</b> und/oder <b>Google Sign‑In</b> kann verfügbar sein. Dann erhalten wir die für die Authentifizierung notwendigen Daten vom jeweiligen Anbieter.
       </p>
 
-      <h3>3.2 Abos (App Store)</h3>
+      <h3>3.2 Abos (App Store / Google Play)</h3>
       <ul>
         <li>Plan/Status (free/trial/premium) und Start/Enddaten.</li>
-        <li>Apple‑Transaktions‑IDs (z. B. original transaction id) zur Validierung und Wiederherstellung.</li>
-        <li>Wir erhalten keine Kartendaten — Zahlungen werden von Apple verarbeitet.</li>
+        <li>Store‑Transaktions‑IDs (Apple und/oder Google Play) zur Validierung und Wiederherstellung.</li>
+        <li>Wir erhalten keine Kartendaten — Zahlungen werden von Apple oder Google verarbeitet.</li>
       </ul>
 
       <h3>3.3 VPN‑Dienst‑Daten</h3>
       <ul>
-        <li>Ausgewähltes Protokoll (IKEv2/WireGuard) und Server/Standort.</li>
+        <li>Ausgewähltes Protokoll (z. B. WireGuard, AmneziaWG, Hysteria2; IKEv2 wo auf iOS verfügbar) und Server/Standort.</li>
         <li>Verbindungs‑/Trennzeitpunkte und Sitzungsdauer.</li>
         <li>Traffic‑Zähler (bytes in/out) für Statistiken und Free‑Limits.</li>
         <li>Zeitzonen‑ID des Geräts — für Anzeige von Statistiken und Limits in Ihrer Zeit.</li>
@@ -426,7 +452,7 @@
 
       <h3>3.5 App‑Analytics (Firebase Analytics)</h3>
       <p class="muted">
-        Unsere iOS‑App nutzt <b>Firebase Analytics</b> (Google) für Produkt‑Events: VPN‑Verbindungserfolg/‑fehler, Serverauswahl, Kauf‑/Abo‑Screens, Kauf‑/Restore‑Ergebnis, Speed‑Test‑Start. Es werden nur solche Events übertragen; kein Browserverlauf und kein Inhalt des Datenverkehrs.
+        Unsere iOS‑ und Android‑Apps nutzen <b>Firebase Analytics</b> (Google) für Produkt‑Events: VPN‑Verbindungserfolg/‑fehler, Serverauswahl, Kauf‑/Abo‑Screens, Kauf‑/Restore‑Ergebnis, Speed‑Test‑Start. Es werden nur solche Events übertragen; kein Browserverlauf und kein Inhalt des Datenverkehrs.
         Wir <b>verknüpfen</b> Analytics‑Events <b>nicht</b> mit Ihrem FollowNet‑Konto in der Firebase‑Konsole (z. B. wird <span class="mono">setUserId</span> für Firebase <b>nicht</b> verwendet): auf Googles Seite sind sie mit einer anonymen Installations‑/App‑Instanz‑ID verknüpft und von Ihrer User ID und E‑Mail in unserem System getrennt.
         Datenschutzhinweise zu Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
@@ -437,12 +463,23 @@
         Solange wir Crashlytics nicht mit Ihrer FollowNet User ID/E‑Mail im SDK verknüpfen, enthalten Berichte in der Regel keine FollowNet‑Kontodaten; die Verarbeitung richtet sich nach den Richtlinien von Google/Firebase.
       </p>
 
-      <h3>3.7 Server‑Ereignislogs</h3>
+      <h3>3.7 Push‑Benachrichtigungen</h3>
       <p class="muted">
-        Auf Servern werden technische Ereignislogs für Betrieb und Support gespeichert: VPN‑Verbindungsereignis (Server‑ID), Apple‑Webhook‑Events (Typ, productId, originalTransactionId, Umgebung), Admin‑Aktionen. Kein Traffic‑Inhalt; Daten nur so lange wie für Betrieb und Sicherheit nötig.
+        Wenn Sie Benachrichtigungen erlauben, verarbeiten wir einen Push‑Token (<b>APNs</b> auf iOS / <b>FCM</b> auf Android) für Service‑Nachrichten (z. B. zu Konto oder Abo). Die Erlaubnis können Sie in den Systemeinstellungen widerrufen.
       </p>
 
-      <h3>3.8 IP‑Adresse und User‑Agent</h3>
+      <h3>3.8 Installations‑Attribution (AppsFlyer)</h3>
+      <p class="muted">
+        Sofern in der Build aktiviert, nutzen wir <b>AppsFlyer</b> für Installations‑Attribution und Marketing‑Messung (z. B. welche Kampagne zur Installation geführt hat). AppsFlyer kann Geräte‑/Werbekennungen und Install‑Events gemäß eigener Richtlinie verarbeiten. Dies dient nicht dem Logging von VPN‑Traffic‑Inhalten oder Browserverlauf.
+        AppsFlyer‑Datenschutz: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Server‑Ereignislogs</h3>
+      <p class="muted">
+        Auf Servern werden technische Ereignislogs für Betrieb und Support gespeichert: VPN‑Verbindungsereignis (Server‑ID), Store‑Billing‑Events (Apple und/oder Google Play: Typ, productId, Transaktions‑IDs, Umgebung), Admin‑Aktionen. Kein Traffic‑Inhalt; Daten nur so lange wie für Betrieb und Sicherheit nötig.
+      </p>
+
+      <h3>3.10 IP‑Adresse und User‑Agent</h3>
       <p class="muted">
         IP‑Adresse und User‑Agent können auf dem Backend für Abuse‑Prevention (Rate‑Limiting) und Sicherheit <b>im Rahmen der Request‑Verarbeitung</b> berücksichtigt werden, <b>ohne</b> dauerhafte Protokollierung und ohne zweckgebundene Speicherung für Marketing.
       </p>
@@ -465,11 +502,13 @@
 
       <h2>6. Weitergabe</h2>
       <ul>
-        <li><b>Apple</b> — Käufe und Abos (App Store).</li>
-        <li><b>Apple / Google</b> — bei Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — Käufe und Abos (App Store); Push‑Zustellung (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (Android‑Abos); Push‑Zustellung (FCM); Google Sign‑In bei Nutzung.</li>
+        <li><b>Apple</b> — Sign in with Apple bei Nutzung.</li>
         <li><b>E‑Mail‑Provider</b> (SMTP) — Versand von Login‑Codes.</li>
         <li><b>Hosting/Infrastructure</b> — Backend und VPN‑Server.</li>
         <li><b>Google Firebase</b> — Analytics und Crashlytics (falls aktiviert).</li>
+        <li><b>AppsFlyer</b> — Installations‑Attribution (falls in der Build aktiviert).</li>
       </ul>
       <p class="muted">Wir verkaufen oder „sharen“ keine personenbezogenen Daten (im Sinne von CCPA/CPRA).</p>
 
@@ -483,14 +522,14 @@
       <ul>
         <li>Konto/Abo‑Daten — solange das Konto aktiv ist oder für legitime Zwecke erforderlich.</li>
         <li>Sitzungs/Traffic‑Metadaten — minimal notwendig für Betrieb, Limits und Sicherheit.</li>
-        <li>Server‑Ereignislogs (Verbindungen, Apple‑Webhooks, Admin‑Aktionen) — nicht länger als für Betrieb und Support nötig.</li>
+        <li>Server‑Ereignislogs (Verbindungen, Apple/Google‑Play‑Billing, Admin‑Aktionen) — nicht länger als für Betrieb und Support nötig.</li>
         <li>Support‑Tickets — soweit nötig für Bearbeitung und Servicequalität.</li>
         <li>Firebase‑Diagnose (Analytics, Crashlytics) — gemäß Aufbewahrungsfristen und Einstellungen von Google/Firebase.</li>
       </ul>
 
       <h2>9. Sicherheit</h2>
       <p class="muted">
-        Wir setzen angemessene technische und organisatorische Maßnahmen ein: Verschlüsselung bei der Übertragung (TLS), Verschlüsselung der VPN‑Tunnel (IKEv2/WireGuard), Speicherung von Tokens im iOS‑Keychain, eingeschränkter Admin‑Zugriff, Protokollierung von Admin‑Aktionen.
+        Wir setzen angemessene technische und organisatorische Maßnahmen ein: Verschlüsselung bei der Übertragung (TLS), Verschlüsselung der VPN‑Tunnel (z. B. WireGuard / AmneziaWG / Hysteria2; IKEv2 wo verfügbar), Speicherung von Tokens im iOS‑Keychain / Android‑Keystore‑gestützten Speicher, eingeschränkter Admin‑Zugriff, Protokollierung von Admin‑Aktionen.
       </p>
 
       <h2>10. Cookies und Website</h2>
@@ -544,9 +583,9 @@
   <section class="doc" *ngSwitchCase="'es'">
     <div class="doc-header">
       <h1>Política de privacidad de FollowNet VPN</h1>
-      <p class="muted">Última actualización: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Última actualización: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Esta política explica qué datos procesamos en la app y el sitio de FollowNet VPN, por qué los necesitamos y qué derechos tienes.
+        Esta política explica qué datos procesamos en las apps de FollowNet VPN (iOS y Android) y en el sitio, por qué los necesitamos y qué derechos tienes.
         Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
       </p>
     </div>
@@ -573,22 +612,22 @@
       <ul>
         <li><b>Email</b> (si inicias sesión por código).</li>
         <li><b>User ID</b> — identificador de tu cuenta en nuestros servidores (asignado al registrarte).</li>
-        <li><b>deviceId</b> — UUID aleatorio, generado en el primer inicio y guardado en el llavero (Keychain) de iOS; se envía a nuestros servidores para límites de dispositivos y seguridad. No usamos IDFA ni IDFV para esto.</li>
+        <li><b>deviceId</b> — UUID aleatorio, generado en el primer inicio y guardado de forma segura en el dispositivo (Keychain de iOS / almacenamiento respaldado por Android Keystore); se envía a nuestros servidores para límites de dispositivos y seguridad. No usamos identificadores publicitarios (IDFA / GAID) como este deviceId.</li>
       </ul>
       <p class="muted">
         Puede estar disponible el inicio de sesión con <b>Sign in with Apple</b> y/o <b>Google Sign‑In</b>. En ese caso, recibimos los datos necesarios para autenticarte del proveedor correspondiente.
       </p>
 
-      <h3>3.2 Suscripciones (App Store)</h3>
+      <h3>3.2 Suscripciones (App Store / Google Play)</h3>
       <ul>
         <li>Plan/estado (free/trial/premium) y fechas de inicio/expiración.</li>
-        <li>Identificadores de transacción de Apple (p. ej., original transaction id) para validación y restauración.</li>
-        <li>No recibimos datos de tu tarjeta — los pagos los procesa Apple.</li>
+        <li>Identificadores de transacción de la tienda (Apple y/o Google Play) para validación y restauración.</li>
+        <li>No recibimos datos de tu tarjeta — los pagos los procesan Apple o Google.</li>
       </ul>
 
       <h3>3.3 Datos del servicio VPN</h3>
       <ul>
-        <li>Protocolo (IKEv2/WireGuard) y servidor/ubicación seleccionados.</li>
+        <li>Protocolo seleccionado (p. ej. WireGuard, AmneziaWG, Hysteria2; IKEv2 donde esté disponible en iOS) y servidor/ubicación.</li>
         <li>Marcas de tiempo de conexión/desconexión y duración de sesión.</li>
         <li>Contadores de tráfico (bytes in/out) para estadísticas y límites del plan Free.</li>
         <li>Identificador de zona horaria del dispositivo — para mostrar estadísticas y límites en tu hora local.</li>
@@ -605,7 +644,7 @@
 
       <h3>3.5 Analítica (Firebase Analytics)</h3>
       <p class="muted">
-        La app iOS usa <b>Firebase Analytics</b> (Google) para eventos de producto: éxito/fallo de conexión VPN, selección de servidor, pantallas de compra/suscripción, resultado de compra o restauración, inicio de speed test. Solo se transmite este conjunto de eventos; no hay historial de sitios ni contenido del tráfico.
+        Las apps iOS y Android usan <b>Firebase Analytics</b> (Google) para eventos de producto: éxito/fallo de conexión VPN, selección de servidor, pantallas de compra/suscripción, resultado de compra o restauración, inicio de speed test. Solo se transmite este conjunto de eventos; no hay historial de sitios ni contenido del tráfico.
         <b>No vinculamos</b> los eventos de Analytics con tu cuenta FollowNet en la consola de Firebase (por ejemplo, <span class="mono">setUserId</span> <b>no se utiliza</b> para Firebase): en el lado de Google se asocian a un identificador anónimo de instalación/instancia de la app y están separados de tu User ID y email en nuestro sistema.
         Política de Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
@@ -616,12 +655,23 @@
         Mientras no emparejemos Crashlytics con tu User ID/email FollowNet en el SDK, los informes normalmente no incluyen tus credenciales FollowNet; el tratamiento se rige por las políticas de Google/Firebase.
       </p>
 
-      <h3>3.7 Logs de eventos en servidor</h3>
+      <h3>3.7 Notificaciones push</h3>
       <p class="muted">
-        En los servidores se guardan logs técnicos de eventos para operación y soporte: evento de conexión VPN (id de servidor), eventos de webhook de Apple (tipo, productId, originalTransactionId, entorno), acciones de administración. No se registra contenido del tráfico; los datos se conservan solo el tiempo necesario para operación y seguridad.
+        Si permites notificaciones, procesamos un token push (<b>APNs</b> en iOS / <b>FCM</b> en Android) para mensajes de servicio (por ejemplo, sobre la cuenta o la suscripción). Puedes revocar el permiso en los ajustes del sistema.
       </p>
 
-      <h3>3.8 IP y User‑Agent</h3>
+      <h3>3.8 Atribución de instalaciones (AppsFlyer)</h3>
+      <p class="muted">
+        Cuando está habilitado en la build, usamos <b>AppsFlyer</b> para atribución de instalaciones y medición de marketing (por ejemplo, qué campaña llevó a la instalación). AppsFlyer puede procesar identificadores de dispositivo/publicidad y eventos de instalación según su propia política. No se usa para registrar el contenido del tráfico VPN ni el historial de navegación.
+        Política de AppsFlyer: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Logs de eventos en servidor</h3>
+      <p class="muted">
+        En los servidores se guardan logs técnicos de eventos para operación y soporte: evento de conexión VPN (id de servidor), eventos de facturación de la tienda (Apple y/o Google Play: tipo, productId, identificadores de transacción, entorno), acciones de administración. No se registra contenido del tráfico; los datos se conservan solo el tiempo necesario para operación y seguridad.
+      </p>
+
+      <h3>3.10 IP y User‑Agent</h3>
       <p class="muted">
         La IP y el User‑Agent pueden tenerse en cuenta en el backend para prevención de abuso (rate‑limit) y seguridad <b>durante el procesamiento de la solicitud</b>, sin escribirse en logs persistentes ni conservarse con fines de marketing.
       </p>
@@ -644,11 +694,13 @@
 
       <h2>6. Compartición</h2>
       <ul>
-        <li><b>Apple</b> — compras y suscripciones (App Store).</li>
-        <li><b>Apple / Google</b> — si usas Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — compras y suscripciones (App Store); entrega push (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (suscripciones Android); entrega push (FCM); Google Sign‑In si lo usas.</li>
+        <li><b>Apple</b> — Sign in with Apple si lo usas.</li>
         <li><b>Proveedor de email</b> (SMTP) — envío de códigos.</li>
         <li><b>Infraestructura/hosting</b> — backend y servidores VPN.</li>
         <li><b>Google Firebase</b> — Analytics y Crashlytics (si está habilitado).</li>
+        <li><b>AppsFlyer</b> — atribución de instalaciones (si está habilitado en la build).</li>
       </ul>
       <p class="muted">No vendemos ni “compartimos” datos personales (en el sentido de CCPA/CPRA).</p>
 
@@ -662,14 +714,14 @@
       <ul>
         <li>Datos de cuenta/suscripción — mientras la cuenta esté activa o sea necesario por fines legítimos.</li>
         <li>Metadatos técnicos de sesión/tráfico — el mínimo necesario para operación, límites y seguridad.</li>
-        <li>Logs de eventos en servidor (conexiones, webhooks Apple, acciones admin) — no más de lo necesario para operación y soporte.</li>
+        <li>Logs de eventos en servidor (conexiones, facturación Apple/Google Play, acciones admin) — no más de lo necesario para operación y soporte.</li>
         <li>Tickets de soporte — según sea necesario para atender solicitudes y calidad del servicio.</li>
         <li>Diagnóstico de Firebase (Analytics, Crashlytics) — según plazos y configuración de retención de Google/Firebase.</li>
       </ul>
 
       <h2>9. Seguridad</h2>
       <p class="muted">
-        Aplicamos medidas técnicas y organizativas razonables: cifrado en tránsito (TLS), cifrado de túneles VPN (IKEv2/WireGuard), almacenamiento de tokens en Keychain iOS, acceso restringido de administradores, registro de acciones administrativas.
+        Aplicamos medidas técnicas y organizativas razonables: cifrado en tránsito (TLS), cifrado de túneles VPN (p. ej. WireGuard / AmneziaWG / Hysteria2; IKEv2 donde esté disponible), almacenamiento de tokens en Keychain iOS / almacenamiento respaldado por Android Keystore, acceso restringido de administradores, registro de acciones administrativas.
       </p>
 
       <h2>10. Cookies y sitio web</h2>
@@ -723,9 +775,9 @@
   <section class="doc" *ngSwitchCase="'fr'">
     <div class="doc-header">
       <h1>Politique de confidentialité FollowNet VPN</h1>
-      <p class="muted">Dernière mise à jour : <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Cette politique explique quelles données nous traitons dans l’application et sur le site FollowNet VPN, pourquoi, et quels sont vos droits.
+        Cette politique explique quelles données nous traitons dans les applications FollowNet VPN (iOS et Android) et sur le site, pourquoi, et quels sont vos droits.
         Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
       </p>
     </div>
@@ -752,22 +804,22 @@
       <ul>
         <li><b>Email</b> (si connexion par code).</li>
         <li><b>User ID</b> — identifiant de votre compte sur nos serveurs (attribué à l’inscription).</li>
-        <li><b>deviceId</b> — UUID aléatoire, créé au premier lancement et stocké dans le trousseau (Keychain) iOS ; envoyé à nos serveurs pour les limites d’appareils et la sécurité. L’IDFA et l’IDFV ne sont pas utilisés à cette fin.</li>
+        <li><b>deviceId</b> — UUID aléatoire, créé au premier lancement et stocké de façon sécurisée sur l’appareil (Keychain iOS / stockage adossé à Android Keystore) ; envoyé à nos serveurs pour les limites d’appareils et la sécurité. Les identifiants publicitaires (IDFA / GAID) ne sont pas utilisés comme ce deviceId.</li>
       </ul>
       <p class="muted">
         La connexion via <b>Sign in with Apple</b> et/ou <b>Google Sign‑In</b> peut être disponible. Dans ce cas, nous recevons les données nécessaires à l’authentification du fournisseur concerné.
       </p>
 
-      <h3>3.2 Abonnements (App Store)</h3>
+      <h3>3.2 Abonnements (App Store / Google Play)</h3>
       <ul>
         <li>Plan/statut (free/trial/premium) et dates de début/expiration.</li>
-        <li>Identifiants de transaction Apple (ex. original transaction id) pour validation et restauration.</li>
-        <li>Nous ne recevons pas les données de carte — les paiements sont traités par Apple.</li>
+        <li>Identifiants de transaction du store (Apple et/ou Google Play) pour validation et restauration.</li>
+        <li>Nous ne recevons pas les données de carte — les paiements sont traités par Apple ou Google.</li>
       </ul>
 
       <h3>3.3 Données du service VPN</h3>
       <ul>
-        <li>Protocole (IKEv2/WireGuard) et serveur/emplacement sélectionnés.</li>
+        <li>Protocole sélectionné (ex. WireGuard, AmneziaWG, Hysteria2 ; IKEv2 lorsqu’il est disponible sur iOS) et serveur/emplacement.</li>
         <li>Horodatages de connexion/déconnexion et durée de session.</li>
         <li>Compteurs de trafic (bytes in/out) pour stats et limites Free.</li>
         <li>Identifiant de fuseau horaire de l’appareil — pour afficher stats et limites dans votre heure.</li>
@@ -784,7 +836,7 @@
 
       <h3>3.5 Analytique (Firebase Analytics)</h3>
       <p class="muted">
-        L’app iOS utilise <b>Firebase Analytics</b> (Google) pour des événements produit : succès/échec de connexion VPN, choix du serveur, écrans achat/abonnement, résultat d’achat ou restauration, démarrage du speed test. Seul cet ensemble d’événements est transmis ; pas d’historique de sites ni de contenu de trafic.
+        Les apps iOS et Android utilisent <b>Firebase Analytics</b> (Google) pour des événements produit : succès/échec de connexion VPN, choix du serveur, écrans achat/abonnement, résultat d’achat ou restauration, démarrage du speed test. Seul cet ensemble d’événements est transmis ; pas d’historique de sites ni de contenu de trafic.
         Nous <b>ne lions pas</b> les événements Analytics à votre compte FollowNet dans la console Firebase (par ex. <span class="mono">setUserId</span> n’est <b>pas</b> utilisé pour Firebase) : côté Google, ils sont associés à un identifiant anonyme d’installation/instance d’app et sont séparés de votre User ID et de votre e‑mail dans notre système.
         Politique Google Firebase : <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
@@ -795,12 +847,23 @@
         Tant que nous n’associons pas Crashlytics à votre User ID/e‑mail FollowNet dans le SDK, les rapports ne contiennent en principe pas vos identifiants FollowNet ; le traitement est régi par les politiques Google/Firebase.
       </p>
 
-      <h3>3.7 Logs d’événements serveur</h3>
+      <h3>3.7 Notifications push</h3>
       <p class="muted">
-        Les serveurs enregistrent des logs techniques d’événements pour l’exploitation et le support : événement de connexion VPN (id serveur), événements webhook Apple (type, productId, originalTransactionId, environnement), actions admin. Aucun contenu de trafic ; les données ne sont conservées que le temps nécessaire à l’exploitation et à la sécurité.
+        Si vous autorisez les notifications, nous traitons un jeton push (<b>APNs</b> sur iOS / <b>FCM</b> sur Android) pour les messages de service (par ex. compte ou abonnement). Vous pouvez retirer l’autorisation dans les réglages système.
       </p>
 
-      <h3>3.8 Adresse IP et User‑Agent</h3>
+      <h3>3.8 Attribution d’installation (AppsFlyer)</h3>
+      <p class="muted">
+        Lorsqu’il est activé dans le build, nous utilisons <b>AppsFlyer</b> pour l’attribution d’installation et la mesure marketing (par ex. quelle campagne a conduit à l’installation). AppsFlyer peut traiter des identifiants d’appareil/publicité et des événements d’installation selon sa propre politique. Cela ne sert pas à journaliser le contenu du trafic VPN ni l’historique de navigation.
+        Politique AppsFlyer : <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Logs d’événements serveur</h3>
+      <p class="muted">
+        Les serveurs enregistrent des logs techniques d’événements pour l’exploitation et le support : événement de connexion VPN (id serveur), événements de facturation du store (Apple et/ou Google Play : type, productId, identifiants de transaction, environnement), actions admin. Aucun contenu de trafic ; les données ne sont conservées que le temps nécessaire à l’exploitation et à la sécurité.
+      </p>
+
+      <h3>3.10 Adresse IP et User‑Agent</h3>
       <p class="muted">
         L’adresse IP et le User‑Agent peuvent être pris en compte côté backend pour la prévention des abus (rate‑limit) et la sécurité <b>pendant le traitement de la requête</b>, sans écriture dans des logs persistants ni conservation à des fins marketing.
       </p>
@@ -823,11 +886,13 @@
 
       <h2>6. Partage</h2>
       <ul>
-        <li><b>Apple</b> — achats et abonnements (App Store).</li>
-        <li><b>Apple / Google</b> — si vous utilisez Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — achats et abonnements (App Store) ; livraison push (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (abonnements Android) ; livraison push (FCM) ; Google Sign‑In si utilisé.</li>
+        <li><b>Apple</b> — Sign in with Apple si utilisé.</li>
         <li><b>Fournisseur email</b> (SMTP) — envoi des codes.</li>
         <li><b>Infrastructure/hébergement</b> — backend et serveurs VPN.</li>
         <li><b>Google Firebase</b> — Analytics et Crashlytics (si activés).</li>
+        <li><b>AppsFlyer</b> — attribution d’installation (si activé dans le build).</li>
       </ul>
       <p class="muted">Nous ne vendons ni ne « partageons » de données personnelles (au sens CCPA/CPRA).</p>
 
@@ -841,14 +906,14 @@
       <ul>
         <li>Données de compte/abonnement — tant que le compte est actif ou nécessaire pour des finalités légitimes.</li>
         <li>Métadonnées session/trafic — le minimum nécessaire pour l’exploitation, les limites et la sécurité.</li>
-        <li>Logs d’événements serveur (connexions, webhooks Apple, actions admin) — pas plus longtemps que nécessaire pour l’exploitation et le support.</li>
+        <li>Logs d’événements serveur (connexions, facturation Apple/Google Play, actions admin) — pas plus longtemps que nécessaire pour l’exploitation et le support.</li>
         <li>Tickets de support — selon la nécessité pour traiter les demandes et assurer la qualité.</li>
         <li>Diagnostics Firebase (Analytics, Crashlytics) — selon les délais et paramètres de conservation Google/Firebase.</li>
       </ul>
 
       <h2>9. Sécurité</h2>
       <p class="muted">
-        Nous appliquons des mesures techniques et organisationnelles raisonnables : chiffrement en transit (TLS), chiffrement des tunnels VPN (IKEv2/WireGuard), stockage des jetons dans le Keychain iOS, accès administrateur restreint, journalisation des actions admin.
+        Nous appliquons des mesures techniques et organisationnelles raisonnables : chiffrement en transit (TLS), chiffrement des tunnels VPN (ex. WireGuard / AmneziaWG / Hysteria2 ; IKEv2 lorsqu’il est disponible), stockage des jetons dans le Keychain iOS / stockage adossé à Android Keystore, accès administrateur restreint, journalisation des actions admin.
       </p>
 
       <h2>10. Cookies et site</h2>
@@ -902,9 +967,9 @@
   <section class="doc" *ngSwitchCase="'pt'">
     <div class="doc-header">
       <h1>Política de privacidade do FollowNet VPN</h1>
-      <p class="muted">Última atualização: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Última atualização: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        Esta política explica quais dados processamos no app e no site do FollowNet VPN, por que precisamos deles e quais são seus direitos.
+        Esta política explica quais dados processamos nos apps FollowNet VPN (iOS e Android) e no site, por que precisamos deles e quais são seus direitos.
         Buscamos coletar o mínimo necessário para operar o serviço com segurança.
       </p>
     </div>
@@ -931,22 +996,22 @@
       <ul>
         <li><b>Email</b> (se o login for por código).</li>
         <li><b>User ID</b> — identificador da sua conta nos nossos servidores (atribuído no cadastro).</li>
-        <li><b>deviceId</b> — UUID aleatório, gerado na primeira abertura e armazenado no Keychain do iOS; enviado aos nossos servidores para limites de dispositivos e segurança. IDFA e IDFV não são usados para isso.</li>
+        <li><b>deviceId</b> — UUID aleatório, gerado na primeira abertura e armazenado de forma segura no dispositivo (Keychain do iOS / armazenamento respaldado pelo Android Keystore); enviado aos nossos servidores para limites de dispositivos e segurança. Identificadores publicitários (IDFA / GAID) não são usados como este deviceId.</li>
       </ul>
       <p class="muted">
         O login via <b>Sign in with Apple</b> e/ou <b>Google Sign‑In</b> pode estar disponível. Nesse caso, recebemos os dados necessários para autenticação do provedor correspondente.
       </p>
 
-      <h3>3.2 Assinaturas (App Store)</h3>
+      <h3>3.2 Assinaturas (App Store / Google Play)</h3>
       <ul>
         <li>Plano/status (free/trial/premium) e datas de início/expiração.</li>
-        <li>IDs de transação da Apple (ex.: original transaction id) para validação e restauração.</li>
-        <li>Não recebemos dados do seu cartão — pagamentos são processados pela Apple.</li>
+        <li>IDs de transação da loja (Apple e/ou Google Play) para validação e restauração.</li>
+        <li>Não recebemos dados do seu cartão — pagamentos são processados pela Apple ou Google.</li>
       </ul>
 
       <h3>3.3 Dados do serviço VPN</h3>
       <ul>
-        <li>Protocolo (IKEv2/WireGuard) e servidor/local selecionados.</li>
+        <li>Protocolo selecionado (ex.: WireGuard, AmneziaWG, Hysteria2; IKEv2 quando disponível no iOS) e servidor/local.</li>
         <li>Carimbos de tempo de conexão/desconexão e duração da sessão.</li>
         <li>Contadores de tráfego (bytes in/out) para estatísticas e limites do Free.</li>
         <li>Identificador de fuso horário do dispositivo — para exibir estatísticas e limites no seu horário.</li>
@@ -963,7 +1028,7 @@
 
       <h3>3.5 Analytics (Firebase Analytics)</h3>
       <p class="muted">
-        O app iOS usa <b>Firebase Analytics</b> (Google) para eventos de produto: sucesso/erro de conexão VPN, seleção de servidor, telas de compra/assinatura, resultado de compra ou restauração, início do speed test. Apenas esse conjunto de eventos é transmitido; não há histórico de sites nem conteúdo de tráfego.
+        Os apps iOS e Android usam <b>Firebase Analytics</b> (Google) para eventos de produto: sucesso/erro de conexão VPN, seleção de servidor, telas de compra/assinatura, resultado de compra ou restauração, início do speed test. Apenas esse conjunto de eventos é transmitido; não há histórico de sites nem conteúdo de tráfego.
         <b>Não vinculamos</b> os eventos do Analytics à sua conta FollowNet no console do Firebase (por exemplo, <span class="mono">setUserId</span> <b>não é usado</b> para o Firebase): do lado da Google, eles ficam associados a um identificador anônimo de instalação/instância do app e separados do seu User ID e e‑mail no nosso sistema.
         Política do Google Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
@@ -974,12 +1039,23 @@
         Enquanto não associarmos o Crashlytics ao seu User ID/e‑mail FollowNet no SDK, os relatórios normalmente não incluem suas credenciais FollowNet; o tratamento segue as políticas da Google/Firebase.
       </p>
 
-      <h3>3.7 Logs de eventos no servidor</h3>
+      <h3>3.7 Notificações push</h3>
       <p class="muted">
-        Nos servidores são armazenados logs técnicos de eventos para operação e suporte: evento de conexão VPN (id do servidor), eventos de webhook da Apple (tipo, productId, originalTransactionId, ambiente), ações de administração. Conteúdo do tráfego não é registrado; os dados são mantidos apenas o tempo necessário para operação e segurança.
+        Se você permitir notificações, processamos um token push (<b>APNs</b> no iOS / <b>FCM</b> no Android) para mensagens de serviço (por exemplo, sobre conta ou assinatura). Você pode revogar a permissão nas configurações do sistema.
       </p>
 
-      <h3>3.8 Endereço IP e User‑Agent</h3>
+      <h3>3.8 Atribuição de instalações (AppsFlyer)</h3>
+      <p class="muted">
+        Quando habilitado na build, usamos <b>AppsFlyer</b> para atribuição de instalações e medição de marketing (por exemplo, qual campanha levou à instalação). O AppsFlyer pode processar identificadores de dispositivo/publicidade e eventos de instalação conforme a própria política. Isso não é usado para registrar o conteúdo do tráfego VPN nem o histórico de navegação.
+        Política do AppsFlyer: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Logs de eventos no servidor</h3>
+      <p class="muted">
+        Nos servidores são armazenados logs técnicos de eventos para operação e suporte: evento de conexão VPN (id do servidor), eventos de cobrança da loja (Apple e/ou Google Play: tipo, productId, identificadores de transação, ambiente), ações de administração. Conteúdo do tráfego não é registrado; os dados são mantidos apenas o tempo necessário para operação e segurança.
+      </p>
+
+      <h3>3.10 Endereço IP e User‑Agent</h3>
       <p class="muted">
         Endereço IP e User‑Agent podem ser considerados no backend para prevenção de abuso (rate‑limit) e segurança <b>durante o processamento da solicitação</b>, sem gravação em logs persistentes nem retenção para marketing.
       </p>
@@ -1002,11 +1078,13 @@
 
       <h2>6. Compartilhamento</h2>
       <ul>
-        <li><b>Apple</b> — compras e assinaturas (App Store).</li>
-        <li><b>Apple / Google</b> — se você usar Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — compras e assinaturas (App Store); entrega push (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (assinaturas Android); entrega push (FCM); Google Sign‑In quando usado.</li>
+        <li><b>Apple</b> — Sign in with Apple quando usado.</li>
         <li><b>Provedor de email</b> (SMTP) — envio de códigos.</li>
         <li><b>Infra/hosting</b> — backend e servidores VPN.</li>
         <li><b>Google Firebase</b> — Analytics e Crashlytics (se habilitado).</li>
+        <li><b>AppsFlyer</b> — atribuição de instalações (se habilitado na build).</li>
       </ul>
       <p class="muted">Não vendemos nem “compartilhamos” dados pessoais (no sentido de CCPA/CPRA).</p>
 
@@ -1020,14 +1098,14 @@
       <ul>
         <li>Dados de conta/assinatura — enquanto a conta estiver ativa ou conforme necessário para finalidades legítimas.</li>
         <li>Metadados técnicos de sessão/tráfego — o mínimo necessário para operação, limites e segurança.</li>
-        <li>Logs de eventos no servidor (conexões, webhooks Apple, ações admin) — não mais do que o necessário para operação e suporte.</li>
+        <li>Logs de eventos no servidor (conexões, cobrança Apple/Google Play, ações admin) — não mais do que o necessário para operação e suporte.</li>
         <li>Tickets de suporte — conforme necessário para atender solicitações e garantir qualidade.</li>
         <li>Diagnóstico Firebase (Analytics, Crashlytics) — conforme prazos e configurações de retenção da Google/Firebase.</li>
       </ul>
 
       <h2>9. Segurança</h2>
       <p class="muted">
-        Aplicamos medidas técnicas e organizacionais razoáveis: criptografia em trânsito (TLS), criptografia de túneis VPN (IKEv2/WireGuard), armazenamento de tokens no Keychain do iOS, acesso administrativo restrito e registro de ações de administração.
+        Aplicamos medidas técnicas e organizacionais razoáveis: criptografia em trânsito (TLS), criptografia de túneis VPN (ex.: WireGuard / AmneziaWG / Hysteria2; IKEv2 quando disponível), armazenamento de tokens no Keychain do iOS / armazenamento respaldado pelo Android Keystore, acesso administrativo restrito e registro de ações de administração.
       </p>
 
       <h2>10. Cookies e site</h2>
@@ -1081,9 +1159,9 @@
   <section class="doc" *ngSwitchDefault>
     <div class="doc-header">
       <h1>FollowNet VPN Privacy Policy</h1>
-      <p class="muted">Last updated: <span class="mono">2026‑04‑24</span></p>
+      <p class="muted">Last updated: <span class="mono">2026‑09‑10</span></p>
       <p class="muted">
-        This policy explains what data we process in the FollowNet VPN app and on our website, why we need it, and what rights you have.
+        This policy explains what data we process in the FollowNet VPN apps (iOS and Android) and on our website, why we need it, and what rights you have.
         We aim to collect the minimum data required to operate the service securely.
       </p>
     </div>
@@ -1110,22 +1188,22 @@
       <ul>
         <li><b>Email</b> (if you sign in via email code).</li>
         <li><b>User ID</b> — your account identifier on our servers (assigned when you sign up).</li>
-        <li><b>deviceId</b> — a random UUID generated on first launch and stored in the iOS Keychain; sent to our servers for device limits and account security. We do not use Apple’s advertising identifier (IDFA) or vendor identifier (IDFV) for deviceId.</li>
+        <li><b>deviceId</b> — a random UUID generated on first launch and stored securely on the device (iOS Keychain / Android Keystore-backed storage); sent to our servers for device limits and account security. We do not use advertising identifiers (IDFA / GAID) as this deviceId.</li>
       </ul>
       <p class="muted">
         You may also sign in via <b>Sign in with Apple</b> and/or <b>Google Sign‑In</b> (if available in the app). In that case we receive the data needed for authentication from the respective provider.
       </p>
 
-      <h3>3.2 Subscriptions (App Store)</h3>
+      <h3>3.2 Subscriptions (App Store / Google Play)</h3>
       <ul>
         <li>Plan/status (free/trial/premium) and start/expiry dates.</li>
-        <li>Apple transaction identifiers (e.g., original transaction id) for validation and purchase restore.</li>
-        <li>We do not receive your card details — payments are processed by Apple.</li>
+        <li>Store transaction identifiers (Apple and/or Google Play) for validation and purchase restore.</li>
+        <li>We do not receive your card details — payments are processed by Apple or Google.</li>
       </ul>
 
       <h3>3.3 VPN service data</h3>
       <ul>
-        <li>Selected protocol (IKEv2/WireGuard) and selected server/location.</li>
+        <li>Selected protocol (e.g. WireGuard, AmneziaWG, Hysteria2; IKEv2 where available on iOS) and selected server/location.</li>
         <li>Connection/disconnection timestamps and session duration.</li>
         <li>Traffic counters (bytes in/out) for stats and free plan limits.</li>
         <li>Device timezone identifier — to display stats and limits in your local time.</li>
@@ -1142,7 +1220,7 @@
 
       <h3>3.5 App analytics (Firebase Analytics)</h3>
       <p class="muted">
-        Our iOS app uses <b>Firebase Analytics</b> (Google) for product events: VPN connection success/failure, server selection, purchase/subscription screens, purchase or restore outcome, speed test start. Only this set of events is transmitted; no browsing history and no traffic content.
+        Our iOS and Android apps use <b>Firebase Analytics</b> (Google) for product events: VPN connection success/failure, server selection, purchase/subscription screens, purchase or restore outcome, speed test start. Only this set of events is transmitted; no browsing history and no traffic content.
         We <b>do not link</b> Analytics events to your FollowNet account in the Firebase console (for example, <span class="mono">setUserId</span> is <b>not</b> used for Firebase): on Google’s side they are tied to an anonymous installation/app instance identifier and are separate from your User ID and email in our systems.
         Google Firebase privacy information: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="mono">https://firebase.google.com/support/privacy</a>.
       </p>
@@ -1153,12 +1231,23 @@
         As long as we do not pair Crashlytics with your FollowNet User ID/email in the SDK, reports typically do not contain your FollowNet account credentials; processing is governed by Google/Firebase policies.
       </p>
 
-      <h3>3.7 Server event logs</h3>
+      <h3>3.7 Push notifications</h3>
       <p class="muted">
-        Servers store technical event logs for operation and support: VPN connection event (server id), Apple webhook events (notification type, productId, originalTransactionId, environment), admin actions. No traffic content is logged; data is retained only as long as needed for operation and security.
+        If you allow notifications, we process a push token (<b>APNs</b> on iOS / <b>FCM</b> on Android) to deliver service messages (for example, account or subscription-related notices). You can revoke permission in system settings.
       </p>
 
-      <h3>3.8 IP address and User‑Agent</h3>
+      <h3>3.8 Install attribution (AppsFlyer)</h3>
+      <p class="muted">
+        Where enabled in the build, we use <b>AppsFlyer</b> for install attribution and marketing measurement (for example, which campaign led to an install). AppsFlyer may process device/advertising identifiers and install events under its own policy. This is not used to log VPN traffic contents or browsing history.
+        AppsFlyer privacy information: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener" class="mono">https://www.appsflyer.com/legal/privacy-policy/</a>.
+      </p>
+
+      <h3>3.9 Server event logs</h3>
+      <p class="muted">
+        Servers store technical event logs for operation and support: VPN connection event (server id), store billing events (Apple and/or Google Play: notification type, productId, transaction identifiers, environment), admin actions. No traffic content is logged; data is retained only as long as needed for operation and security.
+      </p>
+
+      <h3>3.10 IP address and User‑Agent</h3>
       <p class="muted">
         IP address and User‑Agent may be considered on the backend for abuse prevention (rate‑limiting) and security <b>during request handling</b>, without writing them to persistent logs and without retention for marketing purposes.
       </p>
@@ -1181,11 +1270,13 @@
 
       <h2>6. Sharing</h2>
       <ul>
-        <li><b>Apple</b> — purchases and subscriptions (App Store).</li>
-        <li><b>Apple / Google</b> — if you use Sign in with Apple / Google Sign‑In.</li>
+        <li><b>Apple</b> — purchases and subscriptions (App Store); push delivery (APNs).</li>
+        <li><b>Google</b> — Google Play Billing (Android subscriptions); push delivery (FCM); Google Sign‑In when used.</li>
+        <li><b>Apple</b> — Sign in with Apple when used.</li>
         <li><b>Email provider</b> (SMTP) — sending login codes.</li>
         <li><b>Infrastructure/hosting</b> — backend and VPN servers.</li>
         <li><b>Google Firebase</b> — Analytics and Crashlytics (if enabled in the build).</li>
+        <li><b>AppsFlyer</b> — install attribution (if enabled in the build).</li>
       </ul>
       <p class="muted">We do not sell or “share” personal data (within the meaning of CCPA/CPRA).</p>
 
@@ -1199,14 +1290,14 @@
       <ul>
         <li>Account/subscription data — while the account remains active or as required for legitimate purposes.</li>
         <li>Session/traffic technical metadata — the minimum time needed for operations, limits, and security.</li>
-        <li>Server event logs (connections, Apple webhooks, admin actions) — no longer than needed for operation and support.</li>
+        <li>Server event logs (connections, Apple/Google Play billing events, admin actions) — no longer than needed for operation and support.</li>
         <li>Support tickets — as needed to handle requests and maintain service quality.</li>
         <li>Firebase diagnostics (Analytics, Crashlytics) — according to Google/Firebase retention periods and settings.</li>
       </ul>
 
       <h2>9. Security</h2>
       <p class="muted">
-        We apply reasonable technical and organizational measures: encryption in transit (TLS), encrypted VPN tunnels (IKEv2/WireGuard), token storage in iOS Keychain, restricted administrator access, and logging of admin actions.
+        We apply reasonable technical and organizational measures: encryption in transit (TLS), encrypted VPN tunnels (e.g. WireGuard / AmneziaWG / Hysteria2; IKEv2 where available), token storage in iOS Keychain / Android Keystore-backed storage, restricted administrator access, and logging of admin actions.
       </p>
 
       <h2>10. Cookies and the website</h2>

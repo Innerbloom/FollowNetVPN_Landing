@@ -523,43 +523,43 @@ const privacyByLang: Record<AppLang, SeoCopy> = {
     title: 'Политика конфиденциальности — FollowNet VPN',
     ogTitle: 'Политика конфиденциальности FollowNet VPN',
     description:
-      'Как FollowNet VPN обрабатывает данные: вход по email‑коду, App Store, VPN‑метаданные, DNS, Firebase Analytics и ваши права GDPR/CCPA.',
+      'Как FollowNet VPN обрабатывает данные: вход по email‑коду, App Store/Google Play, VPN‑метаданные, DNS, Firebase Analytics, AppsFlyer и ваши права GDPR/CCPA.',
   },
   uk: {
     title: 'Політика конфіденційності — FollowNet VPN',
     ogTitle: 'Політика конфіденційності FollowNet VPN',
     description:
-      'Як FollowNet VPN обробляє дані: вхід за email‑кодом, App Store, VPN‑метадані, DNS, Firebase Analytics і ваші права GDPR/CCPA.',
+      'Як FollowNet VPN обробляє дані: вхід за email‑кодом, App Store/Google Play, VPN‑метадані, DNS, Firebase Analytics, AppsFlyer і ваші права GDPR/CCPA.',
   },
   en: {
     title: 'Privacy Policy — FollowNet VPN',
     ogTitle: 'FollowNet VPN Privacy Policy',
     description:
-      'How FollowNet VPN processes data: email-code login, App Store subscriptions, VPN metadata, DNS, Firebase Analytics, and your GDPR/CCPA rights.',
+      'How FollowNet VPN processes data: email-code login, App Store/Google Play, VPN metadata, DNS, Firebase Analytics, AppsFlyer, and your GDPR/CCPA rights.',
   },
   de: {
     title: 'Datenschutz — FollowNet VPN',
     ogTitle: 'FollowNet VPN Datenschutzerklärung',
     description:
-      'Wie FollowNet VPN Daten verarbeitet: E‑Mail‑Code‑Login, App Store, VPN‑Metadaten, DNS, Firebase Analytics und Ihre GDPR/CCPA‑Rechte.',
+      'Wie FollowNet VPN Daten verarbeitet: E‑Mail‑Code‑Login, App Store/Google Play, VPN‑Metadaten, DNS, Firebase Analytics, AppsFlyer und Ihre GDPR/CCPA‑Rechte.',
   },
   es: {
     title: 'Política de privacidad — FollowNet VPN',
     ogTitle: 'Política de privacidad FollowNet VPN',
     description:
-      'Cómo FollowNet VPN procesa datos: login por código, App Store, metadatos VPN, DNS, Firebase Analytics y tus derechos GDPR/CCPA.',
+      'Cómo FollowNet VPN procesa datos: login por código, App Store/Google Play, metadatos VPN, DNS, Firebase Analytics, AppsFlyer y tus derechos GDPR/CCPA.',
   },
   fr: {
     title: 'Politique de confidentialité — FollowNet VPN',
     ogTitle: 'Politique de confidentialité FollowNet VPN',
     description:
-      'Comment FollowNet VPN traite les données : connexion par code, App Store, métadonnées VPN, DNS, Firebase Analytics et vos droits GDPR/CCPA.',
+      'Comment FollowNet VPN traite les données : connexion par code, App Store/Google Play, métadonnées VPN, DNS, Firebase Analytics, AppsFlyer et vos droits GDPR/CCPA.',
   },
   pt: {
     title: 'Política de privacidade — FollowNet VPN',
     ogTitle: 'Política de privacidade FollowNet VPN',
     description:
-      'Como o FollowNet VPN processa dados: login por código, App Store, metadados VPN, DNS, Firebase Analytics e seus direitos GDPR/CCPA.',
+      'Como o FollowNet VPN processa dados: login por código, App Store/Google Play, metadados VPN, DNS, Firebase Analytics, AppsFlyer e seus direitos GDPR/CCPA.',
   },
 };
 
