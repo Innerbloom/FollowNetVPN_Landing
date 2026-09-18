@@ -1,58 +1,15 @@
 import type { AppLang } from './i18n.service';
 import type { LandingContent } from './seo-landing.content';
+import type { ExtraLandingSlug } from './seo-landing.extra-slugs';
+export type { ExtraLandingSlug } from './seo-landing.extra-slugs';
+export {
+  EXTRA_LANDING_SLUGS,
+  isExtraLandingSlug,
+  extraLandingLabel,
+} from './seo-landing.extra-slugs';
+
 
 /** Extra guides: product depth + competitor-style SEO topics (honest FollowNet limits). */
-export type ExtraLandingSlug =
-  | 'vless-reality-ios'
-  | 'vpn-kill-switch-chrome'
-  | 'vpn-vs-proxy-chrome'
-  | 'vpn-ad-blocking-chrome'
-  | 'vpn-site-routing-chrome'
-  | 'vpn-email-login'
-  | 'vpn-qr-login'
-  | 'vpn-family-devices'
-  | 'vpn-free-weekly-limit'
-  | 'vpn-premium-unlimited'
-  | 'vpn-iphone-shortcuts'
-  | 'vpn-dns-adguard'
-  | 'vpn-battery-iphone'
-  | 'vpn-speed-nearby-server'
-  | 'how-to-change-vpn-server'
-  | 'what-is-a-vpn'
-  | 'how-vpn-works'
-  | 'do-i-need-a-vpn'
-  | 'vpn-for-beginners'
-  | 'vpn-vs-proxy'
-  | 'free-vpn-vs-paid'
-  | 'what-is-dns-leak'
-  | 'vpn-for-youtube'
-  | 'vpn-for-netflix'
-  | 'vpn-for-telegram'
-  | 'vpn-for-instagram'
-  | 'vpn-for-discord'
-  | 'vpn-for-whatsapp'
-  | 'vpn-for-tiktok'
-  | 'vpn-hotel-wifi'
-  | 'vpn-airport-wifi'
-  | 'vpn-cafe-wifi'
-  | 'vpn-for-remote-work'
-  | 'vpn-for-students'
-  | 'vpn-for-banking-apps'
-  | 'obfuscated-vpn-ios'
-  | 'wireguard-vs-ikev2'
-  | 'what-is-kill-switch-vpn'
-  | 'vpn-split-tunneling-ios'
-  | 'vpn-not-connecting-iphone'
-  | 'vpn-slow-iphone'
-  | 'vpn-keeps-disconnecting-iphone'
-  | 'captive-portal-vpn-iphone'
-  | 'vpn-on-cellular-lte'
-  | 'fastest-vpn-iphone'
-  | 'no-account-vpn-iphone'
-  | 'vpn-kill-switch-iphone'
-  | 'hide-ip-iphone'
-  | 'vpn-for-spotify'
-
 type Seed = { h1: string; lead: string; details: string; use: string; limits: string };
 type ExtraGuide = { slug: ExtraLandingSlug; label: Record<AppLang, string>; seed: Record<AppLang, Seed> };
 
@@ -3156,7 +3113,6 @@ export const EXTRA_GUIDES: ExtraGuide[] = [
   },
 ];
 
-export const EXTRA_LANDING_SLUGS: ExtraLandingSlug[] = EXTRA_GUIDES.map((g) => g.slug);
 
 /** High-value extras to include in sitemap (competitor-style SEO, not every brand page). */
 export const SITEMAP_EXTRA_SLUGS: ExtraLandingSlug[] = [
@@ -3189,13 +3145,7 @@ const BY: Record<ExtraLandingSlug, ExtraGuide> = Object.fromEntries(
   EXTRA_GUIDES.map((g) => [g.slug, g]),
 ) as Record<ExtraLandingSlug, ExtraGuide>;
 
-export function isExtraLandingSlug(value: string): value is ExtraLandingSlug {
-  return Object.prototype.hasOwnProperty.call(BY, value);
-}
 
-export function extraLandingLabel(slug: ExtraLandingSlug, lang: AppLang): string {
-  return BY[slug].label[lang] ?? BY[slug].label.en;
-}
 
 export function extraLandingContent(slug: ExtraLandingSlug, lang: AppLang): LandingContent {
   const seed = BY[slug].seed[lang] ?? BY[slug].seed.en;

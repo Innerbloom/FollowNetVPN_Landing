@@ -10,7 +10,9 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 function extractQuotedList(source, exportName) {
-  const block = source.match(new RegExp(`export const ${exportName} = \\[([\\s\\S]*?)\\] as const`));
+  const block =
+    source.match(new RegExp(`export const ${exportName}(?::[^=]*)?= \\[([\\s\\S]*?)\\](?: as const)?`)) ||
+    source.match(new RegExp(`export const ${exportName} = \\[([\\s\\S]*?)\\] as const`));
   if (!block) throw new Error(`${exportName} not found`);
   return [...block[1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
 }
@@ -35,7 +37,7 @@ function extractBlogSlugs(...sources) {
 }
 
 const slugsTs = readFileSync(join(root, 'src/app/core/seo-landing.slugs.ts'), 'utf8');
-const extraTs = readFileSync(join(root, 'src/app/core/seo-landing.extra-guides.ts'), 'utf8');
+const extraSlugsTs = readFileSync(join(root, 'src/app/core/seo-landing.extra-slugs.ts'), 'utf8');
 const blogTs = readFileSync(join(root, 'src/app/core/blog.content.ts'), 'utf8');
 let blogExtraTs = '';
 try {
@@ -45,7 +47,7 @@ try {
 }
 
 const coreSlugs = extractQuotedList(slugsTs, 'CORE_LANDING_SLUGS');
-const extraSlugs = extractTypeUnionSlugs(extraTs, 'ExtraLandingSlug');
+const extraSlugs = extractQuotedList(extraSlugsTs, 'EXTRA_LANDING_SLUGS');
 const slugs = [...coreSlugs, ...extraSlugs];
 const blogSlugs = extractBlogSlugs(blogTs, blogExtraTs);
 

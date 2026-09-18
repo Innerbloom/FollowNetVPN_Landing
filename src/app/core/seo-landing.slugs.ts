@@ -4,7 +4,7 @@ import {
   extraLandingLabel,
   isExtraLandingSlug,
   type ExtraLandingSlug,
-} from './seo-landing.extra-guides';
+} from './seo-landing.extra-slugs';
 
 export const CORE_LANDING_SLUGS = [
   'vpn-for-iphone',

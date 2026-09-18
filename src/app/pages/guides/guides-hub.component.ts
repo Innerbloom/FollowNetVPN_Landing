@@ -9,7 +9,7 @@ import {
   type LandingSlug,
 } from '../../core/seo-landing.slugs';
 import { landingContent } from '../../core/seo-landing.content';
-import { EXTRA_LANDING_SLUGS } from '../../core/seo-landing.extra-guides';
+import { EXTRA_LANDING_SLUGS } from '../../core/seo-landing.extra-slugs';
 
 type GuideCard = {
   slug: LandingSlug;

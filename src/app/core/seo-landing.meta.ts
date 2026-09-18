@@ -1,9 +1,7 @@
 import { AppLang } from './i18n.service';
-import { CoreLandingSlug, LandingSlug, landingSlugFromPath } from './seo-landing.slugs';
+import { CoreLandingSlug, LandingSlug, landingSlugFromPath, landingLabel } from './seo-landing.slugs';
 import type { SeoCopy } from './seo-copy';
-import { extraLandingContent, isExtraLandingSlug } from './seo-landing.extra-guides';
-import { landingLabel } from './seo-landing.slugs';
-import { landingContent } from './seo-landing.content';
+import { isExtraLandingSlug } from './seo-landing.extra-slugs';
 
 type LandingMeta = Partial<Record<AppLang, SeoCopy>> & { en: SeoCopy };
 
@@ -322,22 +320,21 @@ export { landingSlugFromPath };
 
 export function getLandingSeoCopy(slug: LandingSlug, lang: AppLang): SeoCopy {
   if (isExtraLandingSlug(slug)) {
-    const c = extraLandingContent(slug, lang);
     const label = landingLabel(slug, lang);
     return {
       title: `${label} — FollowNet`,
       ogTitle: label,
-      description: c.lead.slice(0, 160),
+      description: `${label}. FollowNet VPN for iPhone — Free weekly traffic or Premium unlimited.`,
     };
   }
   const block = M[slug];
   if (block[lang]) return block[lang]!;
-  const content = landingContent(slug, lang);
   const label = landingLabel(slug, lang);
+  // Prefer hand-tuned EN meta structure for missing langs without pulling full landing bodies into the initial bundle.
   return {
     title: `${label} — FollowNet`,
     ogTitle: label,
-    description: content.lead.slice(0, 160),
+    description: block.en.description,
   };
 }
 
