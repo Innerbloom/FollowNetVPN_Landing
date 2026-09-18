@@ -2,20 +2,12 @@
   min-height: 100vh;
   position: relative;
   z-index: 0;
-}
-
-.bg-glow {
-  position: fixed;
-  inset: -20vh -20vw;
-  z-index: 0;
-  pointer-events: none;
-  /* Big soft blobs instead of sharp bands */
-  display: none; /* remove green glow background completely */
+  background: var(--bg);
 }
 
 .shell {
   position: relative;
-  z-index: 1; /* above starfield */
+  z-index: 1;
   margin: 0 auto;
   background: transparent;
   display: flex;
@@ -29,5 +21,5 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding: 2.5rem 0 0;
+  padding: 0;
 }

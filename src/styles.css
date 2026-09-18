@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* FollowNet marketing — light premium (Express-fold direction) */
 
 * {
   margin: 0;
@@ -7,50 +7,53 @@
 }
 
 :root {
-  --bg: #161616;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-2: rgba(255, 255, 255, 0.055);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-2: rgba(255, 255, 255, 0.12);
-  --text: rgba(255, 255, 255, 0.94);
-  --muted: rgba(255, 255, 255, 0.68);
-  --muted-2: rgba(255, 255, 255, 0.52);
-  --green: #9AB541;
-  --green-2: #7ea543;
-  --red: #F63E3E;
+  --bg: #f3f5f8;
+  --bg-warm: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #e8ecf1;
+  --border: rgba(15, 23, 42, 0.09);
+  --border-2: rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --muted: #475569;
+  --muted-2: #64748b;
+  --green: #6a8f1f;
+  --green-2: #4f6e16;
+  --green-soft: rgba(143, 176, 58, 0.14);
+  --star: #e8a317;
+  --red: #e5484d;
 
   --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
-  /* shared shape tokens */
-  --r-card: 22px;
-  --r-control: 14px;
-  --container-max: 1180px;
+  --r-card: 20px;
+  --r-control: 12px;
+  --container-max: 1120px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 24px 48px rgba(15, 23, 42, 0.12), 0 8px 16px rgba(15, 23, 42, 0.06);
 
-  /* icon container */
-  --icon-surface: rgba(255, 255, 255, 0.04);
-  --icon-border: rgba(255, 255, 255, 0.085);
+  --icon-surface: rgba(15, 23, 42, 0.04);
+  --icon-border: rgba(15, 23, 42, 0.08);
 
-  /* Landing typography scale (unified h1 / h2 / body) */
-  --type-kicker: 0.8125rem;
+  --type-kicker: 0.75rem;
   --type-label: 0.875rem;
   --type-body-sm: 0.9375rem;
   --type-body: 1rem;
   --type-card-title: 1.0625rem;
-  --type-lead: clamp(1.0625rem, 1.65vw, 1.1875rem);
-  --type-h1: clamp(2.25rem, 4.6vw, 3.65rem);
-  --type-h2: clamp(1.75rem, 3.25vw, 2.5rem);
-  --type-h2-soft: clamp(1.65rem, 2.8vw, 2.15rem);
-  --type-stat: clamp(1.2rem, 2.1vw, 1.55rem);
+  --type-lead: clamp(1.05rem, 1.4vw, 1.175rem);
+  --type-h1: clamp(2.4rem, 5vw, 3.75rem);
+  --type-h2: clamp(1.75rem, 3.2vw, 2.45rem);
+  --type-h2-soft: clamp(1.55rem, 2.6vw, 2.05rem);
+  --type-stat: clamp(1.15rem, 2vw, 1.45rem);
 
-  /* Vertical rhythm (8px grid) */
   --section-pad-y: 5.5rem;
   --section-pad-y-tight: 4rem;
   --strip-pad-y: 3rem;
   --strip-gap: 1.125rem;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -76,6 +79,3 @@ h3,
 a {
   color: inherit;
 }
-
-/* Simple starfield overlay (CSS-only, no images) */
-/* Starfield is rendered via Canvas component now (closer to iOS look). */

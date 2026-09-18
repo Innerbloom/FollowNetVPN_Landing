@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  NgZone,
   OnDestroy,
   PLATFORM_ID,
   inject,
@@ -45,7 +44,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private readonly router = inject(Router);
   private langSub: Subscription | null = null;
 
-  /** Scroll-linked offset for hero map (::before); 0 when reduced motion */
+  /** Scroll-linked offset unused on light fold; kept for template safety */
   heroParallaxPx = 0;
 
   /** Stable list — a getter recreates nodes every CD and cancels card clicks. */
@@ -53,7 +52,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     public i18n: I18nService,
-    private readonly ngZone: NgZone,
   ) {
     this.refreshLearnPosts();
     this.langSub = this.i18n.lang$.subscribe(() => this.refreshLearnPosts());
@@ -169,31 +167,67 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return this.i18n.t(key).replace('{{AMOUNT}}', amount);
   }
 
-  /** App Store marketing screenshots (portrait) */
+  /** Real iPhone mockups — hero carousel only (no duplicate gallery below) */
   readonly shots = [
-    'assets/screenshots/IMG_6290-portrait.png',
-    'assets/screenshots/IMG_6291-portrait.png',
-    'assets/screenshots/IMG_6292-portrait.png',
-    'assets/screenshots/IMG_6293-portrait.png',
-    'assets/screenshots/IMG_6294-portrait.png',
+    'assets/screenshots/mockups/IMG_6805-portrait.png', // Connect
+    'assets/screenshots/mockups/IMG_6807-portrait.png', // Protocols
+    'assets/screenshots/mockups/IMG_6808-portrait.png', // DNS
+    'assets/screenshots/mockups/IMG_6803-portrait.png', // Speed Test
+    'assets/screenshots/mockups/IMG_6804-portrait.png', // Servers
+  ];
+
+  readonly extensionShots = [
+    'assets/extension/chrome-vpn-v2.png',
+    'assets/extension/chrome-servers-v2.png',
+    'assets/extension/chrome-stats-v2.png',
+    'assets/extension/chrome-settings-v2.png',
+  ];
+
+  readonly extensionLabels = ['VPN', 'Servers', 'Stats', 'Settings'];
+
+  extIndex = 0;
+
+  readonly flagsRow1 = this.buildFlagRow(
+    [
+      '🇬🇧', '🇦🇪', '🇹🇷', '🇨🇭', '🇸🇪', '🇰🇷', '🇸🇬', '🇭🇰', '🇷🇴',
+      '🇺🇸',
+      '🇵🇱', '🇳🇴', '🇮🇹', '🇳🇱', '🇯🇵', '🇮🇱', '🇫🇷', '🇩🇪', '🇪🇸',
+    ],
+    { peak: 1.22, edge: 0.76, minOpacity: 0.55 },
+  );
+
+  readonly flagsRow2 = this.buildFlagRow(
+    ['🇮🇳', '🇫🇮', '🇪🇪', '🇨🇿', '🇨🇦', '🇧🇷', '🇦🇹', '🇦🇺', '🇧🇪', '🇩🇰', '🇬🇷', '🇭🇺', '🇵🇹'],
+    { peak: 1.08, edge: 0.74, minOpacity: 0.55 },
+  );
+
+  readonly howSteps = [
+    { title: 'STEP1_TITLE' as const, text: 'STEP1_TEXT' as const },
+    { title: 'STEP2_TITLE' as const, text: 'STEP2_TEXT' as const },
+    { title: 'STEP3_TITLE' as const, text: 'STEP3_TEXT' as const },
+    { title: 'STEP4_TITLE' as const, text: 'STEP4_TEXT' as const },
+    { title: 'STEP5_TITLE' as const, text: 'STEP5_TEXT' as const },
+  ];
+
+  readonly compareRows = [
+    { feat: 'COMPARE_R1_FEAT' as const, typical: 'COMPARE_R1_TYPICAL' as const, us: 'COMPARE_R1_US' as const },
+    { feat: 'COMPARE_R2_FEAT' as const, typical: 'COMPARE_R2_TYPICAL' as const, us: 'COMPARE_R2_US' as const },
+    { feat: 'COMPARE_R3_FEAT' as const, typical: 'COMPARE_R3_TYPICAL' as const, us: 'COMPARE_R3_US' as const },
+    { feat: 'COMPARE_R4_FEAT' as const, typical: 'COMPARE_R4_TYPICAL' as const, us: 'COMPARE_R4_US' as const },
+    { feat: 'COMPARE_R5_FEAT' as const, typical: 'COMPARE_R5_TYPICAL' as const, us: 'COMPARE_R5_US' as const },
+    { feat: 'COMPARE_R6_FEAT' as const, typical: 'COMPARE_R6_TYPICAL' as const, us: 'COMPARE_R6_US' as const },
+  ];
+
+  readonly voiceCards = [
+    { title: 'VOICE_1_TITLE' as const, body: 'VOICE_1_BODY' as const },
+    { title: 'VOICE_2_TITLE' as const, body: 'VOICE_2_BODY' as const },
+    { title: 'VOICE_3_TITLE' as const, body: 'VOICE_3_BODY' as const },
   ];
 
   activeIndex = 0;
 
   private autoplayId: number | null = null;
   private stopAutoplayUntil = 0;
-  private scrollRaf = 0;
-  private onScrollBound: (() => void) | null = null;
-  readonly flagsRow1 = this.buildFlagRow([
-    // keep 🇺🇸 centered (odd count)
-    '🇬🇧','🇦🇪','🇹🇷','🇨🇭','🇸🇪','🇰🇷','🇸🇬','🇭🇰','🇷🇴',
-    '🇺🇸',
-    '🇵🇱','🇳🇴','🇮🇹','🇳🇱','🇲🇩','🇲🇦','🇲🇷','🇯🇵','🇮🇱',
-  ], { peak: 1.22, edge: 0.76, minOpacity: 0.55 });
-
-  readonly flagsRow2 = this.buildFlagRow([
-    '🇮🇳','🇭🇺','🇭🇰','🇬🇷','🇩🇪','🇫🇮','🇪🇪','🇩🇰','🇨🇿','🇨🇦','🇧🇷','🇧🇪','🇦🇹',
-  ], { peak: 1.08, edge: 0.74, minOpacity: 0.55 });
 
   private buildFlagRow(
     emojis: string[],
@@ -202,37 +236,26 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     const n = emojis.length;
     const mid = (n - 1) / 2;
     return emojis.map((emoji, i) => {
-      const d = mid === 0 ? 0 : Math.abs(i - mid) / mid; // 0..1
+      const d = mid === 0 ? 0 : Math.abs(i - mid) / mid;
       const s = opts.peak + (opts.edge - opts.peak) * d;
       const o = 1 - (1 - opts.minOpacity) * d;
       return { emoji, s: Number(s.toFixed(3)), o: Number(o.toFixed(3)) };
     });
   }
 
+  heroOfferLine(): string {
+    const yearly = this.premiumPlans.find((p) => p.id === 'y1') ?? this.premiumPlans[0];
+    const perMonth = formatPremiumUsd(yearly.amountUsd / 12);
+    return this.i18n.t('HERO_OFFER').replace('{{price}}', perMonth);
+  }
+
+  stepNum(i: number): string {
+    return String(i + 1).padStart(2, '0');
+  }
+
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-
-    this.autoplayId = window.setInterval(() => this.autoplayStep(), 3200);
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    this.ngZone.runOutsideAngular(() => {
-      this.onScrollBound = () => {
-        if (this.scrollRaf) return;
-        this.scrollRaf = window.requestAnimationFrame(() => {
-          this.scrollRaf = 0;
-          const y = Math.min(window.scrollY, 420);
-          const next = Math.round(y * 0.09);
-          if (next === this.heroParallaxPx) return;
-          this.ngZone.run(() => {
-            this.heroParallaxPx = next;
-          });
-        });
-      };
-      window.addEventListener('scroll', this.onScrollBound, { passive: true });
-      this.onScrollBound();
-    });
+    this.autoplayId = window.setInterval(() => this.autoplayStep(), 3400);
   }
 
   ngOnDestroy() {
@@ -242,20 +265,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       window.clearInterval(this.autoplayId);
       this.autoplayId = null;
     }
-    if (this.scrollRaf) {
-      window.cancelAnimationFrame(this.scrollRaf);
-      this.scrollRaf = 0;
-    }
-    if (this.onScrollBound) {
-      window.removeEventListener('scroll', this.onScrollBound);
-      this.onScrollBound = null;
-    }
   }
 
   goTo(index: number) {
     const clamped = Math.max(0, Math.min(index, this.shots.length - 1));
     this.activeIndex = clamped;
     this.pauseAutoplay(6000);
+  }
+
+  goToExt(index: number) {
+    const clamped = Math.max(0, Math.min(index, this.extensionShots.length - 1));
+    this.extIndex = clamped;
+    this.pauseAutoplay(7000);
   }
 
   screenshotAlt(index: number): string {
@@ -281,6 +302,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private autoplayStep() {
     if (Date.now() < this.stopAutoplayUntil) return;
     const next = (this.activeIndex + 1) % this.shots.length;
-    this.goTo(next);
+    this.activeIndex = next;
+    this.extIndex = (this.extIndex + 1) % this.extensionShots.length;
   }
 }

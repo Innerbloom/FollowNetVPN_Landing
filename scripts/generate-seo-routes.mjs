@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Regenerates prerender-routes.txt and public/sitemap.xml
- * from seo-landing.slugs.ts + blog.content.ts + static product pages
+ * from CORE + EXTRA landing slugs + blog.content + blog.extra-posts + static pages.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -15,18 +15,42 @@ function extractQuotedList(source, exportName) {
   return [...block[1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
 }
 
-function extractBlogSlugs(source) {
-  return [...source.matchAll(/slug:\s*'([^']+)'/g)].map((m) => m[1]);
+function extractTypeUnionSlugs(source, typeName) {
+  const block = source.match(new RegExp(`export type ${typeName} =([\\s\\S]*?)\\n\\ntype `));
+  const alt = source.match(new RegExp(`export type ${typeName} =([\\s\\S]*?)\\ntype Seed`));
+  const body = (block || alt)?.[1];
+  if (!body) {
+    // fallback: all slug: '...' in EXTRA_GUIDES
+    return [...source.matchAll(/slug:\s*'([^']+)'/g)].map((m) => m[1]);
+  }
+  return [...body.matchAll(/'([^']+)'/g)].map((m) => m[1]);
+}
+
+function extractBlogSlugs(...sources) {
+  const set = new Set();
+  for (const source of sources) {
+    for (const m of source.matchAll(/slug:\s*'([^']+)'/g)) set.add(m[1]);
+  }
+  return [...set];
 }
 
 const slugsTs = readFileSync(join(root, 'src/app/core/seo-landing.slugs.ts'), 'utf8');
+const extraTs = readFileSync(join(root, 'src/app/core/seo-landing.extra-guides.ts'), 'utf8');
 const blogTs = readFileSync(join(root, 'src/app/core/blog.content.ts'), 'utf8');
-const slugs = extractQuotedList(slugsTs, 'LANDING_SLUGS');
-const blogSlugs = extractBlogSlugs(blogTs);
+let blogExtraTs = '';
+try {
+  blogExtraTs = readFileSync(join(root, 'src/app/core/blog.extra-posts.ts'), 'utf8');
+} catch {
+  // optional
+}
+
+const coreSlugs = extractQuotedList(slugsTs, 'CORE_LANDING_SLUGS');
+const extraSlugs = extractTypeUnionSlugs(extraTs, 'ExtraLandingSlug');
+const slugs = [...coreSlugs, ...extraSlugs];
+const blogSlugs = extractBlogSlugs(blogTs, blogExtraTs);
 
 const LANGS = ['ru', 'en', 'de', 'es', 'fr', 'pt', 'uk'];
 const SITE = 'https://follow-net.com';
-/** UTC calendar day — refresh on every `npm run build` / `seo:routes`. */
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
 const staticPaths = [
@@ -40,6 +64,7 @@ const staticPaths = [
   '/download/ios',
   '/download/chrome',
   '/about',
+  '/press',
   '/support',
   '/status',
 ];
@@ -50,7 +75,10 @@ const allContentPaths = [...staticPaths, ...landingPaths, ...blogPaths];
 const lines = [];
 for (const p of allContentPaths) lines.push(p);
 for (const p of allContentPaths) {
-  for (const lang of LANGS) lines.push(`${p}?lang=${lang}`);
+  for (const lang of LANGS) {
+    if (lang === 'en') continue; // bare path is EN
+    lines.push(`${p}?lang=${lang}`);
+  }
 }
 
 writeFileSync(join(root, 'prerender-routes.txt'), `${lines.join('\n')}\n`);
@@ -89,6 +117,7 @@ ${urlEntry('/download', '0.85')}
 ${urlEntry('/download/ios', '0.8')}
 ${urlEntry('/download/chrome', '0.8')}
 ${urlEntry('/about', '0.7')}
+${urlEntry('/press', '0.75')}
 ${urlEntry('/support', '0.75')}
 ${urlEntry('/status', '0.55')}
 ${urlEntry('/privacy', '0.5')}
@@ -98,5 +127,5 @@ ${urlEntry('/terms', '0.5')}
 
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap);
 console.log(
-  `Generated ${lines.length} prerender routes and sitemap with ${allContentPaths.length} URLs.`,
+  `Generated ${lines.length} prerender routes (${slugs.length} landings, ${blogSlugs.length} posts) and sitemap with ${allContentPaths.length} URLs.`,
 );

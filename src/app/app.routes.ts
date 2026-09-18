@@ -65,6 +65,11 @@ export const routes: Routes = [
           import('./pages/about/about.component').then((m) => m.AboutPageComponent),
       },
       {
+        path: 'press',
+        loadComponent: () =>
+          import('./pages/press/press.component').then((m) => m.PressPageComponent),
+      },
+      {
         path: 'support',
         loadComponent: () =>
           import('./pages/support/support.component').then((m) => m.SupportPageComponent),

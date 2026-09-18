@@ -1,5 +1,12 @@
 /** All public SEO landing paths (kebab-case, no leading slash). */
-export const LANDING_SLUGS = [
+import {
+  EXTRA_LANDING_SLUGS,
+  extraLandingLabel,
+  isExtraLandingSlug,
+  type ExtraLandingSlug,
+} from './seo-landing.extra-guides';
+
+export const CORE_LANDING_SLUGS = [
   'vpn-for-iphone',
   'wireguard-vpn-ios',
   'free-vpn-iphone',
@@ -7,6 +14,7 @@ export const LANDING_SLUGS = [
   'ikev2-vpn-ios',
   'vpn-for-wifi',
   'smart-connect-vpn',
+  'network-profiles-ios',
   'amneziawg-vpn-ios',
   'no-logs-vpn',
   'auto-connect-vpn-ios',
@@ -23,14 +31,19 @@ export const LANDING_SLUGS = [
   'vpn-for-gaming-iphone',
 ] as const;
 
-export type LandingSlug = (typeof LANDING_SLUGS)[number];
+export type CoreLandingSlug = (typeof CORE_LANDING_SLUGS)[number];
+
+/** @deprecated use CORE_LANDING_SLUGS — kept alias for existing imports */
+export const LANDING_SLUGS = CORE_LANDING_SLUGS;
+
+export type LandingSlug = CoreLandingSlug | ExtraLandingSlug;
 
 export function landingSlugs(): LandingSlug[] {
-  return [...LANDING_SLUGS];
+  return [...CORE_LANDING_SLUGS, ...EXTRA_LANDING_SLUGS];
 }
 
 export function isLandingSlug(value: string): value is LandingSlug {
-  return (LANDING_SLUGS as readonly string[]).includes(value);
+  return (CORE_LANDING_SLUGS as readonly string[]).includes(value) || isExtraLandingSlug(value);
 }
 
 export function landingSlugFromPath(path: string): LandingSlug | null {
@@ -39,8 +52,8 @@ export function landingSlugFromPath(path: string): LandingSlug | null {
 }
 
 /** Short labels for internal links (all UI languages). */
-export const LANDING_LABELS: Record<
-  LandingSlug,
+export const CORE_LANDING_LABELS: Record<
+  CoreLandingSlug,
   Record<'en' | 'ru' | 'de' | 'es' | 'fr' | 'pt' | 'uk', string>
 > = {
   'vpn-for-iphone': {
@@ -105,6 +118,15 @@ export const LANDING_LABELS: Record<
     fr: 'Smart Connect VPN',
     pt: 'Smart Connect VPN',
     uk: 'Smart Connect VPN',
+  },
+  'network-profiles-ios': {
+    en: 'Network Profiles',
+    ru: 'Профили сети',
+    de: 'Netzwerkprofile',
+    es: 'Perfiles de red',
+    fr: 'Profils réseau',
+    pt: 'Perfis de rede',
+    uk: 'Профілі мережі',
   },
   'amneziawg-vpn-ios': {
     en: 'AmneziaWG for iOS',
@@ -234,9 +256,13 @@ export const LANDING_LABELS: Record<
   },
 };
 
+/** @deprecated alias — prefer landingLabel() */
+export const LANDING_LABELS = CORE_LANDING_LABELS;
+
 export function landingLabel(
   slug: LandingSlug,
   lang: 'en' | 'ru' | 'de' | 'es' | 'fr' | 'pt' | 'uk',
 ): string {
-  return LANDING_LABELS[slug][lang] ?? LANDING_LABELS[slug].en;
+  if (isExtraLandingSlug(slug)) return extraLandingLabel(slug, lang);
+  return CORE_LANDING_LABELS[slug][lang] ?? CORE_LANDING_LABELS[slug].en;
 }

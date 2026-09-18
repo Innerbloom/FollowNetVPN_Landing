@@ -6,12 +6,25 @@
       <p class="lead">{{ i18n.t('GUIDES_LEAD') }}</p>
     </header>
 
+    <h2 class="section-title">{{ i18n.t('GUIDES_FEATURED') }}</h2>
     <div class="guide-grid">
-      <a class="guide-card" *ngFor="let g of guides" [routerLink]="['/', g.slug]">
-        <h2 class="guide-title">{{ g.title }}</h2>
+      <a class="guide-card" *ngFor="let g of featured" [routerLink]="['/', g.slug]">
+        <h3 class="guide-title">{{ g.title }}</h3>
         <p class="guide-lead">{{ g.lead }}</p>
         <span class="guide-meta">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</span>
       </a>
     </div>
+
+    <ng-container *ngIf="more.length">
+      <h2 class="section-title more">{{ i18n.t('GUIDES_MORE') }}</h2>
+      <p class="section-note">{{ i18n.t('GUIDES_MORE_NOTE') }}</p>
+      <div class="guide-grid">
+        <a class="guide-card" *ngFor="let g of more" [routerLink]="['/', g.slug]">
+          <h3 class="guide-title">{{ g.title }}</h3>
+          <p class="guide-lead">{{ g.lead }}</p>
+          <span class="guide-meta">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</span>
+        </a>
+      </div>
+    </ng-container>
   </div>
 </section>

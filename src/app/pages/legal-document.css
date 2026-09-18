@@ -49,7 +49,7 @@ a:hover {
   padding: 14px 16px;
   border-radius: var(--r-control);
   margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface-2);
 }
 
 .callout h2 {

@@ -4,11 +4,12 @@ import { Meta, Title } from '@angular/platform-browser';
 import { AppLang, I18nService, SUPPORTED_LANGS } from './i18n.service';
 import { landingSlugFromPath, LandingSlug } from './seo-landing.slugs';
 import { APP_STORE, getSeoCopy, OG_LOCALE } from './seo-copy';
+import { absoluteUrlForLang, SEO_DEFAULT_LANG } from './locale-url';
 import { environment } from '../../environments/environment';
 
 const HREFLANG_MARK = 'data-follownet-hreflang';
 const DYNAMIC_JSONLD_ID = 'follownet-dynamic-jsonld';
-const DEFAULT_LANG: AppLang = 'en';
+const DEFAULT_LANG: AppLang = SEO_DEFAULT_LANG;
 
 const FAQ_KEYS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'FAQ_Q1', a: 'FAQ_A1' },
@@ -78,6 +79,10 @@ export class SeoService {
       this.setHomeJsonLd(lang, origin, ogImage, canonicalUrl);
     } else if (landingSlug) {
       this.setLandingJsonLd(landingSlug, lang, origin, ogImage, canonicalUrl, copy);
+    } else if (pagePath.startsWith('/blog/') && pagePath !== '/blog') {
+      this.setBlogJsonLd(lang, origin, ogImage, canonicalUrl, copy);
+    } else if (pagePath === '/guides' || pagePath === '/blog') {
+      this.setSimpleWebPageJsonLd(lang, origin, canonicalUrl, copy);
     } else {
       this.removeDynamicJsonLd();
     }
@@ -100,10 +105,7 @@ export class SeoService {
   }
 
   private canonicalFor(pagePath: string, origin: string, lang: AppLang): string {
-    if (lang === DEFAULT_LANG) {
-      return `${origin}${pagePath === '/' ? '/' : pagePath}`;
-    }
-    return this.urlForLang(pagePath, origin, lang);
+    return absoluteUrlForLang(pagePath, origin, lang, DEFAULT_LANG);
   }
 
   private landingSlugFromPath(pagePath: string): LandingSlug | null {
@@ -147,12 +149,7 @@ export class SeoService {
   }
 
   private urlForLang(pagePath: string, origin: string, lang: AppLang): string {
-    if (lang === DEFAULT_LANG) {
-      return `${origin}${pagePath === '/' ? '/' : pagePath}`;
-    }
-    const url = new URL(`${origin}${pagePath === '/' ? '/' : pagePath}`);
-    url.searchParams.set('lang', lang);
-    return url.toString();
+    return absoluteUrlForLang(pagePath, origin, lang, DEFAULT_LANG);
   }
 
   private applyGoogleSiteVerification(): void {
@@ -261,6 +258,64 @@ export class SeoService {
 
       this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
     });
+  }
+
+  private setBlogJsonLd(
+    lang: AppLang,
+    origin: string,
+    ogImage: string,
+    pageUrl: string,
+    copy: ReturnType<typeof getSeoCopy>,
+  ): void {
+    const payload = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BlogPosting',
+          '@id': `${pageUrl}#article`,
+          headline: copy.ogTitle,
+          description: copy.description,
+          url: pageUrl,
+          image: ogImage,
+          inLanguage: lang,
+          isPartOf: { '@id': `${origin}/#website` },
+          publisher: {
+            '@type': 'Organization',
+            name: 'FollowNet VPN',
+            logo: { '@type': 'ImageObject', url: ogImage },
+          },
+          mainEntityOfPage: { '@type': 'WebPage', '@id': `${pageUrl}#webpage` },
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${pageUrl}#webpage`,
+          url: pageUrl,
+          name: copy.ogTitle,
+          description: copy.description,
+          inLanguage: lang,
+        },
+      ],
+    };
+    this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
+  }
+
+  private setSimpleWebPageJsonLd(
+    lang: AppLang,
+    origin: string,
+    pageUrl: string,
+    copy: ReturnType<typeof getSeoCopy>,
+  ): void {
+    const payload = {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: copy.ogTitle,
+      description: copy.description,
+      inLanguage: lang,
+      isPartOf: { '@id': `${origin}/#website` },
+    };
+    this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
   }
 
   private removeDynamicJsonLd(): void {

@@ -1,0 +1,64 @@
+{
+  "appId": "6757725829",
+  "bundleHint": "FollowNet VPN",
+  "appStoreUrl": "https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829",
+  "chromeUrl": "https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk",
+  "website": "https://follow-net.com",
+  "press": "https://follow-net.com/press",
+  "notes": [
+    "Paste into App Store Connect / ASO.dev when the editor is open.",
+    "Title max ~30 chars, subtitle ~30, keywords ~100 (comma-separated, no spaces after commas preferred).",
+    "Do not claim unlimited free, fake audits, or Android/macOS availability."
+  ],
+  "locales": {
+    "en-US": {
+      "title": "FollowNet VPN",
+      "subtitle": "Fast private iOS VPN",
+      "keywords": "vpn,iphone vpn,wireguard,vless,smart connect,free vpn,ikev2,amnezia,hysteria,secure wifi",
+      "promotionalText": "Try Free with weekly traffic — Premium for unlimited. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — a focused VPN for iPhone and iPad.\n\nCONNECT IN ONE TAP\nSmart Connect picks among WireGuard, AmneziaWG, Hysteria2, VLESS Reality, and IKEv2 when networks fight classic tunnels.\n\nFREE VS PREMIUM\nFree includes a weekly traffic allowance so you can test a real tunnel. Premium unlocks unlimited traffic, premium locations shown in the app, and up to 5 devices.\n\nBUILT FOR iOS\nAuto-connect, DNS profiles, Network Profiles, Speed Test, widgets, and Shortcuts. Sign in with an email code — no password to forget.\n\nCHROME ON DESKTOP\nSame account, browser proxy in Chrome (not a full-device desktop VPN).\n\nHonest product: no fake audit badges, no “unlimited free forever.”\n\nSupport: support@follow-net.com\nPrivacy: https://follow-net.com/privacy"
+    },
+    "ru": {
+      "title": "FollowNet VPN",
+      "subtitle": "Быстрый VPN для iPhone",
+      "keywords": "vpn,впн,vpn iphone,wireguard,vless,бесплатный vpn,smart connect,амнезия,hysteria,ikev2",
+      "promotionalText": "Free с недельным лимитом — Premium безлимит. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — сфокусированный VPN для iPhone и iPad.\n\nПОДКЛЮЧЕНИЕ В ОДИН ТАП\nSmart Connect выбирает среди WireGuard, AmneziaWG, Hysteria2, VLESS Reality и IKEv2, когда сеть режет классические туннели.\n\nFREE И PREMIUM\nFree — с недельным лимитом трафика. Premium — безлимит, локации из приложения и до 5 устройств.\n\nДЛЯ iOS\nАвтоподключение, DNS‑профили, профили сети, Speed Test, виджеты и Команды. Вход по коду на email — без пароля.\n\nCHROME\nТот же аккаунт и proxy в браузере (не полноценный VPN на весь ПК).\n\nБез фейковых аудитов и «безлимит навсегда бесплатно».\n\nsupport@follow-net.com\nhttps://follow-net.com/privacy"
+    },
+    "de-DE": {
+      "title": "FollowNet VPN",
+      "subtitle": "Schnelles iOS-VPN",
+      "keywords": "vpn,iphone vpn,wireguard,vless,smart connect,gratis vpn,ikev2,amnezia,hysteria,wlan",
+      "promotionalText": "Free mit Wochenlimit — Premium unbegrenzt. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — fokussiertes VPN für iPhone und iPad.\n\nMIT EINEM TIPP VERBINDEN\nSmart Connect wählt zwischen WireGuard, AmneziaWG, Hysteria2, VLESS Reality und IKEv2, wenn Netze klassische Tunnel behindern.\n\nFREE VS PREMIUM\nFree mit wöchentlichem Traffic-Limit. Premium: unbegrenzter Traffic, Standorte in der App, bis zu 5 Geräte.\n\nFÜR iOS\nAuto-Connect, DNS-Profile, Netzwerkprofile, Speedtest, Widgets und Kurzbefehle. Login per E-Mail-Code.\n\nCHROME\nGleiches Konto, Browser-Proxy (kein Voll-Desktop-VPN).\n\nEhrlich: keine Fake-Audits, kein „unbegrenzt gratis für immer“.\n\nsupport@follow-net.com"
+    },
+    "es-ES": {
+      "title": "FollowNet VPN",
+      "subtitle": "VPN rápida para iPhone",
+      "keywords": "vpn,vpn iphone,wireguard,vless,smart connect,vpn gratis,ikev2,amnezia,hysteria,wifi",
+      "promotionalText": "Free con límite semanal — Premium ilimitado. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — VPN centrado en iPhone e iPad.\n\nCONECTA EN UN TOQUE\nSmart Connect elige entre WireGuard, AmneziaWG, Hysteria2, VLESS Reality e IKEv2 cuando la red pelea con túneles clásicos.\n\nFREE Y PREMIUM\nFree con límite semanal. Premium: tráfico ilimitado, ubicaciones de la app y hasta 5 dispositivos.\n\nPARA iOS\nConexión automática, perfiles DNS, perfiles de red, Speed Test, widgets y Atajos. Acceso por código de email.\n\nCHROME\nMisma cuenta, proxy del navegador (no VPN de escritorio completo).\n\nSin auditorías falsas ni “gratis ilimitado para siempre”.\n\nsupport@follow-net.com"
+    },
+    "fr-FR": {
+      "title": "FollowNet VPN",
+      "subtitle": "VPN iOS rapide",
+      "keywords": "vpn,vpn iphone,wireguard,vless,smart connect,vpn gratuit,ikev2,amnezia,hysteria,wifi",
+      "promotionalText": "Free avec quota hebdo — Premium illimité. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — VPN pensé pour iPhone et iPad.\n\nCONNEXION EN UN TOUCHER\nSmart Connect choisit parmi WireGuard, AmneziaWG, Hysteria2, VLESS Reality et IKEv2 quand le réseau bloque les tunnels classiques.\n\nFREE ET PREMIUM\nFree avec quota hebdomadaire. Premium : trafic illimité, localisations de l’app, jusqu’à 5 appareils.\n\nPOUR iOS\nConnexion auto, profils DNS, profils réseau, Speed Test, widgets et Raccourcis. Connexion par code e-mail.\n\nCHROME\nMême compte, proxy navigateur (pas un VPN bureau complet).\n\nSans faux audits ni « gratuit illimité pour toujours ».\n\nsupport@follow-net.com"
+    },
+    "pt-BR": {
+      "title": "FollowNet VPN",
+      "subtitle": "VPN rápido para iPhone",
+      "keywords": "vpn,vpn iphone,wireguard,vless,smart connect,vpn gratis,ikev2,amnezia,hysteria,wifi",
+      "promotionalText": "Free com limite semanal — Premium ilimitado. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — VPN focado em iPhone e iPad.\n\nCONECTE EM UM TOQUE\nSmart Connect escolhe entre WireGuard, AmneziaWG, Hysteria2, VLESS Reality e IKEv2 quando a rede bloqueia túneis clássicos.\n\nFREE E PREMIUM\nFree com limite semanal. Premium: tráfego ilimitado, locais do app e até 5 dispositivos.\n\nPARA iOS\nConexão automática, perfis DNS, perfis de rede, Speed Test, widgets e Atalhos. Login por código de e-mail.\n\nCHROME\nMesma conta, proxy do navegador (não é VPN de desktop completo).\n\nSem auditorias falsas nem “grátis ilimitado para sempre”.\n\nsupport@follow-net.com"
+    },
+    "uk": {
+      "title": "FollowNet VPN",
+      "subtitle": "Швидкий VPN для iPhone",
+      "keywords": "vpn,впн,vpn iphone,wireguard,vless,безкоштовний vpn,smart connect,amnezia,hysteria,ikev2",
+      "promotionalText": "Free з тижневим лімітом — Premium безліміт. WireGuard, VLESS Reality, Smart Connect.",
+      "description": "FollowNet VPN — сфокусований VPN для iPhone і iPad.\n\nПІДКЛЮЧЕННЯ В ОДИН ДОТИК\nSmart Connect обирає серед WireGuard, AmneziaWG, Hysteria2, VLESS Reality та IKEv2, коли мережа ріже класичні тунелі.\n\nFREE І PREMIUM\nFree — з тижневим лімітом. Premium — безліміт, локації з застосунку та до 5 пристроїв.\n\nДЛЯ iOS\nАвтовмикання, DNS‑профілі, профілі мережі, Speed Test, віджети й Команди. Вхід за кодом на email.\n\nCHROME\nТой самий акаунт і proxy в браузері.\n\nБез фейкових аудитів і «безліміт назавжди безкоштовно».\n\nsupport@follow-net.com"
+    }
+  }
+}

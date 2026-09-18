@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
-import { landingSlugs, landingLabel, type LandingSlug } from '../../core/seo-landing.slugs';
+import {
+  CORE_LANDING_SLUGS,
+  landingLabel,
+  type LandingSlug,
+} from '../../core/seo-landing.slugs';
 import { landingContent } from '../../core/seo-landing.content';
+import { EXTRA_LANDING_SLUGS } from '../../core/seo-landing.extra-guides';
 
 type GuideCard = {
   slug: LandingSlug;
@@ -15,12 +20,13 @@ type GuideCard = {
 @Component({
   selector: 'app-guides-hub',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, NgIf, RouterLink],
   templateUrl: './guides-hub.component.html',
   styleUrls: ['./guides-hub.component.css'],
 })
 export class GuidesHubComponent implements OnInit {
-  guides: GuideCard[] = [];
+  featured: GuideCard[] = [];
+  more: GuideCard[] = [];
 
   constructor(
     public i18n: I18nService,
@@ -32,13 +38,19 @@ export class GuidesHubComponent implements OnInit {
     this.i18n.lang$.subscribe(() => this.refresh());
   }
 
-  private refresh(): void {
+  private card(slug: LandingSlug): GuideCard {
     const lang = this.i18n.current;
-    this.guides = landingSlugs().map((slug) => ({
+    return {
       slug,
       title: landingLabel(slug, lang),
       lead: landingContent(slug, lang).lead,
-    }));
+    };
+  }
+
+  private refresh(): void {
+    const lang = this.i18n.current;
+    this.featured = CORE_LANDING_SLUGS.map((slug) => this.card(slug));
+    this.more = EXTRA_LANDING_SLUGS.map((slug) => this.card(slug));
     this.seo.updateForRoute('/guides', lang);
   }
 }

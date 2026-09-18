@@ -15,14 +15,14 @@ import { environment } from '../../../environments/environment';
 })
 export class HeaderComponent {
   readonly iosAppStoreUrl = appStoreUrl('header');
-  logoSrc = '/assets/logo.png';
+  logoSrc = '/assets/new_logo.png?v=fn3';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
   readonly langs = SUPPORTED_LANGS;
   isLangOpen = false;
 
   onLogoError() {
-    this.logoSrc = 'logo.svg';
+    this.logoSrc = '/assets/logo.png?v=fn3';
   }
 
   constructor(
@@ -115,22 +115,6 @@ export class HeaderComponent {
   }
 
   mobileDownloadLabel(): string {
-    switch (this.i18n.current) {
-      case 'ru':
-        return 'Скачать';
-      case 'de':
-        return 'Download';
-      case 'es':
-        return 'Descargar';
-      case 'fr':
-        return 'Telecharger';
-      case 'pt':
-        return 'Baixar';
-      case 'uk':
-        return 'Скачати';
-      case 'en':
-      default:
-        return 'Download';
-    }
+    return this.i18n.t('NAV_DOWNLOAD_PAGE');
   }
 }

@@ -1,4 +1,5 @@
 import { AppLang } from './i18n.service';
+import { EXTRA_BLOG_POSTS } from './blog.extra-posts';
 
 export type BlogTopic = 'product' | 'updates' | 'guides';
 
@@ -21,7 +22,7 @@ export type BlogPostMeta = {
   translations: Record<AppLang, BlogPostLocalized>;
 };
 
-export const BLOG_POSTS: BlogPostMeta[] = [
+const CORE_BLOG_POSTS: BlogPostMeta[] = [
   {
     slug: 'follownet-features-overview',
     date: '2026-08-01',
@@ -304,29 +305,31 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     topic: 'guides',
     translations: {
       en: {
-        title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — which protocol when',
+        title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2, VLESS — which protocol when',
         excerpt:
           'A practical map of FollowNet protocols on iOS: speed, stability, and what to use when a network fights VPNs.',
         sections: [
-          { title: 'Start with Smart Connect', body: 'For most people, leave Settings → VPN Protocol on Smart. Smart Connect picks among WireGuard, AmneziaWG, Hysteria2, and IKEv2 using network context and fallbacks when a handshake fails. Switch manually when you already know what a hotel Wi‑Fi or carrier blocks.' },
+          { title: 'Start with Smart Connect', body: 'For most people, leave Settings → VPN Protocol on Smart. Smart Connect uses network context and can fall through Hysteria2, VLESS Reality, AmneziaWG, WireGuard, and IKEv2 when a handshake fails or egress looks dead. Switch manually when you already know what a hotel Wi‑Fi or carrier blocks.' },
           { title: 'WireGuard for everyday speed', body: 'WireGuard is the everyday pick for calm Wi‑Fi and cellular: modern crypto, low overhead, strong for browsing and streaming. If Speed Test looks healthy and the tunnel stays up, stay here instead of chasing novelty protocols.' },
           { title: 'AmneziaWG when WireGuard is blocked', body: 'Some networks detect or throttle plain WireGuard. AmneziaWG keeps a WireGuard-like experience with obfuscation. Try it when WireGuard never handshakes on one network but works on LTE.' },
-          { title: 'IKEv2 for flaky mobile handoffs', body: 'IKEv2 still shines when you bounce between LTE and Wi‑Fi. Not always the fastest, but often the most boringly reliable on iOS mobility. Prefer it for commuting when tunnels flap more than they fail to start.' },
+          { title: 'VLESS Reality on fingerprint-heavy paths', body: 'VLESS with REALITY-style camouflage is another option when UDP-heavy tunnels stall or look Connected without usable traffic. Smart Connect may try it on DPI-shaped ISPs; you can also lock it in Settings → Protocol. Confirm with a real page load and Speed Test.' },
+          { title: 'IKEv2 for flaky mobile handoffs', body: 'IKEv2 still shines when you bounce between LTE and Wi‑Fi. Not always the fastest, but often the most boringly reliable on iOS mobility. Prefer it for commuting when tunnels flap more than they fail to start — Travel profile uses IKEv2 for that reason.' },
           { title: 'Hysteria2 on lossy or hostile paths', body: 'Hysteria2 helps on lossy, congested, or hostile paths. Use it after WireGuard/AmneziaWG struggle, then confirm with Speed Test. It is a tool for hard networks — not a permanent “faster everywhere” switch.' },
-          { title: 'Manual override and Network Profiles', body: 'Pin a working protocol for a known bad location, or store it in a Network Profile with DNS and Auto-connect. Free and Premium share the same protocol toolkit — Free has weekly traffic, Premium is unlimited — and Premium mainly adds capacity and server breadth, not different engines. Chrome on desktop is a browser proxy, not these iOS tunnel protocols; macOS and Android system apps are not available yet.' },
+          { title: 'Manual override and Network Profiles', body: 'Pin a working protocol for a known bad location, or use presets: Public Wi‑Fi (WireGuard), Travel (IKEv2), Restricted (Smart + Always). Free and Premium share the same protocol toolkit — Free has weekly traffic, Premium is unlimited. Chrome on desktop is a browser proxy, not these iOS tunnel protocols; macOS and Android system apps are not available yet.' },
         ],
       },
       ru: {
-        title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — какой протокол когда',
+        title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2, VLESS — какой протокол когда',
         excerpt:
           'Практичная карта протоколов FollowNet на iOS: скорость, стабильность и что включать, когда сеть душит VPN.',
         sections: [
-          { title: 'Начните со Smart Connect', body: 'Большинству достаточно оставить Settings → VPN Protocol на Smart. Smart Connect выбирает между WireGuard, AmneziaWG, Hysteria2 и IKEv2 с учётом сети и уходит на запасной вариант при ошибке handshake. Ручной выбор — когда вы уже знаете, что режет отель или оператор.' },
+          { title: 'Начните со Smart Connect', body: 'Большинству достаточно оставить Settings → VPN Protocol на Smart. Smart Connect учитывает сетевой контекст и может пройти Hysteria2 → VLESS Reality → AmneziaWG → WireGuard → IKEv2 при ошибке handshake или мёртвом egress. Ручной выбор — когда вы уже знаете, что режет отель или оператор.' },
           { title: 'WireGuard для повседневной скорости', body: 'WireGuard — базовый выбор для спокойного Wi‑Fi и LTE: современная криптография, низкий оверхед, удобно для браузинга и стриминга. Если Speed Test в норме и туннель держится — оставайтесь здесь.' },
           { title: 'AmneziaWG, когда WireGuard режут', body: 'Некоторые сети детектят или душат обычный WireGuard. AmneziaWG сохраняет похожий опыт с обфускацией. Имеет смысл, когда WireGuard не рукополагается на одной сети, но жив на LTE.' },
-          { title: 'IKEv2 для скачущего мобильного', body: 'IKEv2 силён при прыжках между LTE и Wi‑Fi. Не всегда самый быстрый, но на iOS часто самый надёжный в движении. Берите для поездок по городу, когда туннель чаще «моргает», чем не поднимается.' },
+          { title: 'VLESS Reality на fingerprint-сетях', body: 'VLESS с REALITY-камуфляжем — ещё один путь, когда UDP-туннели зависают или выглядят Connected без трафика. Smart Connect может взять его на DPI-операторах; можно зафиксировать в Settings → Protocol. Подтверждайте реальной страницей и Speed Test.' },
+          { title: 'IKEv2 для скачущего мобильного', body: 'IKEv2 силён при прыжках между LTE и Wi‑Fi. Не всегда самый быстрый, но на iOS часто самый надёжный в движении. Берите для поездок по городу — профиль Travel как раз на IKEv2.' },
           { title: 'Hysteria2 на потерях и враждебных каналах', body: 'Hysteria2 помогает на потерях, перегрузе и враждебных путях. Пробуйте после проблем с WireGuard/AmneziaWG и проверяйте Speed Test. Инструмент для жёстких сетей — не вечный переключатель «везде быстрее».' },
-          { title: 'Ручной выбор и профили сети', body: 'Закрепите рабочий протокол для известного плохого места или сохраните в профиле сети с DNS и Auto-connect. Free и Premium используют один набор протоколов — Free с недельным трафиком, Premium безлимит — и Premium в основном добавляет ёмкость и ширину серверов, а не другие движки. Chrome на десктопе — прокси браузера, не эти iOS-туннели; системных приложений macOS и Android пока нет.' },
+          { title: 'Ручной выбор и профили сети', body: 'Закрепите рабочий протокол или берите пресеты: Public Wi‑Fi (WireGuard), Travel (IKEv2), Restricted (Smart + Always). Free и Premium — один набор протоколов; Free с недельным трафиком, Premium безлимит. Chrome на десктопе — прокси браузера, не эти iOS-туннели; системных приложений macOS и Android пока нет.' },
         ],
       },
       de: {
@@ -550,15 +553,15 @@ export const BLOG_POSTS: BlogPostMeta[] = [
         sections: [
           {
             title: 'The job of Smart Connect',
-            body: 'Smart Connect tries to get you a working, fast-enough tunnel without forcing every user to become a protocol engineer. It weighs network conditions and known failure modes — especially DPI-heavy paths.',
+            body: 'Smart Connect tries to get you a working, fast-enough tunnel without forcing every user to become a protocol engineer. It uses network context when available and can climb a recovery ladder across Hysteria2, VLESS Reality, AmneziaWG, WireGuard, and IKEv2 — with egress checks so a green status is not a dead tunnel.',
           },
           {
             title: 'When to override',
-            body: 'If you know WireGuard is fine at home, lock it. If you travel through hostile networks, leave Smart Connect on or try AmneziaWG / Hysteria2 manually. Settings → Protocol is always there.',
+            body: 'If you know WireGuard is fine at home, lock it. On hostile networks leave Smart Connect on, apply the Restricted Network profile, or try AmneziaWG / Hysteria2 / VLESS Reality manually. Settings → Protocol is always there.',
           },
           {
             title: 'What it is not',
-            body: 'Smart Connect is not a promise of invisibility or a substitute for device hygiene. It is a practical default so “one tap” stays true outside the lab.',
+            body: 'Smart Connect is not a promise of invisibility or a substitute for device hygiene. It is a practical default so “one tap” stays true outside the lab. Chrome on desktop does not run this iOS protocol chain.',
           },
         ],
       },
@@ -569,15 +572,15 @@ export const BLOG_POSTS: BlogPostMeta[] = [
         sections: [
           {
             title: 'Задача Smart Connect',
-            body: 'Smart Connect должен дать рабочий и достаточно быстрый туннель, не превращая пользователя в инженера протоколов. Он учитывает условия сети и типичные сбои — особенно DPI.',
+            body: 'Smart Connect должен дать рабочий и достаточно быстрый туннель, не превращая пользователя в инженера протоколов. При наличии сетевого контекста он выбирает старт и может подняться по лестнице Hysteria2 → VLESS Reality → AmneziaWG → WireGuard → IKEv2 с проверкой egress — чтобы зелёный статус не был мёртвым туннелем.',
           },
           {
             title: 'Когда переключать вручную',
-            body: 'Если дома WireGuard стабилен — зафиксируйте его. Если едете через жёсткие сети — оставьте Smart Connect или попробуйте AmneziaWG / Hysteria2. Settings → Protocol всегда доступен.',
+            body: 'Если дома WireGuard стабилен — зафиксируйте его. На жёстких сетях оставьте Smart Connect, примените профиль Restricted Network или попробуйте AmneziaWG / Hysteria2 / VLESS Reality вручную. Settings → Protocol всегда доступен.',
           },
           {
             title: 'Чем это не является',
-            body: 'Smart Connect — не обещание невидимости и не замена гигиене устройства. Это практичный режим по умолчанию, который сохраняет подключение в одно касание и в реальных сетях.',
+            body: 'Smart Connect — не обещание невидимости и не замена гигиене устройства. Это практичный дефолт, чтобы «один тап» работал вне лаборатории. В Chrome на десктопе эта iOS-цепочка протоколов не крутится.',
           },
         ],
       },
@@ -2987,6 +2990,11 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       },
     },
   },
+];
+
+export const BLOG_POSTS: BlogPostMeta[] = [
+  ...CORE_BLOG_POSTS,
+  ...(EXTRA_BLOG_POSTS as BlogPostMeta[]),
 ];
 
 export type BlogPostView = BlogPostLocalized &

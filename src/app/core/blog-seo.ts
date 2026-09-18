@@ -1,4 +1,5 @@
 import { AppLang } from './i18n.service';
+import { extraBlogSeoMap } from './blog.extra-posts';
 
 /** Title/excerpt only — SEO meta without pulling full blog bodies into the main bundle. */
 export type BlogSeoMeta = { title: string; excerpt: string };
@@ -23,13 +24,13 @@ const BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
     pt: { title: 'Gratuito vs Premium sem as letras miúdas', excerpt: 'O que o FollowNet Free realmente inclui, quando o Premium vale a pena, como funciona o tráfego semanal e o que nos recusamos a esconder.' },
   },
   'which-protocol-when': {
-    en: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — which protocol when', excerpt: 'A practical map of FollowNet protocols on iOS: speed, stability, and what to use when a network fights VPNs.' },
-    ru: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — какой протокол когда', excerpt: 'Практичная карта протоколов FollowNet на iOS: скорость, стабильность и что включать, когда сеть душит VPN.' },
-    uk: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — який протокол коли', excerpt: 'Практична карта протоколів FollowNet на iOS: швидкість, стабільність і що вмикати, коли мережа душить VPN.' },
-    de: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 – welches Protokoll wann', excerpt: 'Eine praktische Karte der FollowNet-Protokolle auf iOS: Geschwindigkeit, Stabilität und was zu tun ist, wenn ein Netz VPNs bekämpft.' },
-    es: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2: qué protocolo y cuándo', excerpt: 'Un mapa práctico de los protocolos FollowNet en iOS: velocidad, estabilidad y qué usar cuando una red pelea con las VPN.' },
-    fr: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — quel protocole quand', excerpt: 'Une carte pratique des protocoles FollowNet sur iOS : vitesse, stabilité et quoi utiliser quand un réseau combat les VPN.' },
-    pt: { title: 'WireGuard, AmneziaWG, IKEv2, Hysteria2 — qual protocolo quando', excerpt: 'Um mapa prático dos protocolos FollowNet no iOS: velocidade, estabilidade e o que usar quando uma rede luta contra VPNs.' },
+    en: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS — which protocol when', excerpt: 'A practical map of FollowNet protocols on iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2, and VLESS Reality — when each helps on tough networks.' },
+    ru: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS — какой протокол когда', excerpt: 'Практичная карта протоколов FollowNet на iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2 и VLESS Reality — когда что включать.' },
+    uk: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS — який протокол коли', excerpt: 'Практична карта протоколів FollowNet на iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2 і VLESS Reality — коли що вмикати.' },
+    de: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS – welches Protokoll wann', excerpt: 'Praktische Karte der FollowNet-Protokolle auf iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2 und VLESS Reality — wann welches hilft.' },
+    es: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS: qué protocolo y cuándo', excerpt: 'Mapa práctico de protocolos FollowNet en iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2 y VLESS Reality — cuándo usar cada uno.' },
+    fr: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS — quel protocole quand', excerpt: 'Carte pratique des protocoles FollowNet sur iOS : WireGuard, AmneziaWG, IKEv2, Hysteria2 et VLESS Reality — quand utiliser chacun.' },
+    pt: { title: 'WireGuard, AmneziaWG, Hysteria2, VLESS — qual protocolo quando', excerpt: 'Mapa prático dos protocolos FollowNet no iOS: WireGuard, AmneziaWG, IKEv2, Hysteria2 e VLESS Reality — quando usar cada um.' },
   },
   'chrome-extension': {
     en: { title: 'FollowNet for Chrome is live', excerpt: 'The same account and a browser proxy for desktop Chrome — what the extension does today and where its protection ends.' },
@@ -186,8 +187,10 @@ const BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
   },
 };
 
+const EXTRA_BLOG_SEO = extraBlogSeoMap();
+
 export function blogSeoMeta(slug: string, lang: AppLang): BlogSeoMeta | null {
-  const block = BLOG_SEO[slug];
+  const block = BLOG_SEO[slug] ?? EXTRA_BLOG_SEO[slug];
   if (!block) return null;
   return block[lang];
 }

@@ -7,8 +7,15 @@
       "name": "FN | Search | EN | iPhone VPN",
       "type": "Search",
       "budgetUsdPerDay": 25,
-      "locations": ["United States", "United Kingdom", "Canada", "Australia"],
-      "languages": ["English"],
+      "locations": [
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "Australia"
+      ],
+      "languages": [
+        "English"
+      ],
       "bidding": "Maximize clicks (first 7 days) → Maximize conversions after AW- tag verified",
       "adGroups": [
         {
@@ -114,6 +121,106 @@
             "FollowNet picks protocol & server for your network — Wi‑Fi, LTE, censorship.",
             "AmneziaWG when WireGuard is blocked. Manual override anytime. App Store."
           ]
+        },
+        {
+          "name": "Fastest VPN iPhone",
+          "finalUrl": "https://follow-net.com/fastest-vpn-iphone",
+          "keywords": [
+            "[fastest vpn iphone]",
+            "[fast vpn for iphone]",
+            "\"fastest vpn ios\""
+          ],
+          "headlines": [
+            "Fastest VPN for iPhone",
+            "Nearby Servers + WireGuard",
+            "FollowNet Speed Test",
+            "Try Free Weekly",
+            "App Store Download"
+          ],
+          "descriptions": [
+            "Measure real speed in-app. WireGuard + nearby exits. Free weekly or Premium unlimited.",
+            "Smart Connect when networks throttle. Honest Free limit — no unlimited forever claims."
+          ]
+        },
+        {
+          "name": "No Account Password VPN",
+          "finalUrl": "https://follow-net.com/no-account-vpn-iphone",
+          "keywords": [
+            "[vpn without password]",
+            "[vpn email login]",
+            "\"vpn no account iphone\""
+          ],
+          "headlines": [
+            "VPN Login by Email Code",
+            "No Password to Forget",
+            "FollowNet for iPhone",
+            "Try Free Weekly",
+            "App Store"
+          ],
+          "descriptions": [
+            "Sign in with an email code. Full-device iOS VPN with Smart Connect and VLESS Reality.",
+            "Free weekly traffic to evaluate. Premium for unlimited. Download on the App Store."
+          ]
+        },
+        {
+          "name": "Hide IP iPhone",
+          "finalUrl": "https://follow-net.com/hide-ip-iphone",
+          "keywords": [
+            "[hide ip iphone]",
+            "[change ip iphone]",
+            "\"hide my ip ios vpn\""
+          ],
+          "headlines": [
+            "Hide IP on iPhone",
+            "Change Egress IP",
+            "FollowNet VPN",
+            "WireGuard & VLESS",
+            "Try Free"
+          ],
+          "descriptions": [
+            "Tunnel shows your server egress IP — not magic anonymity. Honest Free weekly vs Premium.",
+            "Smart Connect on tough networks. Download FollowNet on the App Store."
+          ]
+        },
+        {
+          "name": "VPN Spotify iPhone",
+          "finalUrl": "https://follow-net.com/vpn-for-spotify",
+          "keywords": [
+            "[vpn for spotify]",
+            "[spotify vpn iphone]",
+            "\"vpn spotify ios\""
+          ],
+          "headlines": [
+            "VPN for Spotify iPhone",
+            "Encrypt Your Stream",
+            "No Catalog Promises",
+            "FollowNet Free Weekly",
+            "App Store"
+          ],
+          "descriptions": [
+            "Encrypt Spotify traffic on untrusted Wi‑Fi. We don’t promise catalog unlocks.",
+            "Free weekly traffic to test. Premium unlimited. Download on the App Store."
+          ]
+        },
+        {
+          "name": "Kill Switch iPhone",
+          "finalUrl": "https://follow-net.com/vpn-kill-switch-iphone",
+          "keywords": [
+            "[vpn kill switch iphone]",
+            "[iphone vpn kill switch]",
+            "\"kill switch ios vpn\""
+          ],
+          "headlines": [
+            "VPN Kill Switch on iOS",
+            "What FollowNet Can Do",
+            "Chrome Has Kill Switch",
+            "Honest Limits",
+            "Try Free"
+          ],
+          "descriptions": [
+            "iOS routes system traffic through the tunnel when connected. Chrome extension has Kill Switch.",
+            "Read honest limits on FollowNet. Free weekly or Premium. App Store download."
+          ]
         }
       ]
     },
@@ -121,8 +228,16 @@
       "name": "FN | Search | RU | VPN iPhone",
       "type": "Search",
       "budgetUsdPerDay": 15,
-      "locations": ["Russia", "Ukraine", "Kazakhstan", "Belarus"],
-      "languages": ["Russian", "Ukrainian"],
+      "locations": [
+        "Russia",
+        "Ukraine",
+        "Kazakhstan",
+        "Belarus"
+      ],
+      "languages": [
+        "Russian",
+        "Ukrainian"
+      ],
       "adGroups": [
         {
           "name": "VPN для iPhone",
@@ -180,10 +295,22 @@
   ],
   "extensions": {
     "sitelinks": [
-      { "text": "Free VPN", "url": "https://follow-net.com/free-vpn-iphone" },
-      { "text": "WireGuard iOS", "url": "https://follow-net.com/wireguard-vpn-ios" },
-      { "text": "Smart Connect", "url": "https://follow-net.com/smart-connect-vpn" },
-      { "text": "Auto-connect", "url": "https://follow-net.com/auto-connect-vpn-ios" }
+      {
+        "text": "Free VPN",
+        "url": "https://follow-net.com/free-vpn-iphone"
+      },
+      {
+        "text": "WireGuard iOS",
+        "url": "https://follow-net.com/wireguard-vpn-ios"
+      },
+      {
+        "text": "Smart Connect",
+        "url": "https://follow-net.com/smart-connect-vpn"
+      },
+      {
+        "text": "Auto-connect",
+        "url": "https://follow-net.com/auto-connect-vpn-ios"
+      }
     ],
     "callouts": [
       "Free tier available",

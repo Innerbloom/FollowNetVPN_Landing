@@ -10,7 +10,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     blocks: [
       {
         title: 'What we build',
-        body: 'The iOS app is a full-device VPN via Apple Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS profiles, Auto-connect, Network Profiles, Speed Test, widgets, and Shortcuts. Chrome adds a browser proxy, Kill Switch for the extension, and ad blocking — not a full-desktop VPN yet.',
+        body: 'The iOS app is a full-device VPN via Apple Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, DNS profiles, Auto-connect, Network Profiles, Speed Test, widgets, and Shortcuts. Chrome adds a browser proxy, Kill Switch for the extension, and ad blocking — not a full-desktop VPN yet.',
       },
       {
         title: 'How we stay honest',
@@ -18,7 +18,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'What is not ready yet',
-        body: 'There is no macOS or Android app yet. Auto-connect on iOS is not the same as a leak-blocking kill switch; that Kill Switch exists in the Chrome extension. Exact server locations and plan details always live in the current App Store build.',
+        body: 'There is no Android app yet. Auto-connect on iOS is not the same as a leak-blocking kill switch; that Kill Switch exists in the Chrome extension. Exact server locations and plan details always live in the current App Store build.',
       },
       {
         title: 'Contact',
@@ -28,7 +28,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'iOS full-device VPN + Chrome browser proxy',
       'Free weekly limit · Premium unlimited',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'No fake audits or inflated coverage claims',
     ],
   },
@@ -48,7 +48,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Чего пока нет',
-        body: 'Пока нет приложений для macOS и Android. Автоподключение на iOS — не kill switch с блокировкой утечек; такой Kill Switch есть в Chrome. Актуальные локации и условия тарифов — в текущей сборке App Store.',
+        body: 'Пока нет приложения для Android. Автоподключение на iOS — не kill switch с блокировкой утечек; такой Kill Switch есть в Chrome. Актуальные локации и условия тарифов — в текущей сборке App Store.',
       },
       {
         title: 'Связь',
@@ -58,7 +58,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'iOS VPN на устройство + Chrome proxy',
       'Free — недельный лимит · Premium — безлимит',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Без фейковых аудитов и завышенных цифр покрытия',
     ],
   },
@@ -78,7 +78,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Чого поки немає',
-        body: 'Поки немає застосунків для macOS і Android. Автопідключення на iOS — не kill switch; такий Kill Switch є в Chrome. Актуальні локації й умови тарифів — у поточній збірці App Store.',
+        body: 'Поки немає застосунку для Android. Автопідключення на iOS — не kill switch; такий Kill Switch є в Chrome. Актуальні локації й умови тарифів — у поточній збірці App Store.',
       },
       {
         title: 'Зв’язок',
@@ -88,7 +88,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'iOS VPN на пристрій + Chrome proxy',
       'Free — тижневий ліміт · Premium — безліміт',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Без фейкових аудитів і завищених цифр покриття',
     ],
   },
@@ -108,7 +108,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Was noch fehlt',
-        body: 'Noch keine macOS- oder Android-App. Auto-Connect auf iOS ist kein Leak-Kill-Switch; der Kill Switch sitzt in der Chrome-Erweiterung. Standorte und Tarifdetails stehen in der aktuellen App-Store-Version.',
+        body: 'Noch keine Android-App. Auto-Connect auf iOS ist kein Leak-Kill-Switch; der Kill Switch sitzt in der Chrome-Erweiterung. Standorte und Tarifdetails stehen in der aktuellen App-Store-Version.',
       },
       {
         title: 'Kontakt',
@@ -118,7 +118,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'iOS-VPN fürs Gerät + Chrome-Proxy',
       'Free Wochenlimit · Premium unbegrenzt',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Keine Fake-Audits oder aufgeblähte Abdeckungszahlen',
     ],
   },
@@ -138,7 +138,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Qué aún no está',
-        body: 'Todavía no hay app para macOS ni Android. La auto-conexión en iOS no es un kill switch anti-fugas; ese Kill Switch está en Chrome. Ubicaciones y planes actuales están en la build de App Store.',
+        body: 'Todavía no hay app para Android. La auto-conexión en iOS no es un kill switch anti-fugas; ese Kill Switch está en Chrome. Ubicaciones y planes actuales están en la build de App Store.',
       },
       {
         title: 'Contacto',
@@ -148,7 +148,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'VPN iOS de dispositivo + proxy Chrome',
       'Free límite semanal · Premium ilimitado',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Sin auditorías falsas ni cifras de cobertura infladas',
     ],
   },
@@ -178,7 +178,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'VPN iOS appareil + proxy Chrome',
       'Free quota hebdo · Premium illimité',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Pas de faux audits ni de couverture inventée',
     ],
   },
@@ -198,7 +198,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'O que ainda não existe',
-        body: 'Ainda não há app macOS ou Android. Auto-conexão no iOS não é kill switch anti-vazamento; esse Kill Switch está no Chrome. Locais e planos atuais estão na build da App Store.',
+        body: 'Ainda não há app Android. Auto-conexão no iOS não é kill switch anti-vazamento; esse Kill Switch está no Chrome. Locais e planos atuais estão na build da App Store.',
       },
       {
         title: 'Contacto',
@@ -208,7 +208,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
     bullets: [
       'VPN iOS de dispositivo + proxy Chrome',
       'Free limite semanal · Premium ilimitado',
-      'WireGuard · IKEv2 · AmneziaWG · Hysteria2',
+      'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Sem auditorias falsas nem números de cobertura inflados',
     ],
   },

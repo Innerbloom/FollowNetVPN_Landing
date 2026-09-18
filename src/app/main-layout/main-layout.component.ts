@@ -3,7 +3,6 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { filter } from 'rxjs';
-import { StarfieldComponent } from '../shared/starfield/starfield.component';
 import { I18nService } from '../core/i18n.service';
 import { SeoService } from '../core/seo.service';
 import { AnalyticsService } from '../core/analytics.service';
@@ -14,7 +13,6 @@ import { AnalyticsService } from '../core/analytics.service';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    StarfieldComponent,
   ],
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css'],

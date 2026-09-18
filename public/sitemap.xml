@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://follow-net.com/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/?lang=ru"/>
@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-iphone?lang=ru"/>
@@ -31,7 +31,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/wireguard-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/wireguard-vpn-ios?lang=ru"/>
@@ -45,7 +45,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/free-vpn-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/free-vpn-iphone?lang=ru"/>
@@ -59,7 +59,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-ipad</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-ipad?lang=ru"/>
@@ -73,7 +73,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/ikev2-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/ikev2-vpn-ios?lang=ru"/>
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-wifi</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-wifi?lang=ru"/>
@@ -101,7 +101,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/smart-connect-vpn</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/smart-connect-vpn?lang=ru"/>
@@ -114,8 +114,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/smart-connect-vpn"/>
   </url>
   <url>
+    <loc>https://follow-net.com/network-profiles-ios</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/network-profiles-ios?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/network-profiles-ios"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/network-profiles-ios?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/network-profiles-ios?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/network-profiles-ios?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/network-profiles-ios?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/network-profiles-ios?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/network-profiles-ios"/>
+  </url>
+  <url>
     <loc>https://follow-net.com/amneziawg-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/amneziawg-vpn-ios?lang=ru"/>
@@ -129,7 +143,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/no-logs-vpn</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/no-logs-vpn?lang=ru"/>
@@ -143,7 +157,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/auto-connect-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/auto-connect-vpn-ios?lang=ru"/>
@@ -157,7 +171,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/dns-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/dns-vpn-ios?lang=ru"/>
@@ -171,7 +185,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-travel</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-travel?lang=ru"/>
@@ -185,7 +199,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/best-vpn-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/best-vpn-iphone?lang=ru"/>
@@ -199,7 +213,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-speed-test-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-speed-test-ios?lang=ru"/>
@@ -213,7 +227,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/secure-vpn-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/secure-vpn-iphone?lang=ru"/>
@@ -227,7 +241,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/hysteria2-vpn-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/hysteria2-vpn-ios?lang=ru"/>
@@ -241,7 +255,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-chrome-extension</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-chrome-extension?lang=ru"/>
@@ -255,7 +269,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-widgets-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-widgets-ios?lang=ru"/>
@@ -269,7 +283,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/how-to-setup-vpn-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/how-to-setup-vpn-iphone?lang=ru"/>
@@ -283,7 +297,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-streaming-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-streaming-iphone?lang=ru"/>
@@ -297,7 +311,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/vpn-for-gaming-iphone</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-gaming-iphone?lang=ru"/>
@@ -310,8 +324,694 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-gaming-iphone"/>
   </url>
   <url>
+    <loc>https://follow-net.com/vless-reality-ios</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vless-reality-ios?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vless-reality-ios"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vless-reality-ios?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vless-reality-ios?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vless-reality-ios?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vless-reality-ios?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vless-reality-ios?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vless-reality-ios"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-kill-switch-chrome</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-kill-switch-chrome?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-kill-switch-chrome"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-kill-switch-chrome?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-kill-switch-chrome?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-kill-switch-chrome?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-kill-switch-chrome?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-kill-switch-chrome?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-kill-switch-chrome"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-vs-proxy-chrome</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-vs-proxy-chrome"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-vs-proxy-chrome?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-vs-proxy-chrome"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-ad-blocking-chrome</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-ad-blocking-chrome"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-ad-blocking-chrome?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-ad-blocking-chrome"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-site-routing-chrome</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-site-routing-chrome?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-site-routing-chrome"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-site-routing-chrome?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-site-routing-chrome?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-site-routing-chrome?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-site-routing-chrome?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-site-routing-chrome?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-site-routing-chrome"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-email-login</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-email-login?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-email-login"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-email-login?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-email-login?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-email-login?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-email-login?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-email-login?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-email-login"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-qr-login</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-qr-login?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-qr-login"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-qr-login?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-qr-login?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-qr-login?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-qr-login?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-qr-login?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-qr-login"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-family-devices</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-family-devices?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-family-devices"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-family-devices?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-family-devices?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-family-devices?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-family-devices?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-family-devices?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-family-devices"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-free-weekly-limit</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-free-weekly-limit?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-free-weekly-limit"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-free-weekly-limit?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-free-weekly-limit?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-free-weekly-limit?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-free-weekly-limit?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-free-weekly-limit?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-free-weekly-limit"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-premium-unlimited</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-premium-unlimited?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-premium-unlimited"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-premium-unlimited?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-premium-unlimited?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-premium-unlimited?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-premium-unlimited?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-premium-unlimited?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-premium-unlimited"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-iphone-shortcuts</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-iphone-shortcuts?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-iphone-shortcuts"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-iphone-shortcuts?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-iphone-shortcuts?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-iphone-shortcuts?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-iphone-shortcuts?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-iphone-shortcuts?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-iphone-shortcuts"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-dns-adguard</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-dns-adguard?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-dns-adguard"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-dns-adguard?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-dns-adguard?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-dns-adguard?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-dns-adguard?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-dns-adguard?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-dns-adguard"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-battery-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-battery-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-battery-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-battery-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-battery-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-battery-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-battery-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-battery-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-battery-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-speed-nearby-server</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-speed-nearby-server?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-speed-nearby-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-speed-nearby-server?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-speed-nearby-server?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-speed-nearby-server?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-speed-nearby-server?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-speed-nearby-server?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-speed-nearby-server"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/how-to-change-vpn-server</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/how-to-change-vpn-server?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/how-to-change-vpn-server"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/how-to-change-vpn-server?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/how-to-change-vpn-server?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/how-to-change-vpn-server?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/how-to-change-vpn-server?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/how-to-change-vpn-server?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/how-to-change-vpn-server"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/what-is-a-vpn</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/what-is-a-vpn?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/what-is-a-vpn"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/what-is-a-vpn?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/what-is-a-vpn?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/what-is-a-vpn?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/what-is-a-vpn?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/what-is-a-vpn?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/what-is-a-vpn"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/how-vpn-works</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/how-vpn-works?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/how-vpn-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/how-vpn-works?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/how-vpn-works?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/how-vpn-works?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/how-vpn-works?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/how-vpn-works?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/how-vpn-works"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/do-i-need-a-vpn</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/do-i-need-a-vpn?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/do-i-need-a-vpn"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/do-i-need-a-vpn?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/do-i-need-a-vpn?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/do-i-need-a-vpn?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/do-i-need-a-vpn?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/do-i-need-a-vpn?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/do-i-need-a-vpn"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-beginners</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-beginners?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-beginners"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-beginners?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-beginners?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-beginners?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-beginners?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-beginners?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-beginners"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-vs-proxy</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-vs-proxy?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-vs-proxy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-vs-proxy?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-vs-proxy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-vs-proxy?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-vs-proxy?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-vs-proxy?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-vs-proxy"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/free-vpn-vs-paid</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/free-vpn-vs-paid?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/free-vpn-vs-paid"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/free-vpn-vs-paid?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/free-vpn-vs-paid?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/free-vpn-vs-paid?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/free-vpn-vs-paid?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/free-vpn-vs-paid?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/free-vpn-vs-paid"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/what-is-dns-leak</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/what-is-dns-leak?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/what-is-dns-leak"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/what-is-dns-leak?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/what-is-dns-leak?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/what-is-dns-leak?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/what-is-dns-leak?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/what-is-dns-leak?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/what-is-dns-leak"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-youtube</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-youtube?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-youtube"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-youtube?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-youtube?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-youtube?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-youtube?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-youtube?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-youtube"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-netflix</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-netflix?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-netflix"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-netflix?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-netflix?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-netflix?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-netflix?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-netflix?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-netflix"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-telegram</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-telegram?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-telegram"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-telegram?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-telegram?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-telegram?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-telegram?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-telegram?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-telegram"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-instagram</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-instagram?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-instagram"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-instagram?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-instagram?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-instagram?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-instagram?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-instagram?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-instagram"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-discord</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-discord?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-discord"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-discord?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-discord?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-discord?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-discord?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-discord?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-discord"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-whatsapp</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-whatsapp?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-whatsapp"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-whatsapp?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-whatsapp?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-whatsapp?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-whatsapp?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-whatsapp?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-whatsapp"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-tiktok</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-tiktok?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-tiktok"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-tiktok?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-tiktok?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-tiktok?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-tiktok?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-tiktok?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-tiktok"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-hotel-wifi</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-hotel-wifi?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-hotel-wifi"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-hotel-wifi?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-hotel-wifi?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-hotel-wifi?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-hotel-wifi?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-hotel-wifi?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-hotel-wifi"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-airport-wifi</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-airport-wifi?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-airport-wifi"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-airport-wifi?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-airport-wifi?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-airport-wifi?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-airport-wifi?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-airport-wifi?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-airport-wifi"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-cafe-wifi</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-cafe-wifi?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-cafe-wifi"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-cafe-wifi?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-cafe-wifi?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-cafe-wifi?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-cafe-wifi?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-cafe-wifi?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-cafe-wifi"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-remote-work</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-remote-work?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-remote-work"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-remote-work?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-remote-work?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-remote-work?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-remote-work?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-remote-work?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-remote-work"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-students</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-students?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-students"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-students?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-students?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-students?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-students?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-students?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-students"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-banking-apps</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-banking-apps?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-banking-apps"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-banking-apps?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-banking-apps?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-banking-apps?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-banking-apps?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-banking-apps?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-banking-apps"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/obfuscated-vpn-ios</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/obfuscated-vpn-ios?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/obfuscated-vpn-ios"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/obfuscated-vpn-ios?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/obfuscated-vpn-ios?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/obfuscated-vpn-ios?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/obfuscated-vpn-ios?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/obfuscated-vpn-ios?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/obfuscated-vpn-ios"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/wireguard-vs-ikev2</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/wireguard-vs-ikev2?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/wireguard-vs-ikev2"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/wireguard-vs-ikev2?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/wireguard-vs-ikev2?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/wireguard-vs-ikev2?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/wireguard-vs-ikev2?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/wireguard-vs-ikev2?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/wireguard-vs-ikev2"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/what-is-kill-switch-vpn</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/what-is-kill-switch-vpn?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/what-is-kill-switch-vpn"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/what-is-kill-switch-vpn?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/what-is-kill-switch-vpn?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/what-is-kill-switch-vpn?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/what-is-kill-switch-vpn?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/what-is-kill-switch-vpn?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/what-is-kill-switch-vpn"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-split-tunneling-ios</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-split-tunneling-ios?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-split-tunneling-ios"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-split-tunneling-ios?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-split-tunneling-ios?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-split-tunneling-ios?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-split-tunneling-ios?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-split-tunneling-ios?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-split-tunneling-ios"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-not-connecting-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-not-connecting-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-not-connecting-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-not-connecting-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-not-connecting-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-not-connecting-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-not-connecting-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-not-connecting-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-not-connecting-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-slow-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-slow-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-slow-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-slow-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-slow-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-slow-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-slow-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-slow-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-slow-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-keeps-disconnecting-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-keeps-disconnecting-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-keeps-disconnecting-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-keeps-disconnecting-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/captive-portal-vpn-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/captive-portal-vpn-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/captive-portal-vpn-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/captive-portal-vpn-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/captive-portal-vpn-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/captive-portal-vpn-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/captive-portal-vpn-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/captive-portal-vpn-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/captive-portal-vpn-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-on-cellular-lte</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-on-cellular-lte?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-on-cellular-lte"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-on-cellular-lte?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-on-cellular-lte?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-on-cellular-lte?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-on-cellular-lte?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-on-cellular-lte?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-on-cellular-lte"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/fastest-vpn-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/fastest-vpn-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/fastest-vpn-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/fastest-vpn-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/fastest-vpn-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/fastest-vpn-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/fastest-vpn-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/fastest-vpn-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/fastest-vpn-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/no-account-vpn-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/no-account-vpn-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/no-account-vpn-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/no-account-vpn-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/no-account-vpn-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/no-account-vpn-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/no-account-vpn-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/no-account-vpn-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/no-account-vpn-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-kill-switch-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-kill-switch-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-kill-switch-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-kill-switch-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-kill-switch-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-kill-switch-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-kill-switch-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-kill-switch-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-kill-switch-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/hide-ip-iphone</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/hide-ip-iphone?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/hide-ip-iphone"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/hide-ip-iphone?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/hide-ip-iphone?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/hide-ip-iphone?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/hide-ip-iphone?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/hide-ip-iphone?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/hide-ip-iphone"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/vpn-for-spotify</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/vpn-for-spotify?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/vpn-for-spotify"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/vpn-for-spotify?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/vpn-for-spotify?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/vpn-for-spotify?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/vpn-for-spotify?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/vpn-for-spotify?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/vpn-for-spotify"/>
+  </url>
+  <url>
     <loc>https://follow-net.com/guides</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/guides?lang=ru"/>
@@ -325,7 +1025,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog?lang=ru"/>
@@ -339,7 +1039,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/follownet-features-overview</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/follownet-features-overview?lang=ru"/>
@@ -353,7 +1053,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/free-vs-premium-honest</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/free-vs-premium-honest?lang=ru"/>
@@ -367,7 +1067,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/which-protocol-when</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/which-protocol-when?lang=ru"/>
@@ -381,7 +1081,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/chrome-extension</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/chrome-extension?lang=ru"/>
@@ -395,7 +1095,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/smart-connect-explained</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/smart-connect-explained?lang=ru"/>
@@ -409,7 +1109,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/ios-widgets-vpn</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/ios-widgets-vpn?lang=ru"/>
@@ -423,7 +1123,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/dns-profiles-explained</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/dns-profiles-explained?lang=ru"/>
@@ -437,7 +1137,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/auto-connect-wifi-lte</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/auto-connect-wifi-lte?lang=ru"/>
@@ -451,7 +1151,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/public-wifi-risks</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/public-wifi-risks?lang=ru"/>
@@ -465,7 +1165,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/travel-vpn-roaming</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/travel-vpn-roaming?lang=ru"/>
@@ -479,7 +1179,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/hysteria2-on-ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/hysteria2-on-ios?lang=ru"/>
@@ -493,7 +1193,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/passwordless-login</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/passwordless-login?lang=ru"/>
@@ -507,7 +1207,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/speed-test-in-app</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/speed-test-in-app?lang=ru"/>
@@ -521,7 +1221,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/chrome-vs-ios-vpn</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/chrome-vs-ios-vpn?lang=ru"/>
@@ -535,7 +1235,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/what-no-logs-means</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/what-no-logs-means?lang=ru"/>
@@ -549,7 +1249,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/app-store-vpn-review</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/app-store-vpn-review?lang=ru"/>
@@ -563,7 +1263,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/multi-device-premium</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/multi-device-premium?lang=ru"/>
@@ -577,7 +1277,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/when-vpn-wont-help</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/when-vpn-wont-help?lang=ru"/>
@@ -591,7 +1291,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/follownet-roadmap-2026</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/follownet-roadmap-2026?lang=ru"/>
@@ -605,7 +1305,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/blog/censorship-networks-amneziawg</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/censorship-networks-amneziawg?lang=ru"/>
@@ -618,8 +1318,120 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/censorship-networks-amneziawg"/>
   </url>
   <url>
+    <loc>https://follow-net.com/blog/smart-connect-vless-reality</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/smart-connect-vless-reality"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/smart-connect-vless-reality?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/smart-connect-vless-reality"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/network-profiles-four-presets</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/network-profiles-four-presets?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/network-profiles-four-presets"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/network-profiles-four-presets?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/network-profiles-four-presets?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/network-profiles-four-presets?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/network-profiles-four-presets?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/network-profiles-four-presets?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/network-profiles-four-presets"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/restricted-network-profile</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/restricted-network-profile?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/restricted-network-profile"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/restricted-network-profile?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/restricted-network-profile?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/restricted-network-profile?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/restricted-network-profile?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/restricted-network-profile?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/restricted-network-profile"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/vpn-control-widget</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/vpn-control-widget?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/vpn-control-widget"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/vpn-control-widget?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/vpn-control-widget?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/vpn-control-widget?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/vpn-control-widget?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/vpn-control-widget?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/vpn-control-widget"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/free-weekly-traffic</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/free-weekly-traffic?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/free-weekly-traffic"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/free-weekly-traffic?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/free-weekly-traffic?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/free-weekly-traffic?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/free-weekly-traffic?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/free-weekly-traffic?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/free-weekly-traffic"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/premium-devices-seats</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/premium-devices-seats?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/premium-devices-seats"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/premium-devices-seats?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/premium-devices-seats?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/premium-devices-seats?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/premium-devices-seats?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/premium-devices-seats?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/premium-devices-seats"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/chrome-extension-architecture</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/chrome-extension-architecture?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/chrome-extension-architecture"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/chrome-extension-architecture?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/chrome-extension-architecture?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/chrome-extension-architecture?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/chrome-extension-architecture?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/chrome-extension-architecture?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/chrome-extension-architecture"/>
+  </url>
+  <url>
+    <loc>https://follow-net.com/blog/passwordless-account-restore</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/blog/passwordless-account-restore?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/blog/passwordless-account-restore"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/blog/passwordless-account-restore?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/blog/passwordless-account-restore?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/blog/passwordless-account-restore?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/blog/passwordless-account-restore?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/blog/passwordless-account-restore?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/blog/passwordless-account-restore"/>
+  </url>
+  <url>
     <loc>https://follow-net.com/features</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/features?lang=ru"/>
@@ -633,7 +1445,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/download</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/download?lang=ru"/>
@@ -647,7 +1459,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/download/ios</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/download/ios?lang=ru"/>
@@ -661,7 +1473,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/download/chrome</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/download/chrome?lang=ru"/>
@@ -675,7 +1487,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/about</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/about?lang=ru"/>
@@ -688,8 +1500,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/about"/>
   </url>
   <url>
+    <loc>https://follow-net.com/press</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/press?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://follow-net.com/press"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://follow-net.com/press?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://follow-net.com/press?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://follow-net.com/press?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://follow-net.com/press?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://follow-net.com/press?lang=uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://follow-net.com/press"/>
+  </url>
+  <url>
     <loc>https://follow-net.com/support</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/support?lang=ru"/>
@@ -703,7 +1529,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/status</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/status?lang=ru"/>
@@ -717,7 +1543,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/privacy</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/privacy?lang=ru"/>
@@ -731,7 +1557,7 @@
   </url>
   <url>
     <loc>https://follow-net.com/terms</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://follow-net.com/terms?lang=ru"/>

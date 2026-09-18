@@ -88,7 +88,8 @@
 
 .btn.ghost {
   border: 1px solid var(--border-2);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  background: var(--surface);
 }
 
 .btn:hover {

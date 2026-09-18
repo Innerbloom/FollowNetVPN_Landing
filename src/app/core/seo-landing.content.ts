@@ -1,7 +1,8 @@
 import { AppLang } from './i18n.service';
-import { LandingSlug, LANDING_SLUGS } from './seo-landing.slugs';
+import { CoreLandingSlug, LANDING_SLUGS, type LandingSlug } from './seo-landing.slugs';
 import { RU } from './seo-landing.content.ru';
 import { localizedLandingContent } from './seo-landing.content.locales';
+import { extraLandingContent, isExtraLandingSlug } from './seo-landing.extra-guides';
 
 export interface LandingSection {
   title: string;
@@ -24,7 +25,7 @@ export interface LandingContent {
 
 const CTA = 'Download on the App Store';
 
-const EN: Record<LandingSlug, LandingContent> = {
+const EN: Record<CoreLandingSlug, LandingContent> = {
   'vpn-for-iphone': {
     h1: 'VPN for iPhone — fast, private, and easy to use',
     lead:
@@ -43,7 +44,7 @@ const EN: Record<LandingSlug, LandingContent> = {
     ],
     bullets: [
       'Free plan with weekly traffic — try before you subscribe',
-      'WireGuard, IKEv2, and AmneziaWG (Smart Connect picks the best)',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2, and VLESS Reality (Smart Connect picks when needed)',
       'Data handling is explained in our Privacy Policy',
       'Premium: unlimited data and the locations included in the current plan',
     ],
@@ -72,7 +73,7 @@ const EN: Record<LandingSlug, LandingContent> = {
       {
         title: 'When WireGuard is blocked or throttled',
         body:
-          'Some ISPs, hotels, and travel SIMs detect or throttle WireGuard. FollowNet can fall back to IKEv2, AmneziaWG (obfuscated WireGuard), or Hysteria2 depending on what your plan and network support — manually or via Smart Connect.',
+          'Some ISPs, hotels, and travel SIMs detect or throttle WireGuard. FollowNet can fall back to AmneziaWG, Hysteria2, VLESS Reality, or IKEv2 depending on what your plan and network support — manually or via Smart Connect (and the Restricted Network profile when you want that ladder by default).',
       },
       {
         title: 'WireGuard vs other FollowNet protocols',
@@ -227,47 +228,98 @@ const EN: Record<LandingSlug, LandingContent> = {
   'smart-connect-vpn': {
     h1: 'Smart Connect VPN — automatic protocol for iOS',
     lead:
-      'Smart Connect is FollowNet’s adaptive mode: it evaluates network conditions and chooses among supported protocols — WireGuard, IKEv2, AmneziaWG, and Hysteria2 — so you spend less time on manual trial and error.',
+      'Smart Connect is FollowNet’s adaptive mode: it uses network context when available and chooses among WireGuard, IKEv2, AmneziaWG, Hysteria2, and VLESS Reality — with fallbacks and egress checks so you spend less time on manual trial and error.',
     sections: [
       {
         title: 'How Smart Connect works',
         body:
-          'When you connect, FollowNet weighs available network signals and picks a supported protocol (and a suitable server from locations listed in the app). After you are online, the app shows what is active. You can override the choice anytime in Settings → Protocol.',
+          'When Protocol is on Smart, FollowNet weighs geo / ISP hints from the backend when available, picks a starting tunnel, and can climb a recovery ladder (often Hysteria2 → VLESS Reality → AmneziaWG → WireGuard → IKEv2, skipping what your servers cannot offer). After you are online, the app shows what is active. Override anytime in Settings → Protocol.',
+      },
+      {
+        title: 'Why VLESS Reality is in the chain',
+        body:
+          'Some carriers fingerprint or stall classic WireGuard — and even AmneziaWG. VLESS with REALITY-style camouflage is another path when a tunnel looks Connected but does not pass real traffic. FollowNet still verifies egress before treating the session as healthy.',
       },
       {
         title: 'When to leave Smart Connect on',
         body:
-          'Travelers, restrictive ISPs, hotel uplinks, and travel SIMs are the main use cases. It is especially useful when plain WireGuard is filtered or throttled and you do not want to guess AmneziaWG vs IKEv2 vs Hysteria2 yourself.',
+          'Travelers, restrictive ISPs, hotel uplinks, and travel SIMs are the main use cases. Prefer the Restricted Network profile when you want Smart Connect plus Always Auto-connect and Fastest server without babysitting each protocol.',
       },
       {
         title: 'When to pick a protocol manually',
         body:
-          'If you already know WireGuard is fast on your home network, lock it for everyday use. Use manual mode for Speed Test comparisons. Switch back to Smart Connect when you join an unfamiliar café, airport, or foreign SIM.',
+          'If WireGuard is already fast at home, lock it. Use manual mode for Speed Test comparisons. Switch back to Smart Connect (or Restricted) on unfamiliar café, airport, or foreign SIM networks.',
       },
       {
-        title: 'Smart Connect vs Auto-connect',
+        title: 'Smart Connect vs Auto-connect vs profiles',
         body:
-          'Auto-connect decides when VPN starts (Wi‑Fi, LTE, Always). Smart Connect decides which protocol and server path to try after VPN starts. Many users enable both: Auto-connect on public Wi‑Fi, Smart Connect for protocol selection.',
+          'Auto-connect decides when VPN starts (Wi‑Fi, LTE, Always). Smart Connect decides which protocol path to try after VPN starts. Network Profiles bundle both plus DNS and server mode — Public Wi‑Fi locks WireGuard; Travel locks IKEv2; Restricted keeps Smart aggressive.',
       },
       {
         title: 'Limits and Free weekly vs Premium',
         body:
-          'Smart Connect improves convenience; it does not guarantee a connection on every network or in every country. Free includes Smart Connect within the weekly traffic cap. Premium removes the traffic limit and unlocks Premium locations shown for that plan in the app.',
+          'Smart Connect improves convenience; it does not guarantee a connection on every network or invent a path through a captive portal you skipped. Free includes Smart Connect within the weekly traffic cap. Premium removes the traffic limit and unlocks Premium locations shown for that plan in the app.',
       },
     ],
     bullets: [
-      'Auto protocol among WireGuard, IKEv2, AmneziaWG, and Hysteria2',
-      'Network-aware selection with manual override always available',
-      'Pairs with Auto-connect for when VPN should start',
+      'Auto protocol among WireGuard, IKEv2, AmneziaWG, Hysteria2, and VLESS Reality',
+      'Fallback ladder with egress checks — not a green status alone',
+      'Pairs with Auto-connect and Network Profiles (incl. Restricted)',
       'Active protocol and server visible after connect',
       'Available on Free weekly traffic and on Premium',
     ],
     cta: CTA,
     faq: [
-      { q: 'How do I turn on Smart Connect?', a: 'Settings → Protocol → Smart Connect (wording may vary by app version).' },
+      { q: 'How do I turn on Smart Connect?', a: 'Settings → Protocol → Smart (wording may vary by app version). Or apply the Restricted Network profile.' },
       { q: 'Can I see which protocol Smart Connect chose?', a: 'Yes. The app shows the active protocol and server after connection.' },
-      { q: 'Does Smart Connect use more battery?', a: 'Selection overhead is minimal. Battery cost mainly comes from the active VPN tunnel itself, as with any iOS VPN.' },
+      { q: 'Does Smart Connect use VLESS Reality?', a: 'Yes when that protocol is available for your session and the network context / fallbacks call for it. You can also lock VLESS manually.' },
       { q: 'Does Smart Connect guarantee access everywhere?', a: 'No. It improves odds on difficult networks but cannot override local laws, total blocks, or broken hotspots.' },
+    ],
+  },
+  'network-profiles-ios': {
+    h1: 'Network Profiles on iOS — Smart, Public Wi‑Fi, Travel, Restricted',
+    lead:
+      'One FollowNet profile packs protocol, DNS, Auto-connect, and server mode so a café and home Wi‑Fi do not share the same defaults. Built-in presets match what ships in the app.',
+    sections: [
+      {
+        title: 'What a profile stores',
+        body:
+          'Settings → Network Profiles writes four knobs at once: preferred protocol (or Smart), DNS preset, Auto-connect mode, and server mode (Fastest / Last used / Specific). Apply a profile instead of retuning four menus every time the SSID changes.',
+      },
+      {
+        title: 'Smart (default)',
+        body:
+          'Protocol: Smart · DNS: System/Default · Auto-connect: Off · Server: Last used. Everyday starting point when FollowNet should choose the tunnel and reconnect to the last city.',
+      },
+      {
+        title: 'Public Wi‑Fi',
+        body:
+          'Protocol: WireGuard · DNS: Quad9 · Auto-connect: Wi‑Fi Only · Server: Fastest. After you finish a captive portal, encrypt on shared hotspots with a low-latency exit and a privacy-leaning resolver.',
+      },
+      {
+        title: 'Travel',
+        body:
+          'Protocol: IKEv2 · DNS: Cloudflare · Auto-connect: Always · Server: Fastest. Tuned for roaming and LTE ↔ hotel Wi‑Fi handoffs — boring reliability over novelty protocols.',
+      },
+      {
+        title: 'Restricted + custom profiles',
+        body:
+          'Restricted keeps Protocol on Smart, DNS Quad9, Auto-connect Always, Server Fastest — for DPI-shaped networks where you want Smart Connect’s full ladder (Hysteria2 / VLESS Reality / AmneziaWG / WireGuard / IKEv2). Clone a custom profile when a hotel only works on a pinned protocol + DNS + Specific city.',
+      },
+    ],
+    bullets: [
+      'Four built-in presets with exact protocol / DNS / Auto-connect / server mode',
+      'Restricted = Smart + Always + Fastest for hostile networks',
+      'Custom profiles for hotel or office recipes you already tested',
+      'Same toolkit on Free weekly and Premium',
+      'Pairs with Apple Shortcuts Apply Profile',
+    ],
+    cta: CTA,
+    faq: [
+      { q: 'Where do I find Network Profiles?', a: 'In the FollowNet iOS app: Settings → Network Profiles (and the profile menu on the main screen).' },
+      { q: 'Does Restricted use VLESS?', a: 'Restricted leaves Protocol on Smart, so Smart Connect can climb to VLESS Reality when that path is available — it does not lock a single protocol.' },
+      { q: 'Are profiles Premium-only?', a: 'Built-in presets are available on Free within the weekly traffic cap. Premium mainly adds capacity and the wider server map.' },
+      { q: 'How is this different from Smart Connect alone?', a: 'Smart Connect is the protocol picker. A profile also sets DNS, Auto-connect, and server mode in one tap.' },
     ],
   },
   'amneziawg-vpn-ios': {
@@ -492,7 +544,12 @@ const EN: Record<LandingSlug, LandingContent> = {
       {
         title: 'How it pairs with iPhone',
         body:
-          'Use the iOS app for Auto-connect, widgets, cellular, and all-app VPN. Use Chrome when you work on a computer. One account ties both surfaces together; plan limits apply across how you consume traffic according to current product rules in the app and extension.',
+          'Use the iOS app for Auto-connect, widgets, cellular, Network Profiles, and all-app VPN. Use Chrome when you work on a computer. One account ties both; Free weekly / Premium and device seats follow the account.',
+      },
+      {
+        title: 'Kill Switch, ad lists, and routing',
+        body:
+          'Kill Switch aims to stop Chrome from leaking if the proxy drops (browser-scoped, not OS-wide). Optional EasyList / AdGuard-style lists reduce ads and trackers. Site routing can send chosen hosts through the proxy while other tabs stay direct — still Chrome-only.',
       },
       {
         title: 'Setup in a few steps',
@@ -507,8 +564,8 @@ const EN: Record<LandingSlug, LandingContent> = {
     ],
     bullets: [
       'Same FollowNet account as iOS',
-      'Browser-side protection for Chrome — not full-device desktop VPN',
-      'Locations listed in the extension/app for your plan',
+      'Browser proxy + Kill Switch — not full-device desktop VPN',
+      'Optional EasyList / AdGuard-style ad blocking',
       'Free weekly traffic allowance for evaluation',
       'Premium optional for unlimited traffic under current terms',
     ],
@@ -617,14 +674,15 @@ const EN: Record<LandingSlug, LandingContent> = {
 };
 
 /** Related guides shown at the bottom of each landing page (internal linking). */
-export const LANDING_RELATED: Record<LandingSlug, LandingSlug[]> = {
+export const LANDING_RELATED: Record<CoreLandingSlug, LandingSlug[]> = {
   'vpn-for-iphone': ['how-to-setup-vpn-iphone', 'free-vpn-iphone', 'best-vpn-iphone', 'vpn-widgets-ios'],
   'wireguard-vpn-ios': ['hysteria2-vpn-ios', 'amneziawg-vpn-ios', 'smart-connect-vpn', 'vpn-speed-test-ios'],
   'free-vpn-iphone': ['vpn-for-iphone', 'how-to-setup-vpn-iphone', 'vpn-chrome-extension', 'no-logs-vpn'],
   'vpn-for-ipad': ['vpn-for-iphone', 'vpn-widgets-ios', 'auto-connect-vpn-ios', 'dns-vpn-ios'],
   'ikev2-vpn-ios': ['wireguard-vpn-ios', 'hysteria2-vpn-ios', 'smart-connect-vpn', 'vpn-for-gaming-iphone'],
   'vpn-for-wifi': ['auto-connect-vpn-ios', 'secure-vpn-iphone', 'vpn-for-streaming-iphone', 'smart-connect-vpn'],
-  'smart-connect-vpn': ['hysteria2-vpn-ios', 'amneziawg-vpn-ios', 'wireguard-vpn-ios', 'vpn-for-travel'],
+  'smart-connect-vpn': ['network-profiles-ios', 'hysteria2-vpn-ios', 'amneziawg-vpn-ios', 'vless-reality-ios'],
+  'network-profiles-ios': ['smart-connect-vpn', 'auto-connect-vpn-ios', 'dns-vpn-ios', 'vpn-for-wifi'],
   'amneziawg-vpn-ios': ['smart-connect-vpn', 'hysteria2-vpn-ios', 'wireguard-vpn-ios', 'vpn-for-travel'],
   'no-logs-vpn': ['secure-vpn-iphone', 'dns-vpn-ios', 'free-vpn-iphone', 'vpn-chrome-extension'],
   'auto-connect-vpn-ios': ['vpn-for-wifi', 'vpn-widgets-ios', 'vpn-for-travel', 'how-to-setup-vpn-iphone'],
@@ -634,14 +692,68 @@ export const LANDING_RELATED: Record<LandingSlug, LandingSlug[]> = {
   'vpn-speed-test-ios': ['vpn-for-gaming-iphone', 'vpn-for-streaming-iphone', 'wireguard-vpn-ios', 'hysteria2-vpn-ios'],
   'secure-vpn-iphone': ['auto-connect-vpn-ios', 'dns-vpn-ios', 'no-logs-vpn', 'vpn-for-wifi'],
   'hysteria2-vpn-ios': ['smart-connect-vpn', 'amneziawg-vpn-ios', 'wireguard-vpn-ios', 'vpn-speed-test-ios'],
-  'vpn-chrome-extension': ['vpn-for-iphone', 'free-vpn-iphone', 'no-logs-vpn', 'how-to-setup-vpn-iphone'],
+  'vpn-chrome-extension': ['vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-ad-blocking-chrome', 'vpn-for-iphone'],
   'vpn-widgets-ios': ['auto-connect-vpn-ios', 'how-to-setup-vpn-iphone', 'vpn-for-iphone', 'secure-vpn-iphone'],
   'how-to-setup-vpn-iphone': ['vpn-for-iphone', 'free-vpn-iphone', 'auto-connect-vpn-ios', 'vpn-widgets-ios'],
   'vpn-for-streaming-iphone': ['vpn-speed-test-ios', 'wireguard-vpn-ios', 'vpn-for-wifi', 'best-vpn-iphone'],
   'vpn-for-gaming-iphone': ['vpn-speed-test-ios', 'wireguard-vpn-ios', 'ikev2-vpn-ios', 'smart-connect-vpn'],
 };
 
+const EXTRA_RELATED_DEFAULT: LandingSlug[] = [
+  'vpn-for-iphone',
+  'how-to-setup-vpn-iphone',
+  'vpn-chrome-extension',
+  'free-vpn-iphone',
+];
+
+export function landingRelated(slug: LandingSlug): LandingSlug[] {
+  if (isExtraLandingSlug(slug)) {
+    if (slug.includes('chrome')) {
+      return ['vpn-chrome-extension', 'vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-for-iphone'];
+    }
+    if (slug === 'vless-reality-ios' || slug === 'obfuscated-vpn-ios') {
+      return ['smart-connect-vpn', 'network-profiles-ios', 'amneziawg-vpn-ios', 'hysteria2-vpn-ios'];
+    }
+    if (
+      slug.includes('youtube') ||
+      slug.includes('netflix') ||
+      slug.includes('tiktok') ||
+      slug.includes('spotify') ||
+      slug.includes('instagram')
+    ) {
+      return ['vpn-for-streaming-iphone', 'vpn-speed-test-ios', 'vpn-for-wifi', 'free-vpn-iphone'];
+    }
+    if (slug.includes('telegram') || slug.includes('whatsapp') || slug.includes('discord')) {
+      return ['smart-connect-vpn', 'vpn-speed-test-ios', 'obfuscated-vpn-ios', 'vpn-for-wifi'];
+    }
+    if (slug.includes('wifi') || slug.includes('hotel') || slug.includes('airport') || slug.includes('cafe') || slug.includes('captive')) {
+      return ['vpn-for-wifi', 'network-profiles-ios', 'auto-connect-vpn-ios', 'smart-connect-vpn'];
+    }
+    if (slug.includes('beginner') || slug.startsWith('what-is') || slug.startsWith('how-vpn') || slug.startsWith('do-i-need')) {
+      return ['how-to-setup-vpn-iphone', 'free-vpn-iphone', 'vpn-for-iphone', 'vpn-for-beginners'];
+    }
+    if (slug.includes('not-connecting') || slug.includes('slow') || slug.includes('disconnect')) {
+      return ['how-to-setup-vpn-iphone', 'smart-connect-vpn', 'vpn-speed-test-ios', 'captive-portal-vpn-iphone'];
+    }
+    if (slug.includes('free') || slug.includes('premium') || slug.includes('family') || slug.includes('paid')) {
+      return ['free-vpn-iphone', 'vpn-premium-unlimited', 'vpn-family-devices', 'vpn-for-iphone'];
+    }
+    if (slug.includes('dns') || slug.includes('server') || slug.includes('kill-switch') || slug.includes('split')) {
+      return ['dns-vpn-ios', 'vpn-chrome-extension', 'network-profiles-ios', 'smart-connect-vpn'];
+    }
+    if (slug.includes('fastest') || slug.includes('hide-ip')) {
+      return ['vpn-speed-test-ios', 'secure-vpn-iphone', 'no-logs-vpn', 'best-vpn-iphone'];
+    }
+    if (slug.includes('no-account') || slug.includes('email-login') || slug.includes('qr-login')) {
+      return ['free-vpn-iphone', 'vpn-email-login', 'vpn-for-iphone', 'how-to-setup-vpn-iphone'];
+    }
+    return EXTRA_RELATED_DEFAULT;
+  }
+  return LANDING_RELATED[slug] ?? EXTRA_RELATED_DEFAULT;
+}
+
 export function landingContent(slug: LandingSlug, lang: AppLang): LandingContent {
+  if (isExtraLandingSlug(slug)) return extraLandingContent(slug, lang);
   if (lang === 'en') return EN[slug];
   if (lang === 'ru') return RU[slug];
   return localizedLandingContent(slug, lang);

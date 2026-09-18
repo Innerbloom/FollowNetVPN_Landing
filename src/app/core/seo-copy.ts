@@ -56,6 +56,9 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean === '/about') {
     return aboutByLang[lang];
   }
+  if (clean === '/press') {
+    return pressByLang[lang];
+  }
   if (clean === '/support') {
     return supportByLang[lang];
   }
@@ -80,7 +83,7 @@ const guidesByLang: Record<AppLang, SeoCopy> = {
     title: 'FollowNet guides — iOS VPN protocols & setup',
     ogTitle: 'FollowNet guides',
     description:
-      'FollowNet VPN guides: iPhone setup, protocols, Smart Connect, weekly Free limits, public Wi‑Fi, travel, and the browser-only Chrome extension.',
+      'FollowNet VPN guides: WireGuard, VLESS Reality, Smart Connect, weekly Free limits, public Wi‑Fi, travel, and the Chrome extension.',
   },
   ru: {
     title: 'Гайды FollowNet — протоколы и настройка VPN на iOS',
@@ -345,6 +348,51 @@ const aboutByLang: Record<AppLang, SeoCopy> = {
   },
 };
 
+const pressByLang: Record<AppLang, SeoCopy> = {
+  en: {
+    title: 'Press & media kit — FollowNet VPN',
+    ogTitle: 'FollowNet press kit',
+    description:
+      'Boilerplate, App Store & Chrome links, brand assets, and accurate product facts for journalists, directories, and partners.',
+  },
+  ru: {
+    title: 'Пресс‑кит — FollowNet VPN',
+    ogTitle: 'Пресс‑кит FollowNet',
+    description:
+      'Бойлерплейт, ссылки App Store и Chrome, ассеты и честные факты о продукте для СМИ, каталогов и партнёров.',
+  },
+  uk: {
+    title: 'Прес‑кіт — FollowNet VPN',
+    ogTitle: 'Прес‑кіт FollowNet',
+    description:
+      'Бойлерплейт, посилання App Store і Chrome, ассети та чесні факти про продукт для ЗМІ, каталогів і партнерів.',
+  },
+  de: {
+    title: 'Presse- & Media-Kit — FollowNet VPN',
+    ogTitle: 'FollowNet Presse-Kit',
+    description:
+      'Boilerplate, App-Store- und Chrome-Links, Markenassets und ehrliche Produktfakten für Journalisten und Verzeichnisse.',
+  },
+  es: {
+    title: 'Kit de prensa — FollowNet VPN',
+    ogTitle: 'Kit de prensa FollowNet',
+    description:
+      'Boilerplate, enlaces de App Store y Chrome, assets y hechos precisos del producto para prensa y directorios.',
+  },
+  fr: {
+    title: 'Kit presse — FollowNet VPN',
+    ogTitle: 'Kit presse FollowNet',
+    description:
+      'Boilerplate, liens App Store et Chrome, assets et faits produit exacts pour journalistes et annuaires.',
+  },
+  pt: {
+    title: 'Kit de imprensa — FollowNet VPN',
+    ogTitle: 'Kit de imprensa FollowNet',
+    description:
+      'Boilerplate, links da App Store e Chrome, assets e fatos precisos do produto para imprensa e diretórios.',
+  },
+};
+
 const supportByLang: Record<AppLang, SeoCopy> = {
   en: {
     title: 'FollowNet support — connection, billing, Chrome',
@@ -475,46 +523,46 @@ const blogIndexByLang: Record<AppLang, SeoCopy> = {
 
 const homeByLang: Record<AppLang, SeoCopy> = {
   ru: {
-    title: 'FollowNet VPN — VPN для iPhone и iOS | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — VPN для iPhone и iOS | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — быстрый VPN для iOS',
     description:
-      'VPN для iPhone: Smart Connect, IKEv2, WireGuard и AmneziaWG, Hysteria2 бесплатно. DNS‑профили, Speed Test, виджеты. Premium — премиум‑серверы и безлимит в App Store.',
+      'VPN для iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality и Smart Connect. Free с недельным лимитом, Premium безлимит. DNS, Speed Test, виджеты — App Store.',
   },
   uk: {
-    title: 'FollowNet VPN — VPN для iPhone та iOS | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — VPN для iPhone та iOS | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — швидкий VPN для iOS',
     description:
-      'VPN для iPhone: Smart Connect, IKEv2, WireGuard і AmneziaWG, Hysteria2 безкоштовно. DNS‑профілі, Speed Test, віджети. Premium — преміум‑сервери та безліміт у App Store.',
+      'VPN для iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality і Smart Connect. Free з тижневим лімітом, Premium безліміт. DNS, Speed Test, віджети — App Store.',
   },
   en: {
-    title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & IKEv2',
+    title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & VLESS',
     ogTitle: 'FollowNet — VPN for iPhone & iOS',
     description:
-      'Free VPN for iPhone: WireGuard, IKEv2, and Smart Connect for blocked networks. Auto-connect, DNS profiles, Speed Test. Download on the US App Store — Premium optional.',
+      'Free VPN for iPhone with weekly traffic: WireGuard, AmneziaWG, Hysteria2, VLESS Reality, and Smart Connect. Premium unlocks unlimited data. Download on the App Store.',
   },
   de: {
-    title: 'FollowNet VPN — iOS VPN für iPhone | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — iOS VPN für iPhone | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — schneller VPN für iOS',
     description:
-      'iOS VPN mit Smart Connect, IKEv2, WireGuard und AmneziaWG, Hysteria2 in Free. DNS‑Profile, Speedtest, Widgets. Premium: Premium‑Server und unbegrenzter Traffic im App Store.',
+      'iOS‑VPN mit WireGuard, AmneziaWG, Hysteria2, VLESS Reality und Smart Connect. Free mit Wochenlimit, Premium unbegrenzt. DNS, Speed Test, Widgets — App Store.',
   },
   es: {
-    title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — VPN rápido para iOS',
     description:
-      'VPN para iOS con Smart Connect, IKEv2, WireGuard y AmneziaWG, Hysteria2 en Free. Perfiles DNS, Speed Test y widgets. Premium: servidores premium y tráfico ilimitado en App Store.',
+      'VPN para iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality y Smart Connect. Free con límite semanal, Premium ilimitado. DNS, Speed Test y widgets — App Store.',
   },
   fr: {
-    title: 'FollowNet VPN — VPN iOS pour iPhone | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — VPN iOS pour iPhone | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — VPN rapide pour iOS',
     description:
-      'VPN iOS avec Smart Connect, IKEv2, WireGuard et AmneziaWG, Hysteria2 en Free. Profils DNS, Speed Test, widgets. Premium : serveurs premium et trafic illimité via l’App Store.',
+      'VPN iPhone : WireGuard, AmneziaWG, Hysteria2, VLESS Reality et Smart Connect. Free avec quota hebdo, Premium illimité. DNS, Speed Test, widgets — App Store.',
   },
   pt: {
-    title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, AmneziaWG',
+    title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — VPN rápido para iOS',
     description:
-      'VPN iOS com Smart Connect, IKEv2, WireGuard e AmneziaWG, Hysteria2 no Free. Perfis DNS, Speed Test e widgets. Premium: servidores premium e tráfego ilimitado na App Store.',
+      'VPN para iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality e Smart Connect. Free com limite semanal, Premium ilimitado. DNS, Speed Test e widgets — App Store.',
   },
 };
 

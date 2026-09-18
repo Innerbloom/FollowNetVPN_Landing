@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
-import { landingContent, LANDING_RELATED, type LandingContent } from '../../core/seo-landing.content';
+import { landingContent, landingRelated, type LandingContent } from '../../core/seo-landing.content';
 import { isLandingSlug, landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
 import { environment } from '../../../environments/environment';
 import { appStoreUrl } from '../../core/app-store-url';
@@ -36,7 +36,7 @@ export class SeoLandingComponent implements OnInit {
     const slug = isLandingSlug(path) ? path : null;
     this.slug = slug;
     if (!slug) return;
-    this.related = LANDING_RELATED[slug] ?? [];
+    this.related = landingRelated(slug);
     this.applyContent(slug);
     this.i18n.lang$.subscribe(() => this.applyContent(slug));
   }
