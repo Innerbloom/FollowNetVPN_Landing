@@ -70,6 +70,13 @@ export const routes: Routes = [
           import('./pages/press/press.component').then((m) => m.PressPageComponent),
       },
       {
+        path: 'affiliates',
+        loadComponent: () =>
+          import('./pages/affiliates/affiliates.component').then(
+            (m) => m.AffiliatesPageComponent,
+          ),
+      },
+      {
         path: 'support',
         loadComponent: () =>
           import('./pages/support/support.component').then((m) => m.SupportPageComponent),

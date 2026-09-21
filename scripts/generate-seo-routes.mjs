@@ -67,6 +67,7 @@ const staticPaths = [
   '/download/chrome',
   '/about',
   '/press',
+  '/affiliates',
   '/support',
   '/status',
 ];
@@ -120,6 +121,7 @@ ${urlEntry('/download/ios', '0.8')}
 ${urlEntry('/download/chrome', '0.8')}
 ${urlEntry('/about', '0.7')}
 ${urlEntry('/press', '0.75')}
+${urlEntry('/affiliates', '0.75')}
 ${urlEntry('/support', '0.75')}
 ${urlEntry('/status', '0.55')}
 ${urlEntry('/privacy', '0.5')}

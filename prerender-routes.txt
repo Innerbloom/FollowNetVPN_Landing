@@ -9,6 +9,7 @@
 /download/chrome
 /about
 /press
+/affiliates
 /support
 /status
 /vpn-for-iphone
@@ -176,6 +177,12 @@
 /press?lang=fr
 /press?lang=pt
 /press?lang=uk
+/affiliates?lang=ru
+/affiliates?lang=de
+/affiliates?lang=es
+/affiliates?lang=fr
+/affiliates?lang=pt
+/affiliates?lang=uk
 /support?lang=ru
 /support?lang=de
 /support?lang=es

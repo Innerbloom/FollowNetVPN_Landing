@@ -59,6 +59,9 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean === '/press') {
     return pressByLang[lang];
   }
+  if (clean === '/affiliates') {
+    return affiliatesByLang[lang];
+  }
   if (clean === '/support') {
     return supportByLang[lang];
   }
@@ -390,6 +393,51 @@ const pressByLang: Record<AppLang, SeoCopy> = {
     ogTitle: 'Kit de imprensa FollowNet',
     description:
       'Boilerplate, links da App Store e Chrome, assets e fatos precisos do produto para imprensa e diretórios.',
+  },
+};
+
+const affiliatesByLang: Record<AppLang, SeoCopy> = {
+  en: {
+    title: 'FollowNet affiliates — 30% revenue share',
+    ogTitle: 'FollowNet partner program',
+    description:
+      'Promote FollowNet VPN and earn 30% of qualifying Premium payments. AppsFlyer OneLink tracking. Apply at support@follow-net.com.',
+  },
+  ru: {
+    title: 'Партнёрка FollowNet — 30% с оплат',
+    ogTitle: 'Партнёрская программа FollowNet',
+    description:
+      'Рекламируйте FollowNet VPN и получайте 30% с подходящих Premium-оплат. Трекинг AppsFlyer OneLink. Заявка: support@follow-net.com.',
+  },
+  uk: {
+    title: 'Партнерка FollowNet — 30% з оплат',
+    ogTitle: 'Партнерська програма FollowNet',
+    description:
+      'Просувайте FollowNet VPN і отримуйте 30% з відповідних Premium-оплат. Трекінг AppsFlyer OneLink. Заявка: support@follow-net.com.',
+  },
+  de: {
+    title: 'FollowNet-Partner — 30% Revenue Share',
+    ogTitle: 'FollowNet Partnerprogramm',
+    description:
+      'Bewerben Sie FollowNet VPN und verdienen Sie 30% an Premium-Zahlungen. AppsFlyer OneLink. Bewerbung: support@follow-net.com.',
+  },
+  es: {
+    title: 'Afiliados FollowNet — 30% de comisión',
+    ogTitle: 'Programa de partners FollowNet',
+    description:
+      'Promociona FollowNet VPN y gana el 30% de pagos Premium. AppsFlyer OneLink. Solicita: support@follow-net.com.',
+  },
+  fr: {
+    title: 'Affiliation FollowNet — 30% de commission',
+    ogTitle: 'Programme partenaires FollowNet',
+    description:
+      'Poussez FollowNet VPN et gagnez 30% sur les paiements Premium. AppsFlyer OneLink. Candidature : support@follow-net.com.',
+  },
+  pt: {
+    title: 'Afiliados FollowNet — 30% de comissão',
+    ogTitle: 'Programa de parceiros FollowNet',
+    description:
+      'Promova o FollowNet VPN e ganhe 30% dos pagamentos Premium. AppsFlyer OneLink. Candidate-se: support@follow-net.com.',
   },
 };
 

@@ -15,14 +15,14 @@ import { environment } from '../../../environments/environment';
 })
 export class HeaderComponent {
   readonly iosAppStoreUrl = appStoreUrl('header');
-  logoSrc = '/assets/new_logo.png?v=fn3';
+  logoSrc = '/assets/new_logo.png?v=fn5';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
   readonly langs = SUPPORTED_LANGS;
   isLangOpen = false;
 
   onLogoError() {
-    this.logoSrc = '/assets/logo.png?v=fn3';
+    this.logoSrc = '/assets/logo.png?v=fn5';
   }
 
   constructor(

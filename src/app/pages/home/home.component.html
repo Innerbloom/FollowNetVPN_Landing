@@ -291,7 +291,7 @@
       </div>
       <div class="apps">
         <div class="app-card app-card--primary">
-          <div class="app-icon" aria-hidden="true">
+          <div class="app-icon app-icon--apple" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/>
             </svg>
@@ -306,18 +306,34 @@
             >{{ i18n.t('NAV_DOWNLOAD') }}</a
           >
         </div>
-        <div class="app-card">
-          <div class="app-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9.1" stroke="currentColor" stroke-width="1.7"/>
-              <circle cx="12" cy="12" r="3.5" fill="currentColor"/>
-              <path d="M12 2.9v5.6M5.1 7.4l4.2 3.5M18.9 7.4l-4.2 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <div class="app-card app-card--primary">
+          <div class="app-icon app-icon--chrome" aria-hidden="true">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fnChromeRed" x1="3.2" y1="15" x2="44.8" y2="15" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#d93025"/>
+                  <stop offset="1" stop-color="#ea4335"/>
+                </linearGradient>
+                <linearGradient id="fnChromeYellow" x1="20.7" y1="47.7" x2="41.5" y2="11.7" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#fcc934"/>
+                  <stop offset="1" stop-color="#fbbc04"/>
+                </linearGradient>
+                <linearGradient id="fnChromeGreen" x1="26.6" y1="46.5" x2="5.8" y2="10.5" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#1e8e3e"/>
+                  <stop offset="1" stop-color="#34a853"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#fnChromeRed)" d="M24 12h20.78A24 24 0 0 0 3.22 12.003L13.61 30l.01-.002A12 12 0 0 1 24 12z"/>
+              <path fill="url(#fnChromeYellow)" d="M34.39 30.003 24 48A24 24 0 0 0 44.78 12.003H24l-.003.009A12 12 0 0 1 34.39 30.003z"/>
+              <path fill="url(#fnChromeGreen)" d="M13.61 30.003 3.22 12.006A24 24 0 0 0 24.002 48L34.39 30.003l-.007-.007a12 12 0 0 1-20.778.007z"/>
+              <circle cx="24" cy="24" r="12" fill="#fff"/>
+              <circle cx="24" cy="24" r="9.5" fill="#1a73e8"/>
             </svg>
           </div>
           <div class="app-title">{{ i18n.t('CHROME_EXT_TITLE') }}</div>
           <div class="app-sub">{{ i18n.t('CHROME_EXT_SUB') }}</div>
           <a
-            class="btn ghost app-btn"
+            class="btn primary app-btn"
             [href]="chromeWebStoreUrl"
             target="_blank"
             rel="noopener noreferrer"
