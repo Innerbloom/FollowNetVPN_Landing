@@ -1,220 +1,413 @@
 import { AppLang } from './i18n.service';
-import type { ProductPage } from './product-pages.content';
 
-/** Press / media kit — linkable page for journalists, directories, and partners. */
-const PRESS: Record<AppLang, ProductPage> = {
+export type PressLink = {
+  label: string;
+  href: string;
+};
+
+export type PressAsset = {
+  label: string;
+  href: string;
+  /** Path for on-page preview (same as href for PNG assets). */
+  preview: string;
+  kind: 'logo' | 'icon' | 'og';
+};
+
+export type PressKit = {
+  kicker: string;
+  h1: string;
+  lead: string;
+  boilerplateTitle: string;
+  boilerplate: string;
+  linksTitle: string;
+  links: PressLink[];
+  guidanceTitle: string;
+  sayTitle: string;
+  say: string[];
+  avoidTitle: string;
+  avoid: string[];
+  brandTitle: string;
+  brandNoteBefore: string;
+  brandNoteAfter: string;
+  supportEmail: string;
+  assets: PressAsset[];
+  factsTitle: string;
+  facts: string[];
+};
+
+const SITE = 'https://follow-net.com';
+const APP_STORE =
+  'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829';
+const CHROME =
+  'https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk';
+const PRIVACY = `${SITE}/privacy`;
+const LOGO = '/assets/new_logo.png';
+const ICON = '/assets/logo-180.png';
+const OG = '/og/og.png';
+const SUPPORT = 'support@follow-net.com';
+
+function assets(labels: { logo: string; icon: string; og: string }): PressAsset[] {
+  return [
+    { label: labels.logo, href: LOGO, preview: LOGO, kind: 'logo' },
+    { label: labels.icon, href: ICON, preview: ICON, kind: 'icon' },
+    { label: labels.og, href: OG, preview: OG, kind: 'og' },
+  ];
+}
+
+function links(labels: {
+  website: string;
+  appStore: string;
+  chrome: string;
+  privacy: string;
+}): PressLink[] {
+  return [
+    { label: labels.website, href: SITE },
+    { label: labels.appStore, href: APP_STORE },
+    { label: labels.chrome, href: CHROME },
+    { label: labels.privacy, href: PRIVACY },
+    { label: SUPPORT, href: `mailto:${SUPPORT}` },
+  ];
+}
+
+const PRESS: Record<AppLang, PressKit> = {
   en: {
     kicker: 'Press',
-    h1: 'FollowNet press & media kit',
+    h1: 'FollowNet press kit',
     lead:
-      'Facts, links, and assets for journalists, review sites, directories, and partners. Use this page when you mention FollowNet — no fake audits, no inflated server counts.',
-    blocks: [
-      {
-        title: 'Boilerplate',
-        body: 'FollowNet is an iOS VPN for iPhone and iPad with a Chrome browser extension. It ships WireGuard, IKEv2, AmneziaWG, Hysteria2, and VLESS Reality, plus Smart Connect for restrictive networks. Free includes a weekly traffic allowance; Premium unlocks unlimited traffic and up to 5 devices via the App Store.',
-      },
-      {
-        title: 'Key links',
-        body: 'Website: https://follow-net.com · App Store: https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829 · Chrome Web Store: https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk · Privacy: https://follow-net.com/privacy · Support: support@follow-net.com · Press email: press@follow-net.com',
-      },
-      {
-        title: 'What to say (and not say)',
-        body: 'Accurate: weekly Free limit, Premium unlimited, five protocols, Smart Connect, email-code login, Chrome is browser-only. Avoid: “unlimited free forever,” fake independent audit badges, invented country counts, full macOS/Android apps, or an iOS leak-blocking kill switch (Kill Switch ships in Chrome).',
-      },
-      {
-        title: 'Assets',
-        body: 'Logo and screenshots live under https://follow-net.com/assets/ and https://follow-net.com/og/og.png. For high-res brand files or a quote, email press@follow-net.com.',
-      },
+      'Facts and brand files for journalists, directories, and partners. Cite FollowNet from this page — no fake audits, no inflated server counts.',
+    boilerplateTitle: 'Boilerplate',
+    boilerplate:
+      'FollowNet is an iOS VPN for iPhone and iPad with a Chrome browser extension. It ships WireGuard, IKEv2, AmneziaWG, Hysteria2, and VLESS Reality, plus Smart Connect for restrictive networks. Free includes a weekly traffic allowance; Premium unlocks unlimited traffic and up to 5 devices via the App Store.',
+    linksTitle: 'Key links',
+    links: links({
+      website: 'Website',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Privacy',
+    }),
+    guidanceTitle: 'What to say',
+    sayTitle: 'Accurate',
+    say: [
+      'Weekly Free traffic limit; Premium is unlimited',
+      'Five protocols including VLESS Reality',
+      'Smart Connect for restrictive networks',
+      'Email-code login; Chrome is browser-only',
     ],
-    bullets: [
+    avoidTitle: 'Avoid',
+    avoid: [
+      '“Unlimited free forever”',
+      'Fake independent audit badges',
+      'Invented country or server counts',
+      'Claiming full macOS / Android apps today',
+      'iOS leak-blocking kill switch (that’s in Chrome)',
+    ],
+    brandTitle: 'Brand files',
+    brandNoteBefore: 'Need a quote or another export — ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Logo',
+      icon: 'App icon',
+      og: 'Social / OG',
+    }),
+    factsTitle: 'At a glance',
+    facts: [
       'iOS VPN + Chrome extension',
       'Free weekly · Premium unlimited',
       'WireGuard · AmneziaWG · Hysteria2 · VLESS Reality · IKEv2',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   ru: {
     kicker: 'Пресса',
     h1: 'FollowNet — пресс‑кит',
     lead:
-      'Факты, ссылки и ассеты для журналистов, обзоров, каталогов и партнёров. Упоминайте FollowNet по этой странице — без фейковых аудитов и завышенных цифр.',
-    blocks: [
-      {
-        title: 'Коротко о продукте',
-        body: 'FollowNet — VPN для iPhone и iPad плюс расширение Chrome. Протоколы: WireGuard, IKEv2, AmneziaWG, Hysteria2 и VLESS Reality, плюс Smart Connect. Free — с недельным лимитом; Premium — безлимит и до 5 устройств через App Store.',
-      },
-      {
-        title: 'Ссылки',
-        body: 'Сайт: https://follow-net.com · App Store: https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829 · Chrome Web Store · Privacy · support@follow-net.com · Пресса: press@follow-net.com',
-      },
-      {
-        title: 'Что писать (и чего не писать)',
-        body: 'Верно: недельный Free, Premium безлимит, пять протоколов, Smart Connect, вход по email‑коду, Chrome только для браузера. Неверно: «бесплатный безлимит навсегда», фейковые аудиты, выдуманные страны, macOS/Android сейчас, kill switch утечек на iOS (он есть в Chrome).',
-      },
-      {
-        title: 'Ассеты',
-        body: 'Логотип и скриншоты: https://follow-net.com/assets/ и https://follow-net.com/og/og.png. Hi‑res и цитаты — press@follow-net.com.',
-      },
+      'Факты и бренд‑файлы для журналистов, каталогов и партнёров. Упоминайте FollowNet по этой странице — без фейковых аудитов и завышенных цифр.',
+    boilerplateTitle: 'О продукте',
+    boilerplate:
+      'FollowNet — VPN для iPhone и iPad плюс расширение Chrome. Протоколы: WireGuard, IKEv2, AmneziaWG, Hysteria2 и VLESS Reality, плюс Smart Connect. Free — с недельным лимитом; Premium — безлимит и до 5 устройств через App Store.',
+    linksTitle: 'Ссылки',
+    links: links({
+      website: 'Сайт',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Privacy',
+    }),
+    guidanceTitle: 'Что писать',
+    sayTitle: 'Верно',
+    say: [
+      'Недельный лимит Free; Premium безлимит',
+      'Пять протоколов, включая VLESS Reality',
+      'Smart Connect для сложных сетей',
+      'Вход по email‑коду; Chrome только браузер',
     ],
-    bullets: [
+    avoidTitle: 'Не писать',
+    avoid: [
+      '«Бесплатный безлимит навсегда»',
+      'Фейковые независимые аудиты',
+      'Выдуманные страны и число серверов',
+      'Полноценные macOS / Android «уже сейчас»',
+      'Kill switch утечек на iOS (он в Chrome)',
+    ],
+    brandTitle: 'Бренд‑файлы',
+    brandNoteBefore: 'Нужна цитата или другой экспорт — ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Логотип',
+      icon: 'Иконка',
+      og: 'Для соцсетей',
+    }),
+    factsTitle: 'Коротко',
+    facts: [
       'iOS VPN + расширение Chrome',
       'Free — неделя · Premium — безлимит',
       'WireGuard · AmneziaWG · Hysteria2 · VLESS Reality · IKEv2',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   uk: {
     kicker: 'Преса',
     h1: 'FollowNet — прес‑кіт',
     lead:
-      'Факти, посилання та ассети для журналістів, оглядів, каталогів і партнерів. Згадуйте FollowNet за цією сторінкою — без фейкових аудитів.',
-    blocks: [
-      {
-        title: 'Коротко',
-        body: 'FollowNet — VPN для iPhone і iPad плюс розширення Chrome. Протоколи: WireGuard, IKEv2, AmneziaWG, Hysteria2 і VLESS Reality, плюс Smart Connect. Free — з тижневим лімітом; Premium — безліміт і до 5 пристроїв через App Store.',
-      },
-      {
-        title: 'Посилання',
-        body: 'Сайт: https://follow-net.com · App Store · Chrome Web Store · Privacy · support@follow-net.com · Преса: press@follow-net.com',
-      },
-      {
-        title: 'Що писати',
-        body: 'Вірно: тижневий Free, Premium безліміт, п’ять протоколів, Smart Connect, вхід за email‑кодом. Невірно: «безліміт назавжди безкоштовно», фейкові аудити, вигадані країни, macOS/Android зараз, iOS kill switch (є в Chrome).',
-      },
-      {
-        title: 'Ассети',
-        body: 'Логотип і скріншоти: https://follow-net.com/assets/ та og.png. Hi‑res — press@follow-net.com.',
-      },
+      'Факти та бренд‑файли для журналістів, каталогів і партнерів. Згадуйте FollowNet за цією сторінкою — без фейкових аудитів.',
+    boilerplateTitle: 'Про продукт',
+    boilerplate:
+      'FollowNet — VPN для iPhone і iPad плюс розширення Chrome. Протоколи: WireGuard, IKEv2, AmneziaWG, Hysteria2 і VLESS Reality, плюс Smart Connect. Free — з тижневим лімітом; Premium — безліміт і до 5 пристроїв через App Store.',
+    linksTitle: 'Посилання',
+    links: links({
+      website: 'Сайт',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Privacy',
+    }),
+    guidanceTitle: 'Що писати',
+    sayTitle: 'Вірно',
+    say: [
+      'Тижневий ліміт Free; Premium безліміт',
+      'П’ять протоколів, включно з VLESS Reality',
+      'Smart Connect для складних мереж',
+      'Вхід за email‑кодом; Chrome лише браузер',
     ],
-    bullets: [
+    avoidTitle: 'Не писати',
+    avoid: [
+      '«Безліміт назавжди безкоштовно»',
+      'Фейкові незалежні аудити',
+      'Вигадані країни й кількість серверів',
+      'Повноцінні macOS / Android «вже зараз»',
+      'Kill switch витоків на iOS (є в Chrome)',
+    ],
+    brandTitle: 'Бренд‑файли',
+    brandNoteBefore: 'Цитата чи інший експорт — ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Логотип',
+      icon: 'Іконка',
+      og: 'Для соцмереж',
+    }),
+    factsTitle: 'Коротко',
+    facts: [
       'iOS VPN + Chrome',
       'Free — тиждень · Premium — безліміт',
       '5 протоколів включно з VLESS Reality',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   de: {
     kicker: 'Presse',
-    h1: 'FollowNet Presse- & Media-Kit',
+    h1: 'FollowNet Presse-Kit',
     lead:
-      'Fakten, Links und Assets für Journalisten, Reviews, Verzeichnisse und Partner. Bitte FollowNet über diese Seite erwähnen — ohne Fake-Audits und aufgeblähte Serverzahlen.',
-    blocks: [
-      {
-        title: 'Kurzbeschreibung',
-        body: 'FollowNet ist ein iOS-VPN für iPhone und iPad plus Chrome-Erweiterung. Protokolle: WireGuard, IKEv2, AmneziaWG, Hysteria2 und VLESS Reality, dazu Smart Connect. Free mit Wochenlimit; Premium unbegrenzt und bis zu 5 Geräte über den App Store.',
-      },
-      {
-        title: 'Links',
-        body: 'Website: https://follow-net.com · App Store · Chrome Web Store · Datenschutz · support@follow-net.com · Presse: press@follow-net.com',
-      },
-      {
-        title: 'Formulierung',
-        body: 'Korrekt: Free-Wochenlimit, Premium unbegrenzt, fünf Protokolle, Smart Connect, E-Mail-Code-Login, Chrome nur Browser. Vermeiden: „unbegrenzt kostenlos für immer“, Fake-Audits, erfundene Länderzahlen, macOS/Android jetzt, iOS-Leak-Kill-Switch (gibt es in Chrome).',
-      },
-      {
-        title: 'Assets',
-        body: 'Logo und Screenshots: https://follow-net.com/assets/ und og.png. Hi-res: press@follow-net.com.',
-      },
+      'Fakten und Brand-Dateien für Journalisten, Verzeichnisse und Partner. Bitte FollowNet über diese Seite erwähnen — ohne Fake-Audits.',
+    boilerplateTitle: 'Kurzbeschreibung',
+    boilerplate:
+      'FollowNet ist ein iOS-VPN für iPhone und iPad plus Chrome-Erweiterung. Protokolle: WireGuard, IKEv2, AmneziaWG, Hysteria2 und VLESS Reality, dazu Smart Connect. Free mit Wochenlimit; Premium unbegrenzt und bis zu 5 Geräte über den App Store.',
+    linksTitle: 'Links',
+    links: links({
+      website: 'Website',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Datenschutz',
+    }),
+    guidanceTitle: 'Formulierung',
+    sayTitle: 'Korrekt',
+    say: [
+      'Free-Wochenlimit; Premium unbegrenzt',
+      'Fünf Protokolle inkl. VLESS Reality',
+      'Smart Connect für restriktive Netze',
+      'E-Mail-Code-Login; Chrome nur Browser',
     ],
-    bullets: [
+    avoidTitle: 'Vermeiden',
+    avoid: [
+      '„Unbegrenzt kostenlos für immer“',
+      'Fake-Audits',
+      'Erfundene Länder-/Serverzahlen',
+      'Vollständige macOS-/Android-Apps jetzt',
+      'iOS-Leak-Kill-Switch (gibt es in Chrome)',
+    ],
+    brandTitle: 'Brand-Dateien',
+    brandNoteBefore: 'Zitat oder anderes Format: ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Logo',
+      icon: 'App-Icon',
+      og: 'Social / OG',
+    }),
+    factsTitle: 'Kurz',
+    facts: [
       'iOS-VPN + Chrome-Erweiterung',
       'Free wöchentlich · Premium unbegrenzt',
       'WireGuard · AmneziaWG · Hysteria2 · VLESS Reality · IKEv2',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   es: {
     kicker: 'Prensa',
     h1: 'Kit de prensa FollowNet',
     lead:
-      'Hechos, enlaces y recursos para periodistas, reseñas, directorios y partners. Menciona FollowNet con esta página — sin auditorías falsas ni cifras infladas.',
-    blocks: [
-      {
-        title: 'Resumen',
-        body: 'FollowNet es un VPN para iPhone e iPad más extensión de Chrome. Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2 y VLESS Reality, más Smart Connect. Free con límite semanal; Premium ilimitado y hasta 5 dispositivos vía App Store.',
-      },
-      {
-        title: 'Enlaces',
-        body: 'Web: https://follow-net.com · App Store · Chrome Web Store · Privacidad · support@follow-net.com · Prensa: press@follow-net.com',
-      },
-      {
-        title: 'Qué decir',
-        body: 'Correcto: Free semanal, Premium ilimitado, cinco protocolos, Smart Connect, login por código email, Chrome solo navegador. Evitar: “gratis ilimitado para siempre”, auditorías falsas, países inventados, macOS/Android ya, kill switch anti-fugas en iOS (está en Chrome).',
-      },
-      {
-        title: 'Recursos',
-        body: 'Logo y capturas: https://follow-net.com/assets/ y og.png. Hi-res: press@follow-net.com.',
-      },
+      'Hechos y archivos de marca para periodistas, directorios y partners. Menciona FollowNet con esta página — sin auditorías falsas.',
+    boilerplateTitle: 'Resumen',
+    boilerplate:
+      'FollowNet es un VPN para iPhone e iPad más extensión de Chrome. Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2 y VLESS Reality, más Smart Connect. Free con límite semanal; Premium ilimitado y hasta 5 dispositivos vía App Store.',
+    linksTitle: 'Enlaces',
+    links: links({
+      website: 'Web',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Privacidad',
+    }),
+    guidanceTitle: 'Qué decir',
+    sayTitle: 'Correcto',
+    say: [
+      'Límite semanal Free; Premium ilimitado',
+      'Cinco protocolos, incl. VLESS Reality',
+      'Smart Connect para redes restrictivas',
+      'Login por código email; Chrome solo navegador',
     ],
-    bullets: [
+    avoidTitle: 'Evitar',
+    avoid: [
+      '“Gratis ilimitado para siempre”',
+      'Auditorías falsas',
+      'Países o servidores inventados',
+      'Apps macOS / Android completas ya',
+      'Kill switch anti-fugas en iOS (está en Chrome)',
+    ],
+    brandTitle: 'Archivos de marca',
+    brandNoteBefore: 'Cita u otro formato: ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Logo',
+      icon: 'Icono',
+      og: 'Social / OG',
+    }),
+    factsTitle: 'En breve',
+    facts: [
       'VPN iOS + extensión Chrome',
       'Free semanal · Premium ilimitado',
       '5 protocolos incl. VLESS Reality',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   fr: {
     kicker: 'Presse',
     h1: 'Kit presse FollowNet',
     lead:
-      'Faits, liens et assets pour journalistes, tests, annuaires et partenaires. Citez FollowNet via cette page — sans faux audits ni chiffres gonflés.',
-    blocks: [
-      {
-        title: 'En bref',
-        body: 'FollowNet est un VPN iOS pour iPhone et iPad plus une extension Chrome. Protocoles : WireGuard, IKEv2, AmneziaWG, Hysteria2 et VLESS Reality, plus Smart Connect. Free avec quota hebdo ; Premium illimité et jusqu’à 5 appareils via l’App Store.',
-      },
-      {
-        title: 'Liens',
-        body: 'Site : https://follow-net.com · App Store · Chrome Web Store · Confidentialité · support@follow-net.com · Presse : press@follow-net.com',
-      },
-      {
-        title: 'Formulation',
-        body: 'Exact : Free hebdo, Premium illimité, cinq protocoles, Smart Connect, connexion par code e-mail, Chrome navigateur uniquement. À éviter : « gratuit illimité pour toujours », faux audits, pays inventés, macOS/Android déjà, kill switch anti-fuite iOS (présent dans Chrome).',
-      },
-      {
-        title: 'Assets',
-        body: 'Logo et captures : https://follow-net.com/assets/ et og.png. Hi-res : press@follow-net.com.',
-      },
+      'Faits et fichiers de marque pour journalistes, annuaires et partenaires. Citez FollowNet via cette page — sans faux audits.',
+    boilerplateTitle: 'En bref',
+    boilerplate:
+      'FollowNet est un VPN iOS pour iPhone et iPad plus une extension Chrome. Protocoles : WireGuard, IKEv2, AmneziaWG, Hysteria2 et VLESS Reality, plus Smart Connect. Free avec quota hebdo ; Premium illimité et jusqu’à 5 appareils via l’App Store.',
+    linksTitle: 'Liens',
+    links: links({
+      website: 'Site',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Confidentialité',
+    }),
+    guidanceTitle: 'Formulation',
+    sayTitle: 'Exact',
+    say: [
+      'Quota Free hebdo ; Premium illimité',
+      'Cinq protocoles dont VLESS Reality',
+      'Smart Connect pour réseaux restrictifs',
+      'Connexion par code e-mail ; Chrome navigateur uniquement',
     ],
-    bullets: [
+    avoidTitle: 'À éviter',
+    avoid: [
+      '« Gratuit illimité pour toujours »',
+      'Faux audits',
+      'Pays ou serveurs inventés',
+      'Apps macOS / Android complètes déjà',
+      'Kill switch anti-fuite iOS (présent dans Chrome)',
+    ],
+    brandTitle: 'Fichiers de marque',
+    brandNoteBefore: 'Citation ou autre export : ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Logo',
+      icon: 'Icône',
+      og: 'Social / OG',
+    }),
+    factsTitle: 'En un coup d’œil',
+    facts: [
       'VPN iOS + extension Chrome',
       'Free hebdo · Premium illimité',
       '5 protocoles dont VLESS Reality',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
   pt: {
     kicker: 'Imprensa',
     h1: 'Kit de imprensa FollowNet',
     lead:
-      'Fatos, links e assets para jornalistas, reviews, diretórios e parceiros. Mencione o FollowNet por esta página — sem auditorias falsas nem números inflados.',
-    blocks: [
-      {
-        title: 'Resumo',
-        body: 'FollowNet é um VPN para iPhone e iPad mais extensão do Chrome. Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2 e VLESS Reality, mais Smart Connect. Free com limite semanal; Premium ilimitado e até 5 dispositivos via App Store.',
-      },
-      {
-        title: 'Links',
-        body: 'Site: https://follow-net.com · App Store · Chrome Web Store · Privacidade · support@follow-net.com · Imprensa: press@follow-net.com',
-      },
-      {
-        title: 'O que dizer',
-        body: 'Correto: Free semanal, Premium ilimitado, cinco protocolos, Smart Connect, login por código de e-mail, Chrome só navegador. Evitar: “grátis ilimitado para sempre”, auditorias falsas, países inventados, macOS/Android já, kill switch anti-vazamento no iOS (existe no Chrome).',
-      },
-      {
-        title: 'Assets',
-        body: 'Logo e capturas: https://follow-net.com/assets/ e og.png. Hi-res: press@follow-net.com.',
-      },
+      'Fatos e arquivos de marca para jornalistas, diretórios e parceiros. Mencione o FollowNet por esta página — sem auditorias falsas.',
+    boilerplateTitle: 'Resumo',
+    boilerplate:
+      'FollowNet é um VPN para iPhone e iPad mais extensão do Chrome. Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2 e VLESS Reality, mais Smart Connect. Free com limite semanal; Premium ilimitado e até 5 dispositivos via App Store.',
+    linksTitle: 'Links',
+    links: links({
+      website: 'Site',
+      appStore: 'App Store',
+      chrome: 'Chrome Web Store',
+      privacy: 'Privacidade',
+    }),
+    guidanceTitle: 'O que dizer',
+    sayTitle: 'Correto',
+    say: [
+      'Limite semanal Free; Premium ilimitado',
+      'Cinco protocolos, incl. VLESS Reality',
+      'Smart Connect para redes restritivas',
+      'Login por código de e-mail; Chrome só navegador',
     ],
-    bullets: [
+    avoidTitle: 'Evitar',
+    avoid: [
+      '“Grátis ilimitado para sempre”',
+      'Auditorias falsas',
+      'Países ou servidores inventados',
+      'Apps macOS / Android completos já',
+      'Kill switch anti-vazamento no iOS (existe no Chrome)',
+    ],
+    brandTitle: 'Arquivos de marca',
+    brandNoteBefore: 'Citação ou outro export: ',
+    brandNoteAfter: '.',
+    supportEmail: SUPPORT,
+    assets: assets({
+      logo: 'Logo',
+      icon: 'Ícone',
+      og: 'Social / OG',
+    }),
+    factsTitle: 'Em resumo',
+    facts: [
       'VPN iOS + extensão Chrome',
       'Free semanal · Premium ilimitado',
       '5 protocolos incl. VLESS Reality',
-      'press@follow-net.com',
+      SUPPORT,
     ],
   },
 };
 
-export function pressPage(lang: AppLang): ProductPage {
+export function pressKit(lang: AppLang): PressKit {
   return PRESS[lang];
 }

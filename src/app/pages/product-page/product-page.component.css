@@ -116,6 +116,46 @@
   font-weight: 500;
 }
 
+.prose-block a,
+.keypoints a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.prose-block p a,
+.keypoints a {
+  word-break: break-all;
+}
+
+.prose-block a:hover,
+.keypoints a:hover {
+  color: var(--green);
+}
+
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.35rem;
+}
+
+.link-list a {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--green) 55%, transparent);
+  padding-bottom: 0.05rem;
+}
+
+.link-list a:hover {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
 .keypoints {
   margin: 0;
   padding: 0;

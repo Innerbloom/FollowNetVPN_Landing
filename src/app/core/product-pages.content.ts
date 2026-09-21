@@ -1,8 +1,16 @@
 import { AppLang } from './i18n.service';
 
+export type ProductLink = {
+  label: string;
+  href: string;
+};
+
 export type ProductBlock = {
   title: string;
-  body: string;
+  /** Optional prose; omit when the block is only a link list. */
+  body?: string;
+  /** Short clickable labels (e.g. press Key links). */
+  links?: ProductLink[];
 };
 
 export type ProductPage = {

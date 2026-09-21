@@ -36,13 +36,23 @@
     <div class="prose">
       <section *ngFor="let b of p.blocks" class="prose-block">
         <h2>{{ b.title }}</h2>
-        <p>{{ b.body }}</p>
+        <p *ngIf="b.body" [innerHTML]="linkify(b.body)"></p>
+        <ul *ngIf="b.links?.length" class="link-list">
+          <li *ngFor="let link of b.links">
+            <a
+              [href]="link.href"
+              [attr.target]="link.href.startsWith('mailto:') ? null : '_blank'"
+              [attr.rel]="link.href.startsWith('mailto:') ? null : 'noopener noreferrer'"
+              >{{ link.label }}</a
+            >
+          </li>
+        </ul>
       </section>
 
       <section class="prose-block" *ngIf="p.bullets.length">
         <h2>{{ i18n.t('SEO_LANDING_KEYPOINTS') }}</h2>
         <ul class="keypoints">
-          <li *ngFor="let item of p.bullets">{{ item }}</li>
+          <li *ngFor="let item of p.bullets" [innerHTML]="linkify(item)"></li>
         </ul>
       </section>
     </div>

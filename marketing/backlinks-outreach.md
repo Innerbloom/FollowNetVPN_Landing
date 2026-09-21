@@ -19,7 +19,7 @@ Goal: move organic from ~8 on-page toward ~9 in SERP. Code cannot create links; 
 | Chrome Web Store | Keep description aligned with ASO honesty rules | Chrome URL |
 | Indie Hackers / Reddit r/vpn (no spam) | Product updates only, link guides not homepage spam | `/guides`, `/blog/...` |
 | Affiliate (FirstPromoter) | Give partners `/press` + landing URLs below | see commercial landings |
-| Journalists / VPN review blogs | Pitch: honest Free weekly + 5 protocols incl. VLESS | press@follow-net.com |
+| Journalists / VPN review blogs | Pitch: honest Free weekly + 5 protocols incl. VLESS | support@follow-net.com |
 | GitHub awesome-vpn / awesome-privacy (if accepted) | One-line accurate blurb | `/about` |
 | YouTube creators (RU/EN/DE) | Seed kit: screenshots + `/press` | App Store |
 

@@ -1,0 +1,93 @@
+<article class="press" *ngIf="kit as k">
+  <header class="press-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">FollowNet</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ k.kicker }}</span>
+      </nav>
+
+      <p class="kicker">{{ k.kicker }}</p>
+      <h1>{{ k.h1 }}</h1>
+      <p class="lead">{{ k.lead }}</p>
+
+      <div class="cta-row">
+        <a
+          class="btn primary"
+          [href]="appStoreHref"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
+        >
+        <a class="btn ghost" routerLink="/about">{{ i18n.t('NAV_ABOUT') }}</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container press-body">
+    <section class="block" aria-labelledby="press-boilerplate">
+      <h2 id="press-boilerplate">{{ k.boilerplateTitle }}</h2>
+      <p class="prose">{{ k.boilerplate }}</p>
+    </section>
+
+    <section class="block" aria-labelledby="press-links">
+      <h2 id="press-links">{{ k.linksTitle }}</h2>
+      <ul class="link-chips">
+        <li *ngFor="let link of k.links">
+          <a
+            [href]="link.href"
+            [attr.target]="isMail(link.href) ? null : '_blank'"
+            [attr.rel]="isMail(link.href) ? null : 'noopener noreferrer'"
+            >{{ link.label }}</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="press-guidance">
+      <h2 id="press-guidance">{{ k.guidanceTitle }}</h2>
+      <div class="guidance">
+        <div class="guidance-col say">
+          <h3>{{ k.sayTitle }}</h3>
+          <ul>
+            <li *ngFor="let item of k.say">{{ item }}</li>
+          </ul>
+        </div>
+        <div class="guidance-col avoid">
+          <h3>{{ k.avoidTitle }}</h3>
+          <ul>
+            <li *ngFor="let item of k.avoid">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="press-brand">
+      <h2 id="press-brand">{{ k.brandTitle }}</h2>
+      <p class="brand-note">
+        {{ k.brandNoteBefore
+        }}<a [href]="'mailto:' + k.supportEmail">{{ k.supportEmail }}</a
+        >{{ k.brandNoteAfter }}
+      </p>
+      <ul class="asset-grid">
+        <li *ngFor="let asset of k.assets">
+          <a
+            class="asset-card"
+            [href]="asset.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+          >
+            <span class="asset-preview" [attr.data-kind]="asset.kind">
+              <img [src]="asset.preview" [alt]="asset.label" />
+            </span>
+            <span class="asset-meta">
+              <span class="asset-label">{{ asset.label }}</span>
+              <span class="asset-action">PNG</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</article>

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
@@ -28,6 +29,7 @@ export class ProductPageComponent implements OnInit, OnChanges {
   constructor(
     public i18n: I18nService,
     private seo: SeoService,
+    private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
@@ -57,5 +59,24 @@ export class ProductPageComponent implements OnInit, OnChanges {
 
   resolvedSecondaryLabel(): string {
     return this.secondaryLabel || this.i18n.t('SEO_LANDING_BACK_HOME');
+  }
+
+  /** Turn bare https://… and emails into clickable anchors. */
+  linkify(text: string): SafeHtml {
+    const escaped = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+    const withUrls = escaped.replace(
+      /https?:\/\/[^\s·<]+/g,
+      (url) =>
+        `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`,
+    );
+    const withMails = withUrls.replace(
+      /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+      (email) => `<a href="mailto:${email}">${email}</a>`,
+    );
+    return this.sanitizer.bypassSecurityTrustHtml(withMails);
   }
 }
