@@ -176,15 +176,6 @@ const BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
     fr: { title: 'Notes de la feuille de route FollowNet pour 2026', excerpt: 'Vers où se dirige le produit : un peaufinage iOS plus approfondi, la parité Chrome là où cela compte et des protocoles qui survivent aux réseaux réels.' },
     pt: { title: 'Notas do roteiro da FollowNet para 2026', excerpt: 'Para onde o produto está indo: aprimoramento mais profundo do iOS, paridade do Chrome onde é importante e protocolos que sobrevivem a redes reais.' },
   },
-  'censorship-networks-amneziawg': {
-    en: { title: 'Restrictive networks and AmneziaWG: a field guide for FollowNet', excerpt: 'How DPI-shaped networks behave, when to try AmneziaWG or Hysteria2, and how Smart Connect fits without magic claims.' },
-    ru: { title: 'Жёсткие сети и AmneziaWG: полевой гайд для FollowNet', excerpt: 'Как ведут себя сети с DPI, когда пробовать AmneziaWG или Hysteria2 и где место Smart Connect без магических обещаний.' },
-    uk: { title: 'Обмежувальні мережі та AmneziaWG: польовий посібник для FollowNet', excerpt: 'Як поводяться мережі у формі DPI, коли спробувати AmneziaWG або Hysteria2 і як Smart Connect підходить без магічних претензій.' },
-    de: { title: 'Restriktive Netzwerke und AmneziaWG: ein Leitfaden für FollowNet', excerpt: 'Wie sich DPI-förmige Netzwerke verhalten, wann man AmneziaWG oder Hysteria2 ausprobieren sollte und wie Smart Connect ohne Zaubersprüche funktioniert.' },
-    es: { title: 'Redes restrictivas y AmneziaWG: una guía de campo para FollowNet', excerpt: 'Cómo se comportan las redes en forma de DPI, cuándo probar AmneziaWG o Hysteria2 y cómo encaja Smart Connect sin afirmaciones mágicas.' },
-    fr: { title: 'Réseaux restrictifs et AmneziaWG : un guide de terrain pour FollowNet', excerpt: 'Comment se comportent les réseaux en forme de DPI, quand essayer AmneziaWG ou Hysteria2 et comment Smart Connect s\'intègre sans prétention magique.' },
-    pt: { title: 'Redes restritivas e AmneziaWG: um guia de campo para FollowNet', excerpt: 'Como as redes em formato DPI se comportam, quando experimentar o AmneziaWG ou o Hysteria2 e como o Smart Connect se encaixa sem reivindicações mágicas.' },
-  },
 };
 
 const EXTRA_BLOG_SEO_MAP = EXTRA_BLOG_SEO;

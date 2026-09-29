@@ -119,7 +119,7 @@ const UK: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Restricted і VLESS', body: 'Restricted лишає Protocol на Smart — Smart Connect може піднятися до VLESS Reality, Hysteria2 чи AmneziaWG, коли шлях доступний.' },
       { title: 'Власні профілі', body: 'Збережіть рецепт готелю після Speed Test: протокол + DNS + автовмикання + конкретне місто.' },
     ] },
-  'amneziawg-vpn-ios': { h1: 'AmneziaWG для iOS — альтернатива у мережах із фільтрацією', lead: 'AmneziaWG базується на WireGuard і змінює впізнавані ознаки трафіку, що може допомогти в окремих мережах із DPI.', use: 'Спробуйте його, якщо звичайний WireGuard не підключається, а потім перевірте швидкість і стабільність на тому самому сервері.', limits: 'Обфускація не є гарантією обходу будь-якого блокування та може впливати на продуктивність.' },
+  'amneziawg-vpn-ios': { h1: 'AmneziaWG для iOS — покращений WireGuard для нестабільних мереж', lead: 'AmneziaWG базується на WireGuard і додає налаштування з’єднання, що допомагають у нестабільних або перевантажених мережах.', use: 'Спробуйте його, якщо звичайний WireGuard працює нестабільно, а потім перевірте швидкість і стабільність на тому самому сервері.', limits: 'Результат залежить від мережі; порівнюйте швидкість через Speed Test.' },
   'no-logs-vpn': { h1: 'Приватність FollowNet — мінімізація даних без абсолютних слоганів', lead: 'Коректніше читати Privacy Policy, ніж вірити слогану «нуль логів»: акаунт і підписка потребують службових даних.', use: 'Перед підключенням перевірте політику щодо акаунта, підписки, DNS, VPN, аналітики й підтримки на follow-net.com/privacy.', limits: 'Ми не заявляємо тут формальних no-logs audit, яких не публікували. Email-вхід і App Store потребують технічних даних; правила — у політиці.', extra: [
       { title: 'Чому не «absolute no-logs»', body: 'VPN з акаунтом не може працювати з буквальним нулем даних. Політика описує категорії, цілі та строки зберігання.' },
       { title: 'Free і Premium', body: 'Та сама Privacy Policy для тижневого Free і Premium. Ліміти тарифу й локації — у застосунку.' },
@@ -143,7 +143,6 @@ const UK: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Якщо не підключається', body: 'Перевірте дозвіл VPN, спробуйте Smart Connect, інший протокол або локацію зі списку в застосунку, і спочатку пройдіть captive portal у готелі.' },
       { title: 'Тижневий Free після налаштування', body: 'Картка не потрібна. Коли ліміту мало — Premium у App Store для безліміту та локацій тарифу, показаних у застосунку.' },
     ] },
-  'vpn-for-streaming-iphone': { h1: 'VPN для стримінгу на iPhone — швидкість без обіцянок розблокування', lead: 'FollowNet шифрує з’єднання й дає вибір серверів, але доступ до каталогів визначає сам стримінговий сервіс.', use: 'Оберіть близький сервер, перевірте швидкість і лише потім починайте довгу відеосесію, особливо в готельному Wi‑Fi.', limits: 'Жоден сервер не може гарантувати розблокування кожної платформи, країни чи конкретного каталогу.' },
   'vpn-for-gaming-iphone': { h1: 'VPN для ігор на iPhone — контролюйте затримку', lead: 'VPN корисний у ненадійних мережах, але додатковий маршрут може як допомогти, так і збільшити ping.', use: 'Почніть із близького сервера та WireGuard, виміряйте затримку, а за фільтрації перевірте Smart Connect або інший протокол.', limits: 'FollowNet не гарантує нижчий ping: якщо маршрут стає довшим, у довіреній мережі краще грати без VPN.' },
 };
 
@@ -171,7 +170,7 @@ const DE: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Restricted und VLESS', body: 'Restricted lässt Protocol auf Smart — Smart Connect kann zu VLESS Reality, Hysteria2 oder AmneziaWG aufsteigen.' },
       { title: 'Eigene Profile', body: 'Speichern Sie ein Hotel-Rezept nach Speedtest: Protokoll + DNS + Auto-Connect + spezifischer Standort.' },
     ] },
-  'amneziawg-vpn-ios': { h1: 'AmneziaWG für iOS — Option bei gefilterten Netzen', lead: 'AmneziaWG basiert auf WireGuard und verändert erkennbare Verkehrsmuster, was bei bestimmten DPI-Filtern helfen kann.', use: 'Probieren Sie es aus, wenn normales WireGuard scheitert, und vergleichen Sie anschließend Stabilität und Tempo.', limits: 'Verschleierung kann Sperren nicht zuverlässig in jedem Netz umgehen und kostet unter Umständen Leistung.' },
+  'amneziawg-vpn-ios': { h1: 'AmneziaWG für iOS — erweitertes WireGuard für instabile Netze', lead: 'AmneziaWG basiert auf WireGuard und ergänzt Verbindungs-Tuning, das in instabilen oder überlasteten Netzen helfen kann.', use: 'Probieren Sie es aus, wenn normales WireGuard instabil läuft, und vergleichen Sie anschließend Stabilität und Tempo.', limits: 'Das Ergebnis hängt vom Netz ab; vergleichen Sie das Tempo mit dem Speed Test.' },
   'no-logs-vpn': { h1: 'FollowNet Datenschutz — Datenminimierung statt Absolutversprechen', lead: 'Lesen Sie die Datenschutzerklärung statt eines „Null-Logs“-Slogans: Konto und Abo brauchen technische Daten.', use: 'Prüfen Sie vor dem Connect die Policy zu Konto, Abo, DNS, VPN, Analyse und Support unter follow-net.com/privacy.', limits: 'Keine behaupteten No-Logs-Audits auf dieser Seite. E-Mail-Login und App Store erfordern Metadaten; maßgeblich ist die veröffentlichte Richtlinie.', extra: [
       { title: 'Warum kein absolutes No-Logs', body: 'Ein kontobasiertes VPN kann nicht mit buchstäblich null Daten arbeiten. Die Policy nennt Kategorien, Zwecke und Fristen.' },
       { title: 'Free und Premium', body: 'Dieselbe Datenschutzerklärung gilt für Wochen-Free und Premium. Tariflimits und Standorte stehen in der App.' },
@@ -195,7 +194,6 @@ const DE: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Wenn die Verbindung scheitert', body: 'VPN-Erlaubnis prüfen, Smart Connect oder anderes Protokoll/Standort aus der App versuchen; Captive Portal zuerst abschließen.' },
       { title: 'Wochenlimit nach dem Setup', body: 'Keine Karte nötig. Reicht Free nicht — Premium im App Store für unbegrenzten Traffic und Tarif-Standorte in der App.' },
     ] },
-  'vpn-for-streaming-iphone': { h1: 'VPN für Streaming auf dem iPhone — Tempo ohne Entsperrgarantie', lead: 'FollowNet verschlüsselt die Verbindung und bietet Serverstandorte; über Katalogzugriff entscheidet der Streamingdienst.', use: 'Wählen Sie einen nahen Server und testen Sie das Tempo vor einer längeren Videositzung.', limits: 'Kein VPN-Server kann jede Plattform, Region oder Mediathek garantiert entsperren.' },
   'vpn-for-gaming-iphone': { h1: 'VPN für Gaming auf dem iPhone — Latenz zuerst messen', lead: 'In fremden Netzen kann ein VPN sinnvoll sein, doch der zusätzliche Weg kann den Ping auch erhöhen.', use: 'Beginnen Sie mit einem nahen Server und WireGuard; bei Filtern testen Sie Smart Connect.', limits: 'FollowNet garantiert keinen niedrigeren Ping; bei schlechterem Routing ist Spielen ohne VPN oft besser.' },
 };
 
@@ -223,7 +221,7 @@ const ES: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Restricted y VLESS', body: 'Restricted deja Protocol en Smart — Smart Connect puede subir a VLESS Reality, Hysteria2 o AmneziaWG.' },
       { title: 'Perfiles propios', body: 'Guarda una receta de hotel tras Speed Test: protocolo + DNS + auto-conexión + ciudad concreta.' },
     ] },
-  'amneziawg-vpn-ios': { h1: 'AmneziaWG para iOS — opción ante redes filtradas', lead: 'AmneziaWG se basa en WireGuard y modifica patrones reconocibles, algo útil frente a ciertos filtros DPI.', use: 'Pruébalo si WireGuard no conecta y compara después estabilidad y velocidad.', limits: 'La ofuscación no garantiza superar todos los bloqueos y puede reducir el rendimiento.' },
+  'amneziawg-vpn-ios': { h1: 'AmneziaWG para iOS — WireGuard mejorado para redes inestables', lead: 'AmneziaWG se basa en WireGuard y añade ajustes de conexión útiles en redes inestables o saturadas.', use: 'Pruébalo si WireGuard va inestable y compara después estabilidad y velocidad.', limits: 'El resultado depende de la red; compara la velocidad con el Speed Test.' },
   'no-logs-vpn': { h1: 'Privacidad en FollowNet — minimización sin absolutos', lead: 'Lee la Privacy Policy en lugar de creer un eslogan de «cero registros»: la cuenta y la suscripción requieren datos técnicos.', use: 'Antes de conectar, revisa la política sobre cuenta, suscripción, DNS, VPN, analítica y soporte en follow-net.com/privacy.', limits: 'No afirmamos aquí auditorías no-logs no publicadas. El login por email y App Store necesitan metadatos; manda la política publicada.', extra: [
       { title: 'Por qué no «no-logs absoluto»', body: 'Una VPN con cuenta no puede operar con cero datos literales. La política describe categorías, fines y retención.' },
       { title: 'Free y Premium', body: 'La misma Privacy Policy aplica al Free semanal y a Premium. Límites y ubicaciones están en la app.' },
@@ -247,7 +245,6 @@ const ES: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Si no conecta', body: 'Revisa el permiso VPN, prueba Smart Connect u otro protocolo/ubicación de la app; completa primero el portal cautivo del hotel.' },
       { title: 'Límite semanal tras el setup', body: 'No hace falta tarjeta. Si Free no alcanza — Premium en App Store para ilimitado y ubicaciones del plan en la app.' },
     ] },
-  'vpn-for-streaming-iphone': { h1: 'VPN para streaming en iPhone — velocidad sin promesas falsas', lead: 'FollowNet cifra la conexión y ofrece ubicaciones; el acceso al catálogo lo decide la plataforma.', use: 'Elige un servidor cercano y mide la velocidad antes de una sesión larga de vídeo.', limits: 'Ningún servidor garantiza desbloquear todas las plataformas, regiones o bibliotecas.' },
   'vpn-for-gaming-iphone': { h1: 'VPN para jugar en iPhone — mide primero la latencia', lead: 'Una VPN puede ser útil en redes ajenas, pero la ruta adicional también puede aumentar el ping.', use: 'Empieza con WireGuard y un servidor cercano; ante filtros, prueba Smart Connect.', limits: 'FollowNet no garantiza reducir el ping; si empeora la ruta, juega sin VPN en redes fiables.' },
 };
 
@@ -275,7 +272,7 @@ const FR: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Restricted et VLESS', body: 'Restricted laisse Protocol sur Smart — Smart Connect peut monter vers VLESS Reality, Hysteria2 ou AmneziaWG.' },
       { title: 'Profils perso', body: 'Enregistrez une recette d’hôtel après Speed Test : protocole + DNS + auto-connexion + ville précise.' },
     ] },
-  'amneziawg-vpn-ios': { h1: 'AmneziaWG pour iOS — option face aux réseaux filtrés', lead: 'Basé sur WireGuard, AmneziaWG modifie des signatures reconnaissables et peut aider face à certains filtres DPI.', use: 'Essayez-le si WireGuard échoue, puis comparez stabilité et débit.', limits: 'L’obfuscation ne contourne pas tous les blocages et peut réduire les performances.' },
+  'amneziawg-vpn-ios': { h1: 'AmneziaWG pour iOS — WireGuard renforcé pour réseaux instables', lead: 'Basé sur WireGuard, AmneziaWG ajoute des réglages de connexion utiles sur les réseaux instables ou saturés.', use: 'Essayez-le si WireGuard est instable, puis comparez stabilité et débit.', limits: 'Le résultat dépend du réseau ; comparez le débit avec le Speed Test.' },
   'no-logs-vpn': { h1: 'Confidentialité FollowNet — minimiser les données sans promesse absolue', lead: 'Lisez la Privacy Policy plutôt qu’un slogan « zéro logs » : compte et abonnement nécessitent des données techniques.', use: 'Avant de connecter, consultez la politique sur compte, abonnement, DNS, VPN, analytique et support sur follow-net.com/privacy.', limits: 'Nous n’affirmons pas ici d’audits no-logs non publiés. Connexion email et App Store exigent des métadonnées ; la politique publiée fait foi.', extra: [
       { title: 'Pourquoi pas de no-logs absolu', body: 'Un VPN avec compte ne peut pas fonctionner avec zéro donnée littérale. La politique décrit catégories, finalités et durées.' },
       { title: 'Free et Premium', body: 'La même Privacy Policy s’applique au Free hebdomadaire et à Premium. Limites et emplacements sont dans l’app.' },
@@ -299,7 +296,6 @@ const FR: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Si la connexion échoue', body: 'Vérifiez l’autorisation VPN, essayez Smart Connect ou un autre protocole/emplacement de l’app ; validez d’abord le portail captif.' },
       { title: 'Quota hebdomadaire après installation', body: 'Pas de carte requise. Si Free ne suffit pas — Premium via l’App Store pour l’illimité et les emplacements du tarif dans l’app.' },
     ] },
-  'vpn-for-streaming-iphone': { h1: 'VPN pour le streaming sur iPhone — débit sans garantie de déblocage', lead: 'FollowNet chiffre la connexion et propose des emplacements ; la plateforme décide de l’accès au catalogue.', use: 'Choisissez un serveur proche et mesurez le débit avant une longue session vidéo.', limits: 'Aucun serveur ne garantit le déblocage de toutes les plateformes ou médiathèques.' },
   'vpn-for-gaming-iphone': { h1: 'VPN pour jouer sur iPhone — mesurez d’abord la latence', lead: 'Un VPN aide sur un réseau inconnu, mais le détour peut aussi augmenter le ping.', use: 'Commencez par WireGuard et un serveur proche ; en cas de filtre, essayez Smart Connect.', limits: 'FollowNet ne garantit pas un ping plus bas ; sans bon routage, jouez sans VPN sur un réseau fiable.' },
 };
 
@@ -327,7 +323,7 @@ const PT: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Restricted e VLESS', body: 'Restricted deixa Protocol em Smart — Smart Connect pode subir para VLESS Reality, Hysteria2 ou AmneziaWG.' },
       { title: 'Perfis próprios', body: 'Guarde uma receita de hotel após Speed Test: protocolo + DNS + auto-conexão + cidade específica.' },
     ] },
-  'amneziawg-vpn-ios': { h1: 'AmneziaWG para iOS — opção em redes filtradas', lead: 'Baseado em WireGuard, o AmneziaWG altera padrões reconhecíveis e pode ajudar diante de certos filtros DPI.', use: 'Teste quando o WireGuard não conectar e compare estabilidade e velocidade.', limits: 'A ofuscação não supera todo bloqueio e pode afetar o desempenho.' },
+  'amneziawg-vpn-ios': { h1: 'AmneziaWG para iOS — WireGuard aprimorado para redes instáveis', lead: 'Baseado em WireGuard, o AmneziaWG adiciona ajustes de conexão úteis em redes instáveis ou congestionadas.', use: 'Teste quando o WireGuard estiver instável e compare estabilidade e velocidade.', limits: 'O resultado depende da rede; compare a velocidade com o Speed Test.' },
   'no-logs-vpn': { h1: 'Privacidade no FollowNet — minimização sem promessa absoluta', lead: 'Leia a Privacy Policy em vez de acreditar em slogan de «zero logs»: conta e assinatura exigem dados técnicos.', use: 'Antes de conectar, confira a política sobre conta, assinatura, DNS, VPN, análise e suporte em follow-net.com/privacy.', limits: 'Não afirmamos aqui auditorias no-logs não publicadas. Login por email e App Store precisam de metadados; vale a política publicada.', extra: [
       { title: 'Por que não «no-logs absoluto»', body: 'Uma VPN com conta não opera com zero dados literais. A política descreve categorias, finalidades e retenção.' },
       { title: 'Free e Premium', body: 'A mesma Privacy Policy vale para Free semanal e Premium. Limites e locais estão no app.' },
@@ -351,7 +347,6 @@ const PT: Record<CoreLandingSlug, LandingSeed> = {
       { title: 'Se não conectar', body: 'Verifique a permissão VPN, tente Smart Connect ou outro protocolo/local do app; conclua primeiro o portal cativo do hotel.' },
       { title: 'Limite semanal após o setup', body: 'Não precisa de cartão. Se o Free não bastar — Premium na App Store para ilimitado e locais do plano no app.' },
     ] },
-  'vpn-for-streaming-iphone': { h1: 'VPN para streaming no iPhone — velocidade sem promessa de desbloqueio', lead: 'O FollowNet criptografa a conexão e oferece locais; a plataforma decide o acesso ao catálogo.', use: 'Escolha um servidor próximo e meça a velocidade antes de uma sessão longa.', limits: 'Nenhum servidor garante desbloquear todas as plataformas, regiões ou bibliotecas.' },
   'vpn-for-gaming-iphone': { h1: 'VPN para jogos no iPhone — meça a latência', lead: 'Uma VPN ajuda em redes desconhecidas, mas a rota extra também pode aumentar o ping.', use: 'Comece com WireGuard e servidor próximo; se houver filtro, teste o Smart Connect.', limits: 'O FollowNet não garante ping menor; se a rota piorar, jogue sem VPN em uma rede confiável.' },
 };
 

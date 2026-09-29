@@ -300,18 +300,18 @@ export const RU: Record<CoreLandingSlug, LandingContent> = {
     ],
   },
   'amneziawg-vpn-ios': {
-    h1: 'AmneziaWG для iOS — когда WireGuard блокируют',
+    h1: 'AmneziaWG для iOS — улучшенный WireGuard для нестабильных сетей',
     lead:
-      'AmneziaWG — обфусцированный WireGuard для сетей с DPI. FollowNet включает его на iOS и активирует через Smart Connect.',
+      'AmneziaWG — улучшенный протокол на базе WireGuard для нестабильных и перегруженных сетей. FollowNet включает его на iOS и активирует через Smart Connect.',
     sections: [
-      { title: 'Зачем обфускация', body: 'DPI может блокировать или резать узнаваемый VPN‑трафик. AmneziaWG усложняет классификацию — полезно у части операторов и в регионах с фильтрами.' },
+      { title: 'Зачем ещё один протокол', body: 'В некоторых мобильных сетях, отелях и публичном Wi‑Fi обычный VPN‑трафик работает нестабильно — соединение рвётся или тормозит. AmneziaWG сохраняет ядро WireGuard и добавляет настройки, которые помогают держать соединение стабильнее.' },
       { title: 'AmneziaWG в FollowNet', body: 'Smart Connect для авто‑fallback или ручной выбор в Настройки → Протокол. Сравните скорость через Speed Test.' },
     ],
-    bullets: ['Обфусцированный WireGuard', 'Smart Connect или вручную', 'Доступность серверов показана в приложении', 'Нативный Network Extension'],
+    bullets: ['Протокол на базе WireGuard для нестабильных сетей', 'Smart Connect или вручную', 'Доступность серверов показана в приложении', 'Нативный Network Extension'],
     cta: CTA,
     faq: [
-      { q: 'AmneziaWG = WireGuard?', a: 'На базе WireGuard с обфускацией для сетей, где обычный WireGuard не проходит.' },
-      { q: 'Когда использовать?', a: 'Если WireGuard не подключается или сильно режут скорость.' },
+      { q: 'AmneziaWG = WireGuard?', a: 'На базе WireGuard, с дополнительной настройкой соединения для сетей, где обычный WireGuard нестабилен.' },
+      { q: 'Когда использовать?', a: 'Если WireGuard в вашей сети работает нестабильно или медленно.' },
       { q: 'Доступен в Free?', a: 'Смотрите актуальные лимиты Free vs Premium в приложении.' },
     ],
   },
@@ -609,22 +609,6 @@ export const RU: Record<CoreLandingSlug, LandingContent> = {
       { q: 'Почему iOS просит добавить VPN-конфигурацию?', a: 'Apple требует явное разрешение для Network Extension. Это нормально для App Store VPN.' },
       { q: 'Тот же аккаунт на iPad и в Chrome?', a: 'Да. Входите с тем же email на iPad и в Chrome extension.' },
       { q: 'Не подключается — что дальше?', a: 'Проверьте разрешение VPN, попробуйте Smart Connect, другой протокол или локацию из приложения и другую сеть, если мешает captive portal.' },
-    ],
-  },
-  'vpn-for-streaming-iphone': {
-    h1: 'VPN для стриминга на iPhone — скорость, серверы и честные пределы',
-    lead:
-      'FollowNet помогает держать стриминг на iPhone приватным в Wi‑Fi и LTE с WireGuard, Smart Connect и встроенным Speed Test — без обещания, что каждый каталог откроется на каждом сервере.',
-    sections: [
-      { title: 'Что важно для стриминга', body: 'Берите ближний сервер, на спокойных сетях предпочитайте WireGuard и меряйте Speed Test до длинных сессий. Auto-connect в отельном Wi‑Fi держит туннель, чтобы не стримить «в открытую» в общей точке доступа.' },
-      { title: 'Чего VPN не гарантирует', body: 'Часть сервисов блокирует известные VPN-exit. Это политика сервиса, не «падение» FollowNet. Premium даёт больше локаций и снимает недельный лимит Free — но не заставляет платформу пускать VPN-трафик.' },
-    ],
-    bullets: ['WireGuard и Smart Connect для повседневного стрима', 'Speed Test для сравнения серверов', 'Auto-connect в публичном Wi‑Fi', 'Free для оценки — Premium для безлимита'],
-    cta: CTA,
-    faq: [
-      { q: 'FollowNet откроет любую библиотеку стриминга?', a: 'Нет. FollowNet шифрует путь и даёт региональные exit; каталоги могут ограничивать VPN-пользователей.' },
-      { q: 'Какой протокол для видео?', a: 'Начните с WireGuard или Smart Connect. Если сеть душит VPN — AmneziaWG или Hysteria2 и повторный Speed Test.' },
-      { q: 'Free хватает для стриминга?', a: 'Да в пределах недельного лимита. Длинные HD-сессии обычно требуют Premium.' },
     ],
   },
   'vpn-for-gaming-iphone': {

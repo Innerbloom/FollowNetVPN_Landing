@@ -27,7 +27,6 @@ export const CORE_LANDING_SLUGS = [
   'vpn-chrome-extension',
   'vpn-widgets-ios',
   'how-to-setup-vpn-iphone',
-  'vpn-for-streaming-iphone',
   'vpn-for-gaming-iphone',
 ] as const;
 
@@ -235,15 +234,6 @@ export const CORE_LANDING_LABELS: Record<
     fr: 'Configurer un VPN sur iPhone',
     pt: 'Como configurar VPN no iPhone',
     uk: 'Як налаштувати VPN на iPhone',
-  },
-  'vpn-for-streaming-iphone': {
-    en: 'VPN for streaming on iPhone',
-    ru: 'VPN для стриминга на iPhone',
-    de: 'VPN für Streaming auf dem iPhone',
-    es: 'VPN para streaming en iPhone',
-    fr: 'VPN pour le streaming sur iPhone',
-    pt: 'VPN para streaming no iPhone',
-    uk: 'VPN для стримінгу на iPhone',
   },
   'vpn-for-gaming-iphone': {
     en: 'VPN for gaming on iPhone',

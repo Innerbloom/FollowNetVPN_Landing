@@ -5,6 +5,21 @@
 /ios-vpn-guides  /guides  301
 /kill-switch-vpn-ios  /auto-connect-vpn-ios  301
 /kill-switch-vpn-ios/*  /auto-connect-vpn-ios/:splat  301
+# Removed pages (App Store review cleanup, 2026-09-29) — keep old links alive.
+/vpn-for-youtube  /guides  301
+/vpn-for-netflix  /guides  301
+/vpn-for-telegram  /guides  301
+/vpn-for-instagram  /guides  301
+/vpn-for-discord  /guides  301
+/vpn-for-whatsapp  /guides  301
+/vpn-for-tiktok  /guides  301
+/vpn-for-spotify  /guides  301
+/vpn-for-streaming-iphone  /vpn-for-iphone  301
+/obfuscated-vpn-ios  /smart-connect-vpn  301
+/blog/censorship-networks-amneziawg  /blog  301
+/blog/smart-connect-vless-reality  /blog  301
+/blog/restricted-network-profile  /blog  301
+
 /privacy    /privacy/index.html    200
 /terms      /terms/index.html      200
 /*          /index.html            200

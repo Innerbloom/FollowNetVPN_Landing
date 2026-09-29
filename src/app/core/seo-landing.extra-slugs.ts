@@ -23,20 +23,12 @@ export type ExtraLandingSlug =
   | 'vpn-vs-proxy'
   | 'free-vpn-vs-paid'
   | 'what-is-dns-leak'
-  | 'vpn-for-youtube'
-  | 'vpn-for-netflix'
-  | 'vpn-for-telegram'
-  | 'vpn-for-instagram'
-  | 'vpn-for-discord'
-  | 'vpn-for-whatsapp'
-  | 'vpn-for-tiktok'
   | 'vpn-hotel-wifi'
   | 'vpn-airport-wifi'
   | 'vpn-cafe-wifi'
   | 'vpn-for-remote-work'
   | 'vpn-for-students'
   | 'vpn-for-banking-apps'
-  | 'obfuscated-vpn-ios'
   | 'wireguard-vs-ikev2'
   | 'what-is-kill-switch-vpn'
   | 'vpn-split-tunneling-ios'
@@ -48,8 +40,7 @@ export type ExtraLandingSlug =
   | 'fastest-vpn-iphone'
   | 'no-account-vpn-iphone'
   | 'vpn-kill-switch-iphone'
-  | 'hide-ip-iphone'
-  | 'vpn-for-spotify';
+  | 'hide-ip-iphone';
 
 export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vless-reality-ios',
@@ -74,20 +65,12 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vpn-vs-proxy',
   'free-vpn-vs-paid',
   'what-is-dns-leak',
-  'vpn-for-youtube',
-  'vpn-for-netflix',
-  'vpn-for-telegram',
-  'vpn-for-instagram',
-  'vpn-for-discord',
-  'vpn-for-whatsapp',
-  'vpn-for-tiktok',
   'vpn-hotel-wifi',
   'vpn-airport-wifi',
   'vpn-cafe-wifi',
   'vpn-for-remote-work',
   'vpn-for-students',
   'vpn-for-banking-apps',
-  'obfuscated-vpn-ios',
   'wireguard-vs-ikev2',
   'what-is-kill-switch-vpn',
   'vpn-split-tunneling-ios',
@@ -100,7 +83,6 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'no-account-vpn-iphone',
   'vpn-kill-switch-iphone',
   'hide-ip-iphone',
-  'vpn-for-spotify',
 ];
 
 const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
@@ -302,69 +284,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     fr: 'Fuites DNS',
     pt: 'Vazamentos DNS',
   },
-  'vpn-for-youtube': {
-    en: 'VPN for YouTube',
-    ru: 'VPN для YouTube',
-    uk: 'VPN для YouTube',
-    de: 'VPN für YouTube',
-    es: 'VPN para YouTube',
-    fr: 'VPN pour YouTube',
-    pt: 'VPN para YouTube',
-  },
-  'vpn-for-netflix': {
-    en: 'VPN for Netflix',
-    ru: 'VPN для Netflix',
-    uk: 'VPN для Netflix',
-    de: 'VPN für Netflix',
-    es: 'VPN para Netflix',
-    fr: 'VPN pour Netflix',
-    pt: 'VPN para Netflix',
-  },
-  'vpn-for-telegram': {
-    en: 'VPN for Telegram',
-    ru: 'VPN для Telegram',
-    uk: 'VPN для Telegram',
-    de: 'VPN für Telegram',
-    es: 'VPN para Telegram',
-    fr: 'VPN pour Telegram',
-    pt: 'VPN para Telegram',
-  },
-  'vpn-for-instagram': {
-    en: 'VPN for Instagram',
-    ru: 'VPN для Instagram',
-    uk: 'VPN для Instagram',
-    de: 'VPN für Instagram',
-    es: 'VPN para Instagram',
-    fr: 'VPN pour Instagram',
-    pt: 'VPN para Instagram',
-  },
-  'vpn-for-discord': {
-    en: 'VPN for Discord',
-    ru: 'VPN для Discord',
-    uk: 'VPN для Discord',
-    de: 'VPN für Discord',
-    es: 'VPN para Discord',
-    fr: 'VPN pour Discord',
-    pt: 'VPN para Discord',
-  },
-  'vpn-for-whatsapp': {
-    en: 'VPN for Whatsapp',
-    ru: 'VPN для WhatsApp',
-    uk: 'VPN для WhatsApp',
-    de: 'VPN für WhatsApp',
-    es: 'VPN para WhatsApp',
-    fr: 'VPN pour WhatsApp',
-    pt: 'VPN para WhatsApp',
-  },
-  'vpn-for-tiktok': {
-    en: 'VPN for TikTok',
-    ru: 'VPN для TikTok',
-    uk: 'VPN для TikTok',
-    de: 'VPN für TikTok',
-    es: 'VPN para TikTok',
-    fr: 'VPN pour TikTok',
-    pt: 'VPN para TikTok',
-  },
   'vpn-hotel-wifi': {
     en: 'Hotel Wi‑Fi VPN',
     ru: 'VPN в отельном Wi‑Fi',
@@ -418,15 +337,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     es: 'VPN para apps bancarias',
     fr: 'VPN pour apps bancaires',
     pt: 'VPN para apps bancários',
-  },
-  'obfuscated-vpn-ios': {
-    en: 'Obfuscated VPN',
-    ru: 'Обфусцированный VPN',
-    uk: 'Обфускований VPN',
-    de: 'Obfuscated VPN',
-    es: 'VPN ofuscada',
-    fr: 'VPN obfusqué',
-    pt: 'VPN ofuscada',
   },
   'wireguard-vs-ikev2': {
     en: 'WireGuard vs IKEv2',
@@ -535,15 +445,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     es: 'Ocultar IP en iPhone',
     fr: 'Masquer l’IP sur iPhone',
     pt: 'Ocultar IP no iPhone',
-  },
-  'vpn-for-spotify': {
-    en: 'VPN for Spotify',
-    ru: 'VPN для Spotify',
-    uk: 'VPN для Spotify',
-    de: 'VPN für Spotify',
-    es: 'VPN para Spotify',
-    fr: 'VPN pour Spotify',
-    pt: 'VPN para Spotify',
   },
 };
 

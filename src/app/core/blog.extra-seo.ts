@@ -4,15 +4,6 @@ type BlogSeoMeta = { title: string; excerpt: string };
 
 /** Title/excerpt for EXTRA blog posts — keeps full bodies out of the initial SEO bundle. */
 export const EXTRA_BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
-  'smart-connect-vless-reality': {
-    en: { title: 'Smart Connect + VLESS Reality: how FollowNet recovers on hard networks', excerpt: 'Not a magic invisibility cloak — a real fallback chain with egress checks, so “Connected” means traffic actually works.' },
-    ru: { title: 'Smart Connect и VLESS Reality: как FollowNet выживает на жёстких сетях', excerpt: 'Не плащ-невидимка — реальная цепочка fallback с проверкой egress, чтобы «Connected» означал рабочий трафик.' },
-    uk: { title: 'Smart Connect і VLESS Reality: як FollowNet виживає на жорстких мережах', excerpt: 'Не плащ-невидимка — реальний ланцюг fallback із перевіркою egress, щоб «Connected» означав робочий трафік.' },
-    de: { title: 'Smart Connect + VLESS Reality: so erholt sich FollowNet auf harten Netzen', excerpt: 'Kein magischer Unsichtbarkeitsmantel — eine echte Fallback-Kette mit Egress-Checks, damit „Connected“ wirklich funktionierenden Traffic bedeutet.' },
-    es: { title: 'Smart Connect + VLESS Reality: cómo FollowNet se recupera en redes difíciles', excerpt: 'No es una capa de invisibilidad mágica: es una cadena real de fallback con comprobaciones de egress, para que «Connected» signifique tráfico que de verdad funciona.' },
-    fr: { title: 'Smart Connect + VLESS Reality : comment FollowNet se rétablit sur les réseaux durs', excerpt: 'Pas une cape d’invisibilité magique — une vraie chaîne de fallback avec contrôles d’egress, pour que « Connected » signifie un trafic qui marche vraiment.' },
-    pt: { title: 'Smart Connect + VLESS Reality: como o FollowNet se recupera em redes difíceis', excerpt: 'Não é capa de invisibilidade mágica — é uma cadeia real de fallback com checagens de egress, para que «Connected» signifique tráfego que de fato funciona.' },
-  },
   'network-profiles-four-presets': {
     en: { title: 'Network Profiles reference: Smart, Public Wi‑Fi, Travel, Restricted', excerpt: 'Exact built-in presets in FollowNet for iOS — protocol, DNS, Auto-connect, server mode — plus when to clone a custom profile.' },
     ru: { title: 'Справка по профилям сети: Smart, Public Wi‑Fi, Travel, Restricted', excerpt: 'Точные встроенные пресеты FollowNet на iOS — протокол, DNS, автоподключение, режим сервера — и когда клонировать свой профиль.' },
@@ -21,15 +12,6 @@ export const EXTRA_BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
     es: { title: 'Referencia de Network Profiles: Smart, Public Wi‑Fi, Travel, Restricted', excerpt: 'Los presets integrados exactos de FollowNet en iOS — protocolo, DNS, Auto-connect, modo de servidor — y cuándo clonar un perfil propio.' },
     fr: { title: 'Référence Network Profiles : Smart, Public Wi‑Fi, Travel, Restricted', excerpt: 'Les presets intégrés exacts de FollowNet sur iOS — protocole, DNS, Auto-connect, mode serveur — et quand cloner un profil personnalisé.' },
     pt: { title: 'Referência de Network Profiles: Smart, Public Wi‑Fi, Travel, Restricted', excerpt: 'Os presets embutidos exatos do FollowNet no iOS — protocolo, DNS, Auto-connect, modo de servidor — e quando clonar um perfil próprio.' },
-  },
-  'restricted-network-profile': {
-    en: { title: 'Restricted Network profile: when Smart Connect should stay aggressive', excerpt: 'How the fourth built-in preset differs from Travel and Public Wi‑Fi — and when it still will not save a broken portal.' },
-    ru: { title: 'Профиль Restricted Network: когда Smart Connect должен быть агрессивным', excerpt: 'Чем четвёртый пресет отличается от Travel и Public Wi‑Fi — и когда он всё равно не спасёт сломанный portal.' },
-    uk: { title: 'Профіль Restricted Network: коли Smart Connect має бути агресивним', excerpt: 'Чим четвертий пресет відрізняється від Travel і Public Wi‑Fi — і коли він усе одно не врятує зламаний portal.' },
-    de: { title: 'Restricted Network Profil: wann Smart Connect aggressiv bleiben soll', excerpt: 'Wie sich das vierte eingebaute Preset von Travel und Public Wi‑Fi unterscheidet — und wann es ein kaputtes Portal trotzdem nicht rettet.' },
-    es: { title: 'Perfil Restricted Network: cuándo Smart Connect debe seguir agresivo', excerpt: 'Cómo el cuarto preset integrado difiere de Travel y Public Wi‑Fi — y cuándo igual no salva un portal roto.' },
-    fr: { title: 'Profil Restricted Network : quand Smart Connect doit rester agressif', excerpt: 'En quoi le quatrième preset intégré diffère de Travel et Public Wi‑Fi — et quand il ne sauvera quand même pas un portal cassé.' },
-    pt: { title: 'Perfil Restricted Network: quando o Smart Connect deve continuar agressivo', excerpt: 'Como o quarto preset embutido difere de Travel e Public Wi‑Fi — e quando mesmo assim não salva um portal quebrado.' },
   },
   'vpn-control-widget': {
     en: { title: 'FollowNet VPN Control widget: status and connect without opening the app', excerpt: 'What the Home Screen / Control-style widget shows, how it talks to the tunnel, and the states that need the full app.' },

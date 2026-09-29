@@ -120,16 +120,16 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
   },
   'amneziawg-vpn-ios': {
     en: {
-      title: 'AmneziaWG VPN for iOS — FollowNet | Obfuscated WireGuard',
+      title: 'AmneziaWG VPN for iOS — FollowNet | Enhanced WireGuard',
       ogTitle: 'AmneziaWG for iOS — FollowNet',
       description:
-        'When WireGuard is blocked, FollowNet can use AmneziaWG on iOS. Smart Connect switches automatically or choose it manually in Settings.',
+        'When WireGuard is unstable on your network, FollowNet can use AmneziaWG on iOS. Smart Connect switches automatically or choose it manually in Settings.',
     },
     ru: {
       title: 'AmneziaWG VPN для iOS — FollowNet',
       ogTitle: 'AmneziaWG для iOS — FollowNet',
       description:
-        'Если WireGuard блокируют, FollowNet использует AmneziaWG на iOS. Smart Connect или ручной выбор в настройках.',
+        'Если WireGuard в вашей сети нестабилен, FollowNet использует AmneziaWG на iOS. Smart Connect или ручной выбор в настройках.',
     },
   },
   'no-logs-vpn': {
@@ -284,20 +284,6 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
       ogTitle: 'Как настроить VPN на iPhone — FollowNet',
       description:
         'Установите FollowNet из App Store, войдите по email-коду, разрешите VPN и подключайтесь в одно касание. Free, Smart Connect, автоподключение.',
-    },
-  },
-  'vpn-for-streaming-iphone': {
-    en: {
-      title: 'VPN for Streaming on iPhone — FollowNet Speed & Servers',
-      ogTitle: 'VPN for Streaming on iPhone — FollowNet',
-      description:
-        'Stream more privately on iPhone with FollowNet: WireGuard, Smart Connect, Speed Test, and Auto-connect on Wi‑Fi — honest limits on catalog unlocks.',
-    },
-    ru: {
-      title: 'VPN для стриминга на iPhone — FollowNet',
-      ogTitle: 'VPN для стриминга на iPhone — FollowNet',
-      description:
-        'Более приватный стриминг на iPhone с FollowNet: WireGuard, Smart Connect, Speed Test и автоподключение — без ложных обещаний про каталоги.',
     },
   },
   'vpn-for-gaming-iphone': {

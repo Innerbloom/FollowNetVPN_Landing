@@ -323,18 +323,18 @@ const EN: Record<CoreLandingSlug, LandingContent> = {
     ],
   },
   'amneziawg-vpn-ios': {
-    h1: 'AmneziaWG VPN for iOS — when WireGuard is blocked',
+    h1: 'AmneziaWG VPN for iOS — enhanced WireGuard for unstable networks',
     lead:
-      'AmneziaWG is obfuscated WireGuard for networks that detect standard VPN traffic. FollowNet includes AmneziaWG on iOS and can activate it automatically via Smart Connect.',
+      'AmneziaWG is an enhanced WireGuard-based protocol for unstable or congested networks. FollowNet includes AmneziaWG on iOS and can activate it automatically via Smart Connect.',
     sections: [
-      { title: 'Why obfuscation matters', body: 'Deep packet inspection (DPI) can block or throttle recognizable VPN signatures. AmneziaWG wraps WireGuard in a form that is harder to classify — useful on some mobile carriers and in censorship-heavy regions.' },
+      { title: 'Why an extra protocol helps', body: 'Some mobile carriers, hotel and public Wi‑Fi networks handle standard VPN traffic poorly — connections drop or slow down. AmneziaWG keeps the WireGuard core and adds connection tuning that can stay more stable on such networks.' },
       { title: 'Using AmneziaWG in FollowNet', body: 'Enable Smart Connect for automatic fallback, or select AmneziaWG manually in Settings → Protocol. Performance may differ from plain WireGuard; Speed Test helps compare.' },
     ],
-    bullets: ['Obfuscated WireGuard for restrictive networks', 'Available via Smart Connect or manual selection', 'Server availability is shown in the app', 'Native iOS Network Extension'],
+    bullets: ['WireGuard-based protocol for unstable networks', 'Available via Smart Connect or manual selection', 'Server availability is shown in the app', 'Native iOS Network Extension'],
     cta: CTA,
     faq: [
-      { q: 'Is AmneziaWG the same as WireGuard?', a: 'It is WireGuard-based with obfuscation layers for networks that block vanilla WireGuard.' },
-      { q: 'When should I use AmneziaWG?', a: 'When WireGuard fails to connect or speeds collapse — common on some ISPs and travel SIMs.' },
+      { q: 'Is AmneziaWG the same as WireGuard?', a: 'It is WireGuard-based with extra connection tuning for networks where standard WireGuard is unstable.' },
+      { q: 'When should I use AmneziaWG?', a: 'When WireGuard is unstable or slow on your network — for example on some travel SIMs or busy public Wi‑Fi.' },
       { q: 'Is AmneziaWG on the free plan?', a: 'Protocol availability follows your subscription tier; check the app for current Free vs Premium limits.' },
     ],
   },
@@ -639,22 +639,6 @@ const EN: Record<CoreLandingSlug, LandingContent> = {
       { q: 'Setup failed or VPN will not connect — what next?', a: 'Confirm the VPN configuration is allowed, try Smart Connect, switch protocol or location listed in the app, and re-test on another network if a captive portal is involved.' },
     ],
   },
-  'vpn-for-streaming-iphone': {
-    h1: 'VPN for streaming on iPhone — speed, servers, and honest limits',
-    lead:
-      'FollowNet helps keep iPhone streaming private on Wi‑Fi and cellular with WireGuard, Smart Connect, and an in-app Speed Test — without promising every catalog will unlock on every server.',
-    sections: [
-      { title: 'What matters for streaming', body: 'Pick a nearby server, prefer WireGuard on calm networks, and measure with Speed Test before long sessions. Auto-connect on hotel Wi‑Fi keeps the tunnel up so you are not streaming in the clear on a shared hotspot.' },
-      { title: 'What VPN cannot guarantee', body: 'Some streaming services block known VPN exits. That is the service’s policy, not a FollowNet outage. Premium unlocks more locations and removes the Free weekly cap; it does not force a platform to allow VPN traffic.' },
-    ],
-    bullets: ['WireGuard and Smart Connect for everyday streams', 'Speed Test to compare servers on your network', 'Auto-connect on public Wi‑Fi', 'Free to evaluate — Premium for unlimited data'],
-    cta: CTA,
-    faq: [
-      { q: 'Will FollowNet unlock every streaming library?', a: 'No. FollowNet encrypts your path and offers regional exits; catalogs may still restrict VPN users.' },
-      { q: 'Which protocol should I use for video?', a: 'Start with WireGuard or Smart Connect. If the network fights VPN, try AmneziaWG or Hysteria2 and re-test speed.' },
-      { q: 'Does Free work for streaming?', a: 'Yes within the weekly traffic cap. Long HD sessions usually need Premium.' },
-    ],
-  },
   'vpn-for-gaming-iphone': {
     h1: 'VPN for gaming on iPhone — latency, protocols, and when to skip it',
     lead:
@@ -680,7 +664,7 @@ export const LANDING_RELATED: Record<CoreLandingSlug, LandingSlug[]> = {
   'free-vpn-iphone': ['vpn-for-iphone', 'how-to-setup-vpn-iphone', 'vpn-chrome-extension', 'no-logs-vpn'],
   'vpn-for-ipad': ['vpn-for-iphone', 'vpn-widgets-ios', 'auto-connect-vpn-ios', 'dns-vpn-ios'],
   'ikev2-vpn-ios': ['wireguard-vpn-ios', 'hysteria2-vpn-ios', 'smart-connect-vpn', 'vpn-for-gaming-iphone'],
-  'vpn-for-wifi': ['auto-connect-vpn-ios', 'secure-vpn-iphone', 'vpn-for-streaming-iphone', 'smart-connect-vpn'],
+  'vpn-for-wifi': ['auto-connect-vpn-ios', 'secure-vpn-iphone', 'vpn-for-travel', 'smart-connect-vpn'],
   'smart-connect-vpn': ['network-profiles-ios', 'hysteria2-vpn-ios', 'amneziawg-vpn-ios', 'vless-reality-ios'],
   'network-profiles-ios': ['smart-connect-vpn', 'auto-connect-vpn-ios', 'dns-vpn-ios', 'vpn-for-wifi'],
   'amneziawg-vpn-ios': ['smart-connect-vpn', 'hysteria2-vpn-ios', 'wireguard-vpn-ios', 'vpn-for-travel'],
@@ -688,14 +672,13 @@ export const LANDING_RELATED: Record<CoreLandingSlug, LandingSlug[]> = {
   'auto-connect-vpn-ios': ['vpn-for-wifi', 'vpn-widgets-ios', 'vpn-for-travel', 'how-to-setup-vpn-iphone'],
   'dns-vpn-ios': ['secure-vpn-iphone', 'no-logs-vpn', 'auto-connect-vpn-ios', 'vpn-for-iphone'],
   'vpn-for-travel': ['smart-connect-vpn', 'hysteria2-vpn-ios', 'auto-connect-vpn-ios', 'vpn-for-wifi'],
-  'best-vpn-iphone': ['vpn-for-iphone', 'how-to-setup-vpn-iphone', 'vpn-speed-test-ios', 'vpn-for-streaming-iphone'],
-  'vpn-speed-test-ios': ['vpn-for-gaming-iphone', 'vpn-for-streaming-iphone', 'wireguard-vpn-ios', 'hysteria2-vpn-ios'],
+  'best-vpn-iphone': ['vpn-for-iphone', 'how-to-setup-vpn-iphone', 'vpn-speed-test-ios', 'no-logs-vpn'],
+  'vpn-speed-test-ios': ['vpn-for-gaming-iphone', 'vpn-for-wifi', 'wireguard-vpn-ios', 'hysteria2-vpn-ios'],
   'secure-vpn-iphone': ['auto-connect-vpn-ios', 'dns-vpn-ios', 'no-logs-vpn', 'vpn-for-wifi'],
   'hysteria2-vpn-ios': ['smart-connect-vpn', 'amneziawg-vpn-ios', 'wireguard-vpn-ios', 'vpn-speed-test-ios'],
   'vpn-chrome-extension': ['vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-ad-blocking-chrome', 'vpn-for-iphone'],
   'vpn-widgets-ios': ['auto-connect-vpn-ios', 'how-to-setup-vpn-iphone', 'vpn-for-iphone', 'secure-vpn-iphone'],
   'how-to-setup-vpn-iphone': ['vpn-for-iphone', 'free-vpn-iphone', 'auto-connect-vpn-ios', 'vpn-widgets-ios'],
-  'vpn-for-streaming-iphone': ['vpn-speed-test-ios', 'wireguard-vpn-ios', 'vpn-for-wifi', 'best-vpn-iphone'],
   'vpn-for-gaming-iphone': ['vpn-speed-test-ios', 'wireguard-vpn-ios', 'ikev2-vpn-ios', 'smart-connect-vpn'],
 };
 
@@ -711,20 +694,8 @@ export function landingRelated(slug: LandingSlug): LandingSlug[] {
     if (slug.includes('chrome')) {
       return ['vpn-chrome-extension', 'vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-for-iphone'];
     }
-    if (slug === 'vless-reality-ios' || slug === 'obfuscated-vpn-ios') {
+    if (slug === 'vless-reality-ios') {
       return ['smart-connect-vpn', 'network-profiles-ios', 'amneziawg-vpn-ios', 'hysteria2-vpn-ios'];
-    }
-    if (
-      slug.includes('youtube') ||
-      slug.includes('netflix') ||
-      slug.includes('tiktok') ||
-      slug.includes('spotify') ||
-      slug.includes('instagram')
-    ) {
-      return ['vpn-for-streaming-iphone', 'vpn-speed-test-ios', 'vpn-for-wifi', 'free-vpn-iphone'];
-    }
-    if (slug.includes('telegram') || slug.includes('whatsapp') || slug.includes('discord')) {
-      return ['smart-connect-vpn', 'vpn-speed-test-ios', 'obfuscated-vpn-ios', 'vpn-for-wifi'];
     }
     if (slug.includes('wifi') || slug.includes('hotel') || slug.includes('airport') || slug.includes('cafe') || slug.includes('captive')) {
       return ['vpn-for-wifi', 'network-profiles-ios', 'auto-connect-vpn-ios', 'smart-connect-vpn'];
