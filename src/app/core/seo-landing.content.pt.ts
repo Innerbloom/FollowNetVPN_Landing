@@ -301,7 +301,7 @@ export const PT: Record<CoreLandingSlug, LandingContent> = {
     ],
   },
   'amneziawg-vpn-ios': {
-    h1: 'VPN AmneziaWG para iOS — WireGuard aprimorado para redes instáveis',
+    h1: 'VPN AmneziaWG no iOS — WireGuard aprimorado para redes instáveis',
     lead:
       'O AmneziaWG é um protocolo baseado no WireGuard e aprimorado para redes instáveis ou congestionadas. O FollowNet inclui o AmneziaWG no iOS e pode ativá-lo automaticamente pelo Smart Connect.',
     sections: [
@@ -489,7 +489,7 @@ export const PT: Record<CoreLandingSlug, LandingContent> = {
     ],
   },
   'hysteria2-vpn-ios': {
-    h1: 'VPN Hysteria2 para iOS — outro caminho quando a rede trava os túneis',
+    h1: 'VPN Hysteria2 no iOS — outro caminho quando a rede trava os túneis',
     lead:
       'O FollowNet inclui o Hysteria2 no iPhone e no iPad junto com WireGuard, IKEv2 e AmneziaWG. Use manualmente ou deixe o Smart Connect escolher o protocolo quando sua rede perde pacotes ou é hostil ao tráfego VPN clássico.',
     sections: [

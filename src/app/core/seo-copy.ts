@@ -512,8 +512,8 @@ const statusByLang: Record<AppLang, SeoCopy> = {
     description: 'Публичные заметки о работе сайта FollowNet, приложения App Store и расширения Chrome.',
   },
   uk: {
-    title: 'Статус FollowNet',
-    ogTitle: 'Статус FollowNet',
+    title: 'Стан сервісів FollowNet',
+    ogTitle: 'Стан сервісів FollowNet',
     description: 'Публічні нотатки про роботу сайту FollowNet, застосунку App Store і розширення Chrome.',
   },
   de: {
@@ -621,7 +621,7 @@ const homeByLang: Record<AppLang, SeoCopy> = {
       'VPN iPhone : WireGuard, AmneziaWG, Hysteria2, VLESS Reality et Smart Connect. Free avec quota hebdo, Premium illimité. DNS, Speed Test, widgets — App Store.',
   },
   pt: {
-    title: 'FollowNet VPN — VPN iOS para iPhone | WireGuard, VLESS',
+    title: 'FollowNet VPN — VPN para iPhone e iOS | WireGuard, VLESS',
     ogTitle: 'FollowNet VPN — VPN rápido para iOS',
     description:
       'VPN para iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality e Smart Connect. Free com limite semanal, Premium ilimitado. DNS, Speed Test e widgets — App Store.',

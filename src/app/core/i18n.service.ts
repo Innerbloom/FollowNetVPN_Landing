@@ -1912,6 +1912,7 @@ const DICT: Dict = {
 };
 
 const STORAGE_KEY = 'follownet_lang';
+const SUGGEST_DISMISSED_KEY = 'follownet_lang_suggest_dismissed';
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
@@ -2027,8 +2028,9 @@ export class I18nService {
   }
 
   /**
-   * Unprefixed (EN) URLs: honour legacy ?lang=, a saved choice, or the browser language.
-   * Prefixed URLs are explicit and always win. Crawlers send no saved choice and an EN UA.
+   * Unprefixed (EN) URLs: honour legacy ?lang= or a language the visitor picked before.
+   * The browser language only produces a suggestion ([suggestedLang]) — Google advises against
+   * redirecting by perceived language, and the swap re-rendered the prerendered page (slow LCP).
    */
   private redirectToPreferredLang() {
     const { pathname, search, hash } = window.location;
@@ -2039,7 +2041,7 @@ export class I18nService {
     if (wanted) {
       this.rememberLang(wanted);
     } else {
-      wanted = this.savedLang() ?? this.browserLang();
+      wanted = this.savedLang();
     }
     if (!wanted || (wanted === 'en' && !fromQuery)) return;
 
@@ -2048,6 +2050,27 @@ export class I18nService {
     this.applyLang(wanted);
     // Replace before the router's initial navigation so the right route renders.
     window.history.replaceState(window.history.state, '', target);
+  }
+
+  /** Browser language when it differs from the page and the visitor hasn't chosen or dismissed. */
+  suggestedLang(): AppLang | null {
+    if (!isPlatformBrowser(this.platformId)) return null;
+    if (this.savedLang()) return null;
+    try {
+      if (localStorage.getItem(SUGGEST_DISMISSED_KEY)) return null;
+    } catch {
+      // ignore
+    }
+    const browser = this.browserLang();
+    return browser !== this.lang ? browser : null;
+  }
+
+  dismissSuggestion() {
+    try {
+      localStorage.setItem(SUGGEST_DISMISSED_KEY, '1');
+    } catch {
+      // ignore
+    }
   }
 
   private savedLang(): AppLang | null {

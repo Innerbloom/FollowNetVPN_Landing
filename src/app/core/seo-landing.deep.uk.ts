@@ -1067,7 +1067,7 @@ export const DEEP: DeepGuides = {
   },
 
   'vless-reality-ios': {
-    h1: 'VLESS Reality на iPhone: що це й коли FollowNet його використовує',
+    h1: 'VLESS Reality для iPhone: що це й коли FollowNet його використовує',
     lead:
       'VLESS Reality — новіший VPN‑транспорт, який виглядає як звичайний зашифрований вебтрафік. FollowNet підтримує його поряд із WireGuard, IKEv2, AmneziaWG і Hysteria2. Пояснюємо, чим він відрізняється, коли допомагає й чому не завжди найшвидший.',
     sections: [

@@ -234,6 +234,20 @@
   gap: 12px;
 }
 
+/* Phones: whether two buttons fit on one line depends on the web font having loaded, so the row
+   wrapped late and pushed the phone mockup down (CLS). Stacked, the height is fixed. */
+@media (max-width: 480px) {
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-row .btn {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 .hero-visual {
   display: flex;
   flex-direction: column;

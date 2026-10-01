@@ -1,3 +1,30 @@
+/*
+ * Size-adjusted local fallbacks: Google Fonts load async (display=swap), and without matching
+ * metrics the swap reflows text and shifts the layout (CLS). Values from the font files' metrics
+ * relative to Arial / Arial Bold. Sora has no Cyrillic, so its fallback is Latin-only — Cyrillic
+ * headings keep rendering in the system font as before.
+ */
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial"), local("ArialMT"), local("Roboto"), local("Helvetica");
+  size-adjust: 102.5%;
+  ascent-override: 104%;
+  descent-override: 29.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Sora Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Arial"), local("Roboto");
+  font-weight: 600 800;
+  size-adjust: 109.2%;
+  ascent-override: 88.8%;
+  descent-override: 26.6%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* FollowNet marketing — light premium (Express-fold direction) */
 
 * {
@@ -22,8 +49,8 @@
   --star: #e8a317;
   --red: #e5484d;
 
-  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Sora Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
 
   --r-card: 20px;
   --r-control: 12px;
