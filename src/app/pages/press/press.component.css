@@ -33,7 +33,7 @@
 }
 
 .breadcrumb a:hover {
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .kicker {
@@ -42,7 +42,7 @@
   font-weight: 750;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .press-hero h1 {

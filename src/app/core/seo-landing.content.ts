@@ -1,12 +1,42 @@
 import { AppLang } from './i18n.service';
 import { CoreLandingSlug, LANDING_SLUGS, type LandingSlug } from './seo-landing.slugs';
 import { RU } from './seo-landing.content.ru';
-import { localizedLandingContent } from './seo-landing.content.locales';
-import { extraLandingContent, isExtraLandingSlug } from './seo-landing.extra-guides';
+import { DE } from './seo-landing.content.de';
+import { ES } from './seo-landing.content.es';
+import { FR } from './seo-landing.content.fr';
+import { PT } from './seo-landing.content.pt';
+import { UK } from './seo-landing.content.uk';
+import { extraLandingContent, isExtraLandingSlug, type ExtraLandingSlug } from './seo-landing.extra-guides';
+
+/** Real app screens (src/assets/screenshots/guide/<shot>-320|640.webp). */
+export type LandingShot =
+  | 'connect'
+  | 'protocol'
+  | 'dns'
+  | 'autoconnect'
+  | 'speedtest'
+  | 'servers'
+  | 'settings'
+  | 'stats'
+  | 'premium';
 
 export interface LandingSection {
   title: string;
   body: string;
+  /** Optional app screenshot shown under the section text. */
+  image?: LandingShot;
+  imageCaption?: string;
+}
+
+export interface LandingSteps {
+  title: string;
+  items: string[];
+}
+
+export interface LandingTable {
+  title: string;
+  head: string[];
+  rows: string[][];
 }
 
 export interface LandingFaqItem {
@@ -21,6 +51,10 @@ export interface LandingContent {
   bullets: string[];
   cta: string;
   faq: LandingFaqItem[];
+  /** Numbered how-to, rendered after the sections. */
+  steps?: LandingSteps;
+  /** Comparison table, rendered after the steps. */
+  table?: LandingTable;
 }
 
 const CTA = 'Download on the App Store';
@@ -676,58 +710,48 @@ export const LANDING_RELATED: Record<CoreLandingSlug, LandingSlug[]> = {
   'vpn-speed-test-ios': ['vpn-for-gaming-iphone', 'vpn-for-wifi', 'wireguard-vpn-ios', 'hysteria2-vpn-ios'],
   'secure-vpn-iphone': ['auto-connect-vpn-ios', 'dns-vpn-ios', 'no-logs-vpn', 'vpn-for-wifi'],
   'hysteria2-vpn-ios': ['smart-connect-vpn', 'amneziawg-vpn-ios', 'wireguard-vpn-ios', 'vpn-speed-test-ios'],
-  'vpn-chrome-extension': ['vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-ad-blocking-chrome', 'vpn-for-iphone'],
+  'vpn-chrome-extension': ['vpn-vs-proxy', 'what-is-kill-switch-vpn', 'vpn-for-remote-work', 'vpn-for-iphone'],
   'vpn-widgets-ios': ['auto-connect-vpn-ios', 'how-to-setup-vpn-iphone', 'vpn-for-iphone', 'secure-vpn-iphone'],
   'how-to-setup-vpn-iphone': ['vpn-for-iphone', 'free-vpn-iphone', 'auto-connect-vpn-ios', 'vpn-widgets-ios'],
   'vpn-for-gaming-iphone': ['vpn-speed-test-ios', 'wireguard-vpn-ios', 'ikev2-vpn-ios', 'smart-connect-vpn'],
 };
 
-const EXTRA_RELATED_DEFAULT: LandingSlug[] = [
-  'vpn-for-iphone',
-  'how-to-setup-vpn-iphone',
-  'vpn-chrome-extension',
-  'free-vpn-iphone',
-];
+/** Related guides for the extra (long-tail) guides — curated, every target is a strong page. */
+const EXTRA_RELATED: Record<ExtraLandingSlug, LandingSlug[]> = {
+  'what-is-a-vpn': ['how-vpn-works', 'do-i-need-a-vpn', 'vpn-for-beginners', 'free-vpn-vs-paid'],
+  'how-vpn-works': ['what-is-a-vpn', 'wireguard-vs-ikev2', 'what-is-dns-leak', 'smart-connect-vpn'],
+  'do-i-need-a-vpn': ['what-is-a-vpn', 'vpn-for-wifi', 'free-vpn-vs-paid', 'vpn-for-beginners'],
+  'vpn-for-beginners': ['how-to-setup-vpn-iphone', 'what-is-a-vpn', 'vpn-free-weekly-limit', 'vpn-not-connecting-iphone'],
+  'vpn-vs-proxy': ['vpn-chrome-extension', 'what-is-a-vpn', 'how-vpn-works', 'what-is-kill-switch-vpn'],
+  'free-vpn-vs-paid': ['vpn-free-weekly-limit', 'vpn-premium-unlimited', 'free-vpn-iphone', 'no-logs-vpn'],
+  'what-is-dns-leak': ['dns-vpn-ios', 'how-vpn-works', 'no-logs-vpn', 'what-is-kill-switch-vpn'],
+  'vpn-hotel-wifi': ['captive-portal-vpn-iphone', 'vpn-airport-wifi', 'network-profiles-ios', 'vpn-slow-iphone'],
+  'vpn-airport-wifi': ['vpn-hotel-wifi', 'vpn-for-travel', 'captive-portal-vpn-iphone', 'vpn-free-weekly-limit'],
+  'vpn-for-remote-work': ['vpn-for-wifi', 'vpn-chrome-extension', 'vpn-slow-iphone', 'vpn-premium-unlimited'],
+  'vpn-for-students': ['free-vpn-vs-paid', 'vpn-for-wifi', 'vpn-free-weekly-limit', 'vpn-for-beginners'],
+  'vpn-for-banking-apps': ['secure-vpn-iphone', 'vpn-for-wifi', 'what-is-dns-leak', 'do-i-need-a-vpn'],
+  'wireguard-vs-ikev2': ['wireguard-vpn-ios', 'ikev2-vpn-ios', 'smart-connect-vpn', 'vpn-slow-iphone'],
+  'what-is-kill-switch-vpn': ['auto-connect-vpn-ios', 'vpn-chrome-extension', 'network-profiles-ios', 'what-is-dns-leak'],
+  'vpn-split-tunneling-ios': ['network-profiles-ios', 'vpn-vs-proxy', 'vpn-chrome-extension', 'how-vpn-works'],
+  'vpn-not-connecting-iphone': ['captive-portal-vpn-iphone', 'vpn-slow-iphone', 'smart-connect-vpn', 'vpn-free-weekly-limit'],
+  'vpn-slow-iphone': ['vpn-speed-test-ios', 'wireguard-vs-ikev2', 'vpn-not-connecting-iphone', 'smart-connect-vpn'],
+  'captive-portal-vpn-iphone': ['vpn-hotel-wifi', 'vpn-airport-wifi', 'vpn-not-connecting-iphone', 'auto-connect-vpn-ios'],
+  'vless-reality-ios': ['smart-connect-vpn', 'network-profiles-ios', 'amneziawg-vpn-ios', 'hysteria2-vpn-ios'],
+  'vpn-free-weekly-limit': ['vpn-premium-unlimited', 'free-vpn-vs-paid', 'free-vpn-iphone', 'vpn-speed-test-ios'],
+  'vpn-premium-unlimited': ['vpn-free-weekly-limit', 'free-vpn-vs-paid', 'vpn-chrome-extension', 'how-to-setup-vpn-iphone'],
+  'vpn-iphone-shortcuts': ['network-profiles-ios', 'auto-connect-vpn-ios', 'vpn-widgets-ios', 'smart-connect-vpn'],
+  'vpn-battery-iphone': ['auto-connect-vpn-ios', 'wireguard-vs-ikev2', 'vpn-slow-iphone', 'network-profiles-ios'],
+};
 
 export function landingRelated(slug: LandingSlug): LandingSlug[] {
-  if (isExtraLandingSlug(slug)) {
-    if (slug.includes('chrome')) {
-      return ['vpn-chrome-extension', 'vpn-vs-proxy-chrome', 'vpn-kill-switch-chrome', 'vpn-for-iphone'];
-    }
-    if (slug === 'vless-reality-ios') {
-      return ['smart-connect-vpn', 'network-profiles-ios', 'amneziawg-vpn-ios', 'hysteria2-vpn-ios'];
-    }
-    if (slug.includes('wifi') || slug.includes('hotel') || slug.includes('airport') || slug.includes('cafe') || slug.includes('captive')) {
-      return ['vpn-for-wifi', 'network-profiles-ios', 'auto-connect-vpn-ios', 'smart-connect-vpn'];
-    }
-    if (slug.includes('beginner') || slug.startsWith('what-is') || slug.startsWith('how-vpn') || slug.startsWith('do-i-need')) {
-      return ['how-to-setup-vpn-iphone', 'free-vpn-iphone', 'vpn-for-iphone', 'vpn-for-beginners'];
-    }
-    if (slug.includes('not-connecting') || slug.includes('slow') || slug.includes('disconnect')) {
-      return ['how-to-setup-vpn-iphone', 'smart-connect-vpn', 'vpn-speed-test-ios', 'captive-portal-vpn-iphone'];
-    }
-    if (slug.includes('free') || slug.includes('premium') || slug.includes('family') || slug.includes('paid')) {
-      return ['free-vpn-iphone', 'vpn-premium-unlimited', 'vpn-family-devices', 'vpn-for-iphone'];
-    }
-    if (slug.includes('dns') || slug.includes('server') || slug.includes('kill-switch') || slug.includes('split')) {
-      return ['dns-vpn-ios', 'vpn-chrome-extension', 'network-profiles-ios', 'smart-connect-vpn'];
-    }
-    if (slug.includes('fastest') || slug.includes('hide-ip')) {
-      return ['vpn-speed-test-ios', 'secure-vpn-iphone', 'no-logs-vpn', 'best-vpn-iphone'];
-    }
-    if (slug.includes('no-account') || slug.includes('email-login') || slug.includes('qr-login')) {
-      return ['free-vpn-iphone', 'vpn-email-login', 'vpn-for-iphone', 'how-to-setup-vpn-iphone'];
-    }
-    return EXTRA_RELATED_DEFAULT;
-  }
-  return LANDING_RELATED[slug] ?? EXTRA_RELATED_DEFAULT;
+  if (isExtraLandingSlug(slug)) return EXTRA_RELATED[slug];
+  return LANDING_RELATED[slug];
 }
 
 export function landingContent(slug: LandingSlug, lang: AppLang): LandingContent {
   if (isExtraLandingSlug(slug)) return extraLandingContent(slug, lang);
-  if (lang === 'en') return EN[slug];
-  if (lang === 'ru') return RU[slug];
-  return localizedLandingContent(slug, lang);
+  const byLang: Record<AppLang, Record<CoreLandingSlug, LandingContent>> = { en: EN, ru: RU, de: DE, es: ES, fr: FR, pt: PT, uk: UK };
+  return byLang[lang][slug];
 }
 
 export { LANDING_SLUGS as landingSlugsList };

@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { NgFor, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import type { ProductPage } from '../../core/product-pages.content';
@@ -11,7 +12,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
 })

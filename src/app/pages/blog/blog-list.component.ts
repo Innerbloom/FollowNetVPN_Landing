@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import {
   blogPosts,
   blogTopicLabel,
   type BlogPostView,
+  type BlogTopic,
 } from '../../core/blog.content';
 
 @Component({
   selector: 'app-blog-list',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.css'],
 })
 export class BlogListComponent implements OnInit {
   posts: BlogPostView[] = [];
+  featured: BlogPostView | null = null;
+  rest: BlogPostView[] = [];
+  topics: { id: BlogTopic; label: string; count: number }[] = [];
+  topic: BlogTopic | null = null;
 
   constructor(
     public i18n: I18nService,
@@ -58,7 +64,17 @@ export class BlogListComponent implements OnInit {
   }
 
   private refresh(): void {
-    this.posts = blogPosts(this.i18n.current);
+    const lang = this.i18n.current;
+    this.posts = blogPosts(lang);
+    [this.featured = null, ...this.rest] = this.posts;
+    const order: BlogTopic[] = ['guides', 'product', 'updates'];
+    this.topics = order
+      .map((id) => ({
+        id,
+        label: blogTopicLabel(id, lang),
+        count: this.rest.filter((p) => p.topic === id).length,
+      }))
+      .filter((t) => t.count > 0);
     this.seo.updateForRoute('/blog', this.i18n.current);
   }
 }

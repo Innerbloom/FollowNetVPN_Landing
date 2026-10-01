@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "seo:routes": "node scripts/generate-seo-routes.mjs",
-    "build": "node scripts/generate-seo-routes.mjs && ng build",
-    "build:prerender": "ng build",
+    "build": "node scripts/generate-seo-routes.mjs && ng build && node scripts/flatten-prerender.mjs && node scripts/og-images.mjs",
+    "build:prerender": "ng build && node scripts/flatten-prerender.mjs && node scripts/og-images.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:followNetFront": "node dist/follow-net-front/server/server.mjs"
@@ -31,6 +31,9 @@
     "@angular-devkit/build-angular": "19.2.19",
     "@angular/cli": "19.2.19",
     "@angular/compiler-cli": "19.2.19",
+    "@fontsource/manrope": "^5.3.0",
+    "@fontsource/sora": "^5.3.0",
+    "@resvg/resvg-wasm": "^2.6.2",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
@@ -40,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "satori": "^0.33.5",
     "typescript": "~5.7.2"
   }
 }

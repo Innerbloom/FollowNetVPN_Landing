@@ -1,21 +1,23 @@
 import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { LocalizePipe } from '../localize.pipe';
 import { filter } from 'rxjs';
 import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
 import { appStoreUrl } from '../../core/app-store-url';
+import { splitLangPrefix } from '../../core/locale-url';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgIf, NgFor],
+  imports: [LocalizePipe, RouterLink, NgIf, NgFor],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   standalone: true,
 })
 export class HeaderComponent {
   readonly iosAppStoreUrl = appStoreUrl('header');
-  logoSrc = '/assets/new_logo.png?v=fn5';
+  logoSrc = '/assets/new_logo-96.png?v=fn5';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
   readonly langs = SUPPORTED_LANGS;
@@ -35,8 +37,7 @@ export class HeaderComponent {
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
         this.closeMenu();
-        const url = this.router.url;
-        if (!url.startsWith('/privacy') && !url.startsWith('/terms') && isPlatformBrowser(this.platformId)) {
+        if (!this.isLegalPage() && isPlatformBrowser(this.platformId)) {
           setTimeout(() => this.updateActiveSection(), 0);
         } else {
           this.activeSection = null;
@@ -68,8 +69,13 @@ export class HeaderComponent {
 
   @HostListener('window:scroll')
   onScroll() {
-    if (this.router.url.startsWith('/privacy') || this.router.url.startsWith('/terms')) return;
+    if (this.isLegalPage()) return;
     this.updateActiveSection();
+  }
+
+  private isLegalPage(): boolean {
+    const { path } = splitLangPrefix(this.router.url);
+    return path.startsWith('/privacy') || path.startsWith('/terms');
   }
 
   private updateActiveSection() {
@@ -104,7 +110,10 @@ export class HeaderComponent {
     }
   }
 
-  setLang(lang: AppLang) {
+  setLang(lang: AppLang, ev?: MouseEvent) {
+    // Plain href stays for crawlers and cmd-click; normal clicks switch in-app.
+    if (ev && (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0)) return;
+    ev?.preventDefault();
     this.i18n.setLang(lang);
     this.isLangOpen = false;
   }

@@ -2,7 +2,7 @@
   <header class="press-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a routerLink="/">FollowNet</a>
+        <a [routerLink]="'/' | localize">FollowNet</a>
         <span aria-hidden="true">/</span>
         <span>{{ k.kicker }}</span>
       </nav>
@@ -19,7 +19,7 @@
           rel="noopener noreferrer"
           >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
         >
-        <a class="btn ghost" routerLink="/about">{{ i18n.t('NAV_ABOUT') }}</a>
+        <a class="btn ghost" [routerLink]="'/about' | localize">{{ i18n.t('NAV_ABOUT') }}</a>
       </div>
     </div>
   </header>
@@ -79,7 +79,14 @@
             download
           >
             <span class="asset-preview" [attr.data-kind]="asset.kind">
-              <img [src]="asset.preview" [alt]="asset.label" />
+              <img
+                [src]="asset.preview"
+                [alt]="asset.label"
+                [attr.width]="asset.kind === 'og' ? 1200 : asset.kind === 'icon' ? 180 : 788"
+                [attr.height]="asset.kind === 'og' ? 630 : asset.kind === 'icon' ? 180 : 868"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
             <span class="asset-meta">
               <span class="asset-label">{{ asset.label }}</span>

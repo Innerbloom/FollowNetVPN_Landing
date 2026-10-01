@@ -1,8 +1,8 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="footer-logo" routerLink="/">
-        <img class="footer-logo-img" src="/assets/new_logo.png?v=fn5" alt="" width="28" height="28" />
+      <a class="footer-logo" [routerLink]="'/' | localize">
+        <img class="footer-logo-img" src="/assets/new_logo-96.png?v=fn5" alt="" width="28" height="28" />
         <span class="footer-logo-mark">FollowNet</span>
         <span class="footer-logo-suffix">VPN</span>
       </a>
@@ -13,30 +13,42 @@
     <nav class="footer-nav" aria-label="Footer">
       <div class="footer-col">
         <p class="footer-col-title">{{ i18n.t('FOOTER_COL_PRODUCT') }}</p>
-        <a routerLink="/features">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
-        <a routerLink="/guides">{{ i18n.t('NAV_GUIDES') }}</a>
-        <a routerLink="/blog">{{ i18n.t('NAV_BLOG') }}</a>
-        <a routerLink="/download">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
+        <a [routerLink]="'/features' | localize">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
+        <a [routerLink]="'/guides' | localize">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a [routerLink]="'/blog' | localize">{{ i18n.t('NAV_BLOG') }}</a>
+        <a [routerLink]="'/download' | localize">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
       </div>
 
       <div class="footer-col">
         <p class="footer-col-title">{{ i18n.t('FOOTER_COL_COMPANY') }}</p>
-        <a routerLink="/about">{{ i18n.t('NAV_ABOUT') }}</a>
-        <a routerLink="/press">{{ i18n.t('NAV_PRESS') }}</a>
-        <a routerLink="/affiliates">{{ i18n.t('NAV_AFFILIATES') }}</a>
-        <a routerLink="/support">{{ i18n.t('NAV_SUPPORT') }}</a>
-        <a routerLink="/status">{{ i18n.t('NAV_STATUS') }}</a>
+        <a [routerLink]="'/about' | localize">{{ i18n.t('NAV_ABOUT') }}</a>
+        <a [routerLink]="'/press' | localize">{{ i18n.t('NAV_PRESS') }}</a>
+        <a [routerLink]="'/affiliates' | localize">{{ i18n.t('NAV_AFFILIATES') }}</a>
+        <a [routerLink]="'/support' | localize">{{ i18n.t('NAV_SUPPORT') }}</a>
+        <a [routerLink]="'/status' | localize">{{ i18n.t('NAV_STATUS') }}</a>
       </div>
 
       <div class="footer-col">
         <p class="footer-col-title">{{ i18n.t('FOOTER_COL_LEGAL') }}</p>
-        <a routerLink="/privacy">{{ i18n.t('NAV_PRIVACY') }}</a>
-        <a routerLink="/terms">{{ i18n.t('NAV_TERMS') }}</a>
+        <a [routerLink]="'/privacy' | localize">{{ i18n.t('NAV_PRIVACY') }}</a>
+        <a [routerLink]="'/terms' | localize">{{ i18n.t('NAV_TERMS') }}</a>
       </div>
     </nav>
   </div>
 
   <div class="footer-bottom">
     <p class="footer-copy">{{ i18n.t('FOOTER_COPY') }}</p>
+    <nav class="footer-langs" aria-label="Language">
+      <a
+        *ngFor="let l of langs"
+        [href]="i18n.pathForLang(l)"
+        [attr.hreflang]="l"
+        [attr.lang]="l"
+        [class.active]="l === i18n.current"
+        [attr.aria-current]="l === i18n.current ? 'true' : null"
+        (click)="setLang(l, $event)"
+        >{{ i18n.langLabel(l) }}</a
+      >
+    </nav>
   </div>
 </footer>

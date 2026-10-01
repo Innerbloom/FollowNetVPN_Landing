@@ -46,12 +46,22 @@ try {
   // optional
 }
 
+/** slug → publish date, so blog <lastmod> reflects real changes instead of every build. */
+function extractBlogDates(...sources) {
+  const dates = new Map();
+  for (const source of sources) {
+    for (const m of source.matchAll(/slug:\s*'([^']+)',\s*date:\s*'(\d{4}-\d{2}-\d{2})'/g)) dates.set(m[1], m[2]);
+  }
+  return dates;
+}
+
 const coreSlugs = extractQuotedList(slugsTs, 'CORE_LANDING_SLUGS');
 const extraSlugs = extractQuotedList(extraSlugsTs, 'EXTRA_LANDING_SLUGS');
 const slugs = [...coreSlugs, ...extraSlugs];
 const blogSlugs = extractBlogSlugs(blogTs, blogExtraTs);
+const blogDates = extractBlogDates(blogTs, blogExtraTs);
 
-const LANGS = ['ru', 'en', 'de', 'es', 'fr', 'pt', 'uk'];
+const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'pt', 'uk'];
 const SITE = 'https://follow-net.com';
 const LASTMOD = new Date().toISOString().slice(0, 10);
 
@@ -75,61 +85,73 @@ const landingPaths = slugs.map((s) => `/${s}`);
 const blogPaths = blogSlugs.map((s) => `/blog/${s}`);
 const allContentPaths = [...staticPaths, ...landingPaths, ...blogPaths];
 
-const lines = [];
-for (const p of allContentPaths) lines.push(p);
-for (const p of allContentPaths) {
-  for (const lang of LANGS) {
-    if (lang === 'en') continue; // bare path is EN
-    lines.push(`${p}?lang=${lang}`);
-  }
+/** EN lives at the root; other languages under /ru, /de/vpn-for-iphone, … */
+function localized(path, lang) {
+  if (lang === 'en') return path;
+  return path === '/' ? `/${lang}` : `/${lang}${path}`;
 }
+
+// Not in the sitemap, but must exist as real files once the SPA fallback is gone.
+const utilityPaths = ['/checkout'];
+
+const lines = [];
+for (const lang of LANGS) {
+  for (const p of [...allContentPaths, ...utilityPaths]) lines.push(localized(p, lang));
+}
+// Rendered by the `**` route; flattened to /404.html for Cloudflare Pages.
+lines.push('/404');
 
 writeFileSync(join(root, 'prerender-routes.txt'), `${lines.join('\n')}\n`);
 
 function hreflangBlock(path) {
-  const base = `${SITE}${path === '/' ? '/' : path}`;
   const rows = LANGS.map(
-    (lang) =>
-      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${lang === 'en' ? base : `${base}?lang=${lang}`}"/>`,
+    (lang) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${SITE}${localized(path, lang)}"/>`,
   );
-  rows.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${base}"/>`);
+  rows.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${path}"/>`);
   return rows.join('\n');
 }
 
-function urlEntry(path, priority, changefreq = 'monthly') {
-  const loc = `${SITE}${path === '/' ? '/' : path}`;
-  return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${LASTMOD}</lastmod>
+/** One <url> per language version, each listing all alternates (Google's sitemap hreflang format). */
+function urlEntries(path, priority, changefreq = 'monthly') {
+  const lastmod = path.startsWith('/blog/') ? blogDates.get(path.slice('/blog/'.length)) ?? LASTMOD : LASTMOD;
+  return LANGS.map(
+    (lang) => `  <url>
+    <loc>${SITE}${localized(path, lang)}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
 ${hreflangBlock(path)}
-  </url>`;
+  </url>`,
+  ).join('\n');
 }
+
+const sitemapPaths = [
+  ['/', '1.0', 'weekly'],
+  ...landingPaths.map((p) => [p, '0.85']),
+  ['/guides', '0.85', 'weekly'],
+  ['/blog', '0.8', 'weekly'],
+  ...blogPaths.map((p) => [p, '0.75']),
+  ['/features', '0.8'],
+  ['/download', '0.85'],
+  ['/download/ios', '0.8'],
+  ['/download/chrome', '0.8'],
+  ['/about', '0.7'],
+  ['/press', '0.75'],
+  ['/affiliates', '0.75'],
+  ['/support', '0.75'],
+  ['/status', '0.55'],
+  ['/privacy', '0.5'],
+  ['/terms', '0.5'],
+];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urlEntry('/', '1.0', 'weekly')}
-${landingPaths.map((p) => urlEntry(p, '0.85')).join('\n')}
-${urlEntry('/guides', '0.85', 'weekly')}
-${urlEntry('/blog', '0.8', 'weekly')}
-${blogPaths.map((p) => urlEntry(p, '0.75')).join('\n')}
-${urlEntry('/features', '0.8')}
-${urlEntry('/download', '0.85')}
-${urlEntry('/download/ios', '0.8')}
-${urlEntry('/download/chrome', '0.8')}
-${urlEntry('/about', '0.7')}
-${urlEntry('/press', '0.75')}
-${urlEntry('/affiliates', '0.75')}
-${urlEntry('/support', '0.75')}
-${urlEntry('/status', '0.55')}
-${urlEntry('/privacy', '0.5')}
-${urlEntry('/terms', '0.5')}
+${sitemapPaths.map(([p, priority, freq]) => urlEntries(p, priority, freq)).join('\n')}
 </urlset>
 `;
 
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap);
 console.log(
-  `Generated ${lines.length} prerender routes (${slugs.length} landings, ${blogSlugs.length} posts) and sitemap with ${allContentPaths.length} URLs.`,
+  `Generated ${lines.length} prerender routes (${slugs.length} landings, ${blogSlugs.length} posts) and sitemap with ${sitemapPaths.length * LANGS.length} URLs.`,
 );

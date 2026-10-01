@@ -1,7 +1,8 @@
 import { DOCUMENT, isPlatformBrowser, Location } from '@angular/common';
 import { Inject, Injectable, Optional, PLATFORM_ID, REQUEST } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { browserPathForLang } from './locale-url';
+import { NavigationStart, Router } from '@angular/router';
+import { BehaviorSubject, filter } from 'rxjs';
+import { localizedPath, splitLangPrefix } from './locale-url';
 
 export type AppLang = 'en' | 'de' | 'es' | 'fr' | 'pt' | 'ru' | 'uk';
 
@@ -234,40 +235,22 @@ const DICT: Dict = {
     uk: 'Гайди FollowNet',
   },
   GUIDES_LEAD: {
-    ru: 'Основные гайды по FollowNet: протоколы, Smart Connect, Free и Premium, Wi‑Fi и настройка на iPhone. Без каталога «VPN для каждого приложения».',
-    en: 'Core FollowNet guides: protocols, Smart Connect, Free and Premium, Wi‑Fi, and iPhone setup — not a catalog of “VPN for every app.”',
-    de: 'Kern-Guides zu FollowNet: Protokolle, Smart Connect, Free und Premium, WLAN und iPhone-Setup — kein Katalog „VPN für jede App“.',
-    es: 'Guías principales de FollowNet: protocolos, Smart Connect, Free y Premium, Wi‑Fi y configuración en iPhone — no un catálogo de “VPN para cada app”.',
-    fr: 'Guides essentiels FollowNet : protocoles, Smart Connect, Free et Premium, Wi‑Fi et configuration iPhone — pas un catalogue « VPN pour chaque app ».',
-    pt: 'Guias principais do FollowNet: protocolos, Smart Connect, Free e Premium, Wi‑Fi e configuração no iPhone — não um catálogo de “VPN para cada app”.',
-    uk: 'Основні гайди FollowNet: протоколи, Smart Connect, Free і Premium, Wi‑Fi та налаштування на iPhone. Без каталогу «VPN для кожного застосунку».',
+    ru: 'Понятные инструкции по VPN на iPhone: от первой настройки до безопасного Wi‑Fi в поездках и решения проблем.',
+    en: 'Clear, practical VPN guides for iPhone — from first setup to safe Wi‑Fi on the road and fixing problems.',
+    de: 'Klare, praktische VPN-Ratgeber fürs iPhone — von der ersten Einrichtung über sicheres WLAN unterwegs bis zur Problemlösung.',
+    es: 'Guías de VPN claras y prácticas para iPhone: desde la primera configuración hasta el Wi‑Fi seguro de viaje y la solución de problemas.',
+    fr: 'Des guides VPN clairs et pratiques pour iPhone : de la première configuration au Wi‑Fi sûr en voyage et au dépannage.',
+    pt: 'Guias de VPN claros e práticos para iPhone — da primeira configuração ao Wi‑Fi seguro na viagem e à solução de problemas.',
+    uk: 'Зрозумілі інструкції з VPN на iPhone: від першого налаштування до безпечного Wi‑Fi в подорожах і розв’язання проблем.',
   },
-  GUIDES_FEATURED: {
-    ru: 'Основные гайды',
-    en: 'Core guides',
-    de: 'Kern-Guides',
-    es: 'Guías principales',
-    fr: 'Guides essentiels',
-    pt: 'Guias principais',
-    uk: 'Основні гайди',
-  },
-  GUIDES_MORE: {
-    ru: 'Ещё по продукту',
-    en: 'More product topics',
-    de: 'Weitere Produktthemen',
-    es: 'Más temas del producto',
-    fr: 'Autres sujets produit',
-    pt: 'Mais temas do produto',
-    uk: 'Ще про продукт',
-  },
-  GUIDES_MORE_NOTE: {
-    ru: 'Гайды: основы VPN, публичный Wi‑Fi, поездки, решение проблем — честно про FollowNet.',
-    en: 'Guides: VPN basics, public Wi‑Fi, travel, troubleshooting — honest FollowNet copy.',
-    de: 'Guides: VPN-Grundlagen, öffentliches WLAN, Reisen, Fehlerbehebung — ehrlich zu FollowNet.',
-    es: 'Guías: bases de VPN, wifi público, viajes, solución de problemas — FollowNet con honestidad.',
-    fr: 'Guides : bases du VPN, Wi‑Fi public, voyages, dépannage — FollowNet sans blabla.',
-    pt: 'Guias: bases de VPN, Wi‑Fi público, viagens, solução de problemas — FollowNet honesto.',
-    uk: 'Гайди: основи VPN, публічний Wi‑Fi, подорожі, вирішення проблем — чесно про FollowNet.',
+  GUIDE_READ: {
+    ru: 'Читать',
+    en: 'Read guide',
+    de: 'Lesen',
+    es: 'Leer',
+    fr: 'Lire',
+    pt: 'Ler',
+    uk: 'Читати',
   },
   NAV_PRIVACY: { ru: 'Конфиденциальность', en: 'Privacy', de: 'Datenschutz', es: 'Privacidad', fr: 'Confidentialité', pt: 'Privacidade', uk: 'Конфіденційність' },
   NAV_TERMS: { ru: 'Условия', en: 'Terms', de: 'Bedingungen', es: 'Términos', fr: 'Conditions', pt: 'Termos', uk: 'Умови' },
@@ -297,6 +280,60 @@ const DICT: Dict = {
     fr: 'Tous les articles',
     pt: 'Todos os artigos',
     uk: 'Усі статті',
+  },
+  BLOG_LATEST: {
+    ru: 'Свежая статья',
+    en: 'Latest article',
+    de: 'Neuester Artikel',
+    es: 'Artículo más reciente',
+    fr: 'Dernier article',
+    pt: 'Artigo mais recente',
+    uk: 'Свіжа стаття',
+  },
+  BLOG_READ: {
+    ru: 'Читать статью',
+    en: 'Read article',
+    de: 'Artikel lesen',
+    es: 'Leer artículo',
+    fr: 'Lire l’article',
+    pt: 'Ler artigo',
+    uk: 'Читати статтю',
+  },
+  BLOG_FILTER: {
+    ru: 'Темы блога',
+    en: 'Blog topics',
+    de: 'Blog-Themen',
+    es: 'Temas del blog',
+    fr: 'Thèmes du blog',
+    pt: 'Temas do blog',
+    uk: 'Теми блогу',
+  },
+  BLOG_GUIDES: {
+    ru: 'Гайды по теме',
+    en: 'Related guides',
+    de: 'Passende Guides',
+    es: 'Guías relacionadas',
+    fr: 'Guides associés',
+    pt: 'Guias relacionados',
+    uk: 'Гайди на тему',
+  },
+  BLOG_MORE: {
+    ru: 'Ещё в блоге',
+    en: 'More from the blog',
+    de: 'Mehr im Blog',
+    es: 'Más en el blog',
+    fr: 'À lire aussi sur le blog',
+    pt: 'Mais no blog',
+    uk: 'Ще в блозі',
+  },
+  GUIDE_FROM_BLOG: {
+    ru: 'Из блога',
+    en: 'From the blog',
+    de: 'Aus dem Blog',
+    es: 'Del blog',
+    fr: 'Sur le blog',
+    pt: 'Do blog',
+    uk: 'З блогу',
   },
   BLOG_READ_TIME: {
     ru: '{n} мин',
@@ -472,40 +509,31 @@ const DICT: Dict = {
     uk: 'QR і email‑вхід',
   },
   VOICES_KICKER: {
-    ru: 'Честно',
-    en: 'Honest',
-    de: 'Ehrlich',
-    es: 'Con honestidad',
-    fr: 'Honnêtement',
-    pt: 'Com honestidade',
-    uk: 'Чесно',
+    ru: 'Коротко',
+    en: 'In short',
+    de: 'Kurz gesagt',
+    es: 'En resumen',
+    fr: 'En bref',
+    pt: 'Em resumo',
+    uk: 'Коротко',
   },
   VOICES_TITLE: {
-    ru: 'Пока мало отзывов — зато ясно, за что нас выбирают',
-    en: 'Few reviews yet — clear on why people try us',
-    de: 'Noch wenige Reviews — klar, warum man uns testet',
-    es: 'Pocas reseñas aún — claro por qué nos prueban',
-    fr: 'Peu d’avis pour l’instant — clair pourquoi on nous teste',
-    pt: 'Poucas avaliações ainda — claro por que nos testam',
-    uk: 'Поки мало відгуків — але зрозуміло, за що нас обирають',
+    ru: 'Почему выбирают FollowNet',
+    en: 'Why people choose FollowNet',
+    de: 'Warum man FollowNet wählt',
+    es: 'Por qué eligen FollowNet',
+    fr: 'Pourquoi choisir FollowNet',
+    pt: 'Por que escolher o FollowNet',
+    uk: 'Чому обирають FollowNet',
   },
   VOICES_SUB: {
-    ru: 'Мы не рисуем чужие звёзды. Ниже — три вещи, которые уже есть в продукте. Отзыв в App Store очень поможет.',
-    en: 'We don’t invent star ratings. Below are three things that already ship. An App Store review helps a lot.',
-    de: 'Wir erfinden keine Sterne. Unten drei Dinge, die schon da sind. Eine App‑Store‑Bewertung hilft sehr.',
-    es: 'No inventamos estrellas. Abajo, tres cosas que ya están en el producto. Una reseña en App Store ayuda mucho.',
-    fr: 'Nous n’inventons pas d’étoiles. Ci‑dessous trois choses déjà livrées. Un avis App Store aide beaucoup.',
-    pt: 'Não inventamos estrelas. Abaixo, três coisas que já estão no produto. Uma avaliação na App Store ajuda muito.',
-    uk: 'Ми не малюємо чужі зірки. Нижче — три речі, які вже є в продукті. Відгук в App Store дуже допоможе.',
-  },
-  VOICES_CTA: {
-    ru: 'Оставить отзыв в App Store',
-    en: 'Leave an App Store review',
-    de: 'Im App Store bewerten',
-    es: 'Deja una reseña en App Store',
-    fr: 'Laisser un avis sur l’App Store',
-    pt: 'Deixar avaliação na App Store',
-    uk: 'Залишити відгук в App Store',
+    ru: 'Три вещи, которые уже есть в приложении, — без выдуманных рейтингов и громких обещаний.',
+    en: 'Three things that already ship in the app — no made-up ratings or empty promises.',
+    de: 'Drei Dinge, die schon in der App stecken — ohne erfundene Bewertungen und leere Versprechen.',
+    es: 'Tres cosas que ya están en la app, sin valoraciones inventadas ni promesas vacías.',
+    fr: 'Trois choses déjà présentes dans l’app — sans notes inventées ni promesses creuses.',
+    pt: 'Três coisas que já estão no app — sem avaliações inventadas nem promessas vazias.',
+    uk: 'Три речі, які вже є в застосунку, — без вигаданих рейтингів і гучних обіцянок.',
   },
   VOICE_1_TITLE: {
     ru: 'Честный Free',
@@ -1719,6 +1747,33 @@ const DICT: Dict = {
     pt: 'O modo inteligente nas configurações escolhe o servidor e o protocolo (IKEv2, WireGuard, AmneziaWG, Hysteria2 ou VLESS Reality) de acordo com sua rede—Wi‑Fi ou celular, estabilidade e restrições comuns da operadora. A escolha manual está sempre disponível.',
     uk: 'Це розумний режим у налаштуваннях протоколу: додаток сам підбирає сервер і протокол (IKEv2, WireGuard, AmneziaWG, Hysteria2 або VLESS Reality) під вашу мережу — Wi‑Fi чи мобільну, стабільність і типові обмеження оператора. Протокол завжди можна вибрати вручну.',
   },
+  EXT_SHOT_ALT: {
+    ru: 'Расширение FollowNet VPN для Chrome',
+    en: 'FollowNet VPN extension for Chrome',
+    de: 'FollowNet VPN-Erweiterung für Chrome',
+    es: 'Extensión FollowNet VPN para Chrome',
+    fr: 'Extension FollowNet VPN pour Chrome',
+    pt: 'Extensão FollowNet VPN para Chrome',
+    uk: 'Розширення FollowNet VPN для Chrome',
+  },
+  NOT_FOUND_TITLE: {
+    ru: 'Страница не найдена',
+    en: 'Page not found',
+    de: 'Seite nicht gefunden',
+    es: 'Página no encontrada',
+    fr: 'Page introuvable',
+    pt: 'Página não encontrada',
+    uk: 'Сторінку не знайдено',
+  },
+  NOT_FOUND_TEXT: {
+    ru: 'Возможно, ссылка устарела или страница переехала. Начните с главной или загляните в гайды.',
+    en: 'The link may be outdated or the page has moved. Start from the home page or browse the guides.',
+    de: 'Der Link ist vielleicht veraltet oder die Seite wurde verschoben. Starten Sie auf der Startseite oder in den Guides.',
+    es: 'Puede que el enlace esté desactualizado o que la página se haya movido. Empieza en la portada o explora las guías.',
+    fr: 'Le lien est peut-être obsolète ou la page a été déplacée. Repartez de l’accueil ou parcourez les guides.',
+    pt: 'O link pode estar desatualizado ou a página mudou de lugar. Comece pela página inicial ou veja os guias.',
+    uk: 'Можливо, посилання застаріло або сторінку перенесено. Почніть із головної або перегляньте гайди.',
+  },
   SEO_LANDING_BACK_HOME: {
     ru: '← На главную',
     en: '← Back to home',
@@ -1868,38 +1923,39 @@ export class I18nService {
     @Inject(DOCUMENT) private readonly document: Document,
     @Optional() private readonly location: Location | null,
     @Optional() @Inject(REQUEST) private readonly request: { url?: string } | null,
+    private readonly router: Router,
   ) {
-    this.lang = this.readInitialLang();
+    this.lang = this.langFromUrl(this.initialUrl());
     this.lang$.next(this.lang);
     this.applyHtmlLang(this.lang);
+
+    // The URL prefix is the source of truth: switch before the next page's components render.
+    this.router.events
+      .pipe(filter((e): e is NavigationStart => e instanceof NavigationStart))
+      .subscribe((e) => this.applyLang(this.langFromUrl(e.url)));
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.redirectToPreferredLang();
+    }
   }
 
   get current(): AppLang {
     return this.lang;
   }
 
-  setLang(next: AppLang) {
-    this.lang = next;
-    if (isPlatformBrowser(this.platformId)) {
-      try {
-        localStorage.setItem(STORAGE_KEY, next);
-      } catch {
-        // ignore
-      }
-      this.syncLangInUrl(next);
-    }
-    this.applyHtmlLang(next);
-    this.lang$.next(next);
+  /** Same page in another language: /vpn-for-iphone ⇄ /de/vpn-for-iphone. */
+  pathForLang(lang: AppLang, url: string = this.router.url): string {
+    const { path } = splitLangPrefix(url);
+    return localizedPath(path, lang) + this.suffixOf(url);
   }
 
-  /** Keep address bar aligned with SEO hreflang (?lang= / bare EN path). */
-  private syncLangInUrl(lang: AppLang): void {
-    if (!this.location) return;
-    const raw = this.location.path() || '/';
-    const pathOnly = (raw.split('?')[0] || '/').replace(/\/+$/, '') || '/';
-    const nextPath = browserPathForLang(pathOnly.startsWith('/') ? pathOnly : `/${pathOnly}`, lang);
-    if (raw !== nextPath && raw.split('#')[0] !== nextPath) {
-      this.location.replaceState(nextPath);
+  setLang(next: AppLang) {
+    this.rememberLang(next);
+    const target = this.pathForLang(next);
+    if (target !== this.router.url) {
+      void this.router.navigateByUrl(target);
+    } else {
+      this.applyLang(next);
     }
   }
 
@@ -1917,6 +1973,13 @@ export class I18nService {
     return LANG_LABELS[lang] ?? lang.toUpperCase();
   }
 
+  private applyLang(next: AppLang) {
+    if (next === this.lang) return;
+    this.lang = next;
+    this.applyHtmlLang(next);
+    this.lang$.next(next);
+  }
+
   private applyHtmlLang(lang: AppLang): void {
     this.document.documentElement.lang = lang;
   }
@@ -1925,59 +1988,80 @@ export class I18nService {
     return (SUPPORTED_LANGS as readonly string[]).includes(lang);
   }
 
-  private readInitialLang(): AppLang {
-    if (!isPlatformBrowser(this.platformId) && this.request?.url) {
+  private initialUrl(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      return window.location.pathname + window.location.search;
+    }
+    if (this.request?.url) {
       try {
-        const fromReq = this.langFromQuery(new URL(this.request.url, 'http://prerender.local').search);
-        if (fromReq) return fromReq;
+        const u = new URL(this.request.url, 'http://prerender.local');
+        return u.pathname + u.search;
       } catch {
         // ignore
       }
     }
-
-    const fromUrl = this.langFromQuery(this.currentSearch());
-    if (fromUrl) return fromUrl;
-
-    if (isPlatformBrowser(this.platformId)) {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY) as AppLang | null;
-        if (saved && this.isSupported(saved)) return saved;
-      } catch {
-        // ignore
-      }
-
-      const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
-      if (nav.startsWith('ru')) return 'ru';
-      if (nav.startsWith('uk')) return 'uk';
-      if (nav.startsWith('de')) return 'de';
-      if (nav.startsWith('es')) return 'es';
-      if (nav.startsWith('fr')) return 'fr';
-      if (nav.startsWith('pt')) return 'pt';
-      return 'en';
-    }
-
-    return 'en';
+    return this.location?.path() || '/';
   }
 
-  private currentSearch(): string {
-    if (isPlatformBrowser(this.platformId)) {
-      return window.location.search;
-    }
-    const path = this.location?.path() ?? '';
-    const q = path.indexOf('?');
-    return q >= 0 ? path.slice(q) : '';
+  private langFromUrl(url: string): AppLang {
+    return splitLangPrefix(url).lang ?? 'en';
   }
 
-  private langFromQuery(search: string): AppLang | null {
-    if (!search) return null;
+  private suffixOf(url: string): string {
+    const i = url.search(/[?#]/);
+    if (i < 0) return '';
+    // Drop the legacy ?lang= param; keep everything else (plan, ticket, #pricing…).
+    const [beforeHash, hash = ''] = url.slice(i).split('#');
+    const params = new URLSearchParams(beforeHash.replace(/^\?/, ''));
+    params.delete('lang');
+    const q = params.toString();
+    return (q ? `?${q}` : '') + (hash ? `#${hash}` : '');
+  }
+
+  private rememberLang(lang: AppLang) {
     try {
-      const raw = search.startsWith('?') ? search.slice(1) : search;
-      const fromUrl = new URLSearchParams(raw).get('lang')?.toLowerCase();
-      if (fromUrl && this.isSupported(fromUrl)) return fromUrl;
+      localStorage.setItem(STORAGE_KEY, lang);
     } catch {
       // ignore
     }
-    return null;
+  }
+
+  /**
+   * Unprefixed (EN) URLs: honour legacy ?lang=, a saved choice, or the browser language.
+   * Prefixed URLs are explicit and always win. Crawlers send no saved choice and an EN UA.
+   */
+  private redirectToPreferredLang() {
+    const { pathname, search, hash } = window.location;
+    if (splitLangPrefix(pathname).lang) return;
+
+    const fromQuery = new URLSearchParams(search).get('lang')?.toLowerCase() ?? '';
+    let wanted: AppLang | null = this.isSupported(fromQuery) ? fromQuery : null;
+    if (wanted) {
+      this.rememberLang(wanted);
+    } else {
+      wanted = this.savedLang() ?? this.browserLang();
+    }
+    if (!wanted || (wanted === 'en' && !fromQuery)) return;
+
+    const target = localizedPath(pathname, wanted) + this.suffixOf(pathname + search + hash);
+    if (target === pathname + search + hash) return;
+    this.applyLang(wanted);
+    // Replace before the router's initial navigation so the right route renders.
+    window.history.replaceState(window.history.state, '', target);
+  }
+
+  private savedLang(): AppLang | null {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved && this.isSupported(saved) ? saved : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private browserLang(): AppLang {
+    const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    const code = nav.slice(0, 2);
+    return this.isSupported(code) ? code : 'en';
   }
 }
-

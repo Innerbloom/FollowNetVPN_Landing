@@ -13,7 +13,7 @@
 
 .kicker {
   margin: 0 0 10px;
-  color: var(--green);
+  color: var(--green-2);
   font-weight: 800;
   font-size: var(--type-kicker);
   letter-spacing: 0.12em;
@@ -145,64 +145,6 @@
   align-items: center;
 }
 
-.hero-brand {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  margin: 0 0 1rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-}
-
-.hero-brand__vpn {
-  color: var(--green);
-  font-weight: 800;
-}
-
-.hero-rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 1rem;
-  padding: 9px 14px 9px 11px;
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-}
-
-.hero-rating:hover {
-  border-color: rgba(232, 163, 23, 0.35);
-  background: #fffdf6;
-  box-shadow: var(--shadow-md);
-}
-
-.hero-rating__stars {
-  display: inline-flex;
-  gap: 2px;
-}
-
-.hero-rating__stars svg {
-  width: 15px;
-  height: 15px;
-  fill: var(--star);
-}
-
-.hero-rating__text {
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--muted);
-}
-
-.hero-rating:hover .hero-rating__text {
-  color: var(--text);
-}
 
 .hero-badges {
   display: flex;
@@ -245,7 +187,7 @@
 }
 
 .accent {
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .lead {
@@ -339,26 +281,44 @@
 
 .hero-dots {
   display: inline-flex;
-  gap: 7px;
-  padding: 8px 12px;
+  gap: 0;
+  padding: 2px 6px;
   border-radius: 999px;
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
 
+/* 24px touch target; the visible 7px dot is drawn by ::before. */
 .hero-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: width 0.2s ease;
+}
+
+.hero-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 7px;
   height: 7px;
-  border: 0;
   border-radius: 999px;
-  padding: 0;
-  cursor: pointer;
+  transform: translate(-50%, -50%);
   background: rgba(15, 23, 42, 0.18);
   transition: width 0.2s ease, background 0.2s ease;
 }
 
 .hero-dot.is-active {
+  width: 30px;
+}
+
+.hero-dot.is-active::before {
   width: 18px;
   background: var(--green);
 }
@@ -449,11 +409,6 @@
   font-weight: 600;
 }
 
-.voices-cta {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-}
 
 @media (max-width: 800px) {
   .voices-grid {
@@ -629,7 +584,7 @@
   box-shadow: var(--shadow-sm);
   font-family: var(--font-display);
   font-weight: 800;
-  color: var(--green);
+  color: var(--green-2);
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   z-index: 1;
@@ -821,26 +776,44 @@
 
 .ext-dots {
   display: inline-flex;
-  gap: 7px;
-  padding: 8px 12px;
+  gap: 0;
+  padding: 2px 6px;
   border-radius: 999px;
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
 
+/* 24px touch target; the visible 7px dot is drawn by ::before. */
 .ext-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: width 0.2s ease;
+}
+
+.ext-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 7px;
   height: 7px;
-  border: 0;
   border-radius: 999px;
-  padding: 0;
-  cursor: pointer;
+  transform: translate(-50%, -50%);
   background: rgba(15, 23, 42, 0.18);
   transition: width 0.2s ease, background 0.2s ease;
 }
 
 .ext-dot.is-active {
+  width: 30px;
+}
+
+.ext-dot.is-active::before {
   width: 18px;
   background: var(--green);
 }
@@ -1012,7 +985,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  color: var(--muted);
   background: var(--surface-2);
 }
 
@@ -1090,7 +1063,7 @@
   right: 12px;
   padding: 5px 10px;
   border-radius: 999px;
-  background: var(--green);
+  background: var(--green-2);
   color: #fff;
   font-size: 0.68rem;
   font-weight: 800;
@@ -1266,7 +1239,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .learn-title {
@@ -1418,17 +1391,11 @@
     text-align: center;
   }
 
-  .hero-brand,
-  .hero-rating,
   .hero-badges,
   .cta-row {
     justify-content: center;
   }
 
-  .hero-rating {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   .lead,
   .offer {

@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { I18nService } from '../../core/i18n.service';
+import { localizedPath } from '../../core/locale-url';
 
 /** Legacy /ios-vpn-guides → /guides hub. */
 @Component({
@@ -9,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class GuidesRedirectComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly i18n = inject(I18nService);
 
   ngOnInit(): void {
-    void this.router.navigate(['/guides'], { replaceUrl: true });
+    void this.router.navigateByUrl(localizedPath('/guides', this.i18n.current), { replaceUrl: true });
   }
 }

@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { localizedPath } from '../../core/locale-url';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { Subscription } from 'rxjs';
 import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS, formatPremiumUsd, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal } from '../../core/premium-plans';
@@ -27,7 +29,7 @@ type FaqItem = {
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
@@ -86,7 +88,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   openLearnPost(post: BlogTeaser, event: Event): void {
     event.preventDefault();
-    void this.router.navigate(['/blog', post.slug]);
+    void this.router.navigateByUrl(localizedPath(`/blog/${post.slug}`, this.i18n.current));
   }
 
   private refreshLearnPosts(): void {
@@ -169,18 +171,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   /** Real iPhone mockups — hero carousel only (no duplicate gallery below) */
   readonly shots = [
-    'assets/screenshots/mockups/IMG_6805-portrait.png', // Connect
-    'assets/screenshots/mockups/IMG_6807-portrait.png', // Protocols
-    'assets/screenshots/mockups/IMG_6808-portrait.png', // DNS
-    'assets/screenshots/mockups/IMG_6803-portrait.png', // Speed Test
-    'assets/screenshots/mockups/IMG_6804-portrait.png', // Servers
+    'assets/screenshots/mockups/IMG_6805-portrait', // Connect
+    'assets/screenshots/mockups/IMG_6807-portrait', // Protocols
+    'assets/screenshots/mockups/IMG_6808-portrait', // DNS
+    'assets/screenshots/mockups/IMG_6803-portrait', // Speed Test
+    'assets/screenshots/mockups/IMG_6804-portrait', // Servers
   ];
 
   readonly extensionShots = [
-    'assets/extension/chrome-vpn-v2.png',
-    'assets/extension/chrome-servers-v2.png',
-    'assets/extension/chrome-stats-v2.png',
-    'assets/extension/chrome-settings-v2.png',
+    'assets/extension/chrome-vpn-v2.webp',
+    'assets/extension/chrome-servers-v2.webp',
+    'assets/extension/chrome-stats-v2.webp',
+    'assets/extension/chrome-settings-v2.webp',
   ];
 
   readonly extensionLabels = ['VPN', 'Servers', 'Stats', 'Settings'];
@@ -225,6 +227,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ];
 
   activeIndex = 0;
+  /** Stacked carousel shots are all "in viewport"; only fetch the visible one and the next. */
+  private shotsLoadedUpTo = 1;
 
   private autoplayId: number | null = null;
   private stopAutoplayUntil = 0;
@@ -267,9 +271,22 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  shotSrc(i: number): string | null {
+    return i <= this.shotsLoadedUpTo ? `${this.shots[i]}-400.webp` : null;
+  }
+
+  shotSrcset(i: number): string | null {
+    return i <= this.shotsLoadedUpTo ? `${this.shots[i]}-400.webp 400w, ${this.shots[i]}.webp 760w` : null;
+  }
+
+  private showShot(index: number) {
+    this.activeIndex = index;
+    this.shotsLoadedUpTo = Math.max(this.shotsLoadedUpTo, Math.min(index + 1, this.shots.length - 1));
+  }
+
   goTo(index: number) {
     const clamped = Math.max(0, Math.min(index, this.shots.length - 1));
-    this.activeIndex = clamped;
+    this.showShot(clamped);
     this.pauseAutoplay(6000);
   }
 
@@ -301,8 +318,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   private autoplayStep() {
     if (Date.now() < this.stopAutoplayUntil) return;
-    const next = (this.activeIndex + 1) % this.shots.length;
-    this.activeIndex = next;
+    this.showShot((this.activeIndex + 1) % this.shots.length);
     this.extIndex = (this.extIndex + 1) % this.extensionShots.length;
   }
 }

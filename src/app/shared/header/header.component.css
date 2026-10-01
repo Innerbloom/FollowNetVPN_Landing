@@ -89,6 +89,8 @@
   color: var(--text);
   cursor: pointer;
   text-align: left;
+  text-decoration: none;
+  box-sizing: border-box;
   font-weight: 800;
 }
 
@@ -148,7 +150,7 @@
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .nav {
@@ -182,7 +184,7 @@
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 12px;
-  background: var(--green);
+  background: var(--green-2);
   color: #fff;
   font-weight: 800;
   font-size: 0.9rem;
@@ -303,6 +305,33 @@
 }
 
 @media (max-width: 520px) {
+  .nav-pill {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .right {
+    gap: 6px;
+  }
+
+  .lang {
+    padding: 0 9px;
+  }
+
+  .logo {
+    gap: 7px;
+  }
+
+  .logo-text {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* The shield already says VPN; longer CTA labels (FR/DE/UK) need the room. */
+  .brand-suffix {
+    display: none;
+  }
+
   .brand {
     font-size: 0.95rem;
   }
@@ -311,5 +340,11 @@
     width: 30px;
     height: 30px;
     border-radius: 0;
+  }
+}
+
+@media (max-width: 359px) {
+  .logo-text {
+    display: none;
   }
 }

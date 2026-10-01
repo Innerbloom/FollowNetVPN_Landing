@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
-import {
-  CORE_LANDING_SLUGS,
-  landingLabel,
-  type LandingSlug,
-} from '../../core/seo-landing.slugs';
+import { landingLabel, type LandingSlug } from '../../core/seo-landing.slugs';
 import { landingContent } from '../../core/seo-landing.content';
-import { EXTRA_LANDING_SLUGS } from '../../core/seo-landing.extra-slugs';
+import { deepGuideCached } from '../../core/seo-landing.deep';
+import { GUIDE_CATEGORIES } from './guides-hub.categories';
 
 type GuideCard = {
   slug: LandingSlug;
@@ -17,16 +15,22 @@ type GuideCard = {
   lead: string;
 };
 
+type GuideSection = {
+  id: string;
+  title: string;
+  note: string;
+  cards: GuideCard[];
+};
+
 @Component({
   selector: 'app-guides-hub',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, RouterLink],
   templateUrl: './guides-hub.component.html',
   styleUrls: ['./guides-hub.component.css'],
 })
 export class GuidesHubComponent implements OnInit {
-  featured: GuideCard[] = [];
-  more: GuideCard[] = [];
+  sections: GuideSection[] = [];
 
   constructor(
     public i18n: I18nService,
@@ -43,14 +47,18 @@ export class GuidesHubComponent implements OnInit {
     return {
       slug,
       title: landingLabel(slug, lang),
-      lead: landingContent(slug, lang).lead,
+      lead: (deepGuideCached(lang, slug) ?? landingContent(slug, lang)).lead,
     };
   }
 
   private refresh(): void {
     const lang = this.i18n.current;
-    this.featured = CORE_LANDING_SLUGS.map((slug) => this.card(slug));
-    this.more = EXTRA_LANDING_SLUGS.map((slug) => this.card(slug));
+    this.sections = GUIDE_CATEGORIES.map((c) => ({
+      id: c.id,
+      title: c.title[lang],
+      note: c.note[lang],
+      cards: c.slugs.map((slug) => this.card(slug)),
+    }));
     this.seo.updateForRoute('/guides', lang);
   }
 }

@@ -3,7 +3,7 @@
   <section class="doc" *ngSwitchCase="'ru'">
     <div class="doc-header">
       <h1>Политика конфиденциальности FollowNet VPN</h1>
-      <p class="muted">Дата обновления: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Дата обновления: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Эта политика описывает, какие данные мы обрабатываем в приложениях FollowNet VPN (iOS и Android) и на сайте, зачем они нужны и какие у вас есть права.
         Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
@@ -98,6 +98,16 @@
         IP‑адрес и User‑Agent могут учитываться на стороне backend для защиты от злоупотреблений (rate‑limit) и безопасности <b>в моменте обработки запроса</b>, без записи в постоянные логи и без целенаправленного хранения для маркетинга.
       </p>
 
+      <h3>3.11 Сетевой контекст для Smart Connect</h3>
+      <p class="muted">
+        Чтобы подобрать протокол, который работает в вашей сети, наш сервер по вашему IP‑адресу определяет приблизительные сведения о сети в момент запроса приложения: страну, регион/город, интернет‑провайдера (ISP/ASN) и тип подключения (Wi‑Fi или мобильная сеть). Затем приложение передаёт результаты попыток подключения (сервер, протокол, успех или ошибка, время подключения) вместе с этим контекстом. Мы используем эти данные только для улучшения выбора протокола и надёжности; это <b>не</b> точное (GPS) местоположение, и в них нет содержимого трафика и истории просмотров.
+      </p>
+
+      <h3>3.12 Камера (привязка устройств)</h3>
+      <p class="muted">
+        Камера используется, только когда вы сами сканируете QR‑код для входа на другом устройстве. Кадры обрабатываются на устройстве для чтения кода и <b>не</b> сохраняются и не отправляются.
+      </p>
+
       <h2>4. Правовые основания обработки (GDPR Art. 6)</h2>
       <ul>
         <li><b>Исполнение договора (Art. 6(1)(b))</b> — создание аккаунта, предоставление VPN‑сервиса, выдача VPN‑учётных данных, управление подпиской.</li>
@@ -183,7 +193,7 @@
 
       <h2>14. Условия использования</h2>
       <p class="muted">
-        Настоящая политика дополняет наши Условия использования: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Настоящая политика дополняет наши Условия использования: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Изменения</h2>
@@ -197,7 +207,7 @@
   <section class="doc" *ngSwitchCase="'uk'">
     <div class="doc-header">
       <h1>Політика конфіденційності FollowNet VPN</h1>
-      <p class="muted">Дата оновлення: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Ця політика описує, які дані ми обробляємо в застосунках FollowNet VPN (iOS та Android) і на сайті, навіщо вони потрібні та які у вас є права.
         Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
@@ -292,6 +302,16 @@
         IP‑адреса та User‑Agent можуть враховуватися на стороні backend для захисту від зловживань (rate‑limit) і безпеки <b>в моменті обробки запиту</b>, без запису в постійні логи і без цілеспрямованого зберігання для маркетингу.
       </p>
 
+      <h3>3.11 Мережевий контекст для Smart Connect</h3>
+      <p class="muted">
+        Щоб підібрати протокол, який працює у вашій мережі, наш сервер за вашою IP‑адресою визначає приблизні відомості про мережу в момент запиту застосунку: країну, регіон/місто, інтернет‑провайдера (ISP/ASN) і тип підключення (Wi‑Fi або мобільна мережа). Потім застосунок передає результати спроб підключення (сервер, протокол, успіх або помилка, час підключення) разом із цим контекстом. Ми використовуємо ці дані лише для покращення вибору протоколу та надійності; це <b>не</b> точне (GPS) місцезнаходження, і в них немає вмісту трафіку чи історії переглядів.
+      </p>
+
+      <h3>3.12 Камера (прив’язка пристроїв)</h3>
+      <p class="muted">
+        Камера використовується, лише коли ви самі скануєте QR‑код для входу на іншому пристрої. Кадри обробляються на пристрої для зчитування коду й <b>не</b> зберігаються та не надсилаються.
+      </p>
+
       <h2>4. Правові підстави обробки (GDPR Art. 6)</h2>
       <ul>
         <li><b>Виконання договору (Art. 6(1)(b))</b> — створення акаунта, надання VPN‑сервісу, видача VPN‑облікових даних, керування підпискою.</li>
@@ -377,7 +397,7 @@
 
       <h2>14. Умови використання</h2>
       <p class="muted">
-        Ця політика доповнює наші Умови використання: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Ця політика доповнює наші Умови використання: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Зміни</h2>
@@ -391,7 +411,7 @@
   <section class="doc" *ngSwitchCase="'de'">
     <div class="doc-header">
       <h1>FollowNet VPN Datenschutzerklärung</h1>
-      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Diese Erklärung beschreibt, welche Daten wir in den FollowNet VPN Apps (iOS und Android) und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
         Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
@@ -484,6 +504,16 @@
         IP‑Adresse und User‑Agent können auf dem Backend für Abuse‑Prevention (Rate‑Limiting) und Sicherheit <b>im Rahmen der Request‑Verarbeitung</b> berücksichtigt werden, <b>ohne</b> dauerhafte Protokollierung und ohne zweckgebundene Speicherung für Marketing.
       </p>
 
+      <h3>3.11 Netzwerkkontext für Smart Connect</h3>
+      <p class="muted">
+        Um ein Protokoll zu wählen, das in Ihrem Netz funktioniert, leitet unser Server bei der Anfrage der App aus Ihrer IP‑Adresse ungefähre Netzwerkinformationen ab: Land, Region/Stadt, Internetanbieter (ISP/ASN) und Verbindungsart (WLAN oder Mobilfunk). Die App meldet anschließend Verbindungsversuche (Server, Protokoll, Erfolg oder Fehler, Verbindungsdauer) zusammen mit diesem Kontext. Wir nutzen diese Daten nur, um Protokollwahl und Zuverlässigkeit zu verbessern; es handelt sich <b>nicht</b> um einen genauen (GPS‑)Standort, und sie enthalten weder Traffic‑Inhalte noch Browserverlauf.
+      </p>
+
+      <h3>3.12 Kamera (Geräte‑Kopplung)</h3>
+      <p class="muted">
+        Die Kamera wird nur verwendet, wenn Sie selbst einen Kopplungs‑QR‑Code scannen, um ein anderes Gerät anzumelden. Die Bilder werden auf dem Gerät zum Lesen des Codes verarbeitet und <b>weder</b> gespeichert noch hochgeladen.
+      </p>
+
       <h2>4. Rechtsgrundlagen (DSGVO Art. 6)</h2>
       <ul>
         <li><b>Vertragserfüllung (Art. 6(1)(b))</b> — Kontoerstellung, VPN‑Dienst, VPN‑Credentials, Abo‑Verwaltung.</li>
@@ -569,7 +599,7 @@
 
       <h2>14. Nutzungsbedingungen</h2>
       <p class="muted">
-        Diese Erklärung ergänzt unsere Nutzungsbedingungen: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Diese Erklärung ergänzt unsere Nutzungsbedingungen: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Änderungen</h2>
@@ -583,7 +613,7 @@
   <section class="doc" *ngSwitchCase="'es'">
     <div class="doc-header">
       <h1>Política de privacidad de FollowNet VPN</h1>
-      <p class="muted">Última actualización: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Última actualización: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Esta política explica qué datos procesamos en las apps de FollowNet VPN (iOS y Android) y en el sitio, por qué los necesitamos y qué derechos tienes.
         Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
@@ -676,6 +706,16 @@
         La IP y el User‑Agent pueden tenerse en cuenta en el backend para prevención de abuso (rate‑limit) y seguridad <b>durante el procesamiento de la solicitud</b>, sin escribirse en logs persistentes ni conservarse con fines de marketing.
       </p>
 
+      <h3>3.11 Contexto de red para Smart Connect</h3>
+      <p class="muted">
+        Para elegir un protocolo que funcione en tu red, nuestro servidor obtiene a partir de tu dirección IP información aproximada de la red cuando la app lo solicita: país, región/ciudad, proveedor de internet (ISP/ASN) y tipo de conexión (Wi‑Fi o datos móviles). Después, la app envía los intentos de conexión (servidor, protocolo, éxito o fallo, tiempo de conexión) junto con este contexto. Usamos estos datos solo para mejorar la selección de protocolo y la fiabilidad; <b>no</b> es una ubicación precisa (GPS) y no incluye contenido del tráfico ni historial de navegación.
+      </p>
+
+      <h3>3.12 Cámara (vinculación de dispositivos)</h3>
+      <p class="muted">
+        La cámara solo se usa cuando tú escaneas un código QR de vinculación para iniciar sesión en otro dispositivo. Las imágenes se procesan en el dispositivo para leer el código y <b>no</b> se guardan ni se envían.
+      </p>
+
       <h2>4. Bases legales (RGPD Art. 6)</h2>
       <ul>
         <li><b>Ejecución de contrato (Art. 6(1)(b))</b> — creación de cuenta, servicio VPN, credenciales VPN, gestión de suscripción.</li>
@@ -761,7 +801,7 @@
 
       <h2>14. Términos de uso</h2>
       <p class="muted">
-        Esta política complementa nuestros Términos de uso: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Esta política complementa nuestros Términos de uso: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Cambios</h2>
@@ -775,7 +815,7 @@
   <section class="doc" *ngSwitchCase="'fr'">
     <div class="doc-header">
       <h1>Politique de confidentialité FollowNet VPN</h1>
-      <p class="muted">Dernière mise à jour : <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Cette politique explique quelles données nous traitons dans les applications FollowNet VPN (iOS et Android) et sur le site, pourquoi, et quels sont vos droits.
         Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
@@ -868,6 +908,16 @@
         L’adresse IP et le User‑Agent peuvent être pris en compte côté backend pour la prévention des abus (rate‑limit) et la sécurité <b>pendant le traitement de la requête</b>, sans écriture dans des logs persistants ni conservation à des fins marketing.
       </p>
 
+      <h3>3.11 Contexte réseau pour Smart Connect</h3>
+      <p class="muted">
+        Pour choisir un protocole qui fonctionne sur votre réseau, notre serveur déduit de votre adresse IP, au moment de la demande de l’app, des informations réseau approximatives : pays, région/ville, fournisseur d’accès (FAI/ASN) et type de connexion (Wi‑Fi ou mobile). L’app transmet ensuite les tentatives de connexion (serveur, protocole, réussite ou échec, durée de connexion) avec ce contexte. Nous utilisons ces données uniquement pour améliorer le choix du protocole et la fiabilité ; il ne s’agit <b>pas</b> d’une localisation précise (GPS) et elles ne contiennent ni le contenu du trafic ni l’historique de navigation.
+      </p>
+
+      <h3>3.12 Caméra (association d’appareils)</h3>
+      <p class="muted">
+        La caméra n’est utilisée que lorsque vous scannez vous‑même un QR code d’association pour connecter un autre appareil. Les images sont traitées sur l’appareil pour lire le code et ne sont <b>ni</b> conservées ni envoyées.
+      </p>
+
       <h2>4. Bases légales (RGPD Art. 6)</h2>
       <ul>
         <li><b>Exécution du contrat (Art. 6(1)(b))</b> — création de compte, service VPN, identifiants VPN, gestion d’abonnement.</li>
@@ -953,7 +1003,7 @@
 
       <h2>14. Conditions d’utilisation</h2>
       <p class="muted">
-        Cette politique complète nos Conditions d’utilisation : <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Cette politique complète nos Conditions d’utilisation : <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Modifications</h2>
@@ -967,7 +1017,7 @@
   <section class="doc" *ngSwitchCase="'pt'">
     <div class="doc-header">
       <h1>Política de privacidade do FollowNet VPN</h1>
-      <p class="muted">Última atualização: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Última atualização: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         Esta política explica quais dados processamos nos apps FollowNet VPN (iOS e Android) e no site, por que precisamos deles e quais são seus direitos.
         Buscamos coletar o mínimo necessário para operar o serviço com segurança.
@@ -1060,6 +1110,16 @@
         Endereço IP e User‑Agent podem ser considerados no backend para prevenção de abuso (rate‑limit) e segurança <b>durante o processamento da solicitação</b>, sem gravação em logs persistentes nem retenção para marketing.
       </p>
 
+      <h3>3.11 Contexto de rede para o Smart Connect</h3>
+      <p class="muted">
+        Para escolher um protocolo que funcione na sua rede, nosso servidor obtém a partir do seu endereço IP informações aproximadas da rede quando o app as solicita: país, região/cidade, provedor de internet (ISP/ASN) e tipo de conexão (Wi‑Fi ou dados móveis). Em seguida, o app envia as tentativas de conexão (servidor, protocolo, sucesso ou falha, tempo de conexão) junto com esse contexto. Usamos esses dados apenas para melhorar a escolha do protocolo e a confiabilidade; <b>não</b> é uma localização precisa (GPS) e não inclui conteúdo do tráfego nem histórico de navegação.
+      </p>
+
+      <h3>3.12 Câmera (pareamento de dispositivos)</h3>
+      <p class="muted">
+        A câmera só é usada quando você mesmo escaneia um código QR de pareamento para entrar em outro dispositivo. As imagens são processadas no dispositivo para ler o código e <b>não</b> são salvas nem enviadas.
+      </p>
+
       <h2>4. Bases legais (GDPR Art. 6)</h2>
       <ul>
         <li><b>Execução de contrato (Art. 6(1)(b))</b> — criação de conta, serviço VPN, credenciais VPN, gestão de assinatura.</li>
@@ -1145,7 +1205,7 @@
 
       <h2>14. Termos de uso</h2>
       <p class="muted">
-        Esta política complementa nossos Termos de uso: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        Esta política complementa nossos Termos de uso: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Alterações</h2>
@@ -1159,7 +1219,7 @@
   <section class="doc" *ngSwitchDefault>
     <div class="doc-header">
       <h1>FollowNet VPN Privacy Policy</h1>
-      <p class="muted">Last updated: <span class="mono">2026‑09‑10</span></p>
+      <p class="muted">Last updated: <span class="mono">2026‑09‑30</span></p>
       <p class="muted">
         This policy explains what data we process in the FollowNet VPN apps (iOS and Android) and on our website, why we need it, and what rights you have.
         We aim to collect the minimum data required to operate the service securely.
@@ -1252,6 +1312,16 @@
         IP address and User‑Agent may be considered on the backend for abuse prevention (rate‑limiting) and security <b>during request handling</b>, without writing them to persistent logs and without retention for marketing purposes.
       </p>
 
+      <h3>3.11 Smart Connect network context</h3>
+      <p class="muted">
+        To pick a protocol that works on your network, our server derives approximate network information from your IP address when the app asks for it: country, region/city, internet provider (ISP/ASN) and connection type (Wi‑Fi or mobile). The app then reports connection attempts (server, protocol, success or failure, connect time) together with this context. We use it only to improve protocol selection and reliability; it is <b>not</b> precise (GPS) location and contains no traffic content or browsing history.
+      </p>
+
+      <h3>3.12 Camera (device pairing)</h3>
+      <p class="muted">
+        The camera is used only when you choose to scan a pairing QR code to sign in another device. Frames are processed on the device to read the code and are <b>not</b> stored or uploaded.
+      </p>
+
       <h2>4. Legal bases (GDPR Art. 6)</h2>
       <ul>
         <li><b>Performance of a contract (Art. 6(1)(b))</b> — account creation, providing the VPN service, issuing VPN credentials, managing subscriptions.</li>
@@ -1337,7 +1407,7 @@
 
       <h2>14. Terms of Service</h2>
       <p class="muted">
-        This policy supplements our Terms of Service: <a routerLink="/terms" class="mono">follow-net.com/terms</a>.
+        This policy supplements our Terms of Service: <a [routerLink]="'/terms' | localize" class="mono">follow-net.com/terms</a>.
       </p>
 
       <h2>15. Changes</h2>

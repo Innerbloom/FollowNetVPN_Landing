@@ -106,13 +106,13 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
   },
   'network-profiles-ios': {
     en: {
-      title: 'Network Profiles on iOS — FollowNet | Smart, Public Wi‑Fi, Travel, Restricted',
+      title: 'Network Profiles on iOS: Smart, Public Wi‑Fi, Travel',
       ogTitle: 'Network Profiles — FollowNet',
       description:
         'Exact FollowNet presets: Smart, Public Wi‑Fi, Travel, Restricted — protocol, DNS, Auto-connect, and server mode in one tap.',
     },
     ru: {
-      title: 'Профили сети на iOS — FollowNet | Smart, Public Wi‑Fi, Travel, Restricted',
+      title: 'Профили сети на iOS: Smart, Public Wi‑Fi, Travel | FollowNet',
       ogTitle: 'Профили сети — FollowNet',
       description:
         'Точные пресеты FollowNet: Smart, Public Wi‑Fi, Travel, Restricted — протокол, DNS, автоподключение и режим сервера одним тапом.',
@@ -176,7 +176,7 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
   },
   'vpn-for-travel': {
     en: {
-      title: 'VPN for Travel on iPhone — FollowNet | Roaming & Hotspots',
+      title: 'VPN for Travel on iPhone: Roaming & Hotspots | FollowNet',
       ogTitle: 'VPN for Travel — FollowNet',
       description:
         'Stay private on travel SIMs, hotel Wi‑Fi, and airport networks with FollowNet for iOS. Smart Connect adapts to foreign carriers and restrictions.',
@@ -232,7 +232,7 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
   },
   'hysteria2-vpn-ios': {
     en: {
-      title: 'Hysteria2 VPN for iOS — FollowNet | When Networks Fight Tunnels',
+      title: 'Hysteria2 VPN for iOS: When Networks Fight Tunnels',
       ogTitle: 'Hysteria2 VPN for iOS — FollowNet',
       description:
         'Use Hysteria2 on iPhone and iPad with FollowNet alongside WireGuard, IKEv2, and AmneziaWG. Smart Connect or manual protocol selection for lossy networks.',
@@ -303,6 +303,55 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
 };
 
 export { landingSlugFromPath };
+
+/** True when this slug/lang has a hand-written meta description (not a template or EN fallback). */
+export function hasLandingMeta(slug: LandingSlug, lang: AppLang): boolean {
+  return !isExtraLandingSlug(slug) && !!M[slug as CoreLandingSlug]?.[lang];
+}
+
+const DESCRIPTION_TAIL: Record<AppLang, string> = {
+  en: 'FollowNet VPN for iPhone and iPad.',
+  ru: 'FollowNet VPN для iPhone и iPad.',
+  uk: 'FollowNet VPN для iPhone та iPad.',
+  de: 'FollowNet VPN für iPhone und iPad.',
+  es: 'FollowNet VPN para iPhone y iPad.',
+  fr: 'FollowNet VPN pour iPhone et iPad.',
+  pt: 'FollowNet VPN para iPhone e iPad.',
+};
+
+/** `<title>` from a page H1 / post title when no hand-written one exists; stays within ~60 chars for SERPs. */
+export function titleFromH1(h1: string, label: string): string {
+  // Titles that already name the brand skip the "| FollowNet" suffix.
+  const brand = (text: string) => (text.includes('FollowNet') ? text : `${text} | FollowNet`);
+  if (brand(h1).length <= 60) return brand(h1);
+  // The full localized H1 keeps titles unique per language.
+  if (h1.length <= 60) return h1;
+  // "VPN für iPhone — schnell, privat und einfach" → "VPN für iPhone | FollowNet".
+  const head = h1.split(/\s[—–-]\s|:\s/)[0]?.trim() || label;
+  // A brand-only head ("FollowNet Premium") would be identical in every language — keep more of the H1.
+  // A short but descriptive head ("VPN and iPhone battery") still beats cutting the H1 mid-phrase;
+  // one that already names the brand would read "… FollowNet | FollowNet".
+  const shortHeadOk = head.length >= 15 && !head.includes('FollowNet');
+  if ((head.length >= 25 || shortHeadOk) && brand(head).length <= 60) return brand(head);
+  const cut = h1.slice(0, 60);
+  const comma = cut.lastIndexOf(', ');
+  // Prefer ending on a whole clause ("…: unlimited traffic, more locations") over a dangling word.
+  if (comma >= 35) return cut.slice(0, comma);
+  return cut.replace(/\s+\S*$/, '').replace(/[\s,;:—–-]+$/, '');
+}
+
+/** ~155-char meta description from a page lead, in the page's own language. */
+export function metaDescriptionFromLead(lead: string, lang: AppLang): string {
+  let text = lead.replace(/\s+/g, ' ').trim();
+  if (text.length < 110) {
+    text = `${text.replace(/[.!?…]?$/, '.')} ${DESCRIPTION_TAIL[lang]}`;
+  }
+  if (text.length <= 160) return text;
+  const cut = text.slice(0, 156);
+  const sentenceEnd = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
+  if (sentenceEnd >= 90) return cut.slice(0, sentenceEnd + 1);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:—–-]+$/, '')}…`;
+}
 
 export function getLandingSeoCopy(slug: LandingSlug, lang: AppLang): SeoCopy {
   if (isExtraLandingSlug(slug)) {

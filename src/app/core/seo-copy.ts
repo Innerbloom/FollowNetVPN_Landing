@@ -1,5 +1,5 @@
 import { AppLang } from './i18n.service';
-import { getLandingSeoCopy, landingSlugFromPath } from './seo-landing.meta';
+import { getLandingSeoCopy, landingSlugFromPath, titleFromH1 } from './seo-landing.meta';
 import { blogSeoMeta } from './blog-seo';
 
 export type SeoCopy = {
@@ -31,7 +31,8 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
     const post = blogSeoMeta(slug, lang);
     if (post) {
       return {
-        title: `${post.title} | FollowNet`,
+        // Full post titles up to ~70 chars stay distinct from the guide on the same topic.
+        title: post.title.length <= 70 ? post.title : titleFromH1(post.title, post.title),
         ogTitle: post.title,
         description: post.excerpt,
       };
@@ -78,8 +79,21 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean.startsWith('/checkout')) {
     return checkoutByLang[lang] ?? checkoutByLang.en;
   }
-  return homeByLang[lang] ?? homeByLang.en;
+  if (clean === '/') {
+    return homeByLang[lang] ?? homeByLang.en;
+  }
+  return notFoundByLang[lang] ?? notFoundByLang.en;
 }
+
+const notFoundByLang: Record<AppLang, SeoCopy> = {
+  en: { title: 'Page not found — FollowNet VPN', ogTitle: 'Page not found', description: 'This page does not exist. Go to the FollowNet VPN home page or browse the guides.', robots: 'noindex, follow' },
+  ru: { title: 'Страница не найдена — FollowNet VPN', ogTitle: 'Страница не найдена', description: 'Такой страницы нет. Перейдите на главную FollowNet VPN или в раздел гайдов.', robots: 'noindex, follow' },
+  uk: { title: 'Сторінку не знайдено — FollowNet VPN', ogTitle: 'Сторінку не знайдено', description: 'Такої сторінки немає. Перейдіть на головну FollowNet VPN або до розділу гайдів.', robots: 'noindex, follow' },
+  de: { title: 'Seite nicht gefunden — FollowNet VPN', ogTitle: 'Seite nicht gefunden', description: 'Diese Seite existiert nicht. Zur Startseite von FollowNet VPN oder zu den Guides.', robots: 'noindex, follow' },
+  es: { title: 'Página no encontrada — FollowNet VPN', ogTitle: 'Página no encontrada', description: 'Esta página no existe. Ve a la portada de FollowNet VPN o explora las guías.', robots: 'noindex, follow' },
+  fr: { title: 'Page introuvable — FollowNet VPN', ogTitle: 'Page introuvable', description: 'Cette page n’existe pas. Retournez à l’accueil de FollowNet VPN ou parcourez les guides.', robots: 'noindex, follow' },
+  pt: { title: 'Página não encontrada — FollowNet VPN', ogTitle: 'Página não encontrada', description: 'Esta página não existe. Vá para a página inicial da FollowNet VPN ou veja os guias.', robots: 'noindex, follow' },
+};
 
 const guidesByLang: Record<AppLang, SeoCopy> = {
   en: {
@@ -236,7 +250,7 @@ const downloadIosByLang: Record<AppLang, SeoCopy> = {
       'Встановіть FollowNet на iPhone або iPad з App Store, дозвольте системну VPN-конфігурацію iOS і виконайте перше підключення через Smart Connect або обраний протокол.',
   },
   de: {
-    title: 'FollowNet auf iPhone und iPad installieren — App-Store-Anleitung',
+    title: 'FollowNet auf iPhone und iPad installieren | App Store',
     ogTitle: 'FollowNet für iOS',
     description:
       'Installieren Sie FollowNet aus dem App Store, erlauben Sie die erforderliche iOS-VPN-Konfiguration und verbinden Sie sich mit Smart Connect oder einem gewählten Protokoll.',
@@ -583,7 +597,7 @@ const homeByLang: Record<AppLang, SeoCopy> = {
       'VPN для iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality і Smart Connect. Free з тижневим лімітом, Premium безліміт. DNS, Speed Test, віджети — App Store.',
   },
   en: {
-    title: 'FollowNet VPN for iPhone — Fast iOS VPN | WireGuard & VLESS',
+    title: 'FollowNet VPN for iPhone — Fast iOS VPN with WireGuard',
     ogTitle: 'FollowNet — VPN for iPhone & iOS',
     description:
       'Free VPN for iPhone with weekly traffic: WireGuard, AmneziaWG, Hysteria2, VLESS Reality, and Smart Connect. Premium unlocks unlimited data. Download on the App Store.',

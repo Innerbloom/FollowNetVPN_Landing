@@ -36,7 +36,7 @@
 }
 
 .back-link:hover {
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .checkout-status {
@@ -114,7 +114,7 @@
   font-weight: 900;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 h1 {

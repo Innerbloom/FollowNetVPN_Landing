@@ -1,8 +1,8 @@
 <header class="header">
   <div class="container">
     <div class="nav-pill">
-      <a class="logo" routerLink="/">
-        <img class="logo-img" [src]="logoSrc" (error)="onLogoError()" alt="FollowNet" />
+      <a class="logo" [routerLink]="'/' | localize">
+        <img class="logo-img" [src]="logoSrc" (error)="onLogoError()" alt="" width="36" height="36" />
         <span class="logo-text">
           <span class="brand">FollowNet</span>
           <span class="brand-suffix">VPN</span>
@@ -10,30 +10,32 @@
       </a>
 
       <nav class="nav">
-        <a [routerLink]="['/']" fragment="top" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
-        <a routerLink="/features">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
-        <a [routerLink]="['/']" fragment="pricing" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
-        <a routerLink="/guides">{{ i18n.t('NAV_GUIDES') }}</a>
-        <a routerLink="/blog">{{ i18n.t('NAV_BLOG') }}</a>
-        <a routerLink="/download">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
+        <a [routerLink]="(['/']) | localize" fragment="top" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
+        <a [routerLink]="'/features' | localize">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
+        <a [routerLink]="(['/']) | localize" fragment="pricing" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
+        <a [routerLink]="'/guides' | localize">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a [routerLink]="'/blog' | localize">{{ i18n.t('NAV_BLOG') }}</a>
+        <a [routerLink]="'/download' | localize">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
       </nav>
 
       <div class="right">
         <div class="lang-dd">
-          <button class="lang" type="button" (click)="toggleLangMenu($event)" aria-label="Language" [attr.aria-expanded]="isLangOpen">
+          <button class="lang" type="button" (click)="toggleLangMenu($event)" [attr.aria-label]="i18n.current.toUpperCase() + ' — ' + i18n.langLabel(i18n.current)" [attr.aria-expanded]="isLangOpen">
             {{ i18n.current.toUpperCase() }}
           </button>
           <div class="lang-menu" *ngIf="isLangOpen" role="menu" aria-label="Languages">
-            <button
-              type="button"
+            <a
               class="lang-item"
               *ngFor="let l of langs"
-              (click)="setLang(l)"
+              [href]="i18n.pathForLang(l)"
+              [attr.hreflang]="l"
+              [attr.lang]="l"
+              (click)="setLang(l, $event)"
               [class.active]="l === i18n.current"
             >
               <span class="lang-code">{{ l.toUpperCase() }}</span>
               <span class="lang-name">{{ i18n.langLabel(l) }}</span>
-            </button>
+            </a>
           </div>
         </div>
         <a class="cta" [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer">
@@ -50,20 +52,20 @@
   <div class="mobile" *ngIf="isMenuOpen" (click)="closeMenu()">
     <div class="mobile-panel" (click)="$event.stopPropagation()">
       <div class="mobile-group">
-        <a [routerLink]="['/']" fragment="top" (click)="closeMenu()" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
-        <a routerLink="/features" (click)="closeMenu()">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
-        <a [routerLink]="['/']" fragment="pricing" (click)="closeMenu()" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
-        <a routerLink="/guides" (click)="closeMenu()">{{ i18n.t('NAV_GUIDES') }}</a>
-        <a routerLink="/blog" (click)="closeMenu()">{{ i18n.t('NAV_BLOG') }}</a>
-        <a routerLink="/download" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
+        <a [routerLink]="(['/']) | localize" fragment="top" (click)="closeMenu()" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
+        <a [routerLink]="'/features' | localize" (click)="closeMenu()">{{ i18n.t('NAV_FEATURES_PAGE') }}</a>
+        <a [routerLink]="(['/']) | localize" fragment="pricing" (click)="closeMenu()" [class.active]="activeSection==='pricing'">{{ i18n.t('NAV_PRICING') }}</a>
+        <a [routerLink]="'/guides' | localize" (click)="closeMenu()">{{ i18n.t('NAV_GUIDES') }}</a>
+        <a [routerLink]="'/blog' | localize" (click)="closeMenu()">{{ i18n.t('NAV_BLOG') }}</a>
+        <a [routerLink]="'/download' | localize" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
       </div>
 
       <div class="mobile-group">
-        <a routerLink="/about" (click)="closeMenu()">{{ i18n.t('NAV_ABOUT') }}</a>
-        <a routerLink="/support" (click)="closeMenu()">{{ i18n.t('NAV_SUPPORT') }}</a>
-        <a routerLink="/status" (click)="closeMenu()">{{ i18n.t('NAV_STATUS') }}</a>
-        <a routerLink="/privacy" (click)="closeMenu()">{{ i18n.t('NAV_PRIVACY') }}</a>
-        <a routerLink="/terms" (click)="closeMenu()">{{ i18n.t('NAV_TERMS') }}</a>
+        <a [routerLink]="'/about' | localize" (click)="closeMenu()">{{ i18n.t('NAV_ABOUT') }}</a>
+        <a [routerLink]="'/support' | localize" (click)="closeMenu()">{{ i18n.t('NAV_SUPPORT') }}</a>
+        <a [routerLink]="'/status' | localize" (click)="closeMenu()">{{ i18n.t('NAV_STATUS') }}</a>
+        <a [routerLink]="'/privacy' | localize" (click)="closeMenu()">{{ i18n.t('NAV_PRIVACY') }}</a>
+        <a [routerLink]="'/terms' | localize" (click)="closeMenu()">{{ i18n.t('NAV_TERMS') }}</a>
         <a [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
       </div>
     </div>

@@ -47,7 +47,7 @@
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .footer-tagline {
@@ -107,6 +107,29 @@
   margin: 2rem auto 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.footer-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+}
+
+.footer-langs a {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--muted-2);
+  text-decoration: none;
+}
+
+.footer-langs a:hover,
+.footer-langs a.active {
+  color: var(--text);
 }
 
 .footer-copy {

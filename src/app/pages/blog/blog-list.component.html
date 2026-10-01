@@ -6,8 +6,63 @@
       <p class="lead">{{ i18n.t('BLOG_LEAD') }}</p>
     </header>
 
+    <a *ngIf="featured as post" class="featured" [routerLink]="(['/blog', post.slug]) | localize">
+      <div class="featured__body">
+        <span class="featured__badge">{{ i18n.t('BLOG_LATEST') }}</span>
+        <span class="post-topic">{{ topicLabel(post) }}</span>
+        <h2 class="featured__title">{{ post.title }}</h2>
+        <p class="featured__excerpt">{{ post.excerpt }}</p>
+        <span class="post-meta">
+          {{ formatDate(post.date) }}
+          <span aria-hidden="true">·</span>
+          {{ readLabel(post.minutes) }}
+        </span>
+        <span class="featured__cta">{{ i18n.t('BLOG_READ') }} <span aria-hidden="true">→</span></span>
+      </div>
+      <div class="featured__art" aria-hidden="true">
+        <img
+          src="assets/screenshots/guide/connect-320.webp"
+          srcset="assets/screenshots/guide/connect-320.webp 320w, assets/screenshots/guide/connect-640.webp 640w"
+          sizes="260px"
+          alt=""
+          width="320"
+          height="635"
+          decoding="async"
+        />
+      </div>
+    </a>
+
+    <nav class="blog-nav" [attr.aria-label]="i18n.t('BLOG_FILTER')">
+      <button
+        type="button"
+        class="blog-chip"
+        [class.is-active]="topic === null"
+        [attr.aria-pressed]="topic === null"
+        (click)="topic = null"
+      >
+        {{ i18n.t('BLOG_ALL') }}
+        <span class="blog-chip__count">{{ rest.length }}</span>
+      </button>
+      <button
+        *ngFor="let t of topics"
+        type="button"
+        class="blog-chip"
+        [class.is-active]="topic === t.id"
+        [attr.aria-pressed]="topic === t.id"
+        (click)="topic = t.id"
+      >
+        {{ t.label }}
+        <span class="blog-chip__count">{{ t.count }}</span>
+      </button>
+    </nav>
+
     <div class="post-grid">
-      <a class="post-card" *ngFor="let post of posts" [routerLink]="['/blog', post.slug]">
+      <a
+        class="post-card"
+        *ngFor="let post of rest"
+        [hidden]="topic !== null && post.topic !== topic"
+        [routerLink]="(['/blog', post.slug]) | localize"
+      >
         <span class="post-topic">{{ topicLabel(post) }}</span>
         <h2 class="post-title">{{ post.title }}</h2>
         <p class="post-excerpt">{{ post.excerpt }}</p>
@@ -15,6 +70,7 @@
           {{ formatDate(post.date) }}
           <span aria-hidden="true">·</span>
           {{ readLabel(post.minutes) }}
+          <span class="post-arrow" aria-hidden="true">→</span>
         </span>
       </a>
     </div>

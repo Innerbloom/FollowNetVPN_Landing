@@ -2,20 +2,10 @@ import type { AppLang } from './i18n.service';
 /** Lightweight EXTRA slug + label map (keeps heavy guides out of the initial bundle). */
 export type ExtraLandingSlug =
   | 'vless-reality-ios'
-  | 'vpn-kill-switch-chrome'
-  | 'vpn-vs-proxy-chrome'
-  | 'vpn-ad-blocking-chrome'
-  | 'vpn-site-routing-chrome'
-  | 'vpn-email-login'
-  | 'vpn-qr-login'
-  | 'vpn-family-devices'
   | 'vpn-free-weekly-limit'
   | 'vpn-premium-unlimited'
   | 'vpn-iphone-shortcuts'
-  | 'vpn-dns-adguard'
   | 'vpn-battery-iphone'
-  | 'vpn-speed-nearby-server'
-  | 'how-to-change-vpn-server'
   | 'what-is-a-vpn'
   | 'how-vpn-works'
   | 'do-i-need-a-vpn'
@@ -25,7 +15,6 @@ export type ExtraLandingSlug =
   | 'what-is-dns-leak'
   | 'vpn-hotel-wifi'
   | 'vpn-airport-wifi'
-  | 'vpn-cafe-wifi'
   | 'vpn-for-remote-work'
   | 'vpn-for-students'
   | 'vpn-for-banking-apps'
@@ -34,30 +23,14 @@ export type ExtraLandingSlug =
   | 'vpn-split-tunneling-ios'
   | 'vpn-not-connecting-iphone'
   | 'vpn-slow-iphone'
-  | 'vpn-keeps-disconnecting-iphone'
-  | 'captive-portal-vpn-iphone'
-  | 'vpn-on-cellular-lte'
-  | 'fastest-vpn-iphone'
-  | 'no-account-vpn-iphone'
-  | 'vpn-kill-switch-iphone'
-  | 'hide-ip-iphone';
+  | 'captive-portal-vpn-iphone';
 
 export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vless-reality-ios',
-  'vpn-kill-switch-chrome',
-  'vpn-vs-proxy-chrome',
-  'vpn-ad-blocking-chrome',
-  'vpn-site-routing-chrome',
-  'vpn-email-login',
-  'vpn-qr-login',
-  'vpn-family-devices',
   'vpn-free-weekly-limit',
   'vpn-premium-unlimited',
   'vpn-iphone-shortcuts',
-  'vpn-dns-adguard',
   'vpn-battery-iphone',
-  'vpn-speed-nearby-server',
-  'how-to-change-vpn-server',
   'what-is-a-vpn',
   'how-vpn-works',
   'do-i-need-a-vpn',
@@ -67,7 +40,6 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'what-is-dns-leak',
   'vpn-hotel-wifi',
   'vpn-airport-wifi',
-  'vpn-cafe-wifi',
   'vpn-for-remote-work',
   'vpn-for-students',
   'vpn-for-banking-apps',
@@ -76,13 +48,7 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vpn-split-tunneling-ios',
   'vpn-not-connecting-iphone',
   'vpn-slow-iphone',
-  'vpn-keeps-disconnecting-iphone',
   'captive-portal-vpn-iphone',
-  'vpn-on-cellular-lte',
-  'fastest-vpn-iphone',
-  'no-account-vpn-iphone',
-  'vpn-kill-switch-iphone',
-  'hide-ip-iphone',
 ];
 
 const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
@@ -94,69 +60,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     es: 'VLESS Reality',
     fr: 'VLESS Reality',
     pt: 'VLESS Reality',
-  },
-  'vpn-kill-switch-chrome': {
-    en: 'Chrome Kill Switch',
-    ru: 'Kill Switch в Chrome',
-    uk: 'Kill Switch у Chrome',
-    de: 'Chrome Kill Switch',
-    es: 'Chrome Kill Switch',
-    fr: 'Chrome Kill Switch',
-    pt: 'Chrome Kill Switch',
-  },
-  'vpn-vs-proxy-chrome': {
-    en: 'Chrome proxy vs iOS VPN',
-    ru: 'Прокси Chrome vs VPN iOS',
-    uk: 'Проксі Chrome vs VPN iOS',
-    de: 'Chrome-Proxy vs. iOS-VPN',
-    es: 'Proxy de Chrome vs VPN iOS',
-    fr: 'Proxy Chrome vs VPN iOS',
-    pt: 'Proxy Chrome vs VPN iOS',
-  },
-  'vpn-ad-blocking-chrome': {
-    en: 'Chrome ad blocking',
-    ru: 'Блокировка рекламы в Chrome',
-    uk: 'Блокування реклами в Chrome',
-    de: 'Chrome-Werbeblocker',
-    es: 'Bloqueo de anuncios en Chrome',
-    fr: 'Blocage pub Chrome',
-    pt: 'Bloqueio de anúncios no Chrome',
-  },
-  'vpn-site-routing-chrome': {
-    en: 'Chrome site routing',
-    ru: 'Маршрутизация сайтов в Chrome',
-    uk: 'Маршрутизація сайтів у Chrome',
-    de: 'Chrome Site-Routing',
-    es: 'Enrutado de sitios en Chrome',
-    fr: 'Routage de sites Chrome',
-    pt: 'Roteamento de sites no Chrome',
-  },
-  'vpn-email-login': {
-    en: 'Email code login',
-    ru: 'Вход по email-коду',
-    uk: 'Вхід за email-кодом',
-    de: 'E-Mail-Code-Login',
-    es: 'Inicio con código de email',
-    fr: 'Connexion par code e-mail',
-    pt: 'Login com código de e-mail',
-  },
-  'vpn-qr-login': {
-    en: 'QR login',
-    ru: 'Вход по QR',
-    uk: 'Вхід за QR',
-    de: 'QR-Login',
-    es: 'Inicio con QR',
-    fr: 'Connexion QR',
-    pt: 'Login por QR',
-  },
-  'vpn-family-devices': {
-    en: 'Family devices & Premium seats',
-    ru: 'Устройства семьи и места Premium',
-    uk: 'Пристрої родини і місця Premium',
-    de: 'Familien-Geräte & Premium-Plätze',
-    es: 'Dispositivos familiares y asientos Premium',
-    fr: 'Appareils famille & sièges Premium',
-    pt: 'Dispositivos da família e assentos Premium',
   },
   'vpn-free-weekly-limit': {
     en: 'Free weekly traffic',
@@ -185,15 +88,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     fr: 'Apple Shortcuts',
     pt: 'Apple Shortcuts',
   },
-  'vpn-dns-adguard': {
-    en: 'AdGuard DNS profiles',
-    ru: 'DNS AdGuard',
-    uk: 'DNS AdGuard',
-    de: 'AdGuard-DNS-Profile',
-    es: 'Perfiles DNS AdGuard',
-    fr: 'Profils DNS AdGuard',
-    pt: 'Perfis DNS AdGuard',
-  },
   'vpn-battery-iphone': {
     en: 'VPN battery on iPhone',
     ru: 'VPN и батарея iPhone',
@@ -202,24 +96,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     es: 'Batería VPN en iPhone',
     fr: 'Batterie VPN sur iPhone',
     pt: 'Bateria VPN no iPhone',
-  },
-  'vpn-speed-nearby-server': {
-    en: 'Nearby servers & ping',
-    ru: 'Ближние серверы и пинг',
-    uk: 'Близькі сервери і пінг',
-    de: 'Nahe Server & Ping',
-    es: 'Servidores cercanos y ping',
-    fr: 'Serveurs proches & ping',
-    pt: 'Servidores próximos e ping',
-  },
-  'how-to-change-vpn-server': {
-    en: 'Change VPN server',
-    ru: 'Смена VPN-сервера',
-    uk: 'Зміна VPN-сервера',
-    de: 'VPN-Server wechseln',
-    es: 'Cambiar servidor VPN',
-    fr: 'Changer de serveur VPN',
-    pt: 'Trocar servidor VPN',
   },
   'what-is-a-vpn': {
     en: 'What is a VPN?',
@@ -302,15 +178,6 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     fr: 'VPN Wi‑Fi d’aéroport',
     pt: 'VPN no Wi‑Fi de aeroporto',
   },
-  'vpn-cafe-wifi': {
-    en: 'Café Wi‑Fi VPN',
-    ru: 'VPN в кафе',
-    uk: 'VPN у кафе',
-    de: 'Café-WLAN-VPN',
-    es: 'VPN en Wi‑Fi de café',
-    fr: 'VPN Wi‑Fi de café',
-    pt: 'VPN no Wi‑Fi de café',
-  },
   'vpn-for-remote-work': {
     en: 'VPN for remote work',
     ru: 'VPN для удалёнки',
@@ -383,68 +250,14 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     fr: 'Le VPN est lent',
     pt: 'VPN está lenta',
   },
-  'vpn-keeps-disconnecting-iphone': {
-    en: 'VPN keeps disconnecting',
-    ru: 'VPN отключается',
-    uk: 'VPN відключається',
-    de: 'VPN trennt sich ständig',
-    es: 'La VPN se desconecta',
-    fr: 'Le VPN se déconnecte',
-    pt: 'VPN fica desconectando',
-  },
   'captive-portal-vpn-iphone': {
     en: 'Captive portal + VPN',
-    ru: 'Captive portal и VPN',
+    ru: 'Страница входа Wi‑Fi и VPN',
     uk: 'Captive portal і VPN',
     de: 'Captive Portal + VPN',
     es: 'Captive portal + VPN',
     fr: 'Captive portal + VPN',
     pt: 'Captive portal + VPN',
-  },
-  'vpn-on-cellular-lte': {
-    en: 'VPN on cellular',
-    ru: 'VPN на LTE',
-    uk: 'VPN на LTE',
-    de: 'VPN auf Mobilfunk',
-    es: 'VPN en datos móviles',
-    fr: 'VPN sur cellulaire',
-    pt: 'VPN no celular',
-  },
-  'fastest-vpn-iphone': {
-    en: 'Fastest VPN for iPhone',
-    ru: 'Самый быстрый VPN для iPhone',
-    uk: 'Найшвидший VPN для iPhone',
-    de: 'Schnellstes VPN fürs iPhone',
-    es: 'VPN más rápida para iPhone',
-    fr: 'VPN le plus rapide pour iPhone',
-    pt: 'VPN mais rápida para iPhone',
-  },
-  'no-account-vpn-iphone': {
-    en: 'VPN without password',
-    ru: 'VPN без пароля',
-    uk: 'VPN без пароля',
-    de: 'VPN ohne Passwort',
-    es: 'VPN sin contraseña',
-    fr: 'VPN sans mot de passe',
-    pt: 'VPN sem senha',
-  },
-  'vpn-kill-switch-iphone': {
-    en: 'Kill switch on iPhone',
-    ru: 'Kill switch на iPhone',
-    uk: 'Kill switch на iPhone',
-    de: 'Kill Switch auf dem iPhone',
-    es: 'Kill switch en iPhone',
-    fr: 'Kill switch sur iPhone',
-    pt: 'Kill switch no iPhone',
-  },
-  'hide-ip-iphone': {
-    en: 'Hide IP on iPhone',
-    ru: 'Скрыть IP на iPhone',
-    uk: 'Приховати IP на iPhone',
-    de: 'IP auf dem iPhone verbergen',
-    es: 'Ocultar IP en iPhone',
-    fr: 'Masquer l’IP sur iPhone',
-    pt: 'Ocultar IP no iPhone',
   },
 };
 

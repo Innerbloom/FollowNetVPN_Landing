@@ -23,11 +23,12 @@
 
 .mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  overflow-wrap: anywhere;
   font-size: 0.95em;
 }
 
 a {
-  color: var(--green);
+  color: var(--green-2);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

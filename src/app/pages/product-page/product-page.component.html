@@ -2,7 +2,7 @@
   <header class="article-header">
     <div class="container narrow">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a routerLink="/">FollowNet</a>
+        <a [routerLink]="'/' | localize">FollowNet</a>
         <span aria-hidden="true">/</span>
         <span>{{ p.kicker }}</span>
       </nav>
@@ -27,7 +27,7 @@
           rel="noopener noreferrer"
           >{{ i18n.t('DOWNLOAD_CHROME_CTA') }}</a
         >
-        <a class="btn ghost" [routerLink]="secondaryHref">{{ resolvedSecondaryLabel() }}</a>
+        <a class="btn ghost" [routerLink]="(secondaryHref) | localize">{{ resolvedSecondaryLabel() }}</a>
       </div>
     </div>
   </header>

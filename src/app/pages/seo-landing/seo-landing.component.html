@@ -2,7 +2,7 @@
   <header class="article-header">
     <div class="container narrow">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a routerLink="/">{{ i18n.t('SEO_LANDING_BREADCRUMB') }}</a>
+        <a [routerLink]="'/' | localize">{{ i18n.t('SEO_LANDING_BREADCRUMB') }}</a>
         <span aria-hidden="true">/</span>
         <span>{{ relatedLabel(slug) }}</span>
       </nav>
@@ -19,7 +19,7 @@
           rel="noopener noreferrer"
           >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
         >
-        <a class="btn ghost" routerLink="/">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
+        <a class="btn ghost" [routerLink]="'/' | localize">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
       </div>
     </div>
   </header>
@@ -29,6 +29,45 @@
       <section *ngFor="let s of c.sections" class="prose-block">
         <h2>{{ s.title }}</h2>
         <p>{{ s.body }}</p>
+        <figure class="app-shot" *ngIf="s.image">
+          <img
+            [src]="shotSrc(s.image)"
+            [srcset]="shotSrcset(s.image)"
+            sizes="260px"
+            [alt]="s.imageCaption || s.title"
+            width="640"
+            height="1270"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption *ngIf="s.imageCaption">{{ s.imageCaption }}</figcaption>
+        </figure>
+      </section>
+
+      <section class="prose-block" *ngIf="c.steps as st">
+        <h2>{{ st.title }}</h2>
+        <ol class="steps">
+          <li *ngFor="let item of st.items">{{ item }}</li>
+        </ol>
+      </section>
+
+      <section class="prose-block" *ngIf="c.table as t">
+        <h2>{{ t.title }}</h2>
+        <div class="table-wrap">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th *ngFor="let h of t.head" scope="col">{{ h }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of t.rows">
+                <th scope="row">{{ row[0] }}</th>
+                <td *ngFor="let cell of row.slice(1); let j = index" [attr.data-label]="t.head[j + 1]">{{ cell }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section class="prose-block" *ngIf="c.bullets.length">
@@ -52,13 +91,27 @@
       </div>
     </section>
 
+    <nav class="related" *ngIf="posts.length" [attr.aria-label]="i18n.t('GUIDE_FROM_BLOG')">
+      <div class="related-head">
+        <p class="related-kicker">FollowNet</p>
+        <h2>{{ i18n.t('GUIDE_FROM_BLOG') }}</h2>
+      </div>
+      <div class="related-grid">
+        <a class="related-card" *ngFor="let p of posts" [routerLink]="(['/blog', p.slug]) | localize">
+          <span class="related-card-title">{{ p.title }}</span>
+          <span class="related-card-lead">{{ p.excerpt }}</span>
+          <span class="related-card-meta">{{ i18n.t('NAV_BLOG') }} · {{ readLabel(p.minutes) }}</span>
+        </a>
+      </div>
+    </nav>
+
     <nav class="related" *ngIf="related.length" aria-label="Related guides">
       <div class="related-head">
         <p class="related-kicker">FollowNet</p>
         <h2>{{ i18n.t('SEO_LANDING_RELATED') }}</h2>
       </div>
       <div class="related-grid">
-        <a class="related-card" *ngFor="let r of related" [routerLink]="'/' + r">
+        <a class="related-card" *ngFor="let r of related" [routerLink]="('/' + r) | localize">
           <span class="related-card-title">{{ relatedLabel(r) }}</span>
           <span class="related-card-lead">{{ relatedLead(r) }}</span>
           <span class="related-card-meta">{{ i18n.t('SEO_LANDING_RELATED_META') }}</span>

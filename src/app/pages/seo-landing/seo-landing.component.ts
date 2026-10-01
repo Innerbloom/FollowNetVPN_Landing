@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { NgFor, NgIf } from '@angular/common';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import { landingContent, landingRelated, type LandingContent } from '../../core/seo-landing.content';
 import { isLandingSlug, landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
+import { hasLandingMeta, metaDescriptionFromLead, titleFromH1 } from '../../core/seo-landing.meta';
 import { environment } from '../../../environments/environment';
+import { deepGuideCached } from '../../core/seo-landing.deep';
+import type { LandingShot } from '../../core/seo-landing.content';
 import { appStoreUrl } from '../../core/app-store-url';
+import { guideBlogSlugs } from '../../core/blog-guide-links';
+import { blogPosts, type BlogPostView } from '../../core/blog.content';
 
 @Component({
   selector: 'app-seo-landing',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './seo-landing.component.html',
   styleUrls: ['./seo-landing.component.css'],
 })
@@ -24,6 +30,7 @@ export class SeoLandingComponent implements OnInit {
   content: LandingContent | null = null;
   slug: LandingSlug | null = null;
   related: LandingSlug[] = [];
+  posts: BlogPostView[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -47,11 +54,41 @@ export class SeoLandingComponent implements OnInit {
   }
 
   relatedLead(relatedSlug: LandingSlug): string {
-    return landingContent(relatedSlug, this.i18n.current).lead;
+    return this.contentFor(relatedSlug).lead;
+  }
+
+  shotSrc(shot: LandingShot): string {
+    return `assets/screenshots/guide/${shot}-320.webp`;
+  }
+
+  shotSrcset(shot: LandingShot): string {
+    return `assets/screenshots/guide/${shot}-320.webp 320w, assets/screenshots/guide/${shot}-640.webp 640w`;
+  }
+
+  private contentFor(slug: LandingSlug) {
+    return deepGuideCached(this.i18n.current, slug) ?? landingContent(slug, this.i18n.current);
+  }
+
+  readLabel(minutes: number): string {
+    return this.i18n.t('BLOG_READ_TIME').replace('{n}', String(minutes));
   }
 
   private applyContent(slug: LandingSlug): void {
-    this.content = landingContent(slug, this.i18n.current);
-    this.seo.updateForRoute(`/${slug}`, this.i18n.current);
+    const lang = this.i18n.current;
+    this.content = this.contentFor(slug);
+    const linked = guideBlogSlugs(slug);
+    this.posts = blogPosts(lang)
+      .filter((p) => linked.includes(p.slug))
+      .slice(0, 2);
+    this.seo.setPageOverride(`/${slug}`, lang, {
+      faq: this.content.faq,
+      ...(hasLandingMeta(slug, lang)
+        ? {}
+        : {
+            title: titleFromH1(this.content.h1, landingLabel(slug, lang)),
+            description: metaDescriptionFromLead(this.content.lead, lang),
+          }),
+    });
+    this.seo.updateForRoute(`/${slug}`, lang);
   }
 }

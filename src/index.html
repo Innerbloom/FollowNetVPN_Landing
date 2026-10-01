@@ -12,12 +12,12 @@
   <meta name="apple-itunes-app" content="app-id=6757725829" />
   <link rel="canonical" href="https://follow-net.com/" />
   <link rel="alternate" hreflang="en" href="https://follow-net.com/" />
-  <link rel="alternate" hreflang="ru" href="https://follow-net.com/?lang=ru" />
-  <link rel="alternate" hreflang="de" href="https://follow-net.com/?lang=de" />
-  <link rel="alternate" hreflang="es" href="https://follow-net.com/?lang=es" />
-  <link rel="alternate" hreflang="fr" href="https://follow-net.com/?lang=fr" />
-  <link rel="alternate" hreflang="pt" href="https://follow-net.com/?lang=pt" />
-  <link rel="alternate" hreflang="uk" href="https://follow-net.com/?lang=uk" />
+  <link rel="alternate" hreflang="ru" href="https://follow-net.com/ru" />
+  <link rel="alternate" hreflang="de" href="https://follow-net.com/de" />
+  <link rel="alternate" hreflang="es" href="https://follow-net.com/es" />
+  <link rel="alternate" hreflang="fr" href="https://follow-net.com/fr" />
+  <link rel="alternate" hreflang="pt" href="https://follow-net.com/pt" />
+  <link rel="alternate" hreflang="uk" href="https://follow-net.com/uk" />
   <link rel="alternate" hreflang="x-default" href="https://follow-net.com/" />
   <meta property="og:title" content="FollowNet — VPN for iPhone & iOS" />
   <meta property="og:description" content="Free VPN for iPhone with weekly traffic: WireGuard, AmneziaWG, Hysteria2, VLESS Reality, and Smart Connect. Premium unlocks unlimited data." />
@@ -46,7 +46,9 @@
   <link rel="shortcut icon" href="/icons/favicon.png?v=fn5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Non-blocking: text renders with fallback fonts, swaps when Manrope/Sora arrive (display=swap). -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Sora:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Sora:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZXZQ38562"></script>
   <script>
@@ -109,14 +111,6 @@
   </script>
 </head>
 <body>
-  <noscript>
-    <div style="max-width:720px;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;line-height:1.6;color:#eee;background:#161616;">
-      <h1>FollowNet VPN for iPhone & iOS</h1>
-      <p>Fast VPN for iPhone: WireGuard, AmneziaWG, Hysteria2, VLESS Reality, and Smart Connect. Free with weekly traffic or Premium unlimited — App Store.</p>
-      <p><a href="https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829">Download on the App Store</a> · <a href="https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk">Add to Chrome</a></p>
-      <p><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a></p>
-    </div>
-  </noscript>
   <app-root></app-root>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <section class="checkout-page">
   <div class="checkout-wrap">
-    <a class="back-link" routerLink="/" fragment="pricing">{{ i18n.t('CHECKOUT_BACK') }}</a>
+    <a class="back-link" [routerLink]="'/' | localize" fragment="pricing">{{ i18n.t('CHECKOUT_BACK') }}</a>
 
     <div class="checkout-status checkout-status--ok" *ngIf="checkoutStatus === 'success'">
       <div class="checkout-status-body">

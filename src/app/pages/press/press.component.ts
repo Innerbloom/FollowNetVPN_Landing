@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import { pressKit, type PressKit } from '../../core/press-page.content';
@@ -9,7 +10,7 @@ import { appStoreUrl } from '../../core/app-store-url';
 @Component({
   selector: 'app-press-page',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './press.component.html',
   styleUrls: ['./press.component.css'],
 })

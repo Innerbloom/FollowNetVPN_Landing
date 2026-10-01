@@ -19,7 +19,43 @@
 /blog/censorship-networks-amneziawg  /blog  301
 /blog/smart-connect-vless-reality  /blog  301
 /blog/restricted-network-profile  /blog  301
+/:lang/ios-vpn-guides  /:lang/guides  301
 
-/privacy    /privacy/index.html    200
-/terms      /terms/index.html      200
-/*          /index.html            200
+# Thin guides merged into stronger pages (2026-10-01).
+/vpn-kill-switch-chrome  /what-is-kill-switch-vpn  301
+/:lang/vpn-kill-switch-chrome  /:lang/what-is-kill-switch-vpn  301
+/vpn-kill-switch-iphone  /what-is-kill-switch-vpn  301
+/:lang/vpn-kill-switch-iphone  /:lang/what-is-kill-switch-vpn  301
+/vpn-vs-proxy-chrome  /vpn-vs-proxy  301
+/:lang/vpn-vs-proxy-chrome  /:lang/vpn-vs-proxy  301
+/vpn-ad-blocking-chrome  /vpn-chrome-extension  301
+/:lang/vpn-ad-blocking-chrome  /:lang/vpn-chrome-extension  301
+/vpn-site-routing-chrome  /vpn-chrome-extension  301
+/:lang/vpn-site-routing-chrome  /:lang/vpn-chrome-extension  301
+/vpn-email-login  /how-to-setup-vpn-iphone  301
+/:lang/vpn-email-login  /:lang/how-to-setup-vpn-iphone  301
+/vpn-qr-login  /how-to-setup-vpn-iphone  301
+/:lang/vpn-qr-login  /:lang/how-to-setup-vpn-iphone  301
+/no-account-vpn-iphone  /how-to-setup-vpn-iphone  301
+/:lang/no-account-vpn-iphone  /:lang/how-to-setup-vpn-iphone  301
+/vpn-family-devices  /vpn-premium-unlimited  301
+/:lang/vpn-family-devices  /:lang/vpn-premium-unlimited  301
+/vpn-dns-adguard  /dns-vpn-ios  301
+/:lang/vpn-dns-adguard  /:lang/dns-vpn-ios  301
+/vpn-speed-nearby-server  /vpn-slow-iphone  301
+/:lang/vpn-speed-nearby-server  /:lang/vpn-slow-iphone  301
+/how-to-change-vpn-server  /vpn-slow-iphone  301
+/:lang/how-to-change-vpn-server  /:lang/vpn-slow-iphone  301
+/fastest-vpn-iphone  /vpn-slow-iphone  301
+/:lang/fastest-vpn-iphone  /:lang/vpn-slow-iphone  301
+/vpn-cafe-wifi  /vpn-for-wifi  301
+/:lang/vpn-cafe-wifi  /:lang/vpn-for-wifi  301
+/vpn-keeps-disconnecting-iphone  /vpn-not-connecting-iphone  301
+/:lang/vpn-keeps-disconnecting-iphone  /:lang/vpn-not-connecting-iphone  301
+/vpn-on-cellular-lte  /auto-connect-vpn-ios  301
+/:lang/vpn-on-cellular-lte  /:lang/auto-connect-vpn-ios  301
+/hide-ip-iphone  /what-is-a-vpn  301
+/:lang/hide-ip-iphone  /:lang/what-is-a-vpn  301
+
+# Legacy ?lang= URLs are redirected client-side to /ru/…, /de/… (Pages rules can't match query strings).
+# No SPA fallback: every real page is prerendered as <route>.html; anything else gets 404.html with a 404 status.

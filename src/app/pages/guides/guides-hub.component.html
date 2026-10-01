@@ -4,27 +4,29 @@
       <p class="kicker">FollowNet</p>
       <h1>{{ i18n.t('GUIDES_TITLE') }}</h1>
       <p class="lead">{{ i18n.t('GUIDES_LEAD') }}</p>
+      <nav class="hub-nav" [attr.aria-label]="i18n.t('NAV_GUIDES')">
+        <a
+          *ngFor="let s of sections"
+          class="hub-chip"
+          [routerLink]="'/guides' | localize"
+          [fragment]="s.id"
+          >{{ s.title }}<span class="hub-chip__count">{{ s.cards.length }}</span></a
+        >
+      </nav>
     </header>
 
-    <h2 class="section-title">{{ i18n.t('GUIDES_FEATURED') }}</h2>
-    <div class="guide-grid">
-      <a class="guide-card" *ngFor="let g of featured" [routerLink]="['/', g.slug]">
-        <h3 class="guide-title">{{ g.title }}</h3>
-        <p class="guide-lead">{{ g.lead }}</p>
-        <span class="guide-meta">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</span>
-      </a>
-    </div>
-
-    <ng-container *ngIf="more.length">
-      <h2 class="section-title more">{{ i18n.t('GUIDES_MORE') }}</h2>
-      <p class="section-note">{{ i18n.t('GUIDES_MORE_NOTE') }}</p>
+    <section class="hub-section" *ngFor="let s of sections" [id]="s.id" [attr.aria-labelledby]="s.id + '-title'">
+      <div class="hub-section__head">
+        <h2 [id]="s.id + '-title'">{{ s.title }}</h2>
+        <p>{{ s.note }}</p>
+      </div>
       <div class="guide-grid">
-        <a class="guide-card" *ngFor="let g of more" [routerLink]="['/', g.slug]">
+        <a class="guide-card" *ngFor="let g of s.cards" [routerLink]="(['/', g.slug]) | localize">
           <h3 class="guide-title">{{ g.title }}</h3>
           <p class="guide-lead">{{ g.lead }}</p>
-          <span class="guide-meta">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</span>
+          <span class="guide-meta">{{ i18n.t('GUIDE_READ') }} <span aria-hidden="true">→</span></span>
         </a>
       </div>
-    </ng-container>
+    </section>
   </div>
 </section>

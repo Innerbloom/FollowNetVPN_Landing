@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
+import { localizedPath } from '../../core/locale-url';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import {
@@ -10,17 +12,21 @@ import {
   type BlogPostView,
 } from '../../core/blog.content';
 import { appStoreUrl } from '../../core/app-store-url';
+import { blogGuides } from '../../core/blog-guide-links';
+import { landingContent } from '../../core/seo-landing.content';
+import { landingLabel, type LandingSlug } from '../../core/seo-landing.slugs';
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.css'],
 })
 export class BlogPostComponent implements OnInit {
   post: BlogPostView | null = null;
   related: BlogPostView[] = [];
+  guides: LandingSlug[] = [];
 
   constructor(
     public i18n: I18nService,
@@ -62,6 +68,14 @@ export class BlogPostComponent implements OnInit {
     }).format(new Date(`${iso}T12:00:00Z`));
   }
 
+  guideLabel(slug: LandingSlug): string {
+    return landingLabel(slug, this.i18n.current);
+  }
+
+  guideLead(slug: LandingSlug): string {
+    return landingContent(slug, this.i18n.current).lead;
+  }
+
   readLabel(minutes: number): string {
     return this.i18n.t('BLOG_READ_TIME').replace('{n}', String(minutes));
   }
@@ -70,13 +84,21 @@ export class BlogPostComponent implements OnInit {
     const slug = this.route.snapshot.paramMap.get('slug') ?? '';
     const post = blogPost(slug, this.i18n.current);
     if (!post) {
-      void this.router.navigateByUrl('/blog');
+      void this.router.navigateByUrl(localizedPath('/blog', this.i18n.current));
       return;
     }
     this.post = post;
+    this.guides = blogGuides(slug);
+    // Closest posts first: shared guides weigh more than a shared topic; ties keep newest-first order.
+    const score = (p: BlogPostView) =>
+      blogGuides(p.slug).filter((g) => this.guides.includes(g)).length * 2 + (p.topic === post.topic ? 1 : 0);
     this.related = blogPosts(this.i18n.current)
       .filter((p) => p.slug !== slug)
-      .slice(0, 3);
+      .map((p, i) => ({ p, i, s: score(p) }))
+      .sort((a, b) => b.s - a.s || a.i - b.i)
+      .slice(0, 3)
+      .map((x) => x.p);
+    this.seo.setPageOverride(`/blog/${slug}`, this.i18n.current, { datePublished: post.date });
     this.seo.updateForRoute(`/blog/${slug}`, this.i18n.current);
   }
 }

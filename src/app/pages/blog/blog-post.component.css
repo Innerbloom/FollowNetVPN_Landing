@@ -34,7 +34,7 @@
 }
 
 .breadcrumb a:hover {
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .kicker {
@@ -43,7 +43,7 @@
   font-weight: 750;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .article-header h1 {
@@ -147,7 +147,7 @@
   font-weight: 750;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .related h2 {
@@ -177,7 +177,7 @@
 }
 
 .related-card:hover .related-card-title {
-  color: var(--green);
+  color: var(--green-2);
 }
 
 .related-card-title {
@@ -217,4 +217,8 @@
   .btn {
     width: 100%;
   }
+}
+
+.related + .related {
+  margin-top: 2.5rem;
 }

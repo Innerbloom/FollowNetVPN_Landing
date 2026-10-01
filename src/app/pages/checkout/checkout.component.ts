@@ -1,5 +1,6 @@
 import { NgFor, NgIf, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LocalizePipe } from '../../shared/localize.pipe';
 import { Component, DestroyRef, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -24,7 +25,7 @@ const CHECKOUT_EMAIL_STORAGE_KEY = 'follownet_checkout_email';
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [NgFor, NgIf, FormsModule, RouterLink],
+  imports: [LocalizePipe, NgFor, NgIf, FormsModule, RouterLink],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
