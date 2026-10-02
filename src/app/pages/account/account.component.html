@@ -408,6 +408,8 @@
       <a class="btn-ghost" [routerLink]="'/' | localize">follow-net.com</a>
     </div>
 
-    <p class="acc-foot muted small" *ngIf="view === 'signin' || view === 'init'">{{ t('noAccountDelete') }}</p>
+    <!-- Browser-only (not in the prerendered HTML): Cloudflare email obfuscation rewrites addresses
+         there, and hydration then duplicates the text. -->
+    <p class="acc-foot muted small" *ngIf="view === 'signin'">{{ t('noAccountDelete') }}</p>
   </div>
 </section>

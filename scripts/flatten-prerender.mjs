@@ -5,7 +5,15 @@
  * so move every prerendered `<route>/index.html` to `<route>.html`.
  * `/404` becomes `404.html`, which Pages returns with a real 404 status.
  */
-import { existsSync, readdirSync, renameSync, rmdirSync, statSync } from 'node:fs';
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  renameSync,
+  rmdirSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -39,3 +47,28 @@ if (!existsSync(join(browser, '404.html'))) {
   process.exit(1);
 }
 console.log(`flatten-prerender: moved ${moved} pages to <route>.html`);
+
+/**
+ * Pages turns `<link rel="modulepreload" href="chunk-….js">` into HTTP `Link` headers (Early Hints).
+ * A relative URL there resolves against the page URL, not `<base href="/">`, so every /ru/… page
+ * preloaded /ru/chunk-….js and got 404s. Root-relative hrefs resolve the same everywhere.
+ */
+let absolutized = 0;
+function absolutizePreloads(dir) {
+  for (const name of readdirSync(dir)) {
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) {
+      if (!SKIP.has(name)) absolutizePreloads(full);
+      continue;
+    }
+    if (!name.endsWith('.html')) continue;
+    const html = readFileSync(full, 'utf8');
+    const next = html.replace(/(<link rel="modulepreload" href=")(?![/a-z]+:|\/)/g, '$1/');
+    if (next !== html) {
+      writeFileSync(full, next);
+      absolutized++;
+    }
+  }
+}
+absolutizePreloads(browser);
+console.log(`flatten-prerender: root-relative modulepreload in ${absolutized} pages`);

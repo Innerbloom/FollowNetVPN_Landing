@@ -184,7 +184,9 @@ export class AccountComponent implements OnDestroy {
       const slot = await this.api.createPairing();
       this.pairing = slot;
       this.pairingExpiresAt = Date.now() + slot.expiresIn * 1000;
-      const QR = await import('qrcode');
+      // CommonJS package: the production bundle exposes it only as `default`.
+      const mod = await import('qrcode');
+      const QR = ((mod as unknown as { default?: typeof mod }).default ?? mod) as typeof mod;
       this.qrDataUrl = await QR.toDataURL(slot.qrPayload, {
         width: 440,
         margin: 1,
@@ -381,13 +383,11 @@ export class AccountComponent implements OnDestroy {
       this.billing = billing;
       this.view = 'account';
     } catch (e) {
-      if (isUnauthorized(e)) {
-        this.api.clearToken();
-        this.showSignIn();
-      } else {
-        this.view = 'signin';
-        this.error = this.t('errGeneric');
-      }
+      if (isUnauthorized(e)) this.api.clearToken();
+      // Full sign-in view either way (QR + Google), so the page never sits on a blank QR.
+      void loadGsi(this.i18n.current);
+      this.showSignIn();
+      if (!isUnauthorized(e)) this.error = this.t('errGeneric');
       return;
     }
     // Usage is secondary: the page stays useful if stats are briefly unavailable.
