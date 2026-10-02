@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /checkout
 Disallow: /*/checkout
+Disallow: /account
+Disallow: /*/account
 
 Sitemap: https://follow-net.com/sitemap.xml

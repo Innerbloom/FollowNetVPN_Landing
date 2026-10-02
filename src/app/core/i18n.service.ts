@@ -81,6 +81,7 @@ const DICT: Dict = {
     pt: 'Candidatar-se',
     uk: 'Подати заявку',
   },
+  NAV_ACCOUNT: { ru: 'Аккаунт', en: 'Account', de: 'Konto', es: 'Cuenta', fr: 'Compte', pt: 'Conta', uk: 'Акаунт' },
   NAV_SUPPORT: {
     ru: 'Поддержка',
     en: 'Support',
@@ -795,6 +796,24 @@ const DICT: Dict = {
     pt: 'Por que FollowNet',
     uk: 'Чому FollowNet',
   },
+  WHY_SPEED_TITLE: {
+    ru: 'Встроенный Speed Test',
+    en: 'Built-in Speed Test',
+    de: 'Integrierter Speedtest',
+    es: 'Speed Test integrado',
+    fr: 'Speed Test intégré',
+    pt: 'Speed Test integrado',
+    uk: 'Вбудований Speed Test',
+  },
+  WHY_SPEED_TEXT: {
+    ru: 'Пинг и скорость прямо в приложении — видно, какая локация быстрее именно у вас.',
+    en: 'Ping and speed right in the app — see which location is fastest for you.',
+    de: 'Ping und Geschwindigkeit direkt in der App — sehen, welcher Standort für Sie am schnellsten ist.',
+    es: 'Ping y velocidad en la propia app — mira qué ubicación es más rápida para ti.',
+    fr: 'Ping et débit directement dans l’app — voyez quelle localisation est la plus rapide pour vous.',
+    pt: 'Ping e velocidade no próprio app — veja qual localização é mais rápida para você.',
+    uk: 'Пінг і швидкість прямо в застосунку — видно, яка локація найшвидша саме у вас.',
+  },
   WHY_SUB: {
     ru: 'Speed Test, DNS‑профили, 5 протоколов и вход по email / QR на другие устройства. Free и Premium — без мелкого шрифта.',
     en: 'Speed Test, DNS profiles, 5 protocols, and email / QR sign‑in on other devices. Free and Premium—without the fine print.',
@@ -1234,6 +1253,17 @@ const DICT: Dict = {
   },
 
   // Countries
+  LOCATIONS_COUNT: { ru: 'страны', en: 'countries', de: 'Länder', es: 'países', fr: 'pays', pt: 'países', uk: 'країни' },
+  LOCATIONS_COUNT_NOTE: {
+    ru: 'Серверы в Европе, Америке и Азии',
+    en: 'Servers across Europe, the Americas and Asia',
+    de: 'Server in Europa, Amerika und Asien',
+    es: 'Servidores en Europa, América y Asia',
+    fr: 'Serveurs en Europe, en Amérique et en Asie',
+    pt: 'Servidores na Europa, nas Américas e na Ásia',
+    uk: 'Сервери в Європі, Америці та Азії',
+  },
+  LOCATIONS_SHOW_ALL: { ru: 'Показать все', en: 'Show all', de: 'Alle anzeigen', es: 'Ver todos', fr: 'Tout afficher', pt: 'Ver todos', uk: 'Показати всі' },
   COUNTRIES_TITLE: { ru: 'Выберите доступную локацию. Подключитесь к подходящему серверу.', en: 'Choose an available location. Connect to a suitable server.', de: 'Verfügbaren Standort wählen. Mit einem passenden Server verbinden.', es: 'Elige una ubicación disponible. Conéctate a un servidor adecuado.', fr: 'Choisissez une localisation disponible. Connectez-vous à un serveur adapté.', pt: 'Escolha uma localização disponível. Conecte-se a um servidor adequado.', uk: 'Оберіть доступну локацію. Підключіться до відповідного сервера.' },
   COUNTRIES_SUB: {
     ru: 'Выбирайте локацию с низкой задержкой и стабильной скоростью — дома или в поездке.',

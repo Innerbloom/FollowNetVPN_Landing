@@ -1,4 +1,4 @@
-import { Component, DestroyRef, afterNextRender, inject } from '@angular/core';
+import { Component, DestroyRef, NgZone, afterNextRender, inject } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AppLang, I18nService } from '../../core/i18n.service';
@@ -25,7 +25,14 @@ const COPY: Record<AppLang, { text: string; open: string; close: string }> = {
   standalone: true,
   imports: [NgIf],
   template: `
-    <div class="lang-suggest" *ngIf="target as lang" role="region" [attr.lang]="lang" [attr.aria-label]="copy(lang).text">
+    <div
+      class="lang-suggest"
+      *ngIf="target as lang"
+      [class.is-hidden]="hiddenByScroll"
+      role="region"
+      [attr.lang]="lang"
+      [attr.aria-label]="copy(lang).text"
+    >
       <span class="lang-suggest__text">{{ copy(lang).text }}</span>
       <button type="button" class="lang-suggest__open" (click)="open(lang)">{{ copy(lang).open }}</button>
       <button type="button" class="lang-suggest__close" (click)="dismiss()" [attr.aria-label]="copy(lang).close">×</button>
@@ -51,6 +58,33 @@ const COPY: Record<AppLang, { text: string; open: string; close: string }> = {
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--text);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    /* Out of the way while reading down; back as soon as the visitor scrolls up. */
+    .lang-suggest.is-hidden {
+      transform: translate(-50%, calc(100% + 32px));
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (max-width: 560px) {
+      .lang-suggest {
+        gap: 6px;
+        padding: 6px 6px 6px 12px;
+        border-radius: 12px;
+        font-size: 0.82rem;
+      }
+      .lang-suggest__text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .lang-suggest__open {
+        padding: 6px 11px;
+      }
+      .lang-suggest__close {
+        width: 28px;
+        height: 28px;
+      }
     }
     .lang-suggest__text {
       min-width: 0;
@@ -86,12 +120,32 @@ const COPY: Record<AppLang, { text: string; open: string; close: string }> = {
 export class LangSuggestComponent {
   private readonly i18n = inject(I18nService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly zone = inject(NgZone);
   target: AppLang | null = null;
+  hiddenByScroll = false;
+  private lastScrollY = 0;
 
   constructor() {
     // Browser-only and after hydration: the prerendered HTML must not contain the banner.
     // setTimeout runs inside the zone, so the banner change is picked up by change detection.
     afterNextRender(() => {
+      this.lastScrollY = window.scrollY;
+      const onScroll = () => {
+        const y = window.scrollY;
+        const hide = y > this.lastScrollY && y > 120;
+        // Ignore jitter; only flip on a deliberate scroll.
+        if (Math.abs(y - this.lastScrollY) > 8) {
+          if (hide !== this.hiddenByScroll && this.target) {
+            this.zone.run(() => (this.hiddenByScroll = hide));
+          }
+          this.lastScrollY = y;
+        }
+      };
+      // Outside the zone so scrolling doesn't run change detection on every event.
+      this.zone.runOutsideAngular(() =>
+        window.addEventListener('scroll', onScroll, { passive: true }),
+      );
+      this.destroyRef.onDestroy(() => window.removeEventListener('scroll', onScroll));
       setTimeout(() => {
         this.i18n.lang$
           .pipe(takeUntilDestroyed(this.destroyRef))

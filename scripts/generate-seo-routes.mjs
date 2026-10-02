@@ -92,7 +92,7 @@ function localized(path, lang) {
 }
 
 // Not in the sitemap, but must exist as real files once the SPA fallback is gone.
-const utilityPaths = ['/checkout'];
+const utilityPaths = ['/checkout', '/account'];
 
 const lines = [];
 for (const lang of LANGS) {

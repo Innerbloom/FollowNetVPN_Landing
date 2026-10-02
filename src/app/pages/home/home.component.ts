@@ -189,19 +189,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   extIndex = 0;
 
-  readonly flagsRow1 = this.buildFlagRow(
-    [
-      '🇬🇧', '🇦🇪', '🇹🇷', '🇨🇭', '🇸🇪', '🇰🇷', '🇸🇬', '🇭🇰', '🇷🇴',
-      '🇺🇸',
-      '🇵🇱', '🇳🇴', '🇮🇹', '🇳🇱', '🇯🇵', '🇮🇱', '🇫🇷', '🇩🇪', '🇪🇸',
-    ],
-    { peak: 1.22, edge: 0.76, minOpacity: 0.55 },
-  );
+  /** ISO codes of server locations; flags are self-hosted so they render on Windows too. */
+  readonly locationCodes = [
+    'us', 'gb', 'de', 'nl', 'fr', 'fi', 'se', 'ch', 'pl', 'es', 'it', 'at', 'be', 'dk', 'no', 'pt',
+    'cz', 'ee', 'gr', 'hu', 'ro', 'tr', 'ae', 'il', 'in', 'jp', 'kr', 'sg', 'hk', 'ca', 'br', 'au',
+  ];
 
-  readonly flagsRow2 = this.buildFlagRow(
-    ['🇮🇳', '🇫🇮', '🇪🇪', '🇨🇿', '🇨🇦', '🇧🇷', '🇦🇹', '🇦🇺', '🇧🇪', '🇩🇰', '🇬🇷', '🇭🇺', '🇵🇹'],
-    { peak: 1.08, edge: 0.74, minOpacity: 0.55 },
-  );
+  showAllLocations = false;
+
+  private regionNames: { lang: string; full: Intl.DisplayNames; short: Intl.DisplayNames } | null =
+    null;
+  /** Full CLDR names that are needlessly long ("Hong Kong SAR China"); the short form reads fine. */
+  private static readonly SHORT_NAME_CODES = new Set(['US', 'HK']);
 
   readonly howSteps = [
     { title: 'STEP1_TITLE' as const, text: 'STEP1_TEXT' as const },
@@ -220,12 +219,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     { feat: 'COMPARE_R6_FEAT' as const, typical: 'COMPARE_R6_TYPICAL' as const, us: 'COMPARE_R6_US' as const },
   ];
 
-  readonly voiceCards = [
-    { title: 'VOICE_1_TITLE' as const, body: 'VOICE_1_BODY' as const },
-    { title: 'VOICE_2_TITLE' as const, body: 'VOICE_2_BODY' as const },
-    { title: 'VOICE_3_TITLE' as const, body: 'VOICE_3_BODY' as const },
-  ];
-
   activeIndex = 0;
   /** Stacked carousel shots are all "in viewport"; only fetch the visible one and the next. */
   private shotsLoadedUpTo = 1;
@@ -233,18 +226,20 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private autoplayId: number | null = null;
   private stopAutoplayUntil = 0;
 
-  private buildFlagRow(
-    emojis: string[],
-    opts: { peak: number; edge: number; minOpacity: number },
-  ) {
-    const n = emojis.length;
-    const mid = (n - 1) / 2;
-    return emojis.map((emoji, i) => {
-      const d = mid === 0 ? 0 : Math.abs(i - mid) / mid;
-      const s = opts.peak + (opts.edge - opts.peak) * d;
-      const o = 1 - (1 - opts.minOpacity) * d;
-      return { emoji, s: Number(s.toFixed(3)), o: Number(o.toFixed(3)) };
-    });
+  countryName(code: string): string {
+    const lang = this.i18n.current;
+    if (this.regionNames?.lang !== lang) {
+      this.regionNames = {
+        lang,
+        full: new Intl.DisplayNames([lang], { type: 'region' }),
+        short: new Intl.DisplayNames([lang], { type: 'region', style: 'short' }),
+      };
+    }
+    const region = code.toUpperCase();
+    const names = HomeComponent.SHORT_NAME_CODES.has(region)
+      ? this.regionNames.short
+      : this.regionNames.full;
+    return names.of(region) ?? region;
   }
 
   heroOfferLine(): string {

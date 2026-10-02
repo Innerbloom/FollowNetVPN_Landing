@@ -1,0 +1,413 @@
+<section class="account-page">
+  <div class="account-wrap">
+    <!-- Prerendered shell + first paint in the browser: no sign-in flash for signed-in visitors. -->
+    <div class="acc-loading" *ngIf="view === 'init'" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>{{ t('loading') }}</span>
+    </div>
+
+    <!-- ——— Sign in ——— -->
+    <ng-container *ngIf="view === 'signin'">
+      <header class="acc-head acc-head--center">
+        <h1>{{ t('signinTitle') }}</h1>
+        <p class="acc-sub">{{ t('signinSub') }}</p>
+      </header>
+
+      <div class="signin-card">
+        <div class="qr-block">
+          <div class="qr-frame" [class.is-dim]="pairingState !== 'waiting'">
+            <img *ngIf="qrDataUrl" [src]="qrDataUrl" width="220" height="220" alt="QR" />
+            <span *ngIf="!qrDataUrl" class="spinner" aria-hidden="true"></span>
+            <button
+              *ngIf="pairingState === 'expired' || pairingState === 'error'"
+              type="button"
+              class="qr-refresh"
+              (click)="startPairing()"
+            >
+              {{ t('qrRefresh') }}
+            </button>
+          </div>
+          <div class="qr-copy">
+            <h2>{{ t('qrTitle') }}</h2>
+            <p>{{ t('qrHint') }}</p>
+            <ng-container *ngIf="pairing && pairingState === 'waiting'">
+              <p class="qr-manual">{{ t('qrManual') }}</p>
+              <div class="qr-code" translate="no">{{ pairingCodeDisplay() }}</div>
+              <p class="qr-status"><span class="pulse" aria-hidden="true"></span>{{ t('qrWaiting') }}</p>
+            </ng-container>
+            <p class="qr-status qr-status--warn" *ngIf="pairingState === 'expired'">{{ t('qrExpired') }}</p>
+            <p class="qr-status qr-status--warn" *ngIf="pairingState === 'error'">{{ t('errGeneric') }}</p>
+          </div>
+        </div>
+
+        <div class="divider"><span>{{ t('or') }}</span></div>
+
+        <div class="social">
+          <div class="google-slot" #googleBtn [class.is-ready]="googleReady"></div>
+          <button type="button" class="btn-apple" (click)="startApple()" [disabled]="busy">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.24 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.3-.88-2.32-3.51zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"
+              />
+            </svg>
+            {{ t('apple') }}
+          </button>
+
+          <button type="button" class="btn-link" *ngIf="!showEmail" (click)="showEmail = true">
+            {{ t('emailToggle') }}
+          </button>
+
+          <form class="email-form" *ngIf="showEmail && emailStep === 'email'" (ngSubmit)="sendCode()">
+            <label for="acc-email">{{ t('emailLabel') }}</label>
+            <div class="row">
+              <input
+                id="acc-email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+                [(ngModel)]="email"
+              />
+              <button type="submit" class="btn-primary" [disabled]="busy || !email.trim()">{{ t('emailSend') }}</button>
+            </div>
+          </form>
+
+          <form class="email-form" *ngIf="showEmail && emailStep === 'code'" (ngSubmit)="verifyCode()">
+            <p class="hint">{{ t('codeSent', { email: email.trim() }) }}</p>
+            <label for="acc-code">{{ t('codeLabel') }}</label>
+            <div class="row">
+              <input
+                id="acc-code"
+                type="text"
+                name="code"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="10"
+                required
+                [(ngModel)]="code"
+              />
+              <button type="submit" class="btn-primary" [disabled]="busy || !code.trim()">{{ t('codeVerify') }}</button>
+            </div>
+            <button type="button" class="btn-link" (click)="backToEmail()">{{ t('codeBack') }}</button>
+          </form>
+        </div>
+
+        <p class="form-error" *ngIf="error" role="alert">{{ error }}</p>
+      </div>
+    </ng-container>
+
+    <!-- ——— Account ——— -->
+    <ng-container *ngIf="view === 'account' && profile && billing">
+      <!-- Profile -->
+      <header class="profile-card">
+        <div class="avatar" aria-hidden="true">{{ initial() }}</div>
+        <div class="profile-main">
+          <div class="profile-email">{{ profile.email || t('guest') }}</div>
+          <div class="profile-meta">
+            <span class="plan-pill" [class.is-premium]="billing.plan !== 'free'">{{ planLabel() }}</span>
+            <span *ngIf="billing.expiresAt" class="profile-until">{{ t('activeUntil', { date: formatDate(billing.expiresAt) }) }}</span>
+          </div>
+        </div>
+        <button type="button" class="btn-ghost" (click)="signOut()">{{ t('signOut') }}</button>
+      </header>
+
+      <!-- Statistics -->
+      <section class="acc-card stats-card">
+        <div class="card-top">
+          <h2 class="card-title">{{ t('statsHeading') }}</h2>
+          <div class="seg" role="tablist">
+            <button type="button" role="tab" [attr.aria-selected]="range === 7" [class.is-on]="range === 7" (click)="setRange(7)">{{ t('range7') }}</button>
+            <button type="button" role="tab" [attr.aria-selected]="range === 30" [class.is-on]="range === 30" (click)="setRange(30)">{{ t('range30') }}</button>
+          </div>
+        </div>
+
+        <ng-container *ngIf="totals() as tot">
+          <div class="kpis">
+            <div class="kpi kpi--accent">
+              <span class="kpi-label">{{ t('statsTime') }}</span>
+              <strong>{{ formatDuration(tot.time) }}</strong>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">{{ t('statsTraffic') }}</span>
+              <strong>{{ formatBytes(tot.traffic) }}</strong>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">{{ t('statsSessions') }}</span>
+              <strong>{{ tot.sessions }}</strong>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">{{ t('statsActiveDays') }}</span>
+              <strong>{{ tot.activeDays }}<small> / {{ range }}</small></strong>
+            </div>
+          </div>
+
+          <ng-container *ngIf="tot.activeDays > 0; else noStats">
+            <div class="chart">
+              <div class="chart-head" *ngIf="shownDay() as day">
+                <span class="chart-day">{{ dayTitle(day.date) }}</span>
+                <span class="chart-vals">
+                  <b>{{ formatDuration(day.totalTime) }}</b> · {{ formatBytes(day.traffic) }} · {{ day.sessions }} {{ t('statsSessions').toLowerCase() }}
+                </span>
+              </div>
+              <div class="bars" [class.bars--month]="range === 30" (mouseleave)="activeDay = null">
+                <button
+                  type="button"
+                  class="bar-col"
+                  *ngFor="let d of rangeDays(); let i = index"
+                  [class.is-active]="shownDay() === d"
+                  (mouseenter)="activeDay = d"
+                  (focus)="activeDay = d"
+                  (click)="activeDay = d"
+                  [attr.aria-label]="dayTitle(d.date) + ': ' + formatDuration(d.totalTime)"
+                >
+                  <span class="bar-track">
+                    <span class="bar-fill" [style.height.%]="barHeight(d)">
+                      <span class="bar-tip" *ngIf="range === 7 && shownDay() === d && d.totalTime">{{ formatDuration(d.totalTime) }}</span>
+                    </span>
+                  </span>
+                  <span class="bar-label" [class.is-hidden]="!showBarLabel(i)">{{ barLabel(d.date) }}</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="insights">
+              <div class="insight" *ngIf="tot.best as best">
+                <span class="insight-label">{{ t('statsRecord') }}</span>
+                <strong>{{ formatDuration(best.totalTime) }}</strong>
+                <span class="insight-sub">{{ dayTitle(best.date) }}</span>
+              </div>
+              <div class="insight">
+                <span class="insight-label">{{ t('statsAvg') }}</span>
+                <strong>{{ formatDuration(tot.avgActive) }}</strong>
+              </div>
+              <div class="insight insight--protocols" *ngIf="protocolShares().length">
+                <span class="insight-label">{{ t('protocolsTitle') }}</span>
+                <div class="proto" *ngFor="let p of protocolShares()">
+                  <span class="proto-name">{{ p.protocol }}</span>
+                  <span class="proto-bar"><span [style.width.%]="p.pct"></span></span>
+                  <span class="proto-pct">{{ p.pct }}%</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #noStats>
+            <p class="empty">{{ t('statsEmpty') }}</p>
+          </ng-template>
+        </ng-container>
+      </section>
+
+      <div class="acc-grid">
+        <!-- Subscription -->
+        <section class="acc-card">
+          <h2 class="card-title">{{ t('subTitle') }}</h2>
+
+          <ng-container *ngIf="billing.plan === 'free'">
+            <p class="muted">{{ t('freeHint') }}</p>
+            <ng-container *ngIf="webCheckoutEnabled">
+              <div class="plans" role="radiogroup">
+                <button
+                  type="button"
+                  role="radio"
+                  class="plan-opt"
+                  *ngFor="let p of plans"
+                  [class.is-on]="selectedPlan === p.id"
+                  [attr.aria-checked]="selectedPlan === p.id"
+                  [disabled]="payState !== 'idle'"
+                  (click)="selectedPlan = p.id"
+                >
+                  <span class="plan-opt__radio" aria-hidden="true"></span>
+                  <span class="plan-opt__main">
+                    <b>{{ p.id === 'y1' ? t('planYear') : t('planMonth') }}</b>
+                    <small *ngIf="planPerMonth(p) as pm">{{ pm }}</small>
+                  </span>
+                  <span class="plan-opt__price">{{ planTotal(p) }}</span>
+                  <span class="plan-opt__badge" *ngIf="planSave(p) as save">{{ t('bestValue') }} · −{{ save }}%</span>
+                </button>
+              </div>
+              <button type="button" class="btn-primary btn-wide" (click)="payWithCard()" [disabled]="payState !== 'idle'">
+                <span class="spinner spinner--sm" *ngIf="payState !== 'idle'" aria-hidden="true"></span>
+                {{ t('payCard') }}
+              </button>
+              <p class="muted small">{{ t('payNote') }}</p>
+            </ng-container>
+          </ng-container>
+          <p class="notice" *ngIf="payMessage" role="status">{{ payMessage }}</p>
+          <p class="form-error form-error--left" *ngIf="payError" role="alert">{{ payError }}</p>
+
+          <ng-container *ngIf="billing.plan !== 'free'">
+            <ng-container *ngIf="billing.card as card; else storeOrOther">
+              <div class="source-row"><span class="source-dot source-dot--card"></span>{{ t('viaCard') }}</div>
+              <p class="plan-line--strong">
+                {{ card.autoRenew ? t('renewsOn', { date: formatDate(card.periodEndsAt) }) : t('endsOn', { date: formatDate(card.periodEndsAt) }) }}
+              </p>
+              <ng-container *ngIf="card.autoRenew">
+                <p class="muted small">{{ t('cardHow') }}</p>
+                <button type="button" class="btn-ghost btn-ghost--danger" *ngIf="!confirmCancel" (click)="confirmCancel = true; cancelMessage = ''">
+                  {{ t('cancelRenew') }}
+                </button>
+                <div class="confirm" *ngIf="confirmCancel">
+                  <p>{{ t('cancelConfirm', { date: formatDate(card.periodEndsAt) }) }}</p>
+                  <div class="confirm-actions">
+                    <button type="button" class="btn-danger" (click)="cancelRenewal()" [disabled]="cancelBusy">{{ t('cancelYes') }}</button>
+                    <button type="button" class="btn-ghost" (click)="confirmCancel = false">{{ t('keep') }}</button>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-template #storeOrOther>
+              <ng-container *ngIf="billing.apple">
+                <div class="source-row"><span class="source-dot source-dot--apple"></span>{{ t('viaApple') }}</div>
+                <p class="muted small">{{ t('manageAppleHow') }}</p>
+                <a class="btn-ghost" [href]="appleManageUrl" target="_blank" rel="noopener noreferrer">{{ t('manageApple') }}</a>
+              </ng-container>
+              <ng-container *ngIf="!billing.apple && billing.google">
+                <div class="source-row"><span class="source-dot source-dot--google"></span>{{ t('viaGoogle') }}</div>
+                <p class="muted small">{{ t('manageGoogleHow') }}</p>
+                <a class="btn-ghost" [href]="googleManageUrl" target="_blank" rel="noopener noreferrer">{{ t('manageGoogle') }}</a>
+              </ng-container>
+              <ng-container *ngIf="!billing.apple && !billing.google">
+                <div class="source-row"><span class="source-dot"></span>{{ t('viaOther') }}</div>
+                <p class="muted small">{{ t('grantedHow', { date: formatDate(billing.expiresAt) }) }}</p>
+              </ng-container>
+            </ng-template>
+          </ng-container>
+
+          <p class="notice" *ngIf="cancelMessage" role="status">{{ cancelMessage }}</p>
+
+          <div class="period" *ngIf="billing.plan !== 'free' && periodProgress() as pp">
+            <div class="period-top">
+              <span>{{ t('daysLeft', { n: pp.daysLeft }) }}</span>
+              <span class="muted small">{{ formatDate(billing.card?.periodEndsAt ?? billing.expiresAt) }}</span>
+            </div>
+            <div class="bar" *ngIf="pp.pct !== null"><span [style.width.%]="pp.pct"></span></div>
+          </div>
+
+          <div class="perks">
+            <span class="perks-title">{{ billing.plan === 'free' ? t('perksPremium') : t('perksIncluded') }}</span>
+            <ul>
+              <li *ngFor="let p of perks" [class.is-locked]="billing.plan === 'free'">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ t(p) }}
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Traffic limit -->
+        <section class="acc-card">
+          <h2 class="card-title">{{ t('limitTitle') }}</h2>
+          <ng-container *ngIf="billing.plan === 'free' && traffic?.limitMb; else unlimited">
+            <div class="big-num">{{ t('trafficOf', { used: formatMb(traffic!.usedMb), limit: formatMb(traffic!.limitMb!) }) }}</div>
+            <div class="bar" role="progressbar" [attr.aria-valuenow]="trafficPercent()" aria-valuemin="0" aria-valuemax="100">
+              <span [style.width.%]="trafficPercent()" [class.is-high]="trafficPercent() >= 85"></span>
+            </div>
+            <p class="muted small">{{ t('trafficReset') }}</p>
+          </ng-container>
+          <ng-template #unlimited>
+            <div class="big-num big-num--green"><span class="inf" aria-hidden="true">∞</span>{{ t('trafficUnlimited') }}</div>
+            <p class="muted small">{{ t('unlimitedHint') }}</p>
+            <div class="period" *ngIf="traffic">
+              <div class="period-top">
+                <span class="muted small">{{ t('usedThisWeek') }}</span>
+                <span>{{ formatMb(traffic.usedMb) }}</span>
+              </div>
+            </div>
+          </ng-template>
+
+        </section>
+      </div>
+
+      <!-- Devices -->
+      <section class="acc-card devices-card">
+        <div class="card-top">
+          <h2 class="card-title">{{ t('devicesTitle') }}</h2>
+          <span class="devices-count">{{ profile.deviceCount }} / {{ profile.deviceLimit }}</span>
+        </div>
+        <div class="device-dots" aria-hidden="true">
+          <span *ngFor="let on of deviceSlots()" [class.is-on]="on"></span>
+        </div>
+        <p class="muted small">{{ t('devicesHint', { limit: profile.deviceLimit }) }}</p>
+
+        <ul class="device-list" *ngIf="devices.length; else noDevices">
+          <li class="device" *ngFor="let d of devices">
+            <span class="device-icon" [ngSwitch]="d.platform" aria-hidden="true">
+              <svg *ngSwitchCase="'android'" viewBox="0 0 24 24"><path fill="currentColor" d="M7.2 9.5h9.6v7.2c0 .7-.5 1.2-1.2 1.2h-.8v2.3a1.1 1.1 0 1 1-2.2 0v-2.3h-1.2v2.3a1.1 1.1 0 1 1-2.2 0v-2.3h-.8c-.7 0-1.2-.5-1.2-1.2V9.5zM5 9.6a1.1 1.1 0 0 1 2.2 0v4.8a1.1 1.1 0 1 1-2.2 0V9.6zm11.8 0a1.1 1.1 0 0 1 2.2 0v4.8a1.1 1.1 0 1 1-2.2 0V9.6zM15 4.6l1-1.6-.4-.3-1 1.7a5.7 5.7 0 0 0-5.2 0l-1-1.7-.4.3 1 1.6a5 5 0 0 0-1.8 4h9.6a5 5 0 0 0-1.8-4zM10 7.2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm4 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/></svg>
+              <svg *ngSwitchCase="'browser'" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8.6h8.2M9.1 13.7 5 6.6M14.9 13.7 10.8 20.8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+              <svg *ngSwitchDefault viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.24 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.3-.88-2.32-3.51zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"/></svg>
+            </span>
+            <span class="device-text">
+              <b>{{ platformLabel(d.platform) }}<span class="device-ver" *ngIf="d.appVersion"> · {{ t('deviceVersion', { v: d.appVersion }) }}</span></b>
+              <small [class.is-online]="lastSeenLabel(d.lastSeenAt) === t('deviceOnlineNow')">{{ lastSeenLabel(d.lastSeenAt) }}</small>
+            </span>
+            <button
+              type="button"
+              class="btn-ghost btn-ghost--sm"
+              *ngIf="confirmDeviceId !== d.id"
+              (click)="confirmDeviceId = d.id; deviceMessage = ''; deviceError = ''"
+            >
+              {{ t('deviceSignOut') }}
+            </button>
+            <div class="device-confirm" *ngIf="confirmDeviceId === d.id">
+              <p>{{ t('deviceConfirm') }}</p>
+              <div class="confirm-actions">
+                <button type="button" class="btn-danger" (click)="signOutDevice(d)" [disabled]="deviceBusy">{{ t('deviceYes') }}</button>
+                <button type="button" class="btn-ghost" (click)="confirmDeviceId = null">{{ t('deviceCancel') }}</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ng-template #noDevices>
+          <p class="empty">{{ t('devicesEmpty') }}</p>
+        </ng-template>
+        <p class="notice" *ngIf="deviceMessage" role="status">{{ deviceMessage }}</p>
+        <p class="form-error" *ngIf="deviceError" role="alert">{{ deviceError }}</p>
+      </section>
+
+      <!-- Apps -->
+      <section class="acc-card apps-card">
+        <h2 class="card-title">{{ t('appsTitle') }}</h2>
+        <div class="apps">
+          <a class="app-tile" [href]="iosUrl" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.24 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.3-.88-2.32-3.51zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"/></svg>
+            <span class="app-text"><b>iPhone &amp; iPad</b><small>{{ t('appIosSub') }}</small></span>
+          </a>
+          <a class="app-tile" [href]="chromeUrl" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8.6h8.2M9.1 13.7 5 6.6M14.9 13.7 10.8 20.8" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            <span class="app-text"><b>Chrome</b><small>{{ t('appChromeSub') }}</small></span>
+          </a>
+          <span class="app-tile app-tile--soon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 9.5h9.6v7.2c0 .7-.5 1.2-1.2 1.2h-.8v2.3a1.1 1.1 0 1 1-2.2 0v-2.3h-1.2v2.3a1.1 1.1 0 1 1-2.2 0v-2.3h-.8c-.7 0-1.2-.5-1.2-1.2V9.5zM5 9.6a1.1 1.1 0 0 1 2.2 0v4.8a1.1 1.1 0 1 1-2.2 0V9.6zm11.8 0a1.1 1.1 0 0 1 2.2 0v4.8a1.1 1.1 0 1 1-2.2 0V9.6zM15 4.6l1-1.6-.4-.3-1 1.7a5.7 5.7 0 0 0-5.2 0l-1-1.7-.4.3 1 1.6a5 5 0 0 0-1.8 4h9.6a5 5 0 0 0-1.8-4zM10 7.2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm4 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/></svg>
+            <span class="app-text"><b>Android</b><small>{{ t('appAndroidSub') }}</small></span>
+          </span>
+        </div>
+      </section>
+
+      <!-- Danger zone -->
+      <details class="danger" [open]="showDelete">
+        <summary>{{ t('dangerTitle') }}</summary>
+        <div class="danger-body">
+          <p class="muted">{{ t('dangerText') }}</p>
+          <p class="muted small">{{ t('dangerStore') }}</p>
+          <label class="check">
+            <input type="checkbox" [(ngModel)]="deleteAck" name="deleteAck" />
+            <span>{{ t('deleteCheck') }}</span>
+          </label>
+          <button type="button" class="btn-danger" (click)="deleteAccount()" [disabled]="!deleteAck || deleteBusy">
+            {{ t('deleteFinal') }}
+          </button>
+          <p class="form-error" *ngIf="deleteError" role="alert">{{ deleteError }}</p>
+        </div>
+      </details>
+    </ng-container>
+
+    <!-- ——— Deleted ——— -->
+    <div class="acc-done" *ngIf="view === 'deleted'">
+      <h1>{{ t('deleted') }}</h1>
+      <a class="btn-ghost" [routerLink]="'/' | localize">follow-net.com</a>
+    </div>
+
+    <p class="acc-foot muted small" *ngIf="view === 'signin' || view === 'init'">{{ t('noAccountDelete') }}</p>
+  </div>
+</section>

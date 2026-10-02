@@ -336,6 +336,8 @@ export class CheckoutComponent implements OnInit {
         this.wayForPayLanguage(),
       );
     } catch (err: unknown) {
+      // Widget closed without paying: nothing to report.
+      if (err instanceof Error && err.message === 'Payment closed') return;
       const apiErr = this.apiErrorFromUnknown(err);
       if (apiErr?.code === 'USER_NOT_FOUND') {
         this.inlineMessage = this.i18n.t('WEB_CHECKOUT_USER_NOT_FOUND');

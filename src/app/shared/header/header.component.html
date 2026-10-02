@@ -38,6 +38,12 @@
             </a>
           </div>
         </div>
+        <a class="account-link" [routerLink]="'/account' | localize" [attr.aria-label]="i18n.t('NAV_ACCOUNT')" [title]="i18n.t('NAV_ACCOUNT')">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.9"/>
+            <path d="M4.8 19.5c1.3-3.2 4-4.8 7.2-4.8s5.9 1.6 7.2 4.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+          </svg>
+        </a>
         <a class="cta" [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer">
           <span class="cta-desktop">{{ i18n.t('NAV_DOWNLOAD') }}</span>
           <span class="cta-mobile">{{ mobileDownloadLabel() }}</span>
@@ -58,6 +64,7 @@
         <a [routerLink]="'/guides' | localize" (click)="closeMenu()">{{ i18n.t('NAV_GUIDES') }}</a>
         <a [routerLink]="'/blog' | localize" (click)="closeMenu()">{{ i18n.t('NAV_BLOG') }}</a>
         <a [routerLink]="'/download' | localize" (click)="closeMenu()">{{ i18n.t('NAV_DOWNLOAD_PAGE') }}</a>
+        <a [routerLink]="'/account' | localize" (click)="closeMenu()">{{ i18n.t('NAV_ACCOUNT') }}</a>
       </div>
 
       <div class="mobile-group">

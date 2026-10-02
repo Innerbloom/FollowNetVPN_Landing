@@ -116,6 +116,11 @@ const pageRoutes: Routes = [
       ),
   },
   {
+    path: 'account',
+    loadComponent: () =>
+      import('./pages/account/account.component').then((m) => m.AccountComponent),
+  },
+  {
     path: 'privacy',
     loadComponent: () =>
       import('./pages/privacy-policy/privacy-policy.component').then(

@@ -79,6 +79,9 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean.startsWith('/checkout')) {
     return checkoutByLang[lang] ?? checkoutByLang.en;
   }
+  if (clean === '/account') {
+    return accountByLang[lang] ?? accountByLang.en;
+  }
   if (clean === '/') {
     return homeByLang[lang] ?? homeByLang.en;
   }
@@ -716,6 +719,16 @@ const termsByLang: Record<AppLang, SeoCopy> = {
     description:
       'Termos do FollowNet VPN: conta, assinaturas App Store, uso aceitável, teste e limitação de responsabilidade.',
   },
+};
+
+const accountByLang: Record<AppLang, SeoCopy> = {
+  en: { title: 'Account — FollowNet VPN', ogTitle: 'FollowNet VPN account', description: 'Sign in to manage your FollowNet VPN plan, subscription and account.', robots: 'noindex, nofollow' },
+  ru: { title: 'Аккаунт — FollowNet VPN', ogTitle: 'Аккаунт FollowNet VPN', description: 'Войдите, чтобы управлять тарифом, подпиской и аккаунтом FollowNet VPN.', robots: 'noindex, nofollow' },
+  uk: { title: 'Акаунт — FollowNet VPN', ogTitle: 'Акаунт FollowNet VPN', description: 'Увійдіть, щоб керувати тарифом, підпискою та акаунтом FollowNet VPN.', robots: 'noindex, nofollow' },
+  de: { title: 'Konto — FollowNet VPN', ogTitle: 'FollowNet VPN Konto', description: 'Melden Sie sich an, um Tarif, Abo und Konto von FollowNet VPN zu verwalten.', robots: 'noindex, nofollow' },
+  es: { title: 'Cuenta — FollowNet VPN', ogTitle: 'Cuenta FollowNet VPN', description: 'Inicia sesión para gestionar tu plan, suscripción y cuenta de FollowNet VPN.', robots: 'noindex, nofollow' },
+  fr: { title: 'Compte — FollowNet VPN', ogTitle: 'Compte FollowNet VPN', description: 'Connectez‑vous pour gérer votre offre, abonnement et compte FollowNet VPN.', robots: 'noindex, nofollow' },
+  pt: { title: 'Conta — FollowNet VPN', ogTitle: 'Conta FollowNet VPN', description: 'Entre para gerenciar plano, assinatura e conta do FollowNet VPN.', robots: 'noindex, nofollow' },
 };
 
 const checkoutByLang: Record<AppLang, SeoCopy> = {

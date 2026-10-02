@@ -94,6 +94,7 @@ export class WayForPayCheckoutService {
     identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
     language?: string,
+    returnPath = '/checkout?checkout=success',
   ): Promise<WayForPayWidgetPayload> {
     const body: {
       planId: PremiumPlanId;
@@ -104,7 +105,7 @@ export class WayForPayCheckoutService {
     } = {
       planId,
       language: language ?? 'UA',
-      returnUrl: `${window.location.origin}/checkout?checkout=success`,
+      returnUrl: `${window.location.origin}${returnPath}`,
     };
     const token = identity.checkoutToken?.trim();
     const email = identity.email?.trim().toLowerCase();
@@ -156,13 +157,14 @@ export class WayForPayCheckoutService {
     identity: { email?: string; checkoutToken?: string },
     planId: PremiumPlanId,
     language?: string,
+    returnPath?: string,
   ): Promise<void> {
     await this.loadScript();
     const token = identity.checkoutToken?.trim();
     let minted = false;
     let orderReference: string | undefined;
     try {
-      const widget = await this.createCheckoutSession(identity, planId, language);
+      const widget = await this.createCheckoutSession(identity, planId, language, returnPath);
       minted = true;
       orderReference = widget.orderReference;
       const Wfp = window.Wayforpay;
@@ -171,11 +173,26 @@ export class WayForPayCheckoutService {
       }
       const instance = new Wfp();
       await new Promise<void>((resolve, reject) => {
+        let settled = false;
+        const settle = (fn: () => void) => {
+          if (settled) return;
+          settled = true;
+          window.removeEventListener('message', onMessage);
+          fn();
+        };
+        // Closing the widget without paying fires none of the run() callbacks, only this message;
+        // without it the caller waits forever.
+        const onMessage = (event: MessageEvent) => {
+          if (event.data === 'WfpWidgetEventClose') {
+            settle(() => reject(new Error('Payment closed')));
+          }
+        };
+        window.addEventListener('message', onMessage);
         instance.run(
           widget as unknown as Record<string, unknown>,
-          () => resolve(),
-          () => reject(new Error('Payment declined')),
-          () => resolve(),
+          () => settle(resolve),
+          () => settle(() => reject(new Error('Payment declined'))),
+          () => settle(resolve),
         );
       });
       if (token) {

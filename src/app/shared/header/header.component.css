@@ -40,6 +40,27 @@
   display: inline-flex;
 }
 
+.account-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-link svg {
+  width: 19px;
+  height: 19px;
+}
+
+.account-link:hover {
+  background: var(--surface-2);
+  color: var(--green-2);
+}
+
 .lang {
   height: 36px;
   padding: 0 12px;
@@ -275,6 +296,10 @@
 
 @media (max-width: 980px) {
   .nav {
+    display: none;
+  }
+
+  .account-link {
     display: none;
   }
 

@@ -67,42 +67,9 @@
     </div>
   </section>
 
-  <section class="proof" aria-label="Highlights">
-    <div class="container proof-row">
-      <div class="proof-chip">
-        <span class="proof-chip__label">{{ i18n.t('PROOF_CHIP_1') }}</span>
-      </div>
-      <div class="proof-chip">
-        <span class="proof-chip__label">{{ i18n.t('PROOF_CHIP_2') }}</span>
-      </div>
-      <div class="proof-chip">
-        <span class="proof-chip__label">{{ i18n.t('PROOF_CHIP_3') }}</span>
-      </div>
-      <div class="proof-chip">
-        <span class="proof-chip__label">{{ i18n.t('PROOF_CHIP_4') }}</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="voices-section" aria-labelledby="voices-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('VOICES_KICKER') }}</div>
-        <h2 id="voices-title">{{ i18n.t('VOICES_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('VOICES_SUB') }}</p>
-      </div>
-      <div class="voices-grid">
-        <article class="voice-card" *ngFor="let v of voiceCards">
-          <h3 class="voice-card__title">{{ i18n.t(v.title) }}</h3>
-          <p class="voice-card__body">{{ i18n.t(v.body) }}</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="features" aria-labelledby="why-title">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <div class="kicker">{{ i18n.t('WHY_KICKER') }}</div>
         <h2 id="why-title">{{ i18n.t('WHY_TITLE') }}</h2>
         <p class="sub">{{ i18n.t('WHY_SUB') }}</p>
@@ -111,15 +78,11 @@
         <article class="feature-card">
           <div class="feature-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
-              <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M3.5 9.5h17M8 5.5V4M16 5.5V4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="9" cy="14" r="1.2" fill="currentColor"/>
-              <circle cx="12" cy="14" r="1.2" fill="currentColor"/>
-              <circle cx="15" cy="14" r="1.2" fill="currentColor"/>
+              <path d="M13 3.5L6.5 13.2h4.2L11 20.5 17.5 10.8h-4.2L13 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3>{{ i18n.t('WHY_1_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_1_TEXT') }}</p>
+          <h3>{{ i18n.t('WHY_3_TITLE') }}</h3>
+          <p>{{ i18n.t('WHY_3_TEXT') }}</p>
         </article>
         <article class="feature-card">
           <div class="feature-card__icon" aria-hidden="true">
@@ -135,11 +98,23 @@
         <article class="feature-card">
           <div class="feature-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M13 3.5L6.5 13.2h4.2L11 20.5 17.5 10.8h-4.2L13 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M12 3.5l7 3v5.2c0 4.3-2.9 7.6-7 8.8-4.1-1.2-7-4.5-7-8.8V6.5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3>{{ i18n.t('WHY_3_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_3_TEXT') }}</p>
+          <h3>{{ i18n.t('VOICE_1_TITLE') }}</h3>
+          <p>{{ i18n.t('VOICE_1_BODY') }}</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="2.5" y="5" width="13" height="9.5" rx="1.8" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M6 18.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="16" y="8" width="5.5" height="11" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <h3>{{ i18n.t('VOICE_3_TITLE') }}</h3>
+          <p>{{ i18n.t('VOICE_3_BODY') }}</p>
         </article>
         <article class="feature-card">
           <div class="feature-card__icon" aria-hidden="true">
@@ -150,6 +125,17 @@
           </div>
           <h3>{{ i18n.t('WHY_4_TITLE') }}</h3>
           <p>{{ i18n.t('WHY_4_TEXT') }}</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4.5 16a7.5 7.5 0 1115 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M12 16l3.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="16" r="1.4" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>{{ i18n.t('WHY_SPEED_TITLE') }}</h3>
+          <p>{{ i18n.t('WHY_SPEED_TEXT') }}</p>
         </article>
       </div>
     </div>
@@ -162,32 +148,41 @@
         <h2>{{ i18n.t('COUNTRIES_TITLE') }}</h2>
         <p class="sub">{{ i18n.t('COUNTRIES_SUB') }}</p>
       </div>
-      <div class="flags" aria-hidden="true">
-        <div class="flags-row">
-          <span
-            class="flag"
-            *ngFor="let f of flagsRow1"
-            [style.--s]="f.s"
-            [style.--o]="f.o"
-            >{{ f.emoji }}</span
-          >
-        </div>
-        <div class="flags-row flags-row--2">
-          <span
-            class="flag"
-            *ngFor="let f of flagsRow2"
-            [style.--s]="f.s"
-            [style.--o]="f.o"
-            >{{ f.emoji }}</span
-          >
-        </div>
+      <div class="loc-stat">
+        <strong class="loc-stat__num">{{ locationCodes.length }}</strong>
+        <span class="loc-stat__text">
+          <span class="loc-stat__label">{{ i18n.t('LOCATIONS_COUNT') }}</span>
+          <span class="loc-stat__note">{{ i18n.t('LOCATIONS_COUNT_NOTE') }}</span>
+        </span>
       </div>
+      <ul class="loc-grid" [class.is-open]="showAllLocations">
+        <li class="loc-chip" *ngFor="let code of locationCodes">
+          <img
+            class="loc-chip__flag"
+            [src]="'assets/flags/' + code + '.webp'"
+            width="24"
+            height="18"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <span>{{ countryName(code) }}</span>
+        </li>
+      </ul>
+      <button
+        *ngIf="!showAllLocations"
+        type="button"
+        class="btn ghost loc-more"
+        (click)="showAllLocations = true"
+      >
+        {{ i18n.t('LOCATIONS_SHOW_ALL') }} · {{ locationCodes.length }}
+      </button>
     </div>
   </section>
 
   <section class="section" id="how">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <div class="kicker">{{ i18n.t('HOW_KICKER') }}</div>
         <h2>{{ i18n.t('HOW_TITLE') }}</h2>
         <p class="sub">{{ i18n.t('HOW_SUB') }}</p>
@@ -457,7 +452,7 @@
 
   <section class="learn-section" id="learn" aria-labelledby="learn-title">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <div class="kicker">{{ i18n.t('BLOG_HOME_KICKER') }}</div>
         <h2 id="learn-title">{{ i18n.t('BLOG_TITLE') }}</h2>
         <p class="sub">{{ i18n.t('BLOG_HOME_SUB') }}</p>

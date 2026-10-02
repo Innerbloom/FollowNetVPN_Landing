@@ -42,7 +42,12 @@
             },
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "allowedCommonJsDependencies": [
+              "dijkstrajs",
+              "pngjs",
+              "qrcode"
+            ]
           },
           "configurations": {
             "production": {

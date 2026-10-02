@@ -82,6 +82,7 @@
 /blog/chrome-extension-architecture
 /blog/passwordless-account-restore
 /checkout
+/account
 /ru
 /ru/privacy
 /ru/terms
@@ -166,6 +167,7 @@
 /ru/blog/chrome-extension-architecture
 /ru/blog/passwordless-account-restore
 /ru/checkout
+/ru/account
 /de
 /de/privacy
 /de/terms
@@ -250,6 +252,7 @@
 /de/blog/chrome-extension-architecture
 /de/blog/passwordless-account-restore
 /de/checkout
+/de/account
 /es
 /es/privacy
 /es/terms
@@ -334,6 +337,7 @@
 /es/blog/chrome-extension-architecture
 /es/blog/passwordless-account-restore
 /es/checkout
+/es/account
 /fr
 /fr/privacy
 /fr/terms
@@ -418,6 +422,7 @@
 /fr/blog/chrome-extension-architecture
 /fr/blog/passwordless-account-restore
 /fr/checkout
+/fr/account
 /pt
 /pt/privacy
 /pt/terms
@@ -502,6 +507,7 @@
 /pt/blog/chrome-extension-architecture
 /pt/blog/passwordless-account-restore
 /pt/checkout
+/pt/account
 /uk
 /uk/privacy
 /uk/terms
@@ -586,4 +592,5 @@
 /uk/blog/chrome-extension-architecture
 /uk/blog/passwordless-account-restore
 /uk/checkout
+/uk/account
 /404

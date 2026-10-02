@@ -338,98 +338,6 @@
 }
 
 /* Proof strip */
-.proof {
-  padding: 0 0 2.25rem;
-}
-
-.proof-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.proof-chip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.1rem 1rem;
-  border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.proof-chip::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--green), #a3c04a);
-}
-
-.proof-chip:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(111, 143, 40, 0.28);
-}
-
-.proof-chip__label {
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.voices-section {
-  padding: var(--section-pad-y-tight) 0;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-}
-
-.voices-grid {
-  margin: 1.75rem auto 0;
-  max-width: 960px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.voice-card {
-  padding: 1.25rem 1.2rem;
-  border-radius: var(--r-card);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-
-.voice-card__title {
-  margin: 0 0 0.45rem;
-  font-size: 1.02rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.voice-card__body {
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--type-body-sm);
-  line-height: 1.5;
-  font-weight: 600;
-}
-
-
-@media (max-width: 800px) {
-  .voices-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Features */
 .section {
   padding: var(--section-pad-y) 0;
@@ -439,8 +347,14 @@
 .feature-grid {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+@media (max-width: 1024px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .feature-card {
@@ -526,37 +440,73 @@
   max-width: 42ch;
 }
 
-.flags {
-  margin-top: 2.25rem;
-  display: grid;
-  gap: 1.15rem;
-}
-
-.flags-row {
+.loc-stat {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 2rem auto 0;
 }
 
-.flags-row--2 {
-  gap: 12px;
-}
-
-.flag {
-  display: inline-block;
-  font-size: 30px;
+.loc-stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 3.4rem);
+  font-weight: 800;
   line-height: 1;
-  transform: scale(var(--s, 1));
-  opacity: var(--o, 1);
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.08));
-  transition: transform 180ms ease, opacity 180ms ease;
+  letter-spacing: -0.04em;
+  color: var(--green-2);
 }
 
-.flag:hover {
-  transform: scale(calc(var(--s, 1) * 1.08));
-  opacity: 1;
+.loc-stat__text {
+  display: grid;
+  text-align: left;
+}
+
+.loc-stat__label {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.loc-stat__note {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.loc-grid {
+  list-style: none;
+  margin: 1.75rem auto 0;
+  padding: 0;
+  max-width: 60rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.loc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.loc-chip__flag {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.loc-more {
+  display: none;
 }
 
 /* Steps */
@@ -617,6 +567,33 @@
   font-weight: 600;
   line-height: 1.5;
   max-width: 56ch;
+}
+
+/* Desktop: the five steps read left→right instead of a narrow column with empty space. */
+@media (min-width: 1025px) {
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.25rem;
+  }
+
+  .steps::before {
+    left: 10%;
+    right: 10%;
+    top: 2.33rem;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), rgba(143, 176, 58, 0.15));
+  }
+
+  .step {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
 }
 
 /* Extension — mirror iOS hero: visual left, copy right */
@@ -1451,27 +1428,35 @@
     left: 1.1rem;
   }
 
-  .proof-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .feature-grid {
     grid-template-columns: 1fr;
   }
 
-  .flags-row {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .flag {
-    font-size: 26px;
-  }
 }
 
 @media (max-width: 560px) {
-  .proof-row {
-    grid-template-columns: 1fr;
+  .loc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .loc-chip {
+    min-width: 0;
+  }
+
+  .loc-chip {
+    border-radius: 14px;
+    line-height: 1.25;
+  }
+
+  /* Collapsed to five rows on phones; the full list stays in the HTML for crawlers. */
+  .loc-grid:not(.is-open) .loc-chip:nth-child(n + 11) {
+    display: none;
+  }
+
+  .loc-more {
+    display: flex;
+    margin: 1rem auto 0;
   }
 
   .hero {
