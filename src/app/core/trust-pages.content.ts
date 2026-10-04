@@ -18,7 +18,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'What is not ready yet',
-        body: 'There is no Android app yet. Auto-connect on iOS is not the same as a leak-blocking kill switch; that Kill Switch exists in the Chrome extension. Exact server locations and plan details always live in the current App Store build.',
+        body: 'Auto-connect on iOS is not the same as a leak-blocking kill switch; that Kill Switch exists in the Chrome extension. Exact server locations and plan details always live in the current App Store build.',
       },
       {
         title: 'Contact',
@@ -48,7 +48,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Чего пока нет',
-        body: 'Пока нет приложения для Android. Автоподключение на iOS — не kill switch с блокировкой утечек; такой Kill Switch есть в Chrome. Актуальные локации и условия тарифов — в текущей сборке App Store.',
+        body: 'Автоподключение на iOS — не kill switch с блокировкой утечек; такой Kill Switch есть в Chrome. Актуальные локации и условия тарифов — в текущей сборке App Store.',
       },
       {
         title: 'Связь',
@@ -78,7 +78,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Чого поки немає',
-        body: 'Поки немає застосунку для Android. Автопідключення на iOS — не kill switch; такий Kill Switch є в Chrome. Актуальні локації й умови тарифів — у поточній збірці App Store.',
+        body: 'Автопідключення на iOS — не kill switch; такий Kill Switch є в Chrome. Актуальні локації й умови тарифів — у поточній збірці App Store.',
       },
       {
         title: 'Зв’язок',
@@ -108,7 +108,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Was noch fehlt',
-        body: 'Noch keine Android-App. Auto-Connect auf iOS ist kein Leak-Kill-Switch; der Kill Switch sitzt in der Chrome-Erweiterung. Standorte und Tarifdetails stehen in der aktuellen App-Store-Version.',
+        body: 'Auto-Connect auf iOS ist kein Leak-Kill-Switch; der Kill Switch sitzt in der Chrome-Erweiterung. Standorte und Tarifdetails stehen in der aktuellen App-Store-Version.',
       },
       {
         title: 'Kontakt',
@@ -138,7 +138,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Qué aún no está',
-        body: 'Todavía no hay app para Android. La auto-conexión en iOS no es un kill switch anti-fugas; ese Kill Switch está en Chrome. Ubicaciones y planes actuales están en la build de App Store.',
+        body: 'La auto-conexión en iOS no es un kill switch anti-fugas; ese Kill Switch está en Chrome. Ubicaciones y planes actuales están en la build de App Store.',
       },
       {
         title: 'Contacto',
@@ -168,7 +168,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Ce qui n’est pas prêt',
-        body: 'Pas encore d’app macOS ou Android. La connexion auto iOS n’est pas un kill switch anti-fuite ; celui de Chrome l’est. Les emplacements et offres actuels sont dans la build App Store.',
+        body: 'Pas encore d’app macOS. La connexion auto iOS n’est pas un kill switch anti-fuite ; celui de Chrome l’est. Les emplacements et offres actuels sont dans la build App Store.',
       },
       {
         title: 'Contact',
@@ -198,7 +198,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'O que ainda não existe',
-        body: 'Ainda não há app Android. Auto-conexão no iOS não é kill switch anti-vazamento; esse Kill Switch está no Chrome. Locais e planos atuais estão na build da App Store.',
+        body: 'Auto-conexão no iOS não é kill switch anti-vazamento; esse Kill Switch está no Chrome. Locais e planos atuais estão na build da App Store.',
       },
       {
         title: 'Contacto',

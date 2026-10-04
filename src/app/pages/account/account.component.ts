@@ -76,6 +76,7 @@ export class AccountComponent implements OnDestroy {
   readonly googleManageUrl = GOOGLE_MANAGE_URL;
   readonly iosUrl = environment.iosAppStoreUrl;
   readonly chromeUrl = environment.chromeWebStoreUrl;
+  readonly androidUrl = environment.androidPlayStoreUrl;
   readonly webCheckoutEnabled = environment.webWayForPayCheckoutEnabled;
 
   view: View = 'init';

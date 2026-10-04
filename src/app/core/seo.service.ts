@@ -39,6 +39,8 @@ const FAQ_KEYS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'FAQ_Q7', a: 'FAQ_A7' },
   { q: 'FAQ_Q8', a: 'FAQ_A8' },
   { q: 'FAQ_Q9', a: 'FAQ_A9' },
+  { q: 'FAQ_Q10', a: 'FAQ_A10' },
+  { q: 'FAQ_Q11', a: 'FAQ_A11' },
 ];
 
 @Injectable({ providedIn: 'root' })

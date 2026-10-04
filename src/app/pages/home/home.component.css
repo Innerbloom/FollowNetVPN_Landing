@@ -224,7 +224,27 @@
 }
 
 .offer--under-cta {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
+}
+
+.offer--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.offer--link:hover {
+  background: rgba(143, 176, 58, 0.22);
+  border-color: rgba(111, 143, 40, 0.4);
+}
+
+.offer__arrow {
+  margin-left: 2px;
+  transition: transform 0.15s ease;
+}
+
+.offer--link:hover .offer__arrow {
+  transform: translateX(3px);
 }
 
 .cta-row {
@@ -245,6 +265,111 @@
   .cta-row .btn {
     justify-content: center;
     text-align: center;
+  }
+}
+
+/* Hero store buttons: badge-style pair, fixed height so the row never reflows (CLS). */
+.store-badges {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 20px 0 16px;
+  border-radius: 14px;
+  background: #0b0f17;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.store-badge:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.store-badge:focus-visible {
+  outline: 2px solid var(--green-2);
+  outline-offset: 3px;
+}
+
+.store-badge svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.store-badge__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.store-badge__text small {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.store-badge__text b {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.store-badge--block {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.store-badge--compact {
+  height: 46px;
+  min-width: 0;
+  padding: 0 10px;
+  gap: 8px;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.store-badge--compact svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 480px) {
+  .store-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .store-badge {
+    justify-content: center;
+    height: 52px;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .store-badge svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .store-badge__text b {
+    font-size: 1rem;
   }
 }
 
@@ -590,6 +715,7 @@
 
   .step {
     grid-template-columns: 1fr;
+    align-content: start;
     justify-items: center;
     text-align: center;
     gap: 0.85rem;
@@ -891,6 +1017,22 @@
   display: block;
 }
 
+.app-icon--android {
+  color: #3ddc84;
+}
+
+.app-icon--apple,
+.app-icon--chrome,
+.app-icon--android {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.app-icon--android svg {
+  width: 26px;
+  height: 26px;
+}
+
 .app-card--soon .app-icon {
   background: var(--surface-2);
   color: var(--muted);
@@ -1181,6 +1323,23 @@
   margin-top: 0.35rem;
 }
 
+.store-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.store-row__label {
+  margin: auto 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+}
+
+
 .pricing-regional-note {
   margin: 1.25rem auto 0;
   text-align: center;
@@ -1384,6 +1543,10 @@
 
   .hero-badges,
   .cta-row {
+    justify-content: center;
+  }
+
+  .store-badges {
     justify-content: center;
   }
 

@@ -5,7 +5,7 @@ import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import { pressKit, type PressKit } from '../../core/press-page.content';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
 
 @Component({
   selector: 'app-press-page',
@@ -17,6 +17,7 @@ import { appStoreUrl } from '../../core/app-store-url';
 export class PressPageComponent implements OnInit {
   kit!: PressKit;
   readonly appStoreHref = appStoreUrl('press');
+  readonly playStoreHref = playStoreUrl('press');
 
   constructor(
     public i18n: I18nService,

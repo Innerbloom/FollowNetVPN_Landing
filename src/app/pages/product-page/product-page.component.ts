@@ -6,7 +6,7 @@ import { LocalizePipe } from '../../shared/localize.pipe';
 import { I18nService } from '../../core/i18n.service';
 import { SeoService } from '../../core/seo.service';
 import type { ProductPage } from '../../core/product-pages.content';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -24,6 +24,7 @@ export class ProductPageComponent implements OnInit, OnChanges {
   @Input() secondaryHref = '/';
   @Input() secondaryLabel = '';
   @Input() showChromeCta = false;
+  @Input() showPlayCta = false;
 
   readonly chromeUrl = environment.chromeWebStoreUrl;
 
@@ -52,6 +53,10 @@ export class ProductPageComponent implements OnInit, OnChanges {
 
   resolvedPrimaryHref(): string {
     return this.primaryHref || appStoreUrl(this.seoPath.replace(/\//g, '-') || 'product');
+  }
+
+  playHref(): string {
+    return playStoreUrl(this.seoPath.replace(/\//g, '-') || 'product');
   }
 
   resolvedPrimaryLabel(): string {

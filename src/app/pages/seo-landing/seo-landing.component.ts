@@ -10,7 +10,7 @@ import { hasLandingMeta, metaDescriptionFromLead, titleFromH1 } from '../../core
 import { environment } from '../../../environments/environment';
 import { deepGuideCached } from '../../core/seo-landing.deep';
 import type { LandingShot } from '../../core/seo-landing.content';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { guideBlogSlugs } from '../../core/blog-guide-links';
 import { blogPosts, type BlogPostView } from '../../core/blog.content';
 
@@ -26,6 +26,10 @@ export class SeoLandingComponent implements OnInit {
 
   appStoreHref(): string {
     return appStoreUrl(this.slug ?? undefined);
+  }
+
+  playStoreHref(): string {
+    return playStoreUrl(this.slug ?? undefined);
   }
   content: LandingContent | null = null;
   slug: LandingSlug | null = null;

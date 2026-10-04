@@ -73,7 +73,8 @@
         <a [routerLink]="'/status' | localize" (click)="closeMenu()">{{ i18n.t('NAV_STATUS') }}</a>
         <a [routerLink]="'/privacy' | localize" (click)="closeMenu()">{{ i18n.t('NAV_PRIVACY') }}</a>
         <a [routerLink]="'/terms' | localize" (click)="closeMenu()">{{ i18n.t('NAV_TERMS') }}</a>
-        <a [href]="iosAppStoreUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
+        <a [href]="appStoreMenuUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('HERO_CTA_PRIMARY') }}</a>
+        <a [href]="playStoreMenuUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">{{ i18n.t('PLAY_CTA') }}</a>
       </div>
     </div>
   </div>

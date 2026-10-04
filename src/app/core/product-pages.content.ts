@@ -31,7 +31,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   en: {
     kicker: 'Download',
     h1: 'Download FollowNet VPN',
-    lead: 'Get FollowNet on iPhone and iPad from the App Store, or protect Chrome on desktop with the official extension. Same product honesty: Free to try, Premium when you need unlimited.',
+    lead: 'Get FollowNet on iPhone and iPad from the App Store, on Android from Google Play, or protect Chrome on desktop with the official extension. Same product honesty: Free to try, Premium when you need unlimited.',
     blocks: [
       {
         title: 'iOS first',
@@ -42,12 +42,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'The Chrome extension covers browser sessions on desktop without waiting for a full macOS client. Sign in with the same FollowNet account flow.',
       },
       {
-        title: 'What about macOS / Android?',
-        body: 'macOS is on the roadmap. Android is not the focus yet. We would rather ship fewer platforms well than half-broken clients everywhere.',
+        title: 'Android and macOS',
+        body: 'Android is live on Google Play: the same protocols, Smart Connect and kill switch, with the same FollowNet account. macOS is on the roadmap — we would rather ship fewer platforms well than half-broken clients everywhere.',
       },
     ],
     bullets: [
       'iOS: App Store — Free weekly traffic cap, Premium optional',
+      'Android: Google Play — Free weekly traffic cap, Premium optional',
       'Chrome: Chrome Web Store extension',
       'Protocols: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'No credit card required to try Free',
@@ -56,7 +57,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   ru: {
     kicker: 'Скачать',
     h1: 'Скачать FollowNet VPN',
-    lead: 'FollowNet на iPhone и iPad — из App Store, а для Chrome на десктопе — официальное расширение. Та же честность: Free чтобы попробовать, Premium когда нужен безлимит.',
+    lead: 'FollowNet на iPhone и iPad — из App Store, на Android — из Google Play, а для Chrome на десктопе — официальное расширение. Та же честность: Free чтобы попробовать, Premium когда нужен безлимит.',
     blocks: [
       {
         title: 'Сначала iOS',
@@ -67,12 +68,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'Расширение Chrome закрывает браузер на десктопе без ожидания полноценного macOS-клиента. Вход в том же аккаунтном потоке FollowNet.',
       },
       {
-        title: 'А macOS / Android?',
-        body: 'macOS в планах. Android пока не фокус. Лучше меньше платформ, но нормально, чем полусломанные клиенты везде.',
+        title: 'Android и macOS',
+        body: 'Android уже в Google Play: те же протоколы, Smart Connect и kill switch, тот же аккаунт FollowNet. macOS в планах — лучше меньше платформ, но нормально, чем полусломанные клиенты везде.',
       },
     ],
     bullets: [
       'iOS: App Store — Free с недельным лимитом, Premium по желанию',
+      'Android: Google Play — Free с недельным лимитом, Premium по желанию',
       'Chrome: расширение в Chrome Web Store',
       'Протоколы: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Для Free карта не нужна',
@@ -81,7 +83,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   uk: {
     kicker: 'Завантажити',
     h1: 'Завантажити FollowNet VPN',
-    lead: 'Установіть FollowNet на iPhone та iPad з App Store або захистіть Chrome на комп’ютері офіційним розширенням. Усе прозоро: Free — щоб спробувати, Premium — коли потрібен безліміт.',
+    lead: 'Установіть FollowNet на iPhone та iPad з App Store, на Android — з Google Play, або захистіть Chrome на комп’ютері офіційним розширенням. Усе прозоро: Free — щоб спробувати, Premium — коли потрібен безліміт.',
     blocks: [
       {
         title: 'Передусім iOS',
@@ -92,12 +94,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'Розширення Chrome захищає сеанси браузера на комп’ютері, поки повноцінного клієнта для macOS ще немає. Для входу використовується той самий обліковий запис FollowNet.',
       },
       {
-        title: 'А як щодо macOS та Android?',
-        body: 'macOS є в планах. Android поки не в пріоритеті. Ми воліємо якісно підтримувати менше платформ, а не випускати недороблені клієнти для всіх.',
+        title: 'Android і macOS',
+        body: 'Android уже в Google Play: ті самі протоколи, Smart Connect і kill switch, той самий акаунт FollowNet. macOS є в планах — ми воліємо якісно підтримувати менше платформ, а не випускати недороблені клієнти для всіх.',
       },
     ],
     bullets: [
       'iOS: App Store — тижневий ліміт у Free, Premium за бажанням',
+      'Android: Google Play — тижневий ліміт у Free, Premium за бажанням',
       'Chrome: розширення з Chrome Web Store',
       'Протоколи: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Для користування Free банківська картка не потрібна',
@@ -106,7 +109,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   de: {
     kicker: 'Download',
     h1: 'FollowNet VPN herunterladen',
-    lead: 'Lade FollowNet für iPhone und iPad aus dem App Store oder schütze Chrome auf dem Desktop mit der offiziellen Erweiterung. Transparentes Modell: Free zum Ausprobieren, Premium für unbegrenzte Nutzung.',
+    lead: 'Lade FollowNet für iPhone und iPad aus dem App Store, für Android bei Google Play, oder schütze Chrome auf dem Desktop mit der offiziellen Erweiterung. Transparentes Modell: Free zum Ausprobieren, Premium für unbegrenzte Nutzung.',
     blocks: [
       {
         title: 'Zuerst für iOS',
@@ -117,12 +120,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'Die Chrome-Erweiterung schützt Browsersitzungen auf dem Desktop, solange es noch keinen vollständigen macOS-Client gibt. Die Anmeldung erfolgt mit demselben FollowNet-Konto.',
       },
       {
-        title: 'Was ist mit macOS und Android?',
-        body: 'macOS steht auf der Roadmap. Android hat derzeit keine Priorität. Wir unterstützen lieber weniger Plattformen zuverlässig, als überall unfertige Clients anzubieten.',
+        title: 'Android und macOS',
+        body: 'Android ist bei Google Play verfügbar: dieselben Protokolle, Smart Connect und Kill Switch, dasselbe FollowNet-Konto. macOS steht auf der Roadmap — wir unterstützen lieber weniger Plattformen zuverlässig, als überall unfertige Clients anzubieten.',
       },
     ],
     bullets: [
       'iOS: App Store — wöchentliches Datenlimit mit Free, Premium optional',
+      'Android: Google Play — wöchentliches Datenlimit mit Free, Premium optional',
       'Chrome: Erweiterung im Chrome Web Store',
       'Protokolle: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Zum Ausprobieren von Free ist keine Kreditkarte nötig',
@@ -131,7 +135,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   es: {
     kicker: 'Descargar',
     h1: 'Descargar FollowNet VPN',
-    lead: 'Descarga FollowNet para iPhone y iPad desde App Store o protege Chrome en tu ordenador con la extensión oficial. Un modelo claro: Free para probar y Premium cuando necesites uso ilimitado.',
+    lead: 'Descarga FollowNet para iPhone y iPad desde App Store, para Android desde Google Play, o protege Chrome en tu ordenador con la extensión oficial. Un modelo claro: Free para probar y Premium cuando necesites uso ilimitado.',
     blocks: [
       {
         title: 'Primero en iOS',
@@ -142,12 +146,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'La extensión de Chrome protege las sesiones del navegador en el ordenador mientras no haya un cliente completo para macOS. Inicia sesión con la misma cuenta de FollowNet.',
       },
       {
-        title: '¿Y macOS y Android?',
-        body: 'macOS está en nuestros planes. Android todavía no es una prioridad. Preferimos ofrecer menos plataformas bien mantenidas que clientes a medio terminar.',
+        title: 'Android y macOS',
+        body: 'Android ya está en Google Play: los mismos protocolos, Smart Connect y kill switch, con la misma cuenta FollowNet. macOS está en nuestros planes — preferimos ofrecer menos plataformas bien mantenidas que clientes a medio terminar.',
       },
     ],
     bullets: [
       'iOS: App Store — límite semanal con Free, Premium opcional',
+      'Android: Google Play — límite semanal con Free, Premium opcional',
       'Chrome: extensión de Chrome Web Store',
       'Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'No necesitas tarjeta para probar Free',
@@ -156,7 +161,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   fr: {
     kicker: 'Télécharger',
     h1: 'Télécharger FollowNet VPN',
-    lead: 'Téléchargez FollowNet sur iPhone et iPad depuis l’App Store, ou protégez Chrome sur ordinateur avec l’extension officielle. Une offre claire : Free pour essayer, Premium pour un usage illimité.',
+    lead: 'Téléchargez FollowNet sur iPhone et iPad depuis l’App Store, sur Android depuis Google Play, ou protégez Chrome sur ordinateur avec l’extension officielle. Une offre claire : Free pour essayer, Premium pour un usage illimité.',
     blocks: [
       {
         title: 'D’abord sur iOS',
@@ -167,12 +172,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'L’extension Chrome protège les sessions du navigateur sur ordinateur en attendant un client macOS complet. Vous vous connectez avec le même compte FollowNet.',
       },
       {
-        title: 'Et macOS ou Android ?',
-        body: 'macOS figure sur notre feuille de route. Android n’est pas encore une priorité. Nous préférons prendre en charge moins de plateformes correctement plutôt que proposer des clients inachevés.',
+        title: 'Android et macOS',
+        body: 'Android est disponible sur Google Play : mêmes protocoles, Smart Connect et kill switch, même compte FollowNet. macOS figure sur notre feuille de route — nous préférons prendre en charge moins de plateformes correctement plutôt que proposer des clients inachevés.',
       },
     ],
     bullets: [
       'iOS : App Store — limite hebdomadaire avec Free, Premium en option',
+      'Android : Google Play — limite hebdomadaire avec Free, Premium en option',
       'Chrome : extension du Chrome Web Store',
       'Protocoles : WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Aucune carte bancaire requise pour essayer Free',
@@ -181,7 +187,7 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   pt: {
     kicker: 'Transferir',
     h1: 'Transferir o FollowNet VPN',
-    lead: 'Transfira o FollowNet para iPhone e iPad na App Store ou proteja o Chrome no computador com a extensão oficial. Um modelo transparente: Free para experimentar e Premium quando precisar de utilização ilimitada.',
+    lead: 'Transfira o FollowNet para iPhone e iPad na App Store, para Android no Google Play, ou proteja o Chrome no computador com a extensão oficial. Um modelo transparente: Free para experimentar e Premium quando precisar de utilização ilimitada.',
     blocks: [
       {
         title: 'Primeiro no iOS',
@@ -192,12 +198,13 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
         body: 'A extensão do Chrome protege as sessões do navegador no computador enquanto não existe um cliente completo para macOS. Inicie sessão com a mesma conta FollowNet.',
       },
       {
-        title: 'E o macOS e o Android?',
-        body: 'O macOS está nos planos. O Android ainda não é uma prioridade. Preferimos oferecer menos plataformas com qualidade a lançar clientes incompletos.',
+        title: 'Android e macOS',
+        body: 'O Android já está no Google Play: os mesmos protocolos, Smart Connect e kill switch, com a mesma conta FollowNet. O macOS está nos planos — preferimos oferecer menos plataformas com qualidade a lançar clientes incompletos.',
       },
     ],
     bullets: [
       'iOS: App Store — limite semanal no Free, Premium opcional',
+      'Android: Google Play — limite semanal no Free, Premium opcional',
       'Chrome: extensão da Chrome Web Store',
       'Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Não é necessário cartão para experimentar o Free',
@@ -629,7 +636,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'What is not in the product (yet)',
-        body: 'No macOS or Android app yet. No per-app split tunneling on iOS (platform limits). Auto-connect is not the same as a leak-blocking kill switch on iPhone — that Kill Switch exists in the Chrome extension.',
+        body: 'No macOS app yet. No per-app split tunneling on iOS (platform limits). Auto-connect is not the same as a leak-blocking kill switch on iPhone — that Kill Switch exists in the Chrome extension.',
       },
     ],
     bullets: [
@@ -706,7 +713,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Чего пока нет',
-        body: 'Пока нет приложений для macOS и Android. Нет per-app split tunneling на iOS (ограничения платформы). Автоподключение на iPhone — не то же самое, что Kill Switch с блокировкой утечек; такой Kill Switch есть в расширении Chrome.',
+        body: 'Пока нет приложения для macOS. Нет per-app split tunneling на iOS (ограничения платформы). Автоподключение на iPhone — не то же самое, что Kill Switch с блокировкой утечек; такой Kill Switch есть в расширении Chrome.',
       },
     ],
     bullets: [
@@ -783,7 +790,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Чого в продукті поки немає',
-        body: 'Застосунків для macOS та Android поки немає. На iOS немає роздільного тунелювання для окремих застосунків через обмеження платформи. Автопідключення на iPhone не є Kill Switch із блокуванням витоків — такий Kill Switch є в розширенні Chrome.',
+        body: 'Застосунку для macOS поки немає. На iOS немає роздільного тунелювання для окремих застосунків через обмеження платформи. Автопідключення на iPhone не є Kill Switch із блокуванням витоків — такий Kill Switch є в розширенні Chrome.',
       },
     ],
     bullets: [
@@ -860,7 +867,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Was das Produkt noch nicht bietet',
-        body: 'Apps für macOS und Android gibt es noch nicht. Per-App-Split-Tunneling ist unter iOS aufgrund von Plattformbeschränkungen nicht verfügbar. Die automatische Verbindung auf dem iPhone ist kein Kill Switch gegen Datenlecks — einen solchen Kill Switch gibt es in der Chrome-Erweiterung.',
+        body: 'Eine macOS-App gibt es noch nicht. Per-App-Split-Tunneling ist unter iOS aufgrund von Plattformbeschränkungen nicht verfügbar. Die automatische Verbindung auf dem iPhone ist kein Kill Switch gegen Datenlecks — einen solchen Kill Switch gibt es in der Chrome-Erweiterung.',
       },
     ],
     bullets: [
@@ -937,7 +944,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Lo que todavía no incluye el producto',
-        body: 'Todavía no hay apps para macOS ni Android. iOS no dispone de túnel dividido por app debido a las limitaciones de la plataforma. La conexión automática en iPhone no equivale a un Kill Switch que impida fugas; ese Kill Switch está en la extensión de Chrome.',
+        body: 'Todavía no hay app para macOS. iOS no dispone de túnel dividido por app debido a las limitaciones de la plataforma. La conexión automática en iPhone no equivale a un Kill Switch que impida fugas; ese Kill Switch está en la extensión de Chrome.',
       },
     ],
     bullets: [
@@ -1014,7 +1021,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Ce que le produit ne propose pas encore',
-        body: 'Il n’existe pas encore d’app pour macOS ou Android. Le split tunneling par app n’est pas disponible sur iOS en raison des limites de la plateforme. La connexion automatique sur iPhone n’est pas un Kill Switch contre les fuites ; ce Kill Switch existe dans l’extension Chrome.',
+        body: 'Il n’existe pas encore d’app pour macOS. Le split tunneling par app n’est pas disponible sur iOS en raison des limites de la plateforme. La connexion automatique sur iPhone n’est pas un Kill Switch contre les fuites ; ce Kill Switch existe dans l’extension Chrome.',
       },
     ],
     bullets: [
@@ -1091,7 +1098,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'O que o produto ainda não inclui',
-        body: 'Ainda não existem apps para macOS ou Android. O túnel dividido por app não está disponível no iOS devido às limitações da plataforma. A ligação automática no iPhone não equivale a um Kill Switch contra fugas; esse Kill Switch existe na extensão do Chrome.',
+        body: 'Ainda não existe app para macOS. O túnel dividido por app não está disponível no iOS devido às limitações da plataforma. A ligação automática no iPhone não equivale a um Kill Switch contra fugas; esse Kill Switch existe na extensão do Chrome.',
       },
     ],
     bullets: [

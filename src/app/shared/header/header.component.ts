@@ -4,7 +4,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { LocalizePipe } from '../localize.pipe';
 import { filter } from 'rxjs';
 import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, isAndroidBrowser, playStoreUrl } from '../../core/app-store-url';
 import { splitLangPrefix } from '../../core/locale-url';
 import { environment } from '../../../environments/environment';
 
@@ -16,7 +16,10 @@ import { environment } from '../../../environments/environment';
   standalone: true,
 })
 export class HeaderComponent {
-  readonly iosAppStoreUrl = appStoreUrl('header');
+  /** Top CTA: App Store, or Google Play on Android browsers. */
+  iosAppStoreUrl = appStoreUrl('header');
+  readonly appStoreMenuUrl = appStoreUrl('header-menu');
+  readonly playStoreMenuUrl = playStoreUrl('header-menu');
   logoSrc = '/assets/new_logo-96.png?v=fn5';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
@@ -33,6 +36,9 @@ export class HeaderComponent {
     @Inject(PLATFORM_ID) private platformId: object,
     public i18n: I18nService,
   ) {
+    if (isPlatformBrowser(this.platformId) && isAndroidBrowser()) {
+      this.iosAppStoreUrl = playStoreUrl('header');
+    }
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {

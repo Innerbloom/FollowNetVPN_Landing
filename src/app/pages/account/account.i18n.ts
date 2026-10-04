@@ -461,7 +461,7 @@ const ACCOUNT_COPY = {
   },
   appIosSub: { en: 'VPN for the whole phone', ru: 'VPN для всего телефона', uk: 'VPN для всього телефона', de: 'VPN fürs ganze Handy', es: 'VPN para todo el teléfono', fr: 'VPN pour tout le téléphone', pt: 'VPN para o celular inteiro' },
   appChromeSub: { en: 'VPN in the browser', ru: 'VPN в браузере', uk: 'VPN у браузері', de: 'VPN im Browser', es: 'VPN en el navegador', fr: 'VPN dans le navigateur', pt: 'VPN no navegador' },
-  appAndroidSub: { en: 'In development', ru: 'В разработке', uk: 'У розробці', de: 'In Entwicklung', es: 'En desarrollo', fr: 'En développement', pt: 'Em desenvolvimento' },
+  appAndroidSub: { en: 'VPN for the whole phone', ru: 'VPN для всего телефона', uk: 'VPN для всього телефона', de: 'VPN fürs ganze Handy', es: 'VPN para todo el teléfono', fr: 'VPN pour tout le téléphone', pt: 'VPN para o celular inteiro' },
   devicesEmpty: {
     en: 'No devices yet. Sign in in the app and it will appear here.',
     ru: 'Устройств пока нет. Войдите в приложении — и оно появится здесь.',

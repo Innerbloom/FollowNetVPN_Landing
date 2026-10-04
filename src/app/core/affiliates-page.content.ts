@@ -6,7 +6,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Affiliates',
     h1: 'Partner with FollowNet — 30% revenue share',
     lead:
-      'Promote FollowNet VPN (iOS, Android when live, and Chrome) and earn 30% of qualifying Premium payments from your traffic. Tracking via AppsFlyer OneLink. Apply by email — we review every partner manually.',
+      'Promote FollowNet VPN (iOS, Android and Chrome) and earn 30% of qualifying Premium payments from your traffic. Tracking via AppsFlyer OneLink. Apply by email — we review every partner manually.',
     blocks: [
       {
         title: 'What you get',
@@ -36,7 +36,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Партнёрам',
     h1: 'Партнёрка FollowNet — 30% с оплат',
     lead:
-      'Рекламируйте FollowNet VPN (iOS, Android после релиза и Chrome) и получайте 30% с подходящих Premium-оплат с вашего трафика. Трекинг — AppsFlyer OneLink. Заявка по email — каждого партнёра смотрим вручную.',
+      'Рекламируйте FollowNet VPN (iOS, Android и Chrome) и получайте 30% с подходящих Premium-оплат с вашего трафика. Трекинг — AppsFlyer OneLink. Заявка по email — каждого партнёра смотрим вручную.',
     blocks: [
       {
         title: 'Что вы получаете',
@@ -66,7 +66,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Партнерам',
     h1: 'Партнерка FollowNet — 30% з оплат',
     lead:
-      'Просувайте FollowNet VPN (iOS, Android після релізу і Chrome) і отримуйте 30% з відповідних Premium-оплат з вашого трафіку. Трекінг — AppsFlyer OneLink. Заявка на email — кожного партнера дивимось вручну.',
+      'Просувайте FollowNet VPN (iOS, Android і Chrome) і отримуйте 30% з відповідних Premium-оплат з вашого трафіку. Трекінг — AppsFlyer OneLink. Заявка на email — кожного партнера дивимось вручну.',
     blocks: [
       {
         title: 'Що ви отримуєте',
@@ -96,7 +96,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Partner',
     h1: 'FollowNet-Partnerprogramm — 30% Revenue Share',
     lead:
-      'Bewerben Sie FollowNet VPN (iOS, Android nach Launch und Chrome) und verdienen Sie 30% an qualifizierenden Premium-Zahlungen. Tracking über AppsFlyer OneLink. Bewerbung per E-Mail — jeder Partner wird manuell geprüft.',
+      'Bewerben Sie FollowNet VPN (iOS, Android und Chrome) und verdienen Sie 30% an qualifizierenden Premium-Zahlungen. Tracking über AppsFlyer OneLink. Bewerbung per E-Mail — jeder Partner wird manuell geprüft.',
     blocks: [
       {
         title: 'Was Sie erhalten',
@@ -126,7 +126,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Afiliados',
     h1: 'Partners FollowNet — 30% de comisión',
     lead:
-      'Promociona FollowNet VPN (iOS, Android al lanzar y Chrome) y gana el 30% de los pagos Premium atribuibles. Tracking con AppsFlyer OneLink. Solicita por email — revisamos cada partner a mano.',
+      'Promociona FollowNet VPN (iOS, Android y Chrome) y gana el 30% de los pagos Premium atribuibles. Tracking con AppsFlyer OneLink. Solicita por email — revisamos cada partner a mano.',
     blocks: [
       {
         title: 'Qué recibes',
@@ -156,7 +156,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Affiliation',
     h1: 'Partenaires FollowNet — 30% de commission',
     lead:
-      'Poussez FollowNet VPN (iOS, Android au lancement et Chrome) et gagnez 30% sur les paiements Premium éligibles. Tracking AppsFlyer OneLink. Candidature par e-mail — chaque partenaire est validé à la main.',
+      'Poussez FollowNet VPN (iOS, Android et Chrome) et gagnez 30% sur les paiements Premium éligibles. Tracking AppsFlyer OneLink. Candidature par e-mail — chaque partenaire est validé à la main.',
     blocks: [
       {
         title: 'Ce que vous obtenez',
@@ -186,7 +186,7 @@ const AFFILIATES: Record<AppLang, ProductPage> = {
     kicker: 'Afiliados',
     h1: 'Parceiros FollowNet — 30% de comissão',
     lead:
-      'Promova o FollowNet VPN (iOS, Android no lançamento e Chrome) e ganhe 30% dos pagamentos Premium elegíveis. Tracking com AppsFlyer OneLink. Candidate-se por e-mail — cada parceiro é aprovado manualmente.',
+      'Promova o FollowNet VPN (iOS, Android e Chrome) e ganhe 30% dos pagamentos Premium elegíveis. Tracking com AppsFlyer OneLink. Candidate-se por e-mail — cada parceiro é aprovado manualmente.',
     blocks: [
       {
         title: 'O que você recebe',

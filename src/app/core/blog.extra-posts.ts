@@ -730,7 +730,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Browser proxy, not system VPN',
-            body: 'FollowNet for Chrome routes Chrome tab traffic through a proxy tied to your FollowNet account. FaceTime, Slack desktop, and other apps on the Mac stay outside that path. Full-device macOS / Android / Windows apps are not shipping yet — say that out loud when comparing to the iPhone Network Extension tunnel.',
+            body: 'FollowNet for Chrome routes Chrome tab traffic through a proxy tied to your FollowNet account. FaceTime, Slack desktop, and other apps on the Mac stay outside that path. Full-device macOS / Windows apps are not shipping yet — say that out loud when comparing to the iPhone Network Extension tunnel.',
           },
           {
             title: 'Kill Switch scope',
@@ -752,7 +752,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Прокси браузера, не системный VPN',
-            body: 'FollowNet для Chrome гонит вкладки Chrome через прокси аккаунта FollowNet. FaceTime, десктопный Slack и другие приложения Mac остаются снаружи. Полноценных приложений для всей системы на macOS / Android / Windows пока нет — это важно при сравнении с Network Extension на iPhone.',
+            body: 'FollowNet для Chrome гонит вкладки Chrome через прокси аккаунта FollowNet. FaceTime, десктопный Slack и другие приложения Mac остаются снаружи. Полноценных приложений для всей системы на macOS / Windows пока нет — это важно при сравнении с Network Extension на iPhone.',
           },
           {
             title: 'Зона Kill Switch',
@@ -774,7 +774,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Проксі браузера, не системний VPN',
-            body: 'FollowNet для Chrome веде вкладки Chrome через проксі акаунта. Інші програми Mac лишаються зовні. Повноцінних системних додатків для macOS / Android / Windows поки немає.',
+            body: 'FollowNet для Chrome веде вкладки Chrome через проксі акаунта. Інші програми Mac лишаються зовні. Повноцінних системних додатків для macOS / Windows поки немає.',
           },
           {
             title: 'Зона Kill Switch',
@@ -796,7 +796,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Browser-Proxy, kein System-VPN',
-            body: 'FollowNet für Chrome leitet Chrome-Tab-Traffic über einen Proxy, der an Ihr FollowNet-Konto gebunden ist. FaceTime, Slack Desktop und andere Mac-Apps bleiben außerhalb dieses Pfads. Vollständige macOS- / Android- / Windows-Apps für das ganze Gerät gibt es noch nicht — sagen Sie das laut, wenn Sie mit dem Network-Extension-Tunnel auf dem iPhone vergleichen.',
+            body: 'FollowNet für Chrome leitet Chrome-Tab-Traffic über einen Proxy, der an Ihr FollowNet-Konto gebunden ist. FaceTime, Slack Desktop und andere Mac-Apps bleiben außerhalb dieses Pfads. Vollständige macOS- / Windows-Apps für das ganze Gerät gibt es noch nicht — sagen Sie das laut, wenn Sie mit dem Network-Extension-Tunnel auf dem iPhone vergleichen.',
           },
           {
             title: 'Reichweite des Kill Switch',
@@ -818,7 +818,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Proxy del navegador, no VPN de sistema',
-            body: 'FollowNet para Chrome enruta el tráfico de pestañas de Chrome por un proxy ligado a tu cuenta FollowNet. FaceTime, Slack de escritorio y otras apps del Mac quedan fuera de ese camino. Apps de dispositivo completo para macOS / Android / Windows aún no están disponibles — dilo en voz alta al comparar con el túnel Network Extension del iPhone.',
+            body: 'FollowNet para Chrome enruta el tráfico de pestañas de Chrome por un proxy ligado a tu cuenta FollowNet. FaceTime, Slack de escritorio y otras apps del Mac quedan fuera de ese camino. Apps de dispositivo completo para macOS / Windows aún no están disponibles — dilo en voz alta al comparar con el túnel Network Extension del iPhone.',
           },
           {
             title: 'Alcance del Kill Switch',
@@ -840,7 +840,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Proxy navigateur, pas un VPN système',
-            body: 'FollowNet pour Chrome route le trafic des onglets Chrome via un proxy lié à votre compte FollowNet. FaceTime, Slack desktop et les autres apps Mac restent hors de ce chemin. Les apps appareil complet pour macOS / Android / Windows ne sont pas encore livrées — dites-le à voix haute en comparant au tunnel Network Extension de l’iPhone.',
+            body: 'FollowNet pour Chrome route le trafic des onglets Chrome via un proxy lié à votre compte FollowNet. FaceTime, Slack desktop et les autres apps Mac restent hors de ce chemin. Les apps appareil complet pour macOS / Windows ne sont pas encore livrées — dites-le à voix haute en comparant au tunnel Network Extension de l’iPhone.',
           },
           {
             title: 'Portée du Kill Switch',
@@ -862,7 +862,7 @@ const EXTRA_SEEDS: ExtraSeed[] = [
         sections: [
           {
             title: 'Proxy do navegador, não VPN de sistema',
-            body: 'FollowNet para Chrome roteia o tráfego das abas do Chrome por um proxy ligado à sua conta FollowNet. FaceTime, Slack desktop e outros apps no Mac ficam fora desse caminho. Apps de dispositivo completo para macOS / Android / Windows ainda não estão disponíveis — diga isso em voz alta ao comparar com o túnel Network Extension no iPhone.',
+            body: 'FollowNet para Chrome roteia o tráfego das abas do Chrome por um proxy ligado à sua conta FollowNet. FaceTime, Slack desktop e outros apps no Mac ficam fora desse caminho. Apps de dispositivo completo para macOS / Windows ainda não estão disponíveis — diga isso em voz alta ao comparar com o túnel Network Extension no iPhone.',
           },
           {
             title: 'Alcance do Kill Switch',

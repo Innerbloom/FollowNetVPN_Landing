@@ -14,6 +14,9 @@ export const environment = {
   iosAppStoreUrl:
     'https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829',
 
+  androidPlayStoreUrl:
+    'https://play.google.com/store/apps/details?id=com.follownet.vpn.android',
+
   chromeWebStoreUrl:
     'https://chromewebstore.google.com/detail/follownet-vpn/chgbhiifkahijoochbdegfalclniokhk',
 

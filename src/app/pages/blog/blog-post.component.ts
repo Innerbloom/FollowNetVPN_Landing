@@ -11,7 +11,7 @@ import {
   blogTopicLabel,
   type BlogPostView,
 } from '../../core/blog.content';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { blogGuides } from '../../core/blog-guide-links';
 import { landingContent } from '../../core/seo-landing.content';
 import { landingLabel, type LandingSlug } from '../../core/seo-landing.slugs';
@@ -42,6 +42,10 @@ export class BlogPostComponent implements OnInit {
 
   appStoreHref(): string {
     return appStoreUrl(`blog-${this.post?.slug ?? 'post'}`);
+  }
+
+  playStoreHref(): string {
+    return playStoreUrl(`blog-${this.post?.slug ?? 'post'}`);
   }
 
   topicLabel(post: BlogPostView): string {

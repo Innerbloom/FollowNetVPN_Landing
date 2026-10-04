@@ -190,46 +190,46 @@ const featuresByLang: Record<AppLang, SeoCopy> = {
 
 const downloadByLang: Record<AppLang, SeoCopy> = {
   en: {
-    title: 'Download FollowNet VPN — iOS App Store & Chrome',
+    title: 'Download FollowNet VPN — App Store, Google Play & Chrome',
     ogTitle: 'Download FollowNet',
     description:
-      'Get FollowNet for iPhone and iPad from the App Store, or install the Chrome extension for browser traffic on desktop. Chrome does not cover other apps.',
+      'Get FollowNet for iPhone and iPad from the App Store, for Android from Google Play, or install the Chrome extension for browser traffic on desktop. Chrome does not cover other apps.',
   },
   ru: {
-    title: 'Скачать FollowNet VPN — iOS App Store и Chrome',
+    title: 'Скачать FollowNet VPN — App Store, Google Play и Chrome',
     ogTitle: 'Скачать FollowNet',
     description:
-      'Скачайте FollowNet для iPhone и iPad в App Store или установите расширение Chrome для трафика браузера. Другие приложения на компьютере оно не защищает.',
+      'Скачайте FollowNet для iPhone и iPad в App Store, для Android — в Google Play, или установите расширение Chrome для трафика браузера. Другие приложения на компьютере оно не защищает.',
   },
   uk: {
-    title: 'Завантажити FollowNet VPN — App Store для iOS і Chrome',
+    title: 'Завантажити FollowNet VPN — App Store, Google Play і Chrome',
     ogTitle: 'Завантажити FollowNet',
     description:
-      'Завантажте FollowNet для iPhone та iPad з App Store або встановіть розширення Chrome для трафіку браузера. Інші програми на комп’ютері воно не захищає.',
+      'Завантажте FollowNet для iPhone та iPad з App Store, для Android — з Google Play, або встановіть розширення Chrome для трафіку браузера. Інші програми на комп’ютері воно не захищає.',
   },
   de: {
-    title: 'FollowNet VPN laden — iOS App Store und Chrome',
+    title: 'FollowNet VPN laden — App Store, Google Play und Chrome',
     ogTitle: 'FollowNet herunterladen',
     description:
-      'Laden Sie FollowNet für iPhone und iPad im App Store oder installieren Sie die Chrome-Erweiterung für Browserdaten. Andere Desktop-Apps sind nicht abgedeckt.',
+      'Laden Sie FollowNet für iPhone und iPad im App Store, für Android bei Google Play, oder installieren Sie die Chrome-Erweiterung für Browserdaten. Andere Desktop-Apps sind nicht abgedeckt.',
   },
   es: {
-    title: 'Descargar FollowNet VPN — App Store para iOS y Chrome',
+    title: 'Descargar FollowNet VPN — App Store, Google Play y Chrome',
     ogTitle: 'Descargar FollowNet',
     description:
-      'Descarga FollowNet para iPhone y iPad en App Store o instala la extensión de Chrome para el tráfico del navegador. No protege otras aplicaciones del ordenador.',
+      'Descarga FollowNet para iPhone y iPad en App Store, para Android en Google Play, o instala la extensión de Chrome para el tráfico del navegador. No protege otras aplicaciones del ordenador.',
   },
   fr: {
-    title: 'Télécharger FollowNet VPN — App Store iOS et Chrome',
+    title: 'Télécharger FollowNet VPN — App Store, Google Play et Chrome',
     ogTitle: 'Télécharger FollowNet',
     description:
-      'Téléchargez FollowNet pour iPhone et iPad dans l’App Store ou installez l’extension Chrome pour le trafic du navigateur. Les autres apps ne sont pas couvertes.',
+      'Téléchargez FollowNet pour iPhone et iPad dans l’App Store, sur Android via Google Play, ou installez l’extension Chrome pour le trafic du navigateur. Les autres apps ne sont pas couvertes.',
   },
   pt: {
-    title: 'Baixar FollowNet VPN — App Store para iOS e Chrome',
+    title: 'Baixar FollowNet VPN — App Store, Google Play e Chrome',
     ogTitle: 'Baixar FollowNet',
     description:
-      'Baixe o FollowNet para iPhone e iPad na App Store ou instale a extensão do Chrome para o tráfego do navegador. Ela não protege outros aplicativos do computador.',
+      'Baixe o FollowNet para iPhone e iPad na App Store, para Android no Google Play, ou instale a extensão do Chrome para o tráfego do navegador. Ela não protege outros aplicativos do computador.',
   },
 };
 
@@ -328,43 +328,43 @@ const aboutByLang: Record<AppLang, SeoCopy> = {
     title: 'About FollowNet — honest iOS VPN & Chrome extension',
     ogTitle: 'About FollowNet',
     description:
-      'Who builds FollowNet, what ships today on iOS and Chrome, Free weekly vs Premium, and what is not ready yet — without fake audits.',
+      'Who builds FollowNet, what ships today on iOS, Android and Chrome, Free weekly vs Premium, and what is not ready yet — without fake audits.',
   },
   ru: {
-    title: 'О FollowNet — честный VPN для iOS и Chrome',
+    title: 'О FollowNet — честный VPN для iOS, Android и Chrome',
     ogTitle: 'О FollowNet',
     description:
-      'Кто делает FollowNet, что есть в iOS и Chrome, Free с недельным лимитом vs Premium и чего пока нет — без фейковых аудитов.',
+      'Кто делает FollowNet, что есть в iOS, Android и Chrome, Free с недельным лимитом vs Premium и чего пока нет — без фейковых аудитов.',
   },
   uk: {
-    title: 'Про FollowNet — чесний VPN для iOS і Chrome',
+    title: 'Про FollowNet — чесний VPN для iOS, Android і Chrome',
     ogTitle: 'Про FollowNet',
     description:
-      'Хто робить FollowNet, що є в iOS і Chrome, Free з тижневим лімітом vs Premium і чого поки немає — без фейкових аудитів.',
+      'Хто робить FollowNet, що є в iOS, Android і Chrome, Free з тижневим лімітом vs Premium і чого поки немає — без фейкових аудитів.',
   },
   de: {
     title: 'Über FollowNet — ehrliches iOS‑VPN & Chrome‑Erweiterung',
     ogTitle: 'Über FollowNet',
     description:
-      'Wer FollowNet baut, was heute auf iOS und Chrome verfügbar ist, Free mit Wochenlimit vs Premium — ohne Fake‑Audits.',
+      'Wer FollowNet baut, was heute auf iOS, Android und Chrome verfügbar ist, Free mit Wochenlimit vs Premium — ohne Fake‑Audits.',
   },
   es: {
     title: 'Sobre FollowNet — VPN iOS y extensión Chrome honestos',
     ogTitle: 'Sobre FollowNet',
     description:
-      'Quién hace FollowNet, qué hay hoy en iOS y Chrome, Free con límite semanal vs Premium — sin auditorías falsas.',
+      'Quién hace FollowNet, qué hay hoy en iOS, Android y Chrome, Free con límite semanal vs Premium — sin auditorías falsas.',
   },
   fr: {
     title: 'À propos de FollowNet — VPN iOS et extension Chrome',
     ogTitle: 'À propos de FollowNet',
     description:
-      'Qui construit FollowNet, ce qui existe sur iOS et Chrome, Free avec quota hebdo vs Premium — sans faux audits.',
+      'Qui construit FollowNet, ce qui existe sur iOS, Android et Chrome, Free avec quota hebdo vs Premium — sans faux audits.',
   },
   pt: {
     title: 'Sobre o FollowNet — VPN iOS e extensão Chrome honestos',
     ogTitle: 'Sobre o FollowNet',
     description:
-      'Quem faz o FollowNet, o que existe no iOS e Chrome, Free com limite semanal vs Premium — sem auditorias falsas.',
+      'Quem faz o FollowNet, o que existe no iOS, Android e Chrome, Free com limite semanal vs Premium — sem auditorias falsas.',
   },
 };
 

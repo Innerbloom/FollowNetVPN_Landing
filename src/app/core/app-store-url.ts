@@ -14,6 +14,19 @@ export function appStoreUrl(campaignToken?: string): string {
   return url.toString();
 }
 
+/** Google Play link; the campaign goes into `referrer` (Play Install Referrer / Firebase). */
+export function playStoreUrl(campaign?: string): string {
+  const url = new URL(environment.androidPlayStoreUrl.trim());
+  const c = sanitizeCampaignToken(campaign ?? 'website');
+  url.searchParams.set('referrer', `utm_source=website&utm_medium=cta&utm_campaign=${c}`);
+  return url.toString();
+}
+
+/** Android browsers get the Play link from store CTAs that can only show one store. */
+export function isAndroidBrowser(): boolean {
+  return typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent || '');
+}
+
 function sanitizeCampaignToken(raw: string): string {
   const cleaned = raw.trim().slice(0, 40).replace(/[^a-zA-Z0-9_-]/g, '_');
   return cleaned || 'website';

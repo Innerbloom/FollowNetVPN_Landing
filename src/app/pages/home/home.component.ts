@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS, formatPremiumUsd, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
-import { appStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
 import {
   blogTeaserTopicLabel,
@@ -40,6 +40,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   appStoreHref(source = 'home'): string {
     return appStoreUrl(source);
+  }
+
+  playStoreHref(source = 'home'): string {
+    return playStoreUrl(source);
   }
   readonly chromeWebStoreUrl = environment.chromeWebStoreUrl;
   private readonly platformId = inject(PLATFORM_ID);
@@ -76,6 +80,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     },
     { q: 'FAQ_Q8', a: 'FAQ_A8', guides: ['smart-connect-vpn', 'vpn-for-wifi'] },
     { q: 'FAQ_Q9', a: 'FAQ_A9', guides: ['smart-connect-vpn'] },
+    { q: 'FAQ_Q10', a: 'FAQ_A10' },
+    { q: 'FAQ_Q11', a: 'FAQ_A11' },
   ];
 
   guideLabel(slug: LandingSlug): string {
