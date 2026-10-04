@@ -231,7 +231,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: '3-day trial',
-        body: 'The trial is available only through the App Store on the annual plan for eligible first Premium subscriptions. Cancel before it ends if you do not want auto-renew.',
+        body: 'The trial is available in the App Store and Google Play on the annual plan for eligible first Premium subscriptions. Cancel before it ends if you do not want auto-renew.',
       },
       {
         title: 'Chrome extension',
@@ -265,7 +265,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Пробный период 3 дня',
-        body: 'Trial только через App Store на годовом плане при первой подходящей подписке Premium. Отмените до окончания, если не нужен автопродление.',
+        body: 'Пробный период — в App Store и Google Play на годовом плане при первой подходящей подписке Premium. Отмените до окончания, если не нужен автопродление.',
       },
       {
         title: 'Расширение Chrome',
@@ -299,7 +299,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Пробний період 3 дні',
-        body: 'Trial лише через App Store на річному плані для першої відповідної підписки Premium. Скасуйте до завершення, якщо автопродовження не потрібне.',
+        body: 'Пробний період — в App Store і Google Play на річному плані для першої відповідної підписки Premium. Скасуйте до завершення, якщо автопродовження не потрібне.',
       },
       {
         title: 'Розширення Chrome',
@@ -333,7 +333,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: '3-Tage-Test',
-        body: 'Nur über den App Store im Jahresplan für berechtigte Erst-Abos. Vor Ablauf kündigen, wenn keine Verlängerung gewünscht ist.',
+        body: 'Im App Store und bei Google Play im Jahresplan für berechtigte Erst-Abos. Vor Ablauf kündigen, wenn keine Verlängerung gewünscht ist.',
       },
       {
         title: 'Chrome-Erweiterung',
@@ -367,7 +367,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Prueba de 3 días',
-        body: 'Solo vía App Store en el plan anual para primeras suscripciones elegibles. Cancela antes si no quieres renovación.',
+        body: 'En App Store y Google Play con el plan anual para primeras suscripciones elegibles. Cancela antes si no quieres renovación.',
       },
       {
         title: 'Extensión Chrome',
@@ -401,7 +401,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Essai 3 jours',
-        body: 'Uniquement via l’App Store sur l’offre annuelle pour les premiers abonnements éligibles. Annulez avant la fin si vous ne voulez pas de renouvellement.',
+        body: 'Sur l’App Store et Google Play avec l’offre annuelle pour les premiers abonnements éligibles. Annulez avant la fin si vous ne voulez pas de renouvellement.',
       },
       {
         title: 'Extension Chrome',
@@ -435,7 +435,7 @@ const SUPPORT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Teste de 3 dias',
-        body: 'Só pela App Store no plano anual para primeiras subscrições elegíveis. Cancele antes do fim se não quiser renovação.',
+        body: 'Na App Store e no Google Play no plano anual para primeiras subscrições elegíveis. Cancele antes do fim se não quiser renovação.',
       },
       {
         title: 'Extensão Chrome',
