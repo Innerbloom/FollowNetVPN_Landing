@@ -70,6 +70,20 @@
   color: var(--green-2);
 }
 
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.footer-social:hover {
+  color: var(--green-2);
+}
+
 .footer-nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
