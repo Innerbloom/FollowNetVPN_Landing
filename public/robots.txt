@@ -4,5 +4,6 @@ Disallow: /checkout
 Disallow: /*/checkout
 Disallow: /account
 Disallow: /*/account
+Disallow: /go/
 
 Sitemap: https://follow-net.com/sitemap.xml

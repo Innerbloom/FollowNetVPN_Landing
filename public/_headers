@@ -10,3 +10,8 @@
 
 /og/p/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Ad prelanders: never indexed, short cache so copy edits go live fast.
+/go/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=300
