@@ -1,10 +1,12 @@
 <!doctype html>
 <!--
-  Ad prelander (PropellerAds → AppsFlyer → store). Not part of the Angular app, not indexed.
+  Ad prelander (PropellerAds → AppsFlyer → App Store). English only, iOS only. Not indexed.
   Target URL in PropellerAds:
-    https://follow-net.com/go/?v=wifi&subid=${SUBID}&zone={zoneid}&campaign={campaignid}
-  v = wifi | fast | private (copy variant for A/B), lang = en | tr | uk | pt (else browser language).
-  The click id goes to AppsFlyer as clickid, so AppsFlyer can postback the install to PropellerAds.
+    https://follow-net.com/go?v=trial&subid=${SUBID}&zone={zoneid}&campaign={campaignid}
+  (Cloudflare Pages serves it at /go; /go/ 308-redirects there with the query kept.)
+  v = trial | modal | wifi | fast | private. The click id goes to AppsFlyer as clickid so the install
+  postback reaches PropellerAds; af_sub1 = variant for comparing them in AppsFlyer.
+  Keep every claim true to the app: no fake system alerts, no "unblock streaming/adult" promises.
 -->
 <html lang="en">
 <head>
@@ -15,11 +17,12 @@
 <title>FollowNet VPN</title>
 <link rel="icon" href="/icons/favicon.png">
 <style>
-  :root { --bg:#181818; --card:#222; --text:#f2f2f2; --muted:#a8a8a8; --green:#92b838; --green-d:#7a9c2c; }
+  :root { --bg:#181818; --card:#232323; --text:#f2f2f2; --muted:#a8a8a8; --green:#92b838; --green-d:#7a9c2c; }
   * { box-sizing:border-box; }
-  html,body { margin:0; background:var(--bg); color:var(--text);
+  html,body { margin:0; min-height:100%; background:var(--bg); color:var(--text);
     font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
   main { max-width:440px; margin:0 auto; padding:18px 18px calc(24px + env(safe-area-inset-bottom)); }
+  [hidden] { display:none !important; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; }
   .brand img { width:34px; height:34px; border-radius:8px; }
   .brand b { color:var(--green); }
@@ -33,138 +36,120 @@
     font-weight:800; font-size:19px; padding:16px; border-radius:14px; box-shadow:0 8px 24px rgba(146,184,56,.25); }
   .cta:active { background:var(--green-d); }
   .cta small { display:block; font-weight:600; font-size:13px; opacity:.75; margin-top:2px; }
-  .cta + .cta { margin-top:10px; }
   .shot { display:block; width:100%; max-width:300px; height:auto; margin:22px auto 6px; border-radius:18px; }
   .note { color:var(--muted); font-size:12.5px; text-align:center; margin:12px 0 0; }
-  footer { text-align:center; margin-top:16px; font-size:12.5px; }
+  footer { text-align:center; margin-top:16px; font-size:12.5px; color:var(--muted); }
   footer a { color:var(--muted); }
+
+  /* trial: offer-style page */
+  .trial { text-align:center; }
+  .trial .shot { max-width:230px; margin:6px auto 18px; }
+  .trial h1 { margin-top:4px; }
+  .trial ul { display:inline-block; text-align:left; margin-bottom:16px; }
+  .offer { font-size:22px; font-weight:800; color:#e8d44d; margin:0; letter-spacing:.02em; }
+  .price { font-size:40px; font-weight:800; color:var(--green); margin:2px 0 0; }
+  .then { color:var(--muted); font-size:14px; margin:0 0 18px; }
+  .nopay { color:var(--text); font-size:14px; margin:12px 0 0; }
+  .legal { color:#7d7d7d; font-size:11px; line-height:1.45; margin:14px 0 0; }
+
+  /* modal: brand card on a dark screen, not a copy of a system alert */
+  body.modal-page { background:#0d0d0d; }
+  .modal-wrap { min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:24px 18px; }
+  .modal { width:100%; max-width:360px; background:var(--card); border:1px solid #333; border-radius:20px; padding:22px 20px 18px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6); text-align:center; }
+  .modal .brand { justify-content:center; margin-bottom:12px; }
+  .modal h1 { font-size:22px; margin:0 0 8px; }
+  .modal .sub { margin:0 0 18px; font-size:15px; }
 </style>
 </head>
 <body>
-<main>
+<main id="standard" hidden>
   <div class="brand"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
-  <h1 id="h"></h1>
-  <p class="sub" id="sub"></p>
-  <ul id="list"></ul>
-  <div id="ctas"></div>
-  <p class="note" id="note"></p>
-  <img class="shot" id="shot" alt="" width="560" height="630">
-  <footer><a id="privacy" href="/privacy"></a></footer>
+  <h1 data-h></h1>
+  <p class="sub" data-sub></p>
+  <ul data-list></ul>
+  <a class="cta" data-cta>Install free<small>on the App Store</small></a>
+  <p class="note">The free plan has a weekly traffic limit. Premium removes it.</p>
+  <img class="shot" src="/go/img/ios.jpg" alt="FollowNet VPN on iPhone" width="560" height="630">
+  <footer><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></footer>
 </main>
+
+<main id="trial" class="trial" hidden>
+  <div class="brand" style="justify-content:center"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
+  <img class="shot" src="/go/img/ios.jpg" alt="FollowNet VPN on iPhone" width="560" height="630">
+  <h1>Fast, private VPN for iPhone</h1>
+  <ul>
+    <li>Unlimited traffic, all servers</li>
+    <li>Smart Connect picks a protocol that works</li>
+    <li>Use on up to 5 devices</li>
+  </ul>
+  <p class="offer">3-DAY FREE TRIAL</p>
+  <p class="price">$0.00</p>
+  <p class="then">then $39.99 / year · local price shown in the App Store</p>
+  <a class="cta" data-cta>Continue</a>
+  <p class="nopay">✓ No payment today</p>
+  <p class="legal">The free trial is part of the annual plan and starts in the app. Payment is charged to your Apple ID
+    when the trial ends, and the subscription renews automatically unless cancelled at least 24 hours before
+    the end of the current period. Manage or cancel any time in iPhone Settings → Apple ID → Subscriptions.
+    You can also use FollowNet VPN for free with a weekly traffic limit.</p>
+  <footer><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a></footer>
+</main>
+
+<div id="modal" class="modal-wrap" hidden>
+  <div class="modal">
+    <div class="brand"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
+    <h1>Browsing on public Wi-Fi?</h1>
+    <p class="sub">Protect your connection with FollowNet VPN. One tap to connect, free to start.</p>
+    <a class="cta" data-cta>Install<small>on the App Store</small></a>
+    <p class="note">Free plan with a weekly traffic limit.</p>
+  </div>
+</div>
+
 <script>
 (function () {
   var COPY = {
-    en: {
-      wifi: ['Public Wi-Fi? Turn on protection in one tap',
-        'FollowNet VPN encrypts your connection in cafés, airports and hotels.',
-        ['One tap to connect', 'Smart Connect picks a protocol that works on your network', 'Free to start, no sign-up needed']],
-      fast: ['A VPN that just connects',
-        'Smart Connect tries WireGuard, AmneziaWG, Hysteria2 and VLESS and keeps the one that works for you.',
-        ['Servers in 6 countries', 'Built-in speed test', 'Free to start, no sign-up needed']],
-      private: ['Keep your browsing to yourself',
-        'Encrypted traffic plus DNS that blocks ads, trackers and malicious sites.',
-        ['Auto-connect when you join Wi-Fi', 'AdGuard and Quad9 DNS in one tap', 'Free to start, no sign-up needed']],
-      cta: 'Install free', ios: 'on the App Store', android: 'on Google Play',
-      note: 'The free plan has a weekly traffic limit. Premium removes it.', privacy: 'Privacy Policy', privacyPath: '/privacy'
-    },
-    tr: {
-      wifi: ['Halka açık Wi-Fi mı? Korumayı tek dokunuşla aç',
-        'FollowNet VPN kafede, havalimanında ve otelde bağlantını şifreler.',
-        ['Tek dokunuşla bağlan', 'Smart Connect ağında çalışan protokolü seçer', 'Ücretsiz başla, kayıt gerekmez']],
-      fast: ['Sorunsuz bağlanan VPN',
-        'Smart Connect WireGuard, AmneziaWG, Hysteria2 ve VLESS’i dener, sende çalışanı kullanır.',
-        ['6 ülkede sunucular', 'Dahili hız testi', 'Ücretsiz başla, kayıt gerekmez']],
-      private: ['İnternette gezindiğin yerler sende kalsın',
-        'Şifreli trafik ve reklamları, izleyicileri ve zararlı siteleri engelleyen DNS.',
-        ['Wi-Fi’ye bağlanınca otomatik bağlanır', 'Tek dokunuşla AdGuard ve Quad9 DNS', 'Ücretsiz başla, kayıt gerekmez']],
-      cta: 'Ücretsiz yükle', ios: 'App Store’da', android: 'Google Play’de',
-      note: 'Ücretsiz planda haftalık trafik sınırı vardır. Premium bu sınırı kaldırır.', privacy: 'Gizlilik Politikası', privacyPath: '/privacy'
-    },
-    uk: {
-      wifi: ['Публічний Wi-Fi? Увімкни захист одним дотиком',
-        'FollowNet VPN шифрує з’єднання в кафе, аеропортах і готелях.',
-        ['Підключення одним дотиком', 'Smart Connect обирає протокол, який працює у твоїй мережі', 'Почни безкоштовно, без реєстрації']],
-      fast: ['VPN, який просто підключається',
-        'Smart Connect пробує WireGuard, AmneziaWG, Hysteria2 і VLESS та залишає той, що працює саме в тебе.',
-        ['Сервери в 6 країнах', 'Вбудований тест швидкості', 'Почни безкоштовно, без реєстрації']],
-      private: ['Твій інтернет — лише твоя справа',
-        'Зашифрований трафік і DNS, що блокує рекламу, трекери та шкідливі сайти.',
-        ['Автопідключення, коли під’єднуєшся до Wi-Fi', 'DNS AdGuard і Quad9 одним дотиком', 'Почни безкоштовно, без реєстрації']],
-      cta: 'Встановити безкоштовно', ios: 'в App Store', android: 'у Google Play',
-      note: 'Безкоштовний план має тижневий ліміт трафіку. Premium його знімає.', privacy: 'Політика конфіденційності', privacyPath: '/uk/privacy'
-    },
-    pt: {
-      wifi: ['Wi-Fi público? Ative a proteção com um toque',
-        'O FollowNet VPN criptografa sua conexão em cafés, aeroportos e hotéis.',
-        ['Conecte com um toque', 'O Smart Connect escolhe um protocolo que funciona na sua rede', 'Comece grátis, sem cadastro']],
-      fast: ['Uma VPN que simplesmente conecta',
-        'O Smart Connect testa WireGuard, AmneziaWG, Hysteria2 e VLESS e mantém o que funciona para você.',
-        ['Servidores em 6 países', 'Teste de velocidade integrado', 'Comece grátis, sem cadastro']],
-      private: ['Sua navegação só diz respeito a você',
-        'Tráfego criptografado e DNS que bloqueia anúncios, rastreadores e sites maliciosos.',
-        ['Conexão automática ao entrar no Wi-Fi', 'DNS AdGuard e Quad9 com um toque', 'Comece grátis, sem cadastro']],
-      cta: 'Instalar grátis', ios: 'na App Store', android: 'no Google Play',
-      note: 'O plano grátis tem limite semanal de tráfego. O Premium remove o limite.', privacy: 'Política de Privacidade', privacyPath: '/pt/privacy'
-    }
+    wifi: ['Public Wi-Fi? Turn on protection in one tap',
+      'FollowNet VPN encrypts your connection in cafés, airports and hotels.',
+      ['One tap to connect', 'Smart Connect picks a protocol that works on your network', 'Free to start, no sign-up needed']],
+    fast: ['A VPN that just connects',
+      'Smart Connect tries WireGuard, AmneziaWG, Hysteria2 and VLESS and keeps the one that works for you.',
+      ['Servers in 6 countries', 'Built-in speed test', 'Free to start, no sign-up needed']],
+    private: ['Keep your browsing to yourself',
+      'Encrypted traffic plus DNS that blocks ads, trackers and malicious sites.',
+      ['Auto-connect when you join Wi-Fi', 'AdGuard and Quad9 DNS in one tap', 'Free to start, no sign-up needed']]
   };
-
-  var STORE = {
-    ios: 'https://app.appsflyer.com/id6757725829',
-    android: 'https://app.appsflyer.com/com.follownet.vpn.android'
-  };
-
   var q = new URLSearchParams(location.search);
-  var lang = (q.get('lang') || navigator.language || 'en').slice(0, 2).toLowerCase();
-  if (!COPY[lang]) lang = 'en';
-  var variant = q.get('v');
-  if (!COPY.en[variant] || variant === 'cta') variant = 'wifi';
-  var t = COPY[lang];
-  var c = t[variant];
-
-  var ua = navigator.userAgent;
-  var isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
-  var isAndroid = /Android/.test(ua);
-  var platforms = isIOS ? ['ios'] : isAndroid ? ['android'] : ['ios', 'android'];
+  var variant = q.get('v') || 'trial';
+  if (variant !== 'trial' && variant !== 'modal' && !COPY[variant]) variant = 'trial';
 
   // Real ${SUBID}/{zoneid} values only; an unexpanded macro means a manual test click.
   function param(name) {
     var v = q.get(name) || '';
     return /^[\w.\-]{1,128}$/.test(v) ? v : '';
   }
-  function storeLink(p) {
-    var a = new URLSearchParams({ pid: 'propellerads_int', af_click_lookback: '7d', af_sub1: variant, af_sub2: lang });
-    if (param('subid')) a.set('clickid', param('subid'));
-    if (param('zone')) a.set('af_siteid', param('zone'));
-    if (param('campaign')) a.set('c', param('campaign'));
-    return STORE[p] + '?' + a.toString();
-  }
+  var a = new URLSearchParams({ pid: 'propellerads_int', af_click_lookback: '7d', af_sub1: variant });
+  if (param('subid')) a.set('clickid', param('subid'));
+  if (param('zone')) a.set('af_siteid', param('zone'));
+  if (param('campaign')) a.set('c', param('campaign'));
+  var storeLink = 'https://app.appsflyer.com/id6757725829?' + a.toString();
 
-  document.documentElement.lang = lang;
-  document.getElementById('h').textContent = c[0];
-  document.getElementById('sub').textContent = c[1];
-  var list = document.getElementById('list');
-  c[2].forEach(function (item) {
-    var li = document.createElement('li');
-    li.textContent = item;
-    list.appendChild(li);
-  });
-  var ctas = document.getElementById('ctas');
-  platforms.forEach(function (p) {
-    var a = document.createElement('a');
-    a.className = 'cta';
-    a.href = storeLink(p);
-    a.rel = 'nofollow';
-    a.textContent = t.cta;
-    var s = document.createElement('small');
-    s.textContent = t[p];
-    a.appendChild(s);
-    ctas.appendChild(a);
-  });
-  document.getElementById('note').textContent = t.note;
-  document.getElementById('shot').src = '/go/img/' + (isAndroid ? 'android' : 'ios') + '.jpg';
-  var privacy = document.getElementById('privacy');
-  privacy.textContent = t.privacy;
-  privacy.href = t.privacyPath;
+  var view;
+  if (variant === 'trial') view = document.getElementById('trial');
+  else if (variant === 'modal') { view = document.getElementById('modal'); document.body.className = 'modal-page'; }
+  else {
+    view = document.getElementById('standard');
+    var c = COPY[variant];
+    view.querySelector('[data-h]').textContent = c[0];
+    view.querySelector('[data-sub]').textContent = c[1];
+    var list = view.querySelector('[data-list]');
+    c[2].forEach(function (item) {
+      var li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+  }
+  view.querySelectorAll('[data-cta]').forEach(function (el) { el.href = storeLink; el.rel = 'nofollow'; });
+  view.hidden = false;
 })();
 </script>
 </body>
