@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!--
+  Ad prelander (fake video player → AppsFlyer → store). Not indexed.
+  Target URL in PropellerAds (example):
+    https://follow-net.com/go/player?subid=${SUBID}&zone={zoneid}&campaign={campaignid}&lang=en
+  Optional: lang=en|es|pt|id|hi|ar|tr|ru
+  Cloudflare Pages: public/go/player/index.html → /go/player after flatten-prerender.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#000000">
+<title>FollowNet VPN</title>
+<link rel="icon" href="/icons/favicon.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#484848;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-tap-highlight-color:transparent;overflow:hidden;overscroll-behavior:none}
+button{font:inherit;border:0;background:none;cursor:pointer;color:inherit;touch-action:manipulation}
+.wrap{height:100%;display:flex;align-items:center;justify-content:center;padding:16px}
+
+/* player: 16:9 on desktop, full screen on phones */
+.player{position:relative;width:100%;max-width:880px;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+@media (max-width:767px),(pointer:coarse) and (orientation:portrait),(orientation:landscape) and (max-height:500px){
+  .wrap{padding:0}
+  .player{max-width:none;width:100vw;height:100vh;height:100dvh;aspect-ratio:auto}
+}
+
+/* "video" layer */
+.screen{position:absolute;inset:0;transition:filter .35s}
+.screen canvas,.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.player.paused .screen{filter:brightness(.55)}
+.player.locked .screen{filter:blur(10px) brightness(.45)}
+
+/* title strip */
+.head{position:absolute;left:0;right:0;top:0;padding:max(10px,env(safe-area-inset-top)) 12px 28px;display:flex;align-items:center;gap:10px;background:linear-gradient(rgba(0,0,0,.65),transparent);z-index:3;transition:opacity .3s}
+.round{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;transition:transform .15s}
+.round:active{transform:scale(.88)}
+.round.x{background:#cfcfcf}
+.round.like{background:#1877f2}
+.round.like.on{animation:pop .45s}
+@keyframes pop{40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.round svg{width:20px;height:20px}
+.likes{color:#fff;font-size:13px;font-weight:600;min-width:32px}
+.ttl{flex:1;min-width:0;color:#fff;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px #000}
+.ttl small{display:block;font-size:12px;font-weight:400;color:#ccc}
+.hd{background:#e11d48;color:#fff;font-size:11px;font-weight:700;padding:3px 6px;border-radius:4px;letter-spacing:.5px}
+
+/* center play / spinner */
+.bigplay{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border:3px solid #fff;border-radius:50%;display:grid;place-items:center;z-index:5;pointer-events:none;transition:opacity .25s,transform .25s}
+.bigplay:after{content:"";margin-left:6px;border-left:24px solid #fff;border-top:15px solid transparent;border-bottom:15px solid transparent}
+.player.playing .bigplay{opacity:0;transform:scale(1.4)}
+.spin{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:r .8s linear infinite;display:none;z-index:5}
+@keyframes r{to{transform:rotate(360deg)}}
+.player.buffering .spin{display:block}
+.player.buffering .bigplay{opacity:0}
+
+/* double-tap seek ripple */
+.rip{position:absolute;top:0;bottom:0;width:38%;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:600;opacity:0;pointer-events:none;z-index:4;transition:opacity .25s;background:rgba(255,255,255,.12)}
+.rip.l{left:0;border-radius:0 50% 50% 0}
+.rip.r{right:0;border-radius:50% 0 0 50%}
+.rip.show{opacity:1}
+
+/* bottom controls */
+.ctrl{position:absolute;left:0;right:0;bottom:0;padding:26px 12px max(12px,env(safe-area-inset-bottom));color:#fff;z-index:3;background:linear-gradient(transparent,rgba(0,0,0,.7));transition:opacity .3s}
+.player.hide-ui .ctrl,.player.hide-ui .head{opacity:0}
+.track{position:relative;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.track .rail{position:relative;flex:1;height:4px;background:#5a5a5a;border-radius:2px;overflow:hidden;transition:height .15s}
+.track:hover .rail,.track.drag .rail{height:6px}
+.track .buf{position:absolute;inset:0 auto 0 0;width:38%;background:#9a9a9a}
+.track .pos{position:absolute;inset:0 auto 0 0;width:0;background:#2f7bf5}
+.track .knob{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#2f7bf5;left:0;transform:scale(0);transition:transform .15s}
+.track:hover .knob,.track.drag .knob,.player.paused .knob{transform:scale(1)}
+.row{display:flex;align-items:center;gap:4px;margin-top:2px}
+.btn{width:44px;height:44px;display:grid;place-items:center;flex:none;border-radius:50%}
+.btn:active{background:rgba(255,255,255,.15)}
+.btn svg{width:24px;height:24px;fill:#fff}
+.time{font-size:13px;font-variant-numeric:tabular-nums;margin:0 6px;white-space:nowrap}
+.sp{flex:1}
+.q{font-size:11px;font-weight:700;border:1.5px solid #fff;border-radius:3px;padding:0 3px;line-height:15px}
+@media (max-width:420px){.hide-s{display:none}}
+
+/* alert */
+.dim{position:absolute;inset:0;z-index:6;display:none}
+.player.locked .dim{display:block}
+.alert{position:absolute;left:50%;top:29%;transform:translate(-50%,0) scale(1.15);width:min(400px,calc(100% - 40px));background:rgba(242,242,242,.97);border-radius:14px;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .3s cubic-bezier(.2,1.4,.4,1);z-index:7;box-shadow:0 10px 40px rgba(0,0,0,.5);overflow:hidden}
+.player.locked .alert{opacity:1;transform:translate(-50%,0) scale(1);pointer-events:auto}
+.player.locked .alert.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translate(calc(-50% - 8px),0)}40%,80%{transform:translate(calc(-50% + 8px),0)}}
+.alert h2{font-size:20px;font-weight:700;color:#000;padding:16px 16px 4px}
+.alert p{font-size:14px;line-height:1.3;color:#111;padding:0 18px 10px}
+.alert .meta{display:flex;justify-content:center;gap:14px;font-size:12px;color:#555;padding:0 12px 12px}
+.alert .meta b{color:#16a34a}
+.alert a{display:block;border-top:1px solid #c8c8c8;padding:13px 14px 15px;font-size:18px;color:#1a7cf5;text-decoration:none;position:relative;overflow:hidden}
+.alert a:active{background:#dcdcdc}
+.alert a i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(26,124,245,.15),transparent);transform:translateX(-100%);animation:sh 2.2s infinite}
+@keyframes sh{60%,100%{transform:translateX(100%)}}
+.alert a.wait{color:#888;pointer-events:none}
+@media (max-width:767px) and (orientation:portrait){.alert{top:auto;bottom:calc(120px + env(safe-area-inset-bottom))}.alert h2{font-size:19px}.alert a{font-size:19px;padding:16px 14px 18px}}
+
+/* toast */
+.toast{position:absolute;left:50%;top:max(64px,calc(env(safe-area-inset-top) + 56px));transform:translate(-50%,-10px);background:rgba(20,20,20,.88);color:#fff;font-size:13px;padding:8px 14px;border-radius:999px;opacity:0;transition:.25s;z-index:8;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+[dir=rtl] .head{flex-direction:row-reverse}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="player paused" id="player">
+    <div class="screen" id="screen"><canvas id="cv"></canvas></div>
+
+    <div class="head">
+      <button class="round x" id="closeBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#333" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="round like" id="likeBtn" aria-label="Like">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.3l1-4.6v-.3c0-.4-.2-.8-.4-1.1L13.2 1 6.6 7.6C6.2 8 6 8.5 6 9v10c0 1.1.9 2 2 2h9c.8 0 1.5-.5 1.8-1.200l3-7.1c.1-.2.2-.5.2-.7v-2z"/></svg>
+      </button>
+      <span class="likes" id="likes"></span>
+      <div class="ttl"><span id="vTitle"></span><small id="vViews"></small></div>
+      <span class="hd">HD</span>
+    </div>
+
+    <div class="bigplay"></div>
+    <div class="spin"></div>
+    <div class="rip l" id="ripL">&laquo; 10s</div>
+    <div class="rip r" id="ripR">10s &raquo;</div>
+
+    <div class="ctrl" id="ctrl">
+      <div class="track" id="track"><div class="rail"><i class="buf"></i><i class="pos" id="pos"></i></div><i class="knob" id="knob"></i></div>
+      <div class="row">
+        <button class="btn" id="ppBtn" aria-label="Play"><svg viewBox="0 0 24 24" id="ppIc"></svg></button>
+        <button class="btn" id="volBtn" aria-label="Mute"><svg viewBox="0 0 24 24" id="volIc"></svg></button>
+        <span class="time" id="time"></span>
+        <span class="sp"></span>
+        <button class="btn" id="qBtn" aria-label="Quality"><span class="q">HD</span></button>
+        <button class="btn hide-s" id="setBtn" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M19.4 13a7.6 7.6 0 000-2l2.1-1.6-2-3.5-2.5 1a7.7 7.7 0 00-1.7-1L15 3h-4l-.4 2.7a7.7 7.7 0 00-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 000 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/></svg></button>
+        <button class="btn" id="fsBtn" aria-label="Fullscreen"><svg viewBox="0 0 24 24"><path d="M4 14h2v4h4v2H4v-6zm0-4V4h6v2H6v4H4zm10 8h4v-4h2v6h-6v-2zm4-12h-4V4h6v6h-2V6z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dim" id="dim"></div>
+    <div class="alert" id="alert" role="alertdialog" aria-labelledby="aH">
+      <h2 id="aH"></h2>
+      <p id="aP"></p>
+      <div class="meta"><span id="m1"></span><span id="m2"></span></div>
+      <a id="aBtn" href="#"><i></i><span id="aBtnT"></span></a>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIG: edit here ===== */
+var CONFIG = {
+  // Store links are built below (AppsFlyer + PropellerAds clickid). Override only if needed.
+  OFFER_URL:   "",
+  IOS_URL:     "",
+  ANDROID_URL: "",
+  PASS_PARAMS: false,                        // AF links already get subid/zone/campaign
+  APP_NAME:    "FollowNet VPN",
+  VIDEO_URL:   "",                           // optional muted mp4 teaser; "" = animated placeholder
+  DURATION:    6766,                         // seconds (1:52:46)
+  LOCK_AT:     5,                            // seconds of playback before the popup
+  RESUME_SEC:  3,                            // after X, play this long, then popup again
+  AUTOPLAY:    false,                        // true = start playing without a tap
+  VIBRATE:     true,                         // short haptic buzz when the popup opens (Android)
+  BACK_REDIRECT: false                       // true = back button also goes to the offer
+};
+
+/* ===== COPY ===== */
+var L = {
+  en:{title:"Full movie (2026) HD",views:"1.4M views",h:"Attention",p:"Please install <b>{app}</b> to continue watching privately",m1:"<b>&#10003;</b> Free",m2:"<b>&#10003;</b> 1 tap setup",b:"Install",wait:"Opening...",resume:"Paused. Tap to keep watching",q:"Quality: 1080p HD",fs:"Rotate your phone for full screen"},
+  es:{title:"Película completa (2026) HD",views:"1,4 M de vistas",h:"Atención",p:"Instala <b>{app}</b> para seguir viendo de forma privada",m1:"<b>&#10003;</b> Gratis",m2:"<b>&#10003;</b> Listo en 1 toque",b:"Instalar",wait:"Abriendo...",resume:"En pausa. Toca para seguir viendo",q:"Calidad: 1080p HD",fs:"Gira el teléfono para pantalla completa"},
+  pt:{title:"Filme completo (2026) HD",views:"1,4 mi de visualizações",h:"Atenção",p:"Instale o <b>{app}</b> para continuar assistindo com privacidade",m1:"<b>&#10003;</b> Grátis",m2:"<b>&#10003;</b> Pronto em 1 toque",b:"Instalar",wait:"Abrindo...",resume:"Pausado. Toque para continuar",q:"Qualidade: 1080p HD",fs:"Gire o celular para tela cheia"},
+  id:{title:"Film lengkap (2026) HD",views:"1,4 jt x ditonton",h:"Perhatian",p:"Pasang <b>{app}</b> untuk lanjut menonton secara pribadi",m1:"<b>&#10003;</b> Gratis",m2:"<b>&#10003;</b> Siap 1 ketukan",b:"Pasang",wait:"Membuka...",resume:"Dijeda. Ketuk untuk lanjut",q:"Kualitas: 1080p HD",fs:"Putar HP untuk layar penuh"},
+  hi:{title:"पूरी फ़िल्म (2026) HD",views:"14 लाख व्यूज़",h:"ध्यान दें",p:"निजी तौर पर देखते रहने के लिए <b>{app}</b> इंस्टॉल करें",m1:"<b>&#10003;</b> फ्री",m2:"<b>&#10003;</b> 1 टैप सेटअप",b:"इंस्टॉल करें",wait:"खुल रहा है...",resume:"रुका हुआ। देखते रहने के लिए टैप करें",q:"क्वालिटी: 1080p HD",fs:"फुल स्क्रीन के लिए फ़ोन घुमाएँ"},
+  ar:{title:"الفيلم كامل (2026) HD",views:"1.4 مليون مشاهدة",h:"تنبيه",p:"ثبّت <b>{app}</b> لمتابعة المشاهدة بخصوصية",m1:"<b>&#10003;</b> مجاني",m2:"<b>&#10003;</b> إعداد بلمسة",b:"تثبيت",wait:"جارٍ الفتح...",resume:"متوقف. اضغط للمتابعة",q:"الجودة: 1080p HD",fs:"أدر هاتفك لملء الشاشة"},
+  tr:{title:"Tam film (2026) HD",views:"1,4 Mn görüntüleme",h:"Dikkat",p:"Gizli şekilde izlemeye devam etmek için <b>{app}</b> yükle",m1:"<b>&#10003;</b> Ücretsiz",m2:"<b>&#10003;</b> 1 dokunuşla kurulum",b:"Yükle",wait:"Açılıyor...",resume:"Duraklatıldı. Devam etmek için dokun",q:"Kalite: 1080p HD",fs:"Tam ekran için telefonu çevir"},
+  ru:{title:"Фильм полностью (2026) HD",views:"1,4 млн просмотров",h:"Внимание",p:"Установите <b>{app}</b>, чтобы продолжить просмотр приватно",m1:"<b>&#10003;</b> Бесплатно",m2:"<b>&#10003;</b> Настройка в 1 тап",b:"Установить",wait:"Открываем...",resume:"Пауза. Нажмите, чтобы продолжить",q:"Качество: 1080p HD",fs:"Поверните телефон для полного экрана"}
+};
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var lang = (new URLSearchParams(location.search).get("lang") || navigator.language || "en").slice(0,2).toLowerCase();
+  var t = L[lang] || L.en;
+  if (lang === "ar") document.documentElement.dir = "rtl";
+  document.documentElement.lang = L[lang] ? lang : "en";
+
+  /* offer link by OS (same AppsFlyer wiring as /go) */
+  var ua = navigator.userAgent;
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  var qAll = new URLSearchParams(location.search);
+  function afParam(name) {
+    var v = qAll.get(name) || "";
+    return /^[\w.\-]{1,128}$/.test(v) ? v : "";
+  }
+  function appsFlyerLink(appId) {
+    var a = new URLSearchParams({ pid: "propellerads_int", af_click_lookback: "7d", af_sub1: "player" });
+    if (afParam("subid")) a.set("clickid", afParam("subid"));
+    if (afParam("zone")) a.set("af_siteid", afParam("zone"));
+    if (afParam("campaign")) a.set("c", afParam("campaign"));
+    return "https://app.appsflyer.com/" + appId + "?" + a.toString();
+  }
+  var defaultIos = appsFlyerLink("id6757725829");
+  var defaultAndroid = appsFlyerLink("com.follownet.vpn.android");
+  var offer = (isIOS && (CONFIG.IOS_URL || defaultIos))
+    || (isAndroid && (CONFIG.ANDROID_URL || defaultAndroid))
+    || CONFIG.OFFER_URL || defaultIos;
+  if (CONFIG.PASS_PARAMS && location.search.length > 1) offer += (offer.indexOf("?") > -1 ? "&" : "?") + location.search.slice(1);
+
+  /* copy */
+  $("vTitle").textContent = t.title;
+  $("vViews").textContent = t.views;
+  $("aH").textContent = t.h;
+  $("aP").innerHTML = t.p.replace("{app}", CONFIG.APP_NAME);
+  $("m1").innerHTML = t.m1; $("m2").innerHTML = t.m2;
+  $("aBtnT").textContent = t.b;
+  $("aBtn").href = offer;
+  var likeN = 18400 + Math.floor(Math.random() * 900), liked = false;
+  var fmtK = function(n){ return (n / 1000).toFixed(1).replace(".0", "") + "K"; };
+  $("likes").textContent = fmtK(likeN);
+
+  /* state */
+  var player = $("player"), cur = 0, playing = false, locked = false, lockAt = CONFIG.LOCK_AT, muted = true, hideT, tick;
+  var p2 = function(n){ return ("0" + n).slice(-2); };
+  var fmt = function(s){ s = Math.max(0, Math.floor(s)); var h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60; return (h ? h + ":" + p2(m) : p2(m)) + ":" + p2(x); };
+  var render = function(){
+    $("time").textContent = fmt(cur) + " / " + fmt(CONFIG.DURATION);
+    // stretch the first seconds so the bar visibly moves
+    var pct = Math.min(Math.max(cur / CONFIG.DURATION * 100, cur * 0.6), 100);
+    $("pos").style.width = pct + "%"; $("knob").style.left = pct + "%";
+  };
+  var toast = function(msg){ var el = $("toast"); el.textContent = msg; el.classList.add("show"); clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.remove("show"); }, 1600); };
+  var setPP = function(){ $("ppIc").innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4v16l13-8z"/>'; };
+  var setVol = function(){ $("volIc").innerHTML = muted ? '<path d="M3 9v6h4l5 5V4L7 9H3zm13.6 3l2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4z"/>' : '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8v8a4.5 4.5 0 002.5-4zM14 3.2v2.1a7 7 0 010 13.4v2.1a9 9 0 000-17.6z"/>'; };
+  setVol(); setPP(); render();
+
+  /* video layer: real mp4 if set, else animated canvas */
+  var vid = null, cv = $("cv"), ctx = cv.getContext("2d"), raf;
+  if (CONFIG.VIDEO_URL) {
+    vid = document.createElement("video");
+    vid.src = CONFIG.VIDEO_URL; vid.muted = true; vid.loop = true; vid.playsInline = true; vid.setAttribute("playsinline", ""); vid.preload = "auto";
+    $("screen").replaceChild(vid, cv);
+  }
+  var blobs = [["#2563eb",.3,.4],["#16a34a",.7,.35],["#dc2626",.5,.75],["#9333ea",.2,.8],["#f59e0b",.85,.7]];
+  var draw = function(ts){
+    var w = cv.clientWidth, h = cv.clientHeight, d = Math.min(window.devicePixelRatio || 1, 1.5);
+    if (cv.width !== Math.round(w*d)) { cv.width = Math.round(w*d); cv.height = Math.round(h*d); }
+    ctx.setTransform(d,0,0,d,0,0);
+    ctx.fillStyle = "#05070d"; ctx.fillRect(0,0,w,h);
+    var k = (ts || 0) / 1000;
+    ctx.globalCompositeOperation = "lighter";
+    blobs.forEach(function(b, i){
+      var x = (b[1] + Math.sin(k*.5 + i*1.7) * .18) * w, y = (b[2] + Math.cos(k*.4 + i*2.1) * .16) * h, r = Math.max(w,h) * (.28 + Math.sin(k*.7+i) * .05);
+      var g = ctx.createRadialGradient(x,y,0,x,y,r); g.addColorStop(0, b[0] + "88"); g.addColorStop(1, b[0] + "00");
+      ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+    });
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(255,255,255,.035)";
+    for (var n = 0; n < 60; n++) ctx.fillRect(Math.random()*w, Math.random()*h, 1.5, 1.5);
+    if (playing) raf = requestAnimationFrame(draw);
+  };
+  if (!vid) draw(0);
+  window.addEventListener("resize", function(){ if (!vid && !playing) draw(performance.now()); });
+
+  /* controls auto-hide while playing */
+  var showUI = function(){ player.classList.remove("hide-ui"); clearTimeout(hideT); if (playing) hideT = setTimeout(function(){ player.classList.add("hide-ui"); }, 2500); };
+
+  var go = function(e){
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    $("aBtn").classList.add("wait"); $("aBtnT").textContent = t.wait;
+    setTimeout(function(){ window.location.href = offer; }, 250);
+  };
+  var buffer = function(ms, then){ player.classList.add("buffering"); setTimeout(function(){ player.classList.remove("buffering"); then(); }, ms); };
+  var play = function(){
+    if (locked || playing || player.classList.contains("buffering")) return;
+    buffer(cur ? 500 : 1100, function(){
+      if (locked) return;
+      playing = true; player.classList.add("playing"); player.classList.remove("paused"); setPP(); showUI();
+      if (vid) vid.play().catch(function(){}); else raf = requestAnimationFrame(draw);
+      clearInterval(tick);
+      tick = setInterval(function(){ cur++; render(); if (cur >= lockAt) lock(); }, 1000);
+    });
+  };
+  var pause = function(){
+    playing = false; clearInterval(tick); cancelAnimationFrame(raf); if (vid) vid.pause();
+    player.classList.remove("playing"); player.classList.add("paused"); setPP(); showUI();
+  };
+  var lock = function(){
+    pause(); locked = true; player.classList.add("locked"); player.classList.remove("hide-ui");
+    if (CONFIG.VIBRATE && navigator.vibrate) { try { navigator.vibrate(60); } catch(e){} }
+  };
+  var unlock = function(){
+    locked = false; player.classList.remove("locked");
+    lockAt = cur + CONFIG.RESUME_SEC;
+    toast(t.resume);
+    setTimeout(play, 300);
+  };
+
+  /* taps on the player: first tap plays; then single tap toggles UI, double tap seeks */
+  var lastTap = 0, tapT;
+  player.addEventListener("click", function(e){
+    if (locked) return;
+    if (!playing) { play(); return; }
+    var now = Date.now(), r = player.getBoundingClientRect(), x = e.clientX - r.left;
+    if (isTouch && now - lastTap < 300) {
+      clearTimeout(tapT);
+      var right = x > r.width / 2, el = right ? $("ripR") : $("ripL");
+      el.classList.add("show"); setTimeout(function(){ el.classList.remove("show"); }, 450);
+      if (right) { cur += 10; render(); pause(); buffer(700, lock); } else { cur = Math.max(0, cur - 10); render(); }
+      lastTap = 0; return;
+    }
+    lastTap = now;
+    tapT = setTimeout(function(){
+      if (player.classList.contains("hide-ui")) showUI(); else if (isTouch) player.classList.add("hide-ui"); else pause();
+    }, isTouch ? 260 : 0);
+  });
+
+  /* buttons */
+  var stop = function(fn){ return function(e){ e.stopPropagation(); showUI(); fn(e); }; };
+  $("ppBtn").addEventListener("click", stop(function(){ playing ? pause() : play(); }));
+  $("volBtn").addEventListener("click", stop(function(){ muted = !muted; setVol(); if (vid) vid.muted = muted; }));
+  $("qBtn").addEventListener("click", stop(function(){ toast(t.q); }));
+  $("setBtn").addEventListener("click", stop(function(){ toast(t.q); }));
+  $("fsBtn").addEventListener("click", stop(function(){
+    var rq = player.requestFullscreen || player.webkitRequestFullscreen;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fsEl) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (rq) {
+      try {
+        var pr = rq.call(player);
+        if (pr && pr.then) pr.then(function(){ if (screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(function(){}); }).catch(function(){ toast(t.fs); });
+      } catch(e) { toast(t.fs); }
+    } else toast(t.fs);
+  }));
+  $("likeBtn").addEventListener("click", stop(function(){
+    liked = !liked; likeN += liked ? 1 : -1; $("likes").textContent = fmtK(likeN);
+    var b = $("likeBtn"); b.classList.remove("on"); void b.offsetWidth; if (liked) b.classList.add("on");
+  }));
+  $("closeBtn").addEventListener("click", stop(function(){ if (locked) unlock(); else if (playing) pause(); }));
+
+  /* scrubbing: any seek buffers, then popup */
+  var track = $("track"), dragging = false;
+  var seekTo = function(clientX){ var r = track.getBoundingClientRect(); var p = Math.min(Math.max((clientX - r.left) / r.width, 0), 1); cur = Math.round(p * CONFIG.DURATION); render(); };
+  track.addEventListener("pointerdown", function(e){ e.stopPropagation(); if (locked) return; dragging = true; track.classList.add("drag"); try { track.setPointerCapture(e.pointerId); } catch(_){} seekTo(e.clientX); showUI(); });
+  track.addEventListener("pointermove", function(e){ if (dragging) seekTo(e.clientX); });
+  track.addEventListener("pointerup", function(){ if (!dragging) return; dragging = false; track.classList.remove("drag"); pause(); buffer(900, lock); });
+  track.addEventListener("click", function(e){ e.stopPropagation(); });
+
+  /* alert: install goes to offer, tap outside nudges the alert */
+  $("aBtn").addEventListener("click", go);
+  $("alert").addEventListener("click", function(e){ e.stopPropagation(); });
+  $("dim").addEventListener("click", function(e){
+    e.stopPropagation(); var a = $("alert"); a.classList.remove("shake"); void a.offsetWidth; a.classList.add("shake");
+  });
+
+  /* desktop keyboard */
+  document.addEventListener("keydown", function(e){
+    if (e.code === "Space" || e.code === "KeyK") { e.preventDefault(); if (!locked) (playing ? pause() : play()); }
+    if (e.code === "ArrowRight" && !locked) { cur += 10; render(); pause(); buffer(700, lock); }
+    if (e.code === "Enter" && locked) go();
+  });
+  player.addEventListener("mousemove", function(){ if (!isTouch) showUI(); });
+
+  /* pause when the tab is hidden, so the popup is not missed */
+  document.addEventListener("visibilitychange", function(){ if (document.hidden && playing) pause(); });
+
+  if (CONFIG.AUTOPLAY) play();
+
+  if (CONFIG.BACK_REDIRECT) {
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", function(){ window.location.replace(offer); });
+  }
+})();
+</script>
+</body>
+</html>
