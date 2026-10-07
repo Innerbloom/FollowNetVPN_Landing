@@ -4,94 +4,88 @@
   Target URL in PropellerAds:
     https://follow-net.com/go?v=exposed&subid=${SUBID}&zone={zoneid}&campaign={campaignid}
   (Cloudflare Pages serves it at /go; /go/ 308-redirects there with the query kept.)
-  v = exposed | trial | modal | wifi | fast | private. The click id goes to AppsFlyer as clickid so the install
+  v = exposed | isp | device | trial. The click id goes to AppsFlyer as clickid so the install
   postback reaches PropellerAds; af_sub1 = variant for comparing them in AppsFlyer.
-  Keep every claim true to the app: no fake system alerts, no "unblock streaming/adult" promises.
+  The alert variants only show the visitor's real data (IP, country, provider, device) and only claim
+  what a VPN really does. No fake system alerts, no "unblock streaming/adult" promises.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#181818">
+<meta name="theme-color" content="#0b0b0b">
 <title>FollowNet VPN</title>
 <link rel="icon" href="/icons/favicon.png">
 <style>
-  :root { --bg:#181818; --card:#232323; --text:#f2f2f2; --muted:#a8a8a8; --green:#92b838; --green-d:#7a9c2c; }
+  :root { --bg:#0b0b0b; --card:#232323; --text:#f2f2f2; --muted:#a8a8a8; --green:#92b838; --green-d:#7a9c2c; --red:#ff5b5f; }
   * { box-sizing:border-box; }
   html,body { margin:0; min-height:100%; background:var(--bg); color:var(--text);
     font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
-  main { max-width:440px; margin:0 auto; padding:18px 18px calc(24px + env(safe-area-inset-bottom)); }
   [hidden] { display:none !important; }
-  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; }
+  .brand { display:flex; align-items:center; justify-content:center; gap:10px; font-weight:800; font-size:19px; }
   .brand img { width:34px; height:34px; border-radius:8px; }
   .brand b { color:var(--green); }
-  h1 { font-size:27px; line-height:1.18; margin:20px 0 10px; letter-spacing:-.01em; }
-  .sub { color:var(--muted); margin:0 0 16px; }
+  h1 { letter-spacing:-.01em; }
   ul { list-style:none; padding:0; margin:0 0 20px; }
   li { position:relative; padding:7px 0 7px 30px; }
   li::before { content:""; position:absolute; left:2px; top:11px; width:18px; height:18px; border-radius:50%;
     background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23161616' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat; }
   .cta { display:block; width:100%; text-align:center; text-decoration:none; background:var(--green); color:#111;
-    font-weight:800; font-size:19px; padding:16px; border-radius:14px; box-shadow:0 8px 24px rgba(146,184,56,.25); }
+    font-weight:800; font-size:20px; padding:16px; border-radius:14px; box-shadow:0 8px 24px rgba(146,184,56,.28); }
   .cta:active { background:var(--green-d); }
   .cta small { display:block; font-weight:600; font-size:13px; opacity:.75; margin-top:2px; }
-  .shot { display:block; width:100%; max-width:300px; height:auto; margin:22px auto 6px; border-radius:18px; }
   .note { color:var(--muted); font-size:12.5px; text-align:center; margin:12px 0 0; }
   footer { text-align:center; margin-top:16px; font-size:12.5px; color:var(--muted); }
   footer a { color:var(--muted); }
 
-  /* trial: offer-style page */
-  .trial { text-align:center; }
-  .trial .shot { max-width:230px; margin:6px auto 18px; }
-  .trial h1 { margin-top:4px; }
+  /* alert variants: one card on a dark screen with the visitor's real data */
+  .wrap { min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    padding:24px 16px calc(24px + env(safe-area-inset-bottom)); }
+  .card { width:100%; max-width:380px; background:var(--card); border:1px solid #5a1d1d; border-radius:20px;
+    padding:22px 20px 18px; text-align:center;
+    box-shadow:0 0 0 1px rgba(229,72,77,.25), 0 20px 60px rgba(0,0,0,.7); }
+  .alert { display:flex; align-items:center; justify-content:center; gap:8px; color:var(--red); font-weight:800;
+    font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+  .alert i { width:10px; height:10px; border-radius:50%; background:var(--red); animation:pulse 1.4s infinite; }
+  @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(255,91,95,.7); } 70% { box-shadow:0 0 0 10px rgba(255,91,95,0); } 100% { box-shadow:0 0 0 0 rgba(255,91,95,0); } }
+  .card h1 { font-size:24px; line-height:1.2; margin:0 0 8px; }
+  .card .sub { color:var(--muted); margin:0 0 16px; font-size:15px; }
+  .facts { background:#161616; border:1px solid #2e2e2e; border-radius:14px; padding:4px 14px; margin:0 0 16px; text-align:left; }
+  .facts div { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:10px 0;
+    border-bottom:1px solid #262626; font-size:15px; }
+  .facts div:last-child { border-bottom:0; }
+  .facts span { color:var(--muted); white-space:nowrap; }
+  .facts b { font-weight:700; text-align:right; word-break:break-word; }
+  .facts .bad { color:var(--red); }
+
+  /* trial: offer page */
+  .trial { max-width:440px; margin:0 auto; padding:18px 18px calc(24px + env(safe-area-inset-bottom)); text-align:center; }
+  .trial .shot { display:block; width:100%; max-width:230px; height:auto; margin:6px auto 18px; border-radius:18px; }
+  .trial h1 { font-size:27px; line-height:1.18; margin:4px 0 10px; }
   .trial ul { display:inline-block; text-align:left; margin-bottom:16px; }
   .offer { font-size:22px; font-weight:800; color:#e8d44d; margin:0; letter-spacing:.02em; }
   .price { font-size:40px; font-weight:800; color:var(--green); margin:2px 0 0; }
   .then { color:var(--muted); font-size:14px; margin:0 0 18px; }
-  .nopay { color:var(--text); font-size:14px; margin:12px 0 0; }
+  .nopay { font-size:14px; margin:12px 0 0; }
   .legal { color:#7d7d7d; font-size:11px; line-height:1.45; margin:14px 0 0; }
-
-  /* modal: brand card on a dark screen, not a copy of a system alert */
-  body.modal-page { background:#0d0d0d; }
-  .modal-wrap { min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:24px 18px; }
-  .modal { width:100%; max-width:360px; background:var(--card); border:1px solid #333; border-radius:20px; padding:22px 20px 18px;
-    box-shadow:0 20px 60px rgba(0,0,0,.6); text-align:center; }
-  .modal .brand { justify-content:center; margin-bottom:12px; }
-  .modal h1 { font-size:22px; margin:0 0 8px; }
-  .modal .sub { margin:0 0 18px; font-size:15px; }
-
-  /* exposed: the visitor's real IP and country from Cloudflare, shown as what websites see */
-  body.exposed-page { background:#0b0b0b; }
-  .exposed { border-color:#5a1d1d; box-shadow:0 0 0 1px rgba(229,72,77,.25), 0 20px 60px rgba(0,0,0,.7); }
-  .alert { display:flex; align-items:center; justify-content:center; gap:8px; color:#ff5b5f; font-weight:800;
-    font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
-  .alert i { width:10px; height:10px; border-radius:50%; background:#ff5b5f; box-shadow:0 0 0 0 rgba(255,91,95,.7);
-    animation:pulse 1.4s infinite; }
-  @keyframes pulse { 70% { box-shadow:0 0 0 10px rgba(255,91,95,0); } 100% { box-shadow:0 0 0 0 rgba(255,91,95,0); } }
-  .exposed h1 { font-size:24px; }
-  .facts { background:#161616; border:1px solid #2e2e2e; border-radius:14px; padding:4px 14px; margin:0 0 16px; text-align:left; }
-  .facts div { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid #262626; font-size:15px; }
-  .facts div:last-child { border-bottom:0; }
-  .facts span { color:var(--muted); }
-  .facts b { font-weight:700; text-align:right; word-break:break-all; }
-  .facts .bad { color:#ff5b5f; }
+  body.trial-page { background:#181818; }
 </style>
 </head>
 <body>
-<main id="standard" hidden>
-  <div class="brand"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
-  <h1 data-h></h1>
-  <p class="sub" data-sub></p>
-  <ul data-list></ul>
-  <a class="cta" data-cta>Install free<small>on the App Store</small></a>
-  <p class="note">The free plan has a weekly traffic limit. Premium removes it.</p>
-  <img class="shot" src="/go/img/ios.jpg" alt="FollowNet VPN on iPhone" width="560" height="630">
-  <footer><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></footer>
-</main>
+<div id="alert" class="wrap" hidden>
+  <div class="card">
+    <div class="alert"><i></i><span data-badge></span></div>
+    <h1 data-h></h1>
+    <p class="sub" data-sub></p>
+    <div class="facts" data-facts></div>
+    <a class="cta" data-cta><span data-btn></span><small>FollowNet VPN · free on the App Store</small></a>
+    <p class="note">One tap to connect. Free plan with a weekly traffic limit.</p>
+  </div>
+</div>
 
 <main id="trial" class="trial" hidden>
-  <div class="brand" style="justify-content:center"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
+  <div class="brand"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
   <img class="shot" src="/go/img/ios.jpg" alt="FollowNet VPN on iPhone" width="560" height="630">
   <h1>Fast, private VPN for iPhone</h1>
   <ul>
@@ -111,48 +105,36 @@
   <footer><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a></footer>
 </main>
 
-<div id="modal" class="modal-wrap" hidden>
-  <div class="modal">
-    <div class="brand"><img src="/assets/new_logo-96.png" alt="" width="34" height="34">FollowNet <b>VPN</b></div>
-    <h1>Browsing on public Wi-Fi?</h1>
-    <p class="sub">Protect your connection with FollowNet VPN. One tap to connect, free to start.</p>
-    <a class="cta" data-cta>Install<small>on the App Store</small></a>
-    <p class="note">Free plan with a weekly traffic limit.</p>
-  </div>
-</div>
-
-<div id="exposed" class="modal-wrap" hidden>
-  <div class="modal exposed">
-    <div class="alert"><i></i>IP exposed</div>
-    <h1>Your IP address is visible</h1>
-    <p class="sub">Every site you open and your Wi-Fi or mobile provider can see where you connect from.</p>
-    <div class="facts">
-      <div><span>Your IP</span><b data-ip>checking…</b></div>
-      <div><span>Location</span><b data-loc>checking…</b></div>
-      <div><span>FollowNet VPN</span><b class="bad">Not connected</b></div>
-    </div>
-    <a class="cta" data-cta>Hide my IP<small>FollowNet VPN · free on the App Store</small></a>
-    <p class="note">One tap to connect. Free plan with a weekly traffic limit.</p>
-  </div>
-</div>
-
 <script>
 (function () {
-  var COPY = {
-    wifi: ['Public Wi-Fi? Turn on protection in one tap',
-      'FollowNet VPN encrypts your connection in cafés, airports and hotels.',
-      ['One tap to connect', 'Smart Connect picks a protocol that works on your network', 'Free to start, no sign-up needed']],
-    fast: ['A VPN that just connects',
-      'Smart Connect tries WireGuard, AmneziaWG, Hysteria2 and VLESS and keeps the one that works for you.',
-      ['Servers in 6 countries', 'Built-in speed test', 'Free to start, no sign-up needed']],
-    private: ['Keep your browsing to yourself',
-      'Encrypted traffic plus DNS that blocks ads, trackers and malicious sites.',
-      ['Auto-connect when you join Wi-Fi', 'AdGuard and Quad9 DNS in one tap', 'Free to start, no sign-up needed']]
+  // Each alert variant lists real facts about the visitor; the last row is always our own app's state.
+  var ALERTS = {
+    exposed: {
+      badge: 'IP exposed',
+      h: 'Your IP address is visible',
+      sub: 'Every site you open and your Wi-Fi or mobile provider can see where you connect from.',
+      rows: [['Your IP', 'ip'], ['Location', 'country']],
+      btn: 'Hide my IP'
+    },
+    isp: {
+      badge: 'Browsing visible',
+      h: 'Your provider can see the sites you open',
+      sub: 'Without a VPN, your internet provider sees every website you visit and when.',
+      rows: [['Provider', 'isp'], ['City', 'city'], ['Your IP', 'ip']],
+      btn: 'Encrypt my connection'
+    },
+    device: {
+      badge: 'You are identifiable',
+      h: 'This is what websites see about you',
+      sub: 'Your IP and location travel with every page you open. A VPN hides them.',
+      rows: [['Device', 'device'], ['Browser', 'browser'], ['Time zone', 'tz'], ['Location', 'place'], ['Your IP', 'ip']],
+      btn: 'Hide my IP & location'
+    }
   };
+
   var q = new URLSearchParams(location.search);
-  var VIEWS = ['exposed', 'trial', 'modal'];
   var variant = q.get('v') || 'exposed';
-  if (VIEWS.indexOf(variant) < 0 && !COPY[variant]) variant = 'exposed';
+  if (variant !== 'trial' && !ALERTS[variant]) variant = 'exposed';
 
   // Real ${SUBID}/{zoneid} values only; an unexpanded macro means a manual test click.
   function param(name) {
@@ -165,30 +147,23 @@
   if (param('campaign')) a.set('c', param('campaign'));
   var storeLink = 'https://app.appsflyer.com/id6757725829?' + a.toString();
 
-  var view;
-  if (variant === 'exposed') {
-    view = document.getElementById('exposed');
-    document.body.className = 'exposed-page';
-    showConnection(view);
-  } else if (variant === 'trial') view = document.getElementById('trial');
-  else if (variant === 'modal') { view = document.getElementById('modal'); document.body.className = 'modal-page'; }
-  else {
-    view = document.getElementById('standard');
-    var c = COPY[variant];
-    view.querySelector('[data-h]').textContent = c[0];
-    view.querySelector('[data-sub]').textContent = c[1];
-    var list = view.querySelector('[data-list]');
-    c[2].forEach(function (item) {
-      var li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
+  function countryName(code) {
+    try { return code ? new Intl.DisplayNames(['en'], { type: 'region' }).of(code) : ''; } catch (e) { return code; }
   }
-  // The visitor's own public IP and country as Cloudflare sees them (same-origin, no third party).
-  function showConnection(root) {
-    var ipEl = root.querySelector('[data-ip]');
-    var locEl = root.querySelector('[data-loc]');
-    fetch('/cdn-cgi/trace', { cache: 'no-store' })
+  function deviceInfo() {
+    var ua = navigator.userAgent;
+    var os = (ua.match(/OS (\d+)[_.](\d+)/) || []);
+    var device = /iPad/.test(ua) ? 'iPad' : /iPhone/.test(ua) ? 'iPhone' : /Android/.test(ua) ? 'Android phone' : 'Computer';
+    if (os[1] && /iPhone|iPad/.test(ua)) device += ' · iOS ' + os[1] + '.' + os[2];
+    var browser = /CriOS|Chrome/.test(ua) ? 'Chrome' : /FxiOS|Firefox/.test(ua) ? 'Firefox' : /Safari/.test(ua) ? 'Safari' : 'Browser';
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    return { device: device, browser: browser, tz: tz.replace(/_/g, ' ') };
+  }
+
+  // IP + country from our own Cloudflare edge; provider and city from ipwho.is (free, CORS).
+  function lookup() {
+    var trace = fetch('/cdn-cgi/trace', { cache: 'no-store' })
       .then(function (r) { return r.text(); })
       .then(function (txt) {
         var m = {};
@@ -196,17 +171,65 @@
           var i = line.indexOf('=');
           if (i > 0) m[line.slice(0, i)] = line.slice(i + 1);
         });
-        ipEl.textContent = m.ip || 'visible';
-        var country = m.loc || '';
-        try { if (country) country = new Intl.DisplayNames(['en'], { type: 'region' }).of(country); } catch (e) {}
-        locEl.textContent = country || 'visible';
+        return { ip: m.ip || '', country: countryName(m.loc || '') };
       })
-      .catch(function () {
-        ipEl.textContent = 'visible';
-        locEl.textContent = 'visible';
-      });
+      .catch(function () { return {}; });
+    var geo = variant === 'exposed' ? Promise.resolve({}) :
+      fetch('https://ipwho.is/?fields=success,ip,city,country,connection')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || d.success === false) return {};
+          var c = d.connection || {};
+          return { ip: d.ip || '', city: d.city || '', country: d.country || '', isp: c.isp || c.org || '' };
+        })
+        .catch(function () { return {}; });
+    return Promise.all([trace, geo]).then(function (r) {
+      var t = r[0], g = r[1];
+      var info = deviceInfo();
+      info.ip = t.ip || g.ip || '';
+      info.country = t.country || g.country || '';
+      info.city = g.city || '';
+      info.isp = g.isp || '';
+      // City and its country from one source, so the pair always matches.
+      info.place = g.city ? [g.city, g.country || info.country].filter(Boolean).join(', ') : info.country;
+      return info;
+    });
   }
 
+  var view;
+  if (variant === 'trial') {
+    view = document.getElementById('trial');
+    document.body.className = 'trial-page';
+  } else {
+    view = document.getElementById('alert');
+    var cfg = ALERTS[variant];
+    view.querySelector('[data-badge]').textContent = cfg.badge;
+    view.querySelector('[data-h]').textContent = cfg.h;
+    view.querySelector('[data-sub]').textContent = cfg.sub;
+    view.querySelector('[data-btn]').textContent = cfg.btn;
+    var facts = view.querySelector('[data-facts]');
+    var cells = {};
+    cfg.rows.concat([['FollowNet VPN', 'vpn']]).forEach(function (row) {
+      var div = document.createElement('div');
+      var label = document.createElement('span');
+      var value = document.createElement('b');
+      label.textContent = row[0];
+      value.textContent = row[1] === 'vpn' ? 'Not connected' : 'checking…';
+      if (row[1] === 'vpn') value.className = 'bad';
+      div.appendChild(label);
+      div.appendChild(value);
+      facts.appendChild(div);
+      cells[row[1]] = div;
+    });
+    lookup().then(function (info) {
+      cfg.rows.forEach(function (row) {
+        var div = cells[row[1]];
+        var v = info[row[1]];
+        // Drop a row we couldn't fill rather than show something made up.
+        if (v) div.lastChild.textContent = v; else div.remove();
+      });
+    });
+  }
   view.querySelectorAll('[data-cta]').forEach(function (el) { el.href = storeLink; el.rel = 'nofollow'; });
   view.hidden = false;
 })();
