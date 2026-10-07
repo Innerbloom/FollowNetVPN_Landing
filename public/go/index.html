@@ -58,6 +58,11 @@
   .facts span { color:var(--muted); white-space:nowrap; }
   .facts b { font-weight:700; text-align:right; word-break:break-word; }
   .facts .bad { color:var(--red); }
+  /* calm tone: same layout, no red alert styling */
+  .card.calm { border-color:#333; box-shadow:0 20px 60px rgba(0,0,0,.7); }
+  .card.calm .alert { color:var(--green); }
+  .card.calm .alert i { background:var(--green); animation:none; }
+  .card.calm .facts .bad { color:var(--muted); }
 
   /* trial: offer page */
   .trial { max-width:440px; margin:0 auto; padding:18px 18px calc(24px + env(safe-area-inset-bottom)); text-align:center; }
@@ -109,12 +114,14 @@
 (function () {
   // Each alert variant lists real facts about the visitor; the last row is always our own app's state.
   var ALERTS = {
+    // Neutral wording (ad network asked for no alarming/threat copy).
     exposed: {
-      badge: 'IP exposed',
-      h: 'Your IP address is visible',
-      sub: 'Every site you open and your Wi-Fi or mobile provider can see where you connect from.',
+      calm: true,
+      badge: 'Your connection',
+      h: 'This is how websites see you',
+      sub: 'Your current IP address and location. With FollowNet VPN you can browse through another location in one tap.',
       rows: [['Your IP', 'ip'], ['Location', 'country']],
-      btn: 'Hide my IP'
+      btn: 'Try FollowNet VPN free'
     },
     isp: {
       badge: 'Browsing visible',
@@ -203,6 +210,7 @@
   } else {
     view = document.getElementById('alert');
     var cfg = ALERTS[variant];
+    if (cfg.calm) view.querySelector('.card').classList.add('calm');
     view.querySelector('[data-badge]').textContent = cfg.badge;
     view.querySelector('[data-h]').textContent = cfg.h;
     view.querySelector('[data-sub]').textContent = cfg.sub;
