@@ -2,9 +2,9 @@
 <!--
   Ad prelander (PropellerAds → AppsFlyer → App Store). English only, iOS only. Not indexed.
   Target URL in PropellerAds:
-    https://follow-net.com/go?v=trial&subid=${SUBID}&zone={zoneid}&campaign={campaignid}
+    https://follow-net.com/go?v=exposed&subid=${SUBID}&zone={zoneid}&campaign={campaignid}
   (Cloudflare Pages serves it at /go; /go/ 308-redirects there with the query kept.)
-  v = trial | modal | wifi | fast | private. The click id goes to AppsFlyer as clickid so the install
+  v = exposed | trial | modal | wifi | fast | private. The click id goes to AppsFlyer as clickid so the install
   postback reaches PropellerAds; af_sub1 = variant for comparing them in AppsFlyer.
   Keep every claim true to the app: no fake system alerts, no "unblock streaming/adult" promises.
 -->
@@ -60,6 +60,22 @@
   .modal .brand { justify-content:center; margin-bottom:12px; }
   .modal h1 { font-size:22px; margin:0 0 8px; }
   .modal .sub { margin:0 0 18px; font-size:15px; }
+
+  /* exposed: the visitor's real IP and country from Cloudflare, shown as what websites see */
+  body.exposed-page { background:#0b0b0b; }
+  .exposed { border-color:#5a1d1d; box-shadow:0 0 0 1px rgba(229,72,77,.25), 0 20px 60px rgba(0,0,0,.7); }
+  .alert { display:flex; align-items:center; justify-content:center; gap:8px; color:#ff5b5f; font-weight:800;
+    font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+  .alert i { width:10px; height:10px; border-radius:50%; background:#ff5b5f; box-shadow:0 0 0 0 rgba(255,91,95,.7);
+    animation:pulse 1.4s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 10px rgba(255,91,95,0); } 100% { box-shadow:0 0 0 0 rgba(255,91,95,0); } }
+  .exposed h1 { font-size:24px; }
+  .facts { background:#161616; border:1px solid #2e2e2e; border-radius:14px; padding:4px 14px; margin:0 0 16px; text-align:left; }
+  .facts div { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid #262626; font-size:15px; }
+  .facts div:last-child { border-bottom:0; }
+  .facts span { color:var(--muted); }
+  .facts b { font-weight:700; text-align:right; word-break:break-all; }
+  .facts .bad { color:#ff5b5f; }
 </style>
 </head>
 <body>
@@ -105,6 +121,21 @@
   </div>
 </div>
 
+<div id="exposed" class="modal-wrap" hidden>
+  <div class="modal exposed">
+    <div class="alert"><i></i>IP exposed</div>
+    <h1>Your IP address is visible</h1>
+    <p class="sub">Every site you open and your Wi-Fi or mobile provider can see where you connect from.</p>
+    <div class="facts">
+      <div><span>Your IP</span><b data-ip>checking…</b></div>
+      <div><span>Location</span><b data-loc>checking…</b></div>
+      <div><span>FollowNet VPN</span><b class="bad">Not connected</b></div>
+    </div>
+    <a class="cta" data-cta>Hide my IP<small>FollowNet VPN · free on the App Store</small></a>
+    <p class="note">One tap to connect. Free plan with a weekly traffic limit.</p>
+  </div>
+</div>
+
 <script>
 (function () {
   var COPY = {
@@ -119,8 +150,9 @@
       ['Auto-connect when you join Wi-Fi', 'AdGuard and Quad9 DNS in one tap', 'Free to start, no sign-up needed']]
   };
   var q = new URLSearchParams(location.search);
-  var variant = q.get('v') || 'trial';
-  if (variant !== 'trial' && variant !== 'modal' && !COPY[variant]) variant = 'trial';
+  var VIEWS = ['exposed', 'trial', 'modal'];
+  var variant = q.get('v') || 'exposed';
+  if (VIEWS.indexOf(variant) < 0 && !COPY[variant]) variant = 'exposed';
 
   // Real ${SUBID}/{zoneid} values only; an unexpanded macro means a manual test click.
   function param(name) {
@@ -134,7 +166,11 @@
   var storeLink = 'https://app.appsflyer.com/id6757725829?' + a.toString();
 
   var view;
-  if (variant === 'trial') view = document.getElementById('trial');
+  if (variant === 'exposed') {
+    view = document.getElementById('exposed');
+    document.body.className = 'exposed-page';
+    showConnection(view);
+  } else if (variant === 'trial') view = document.getElementById('trial');
   else if (variant === 'modal') { view = document.getElementById('modal'); document.body.className = 'modal-page'; }
   else {
     view = document.getElementById('standard');
@@ -148,6 +184,29 @@
       list.appendChild(li);
     });
   }
+  // The visitor's own public IP and country as Cloudflare sees them (same-origin, no third party).
+  function showConnection(root) {
+    var ipEl = root.querySelector('[data-ip]');
+    var locEl = root.querySelector('[data-loc]');
+    fetch('/cdn-cgi/trace', { cache: 'no-store' })
+      .then(function (r) { return r.text(); })
+      .then(function (txt) {
+        var m = {};
+        txt.split('\n').forEach(function (line) {
+          var i = line.indexOf('=');
+          if (i > 0) m[line.slice(0, i)] = line.slice(i + 1);
+        });
+        ipEl.textContent = m.ip || 'visible';
+        var country = m.loc || '';
+        try { if (country) country = new Intl.DisplayNames(['en'], { type: 'region' }).of(country); } catch (e) {}
+        locEl.textContent = country || 'visible';
+      })
+      .catch(function () {
+        ipEl.textContent = 'visible';
+        locEl.textContent = 'visible';
+      });
+  }
+
   view.querySelectorAll('[data-cta]').forEach(function (el) { el.href = storeLink; el.rel = 'nofollow'; });
   view.hidden = false;
 })();
