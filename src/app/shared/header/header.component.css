@@ -294,6 +294,135 @@
   background: var(--surface-2);
 }
 
+.products-dd {
+  position: relative;
+  display: inline-flex;
+}
+
+.products-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.products-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.products-btn:hover,
+.products-btn[aria-expanded='true'] {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+/* Padding bridges the gap so hover doesn't drop between the button and the menu. */
+.products-menu {
+  position: absolute;
+  left: -8px;
+  top: 100%;
+  padding-top: 10px;
+  width: 330px;
+  z-index: 200;
+}
+
+.products-menu::before {
+  content: '';
+  position: absolute;
+  inset: 10px 0 0;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  z-index: -1;
+}
+
+.nav .product-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--text);
+}
+
+.nav .product-item:hover {
+  background: var(--surface-2);
+}
+
+.product-item img,
+.mobile-product img {
+  object-fit: contain;
+}
+
+.product-icon--app {
+  border-radius: 8px;
+}
+
+.product-text,
+.mobile-product span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.product-text b,
+.mobile-product b {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.product-text em {
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-2);
+  font-style: normal;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.product-text small,
+.mobile-product small {
+  color: var(--muted-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.mobile-title {
+  margin: 4px 12px 2px;
+  color: var(--muted-2);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mobile-group a.mobile-product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 @media (max-width: 980px) {
   .nav {
     display: none;

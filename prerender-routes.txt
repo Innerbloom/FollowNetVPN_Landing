@@ -12,6 +12,8 @@
 /affiliates
 /support
 /status
+/pulse
+/pulse/privacy
 /vpn-for-iphone
 /wireguard-vpn-ios
 /free-vpn-iphone
@@ -97,6 +99,8 @@
 /ru/affiliates
 /ru/support
 /ru/status
+/ru/pulse
+/ru/pulse/privacy
 /ru/vpn-for-iphone
 /ru/wireguard-vpn-ios
 /ru/free-vpn-iphone
@@ -182,6 +186,8 @@
 /de/affiliates
 /de/support
 /de/status
+/de/pulse
+/de/pulse/privacy
 /de/vpn-for-iphone
 /de/wireguard-vpn-ios
 /de/free-vpn-iphone
@@ -267,6 +273,8 @@
 /es/affiliates
 /es/support
 /es/status
+/es/pulse
+/es/pulse/privacy
 /es/vpn-for-iphone
 /es/wireguard-vpn-ios
 /es/free-vpn-iphone
@@ -352,6 +360,8 @@
 /fr/affiliates
 /fr/support
 /fr/status
+/fr/pulse
+/fr/pulse/privacy
 /fr/vpn-for-iphone
 /fr/wireguard-vpn-ios
 /fr/free-vpn-iphone
@@ -437,6 +447,8 @@
 /pt/affiliates
 /pt/support
 /pt/status
+/pt/pulse
+/pt/pulse/privacy
 /pt/vpn-for-iphone
 /pt/wireguard-vpn-ios
 /pt/free-vpn-iphone
@@ -522,6 +534,8 @@
 /uk/affiliates
 /uk/support
 /uk/status
+/uk/pulse
+/uk/pulse/privacy
 /uk/vpn-for-iphone
 /uk/wireguard-vpn-ios
 /uk/free-vpn-iphone

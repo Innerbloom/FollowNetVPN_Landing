@@ -80,6 +80,8 @@ const staticPaths = [
   '/affiliates',
   '/support',
   '/status',
+  '/pulse',
+  '/pulse/privacy',
 ];
 const landingPaths = slugs.map((s) => `/${s}`);
 const blogPaths = blogSlugs.map((s) => `/blog/${s}`);
@@ -135,6 +137,8 @@ const sitemapPaths = [
   ['/download', '0.85'],
   ['/download/ios', '0.8'],
   ['/download/chrome', '0.8'],
+  ['/pulse', '0.85'],
+  ['/pulse/privacy', '0.5'],
   ['/about', '0.7'],
   ['/press', '0.75'],
   ['/affiliates', '0.75'],

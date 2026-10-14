@@ -7,6 +7,7 @@ import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
 import { appStoreUrl, isAndroidBrowser, playStoreUrl } from '../../core/app-store-url';
 import { splitLangPrefix } from '../../core/locale-url';
 import { environment } from '../../../environments/environment';
+import { PULSE_APP_STORE_URL } from '../../core/pulse.content';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ import { environment } from '../../../environments/environment';
 export class HeaderComponent {
   /** Top CTA: App Store, or Google Play on Android browsers. */
   iosAppStoreUrl = appStoreUrl('header');
+  private readonly defaultStoreUrl: string;
   readonly appStoreMenuUrl = appStoreUrl('header-menu');
   readonly playStoreMenuUrl = playStoreUrl('header-menu');
   logoSrc = '/assets/new_logo-96.png?v=fn5';
@@ -25,6 +27,7 @@ export class HeaderComponent {
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
   readonly langs = SUPPORTED_LANGS;
   isLangOpen = false;
+  isProductsOpen = false;
 
   onLogoError() {
     this.logoSrc = '/assets/logo.png?v=fn5';
@@ -39,10 +42,14 @@ export class HeaderComponent {
     if (isPlatformBrowser(this.platformId) && isAndroidBrowser()) {
       this.iosAppStoreUrl = playStoreUrl('header');
     }
+    this.defaultStoreUrl = this.iosAppStoreUrl;
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
         this.closeMenu();
+        this.isProductsOpen = false;
+        // On Pulse pages the header download button points at the Mac App Store.
+        this.iosAppStoreUrl = this.isPulsePage() ? PULSE_APP_STORE_URL : this.defaultStoreUrl;
         if (!this.isLegalPage() && isPlatformBrowser(this.platformId)) {
           setTimeout(() => this.updateActiveSection(), 0);
         } else {
@@ -64,6 +71,7 @@ export class HeaderComponent {
   @HostListener('document:pointerdown', ['$event'])
   onDocPointerDown(ev: PointerEvent) {
     const target = ev.target as HTMLElement | null;
+    if (!target?.closest('.products-dd')) this.isProductsOpen = false;
     if (target && target.closest('.lang-dd')) return;
     this.isLangOpen = false;
   }
@@ -71,12 +79,17 @@ export class HeaderComponent {
   @HostListener('document:keydown.escape')
   onEscape() {
     this.isLangOpen = false;
+    this.isProductsOpen = false;
   }
 
   @HostListener('window:scroll')
   onScroll() {
     if (this.isLegalPage()) return;
     this.updateActiveSection();
+  }
+
+  isPulsePage(): boolean {
+    return splitLangPrefix(this.router.url).path.startsWith('/pulse');
   }
 
   private isLegalPage(): boolean {
@@ -86,6 +99,11 @@ export class HeaderComponent {
 
   private updateActiveSection() {
     if (!isPlatformBrowser(this.platformId)) return;
+    // Pulse has its own #features / #pricing; they aren't the home page sections in the nav.
+    if (this.isPulsePage()) {
+      this.activeSection = null;
+      return;
+    }
 
     const sections: Array<{ id: 'top' | 'features' | 'pricing' | 'download' }> = [
       { id: 'top' },
@@ -122,6 +140,11 @@ export class HeaderComponent {
     ev?.preventDefault();
     this.i18n.setLang(lang);
     this.isLangOpen = false;
+  }
+
+  toggleProducts(ev: MouseEvent) {
+    ev.stopPropagation();
+    this.isProductsOpen = !this.isProductsOpen;
   }
 
   toggleLangMenu(ev: MouseEvent) {

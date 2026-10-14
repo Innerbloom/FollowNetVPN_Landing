@@ -1,6 +1,7 @@
 import { AppLang } from './i18n.service';
 import { getLandingSeoCopy, landingSlugFromPath, titleFromH1 } from './seo-landing.meta';
 import { blogSeoMeta } from './blog-seo';
+import { PULSE_PRIVACY_SEO, PULSE_SEO } from './pulse.content';
 
 export type SeoCopy = {
   title: string;
@@ -62,6 +63,12 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   }
   if (clean === '/affiliates') {
     return affiliatesByLang[lang];
+  }
+  if (clean === '/pulse') {
+    return PULSE_SEO[lang] ?? PULSE_SEO.en;
+  }
+  if (clean === '/pulse/privacy') {
+    return PULSE_PRIVACY_SEO[lang] ?? PULSE_PRIVACY_SEO.en;
   }
   if (clean === '/support') {
     return supportByLang[lang];

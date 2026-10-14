@@ -6,6 +6,7 @@ import { landingSlugFromPath, LandingSlug } from './seo-landing.slugs';
 import { APP_STORE, getSeoCopy, OG_LOCALE } from './seo-copy';
 import { absoluteUrlForLang, SEO_DEFAULT_LANG, splitLangPrefix } from './locale-url';
 import { environment } from '../../environments/environment';
+import { PULSE_APP_STORE_URL, PULSE_PRICE } from './pulse.content';
 
 export interface PageSeoOverride {
   title?: string;
@@ -133,6 +134,8 @@ export class SeoService {
       this.setLandingJsonLd(page);
     } else if (pagePath.startsWith('/blog/')) {
       this.setBlogJsonLd(page);
+    } else if (pagePath === '/pulse') {
+      this.setPulseJsonLd(page);
     } else {
       this.setSimpleWebPageJsonLd(page);
     }
@@ -353,6 +356,48 @@ export class SeoService {
       ],
     };
     this.upsertJsonLd(DYNAMIC_JSONLD_ID, payload);
+  }
+
+  private setPulseJsonLd(p: PageJsonLdInput): void {
+    const faq = p.override.faq ?? [];
+    this.upsertJsonLd(DYNAMIC_JSONLD_ID, {
+      '@context': 'https://schema.org',
+      '@graph': [
+        this.webPageNode(p),
+        this.breadcrumbNode(p),
+        {
+          '@type': 'SoftwareApplication',
+          '@id': `${p.origin}/pulse#app`,
+          name: 'FollowNet Pulse',
+          description: p.copy.description,
+          operatingSystem: 'macOS 14 or later',
+          applicationCategory: 'UtilitiesApplication',
+          downloadUrl: PULSE_APP_STORE_URL,
+          installUrl: PULSE_APP_STORE_URL,
+          image: `${p.origin}/assets/pulse/icon-512.png`,
+          screenshot: `${p.origin}/assets/pulse/${p.lang}/win1.webp`,
+          publisher: { '@id': `${p.origin}/#organization` },
+          offers: [
+            { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
+            { '@type': 'Offer', price: PULSE_PRICE.yearly.replace('$', ''), priceCurrency: 'USD', name: 'Pro (yearly)' },
+            { '@type': 'Offer', price: PULSE_PRICE.lifetime.replace('$', ''), priceCurrency: 'USD', name: 'Pro (lifetime)' },
+          ],
+        },
+        ...(faq.length
+          ? [
+              {
+                '@type': 'FAQPage',
+                '@id': `${p.pageUrl}#faq`,
+                mainEntity: faq.map((item) => ({
+                  '@type': 'Question',
+                  name: item.q,
+                  acceptedAnswer: { '@type': 'Answer', text: item.a },
+                })),
+              },
+            ]
+          : []),
+      ],
+    });
   }
 
   private setSimpleWebPageJsonLd(p: PageJsonLdInput): void {

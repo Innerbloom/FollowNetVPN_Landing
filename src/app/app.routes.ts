@@ -94,6 +94,18 @@ const pageRoutes: Routes = [
       ),
   },
   {
+    path: 'pulse',
+    loadComponent: () =>
+      import('./pages/pulse/pulse.component').then((m) => m.PulsePageComponent),
+  },
+  {
+    path: 'pulse/privacy',
+    loadComponent: () =>
+      import('./pages/pulse/pulse-privacy.component').then(
+        (m) => m.PulsePrivacyPageComponent,
+      ),
+  },
+  {
     path: 'support',
     loadComponent: () =>
       import('./pages/support/support.component').then(
