@@ -61,6 +61,14 @@ const slugs = [...coreSlugs, ...extraSlugs];
 const blogSlugs = extractBlogSlugs(blogTs, blogExtraTs);
 const blogDates = extractBlogDates(blogTs, blogExtraTs);
 
+/** Pulse is listed only once PULSE_PUBLIC is true in pulse.content.ts. */
+const pulseTs = readFileSync(join(root, 'src/app/core/pulse.content.ts'), 'utf8');
+const pulsePublic = /PULSE_PUBLIC\s*=\s*true/.test(pulseTs);
+
+/** Shell is listed only once its App Store URL is filled in (see SHELL_PUBLIC in shell.content.ts). */
+const shellTs = readFileSync(join(root, 'src/app/core/shell.content.ts'), 'utf8');
+const shellPublic = !/SHELL_APP_STORE_URL\s*=\s*''/.test(shellTs);
+
 const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'pt', 'uk'];
 const SITE = 'https://follow-net.com';
 const LASTMOD = new Date().toISOString().slice(0, 10);
@@ -74,6 +82,7 @@ const staticPaths = [
   '/features',
   '/download',
   '/download/ios',
+  '/download/mac',
   '/download/chrome',
   '/about',
   '/press',
@@ -82,6 +91,9 @@ const staticPaths = [
   '/status',
   '/pulse',
   '/pulse/privacy',
+  '/shell',
+  '/shell/privacy',
+  '/shell/terms',
 ];
 const landingPaths = slugs.map((s) => `/${s}`);
 const blogPaths = blogSlugs.map((s) => `/blog/${s}`);
@@ -136,9 +148,21 @@ const sitemapPaths = [
   ['/features', '0.8'],
   ['/download', '0.85'],
   ['/download/ios', '0.8'],
+  ['/download/mac', '0.8'],
   ['/download/chrome', '0.8'],
-  ['/pulse', '0.85'],
-  ['/pulse/privacy', '0.5'],
+  ...(pulsePublic
+    ? [
+        ['/pulse', '0.85'],
+        ['/pulse/privacy', '0.5'],
+      ]
+    : []),
+  ...(shellPublic
+    ? [
+        ['/shell', '0.85'],
+        ['/shell/privacy', '0.5'],
+        ['/shell/terms', '0.5'],
+      ]
+    : []),
   ['/about', '0.7'],
   ['/press', '0.75'],
   ['/affiliates', '0.75'],

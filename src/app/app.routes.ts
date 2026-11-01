@@ -63,6 +63,13 @@ const pageRoutes: Routes = [
       ),
   },
   {
+    path: 'download/mac',
+    loadComponent: () =>
+      import('./pages/download/download-mac.component').then(
+        (m) => m.DownloadMacComponent,
+      ),
+  },
+  {
     path: 'download/chrome',
     loadComponent: () =>
       import('./pages/download/download-chrome.component').then(
@@ -103,6 +110,25 @@ const pageRoutes: Routes = [
     loadComponent: () =>
       import('./pages/pulse/pulse-privacy.component').then(
         (m) => m.PulsePrivacyPageComponent,
+      ),
+  },
+  {
+    path: 'shell',
+    loadComponent: () =>
+      import('./pages/shell/shell.component').then((m) => m.ShellPageComponent),
+  },
+  {
+    path: 'shell/privacy',
+    loadComponent: () =>
+      import('./pages/shell/shell-privacy.component').then(
+        (m) => m.ShellPrivacyPageComponent,
+      ),
+  },
+  {
+    path: 'shell/terms',
+    loadComponent: () =>
+      import('./pages/shell/shell-terms.component').then(
+        (m) => m.ShellTermsPageComponent,
       ),
   },
   {

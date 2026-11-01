@@ -168,7 +168,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Ce qui n’est pas prêt',
-        body: 'Pas encore d’app macOS. La connexion auto iOS n’est pas un kill switch anti-fuite ; celui de Chrome l’est. Les emplacements et offres actuels sont dans la build App Store.',
+        body: 'La connexion auto iOS n’est pas un kill switch anti-fuite ; celui de Chrome l’est. Les emplacements et offres actuels sont dans la build App Store.',
       },
       {
         title: 'Contact',

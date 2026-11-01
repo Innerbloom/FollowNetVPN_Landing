@@ -42,6 +42,7 @@ const FAQ_KEYS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'FAQ_Q9', a: 'FAQ_A9' },
   { q: 'FAQ_Q10', a: 'FAQ_A10' },
   { q: 'FAQ_Q11', a: 'FAQ_A11' },
+  { q: 'FAQ_Q12', a: 'FAQ_A12' },
 ];
 
 @Injectable({ providedIn: 'root' })
@@ -237,7 +238,7 @@ export class SeoService {
           '@type': 'MobileApplication',
           '@id': `${origin}/#app`,
           name: 'FollowNet VPN',
-          operatingSystem: 'iOS',
+          operatingSystem: 'iOS, iPadOS, macOS',
           applicationCategory: 'SecurityApplication',
           offers: {
             '@type': 'Offer',
@@ -300,7 +301,7 @@ export class SeoService {
           '@type': 'MobileApplication',
           '@id': `${p.origin}/#app`,
           name: 'FollowNet VPN',
-          operatingSystem: 'iOS',
+          operatingSystem: 'iOS, iPadOS, macOS',
           applicationCategory: 'SecurityApplication',
           downloadUrl: APP_STORE,
           installUrl: APP_STORE,

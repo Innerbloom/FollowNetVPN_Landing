@@ -11,7 +11,7 @@
 
       <nav class="nav">
         <a [routerLink]="(['/']) | localize" fragment="top" [class.active]="activeSection==='top'">{{ i18n.t('NAV_HOME') }}</a>
-        <div class="products-dd" (mouseenter)="isProductsOpen = true" (mouseleave)="isProductsOpen = false">
+        <div *ngIf="hasOtherProducts" class="products-dd" (mouseenter)="isProductsOpen = true" (mouseleave)="isProductsOpen = false">
           <button class="products-btn" type="button" (click)="toggleProducts($event)" [attr.aria-expanded]="isProductsOpen" aria-haspopup="true">
             {{ i18n.t('NAV_PRODUCTS') }}
             <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -21,9 +21,13 @@
               <img src="/assets/new_logo-96.png?v=fn5" alt="" width="36" height="36" />
               <span class="product-text"><b>FollowNet VPN</b><small>{{ i18n.t('PRODUCT_VPN_DESC') }}</small></span>
             </a>
-            <a class="product-item" role="menuitem" [routerLink]="'/pulse' | localize" (click)="isProductsOpen = false">
+            <a *ngIf="pulsePublic" class="product-item" role="menuitem" [routerLink]="'/pulse' | localize" (click)="isProductsOpen = false">
               <img class="product-icon--app" src="/assets/pulse/icon-192.webp" alt="" width="36" height="36" />
               <span class="product-text"><b>FollowNet Pulse <em>{{ i18n.t('PRODUCT_NEW') }}</em></b><small>{{ i18n.t('PRODUCT_PULSE_DESC') }}</small></span>
+            </a>
+            <a *ngIf="shellPublic" class="product-item" role="menuitem" [routerLink]="'/shell' | localize" (click)="isProductsOpen = false">
+              <img class="product-icon--app" src="/assets/shell/icon-192.webp" alt="" width="36" height="36" />
+              <span class="product-text"><b>FollowNet Shell <em>{{ i18n.t('PRODUCT_NEW') }}</em></b><small>{{ i18n.t('PRODUCT_SHELL_DESC') }}</small></span>
             </a>
           </div>
         </div>
@@ -83,15 +87,19 @@
         <a [routerLink]="'/account' | localize" (click)="closeMenu()">{{ i18n.t('NAV_ACCOUNT') }}</a>
       </div>
 
-      <div class="mobile-group">
+      <div *ngIf="hasOtherProducts" class="mobile-group">
         <p class="mobile-title">{{ i18n.t('NAV_PRODUCTS') }}</p>
         <a class="mobile-product" [routerLink]="'/' | localize" (click)="closeMenu()">
           <img src="/assets/new_logo-96.png?v=fn5" alt="" width="28" height="28" />
           <span><b>FollowNet VPN</b><small>{{ i18n.t('PRODUCT_VPN_DESC') }}</small></span>
         </a>
-        <a class="mobile-product" [routerLink]="'/pulse' | localize" (click)="closeMenu()">
+        <a *ngIf="pulsePublic" class="mobile-product" [routerLink]="'/pulse' | localize" (click)="closeMenu()">
           <img class="product-icon--app" src="/assets/pulse/icon-192.webp" alt="" width="28" height="28" />
           <span><b>FollowNet Pulse</b><small>{{ i18n.t('PRODUCT_PULSE_DESC') }}</small></span>
+        </a>
+        <a *ngIf="shellPublic" class="mobile-product" [routerLink]="'/shell' | localize" (click)="closeMenu()">
+          <img class="product-icon--app" src="/assets/shell/icon-192.webp" alt="" width="28" height="28" />
+          <span><b>FollowNet Shell</b><small>{{ i18n.t('PRODUCT_SHELL_DESC') }}</small></span>
         </a>
       </div>
 

@@ -7,7 +7,8 @@ import { AppLang, I18nService, SUPPORTED_LANGS } from '../../core/i18n.service';
 import { appStoreUrl, isAndroidBrowser, playStoreUrl } from '../../core/app-store-url';
 import { splitLangPrefix } from '../../core/locale-url';
 import { environment } from '../../../environments/environment';
-import { PULSE_APP_STORE_URL } from '../../core/pulse.content';
+import { PULSE_APP_STORE_URL, PULSE_PUBLIC } from '../../core/pulse.content';
+import { SHELL_APP_STORE_URL, SHELL_PUBLIC } from '../../core/shell.content';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,10 @@ export class HeaderComponent {
   private readonly defaultStoreUrl: string;
   readonly appStoreMenuUrl = appStoreUrl('header-menu');
   readonly playStoreMenuUrl = playStoreUrl('header-menu');
+  readonly shellPublic = SHELL_PUBLIC;
+  readonly pulsePublic = PULSE_PUBLIC;
+  /** The Products menu only makes sense once something besides the VPN is out. */
+  readonly hasOtherProducts = PULSE_PUBLIC || SHELL_PUBLIC;
   logoSrc = '/assets/new_logo-96.png?v=fn5';
   isMenuOpen = false;
   activeSection: 'top' | 'features' | 'pricing' | 'download' | null = null;
@@ -48,8 +53,13 @@ export class HeaderComponent {
       .subscribe(() => {
         this.closeMenu();
         this.isProductsOpen = false;
-        // On Pulse pages the header download button points at the Mac App Store.
-        this.iosAppStoreUrl = this.isPulsePage() ? PULSE_APP_STORE_URL : this.defaultStoreUrl;
+        // On product pages the header download button points at that product's store listing
+        // (Shell: its own page until the App Store listing is live).
+        this.iosAppStoreUrl = this.isPulsePage()
+          ? PULSE_APP_STORE_URL
+          : this.isShellPage()
+            ? SHELL_APP_STORE_URL || 'https://follow-net.com/shell#pricing'
+            : this.defaultStoreUrl;
         if (!this.isLegalPage() && isPlatformBrowser(this.platformId)) {
           setTimeout(() => this.updateActiveSection(), 0);
         } else {
@@ -92,6 +102,10 @@ export class HeaderComponent {
     return splitLangPrefix(this.router.url).path.startsWith('/pulse');
   }
 
+  isShellPage(): boolean {
+    return splitLangPrefix(this.router.url).path.startsWith('/shell');
+  }
+
   private isLegalPage(): boolean {
     const { path } = splitLangPrefix(this.router.url);
     return path.startsWith('/privacy') || path.startsWith('/terms');
@@ -99,8 +113,8 @@ export class HeaderComponent {
 
   private updateActiveSection() {
     if (!isPlatformBrowser(this.platformId)) return;
-    // Pulse has its own #features / #pricing; they aren't the home page sections in the nav.
-    if (this.isPulsePage()) {
+    // Pulse and Shell have their own #features / #pricing; they aren't the home page sections in the nav.
+    if (this.isPulsePage() || this.isShellPage()) {
       this.activeSection = null;
       return;
     }

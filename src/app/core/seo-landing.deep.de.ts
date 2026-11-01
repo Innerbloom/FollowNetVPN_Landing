@@ -1662,4 +1662,242 @@ export const DEEP: DeepGuides = {
       { q: 'Warum werben manche iPhone-VPNs mit Split-Tunneling?', a: 'Meist ist es auf IP-Bereiche oder verwaltete Geräte beschränkt. Prüfen Sie, was genau ausgenommen wird, bevor Sie sich darauf verlassen.' },
     ],
   },
+  'vpn-for-mac': {
+    "h1": "VPN für Mac — FollowNet schützt jede App auf dem MacBook",
+    "lead": "FollowNet ist ein systemweites VPN für den Mac: Safari, Chrome, Mail, Slack, Telegram und alle anderen Apps laufen durch den verschlüsselten Tunnel. Es ist dieselbe App Store-App wie auf iPhone und iPad, mit Menüleisten-Symbol, Kill Switch und kostenlosem Einstieg.",
+    "sections": [
+      {
+        "title": "Warum ein VPN auf dem Mac",
+        "body": "Ein MacBook wechselt viel häufiger das Netz als ein Desktop: Café, Coworking, Hotel, Flughafen, Konferenz-WLAN. In jedem dieser Netze sieht der Betreiber, welche Seiten und Dienste Sie aufrufen, und kann unverschlüsselten Verkehr manipulieren. Ein VPN verschlüsselt alles zwischen Mac und VPN-Server — der Hotspot sieht nur eine verschlüsselte Verbindung zu FollowNet. Zu Hause verhindert es, dass Ihr Provider ein Surfprofil erstellt."
+      },
+      {
+        "title": "Der ganze Mac, nicht nur der Browser",
+        "body": "Browser-Erweiterungen leiten nur einen Browser um. FollowNet für Mac nutzt Apples Network Extension — dieselbe System-VPN-Schicht wie Firmen-VPNs unter macOS — und schützt damit jede App: andere Browser, Mail-Clients, Messenger, Zoom, Musik, den App Store und Tools im Terminal. Wenn Sie nur Chrome schützen möchten, gibt es weiterhin die FollowNet-Erweiterung für Chrome; die Mac-App ist für den ganzen Rechner."
+      },
+      {
+        "title": "Gemacht für macOS: Menüleiste, Kurzbefehle, Seitenleiste",
+        "body": "Nach der ersten Verbindung brauchen Sie das Hauptfenster kaum noch. Ein Schild-Symbol in der Menüleiste zeigt den Zustand — gefüllt bei aktivem Schutz, durchgestrichen wenn aus. Sein Menü zeigt Server, Protokoll und Verbindungsdauer, verbindet und trennt (⌘K / ⌘D) und wechselt Server: optimaler Standort, Favoriten oder jedes Land. Das Hauptfenster nutzt eine Mac-Seitenleiste mit Start, Server, Speed Test und Einstellungen."
+      },
+      {
+        "title": "Kill Switch und Auto-Connect auf dem Mac",
+        "body": "Schalten Sie den Kill Switch in den Einstellungen ein, dann verwirft macOS Verkehr, statt ihn am VPN vorbei zu senden, während der Tunnel startet, nach dem Ruhezustand neu verbindet oder das Netz wechselt. Lokale Geräte bleiben erreichbar — AirDrop, AirPlay und Drucker im Netz funktionieren weiter. Auto-Connect startet das VPN nur im WLAN oder immer, damit Sie im Café nicht ans Verbinden denken müssen."
+      },
+      {
+        "title": "Protokolle für schwierige Netze",
+        "body": "Der Mac hat denselben Protokollsatz wie das iPhone: WireGuard für Tempo, IKEv2 für stabile Wiederverbindungen, AmneziaWG, Hysteria2 und VLESS Reality für Netze, die normales VPN blockieren oder drosseln. Lassen Sie das Protokoll auf Smart — die App wählt eines, das im aktuellen Netz wirklich Daten durchlässt, und wechselt automatisch, wenn der erste Versuch scheitert."
+      },
+      {
+        "title": "Ein Konto und ein Abo auf allen Geräten",
+        "body": "Melden Sie sich auf dem Mac mit derselben E-Mail wie auf dem iPhone an — ohne Passwort, die App schickt einen Einmalcode. Im App Store gekauftes Premium funktioniert mit derselben Apple-ID auch auf dem Mac und gilt für bis zu fünf Geräte. Free enthält ein wöchentliches Datenvolumen, damit Sie die Mac-App vor dem Kauf in echten Netzen testen können."
+      }
+    ],
+    "bullets": [
+      "Systemweites VPN für jede App ab macOS 14 Sonoma",
+      "Menüleisten-Symbol mit Status, Verbinden und Serverwechsel",
+      "Kill Switch, Auto-Connect, DNS-Profile und Speed Test",
+      "WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality + Smart Connect",
+      "Dieselbe App Store-App und dasselbe Konto wie auf iPhone und iPad"
+    ],
+    "cta": "Für Mac laden",
+    "faq": [
+      {
+        "q": "Gibt es FollowNet für den Mac?",
+        "a": "Ja. FollowNet ist eine universelle App Store-App: derselbe Eintrag installiert sie auf iPhone, iPad und Mac. Auf dem Mac ist macOS 14 Sonoma oder neuer nötig."
+      },
+      {
+        "q": "Schützt das Mac-VPN alle Apps oder nur den Browser?",
+        "a": "Alle Apps. Die Mac-App baut über Apples Network Extension einen System-VPN-Tunnel auf, durch den jeder Browser und jede App läuft. Die separate Chrome-Erweiterung schützt nur Chrome."
+      },
+      {
+        "q": "Muss ich für den Mac erneut zahlen, wenn ich Premium auf dem iPhone habe?",
+        "a": "Nein. Im App Store gekauftes Premium funktioniert mit derselben Apple-ID auf dem Mac. Erscheint es nicht sofort, tippen Sie auf „Käufe wiederherstellen“."
+      },
+      {
+        "q": "Hat FollowNet für Mac einen Kill Switch?",
+        "a": "Ja. In den Einstellungen aktivieren, dann blockiert macOS Verkehr außerhalb des VPN, während der Tunnel startet oder neu verbindet. AirDrop, AirPlay und lokale Drucker funktionieren weiter."
+      }
+    ]
+  },
+  'free-vpn-mac': {
+    "h1": "Kostenloses VPN für Mac — was FollowNet Free bietet",
+    "lead": "FollowNet hat einen kostenlosen Tarif für den Mac: ein echtes systemweites VPN mit WireGuard und Smart Connect, wöchentlichem Datenvolumen und ohne Kreditkarte. Hier steht, was Free enthält, wo die Grenzen liegen und wann sich Premium lohnt.",
+    "sections": [
+      {
+        "title": "Was der Free-Tarif enthält",
+        "body": "Free ist dieselbe Mac-App wie Premium, keine Demo. Sie bekommen den System-VPN-Tunnel für alle Apps, das Menüleisten-Symbol, Smart Connect und alle Protokolle, Kill Switch, Auto-Connect, DNS-Profile und Speed Test. Der Unterschied liegt im Datenvolumen pro Woche und in den Standorten: Free nutzt die als Free markierten Server, Premium schaltet alle frei."
+      },
+      {
+        "title": "So funktioniert das Wochenvolumen",
+        "body": "Der Free-Traffic wird pro Woche gezählt und automatisch zurückgesetzt; die App zeigt den Rest an. Das reicht, um Mail, Messenger, Banking und Surfen im öffentlichen WLAN zu schützen. Für ganztägiges Video-Streaming oder große Downloads durch den Tunnel ist es nicht gedacht — ist das Volumen aufgebraucht, trennt das VPN bis zum Reset oder bis zum Upgrade."
+      },
+      {
+        "title": "Warum viele Gratis-VPNs für Mac ein schlechter Deal sind",
+        "body": "VPN-Server kosten Geld. Ein VPN, das für immer und unbegrenzt gratis ist, muss anders verdienen — mit Werbung, Datenverkauf oder gebündelter Software. FollowNet wird von Premium-Abonnenten bezahlt; Free gibt es, damit Sie Tempo und Zuverlässigkeit in Ihren eigenen Netzen testen können. Was der Dienst genau verarbeitet, steht in der Datenschutzerklärung."
+      },
+      {
+        "title": "Kein Passwort, keine Kreditkarte",
+        "body": "FollowNet aus dem App Store laden, mit E-Mail und dem Einmalcode anmelden und verbinden. Für Free geben Sie keine Zahlungsdaten ein. Kaufen Sie später Premium auf iPhone, iPad oder Mac, gilt es für dasselbe Konto und dieselbe Apple-ID auf allen Geräten."
+      },
+      {
+        "title": "Wann sich Premium lohnt",
+        "body": "Upgraden Sie, wenn das Wochenvolumen regelmäßig nicht reicht — etwa wenn der Mac täglich im Hotel- oder Coworking-WLAN ist, Sie stundenlang über das VPN arbeiten oder einen Standort brauchen, der nicht in der Free-Liste steht. Premium hebt das Limit auf, öffnet alle Standorte und gilt für bis zu fünf Geräte."
+      }
+    ],
+    "bullets": [
+      "Free mit wöchentlichem Datenvolumen — ohne Kreditkarte",
+      "Echtes System-VPN für jede App, kein reiner Browser-Proxy",
+      "Smart Connect, WireGuard und alle weiteren Protokolle",
+      "Kill Switch, Auto-Connect und Menüleisten-Symbol auch in Free"
+    ],
+    "cta": "Für Mac laden",
+    "faq": [
+      {
+        "q": "Ist FollowNet auf dem Mac wirklich kostenlos?",
+        "a": "Ja. Laden Sie es aus dem App Store und nutzen Sie den Free-Tarif mit wöchentlichem Datenvolumen. Zahlungsdaten sind nicht nötig."
+      },
+      {
+        "q": "Was passiert, wenn das Gratis-Volumen aufgebraucht ist?",
+        "a": "Das VPN trennt bis zum wöchentlichen Reset. Der Mac funktioniert ohne VPN normal weiter, oder Sie wechseln zu Premium mit unbegrenztem Traffic."
+      },
+      {
+        "q": "Gibt es in Free Werbung?",
+        "a": "Premium ist werbefrei; in Free können in der App Angebote erscheinen. Der VPN-Tunnel selbst blendet keine Werbung in Websites ein."
+      }
+    ]
+  },
+  'how-to-setup-vpn-mac': {
+    "h1": "VPN auf dem Mac einrichten — Schritt für Schritt mit FollowNet",
+    "lead": "Ein VPN auf dem Mac einzurichten dauert etwa zwei Minuten: App aus dem App Store laden, die VPN-Konfiguration einmal erlauben und verbinden. Diese Anleitung erklärt jede macOS-Abfrage und die Einstellungen, die sich nach der ersten Verbindung lohnen.",
+    "sections": [
+      {
+        "title": "Bevor Sie starten",
+        "body": "Sie brauchen macOS 14 Sonoma oder neuer und eine im App Store angemeldete Apple-ID. Ist bereits ein anderes VPN verbunden, trennen Sie es zuerst — macOS betreibt immer nur ein System-VPN. Zeigt das Hotel- oder Flughafen-WLAN eine Anmeldeseite, erledigen Sie diese vor dem Verbinden in Safari."
+      },
+      {
+        "title": "Die VPN-Berechtigung von macOS erklärt",
+        "body": "Bei der ersten Verbindung zeigt macOS „FollowNet möchte VPN-Konfigurationen hinzufügen“. Das ist Apples Standardabfrage für jedes VPN aus dem App Store: Die App darf ein Profil unter Systemeinstellungen → VPN anlegen. Klicken Sie auf „Erlauben“ und bestätigen Sie mit Touch ID oder Ihrem Mac-Passwort. Das passiert nur einmal; danach schaltet die App den Tunnel selbst ein und aus."
+      },
+      {
+        "title": "Einstellungen nach der ersten Verbindung",
+        "body": "Öffnen Sie die Einstellungen in der Seitenleiste. Aktivieren Sie den Kill Switch, wenn beim Neuverbinden kein Verkehr am VPN vorbeigehen soll. Stellen Sie Auto-Connect auf „Nur WLAN“, wenn Ihr MacBook oft in öffentlichen Netzen ist. Wählen Sie ein DNS-Profil — Cloudflare, Google, Quad9 oder AdGuard gegen Werbung und Tracker. Lassen Sie das Protokoll auf Smart, solange Sie keinen Grund zum Festlegen haben."
+      },
+      {
+        "title": "Prüfen, ob das VPN wirklich arbeitet",
+        "body": "Ein grüner Status ist ein gutes Zeichen, aber testen Sie es: Starten Sie den Speed Test in der App und öffnen Sie dann eine beliebige „Wie ist meine IP“-Seite — dort sollte das Land des VPN-Servers stehen, nicht Ihres. Laden Seiten nicht, wechseln Sie den Standort in der Menüleiste oder lassen Sie Smart Connect ein anderes Protokoll versuchen."
+      },
+      {
+        "title": "Wenn keine Verbindung zustande kommt",
+        "body": "Meist liegt es am Netz, nicht am Mac. Schließen Sie die WLAN-Anmeldung ab, beenden Sie andere VPN- oder Proxy-Apps und probieren Sie einen anderen Standort. In Netzen, die VPN blockieren, wechselt Smart Connect zu AmneziaWG, Hysteria2 oder VLESS Reality. Für einen Neustart entfernen Sie das FollowNet-Profil unter Systemeinstellungen → VPN und verbinden erneut — die App fragt dann noch einmal um Erlaubnis."
+      }
+    ],
+    "steps": {
+      "title": "FollowNet auf dem Mac einrichten",
+      "items": [
+        "Öffnen Sie den App Store auf dem Mac, suchen Sie FollowNet VPN und klicken Sie auf „Laden“.",
+        "Starten Sie FollowNet und melden Sie sich mit Ihrer E-Mail an — geben Sie den Einmalcode aus der Mail ein.",
+        "Klicken Sie auf „Verbinden“. Fragt macOS nach VPN-Konfigurationen, klicken Sie auf „Erlauben“ und bestätigen mit Touch ID oder Passwort.",
+        "Warten Sie, bis das Schild in der Menüleiste gefüllt ist — Ihr Mac ist geschützt.",
+        "Optional: In den Einstellungen Kill Switch, Auto-Connect und ein DNS-Profil wählen."
+      ]
+    },
+    "bullets": [
+      "Etwa zwei Minuten vom Download bis zur ersten Verbindung",
+      "Einmalige VPN-Berechtigung, danach ein Klick",
+      "Schild in der Menüleiste zeigt den Status auf einen Blick",
+      "Läuft ab macOS 14 Sonoma"
+    ],
+    "cta": "Für Mac laden",
+    "faq": [
+      {
+        "q": "Wo finde ich die VPN-Einstellungen auf dem Mac?",
+        "a": "macOS listet VPN-Profile unter Systemeinstellungen → VPN. FollowNet legt dort nach Ihrer Erlaubnis sein Profil an; Verbindung, Protokoll und Kill Switch steuern Sie aber in der App."
+      },
+      {
+        "q": "Warum fragt macOS beim VPN nach meinem Passwort?",
+        "a": "Eine System-VPN-Konfiguration ändert Netzwerkeinstellungen, daher verlangt macOS eine Bestätigung per Touch ID oder Passwort. Das ist ein einmaliger Schritt."
+      },
+      {
+        "q": "Kann ich FollowNet und ein anderes VPN gleichzeitig nutzen?",
+        "a": "Nein. macOS betreibt immer nur einen System-VPN-Tunnel. Trennen Sie das andere VPN, bevor Sie FollowNet verbinden."
+      }
+    ]
+  },
+  'wireguard-vpn-mac': {
+    "h1": "WireGuard VPN für Mac — schneller Tunnel ohne Konfigurationsdateien",
+    "lead": "WireGuard ist das schnellste verbreitete VPN-Protokoll, und FollowNet nutzt es auf dem Mac ohne Schlüssel oder Konfigurationsdateien. Wird WireGuard blockiert, wechselt dieselbe App zu AmneziaWG, Hysteria2 oder VLESS Reality.",
+    "sections": [
+      {
+        "title": "Warum WireGuard auf dem Mac",
+        "body": "WireGuard hat eine kleine, moderne Codebasis und aktuelle Kryptografie. In der Praxis heißt das schnelle Handshakes, wenig Overhead und gutes Tempo im WLAN wie am Kabel. Auf dem MacBook verkraftet es Ruhezustand und Netzwechsel gut: Deckel auf im neuen Netz — der Tunnel steht in Sekunden wieder."
+      },
+      {
+        "title": "WireGuard ohne Konfigurationsdateien",
+        "body": "Mit einem normalen WireGuard-Client müssen Sie Schlüssel erzeugen, pro Server eine .conf-Datei laden und importieren. FollowNet erledigt das: Standort in der App oder Menüleiste wählen, und der WireGuard-Peer wird automatisch eingerichtet. Ein Serverwechsel ist ein Klick statt eines weiteren Imports."
+      },
+      {
+        "title": "Wenn WireGuard blockiert wird: AmneziaWG und mehr",
+        "body": "Manche Netze — Firmen-Firewalls, Hotel-Gateways, einzelne Länder — erkennen und blockieren normalen WireGuard-Verkehr. AmneziaWG behält das Tempo von WireGuard, verändert aber das Aussehen der Pakete, damit sie schwerer zu filtern sind. Hysteria2 läuft über QUIC und kommt gut mit verlustreichen Leitungen zurecht; VLESS Reality tarnt die Verbindung als normales HTTPS. Smart Connect probiert sie nacheinander, wenn WireGuard nicht durchkommt."
+      },
+      {
+        "title": "Das Protokoll selbst wählen",
+        "body": "Unter Einstellungen → VPN-Protokoll können Sie Smart (empfohlen) lassen oder WireGuard, IKEv2, AmneziaWG, Hysteria2 bzw. VLESS Reality festlegen. Legen Sie WireGuard in einem bekannten guten Netz fest, wenn Sie das berechenbarste Tempo wollen. Vergleichen Sie Protokolle im selben Netz mit dem Speed Test der App statt zu raten."
+      }
+    ],
+    "table": {
+      "title": "Protokolle in FollowNet für Mac",
+      "head": [
+        "Protokoll",
+        "Am besten für",
+        "Nachteil"
+      ],
+      "rows": [
+        [
+          "WireGuard",
+          "Tempo in normalen Netzen",
+          "Strenge Firewalls können blockieren"
+        ],
+        [
+          "IKEv2",
+          "Stabile Wiederverbindung beim Netzwechsel",
+          "Leichter zu erkennen und zu blockieren"
+        ],
+        [
+          "AmneziaWG",
+          "Netze, die WireGuard filtern",
+          "Etwas mehr Overhead"
+        ],
+        [
+          "Hysteria2",
+          "Verlustreiche oder überlastete Leitungen (QUIC)",
+          "UDP ist in manchen WLANs gesperrt"
+        ],
+        [
+          "VLESS Reality",
+          "Stark gefilterte Netze",
+          "In ruhigen Netzen nicht am schnellsten"
+        ]
+      ]
+    },
+    "bullets": [
+      "WireGuard wird automatisch eingerichtet — keine Schlüssel, keine .conf",
+      "AmneziaWG, Hysteria2 und VLESS Reality, wenn WireGuard blockiert ist",
+      "Smart Connect wählt ein Protokoll, das wirklich Daten durchlässt",
+      "Verfügbar in Free und Premium"
+    ],
+    "cta": "Für Mac laden",
+    "faq": [
+      {
+        "q": "Nutzt FollowNet WireGuard auf dem Mac?",
+        "a": "Ja. WireGuard ist eines der Protokolle der Mac-App. Der Smart-Modus nutzt es, wenn es in Ihrem Netz funktioniert, oder Sie legen es unter Einstellungen → VPN-Protokoll fest."
+      },
+      {
+        "q": "Brauche ich zusätzlich die offizielle WireGuard-App?",
+        "a": "Nein. FollowNet bringt eine eigene WireGuard-Implementierung mit und richtet die Server für Sie ein."
+      },
+      {
+        "q": "Was unterscheidet WireGuard von AmneziaWG?",
+        "a": "AmneziaWG basiert auf WireGuard, verändert aber das Aussehen der Pakete, sodass Netze, die WireGuard filtern, es seltener blockieren."
+      }
+    ]
+  },
 };

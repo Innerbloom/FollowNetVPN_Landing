@@ -10,7 +10,7 @@ import { hasLandingMeta, metaDescriptionFromLead, titleFromH1 } from '../../core
 import { environment } from '../../../environments/environment';
 import { deepGuideCached } from '../../core/seo-landing.deep';
 import type { LandingShot } from '../../core/seo-landing.content';
-import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, macAppStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { guideBlogSlugs } from '../../core/blog-guide-links';
 import { blogPosts, type BlogPostView } from '../../core/blog.content';
 
@@ -24,8 +24,13 @@ import { blogPosts, type BlogPostView } from '../../core/blog.content';
 export class SeoLandingComponent implements OnInit {
   readonly iosAppStoreUrl = environment.iosAppStoreUrl;
 
+  /** Mac guides send people to the Mac tab of the same App Store listing. */
+  get isMacGuide(): boolean {
+    return !!this.slug && /(^|-)mac$/.test(this.slug);
+  }
+
   appStoreHref(): string {
-    return appStoreUrl(this.slug ?? undefined);
+    return this.isMacGuide ? macAppStoreUrl(this.slug ?? undefined) : appStoreUrl(this.slug ?? undefined);
   }
 
   playStoreHref(): string {

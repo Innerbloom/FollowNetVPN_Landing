@@ -17,9 +17,10 @@
           [href]="appStoreHref()"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ i18n.t('HERO_CTA_PRIMARY') }}</a
+          >{{ i18n.t(isMacGuide ? 'DOWNLOAD_MAC_CTA' : 'HERO_CTA_PRIMARY') }}</a
         >
         <a
+          *ngIf="!isMacGuide"
           class="btn primary"
           [href]="playStoreHref()"
           target="_blank"

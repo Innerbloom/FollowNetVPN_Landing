@@ -13,6 +13,7 @@ import { environment } from '../../../environments/environment';
       [page]="page"
       seoPath="/download"
       [showChromeCta]="true"
+      [showMacCta]="true"
       [showPlayCta]="true"
       [primaryHref]="iosUrl"
       secondaryHref="/download/ios"

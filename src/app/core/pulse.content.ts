@@ -4,6 +4,11 @@ import type { SeoCopy } from './seo-copy';
 
 /** FollowNet Pulse — menu bar system monitor for macOS (Mac App Store). */
 export const PULSE_APP_STORE_URL = 'https://apps.apple.com/app/follownet-pulse/id6822468257';
+/**
+ * Flip to true once Pulse is live on the Mac App Store. Until then it stays out of the menus,
+ * footer and sitemap and is noindex; the pages stay reachable by URL (App Review needs /pulse/privacy).
+ */
+export const PULSE_PUBLIC = false;
 export const PULSE_PRICE = { yearly: '$4.99', lifetime: '$14.99' } as const;
 
 export type PulseFeatureIcon = 'menubar' | 'cpu' | 'memory' | 'network' | 'battery' | 'palette';

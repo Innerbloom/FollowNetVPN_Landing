@@ -31,23 +31,23 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   en: {
     kicker: 'Download',
     h1: 'Download FollowNet VPN',
-    lead: 'Get FollowNet on iPhone and iPad from the App Store, on Android from Google Play, or protect Chrome on desktop with the official extension. Same product honesty: Free to try, Premium when you need unlimited.',
+    lead: 'Get FollowNet on iPhone, iPad and Mac from the App Store, on Android from Google Play, or protect Chrome with the official extension. Same product honesty: Free to try, Premium when you need unlimited.',
     blocks: [
       {
-        title: 'iOS first',
-        body: 'The native iPhone and iPad app is the core of FollowNet — Network Extension tunnel, Smart Connect, protocol control, DNS profiles, widgets, and Auto-connect.',
+        title: 'iPhone, iPad and Mac',
+        body: 'One universal App Store app runs on iPhone, iPad and Mac — Network Extension tunnel, Smart Connect, protocol control and DNS profiles, with the same account and Premium on every Apple device. On Mac it protects every app, not just the browser.',
       },
       {
-        title: 'Chrome when you are at a desk',
-        body: 'The Chrome extension covers browser sessions on desktop without waiting for a full macOS client. Sign in with the same FollowNet account flow.',
+        title: 'Chrome when you only need the browser',
+        body: 'The Chrome extension proxies browser sessions on any desktop, including Windows and Linux. Sign in with the same FollowNet account flow.',
       },
       {
-        title: 'Android and macOS',
-        body: 'Android is live on Google Play: the same protocols, Smart Connect and kill switch, with the same FollowNet account. macOS is on the roadmap — we would rather ship fewer platforms well than half-broken clients everywhere.',
+        title: 'Android',
+        body: 'Android is live on Google Play: the same protocols, Smart Connect and kill switch, with the same FollowNet account.',
       },
     ],
     bullets: [
-      'iOS: App Store — Free weekly traffic cap, Premium optional',
+      'iPhone, iPad and Mac: App Store — Free weekly traffic cap, Premium optional',
       'Android: Google Play — Free weekly traffic cap, Premium optional',
       'Chrome: Chrome Web Store extension',
       'Protocols: WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -57,23 +57,23 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   ru: {
     kicker: 'Скачать',
     h1: 'Скачать FollowNet VPN',
-    lead: 'FollowNet на iPhone и iPad — из App Store, на Android — из Google Play, а для Chrome на десктопе — официальное расширение. Та же честность: Free чтобы попробовать, Premium когда нужен безлимит.',
+    lead: 'FollowNet на iPhone, iPad и Mac — из App Store, на Android — из Google Play, а для Chrome — официальное расширение. Та же честность: Free чтобы попробовать, Premium когда нужен безлимит.',
     blocks: [
       {
-        title: 'Сначала iOS',
-        body: 'Нативное приложение для iPhone и iPad — ядро FollowNet: туннель Network Extension, Smart Connect, протоколы, DNS, виджеты и автоподключение.',
+        title: 'iPhone, iPad и Mac',
+        body: 'Одно универсальное приложение в App Store работает на iPhone, iPad и Mac: туннель Network Extension, Smart Connect, выбор протокола и DNS — с тем же аккаунтом и Premium на всех устройствах Apple. На Mac защищает все приложения, а не только браузер.',
       },
       {
-        title: 'Chrome за столом',
-        body: 'Расширение Chrome закрывает браузер на десктопе без ожидания полноценного macOS-клиента. Вход в том же аккаунтном потоке FollowNet.',
+        title: 'Chrome, если нужен только браузер',
+        body: 'Расширение Chrome проксирует браузер на любом компьютере, включая Windows и Linux. Вход в том же аккаунтном потоке FollowNet.',
       },
       {
-        title: 'Android и macOS',
-        body: 'Android уже в Google Play: те же протоколы, Smart Connect и kill switch, тот же аккаунт FollowNet. macOS в планах — лучше меньше платформ, но нормально, чем полусломанные клиенты везде.',
+        title: 'Android',
+        body: 'Android уже в Google Play: те же протоколы, Smart Connect и kill switch, тот же аккаунт FollowNet.',
       },
     ],
     bullets: [
-      'iOS: App Store — Free с недельным лимитом, Premium по желанию',
+      'iPhone, iPad и Mac: App Store — Free с недельным лимитом, Premium по желанию',
       'Android: Google Play — Free с недельным лимитом, Premium по желанию',
       'Chrome: расширение в Chrome Web Store',
       'Протоколы: WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -83,77 +83,77 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   uk: {
     kicker: 'Завантажити',
     h1: 'Завантажити FollowNet VPN',
-    lead: 'Установіть FollowNet на iPhone та iPad з App Store, на Android — з Google Play, або захистіть Chrome на комп’ютері офіційним розширенням. Усе прозоро: Free — щоб спробувати, Premium — коли потрібен безліміт.',
+    lead: 'Установіть FollowNet на iPhone, iPad і Mac з App Store, на Android — з Google Play, або захистіть Chrome офіційним розширенням. Усе прозоро: Free — щоб спробувати, Premium — коли потрібен безліміт.',
     blocks: [
       {
-        title: 'Передусім iOS',
-        body: 'Нативний застосунок для iPhone та iPad — основа FollowNet: тунель Network Extension, Smart Connect, вибір протоколу, DNS-профілі, віджети й автопідключення.',
+        title: 'iPhone, iPad і Mac',
+        body: 'Один універсальний застосунок в App Store працює на iPhone, iPad і Mac: тунель Network Extension, Smart Connect, вибір протоколу й DNS-профілі — з тим самим акаунтом і Premium на всіх пристроях Apple. На Mac захищає всі застосунки, а не лише браузер.',
       },
       {
-        title: 'Chrome для роботи за комп’ютером',
-        body: 'Розширення Chrome захищає сеанси браузера на комп’ютері, поки повноцінного клієнта для macOS ще немає. Для входу використовується той самий обліковий запис FollowNet.',
+        title: 'Chrome, якщо потрібен лише браузер',
+        body: 'Розширення Chrome проксує сеанси браузера на будь-якому комп’ютері, зокрема Windows і Linux. Для входу використовується той самий обліковий запис FollowNet.',
       },
       {
-        title: 'Android і macOS',
-        body: 'Android уже в Google Play: ті самі протоколи, Smart Connect і kill switch, той самий акаунт FollowNet. macOS є в планах — ми воліємо якісно підтримувати менше платформ, а не випускати недороблені клієнти для всіх.',
+        title: 'Android',
+        body: 'Android уже в Google Play: ті самі протоколи, Smart Connect і kill switch, той самий акаунт FollowNet.',
       },
     ],
     bullets: [
-      'iOS: App Store — тижневий ліміт у Free, Premium за бажанням',
-      'Android: Google Play — тижневий ліміт у Free, Premium за бажанням',
-      'Chrome: розширення з Chrome Web Store',
+      'iPhone, iPad і Mac: App Store — Free з тижневим лімітом, Premium за бажанням',
+      'Android: Google Play — Free з тижневим лімітом, Premium за бажанням',
+      'Chrome: розширення в Chrome Web Store',
       'Протоколи: WireGuard, IKEv2, AmneziaWG, Hysteria2',
-      'Для користування Free банківська картка не потрібна',
+      'Для Free картка не потрібна',
     ],
   },
   de: {
     kicker: 'Download',
     h1: 'FollowNet VPN herunterladen',
-    lead: 'Lade FollowNet für iPhone und iPad aus dem App Store, für Android bei Google Play, oder schütze Chrome auf dem Desktop mit der offiziellen Erweiterung. Transparentes Modell: Free zum Ausprobieren, Premium für unbegrenzte Nutzung.',
+    lead: 'Lade FollowNet für iPhone, iPad und Mac aus dem App Store, für Android bei Google Play, oder schütze Chrome mit der offiziellen Erweiterung. Transparentes Modell: Free zum Ausprobieren, Premium für unbegrenzten Traffic.',
     blocks: [
       {
-        title: 'Zuerst für iOS',
-        body: 'Die native App für iPhone und iPad ist das Herzstück von FollowNet: Network-Extension-Tunnel, Smart Connect, Protokollauswahl, DNS-Profile, Widgets und automatische Verbindung.',
+        title: 'iPhone, iPad und Mac',
+        body: 'Eine universelle App aus dem App Store läuft auf iPhone, iPad und Mac: Network-Extension-Tunnel, Smart Connect, Protokollauswahl und DNS-Profile — mit demselben Konto und Premium auf allen Apple-Geräten. Auf dem Mac schützt sie alle Apps, nicht nur den Browser.',
       },
       {
-        title: 'Chrome am Desktop',
-        body: 'Die Chrome-Erweiterung schützt Browsersitzungen auf dem Desktop, solange es noch keinen vollständigen macOS-Client gibt. Die Anmeldung erfolgt mit demselben FollowNet-Konto.',
+        title: 'Chrome, wenn nur der Browser zählt',
+        body: 'Die Chrome-Erweiterung leitet Browsersitzungen auf jedem Desktop über einen Proxy, auch unter Windows und Linux. Die Anmeldung erfolgt mit demselben FollowNet-Konto.',
       },
       {
-        title: 'Android und macOS',
-        body: 'Android ist bei Google Play verfügbar: dieselben Protokolle, Smart Connect und Kill Switch, dasselbe FollowNet-Konto. macOS steht auf der Roadmap — wir unterstützen lieber weniger Plattformen zuverlässig, als überall unfertige Clients anzubieten.',
+        title: 'Android',
+        body: 'Android ist bei Google Play verfügbar: dieselben Protokolle, Smart Connect und Kill Switch, dasselbe FollowNet-Konto.',
       },
     ],
     bullets: [
-      'iOS: App Store — wöchentliches Datenlimit mit Free, Premium optional',
-      'Android: Google Play — wöchentliches Datenlimit mit Free, Premium optional',
+      'iPhone, iPad und Mac: App Store — Free mit wöchentlichem Limit, Premium optional',
+      'Android: Google Play — Free mit wöchentlichem Limit, Premium optional',
       'Chrome: Erweiterung im Chrome Web Store',
       'Protokolle: WireGuard, IKEv2, AmneziaWG, Hysteria2',
-      'Zum Ausprobieren von Free ist keine Kreditkarte nötig',
+      'Für Free ist keine Kreditkarte nötig',
     ],
   },
   es: {
     kicker: 'Descargar',
     h1: 'Descargar FollowNet VPN',
-    lead: 'Descarga FollowNet para iPhone y iPad desde App Store, para Android desde Google Play, o protege Chrome en tu ordenador con la extensión oficial. Un modelo claro: Free para probar y Premium cuando necesites uso ilimitado.',
+    lead: 'Descarga FollowNet para iPhone, iPad y Mac desde App Store, para Android desde Google Play, o protege Chrome con la extensión oficial. Un modelo claro: Free para probar y Premium cuando necesitas tráfico ilimitado.',
     blocks: [
       {
-        title: 'Primero en iOS',
-        body: 'La app nativa para iPhone y iPad es el núcleo de FollowNet: túnel mediante Network Extension, Smart Connect, control de protocolos, perfiles DNS, widgets y conexión automática.',
+        title: 'iPhone, iPad y Mac',
+        body: 'Una sola app universal de App Store funciona en iPhone, iPad y Mac: túnel Network Extension, Smart Connect, control de protocolos y perfiles DNS, con la misma cuenta y Premium en todos tus dispositivos Apple. En Mac protege todas las apps, no solo el navegador.',
       },
       {
-        title: 'Chrome en el ordenador',
-        body: 'La extensión de Chrome protege las sesiones del navegador en el ordenador mientras no haya un cliente completo para macOS. Inicia sesión con la misma cuenta de FollowNet.',
+        title: 'Chrome si solo necesitas el navegador',
+        body: 'La extensión de Chrome protege las sesiones del navegador en cualquier ordenador, incluidos Windows y Linux. Inicia sesión con la misma cuenta de FollowNet.',
       },
       {
-        title: 'Android y macOS',
-        body: 'Android ya está en Google Play: los mismos protocolos, Smart Connect y kill switch, con la misma cuenta FollowNet. macOS está en nuestros planes — preferimos ofrecer menos plataformas bien mantenidas que clientes a medio terminar.',
+        title: 'Android',
+        body: 'Android ya está en Google Play: los mismos protocolos, Smart Connect y kill switch, con la misma cuenta FollowNet.',
       },
     ],
     bullets: [
-      'iOS: App Store — límite semanal con Free, Premium opcional',
-      'Android: Google Play — límite semanal con Free, Premium opcional',
-      'Chrome: extensión de Chrome Web Store',
+      'iPhone, iPad y Mac: App Store — Free con límite semanal, Premium opcional',
+      'Android: Google Play — Free con límite semanal, Premium opcional',
+      'Chrome: extensión en Chrome Web Store',
       'Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'No necesitas tarjeta para probar Free',
     ],
@@ -161,53 +161,294 @@ const DOWNLOAD: Record<LangPack, ProductPage> = {
   fr: {
     kicker: 'Télécharger',
     h1: 'Télécharger FollowNet VPN',
-    lead: 'Téléchargez FollowNet sur iPhone et iPad depuis l’App Store, sur Android depuis Google Play, ou protégez Chrome sur ordinateur avec l’extension officielle. Une offre claire : Free pour essayer, Premium pour un usage illimité.',
+    lead: 'Téléchargez FollowNet sur iPhone, iPad et Mac depuis l’App Store, sur Android depuis Google Play, ou protégez Chrome avec l’extension officielle. Une offre claire : Free pour essayer, Premium quand il vous faut de l’illimité.',
     blocks: [
       {
-        title: 'D’abord sur iOS',
-        body: 'L’app native pour iPhone et iPad est au cœur de FollowNet : tunnel Network Extension, Smart Connect, choix du protocole, profils DNS, widgets et connexion automatique.',
+        title: 'iPhone, iPad et Mac',
+        body: 'Une seule app universelle de l’App Store fonctionne sur iPhone, iPad et Mac : tunnel Network Extension, Smart Connect, choix du protocole et profils DNS, avec le même compte et Premium sur tous vos appareils Apple. Sur Mac, elle protège toutes les apps, pas seulement le navigateur.',
       },
       {
-        title: 'Chrome sur ordinateur',
-        body: 'L’extension Chrome protège les sessions du navigateur sur ordinateur en attendant un client macOS complet. Vous vous connectez avec le même compte FollowNet.',
+        title: 'Chrome si seul le navigateur compte',
+        body: 'L’extension Chrome protège les sessions du navigateur sur n’importe quel ordinateur, y compris Windows et Linux. Vous vous connectez avec le même compte FollowNet.',
       },
       {
-        title: 'Android et macOS',
-        body: 'Android est disponible sur Google Play : mêmes protocoles, Smart Connect et kill switch, même compte FollowNet. macOS figure sur notre feuille de route — nous préférons prendre en charge moins de plateformes correctement plutôt que proposer des clients inachevés.',
+        title: 'Android',
+        body: 'Android est disponible sur Google Play : mêmes protocoles, Smart Connect et kill switch, même compte FollowNet.',
       },
     ],
     bullets: [
-      'iOS : App Store — limite hebdomadaire avec Free, Premium en option',
-      'Android : Google Play — limite hebdomadaire avec Free, Premium en option',
-      'Chrome : extension du Chrome Web Store',
+      'iPhone, iPad et Mac : App Store — Free avec plafond hebdomadaire, Premium en option',
+      'Android : Google Play — Free avec plafond hebdomadaire, Premium en option',
+      'Chrome : extension sur le Chrome Web Store',
       'Protocoles : WireGuard, IKEv2, AmneziaWG, Hysteria2',
-      'Aucune carte bancaire requise pour essayer Free',
+      'Aucune carte requise pour essayer Free',
     ],
   },
   pt: {
     kicker: 'Transferir',
-    h1: 'Transferir o FollowNet VPN',
-    lead: 'Transfira o FollowNet para iPhone e iPad na App Store, para Android no Google Play, ou proteja o Chrome no computador com a extensão oficial. Um modelo transparente: Free para experimentar e Premium quando precisar de utilização ilimitada.',
+    h1: 'Transferir FollowNet VPN',
+    lead: 'Transfira o FollowNet para iPhone, iPad e Mac na App Store, para Android no Google Play, ou proteja o Chrome com a extensão oficial. Um modelo transparente: Free para experimentar, Premium quando precisa de tráfego ilimitado.',
     blocks: [
       {
-        title: 'Primeiro no iOS',
-        body: 'A app nativa para iPhone e iPad é o centro do FollowNet: túnel Network Extension, Smart Connect, controlo de protocolos, perfis DNS, widgets e ligação automática.',
+        title: 'iPhone, iPad e Mac',
+        body: 'Uma única app universal da App Store funciona no iPhone, iPad e Mac: túnel Network Extension, Smart Connect, controlo de protocolos e perfis DNS, com a mesma conta e Premium em todos os dispositivos Apple. No Mac protege todas as apps, não só o navegador.',
       },
       {
-        title: 'Chrome no computador',
-        body: 'A extensão do Chrome protege as sessões do navegador no computador enquanto não existe um cliente completo para macOS. Inicie sessão com a mesma conta FollowNet.',
+        title: 'Chrome quando só precisa do navegador',
+        body: 'A extensão do Chrome protege as sessões do navegador em qualquer computador, incluindo Windows e Linux. Inicie sessão com a mesma conta FollowNet.',
       },
       {
-        title: 'Android e macOS',
-        body: 'O Android já está no Google Play: os mesmos protocolos, Smart Connect e kill switch, com a mesma conta FollowNet. O macOS está nos planos — preferimos oferecer menos plataformas com qualidade a lançar clientes incompletos.',
+        title: 'Android',
+        body: 'O Android já está no Google Play: os mesmos protocolos, Smart Connect e kill switch, com a mesma conta FollowNet.',
       },
     ],
     bullets: [
-      'iOS: App Store — limite semanal no Free, Premium opcional',
+      'iPhone, iPad e Mac: App Store — limite semanal no Free, Premium opcional',
       'Android: Google Play — limite semanal no Free, Premium opcional',
       'Chrome: extensão da Chrome Web Store',
       'Protocolos: WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Não é necessário cartão para experimentar o Free',
+    ],
+  },
+};
+
+const DOWNLOAD_MAC: Record<LangPack, ProductPage> = {
+  en: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN for Mac',
+    lead: 'The same FollowNet app now runs on Mac. Install it from the App Store, allow the VPN configuration once, and protect every app on your Mac — not just the browser. Free includes a weekly traffic cap; Premium unlocks unlimited traffic and all servers.',
+    blocks: [
+      {
+        title: 'How to install',
+        body: 'Open the FollowNet listing in the App Store on your Mac and click Get — it is the same app as on iPhone and iPad. Sign in with email (passwordless), allow the VPN configuration when macOS asks, then click connect.',
+      },
+      {
+        title: 'Your whole Mac, not just Chrome',
+        body: 'The Mac app creates a system VPN tunnel through Apple’s Network Extension, so Safari, Chrome, Mail, Slack and every other app go through FollowNet. The Chrome extension is still there if you only want to protect the browser.',
+      },
+      {
+        title: 'One account, one subscription',
+        body: 'Use the same FollowNet account on iPhone, iPad and Mac. Premium bought in the App Store works on your Mac with the same Apple ID — tap Restore purchases if it does not show up right away.',
+      },
+      {
+        title: "Mac guides",
+        links: [
+          { label: "Set up VPN on Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "Free VPN for Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard for Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN for Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'One universal App Store app for iPhone, iPad and Mac',
+      'System-wide VPN for every app on your Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'Same FollowNet account and Premium as on iOS',
+    ],
+  },
+  ru: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN для Mac',
+    lead: 'То же приложение FollowNet теперь работает на Mac. Установите его из App Store, один раз разрешите VPN-конфигурацию и защитите все приложения на Mac, а не только браузер. Free — с недельным лимитом трафика; Premium — безлимит и все серверы.',
+    blocks: [
+      {
+        title: 'Как установить',
+        body: 'Откройте FollowNet в App Store на Mac и нажмите «Загрузить» — это то же приложение, что на iPhone и iPad. Войдите по email (без пароля), разрешите VPN-конфигурацию, когда macOS спросит, и нажмите connect.',
+      },
+      {
+        title: 'Весь Mac, а не только Chrome',
+        body: 'Приложение для Mac создаёт системный VPN-туннель через Apple Network Extension: Safari, Chrome, Почта, Slack и все остальные приложения идут через FollowNet. Расширение Chrome никуда не делось — если нужно защитить только браузер.',
+      },
+      {
+        title: 'Один аккаунт, одна подписка',
+        body: 'Один аккаунт FollowNet на iPhone, iPad и Mac. Premium, купленный в App Store, работает на Mac с тем же Apple ID — если не подтянулся сразу, нажмите «Восстановить покупки».',
+      },
+      {
+        title: "Гайды по Mac",
+        links: [
+          { label: "Как настроить VPN на Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "Бесплатный VPN для Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard для Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN для Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Одно универсальное приложение App Store для iPhone, iPad и Mac',
+      'Системный VPN для всех приложений на Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'Тот же аккаунт FollowNet и Premium, что на iOS',
+    ],
+  },
+  uk: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN для Mac',
+    lead: 'Той самий застосунок FollowNet тепер працює на Mac. Установіть його з App Store, один раз дозвольте VPN-конфігурацію й захистіть усі застосунки на Mac, а не лише браузер. Free — з тижневим лімітом трафіку; Premium — безліміт і всі сервери.',
+    blocks: [
+      {
+        title: 'Як встановити',
+        body: 'Відкрийте FollowNet в App Store на Mac і натисніть «Отримати» — це той самий застосунок, що на iPhone та iPad. Увійдіть за email (без пароля), дозвольте VPN-конфігурацію, коли macOS запитає, і натисніть «Підключити».',
+      },
+      {
+        title: 'Увесь Mac, а не лише Chrome',
+        body: 'Застосунок для Mac створює системний VPN-тунель через Apple Network Extension: Safari, Chrome, Пошта, Slack та всі інші застосунки йдуть через FollowNet. Розширення Chrome залишається — якщо потрібно захистити лише браузер.',
+      },
+      {
+        title: 'Один акаунт, одна підписка',
+        body: 'Один акаунт FollowNet на iPhone, iPad і Mac. Premium, придбаний в App Store, працює на Mac з тим самим Apple ID — якщо не з’явився одразу, натисніть «Відновити покупки».',
+      },
+      {
+        title: "Гайди для Mac",
+        links: [
+          { label: "Як налаштувати VPN на Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "Безкоштовний VPN для Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard для Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN для Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Один універсальний застосунок App Store для iPhone, iPad і Mac',
+      'Системний VPN для всіх застосунків на Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'Той самий акаунт FollowNet і Premium, що на iOS',
+    ],
+  },
+  de: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN für Mac',
+    lead: 'Dieselbe FollowNet-App läuft jetzt auch auf dem Mac. Aus dem App Store installieren, die VPN-Konfiguration einmal erlauben und jede App auf dem Mac schützen — nicht nur den Browser. Free mit wöchentlichem Traffic-Limit; Premium mit unbegrenztem Traffic und allen Servern.',
+    blocks: [
+      {
+        title: 'Installation',
+        body: 'Öffnen Sie FollowNet im App Store auf dem Mac und klicken Sie auf „Laden“ — es ist dieselbe App wie auf iPhone und iPad. Mit E-Mail anmelden (ohne Passwort), die VPN-Konfiguration erlauben, wenn macOS fragt, und verbinden.',
+      },
+      {
+        title: 'Der ganze Mac, nicht nur Chrome',
+        body: 'Die Mac-App baut über Apples Network Extension einen systemweiten VPN-Tunnel auf: Safari, Chrome, Mail, Slack und alle anderen Apps laufen über FollowNet. Die Chrome-Erweiterung bleibt, wenn Sie nur den Browser schützen möchten.',
+      },
+      {
+        title: 'Ein Konto, ein Abo',
+        body: 'Dasselbe FollowNet-Konto auf iPhone, iPad und Mac. Im App Store gekauftes Premium funktioniert mit derselben Apple-ID auch auf dem Mac — erscheint es nicht sofort, tippen Sie auf „Käufe wiederherstellen“.',
+      },
+      {
+        title: "Mac-Anleitungen",
+        links: [
+          { label: "VPN auf dem Mac einrichten", href: '/how-to-setup-vpn-mac' },
+          { label: "Kostenloses VPN für Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard für Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN für Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Eine universelle App Store-App für iPhone, iPad und Mac',
+      'Systemweites VPN für jede App auf dem Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'Dasselbe FollowNet-Konto und Premium wie unter iOS',
+    ],
+  },
+  es: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN para Mac',
+    lead: 'La misma app FollowNet ya funciona en Mac. Instálala desde App Store, permite la configuración VPN una vez y protege todas las apps de tu Mac, no solo el navegador. Free incluye un límite de tráfico semanal; Premium desbloquea tráfico ilimitado y todos los servidores.',
+    blocks: [
+      {
+        title: 'Cómo instalar',
+        body: 'Abre FollowNet en App Store en tu Mac y pulsa Obtener: es la misma app que en iPhone y iPad. Inicia sesión con tu email (sin contraseña), permite la configuración VPN cuando macOS lo pida y conéctate.',
+      },
+      {
+        title: 'Todo tu Mac, no solo Chrome',
+        body: 'La app para Mac crea un túnel VPN de sistema mediante Apple Network Extension: Safari, Chrome, Mail, Slack y el resto de apps pasan por FollowNet. La extensión de Chrome sigue disponible si solo quieres proteger el navegador.',
+      },
+      {
+        title: 'Una cuenta, una suscripción',
+        body: 'La misma cuenta FollowNet en iPhone, iPad y Mac. Premium comprado en App Store funciona en tu Mac con el mismo Apple ID; si no aparece enseguida, pulsa Restaurar compras.',
+      },
+      {
+        title: "Guías para Mac",
+        links: [
+          { label: "Configurar VPN en Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "VPN gratis para Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard para Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN para Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Una sola app universal de App Store para iPhone, iPad y Mac',
+      'VPN de sistema para todas las apps del Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'La misma cuenta FollowNet y Premium que en iOS',
+    ],
+  },
+  fr: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN pour Mac',
+    lead: 'La même app FollowNet fonctionne désormais sur Mac. Installez-la depuis l’App Store, autorisez la configuration VPN une fois et protégez toutes les apps de votre Mac, pas seulement le navigateur. Free inclut un plafond de trafic hebdomadaire ; Premium débloque le trafic illimité et tous les serveurs.',
+    blocks: [
+      {
+        title: 'Installation',
+        body: 'Ouvrez FollowNet dans l’App Store sur votre Mac et cliquez sur Obtenir : c’est la même app que sur iPhone et iPad. Connectez-vous par e-mail (sans mot de passe), autorisez la configuration VPN quand macOS le demande, puis connectez-vous.',
+      },
+      {
+        title: 'Tout le Mac, pas seulement Chrome',
+        body: 'L’app Mac crée un tunnel VPN système via Apple Network Extension : Safari, Chrome, Mail, Slack et toutes les autres apps passent par FollowNet. L’extension Chrome reste disponible si vous ne voulez protéger que le navigateur.',
+      },
+      {
+        title: 'Un compte, un abonnement',
+        body: 'Le même compte FollowNet sur iPhone, iPad et Mac. Premium acheté sur l’App Store fonctionne sur Mac avec le même identifiant Apple ; s’il n’apparaît pas tout de suite, touchez Restaurer les achats.',
+      },
+      {
+        title: "Guides Mac",
+        links: [
+          { label: "Configurer un VPN sur Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "VPN gratuit pour Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard pour Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN pour Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Une seule app universelle App Store pour iPhone, iPad et Mac',
+      'VPN système pour toutes les apps du Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'Même compte FollowNet et même Premium que sur iOS',
+    ],
+  },
+  pt: {
+    kicker: 'Mac',
+    h1: 'FollowNet VPN para Mac',
+    lead: 'A mesma app FollowNet já funciona no Mac. Instale-a na App Store, permita a configuração VPN uma vez e proteja todas as apps do Mac, não só o navegador. O Free inclui um limite de tráfego semanal; o Premium desbloqueia tráfego ilimitado e todos os servidores.',
+    blocks: [
+      {
+        title: 'Como instalar',
+        body: 'Abra o FollowNet na App Store no Mac e clique em Obter — é a mesma app do iPhone e iPad. Inicie sessão por email (sem palavra-passe), permita a configuração VPN quando o macOS pedir e ligue.',
+      },
+      {
+        title: 'O Mac inteiro, não só o Chrome',
+        body: 'A app para Mac cria um túnel VPN de sistema através do Apple Network Extension: Safari, Chrome, Mail, Slack e todas as outras apps passam pelo FollowNet. A extensão do Chrome continua disponível se quiser proteger apenas o navegador.',
+      },
+      {
+        title: 'Uma conta, uma subscrição',
+        body: 'A mesma conta FollowNet no iPhone, iPad e Mac. O Premium comprado na App Store funciona no Mac com o mesmo Apple ID — se não aparecer logo, toque em Restaurar compras.',
+      },
+      {
+        title: "Guias para Mac",
+        links: [
+          { label: "Configurar VPN no Mac", href: '/how-to-setup-vpn-mac' },
+          { label: "VPN grátis para Mac", href: '/free-vpn-mac' },
+          { label: "WireGuard para Mac", href: '/wireguard-vpn-mac' },
+          { label: "VPN para Mac", href: '/vpn-for-mac' },
+        ],
+      },
+    ],
+    bullets: [
+      'Uma única app universal da App Store para iPhone, iPad e Mac',
+      'VPN de sistema para todas as apps do Mac',
+      'WireGuard, IKEv2, AmneziaWG, Hysteria2 + Smart Connect',
+      'A mesma conta FollowNet e Premium do iOS',
     ],
   },
 };
@@ -232,7 +473,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'Universal app for iPhone and iPad',
+      'Universal app for iPhone, iPad and Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect + manual protocol lock',
       'Widgets, DNS profiles, Auto-connect',
@@ -257,7 +498,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'Универсальное приложение для iPhone и iPad',
+      'Универсальное приложение для iPhone, iPad и Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect и ручной выбор протокола',
       'Виджеты, DNS, автоподключение',
@@ -282,7 +523,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'Універсальний застосунок для iPhone та iPad',
+      'Універсальний застосунок для iPhone, iPad і Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect і ручний вибір протоколу',
       'Віджети, DNS-профілі та автопідключення',
@@ -307,7 +548,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'Universelle App für iPhone und iPad',
+      'Universelle App für iPhone, iPad und Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect und manuelle Protokollauswahl',
       'Widgets, DNS-Profile und automatische Verbindung',
@@ -332,7 +573,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'App universal para iPhone y iPad',
+      'App universal para iPhone, iPad y Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect y selección manual de protocolo',
       'Widgets, perfiles DNS y conexión automática',
@@ -357,7 +598,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'App universelle pour iPhone et iPad',
+      'App universelle pour iPhone, iPad et Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect et choix manuel du protocole',
       'Widgets, profils DNS et connexion automatique',
@@ -382,7 +623,7 @@ const DOWNLOAD_IOS: Record<LangPack, ProductPage> = {
       },
     ],
     bullets: [
-      'App universal para iPhone e iPad',
+      'App universal para iPhone, iPad e Mac',
       'WireGuard, IKEv2, AmneziaWG, Hysteria2',
       'Smart Connect e seleção manual de protocolo',
       'Widgets, perfis DNS e ligação automática',
@@ -576,7 +817,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'One-tap VPN on iPhone & iPad',
-        body: 'Full-device tunnel via Apple Network Extension. Open the app, tap connect, and traffic goes through FollowNet. Universal app for iPhone and iPad — same account and settings.',
+        body: 'Full-device tunnel via Apple Network Extension. Open the app, tap connect, and traffic goes through FollowNet. Universal app for iPhone, iPad and Mac — same account and settings.',
       },
       {
         title: 'VPN Protocol: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -636,7 +877,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'What is not in the product (yet)',
-        body: 'No macOS app yet. No per-app split tunneling on iOS (platform limits). Auto-connect is not the same as a leak-blocking kill switch on iPhone — that Kill Switch exists in the Chrome extension.',
+        body: 'No per-app split tunneling on iOS (platform limits). Auto-connect is not the same as a leak-blocking kill switch on iPhone — that Kill Switch exists in the Chrome extension.',
       },
     ],
     bullets: [
@@ -653,7 +894,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN в один тап на iPhone и iPad',
-        body: 'Полноценный туннель через Apple Network Extension. Открыли приложение, нажали connect — трафик идёт через FollowNet. Универсальное приложение для iPhone и iPad — один аккаунт и настройки.',
+        body: 'Полноценный туннель через Apple Network Extension. Открыли приложение, нажали connect — трафик идёт через FollowNet. Универсальное приложение для iPhone, iPad и Mac — один аккаунт и настройки.',
       },
       {
         title: 'Протокол VPN: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -713,7 +954,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Чего пока нет',
-        body: 'Пока нет приложения для macOS. Нет per-app split tunneling на iOS (ограничения платформы). Автоподключение на iPhone — не то же самое, что Kill Switch с блокировкой утечек; такой Kill Switch есть в расширении Chrome.',
+        body: 'Нет per-app split tunneling на iOS (ограничения платформы). Автоподключение на iPhone — не то же самое, что Kill Switch с блокировкой утечек; такой Kill Switch есть в расширении Chrome.',
       },
     ],
     bullets: [
@@ -730,7 +971,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN одним дотиком на iPhone та iPad',
-        body: 'Повноцінний тунель для всього пристрою через Apple Network Extension. Відкрийте застосунок, натисніть «Підключити» — і трафік піде через FollowNet. Один застосунок для iPhone та iPad зі спільним обліковим записом і налаштуваннями.',
+        body: 'Повноцінний тунель для всього пристрою через Apple Network Extension. Відкрийте застосунок, натисніть «Підключити» — і трафік піде через FollowNet. Один застосунок для iPhone, iPad і Mac зі спільним обліковим записом і налаштуваннями.',
       },
       {
         title: 'Протоколи VPN: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -790,7 +1031,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Чого в продукті поки немає',
-        body: 'Застосунку для macOS поки немає. На iOS немає роздільного тунелювання для окремих застосунків через обмеження платформи. Автопідключення на iPhone не є Kill Switch із блокуванням витоків — такий Kill Switch є в розширенні Chrome.',
+        body: 'На iOS немає роздільного тунелювання для окремих застосунків через обмеження платформи. Автопідключення на iPhone не є Kill Switch із блокуванням витоків — такий Kill Switch є в розширенні Chrome.',
       },
     ],
     bullets: [
@@ -807,7 +1048,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN mit einem Fingertipp auf iPhone und iPad',
-        body: 'Ein vollständiger Tunnel für das gesamte Gerät über Apple Network Extension. App öffnen, auf Verbinden tippen und der Datenverkehr läuft über FollowNet. Eine universelle App für iPhone und iPad mit gemeinsamem Konto und gemeinsamen Einstellungen.',
+        body: 'Ein vollständiger Tunnel für das gesamte Gerät über Apple Network Extension. App öffnen, auf Verbinden tippen und der Datenverkehr läuft über FollowNet. Eine universelle App für iPhone, iPad und Mac mit gemeinsamem Konto und gemeinsamen Einstellungen.',
       },
       {
         title: 'VPN-Protokolle: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -867,7 +1108,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Was das Produkt noch nicht bietet',
-        body: 'Eine macOS-App gibt es noch nicht. Per-App-Split-Tunneling ist unter iOS aufgrund von Plattformbeschränkungen nicht verfügbar. Die automatische Verbindung auf dem iPhone ist kein Kill Switch gegen Datenlecks — einen solchen Kill Switch gibt es in der Chrome-Erweiterung.',
+        body: 'Per-App-Split-Tunneling ist unter iOS aufgrund von Plattformbeschränkungen nicht verfügbar. Die automatische Verbindung auf dem iPhone ist kein Kill Switch gegen Datenlecks — einen solchen Kill Switch gibt es in der Chrome-Erweiterung.',
       },
     ],
     bullets: [
@@ -884,7 +1125,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN con un toque en iPhone y iPad',
-        body: 'Un túnel completo para todo el dispositivo mediante Apple Network Extension. Abre la app, pulsa Conectar y el tráfico pasará por FollowNet. Una app universal para iPhone y iPad con la misma cuenta y configuración.',
+        body: 'Un túnel completo para todo el dispositivo mediante Apple Network Extension. Abre la app, pulsa Conectar y el tráfico pasará por FollowNet. Una app universal para iPhone, iPad y Mac con la misma cuenta y configuración.',
       },
       {
         title: 'Protocolos VPN: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -944,7 +1185,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Lo que todavía no incluye el producto',
-        body: 'Todavía no hay app para macOS. iOS no dispone de túnel dividido por app debido a las limitaciones de la plataforma. La conexión automática en iPhone no equivale a un Kill Switch que impida fugas; ese Kill Switch está en la extensión de Chrome.',
+        body: 'iOS no dispone de túnel dividido por app debido a las limitaciones de la plataforma. La conexión automática en iPhone no equivale a un Kill Switch que impida fugas; ese Kill Switch está en la extensión de Chrome.',
       },
     ],
     bullets: [
@@ -961,7 +1202,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN d’un geste sur iPhone et iPad',
-        body: 'Un tunnel complet pour tout l’appareil via Apple Network Extension. Ouvrez l’app, touchez Se connecter et le trafic passe par FollowNet. Une app universelle pour iPhone et iPad avec le même compte et les mêmes réglages.',
+        body: 'Un tunnel complet pour tout l’appareil via Apple Network Extension. Ouvrez l’app, touchez Se connecter et le trafic passe par FollowNet. Une app universelle pour iPhone, iPad et Mac avec le même compte et les mêmes réglages.',
       },
       {
         title: 'Protocoles VPN : Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -1021,7 +1262,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'Ce que le produit ne propose pas encore',
-        body: 'Il n’existe pas encore d’app pour macOS. Le split tunneling par app n’est pas disponible sur iOS en raison des limites de la plateforme. La connexion automatique sur iPhone n’est pas un Kill Switch contre les fuites ; ce Kill Switch existe dans l’extension Chrome.',
+        body: 'Le split tunneling par app n’est pas disponible sur iOS en raison des limites de la plateforme. La connexion automatique sur iPhone n’est pas un Kill Switch contre les fuites ; ce Kill Switch existe dans l’extension Chrome.',
       },
     ],
     bullets: [
@@ -1038,7 +1279,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
     blocks: [
       {
         title: 'VPN com um toque no iPhone e iPad',
-        body: 'Um túnel completo para todo o dispositivo através do Apple Network Extension. Abra a app, toque em Ligar e o tráfego passa pelo FollowNet. Uma app universal para iPhone e iPad com a mesma conta e definições.',
+        body: 'Um túnel completo para todo o dispositivo através do Apple Network Extension. Abra a app, toque em Ligar e o tráfego passa pelo FollowNet. Uma app universal para iPhone, iPad e Mac com a mesma conta e definições.',
       },
       {
         title: 'Protocolos VPN: Smart, WireGuard, IKEv2, AmneziaWG, Hysteria2',
@@ -1098,7 +1339,7 @@ const FEATURES: Record<LangPack, ProductPage> = {
       },
       {
         title: 'O que o produto ainda não inclui',
-        body: 'Ainda não existe app para macOS. O túnel dividido por app não está disponível no iOS devido às limitações da plataforma. A ligação automática no iPhone não equivale a um Kill Switch contra fugas; esse Kill Switch existe na extensão do Chrome.',
+        body: 'O túnel dividido por app não está disponível no iOS devido às limitações da plataforma. A ligação automática no iPhone não equivale a um Kill Switch contra fugas; esse Kill Switch existe na extensão do Chrome.',
       },
     ],
     bullets: [
@@ -1116,6 +1357,10 @@ export function downloadPage(lang: AppLang): ProductPage {
 
 export function downloadIosPage(lang: AppLang): ProductPage {
   return DOWNLOAD_IOS[pack(lang)];
+}
+
+export function downloadMacPage(lang: AppLang): ProductPage {
+  return DOWNLOAD_MAC[pack(lang)];
 }
 
 export function downloadChromePage(lang: AppLang): ProductPage {

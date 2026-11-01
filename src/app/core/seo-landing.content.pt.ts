@@ -552,7 +552,7 @@ export const PT: Record<CoreLandingSlug, LandingContent> = {
       { q: 'A extensão do Chrome substitui o app do iPhone?', a: 'Não. A VPN do iOS cobre o celular inteiro; o Chrome cobre o tráfego do navegador no computador.' },
       { q: 'Posso usar o Free no Chrome?', a: 'Sim. O Free inclui tráfego semanal para avaliação; o Premium remove o limite conforme a sua assinatura.' },
       { q: 'A extensão protege Slack, Zoom ou outros apps de desktop?', a: 'Não. Ela cobre só o tráfego do navegador compatível. Para todos os apps, use uma VPN de sistema — no celular, é o app FollowNet para iOS.' },
-      { q: 'Existe app de VPN para macOS?', a: 'Hoje o FollowNet prioriza o iOS e a extensão do Chrome em vez de esperar por um cliente completo para macOS.' },
+      { q: 'Existe app de VPN para macOS?', a: 'Sim. A mesma app FollowNet da App Store funciona no Mac como VPN de sistema para todas as apps, com a mesma conta e Premium. A extensão do Chrome continua disponível se você só precisa do navegador.' },
     ],
   },
   'vpn-widgets-ios': {

@@ -5,7 +5,7 @@ import {
   PLATFORM_ID,
   inject,
 } from '@angular/core';
-import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { localizedPath } from '../../core/locale-url';
 import { LocalizePipe } from '../../shared/localize.pipe';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 import { AppLang, I18nService } from '../../core/i18n.service';
 import { PREMIUM_PLANS, formatPremiumUsd, premiumPlanPerMonth, premiumPlanSavePercent, premiumPlanTotal } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
-import { appStoreUrl, playStoreUrl } from '../../core/app-store-url';
+import { appStoreUrl, macAppStoreUrl, playStoreUrl } from '../../core/app-store-url';
 import { landingLabel, LandingSlug } from '../../core/seo-landing.slugs';
 import {
   blogTeaserTopicLabel,
@@ -42,6 +42,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return appStoreUrl(source);
   }
 
+  macAppStoreHref(source = 'home'): string {
+    return macAppStoreUrl(source);
+  }
+
   playStoreHref(source = 'home'): string {
     return playStoreUrl(source);
   }
@@ -61,6 +65,26 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ) {
     this.refreshLearnPosts();
     this.langSub = this.i18n.lang$.subscribe(() => this.refreshLearnPosts());
+    this.preloadHeroShot();
+  }
+
+  /**
+   * The first hero screenshot is the home page LCP. Preloading it from <head> (baked into the
+   * prerendered HTML) lets it start downloading with the CSS instead of after it.
+   */
+  private preloadHeroShot(): void {
+    const doc = inject(DOCUMENT);
+    const id = 'hero-shot-preload';
+    if (doc.getElementById(id)) return;
+    const link = doc.createElement('link');
+    link.id = id;
+    link.setAttribute('rel', 'preload');
+    link.setAttribute('as', 'image');
+    link.setAttribute('href', `/${this.shots[0]}-400.webp`);
+    link.setAttribute('imagesrcset', `/${this.shots[0]}-400.webp 400w, /${this.shots[0]}.webp 760w`);
+    link.setAttribute('imagesizes', '(max-width: 480px) 82vw, 380px');
+    link.setAttribute('fetchpriority', 'high');
+    doc.head.appendChild(link);
   }
 
   readonly premiumPlans = PREMIUM_PLANS;
@@ -82,6 +106,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     { q: 'FAQ_Q9', a: 'FAQ_A9', guides: ['smart-connect-vpn'] },
     { q: 'FAQ_Q10', a: 'FAQ_A10' },
     { q: 'FAQ_Q11', a: 'FAQ_A11' },
+    { q: 'FAQ_Q12', a: 'FAQ_A12', guides: ['vpn-for-mac', 'how-to-setup-vpn-mac'] },
   ];
 
   guideLabel(slug: LandingSlug): string {

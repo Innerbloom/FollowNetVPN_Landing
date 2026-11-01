@@ -20,6 +20,14 @@
           >{{ resolvedPrimaryLabel() }}</a
         >
         <a
+          *ngIf="showMacCta"
+          class="btn primary"
+          [href]="macHref()"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ i18n.t('DOWNLOAD_MAC_CTA') }}</a
+        >
+        <a
           *ngIf="showPlayCta"
           class="btn primary"
           [href]="playHref()"
@@ -47,12 +55,15 @@
         <p *ngIf="b.body" [innerHTML]="linkify(b.body)"></p>
         <ul *ngIf="b.links?.length" class="link-list">
           <li *ngFor="let link of b.links">
+            <a *ngIf="link.href.startsWith('/'); else externalLink" [routerLink]="link.href | localize">{{ link.label }}</a>
+            <ng-template #externalLink>
             <a
               [href]="link.href"
               [attr.target]="link.href.startsWith('mailto:') ? null : '_blank'"
               [attr.rel]="link.href.startsWith('mailto:') ? null : 'noopener noreferrer'"
               >{{ link.label }}</a
             >
+            </ng-template>
           </li>
         </ul>
       </section>

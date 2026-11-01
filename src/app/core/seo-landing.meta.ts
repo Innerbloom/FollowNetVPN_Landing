@@ -56,7 +56,7 @@ const M: Record<CoreLandingSlug, LandingMeta> = {
         'FollowNet runs on iPad with the same iOS VPN app: WireGuard, IKEv2, Smart Connect, Auto-connect, and global servers from the App Store.',
     },
     ru: {
-      title: 'VPN для iPad — FollowNet',
+      title: 'VPN для iPad — FollowNet | то же приложение iOS, весь экран',
       ogTitle: 'VPN для iPad — FollowNet',
       description:
         'FollowNet на iPad — то же iOS-приложение: WireGuard, IKEv2, Smart Connect, автоподключение и доступные в приложении серверы.',

@@ -6,6 +6,7 @@
 /features
 /download
 /download/ios
+/download/mac
 /download/chrome
 /about
 /press
@@ -14,6 +15,9 @@
 /status
 /pulse
 /pulse/privacy
+/shell
+/shell/privacy
+/shell/terms
 /vpn-for-iphone
 /wireguard-vpn-ios
 /free-vpn-iphone
@@ -58,6 +62,10 @@
 /vpn-not-connecting-iphone
 /vpn-slow-iphone
 /captive-portal-vpn-iphone
+/vpn-for-mac
+/free-vpn-mac
+/how-to-setup-vpn-mac
+/wireguard-vpn-mac
 /blog/follownet-features-overview
 /blog/free-vs-premium-honest
 /blog/which-protocol-when
@@ -93,6 +101,7 @@
 /ru/features
 /ru/download
 /ru/download/ios
+/ru/download/mac
 /ru/download/chrome
 /ru/about
 /ru/press
@@ -101,6 +110,9 @@
 /ru/status
 /ru/pulse
 /ru/pulse/privacy
+/ru/shell
+/ru/shell/privacy
+/ru/shell/terms
 /ru/vpn-for-iphone
 /ru/wireguard-vpn-ios
 /ru/free-vpn-iphone
@@ -145,6 +157,10 @@
 /ru/vpn-not-connecting-iphone
 /ru/vpn-slow-iphone
 /ru/captive-portal-vpn-iphone
+/ru/vpn-for-mac
+/ru/free-vpn-mac
+/ru/how-to-setup-vpn-mac
+/ru/wireguard-vpn-mac
 /ru/blog/follownet-features-overview
 /ru/blog/free-vs-premium-honest
 /ru/blog/which-protocol-when
@@ -180,6 +196,7 @@
 /de/features
 /de/download
 /de/download/ios
+/de/download/mac
 /de/download/chrome
 /de/about
 /de/press
@@ -188,6 +205,9 @@
 /de/status
 /de/pulse
 /de/pulse/privacy
+/de/shell
+/de/shell/privacy
+/de/shell/terms
 /de/vpn-for-iphone
 /de/wireguard-vpn-ios
 /de/free-vpn-iphone
@@ -232,6 +252,10 @@
 /de/vpn-not-connecting-iphone
 /de/vpn-slow-iphone
 /de/captive-portal-vpn-iphone
+/de/vpn-for-mac
+/de/free-vpn-mac
+/de/how-to-setup-vpn-mac
+/de/wireguard-vpn-mac
 /de/blog/follownet-features-overview
 /de/blog/free-vs-premium-honest
 /de/blog/which-protocol-when
@@ -267,6 +291,7 @@
 /es/features
 /es/download
 /es/download/ios
+/es/download/mac
 /es/download/chrome
 /es/about
 /es/press
@@ -275,6 +300,9 @@
 /es/status
 /es/pulse
 /es/pulse/privacy
+/es/shell
+/es/shell/privacy
+/es/shell/terms
 /es/vpn-for-iphone
 /es/wireguard-vpn-ios
 /es/free-vpn-iphone
@@ -319,6 +347,10 @@
 /es/vpn-not-connecting-iphone
 /es/vpn-slow-iphone
 /es/captive-portal-vpn-iphone
+/es/vpn-for-mac
+/es/free-vpn-mac
+/es/how-to-setup-vpn-mac
+/es/wireguard-vpn-mac
 /es/blog/follownet-features-overview
 /es/blog/free-vs-premium-honest
 /es/blog/which-protocol-when
@@ -354,6 +386,7 @@
 /fr/features
 /fr/download
 /fr/download/ios
+/fr/download/mac
 /fr/download/chrome
 /fr/about
 /fr/press
@@ -362,6 +395,9 @@
 /fr/status
 /fr/pulse
 /fr/pulse/privacy
+/fr/shell
+/fr/shell/privacy
+/fr/shell/terms
 /fr/vpn-for-iphone
 /fr/wireguard-vpn-ios
 /fr/free-vpn-iphone
@@ -406,6 +442,10 @@
 /fr/vpn-not-connecting-iphone
 /fr/vpn-slow-iphone
 /fr/captive-portal-vpn-iphone
+/fr/vpn-for-mac
+/fr/free-vpn-mac
+/fr/how-to-setup-vpn-mac
+/fr/wireguard-vpn-mac
 /fr/blog/follownet-features-overview
 /fr/blog/free-vs-premium-honest
 /fr/blog/which-protocol-when
@@ -441,6 +481,7 @@
 /pt/features
 /pt/download
 /pt/download/ios
+/pt/download/mac
 /pt/download/chrome
 /pt/about
 /pt/press
@@ -449,6 +490,9 @@
 /pt/status
 /pt/pulse
 /pt/pulse/privacy
+/pt/shell
+/pt/shell/privacy
+/pt/shell/terms
 /pt/vpn-for-iphone
 /pt/wireguard-vpn-ios
 /pt/free-vpn-iphone
@@ -493,6 +537,10 @@
 /pt/vpn-not-connecting-iphone
 /pt/vpn-slow-iphone
 /pt/captive-portal-vpn-iphone
+/pt/vpn-for-mac
+/pt/free-vpn-mac
+/pt/how-to-setup-vpn-mac
+/pt/wireguard-vpn-mac
 /pt/blog/follownet-features-overview
 /pt/blog/free-vs-premium-honest
 /pt/blog/which-protocol-when
@@ -528,6 +576,7 @@
 /uk/features
 /uk/download
 /uk/download/ios
+/uk/download/mac
 /uk/download/chrome
 /uk/about
 /uk/press
@@ -536,6 +585,9 @@
 /uk/status
 /uk/pulse
 /uk/pulse/privacy
+/uk/shell
+/uk/shell/privacy
+/uk/shell/terms
 /uk/vpn-for-iphone
 /uk/wireguard-vpn-ios
 /uk/free-vpn-iphone
@@ -580,6 +632,10 @@
 /uk/vpn-not-connecting-iphone
 /uk/vpn-slow-iphone
 /uk/captive-portal-vpn-iphone
+/uk/vpn-for-mac
+/uk/free-vpn-mac
+/uk/how-to-setup-vpn-mac
+/uk/wireguard-vpn-mac
 /uk/blog/follownet-features-overview
 /uk/blog/free-vs-premium-honest
 /uk/blog/which-protocol-when

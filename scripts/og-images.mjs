@@ -29,15 +29,18 @@ const fonts = [
 ];
 const logo = `data:image/png;base64,${readFileSync(join(root, 'src/assets/new_logo.png')).toString('base64')}`;
 const pulseLogo = `data:image/png;base64,${readFileSync(join(root, 'src/assets/pulse/icon-512.png')).toString('base64')}`;
+const shellLogo = `data:image/png;base64,${readFileSync(join(root, 'src/assets/shell/icon-512.png')).toString('base64')}`;
 
 const KICKER = {
   blog: { en: 'Blog', ru: 'Блог', uk: 'Блог', de: 'Blog', es: 'Blog', fr: 'Blog', pt: 'Blog' },
   guide: { en: 'iPhone VPN guide', ru: 'Гайд по VPN для iPhone', uk: 'Гайд з VPN для iPhone', de: 'iPhone-VPN-Guide', es: 'Guía VPN para iPhone', fr: 'Guide VPN iPhone', pt: 'Guia de VPN para iPhone' },
+  shell: { en: 'SSH terminal for iPhone, iPad and Mac', ru: 'SSH-терминал для iPhone, iPad и Mac', uk: 'SSH-термінал для iPhone, iPad і Mac', de: 'SSH-Terminal für iPhone, iPad und Mac', es: 'Terminal SSH para iPhone, iPad y Mac', fr: 'Terminal SSH pour iPhone, iPad et Mac', pt: 'Terminal SSH para iPhone, iPad e Mac' },
+  mac: { en: 'VPN for Mac', ru: 'VPN для Mac', uk: 'VPN для Mac', de: 'VPN für Mac', es: 'VPN para Mac', fr: 'VPN pour Mac', pt: 'VPN para Mac' },
   pulse: { en: 'System monitor for Mac', ru: 'Монитор системы для Mac', uk: 'Монітор системи для Mac', de: 'Systemmonitor für Mac', es: 'Monitor del sistema para Mac', fr: 'Moniteur système pour Mac', pt: 'Monitor do sistema para Mac' },
   site: { en: 'VPN for iPhone and iPad', ru: 'VPN для iPhone и iPad', uk: 'VPN для iPhone та iPad', de: 'VPN für iPhone und iPad', es: 'VPN para iPhone y iPad', fr: 'VPN pour iPhone et iPad', pt: 'VPN para iPhone e iPad' },
 };
 /** Top-level product pages; any other single-segment path is a guide. */
-const SITE_PAGES = new Set(['', 'features', 'download', 'download/ios', 'download/chrome', 'guides', 'blog', 'about', 'support', 'press', 'privacy', 'terms', 'status', 'affiliates']);
+const SITE_PAGES = new Set(['', 'features', 'download', 'download/ios', 'download/mac', 'download/chrome', 'guides', 'blog', 'about', 'support', 'press', 'privacy', 'terms', 'status', 'affiliates']);
 const LANGS = new Set(['ru', 'uk', 'de', 'es', 'fr', 'pt']);
 
 const decode = (s) =>
@@ -57,15 +60,18 @@ function kind(ogPath) {
   const segs = ogPath.replace(/^\/og\/p\//, '').replace(/\.png$/, '').split('/');
   const lang = LANGS.has(segs[0]) ? segs.shift() : 'en';
   const rest = segs.join('/') === 'home' ? '' : segs.join('/');
-  if (rest === 'pulse' || rest.startsWith('pulse/')) return { lang, kicker: KICKER.pulse[lang], pulse: true };
+  if (rest === 'pulse' || rest.startsWith('pulse/')) return { lang, kicker: KICKER.pulse[lang], app: 'pulse' };
+  if (rest === 'shell' || rest.startsWith('shell/')) return { lang, kicker: KICKER.shell[lang], app: 'shell' };
   if (rest.startsWith('blog/')) return { lang, kicker: KICKER.blog[lang] };
+  if (rest === 'download/mac' || /-mac$/.test(rest)) return { lang, kicker: KICKER.mac[lang] };
   if (SITE_PAGES.has(rest)) return { lang, kicker: KICKER.site[lang] };
   return { lang, kicker: KICKER.guide[lang] };
 }
 
 const h = (type, style, children) => ({ type, props: { style, children } });
 
-function card(title, kicker, pulse = false) {
+/** `app`: 'pulse' | 'shell' for product cards (their icon and name), undefined for the VPN site. */
+function card(title, kicker, app) {
   const size = title.length > 70 ? 54 : title.length > 45 ? 62 : 72;
   return h(
     'div',
@@ -82,12 +88,12 @@ function card(title, kicker, pulse = false) {
     },
     [
       h('div', { display: 'flex', alignItems: 'center', gap: 20 }, [
-        pulse
-          ? { type: 'img', props: { src: pulseLogo, width: 64, height: 64, style: { borderRadius: 14 } } }
+        app
+          ? { type: 'img', props: { src: app === 'shell' ? shellLogo : pulseLogo, width: 64, height: 64, style: { borderRadius: 14 } } }
           : { type: 'img', props: { src: logo, width: 58, height: 64 } },
         h('div', { display: 'flex', fontSize: 30, fontWeight: 800, letterSpacing: -0.5 }, [
           'FollowNet',
-          h('span', { color: '#9cc23b', marginLeft: 10 }, pulse ? 'Pulse' : 'VPN'),
+          h('span', { color: '#9cc23b', marginLeft: 10 }, app === 'shell' ? 'Shell' : app === 'pulse' ? 'Pulse' : 'VPN'),
         ]),
       ]),
       h('div', { display: 'flex', flexDirection: 'column', gap: 22 }, [
@@ -123,8 +129,8 @@ for (const file of htmlFiles(browser)) {
   if (!og || done.has(og)) continue;
   const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1];
   if (!h1) throw new Error(`og-images: no <h1> in ${file}`);
-  const { kicker, pulse } = kind(og);
-  const svg = await satori(card(decode(h1), kicker, pulse), { width: 1200, height: 630, fonts });
+  const { kicker, app } = kind(og);
+  const svg = await satori(card(decode(h1), kicker, app), { width: 1200, height: 630, fonts });
   const png = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
   const out = join(browser, og);
   mkdirSync(dirname(out), { recursive: true });

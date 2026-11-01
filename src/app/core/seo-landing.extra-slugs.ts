@@ -23,7 +23,11 @@ export type ExtraLandingSlug =
   | 'vpn-split-tunneling-ios'
   | 'vpn-not-connecting-iphone'
   | 'vpn-slow-iphone'
-  | 'captive-portal-vpn-iphone';
+  | 'captive-portal-vpn-iphone'
+  | 'vpn-for-mac'
+  | 'free-vpn-mac'
+  | 'how-to-setup-vpn-mac'
+  | 'wireguard-vpn-mac';
 
 export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vless-reality-ios',
@@ -49,9 +53,49 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vpn-not-connecting-iphone',
   'vpn-slow-iphone',
   'captive-portal-vpn-iphone',
+  'vpn-for-mac',
+  'free-vpn-mac',
+  'how-to-setup-vpn-mac',
+  'wireguard-vpn-mac',
 ];
 
 const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
+  'vpn-for-mac': {
+    en: 'VPN for Mac',
+    ru: 'VPN для Mac',
+    uk: 'VPN для Mac',
+    de: 'VPN für Mac',
+    es: 'VPN para Mac',
+    fr: 'VPN pour Mac',
+    pt: 'VPN para Mac',
+  },
+  'free-vpn-mac': {
+    en: 'Free VPN for Mac',
+    ru: 'Бесплатный VPN для Mac',
+    uk: 'Безкоштовний VPN для Mac',
+    de: 'Kostenloses VPN für Mac',
+    es: 'VPN gratis para Mac',
+    fr: 'VPN gratuit pour Mac',
+    pt: 'VPN grátis para Mac',
+  },
+  'how-to-setup-vpn-mac': {
+    en: 'Set up VPN on Mac',
+    ru: 'Как настроить VPN на Mac',
+    uk: 'Як налаштувати VPN на Mac',
+    de: 'VPN auf dem Mac einrichten',
+    es: 'Configurar VPN en Mac',
+    fr: 'Configurer un VPN sur Mac',
+    pt: 'Configurar VPN no Mac',
+  },
+  'wireguard-vpn-mac': {
+    en: 'WireGuard for Mac',
+    ru: 'WireGuard для Mac',
+    uk: 'WireGuard для Mac',
+    de: 'WireGuard für Mac',
+    es: 'WireGuard para Mac',
+    fr: 'WireGuard pour Mac',
+    pt: 'WireGuard para Mac',
+  },
   'vless-reality-ios': {
     en: 'VLESS Reality',
     ru: 'VLESS Reality',

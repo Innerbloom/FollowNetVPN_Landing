@@ -1,7 +1,9 @@
 import { AppLang } from './i18n.service';
 import { getLandingSeoCopy, landingSlugFromPath, titleFromH1 } from './seo-landing.meta';
 import { blogSeoMeta } from './blog-seo';
-import { PULSE_PRIVACY_SEO, PULSE_SEO } from './pulse.content';
+import { PULSE_PRIVACY_SEO, PULSE_PUBLIC, PULSE_SEO } from './pulse.content';
+import { SHELL_PUBLIC, SHELL_SEO } from './shell.content';
+import { SHELL_PRIVACY_SEO, SHELL_TERMS_SEO } from './shell-legal.content';
 
 export type SeoCopy = {
   title: string;
@@ -52,6 +54,9 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean === '/download/ios') {
     return downloadIosByLang[lang];
   }
+  if (clean === '/download/mac') {
+    return downloadMacByLang[lang];
+  }
   if (clean === '/download/chrome') {
     return downloadChromeByLang[lang];
   }
@@ -64,11 +69,18 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean === '/affiliates') {
     return affiliatesByLang[lang];
   }
-  if (clean === '/pulse') {
-    return PULSE_SEO[lang] ?? PULSE_SEO.en;
+  if (clean === '/pulse' || clean === '/pulse/privacy') {
+    const copy = clean === '/pulse' ? PULSE_SEO[lang] ?? PULSE_SEO.en : PULSE_PRIVACY_SEO[lang] ?? PULSE_PRIVACY_SEO.en;
+    return PULSE_PUBLIC ? copy : { ...copy, robots: 'noindex, follow' };
   }
-  if (clean === '/pulse/privacy') {
-    return PULSE_PRIVACY_SEO[lang] ?? PULSE_PRIVACY_SEO.en;
+  if (clean === '/shell' || clean.startsWith('/shell/')) {
+    const copy =
+      clean === '/shell/privacy'
+        ? SHELL_PRIVACY_SEO[lang] ?? SHELL_PRIVACY_SEO.en
+        : clean === '/shell/terms'
+          ? SHELL_TERMS_SEO[lang] ?? SHELL_TERMS_SEO.en
+          : SHELL_SEO[lang] ?? SHELL_SEO.en;
+    return SHELL_PUBLIC ? copy : { ...copy, robots: 'noindex, follow' };
   }
   if (clean === '/support') {
     return supportByLang[lang];
@@ -200,43 +212,43 @@ const downloadByLang: Record<AppLang, SeoCopy> = {
     title: 'Download FollowNet VPN — App Store, Google Play & Chrome',
     ogTitle: 'Download FollowNet',
     description:
-      'Get FollowNet for iPhone and iPad from the App Store, for Android from Google Play, or install the Chrome extension for browser traffic on desktop. Chrome does not cover other apps.',
+      'Get FollowNet for iPhone, iPad and Mac from the App Store, for Android from Google Play, or add the Chrome extension to protect just the browser. Free to try.',
   },
   ru: {
     title: 'Скачать FollowNet VPN — App Store, Google Play и Chrome',
     ogTitle: 'Скачать FollowNet',
     description:
-      'Скачайте FollowNet для iPhone и iPad в App Store, для Android — в Google Play, или установите расширение Chrome для трафика браузера. Другие приложения на компьютере оно не защищает.',
+      'Скачайте FollowNet для iPhone, iPad и Mac в App Store, для Android — в Google Play, или поставьте расширение Chrome только для браузера. Free бесплатно.',
   },
   uk: {
     title: 'Завантажити FollowNet VPN — App Store, Google Play і Chrome',
     ogTitle: 'Завантажити FollowNet',
     description:
-      'Завантажте FollowNet для iPhone та iPad з App Store, для Android — з Google Play, або встановіть розширення Chrome для трафіку браузера. Інші програми на комп’ютері воно не захищає.',
+      'Завантажте FollowNet для iPhone, iPad і Mac з App Store, для Android — з Google Play, або встановіть розширення Chrome лише для браузера. Free безкоштовно.',
   },
   de: {
     title: 'FollowNet VPN laden — App Store, Google Play und Chrome',
     ogTitle: 'FollowNet herunterladen',
     description:
-      'Laden Sie FollowNet für iPhone und iPad im App Store, für Android bei Google Play, oder installieren Sie die Chrome-Erweiterung für Browserdaten. Andere Desktop-Apps sind nicht abgedeckt.',
+      'FollowNet für iPhone, iPad und Mac im App Store, für Android bei Google Play, oder die Chrome-Erweiterung nur für den Browser. Free kostenlos testen.',
   },
   es: {
     title: 'Descargar FollowNet VPN — App Store, Google Play y Chrome',
     ogTitle: 'Descargar FollowNet',
     description:
-      'Descarga FollowNet para iPhone y iPad en App Store, para Android en Google Play, o instala la extensión de Chrome para el tráfico del navegador. No protege otras aplicaciones del ordenador.',
+      'Descarga FollowNet para iPhone, iPad y Mac en App Store, para Android en Google Play, o instala la extensión de Chrome solo para el navegador. Free gratis.',
   },
   fr: {
     title: 'Télécharger FollowNet VPN — App Store, Google Play et Chrome',
     ogTitle: 'Télécharger FollowNet',
     description:
-      'Téléchargez FollowNet pour iPhone et iPad dans l’App Store, sur Android via Google Play, ou installez l’extension Chrome pour le trafic du navigateur. Les autres apps ne sont pas couvertes.',
+      'FollowNet pour iPhone, iPad et Mac sur l’App Store, pour Android sur Google Play, ou l’extension Chrome pour le seul navigateur. Free gratuit.',
   },
   pt: {
     title: 'Baixar FollowNet VPN — App Store, Google Play e Chrome',
     ogTitle: 'Baixar FollowNet',
     description:
-      'Baixe o FollowNet para iPhone e iPad na App Store, para Android no Google Play, ou instale a extensão do Chrome para o tráfego do navegador. Ela não protege outros aplicativos do computador.',
+      'Baixe o FollowNet para iPhone, iPad e Mac na App Store, para Android no Google Play, ou instale a extensão do Chrome só para o navegador. Free grátis.',
   },
 };
 
@@ -263,7 +275,7 @@ const downloadIosByLang: Record<AppLang, SeoCopy> = {
     title: 'FollowNet auf iPhone und iPad installieren | App Store',
     ogTitle: 'FollowNet für iOS',
     description:
-      'Installieren Sie FollowNet aus dem App Store, erlauben Sie die erforderliche iOS-VPN-Konfiguration und verbinden Sie sich mit Smart Connect oder einem gewählten Protokoll.',
+      'FollowNet aus dem App Store installieren, die iOS-VPN-Konfiguration erlauben und mit Smart Connect oder einem gewählten Protokoll verbinden.',
   },
   es: {
     title: 'Instalar FollowNet en iPhone y iPad — guía de App Store',
@@ -282,6 +294,51 @@ const downloadIosByLang: Record<AppLang, SeoCopy> = {
     ogTitle: 'FollowNet para iOS',
     description:
       'Instale o FollowNet pela App Store, permita a configuração VPN exigida pelo iOS e faça a primeira conexão com o Smart Connect ou o protocolo escolhido.',
+  },
+};
+
+const downloadMacByLang: Record<AppLang, SeoCopy> = {
+  en: {
+    title: 'FollowNet VPN for Mac — install from the App Store',
+    ogTitle: 'FollowNet for Mac',
+    description:
+      'FollowNet VPN for Mac: the same App Store app as on iPhone. System-wide VPN for every app with WireGuard, AmneziaWG and Hysteria2. One account, one Premium.',
+  },
+  ru: {
+    title: 'FollowNet VPN для Mac — установка из App Store',
+    ogTitle: 'FollowNet для Mac',
+    description:
+      'FollowNet VPN для Mac — то же приложение App Store, что на iPhone. Системный VPN для всех приложений: WireGuard, AmneziaWG, Hysteria2. Один аккаунт и Premium.',
+  },
+  uk: {
+    title: 'FollowNet VPN для Mac — встановлення з App Store',
+    ogTitle: 'FollowNet для Mac',
+    description:
+      'FollowNet VPN для Mac — той самий застосунок App Store, що на iPhone. Системний VPN для всіх застосунків: WireGuard, AmneziaWG, Hysteria2. Один акаунт і Premium.',
+  },
+  de: {
+    title: 'FollowNet VPN für Mac — aus dem App Store installieren',
+    ogTitle: 'FollowNet für Mac',
+    description:
+      'FollowNet VPN für Mac: dieselbe App Store-App wie auf dem iPhone. Systemweites VPN für jede App mit WireGuard, AmneziaWG und Hysteria2. Ein Konto, ein Premium.',
+  },
+  es: {
+    title: 'FollowNet VPN para Mac — instalar desde App Store',
+    ogTitle: 'FollowNet para Mac',
+    description:
+      'FollowNet VPN para Mac: la misma app de App Store que en iPhone. VPN de sistema para todas las apps con WireGuard, AmneziaWG y Hysteria2. Una cuenta y Premium.',
+  },
+  fr: {
+    title: 'FollowNet VPN pour Mac — installer depuis l’App Store',
+    ogTitle: 'FollowNet pour Mac',
+    description:
+      'FollowNet VPN pour Mac : la même app App Store que sur iPhone. VPN système pour toutes les apps avec WireGuard, AmneziaWG et Hysteria2. Un compte, un Premium.',
+  },
+  pt: {
+    title: 'FollowNet VPN para Mac — instalar pela App Store',
+    ogTitle: 'FollowNet para Mac',
+    description:
+      'FollowNet VPN para Mac: a mesma app da App Store do iPhone. VPN de sistema para todas as apps com WireGuard, AmneziaWG e Hysteria2. Uma conta, um Premium.',
   },
 };
 
@@ -383,13 +440,13 @@ const pressByLang: Record<AppLang, SeoCopy> = {
       'Boilerplate, App Store & Chrome links, brand assets, and accurate product facts for journalists, directories, and partners.',
   },
   ru: {
-    title: 'Пресс‑кит — FollowNet VPN',
+    title: 'Пресс‑кит FollowNet VPN — логотипы, факты и контакты',
     ogTitle: 'Пресс‑кит FollowNet',
     description:
       'Бойлерплейт, ссылки App Store и Chrome, ассеты и честные факты о продукте для СМИ, каталогов и партнёров.',
   },
   uk: {
-    title: 'Прес‑кіт — FollowNet VPN',
+    title: 'Прес‑кіт FollowNet VPN — логотипи, факти й контакти',
     ogTitle: 'Прес‑кіт FollowNet',
     description:
       'Бойлерплейт, посилання App Store і Chrome, ассети та чесні факти про продукт для ЗМІ, каталогів і партнерів.',
@@ -512,39 +569,39 @@ const supportByLang: Record<AppLang, SeoCopy> = {
 
 const statusByLang: Record<AppLang, SeoCopy> = {
   en: {
-    title: 'FollowNet status',
+    title: 'FollowNet VPN status — servers, apps and website',
     ogTitle: 'FollowNet status',
-    description: 'Public operational notes for the FollowNet website, iOS App Store app, and Chrome extension.',
+    description: 'Public operational notes for the FollowNet VPN website, the App Store app for iPhone, iPad and Mac, and the Chrome extension.',
   },
   ru: {
-    title: 'Статус FollowNet',
+    title: 'Статус FollowNet VPN — серверы, приложения и сайт',
     ogTitle: 'Статус FollowNet',
     description: 'Публичные заметки о работе сайта FollowNet, приложения App Store и расширения Chrome.',
   },
   uk: {
-    title: 'Стан сервісів FollowNet',
+    title: 'Стан FollowNet VPN — сервери, застосунки й сайт',
     ogTitle: 'Стан сервісів FollowNet',
     description: 'Публічні нотатки про роботу сайту FollowNet, застосунку App Store і розширення Chrome.',
   },
   de: {
-    title: 'FollowNet Status',
+    title: 'FollowNet VPN Status — Server, Apps und Website',
     ogTitle: 'FollowNet Status',
-    description: 'Öffentliche Betriebsnotizen zu Website, App Store und Chrome‑Erweiterung.',
+    description: 'Öffentliche Betriebsnotizen zur FollowNet-VPN-Website, zur App Store-App für iPhone, iPad und Mac und zur Chrome‑Erweiterung.',
   },
   es: {
-    title: 'Estado de FollowNet',
+    title: 'Estado de FollowNet VPN — servidores, apps y sitio',
     ogTitle: 'Estado de FollowNet',
-    description: 'Notas públicas sobre el sitio, la app de App Store y la extensión de Chrome.',
+    description: 'Notas públicas sobre el sitio de FollowNet VPN, la app de App Store para iPhone, iPad y Mac y la extensión de Chrome.',
   },
   fr: {
-    title: 'Statut FollowNet',
+    title: 'Statut FollowNet VPN — serveurs, apps et site',
     ogTitle: 'Statut FollowNet',
-    description: 'Notes publiques sur le site, l’app App Store et l’extension Chrome.',
+    description: 'Notes publiques sur le site FollowNet VPN, l’app App Store pour iPhone, iPad et Mac, et l’extension Chrome.',
   },
   pt: {
-    title: 'Estado do FollowNet',
+    title: 'Estado do FollowNet VPN — servidores, apps e site',
     ogTitle: 'Estado do FollowNet',
-    description: 'Notas públicas sobre o site, a app da App Store e a extensão Chrome.',
+    description: 'Notas públicas sobre o site do FollowNet VPN, a app da App Store para iPhone, iPad e Mac e a extensão do Chrome.',
   },
 };
 

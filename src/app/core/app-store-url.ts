@@ -14,6 +14,15 @@ export function appStoreUrl(campaignToken?: string): string {
   return url.toString();
 }
 
+/** Same universal App Store listing, opened on its Mac tab (`platform=mac`). */
+export function macAppStoreUrl(campaignToken?: string): string {
+  const url = new URL(appStoreUrl(campaignToken));
+  url.searchParams.set('platform', 'mac');
+  // Apple's media type for Mac apps is 12 (iOS is 8).
+  if (url.searchParams.has('mt')) url.searchParams.set('mt', '12');
+  return url.toString();
+}
+
 /** Google Play link; the campaign goes into `referrer` (Play Install Referrer / Firebase). */
 export function playStoreUrl(campaign?: string): string {
   const url = new URL(environment.androidPlayStoreUrl.trim());

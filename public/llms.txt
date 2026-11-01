@@ -1,0 +1,44 @@
+# FollowNet VPN
+
+> FollowNet is a VPN app for iPhone, iPad and Mac (one universal App Store app), Android (Google Play) and a Chrome extension. Protocols: WireGuard, IKEv2, AmneziaWG, Hysteria2 and VLESS Reality, with Smart Connect choosing one that works on the current network. Free plan with a weekly traffic allowance; Premium removes the cap, unlocks all locations and covers up to 5 devices. Sign-in is passwordless (email code).
+
+Key facts:
+- iPhone and iPad: system-wide VPN through Apple Network Extension; Auto-connect, DNS profiles, Speed Test, widgets, Shortcuts.
+- Mac: same App Store listing, macOS 14 Sonoma or later; system-wide VPN for every app, menu bar icon (status, connect/disconnect, server switch), kill switch, Auto-connect (Wi‑Fi only or always), DNS profiles, Speed Test.
+- Chrome extension: browser-only proxy with its own Kill Switch and ad blocking; it does not protect other apps.
+- Premium bought in the App Store applies to the same Apple ID on iPhone, iPad and Mac.
+- Website languages: English (root), /ru, /uk, /de, /es, /fr, /pt.
+
+## Download
+
+- [All downloads](https://follow-net.com/download): App Store, Google Play and Chrome Web Store links
+- [FollowNet for Mac](https://follow-net.com/download/mac): install and first connection on macOS
+- [FollowNet for iPhone and iPad](https://follow-net.com/download/ios)
+- [FollowNet for Chrome](https://follow-net.com/download/chrome)
+- [App Store listing](https://apps.apple.com/us/app/follownet-vpn-fast-secure/id6757725829)
+
+## Guides
+
+- [VPN for Mac](https://follow-net.com/vpn-for-mac): system-wide VPN on MacBook and iMac
+- [How to set up a VPN on Mac](https://follow-net.com/how-to-setup-vpn-mac)
+- [Free VPN for Mac](https://follow-net.com/free-vpn-mac): what the free plan includes
+- [WireGuard VPN for Mac](https://follow-net.com/wireguard-vpn-mac)
+- [VPN for iPhone](https://follow-net.com/vpn-for-iphone)
+- [Free VPN for iPhone](https://follow-net.com/free-vpn-iphone)
+- [How to set up a VPN on iPhone](https://follow-net.com/how-to-setup-vpn-iphone)
+- [Smart Connect](https://follow-net.com/smart-connect-vpn): automatic protocol choice
+- [WireGuard vs IKEv2](https://follow-net.com/wireguard-vs-ikev2)
+- [What is a VPN](https://follow-net.com/what-is-a-vpn)
+- [All guides](https://follow-net.com/guides)
+
+## Product
+
+- [Features](https://follow-net.com/features): complete list of shipped features
+- [Blog](https://follow-net.com/blog)
+- [Support](https://follow-net.com/support)
+- [Press kit](https://follow-net.com/press)
+
+## Policies
+
+- [Privacy Policy](https://follow-net.com/privacy)
+- [Terms of Use](https://follow-net.com/terms)

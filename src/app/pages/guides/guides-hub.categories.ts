@@ -25,6 +25,20 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slugs: ['what-is-a-vpn', 'how-vpn-works', 'do-i-need-a-vpn', 'vpn-for-beginners', 'how-to-setup-vpn-iphone', 'vpn-for-iphone', 'vpn-for-ipad', 'best-vpn-iphone', 'secure-vpn-iphone'],
   },
   {
+    id: 'mac',
+    title: { en: 'VPN on Mac', ru: 'VPN на Mac', uk: 'VPN на Mac', de: 'VPN auf dem Mac', es: 'VPN en Mac', fr: 'VPN sur Mac', pt: 'VPN no Mac' },
+    note: {
+      en: 'FollowNet for MacBook and iMac: system-wide VPN, setup, the free plan and WireGuard.',
+      ru: 'FollowNet для MacBook и iMac: системный VPN, настройка, бесплатный тариф и WireGuard.',
+      uk: 'FollowNet для MacBook та iMac: системний VPN, налаштування, безкоштовний тариф і WireGuard.',
+      de: 'FollowNet für MacBook und iMac: systemweites VPN, Einrichtung, Free-Tarif und WireGuard.',
+      es: 'FollowNet para MacBook e iMac: VPN de sistema, configuración, plan gratuito y WireGuard.',
+      fr: 'FollowNet pour MacBook et iMac : VPN système, configuration, offre gratuite et WireGuard.',
+      pt: 'FollowNet para MacBook e iMac: VPN de sistema, configuração, plano grátis e WireGuard.',
+    },
+    slugs: ['vpn-for-mac', 'how-to-setup-vpn-mac', 'free-vpn-mac', 'wireguard-vpn-mac'],
+  },
+  {
     id: 'wifi',
     title: { en: 'Wi‑Fi and travel', ru: 'Wi‑Fi и поездки', uk: 'Wi‑Fi і подорожі', de: 'WLAN und Reisen', es: 'Wi‑Fi y viajes', fr: 'Wi‑Fi et voyages', pt: 'Wi‑Fi e viagens' },
     note: {
