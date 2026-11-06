@@ -876,8 +876,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Browser proxy for Chrome (SOCKS/HTTPS): connect/disconnect, server list with ping and favorites, session timer, statistics, Free/Premium. Kill Switch blocks Chrome internet if the proxy drops. Ad blocking via EasyList + AdGuard filters. Shortcut Alt+Shift+F. Not a full-device VPN — desktop browser only.',
       },
       {
-        title: 'What is not in the product (yet)',
-        body: 'No per-app split tunneling on iOS (platform limits). Auto-connect is not the same as a leak-blocking kill switch on iPhone — that Kill Switch exists in the Chrome extension.',
+        title: 'Privacy tools',
+        body: 'Multi-hop (Premium): traffic goes through two countries. Tor server (Premium): connect through the Tor network, slower than regular servers. Split tunneling: send only chosen sites and services through the VPN, or keep them outside it. Local network access: printers, AirPlay and your router stay reachable. Privacy check: see the IP sites see and test DNS and IPv6 leaks in the app.',
+      },
+      {
+        title: 'Honest limits',
+        body: 'Split tunneling works by site and address, not by individual iPhone app, because iOS reserves per-app VPN for managed devices. Multi-hop and Tor are slower than a single server.',
       },
     ],
     bullets: [
@@ -953,8 +957,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Proxy для Chrome (SOCKS/HTTPS): connect/disconnect, серверы с пингом и избранным, таймер, статистика, Free/Premium. Kill Switch режет интернет Chrome при обрыве proxy. Блокировка рекламы EasyList + AdGuard. Шорткат Alt+Shift+F. Это не полный VPN устройства — только браузер.',
       },
       {
-        title: 'Чего пока нет',
-        body: 'Нет per-app split tunneling на iOS (ограничения платформы). Автоподключение на iPhone — не то же самое, что Kill Switch с блокировкой утечек; такой Kill Switch есть в расширении Chrome.',
+        title: 'Инструменты приватности',
+        body: 'Мультихоп (Premium): трафик идёт через две страны. Tor-сервер (Premium): подключение через сеть Tor, медленнее обычных серверов. Раздельное туннелирование: пускайте через VPN только выбранные сайты и сервисы или оставляйте их без VPN. Доступ к локальной сети: принтеры, AirPlay и роутер остаются доступны. Проверка приватности: IP, который видят сайты, и тест утечек DNS и IPv6 в приложении.',
+      },
+      {
+        title: 'Честные ограничения',
+        body: 'Раздельное туннелирование работает по сайтам и адресам, а не по отдельным приложениям iPhone: iOS оставляет VPN для отдельных приложений управляемым устройствам. Мультихоп и Tor медленнее одного сервера.',
       },
     ],
     bullets: [
@@ -1030,8 +1038,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Проксі для браузера Chrome (SOCKS/HTTPS): підключення, сервери з пінгом та обраним, таймер сеансу, статистика й тарифи Free/Premium. Kill Switch блокує доступ Chrome до інтернету в разі розриву проксі, а EasyList і AdGuard блокують рекламу. Сполучення Alt+Shift+F перемикає підключення. Це проксі лише для браузера, а не VPN для всього пристрою.',
       },
       {
-        title: 'Чого в продукті поки немає',
-        body: 'На iOS немає роздільного тунелювання для окремих застосунків через обмеження платформи. Автопідключення на iPhone не є Kill Switch із блокуванням витоків — такий Kill Switch є в розширенні Chrome.',
+        title: 'Інструменти приватності',
+        body: 'Мультихоп (Premium): трафік іде через дві країни. Tor-сервер (Premium): підключення через мережу Tor, повільніше за звичайні сервери. Роздільне тунелювання: спрямовуйте через VPN лише вибрані сайти й сервіси або залишайте їх без VPN. Доступ до локальної мережі: принтери, AirPlay і роутер залишаються доступними. Перевірка приватності: IP, яку бачать сайти, і тест витоків DNS та IPv6 у застосунку.',
+      },
+      {
+        title: 'Чесні обмеження',
+        body: 'Роздільне тунелювання працює за сайтами й адресами, а не за окремими застосунками iPhone: iOS залишає VPN для окремих застосунків керованим пристроям. Мультихоп і Tor повільніші за один сервер.',
       },
     ],
     bullets: [
@@ -1107,8 +1119,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Browser-Proxy für Chrome (SOCKS/HTTPS) mit Verbindung, Servern samt Ping und Favoriten, Sitzungstimer, Statistiken und Free/Premium. Der Kill Switch blockiert den Internetzugriff von Chrome bei einem Proxy-Ausfall; EasyList und AdGuard filtern Werbung. Alt+Umschalt+F schaltet die Verbindung um. Dies ist nur ein Browser-Proxy, kein VPN für das gesamte Gerät.',
       },
       {
-        title: 'Was das Produkt noch nicht bietet',
-        body: 'Per-App-Split-Tunneling ist unter iOS aufgrund von Plattformbeschränkungen nicht verfügbar. Die automatische Verbindung auf dem iPhone ist kein Kill Switch gegen Datenlecks — einen solchen Kill Switch gibt es in der Chrome-Erweiterung.',
+        title: 'Privatsphäre-Werkzeuge',
+        body: 'Multi-Hop (Premium): Der Verkehr läuft über zwei Länder. Tor-Server (Premium): Verbindung über das Tor-Netzwerk, langsamer als normale Server. Split Tunneling: Schicke nur gewählte Websites und Dienste durchs VPN oder nimm sie aus. Zugriff aufs lokale Netzwerk: Drucker, AirPlay und Router bleiben erreichbar. Datenschutz-Check: die IP, die Websites sehen, und Tests auf DNS- und IPv6-Lecks in der App.',
+      },
+      {
+        title: 'Ehrliche Grenzen',
+        body: 'Split Tunneling arbeitet mit Websites und Adressen, nicht mit einzelnen iPhone-Apps, denn iOS behält App-VPN verwalteten Geräten vor. Multi-Hop und Tor sind langsamer als ein einzelner Server.',
       },
     ],
     bullets: [
@@ -1184,8 +1200,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Proxy para Chrome (SOCKS/HTTPS) con conexión, servidores con ping y favoritos, temporizador, estadísticas y Free/Premium. Kill Switch bloquea el acceso a internet de Chrome si falla el proxy; EasyList y AdGuard bloquean anuncios. Alt+Mayús+F activa o desactiva la conexión. Es un proxy solo para el navegador, no una VPN para todo el dispositivo.',
       },
       {
-        title: 'Lo que todavía no incluye el producto',
-        body: 'iOS no dispone de túnel dividido por app debido a las limitaciones de la plataforma. La conexión automática en iPhone no equivale a un Kill Switch que impida fugas; ese Kill Switch está en la extensión de Chrome.',
+        title: 'Herramientas de privacidad',
+        body: 'Multi-hop (Premium): el tráfico pasa por dos países. Servidor Tor (Premium): conexión por la red Tor, más lenta que los servidores normales. Túnel dividido: envía por la VPN solo los sitios y servicios elegidos o déjalos fuera. Acceso a la red local: impresoras, AirPlay y el router siguen disponibles. Comprobación de privacidad: la IP que ven los sitios y pruebas de fugas de DNS e IPv6 en la app.',
+      },
+      {
+        title: 'Límites honestos',
+        body: 'El túnel dividido funciona por sitio y dirección, no por app de iPhone, porque iOS reserva la VPN por app a dispositivos gestionados. Multi-hop y Tor son más lentos que un solo servidor.',
       },
     ],
     bullets: [
@@ -1261,8 +1281,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Proxy pour Chrome (SOCKS/HTTPS) avec connexion, serveurs et leur ping, favoris, durée de session, statistiques et Free/Premium. Le Kill Switch bloque l’accès Internet de Chrome si le proxy tombe ; EasyList et AdGuard filtrent les publicités. Alt+Maj+F active ou coupe la connexion. Il s’agit d’un proxy pour le navigateur, pas d’un VPN pour tout l’appareil.',
       },
       {
-        title: 'Ce que le produit ne propose pas encore',
-        body: 'Le split tunneling par app n’est pas disponible sur iOS en raison des limites de la plateforme. La connexion automatique sur iPhone n’est pas un Kill Switch contre les fuites ; ce Kill Switch existe dans l’extension Chrome.',
+        title: 'Outils de confidentialité',
+        body: 'Multi-hop (Premium) : le trafic passe par deux pays. Serveur Tor (Premium) : connexion via le réseau Tor, plus lente que les serveurs classiques. Tunnel fractionné : envoyez par le VPN seulement les sites et services choisis, ou laissez-les dehors. Accès au réseau local : imprimantes, AirPlay et routeur restent accessibles. Vérification de confidentialité : l’IP vue par les sites et tests de fuites DNS et IPv6 dans l’app.',
+      },
+      {
+        title: 'Limites honnêtes',
+        body: 'Le tunnel fractionné fonctionne par site et adresse, pas par app iPhone, car iOS réserve le VPN par app aux appareils gérés. Le multi-hop et Tor sont plus lents qu’un seul serveur.',
       },
     ],
     bullets: [
@@ -1338,8 +1362,12 @@ const FEATURES: Record<LangPack, ProductPage> = {
         body: 'Proxy para Chrome (SOCKS/HTTPS) com ligação, servidores com ping e favoritos, temporizador, estatísticas e Free/Premium. O Kill Switch bloqueia o acesso à Internet do Chrome se o proxy falhar; EasyList e AdGuard bloqueiam anúncios. Alt+Shift+F ativa ou desativa a ligação. É um proxy apenas para o navegador, não uma VPN para todo o dispositivo.',
       },
       {
-        title: 'O que o produto ainda não inclui',
-        body: 'O túnel dividido por app não está disponível no iOS devido às limitações da plataforma. A ligação automática no iPhone não equivale a um Kill Switch contra fugas; esse Kill Switch existe na extensão do Chrome.',
+        title: 'Ferramentas de privacidade',
+        body: 'Multi-hop (Premium): o tráfego passa por dois países. Servidor Tor (Premium): conexão pela rede Tor, mais lenta que os servidores comuns. Túnel dividido: envie pela VPN só os sites e serviços escolhidos ou deixe-os de fora. Acesso à rede local: impressoras, AirPlay e o roteador continuam acessíveis. Verificação de privacidade: o IP que os sites veem e testes de vazamento de DNS e IPv6 no app.',
+      },
+      {
+        title: 'Limites honestos',
+        body: 'O túnel dividido funciona por site e endereço, não por app do iPhone, porque o iOS reserva a VPN por app a dispositivos gerenciados. Multi-hop e Tor são mais lentos que um único servidor.',
       },
     ],
     bullets: [

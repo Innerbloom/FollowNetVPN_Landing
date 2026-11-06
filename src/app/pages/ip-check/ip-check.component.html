@@ -1,0 +1,59 @@
+<main class="ip-page">
+  <div class="container narrow">
+    <p class="kicker">{{ copy.kicker }}</p>
+    <h1>{{ copy.h1 }}</h1>
+    <p class="lead">{{ copy.lead }}</p>
+
+    <section class="card" aria-live="polite">
+      <p class="status" *ngIf="state === 'idle' || state === 'loading'">{{ copy.checking }}</p>
+      <p class="status" *ngIf="state === 'failed'">{{ copy.failed }}</p>
+
+      <ng-container *ngIf="state === 'ready' && result">
+        <p class="ip-label">{{ copy.rows.ip }}</p>
+        <div class="ip-head">
+          <p class="ip-value">{{ result.ip }}</p>
+          <button type="button" class="btn small" (click)="copyIp()">
+            {{ copied ? copy.copied : copy.copy }}
+          </button>
+        </div>
+        <p class="verdict" [class.verdict-ok]="result.isOurNode">
+          {{ result.isOurNode ? copy.verdictOurs : copy.verdictExposed }}
+        </p>
+        <dl class="rows">
+          <div class="row" *ngFor="let row of rows">
+            <dt>{{ row.label }}</dt>
+            <dd [class.ok]="row.tone === 'ok'" [class.warn]="row.tone === 'warn'">{{ row.value }}</dd>
+          </div>
+        </dl>
+      </ng-container>
+
+      <div class="actions" *ngIf="state === 'ready' || state === 'failed'">
+        <a
+          *ngIf="state === 'ready' && result && !result.isOurNode"
+          class="btn primary"
+          [href]="appUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ copy.cta }}</a
+        >
+        <button type="button" class="btn" (click)="run()">{{ copy.retry }}</button>
+      </div>
+    </section>
+
+    <p class="note">{{ copy.dnsNote }}</p>
+    <p class="note">{{ copy.storedNote }}</p>
+
+    <section class="text">
+      <h2>{{ copy.aboutTitle }}</h2>
+      <p *ngFor="let paragraph of copy.about">{{ paragraph }}</p>
+    </section>
+
+    <section class="text">
+      <h2>{{ copy.faqTitle }}</h2>
+      <ng-container *ngFor="let item of copy.faq">
+        <h3>{{ item.q }}</h3>
+        <p>{{ item.a }}</p>
+      </ng-container>
+    </section>
+  </div>
+</main>

@@ -76,7 +76,7 @@ export const ES: Record<CoreLandingSlug, LandingContent> = {
       { q: '¿WireGuard es seguro en el iPhone?', a: 'WireGuard tiene un diseño criptográfico moderno. FollowNet lo ejecuta mediante el framework Network Extension de Apple, como otras VPN de App Store.' },
       { q: '¿Puedo forzar solo WireGuard?', a: 'Sí. Abre Ajustes → Protocolo y elige WireGuard. Usa Smart Connect cuando prefieras la selección automática.' },
       { q: '¿Qué hago si WireGuard no conecta?', a: 'Prueba Smart Connect, cambia a AmneziaWG, IKEv2 o Hysteria2, elige otra ubicación de la app y vuelve a medir con el Speed Test.' },
-      { q: '¿FollowNet admite túnel dividido en iOS?', a: 'Con la VPN conectada, iOS envía el tráfico del dispositivo por el túnel. El túnel dividido por app está limitado por la plataforma de Apple; FollowNet sigue las reglas de VPN del sistema.' },
+      { q: '¿FollowNet admite túnel dividido en iOS?', a: 'Sí. En Ajustes → Túnel dividido puedes enviar por la VPN solo los sitios y servicios elegidos o dejarlos fuera. Las reglas funcionan por sitio y dirección, no por app.' },
     ],
   },
   'free-vpn-iphone': {

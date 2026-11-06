@@ -27,6 +27,7 @@
           rel="noopener noreferrer"
           >{{ i18n.t('PLAY_CTA') }}</a
         >
+        <a *ngIf="linksIpCheck" class="btn ghost" [routerLink]="'/ip-check' | localize">{{ i18n.t('NAV_IP_CHECK') }}</a>
         <a class="btn ghost" [routerLink]="'/' | localize">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
       </div>
     </div>

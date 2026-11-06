@@ -75,7 +75,7 @@ export const RU: Record<CoreLandingSlug, LandingContent> = {
       { q: 'WireGuard безопасен на iPhone?', a: 'WireGuard использует современную криптографическую схему; FollowNet запускает туннель через Network Extension iOS.' },
       { q: 'Можно только WireGuard?', a: 'Да. Настройки → Протокол → WireGuard. Для автовыбора включите Smart Connect.' },
       { q: 'WireGuard не подключается — что делать?', a: 'Попробуйте Smart Connect, AmneziaWG, IKEv2 или Hysteria2, другую локацию из списка в приложении и снова Speed Test.' },
-      { q: 'Есть split tunneling на iOS?', a: 'iOS направляет трафик устройства через VPN‑туннель. Per‑app split ограничен платформой Apple.' },
+      { q: 'Есть split tunneling на iOS?', a: 'Да. В Настройках → Раздельное туннелирование можно пускать через VPN только выбранные сайты и сервисы или оставлять их без VPN. Правила работают по сайтам и адресам, а не по приложениям.' },
     ],
   },
   'free-vpn-iphone': {

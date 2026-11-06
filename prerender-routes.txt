@@ -13,6 +13,7 @@
 /affiliates
 /support
 /status
+/ip-check
 /pulse
 /pulse/privacy
 /shell
@@ -66,6 +67,11 @@
 /free-vpn-mac
 /how-to-setup-vpn-mac
 /wireguard-vpn-mac
+/multi-hop-vpn
+/tor-over-vpn
+/vpn-local-network-access
+/webrtc-leak-test
+/ipv6-leak-test
 /blog/follownet-features-overview
 /blog/free-vs-premium-honest
 /blog/which-protocol-when
@@ -108,6 +114,7 @@
 /ru/affiliates
 /ru/support
 /ru/status
+/ru/ip-check
 /ru/pulse
 /ru/pulse/privacy
 /ru/shell
@@ -161,6 +168,11 @@
 /ru/free-vpn-mac
 /ru/how-to-setup-vpn-mac
 /ru/wireguard-vpn-mac
+/ru/multi-hop-vpn
+/ru/tor-over-vpn
+/ru/vpn-local-network-access
+/ru/webrtc-leak-test
+/ru/ipv6-leak-test
 /ru/blog/follownet-features-overview
 /ru/blog/free-vs-premium-honest
 /ru/blog/which-protocol-when
@@ -203,6 +215,7 @@
 /de/affiliates
 /de/support
 /de/status
+/de/ip-check
 /de/pulse
 /de/pulse/privacy
 /de/shell
@@ -256,6 +269,11 @@
 /de/free-vpn-mac
 /de/how-to-setup-vpn-mac
 /de/wireguard-vpn-mac
+/de/multi-hop-vpn
+/de/tor-over-vpn
+/de/vpn-local-network-access
+/de/webrtc-leak-test
+/de/ipv6-leak-test
 /de/blog/follownet-features-overview
 /de/blog/free-vs-premium-honest
 /de/blog/which-protocol-when
@@ -298,6 +316,7 @@
 /es/affiliates
 /es/support
 /es/status
+/es/ip-check
 /es/pulse
 /es/pulse/privacy
 /es/shell
@@ -351,6 +370,11 @@
 /es/free-vpn-mac
 /es/how-to-setup-vpn-mac
 /es/wireguard-vpn-mac
+/es/multi-hop-vpn
+/es/tor-over-vpn
+/es/vpn-local-network-access
+/es/webrtc-leak-test
+/es/ipv6-leak-test
 /es/blog/follownet-features-overview
 /es/blog/free-vs-premium-honest
 /es/blog/which-protocol-when
@@ -393,6 +417,7 @@
 /fr/affiliates
 /fr/support
 /fr/status
+/fr/ip-check
 /fr/pulse
 /fr/pulse/privacy
 /fr/shell
@@ -446,6 +471,11 @@
 /fr/free-vpn-mac
 /fr/how-to-setup-vpn-mac
 /fr/wireguard-vpn-mac
+/fr/multi-hop-vpn
+/fr/tor-over-vpn
+/fr/vpn-local-network-access
+/fr/webrtc-leak-test
+/fr/ipv6-leak-test
 /fr/blog/follownet-features-overview
 /fr/blog/free-vs-premium-honest
 /fr/blog/which-protocol-when
@@ -488,6 +518,7 @@
 /pt/affiliates
 /pt/support
 /pt/status
+/pt/ip-check
 /pt/pulse
 /pt/pulse/privacy
 /pt/shell
@@ -541,6 +572,11 @@
 /pt/free-vpn-mac
 /pt/how-to-setup-vpn-mac
 /pt/wireguard-vpn-mac
+/pt/multi-hop-vpn
+/pt/tor-over-vpn
+/pt/vpn-local-network-access
+/pt/webrtc-leak-test
+/pt/ipv6-leak-test
 /pt/blog/follownet-features-overview
 /pt/blog/free-vs-premium-honest
 /pt/blog/which-protocol-when
@@ -583,6 +619,7 @@
 /uk/affiliates
 /uk/support
 /uk/status
+/uk/ip-check
 /uk/pulse
 /uk/pulse/privacy
 /uk/shell
@@ -636,6 +673,11 @@
 /uk/free-vpn-mac
 /uk/how-to-setup-vpn-mac
 /uk/wireguard-vpn-mac
+/uk/multi-hop-vpn
+/uk/tor-over-vpn
+/uk/vpn-local-network-access
+/uk/webrtc-leak-test
+/uk/ipv6-leak-test
 /uk/blog/follownet-features-overview
 /uk/blog/free-vs-premium-honest
 /uk/blog/which-protocol-when

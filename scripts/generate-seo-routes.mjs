@@ -89,6 +89,7 @@ const staticPaths = [
   '/affiliates',
   '/support',
   '/status',
+  '/ip-check',
   '/pulse',
   '/pulse/privacy',
   '/shell',
@@ -168,6 +169,7 @@ const sitemapPaths = [
   ['/affiliates', '0.75'],
   ['/support', '0.75'],
   ['/status', '0.55'],
+  ['/ip-check', '0.8'],
   ['/privacy', '0.5'],
   ['/terms', '0.5'],
 ];

@@ -38,6 +38,11 @@ export class SeoLandingComponent implements OnInit {
   }
   content: LandingContent | null = null;
   slug: LandingSlug | null = null;
+
+  /** Guides about leaks point at the live test on /ip-check. */
+  get linksIpCheck(): boolean {
+    return this.slug === 'what-is-dns-leak' || this.slug === 'webrtc-leak-test' || this.slug === 'ipv6-leak-test';
+  }
   related: LandingSlug[] = [];
   posts: BlogPostView[] = [];
 

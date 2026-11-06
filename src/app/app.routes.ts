@@ -139,6 +139,11 @@ const pageRoutes: Routes = [
       ),
   },
   {
+    path: 'ip-check',
+    loadComponent: () =>
+      import('./pages/ip-check/ip-check.component').then((m) => m.IpCheckComponent),
+  },
+  {
     path: 'status',
     loadComponent: () =>
       import('./pages/status/status.component').then(

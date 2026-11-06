@@ -40,7 +40,7 @@ const KICKER = {
   site: { en: 'VPN for iPhone and iPad', ru: 'VPN для iPhone и iPad', uk: 'VPN для iPhone та iPad', de: 'VPN für iPhone und iPad', es: 'VPN para iPhone y iPad', fr: 'VPN pour iPhone et iPad', pt: 'VPN para iPhone e iPad' },
 };
 /** Top-level product pages; any other single-segment path is a guide. */
-const SITE_PAGES = new Set(['', 'features', 'download', 'download/ios', 'download/mac', 'download/chrome', 'guides', 'blog', 'about', 'support', 'press', 'privacy', 'terms', 'status', 'affiliates']);
+const SITE_PAGES = new Set(['', 'features', 'download', 'download/ios', 'download/mac', 'download/chrome', 'guides', 'blog', 'about', 'support', 'press', 'privacy', 'terms', 'status', 'ip-check', 'affiliates']);
 const LANGS = new Set(['ru', 'uk', 'de', 'es', 'fr', 'pt']);
 
 const decode = (s) =>

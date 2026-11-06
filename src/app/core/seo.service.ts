@@ -402,9 +402,26 @@ export class SeoService {
   }
 
   private setSimpleWebPageJsonLd(p: PageJsonLdInput): void {
+    const faq = p.override.faq ?? [];
     this.upsertJsonLd(DYNAMIC_JSONLD_ID, {
       '@context': 'https://schema.org',
-      '@graph': [this.webPageNode(p), this.breadcrumbNode(p)],
+      '@graph': [
+        this.webPageNode(p),
+        this.breadcrumbNode(p),
+        ...(faq.length
+          ? [
+              {
+                '@type': 'FAQPage',
+                '@id': `${p.pageUrl}#faq`,
+                mainEntity: faq.map((item) => ({
+                  '@type': 'Question',
+                  name: item.q,
+                  acceptedAnswer: { '@type': 'Answer', text: item.a },
+                })),
+              },
+            ]
+          : []),
+      ],
     });
   }
 

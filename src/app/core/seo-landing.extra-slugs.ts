@@ -27,7 +27,12 @@ export type ExtraLandingSlug =
   | 'vpn-for-mac'
   | 'free-vpn-mac'
   | 'how-to-setup-vpn-mac'
-  | 'wireguard-vpn-mac';
+  | 'wireguard-vpn-mac'
+  | 'multi-hop-vpn'
+  | 'tor-over-vpn'
+  | 'vpn-local-network-access'
+  | 'webrtc-leak-test'
+  | 'ipv6-leak-test';
 
 export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'vless-reality-ios',
@@ -57,6 +62,11 @@ export const EXTRA_LANDING_SLUGS: readonly ExtraLandingSlug[] = [
   'free-vpn-mac',
   'how-to-setup-vpn-mac',
   'wireguard-vpn-mac',
+  'multi-hop-vpn',
+  'tor-over-vpn',
+  'vpn-local-network-access',
+  'webrtc-leak-test',
+  'ipv6-leak-test',
 ];
 
 const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
@@ -302,6 +312,51 @@ const EXTRA_LABELS: Record<ExtraLandingSlug, Record<AppLang, string>> = {
     es: 'Captive portal + VPN',
     fr: 'Captive portal + VPN',
     pt: 'Captive portal + VPN',
+  },
+  'multi-hop-vpn': {
+    en: 'Multi-hop VPN',
+    ru: 'Мультихоп VPN',
+    uk: 'Мультихоп VPN',
+    de: 'Multi-Hop-VPN',
+    es: 'VPN multi-hop',
+    fr: 'VPN multi-hop',
+    pt: 'VPN multi-hop',
+  },
+  'tor-over-vpn': {
+    en: 'Tor over VPN',
+    ru: 'Tor через VPN',
+    uk: 'Tor через VPN',
+    de: 'Tor über VPN',
+    es: 'Tor sobre VPN',
+    fr: 'Tor via VPN',
+    pt: 'Tor sobre VPN',
+  },
+  'vpn-local-network-access': {
+    en: 'VPN and local network access',
+    ru: 'VPN и доступ к локальной сети',
+    uk: 'VPN і доступ до локальної мережі',
+    de: 'VPN und lokales Netzwerk',
+    es: 'VPN y red local',
+    fr: 'VPN et réseau local',
+    pt: 'VPN e rede local',
+  },
+  'webrtc-leak-test': {
+    en: 'WebRTC leak test',
+    ru: 'Тест утечки WebRTC',
+    uk: 'Тест витоку WebRTC',
+    de: 'WebRTC-Lecktest',
+    es: 'Prueba de fugas WebRTC',
+    fr: 'Test de fuite WebRTC',
+    pt: 'Teste de vazamento WebRTC',
+  },
+  'ipv6-leak-test': {
+    en: 'IPv6 leak test',
+    ru: 'Тест утечки IPv6',
+    uk: 'Тест витоку IPv6',
+    de: 'IPv6-Lecktest',
+    es: 'Prueba de fugas IPv6',
+    fr: 'Test de fuite IPv6',
+    pt: 'Teste de vazamento IPv6',
   },
 };
 

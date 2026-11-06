@@ -123,6 +123,15 @@ const DICT: Dict = {
     pt: 'Suporte',
     uk: 'Підтримка',
   },
+  NAV_IP_CHECK: {
+    ru: 'Проверка IP',
+    en: 'IP check',
+    de: 'IP-Check',
+    es: 'Comprobar IP',
+    fr: 'Vérifier mon IP',
+    pt: 'Verificar IP',
+    uk: 'Перевірка IP',
+  },
   NAV_STATUS: {
     ru: 'Статус',
     en: 'Status',

@@ -88,6 +88,9 @@ export function getSeoCopy(lang: AppLang, path: string): SeoCopy {
   if (clean === '/status') {
     return statusByLang[lang];
   }
+  if (clean === '/ip-check') {
+    return ipCheckByLang[lang];
+  }
 
   if (clean.startsWith('/privacy')) {
     return privacyByLang[lang] ?? privacyByLang.en;
@@ -564,6 +567,44 @@ const supportByLang: Record<AppLang, SeoCopy> = {
     ogTitle: 'Suporte FollowNet',
     description:
       'Ajuda com ligação VPN, limite semanal Free, Premium, teste/restauro App Store e extensão Chrome.',
+  },
+};
+
+const ipCheckByLang: Record<AppLang, SeoCopy> = {
+  en: {
+    title: 'What is my IP address? Free IP, WebRTC and IPv6 leak test',
+    ogTitle: 'What is my IP address?',
+    description: 'See your public IP address, location and provider, and test WebRTC and IPv6 leaks in your browser. Free, no sign-up, results are not stored.',
+  },
+  ru: {
+    title: 'Какой у меня IP-адрес? Проверка IP и утечек WebRTC и IPv6',
+    ogTitle: 'Какой у меня IP-адрес?',
+    description: 'Узнайте свой публичный IP, местоположение и провайдера и проверьте утечки WebRTC и IPv6 в браузере. Бесплатно, без регистрации, результаты не сохраняются.',
+  },
+  uk: {
+    title: 'Яка в мене IP-адреса? Перевірка IP і витоків WebRTC та IPv6',
+    ogTitle: 'Яка в мене IP-адреса?',
+    description: 'Дізнайтеся свою публічну IP, місцезнаходження й провайдера та перевірте витоки WebRTC та IPv6 у браузері. Безкоштовно, без реєстрації, результати не зберігаються.',
+  },
+  de: {
+    title: 'Wie lautet meine IP-Adresse? IP-, WebRTC- und IPv6-Lecktest',
+    ogTitle: 'Wie lautet meine IP-Adresse?',
+    description: 'Sieh deine öffentliche IP, deinen Standort und Anbieter und teste WebRTC- und IPv6-Lecks im Browser. Kostenlos, ohne Anmeldung, Ergebnisse werden nicht gespeichert.',
+  },
+  es: {
+    title: '¿Cuál es mi IP? Prueba gratis de IP y fugas de WebRTC e IPv6',
+    ogTitle: '¿Cuál es mi dirección IP?',
+    description: 'Consulta tu IP pública, ubicación y proveedor, y prueba fugas de WebRTC e IPv6 en tu navegador. Gratis, sin registro y sin guardar resultados.',
+  },
+  fr: {
+    title: 'Quelle est mon adresse IP ? Test IP et fuites WebRTC et IPv6',
+    ogTitle: 'Quelle est mon adresse IP ?',
+    description: 'Voyez votre IP publique, votre localisation et votre fournisseur, et testez les fuites WebRTC et IPv6 dans le navigateur. Gratuit, sans inscription, sans conservation.',
+  },
+  pt: {
+    title: 'Qual é o meu IP? Teste grátis de IP e vazamentos WebRTC e IPv6',
+    ogTitle: 'Qual é o meu endereço IP?',
+    description: 'Veja seu IP público, localização e provedor e teste vazamentos de WebRTC e IPv6 no navegador. Grátis, sem cadastro e sem guardar resultados.',
   },
 };
 

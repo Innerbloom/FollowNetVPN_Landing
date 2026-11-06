@@ -1,6 +1,7 @@
 import type { AppLang } from './i18n.service';
 import type { LandingContent } from './seo-landing.content';
 import type { ExtraLandingSlug } from './seo-landing.extra-slugs';
+import { FEATURE_GUIDES } from './seo-landing.feature-guides';
 export type { ExtraLandingSlug } from './seo-landing.extra-slugs';
 export {
   EXTRA_LANDING_SLUGS,
@@ -11,7 +12,7 @@ export {
 
 /** Extra guides: product depth + competitor-style SEO topics (honest FollowNet limits). */
 type Seed = { h1: string; lead: string; details: string; use: string; limits: string };
-type ExtraGuide = { slug: ExtraLandingSlug; label: Record<AppLang, string>; seed: Record<AppLang, Seed> };
+type ExtraGuide = { slug: ExtraLandingSlug; label?: Record<AppLang, string>; seed: Record<AppLang, Seed> };
 
 const UI: Record<AppLang, { cta: string; chromeCta: string; details: string; practical: string; limitsTitle: string; weekly: string; currentPlan: string; qOverview: string; qUse: string; qLimits: string; qWeekly: string }> = {
   en: { cta: 'Download on the App Store', chromeCta: 'Install for Chrome', details: 'What to know', practical: 'How to use it', limitsTitle: 'Limits and honest expectations', weekly: 'Free includes a weekly traffic allowance', currentPlan: 'Current plan details always appear in the app', qOverview: 'What is the main benefit?', qUse: 'How do I start?', qLimits: 'What are the limits?', qWeekly: 'How does Free work?' },
@@ -1474,69 +1475,6 @@ export const EXTRA_GUIDES: ExtraGuide[] = [
     },
   },
   {
-    slug: 'vpn-split-tunneling-ios',
-    label: {
-      en: 'Split tunneling on iOS',
-      ru: 'Split tunneling на iOS',
-      uk: 'Split tunneling на iOS',
-      de: 'Split Tunneling auf iOS',
-      es: 'Split tunneling en iOS',
-      fr: 'Split tunneling sur iOS',
-      pt: 'Split tunneling no iOS',
-    },
-    seed: {
-      en: {
-        h1: 'Split tunneling on iPhone — Apple limits and FollowNet’s closest tools',
-        lead: 'Consumer iOS apps generally cannot do per-app split tunneling like Windows/Android. FollowNet’s closest controls are Network Profiles, server modes, and Chrome site routing on desktop.',
-        details: 'On iPhone, VPN is typically all-or-nothing for apps while connected. On Chrome, site routing can send chosen hosts through the proxy. That is not the same as excluding Instagram from a system tunnel.',
-        use: 'Need only browser protection on a Mac → Chrome routing. Need whole phone → iOS VPN. Need a café preset → Public Wi‑Fi profile.',
-        limits: 'We do not advertise fake per-app split tunneling on iPhone that Apple’s consumer APIs do not allow.',
-      },
-      ru: {
-        h1: 'Split tunneling на iPhone — лимиты Apple и ближайшие инструменты FollowNet',
-        lead: 'Обычные приложения на iOS не могут делать раздельное туннелирование по приложениям, как на Windows/Android. Ближайшее у FollowNet — профили сети и маршрутизация сайтов в Chrome.',
-        details: 'На iPhone VPN обычно all-or-nothing. В Chrome можно направить выбранные хосты в прокси.',
-        use: 'Только браузер на Mac → Chrome. Весь телефон → iOS VPN. Кафе → Public Wi‑Fi.',
-        limits: 'Мы не рекламируем раздельное туннелирование по приложениям на iPhone, которого на самом деле нет.',
-      },
-      uk: {
-        h1: 'Split tunneling на iPhone — ліміти Apple і найближчі інструменти FollowNet',
-        lead: 'Звичайні застосунки на iOS не можуть робити роздільне тунелювання за застосунками.',
-        details: 'На iPhone VPN зазвичай all-or-nothing. У Chrome — site routing.',
-        use: 'Лише браузер → Chrome. Весь телефон → iOS VPN.',
-        limits: 'Ми не рекламуємо роздільне тунелювання за застосунками на iPhone, якого насправді немає.',
-      },
-      de: {
-        h1: 'Split Tunneling auf dem iPhone — Apple-Limits und FollowNets nächste Tools',
-        lead: 'Consumer-iOS-Apps können in der Regel kein Per-App-Split-Tunneling wie Windows/Android. FollowNets nächste Kontrollen: Network Profiles, Servermodi und Chrome Site-Routing am Desktop.',
-        details: 'Auf dem iPhone ist VPN typischerweise alles-oder-nichts für Apps, solange verbunden. In Chrome kann Site-Routing gewählte Hosts durch den Proxy senden. Das ist nicht dasselbe wie Instagram aus einem System-Tunnel auszuschließen.',
-        use: 'Nur Browser-Schutz auf einem Mac → Chrome-Routing. Ganzes Handy → iOS-VPN. Café-Preset → Public-Wi‑Fi-Profil.',
-        limits: 'Wir bewerben kein Fake-Per-App-Split-Tunneling auf dem iPhone, das Apples Consumer-APIs nicht erlauben.',
-      },
-      es: {
-        h1: 'Split tunneling en iPhone — límites de Apple y las herramientas más cercanas de FollowNet',
-        lead: 'Las apps iOS de consumo en general no pueden hacer split tunneling por app como Windows/Android. Los controles más cercanos de FollowNet son Network Profiles, modos de servidor y enrutado de sitios de Chrome en escritorio.',
-        details: 'En iPhone, la VPN suele ser todo o nada para las apps mientras estás conectado. En Chrome, el enrutado de sitios puede enviar hosts elegidos por el proxy. No es lo mismo que excluir Instagram de un túnel de sistema.',
-        use: 'Solo protección de navegador en un Mac → enrutado Chrome. Todo el teléfono → VPN iOS. Preset de café → perfil Public Wi‑Fi.',
-        limits: 'No anunciamos fake split tunneling por app en iPhone que las APIs de consumo de Apple no permiten.',
-      },
-      fr: {
-        h1: 'Split tunneling sur iPhone — limites Apple et outils FollowNet les plus proches',
-        lead: 'Les apps iOS grand public ne peuvent en général pas faire de split tunneling par app comme Windows/Android. Les contrôles FollowNet les plus proches sont Network Profiles, modes serveur et routage de sites Chrome sur desktop.',
-        details: 'Sur iPhone, le VPN est typiquement tout-ou-rien pour les apps tant que connecté. Sur Chrome, le routage de sites peut envoyer des hôtes choisis via le proxy. Ce n’est pas exclure Instagram d’un tunnel système.',
-        use: 'Protection navigateur seulement sur un Mac → routage Chrome. Téléphone entier → VPN iOS. Preset café → profil Public Wi‑Fi.',
-        limits: 'Nous n’annonçons pas un faux split tunneling par app sur iPhone que les APIs grand public d’Apple n’autorisent pas.',
-      },
-      pt: {
-        h1: 'Split tunneling no iPhone — limites da Apple e as ferramentas mais próximas do FollowNet',
-        lead: 'Apps iOS de consumo em geral não fazem split tunneling por app como Windows/Android. Os controles mais próximos do FollowNet são Network Profiles, modos de servidor e roteamento de sites no Chrome no desktop.',
-        details: 'No iPhone, a VPN costuma ser tudo ou nada para apps enquanto conectado. No Chrome, o roteamento de sites pode enviar hosts escolhidos pelo proxy. Isso não é excluir o Instagram de um túnel de sistema.',
-        use: 'Só proteção de navegador no Mac → roteamento Chrome. Telefone inteiro → VPN iOS. Preset de café → perfil Public Wi‑Fi.',
-        limits: 'Não anunciamos fake split tunneling por app no iPhone que as APIs de consumo da Apple não permitem.',
-      },
-    },
-  },
-  {
     slug: 'vpn-not-connecting-iphone',
     label: {
       en: 'VPN not connecting',
@@ -1730,6 +1668,11 @@ export const EXTRA_GUIDES: ExtraGuide[] = [
 
 /** High-value extras to include in sitemap (competitor-style SEO, not every brand page). */
 export const SITEMAP_EXTRA_SLUGS: ExtraLandingSlug[] = [
+  'multi-hop-vpn',
+  'tor-over-vpn',
+  'vpn-local-network-access',
+  'webrtc-leak-test',
+  'ipv6-leak-test',
   'vpn-for-mac',
   'free-vpn-mac',
   'how-to-setup-vpn-mac',
@@ -1755,7 +1698,7 @@ export const SITEMAP_EXTRA_SLUGS: ExtraLandingSlug[] = [
 ];
 
 const BY: Record<ExtraLandingSlug, ExtraGuide> = Object.fromEntries(
-  EXTRA_GUIDES.map((g) => [g.slug, g]),
+  [...EXTRA_GUIDES, ...FEATURE_GUIDES].map((g) => [g.slug, g]),
 ) as Record<ExtraLandingSlug, ExtraGuide>;
 
 

@@ -3,7 +3,7 @@
   <section class="doc" *ngSwitchCase="'ru'">
     <div class="doc-header">
       <h1>Политика конфиденциальности FollowNet VPN</h1>
-      <p class="muted">Дата обновления: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Дата обновления: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Эта политика описывает, какие данные мы обрабатываем в приложениях FollowNet VPN (iOS и Android) и на сайте, зачем они нужны и какие у вас есть права.
         Мы стараемся собирать минимум данных, необходимых для работы сервиса и безопасности.
@@ -95,7 +95,7 @@
 
       <h3>3.10 IP‑адрес и User‑Agent</h3>
       <p class="muted">
-        IP‑адрес и User‑Agent могут учитываться на стороне backend для защиты от злоупотреблений (rate‑limit) и безопасности <b>в моменте обработки запроса</b>, без записи в постоянные логи и без целенаправленного хранения для маркетинга.
+        IP‑адрес и User‑Agent могут учитываться на стороне backend для защиты от злоупотреблений (rate‑limit) и безопасности <b>в моменте обработки запроса</b>, без записи в постоянные логи и без целенаправленного хранения для маркетинга. Исключение — последний IP‑адрес аккаунта (см. 3.13).
       </p>
 
       <h3>3.11 Сетевой контекст для Smart Connect</h3>
@@ -106,6 +106,16 @@
       <h3>3.12 Камера (привязка устройств)</h3>
       <p class="muted">
         Камера используется, только когда вы сами сканируете QR‑код для входа на другом устройстве. Кадры обрабатываются на устройстве для чтения кода и <b>не</b> сохраняются и не отправляются.
+      </p>
+
+      <h3>3.13 Бесплатный план: одна квота на устройство</h3>
+      <p class="muted">
+        Чтобы бесплатный план оставался честным, недельный лимит бесплатного трафика действует на устройство, а не на аккаунт. Для этого мы обрабатываем: на Android — необратимый хеш идентификатора устройства (ANDROID_ID); на iPhone, iPad и Mac — Apple DeviceCheck (Apple хранит для нас два бита на устройство, идентификатор устройства мы не получаем); хеш идентификатора установки приложения; в расширении для браузера — технический cookie (<span class="mono">fn_guest</span>) на домене нашего API. Когда с устройства создаётся бесплатный аккаунт, мы сохраняем запись, связывающую эти хешированные ключи с аккаунтом. Бесплатные аккаунты на одном устройстве делят один недельный лимит, а дополнительные бесплатные аккаунты на устройстве могут получить уменьшенный лимит. Эти записи не используются для рекламы и не содержат содержимого трафика или истории посещений. Также мы храним последний IP‑адрес, с которого входили в аккаунт, и определённую по нему страну — для безопасности и защиты от злоупотреблений.
+      </p>
+
+      <h3>3.14 Публичная проверка IP на сайте</h3>
+      <p class="muted">
+        Страница <span class="mono">/ip-check</span> показывает данные о вашем IP‑адресе. Мы обрабатываем адрес только для этого ответа и не сохраняем результат. Для проверки IPv6 браузер обращается к ipify, а для проверки WebRTC к STUN‑серверу Cloudflare; эти сервисы видят ваш IP‑адрес и работают по своим политикам.
       </p>
 
       <h2>4. Правовые основания обработки (GDPR Art. 6)</h2>
@@ -149,6 +159,7 @@
         <li>Серверные логи событий (подключения, биллинг Apple/Google Play, админ‑действия) — не дольше, чем необходимо для работы сервиса и поддержки.</li>
         <li>Тикеты поддержки — пока это нужно для обработки обращения и последующих разбирательств/качества сервиса.</li>
         <li>Диагностика Firebase (Analytics, Crashlytics) — согласно срокам и настройкам хранения Google/Firebase.</li>
+        <li>Записи устройств бесплатного плана (3.13) — не дольше 12 месяцев с последнего использования, в том числе после удаления аккаунта, чтобы удаление и повторное создание аккаунта не обнуляло бесплатный лимит.</li>
       </ul>
 
       <h2>9. Безопасность</h2>
@@ -207,7 +218,7 @@
   <section class="doc" *ngSwitchCase="'uk'">
     <div class="doc-header">
       <h1>Політика конфіденційності FollowNet VPN</h1>
-      <p class="muted">Дата оновлення: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Дата оновлення: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Ця політика описує, які дані ми обробляємо в застосунках FollowNet VPN (iOS та Android) і на сайті, навіщо вони потрібні та які у вас є права.
         Ми прагнемо збирати мінімум даних, необхідних для роботи сервісу та безпеки.
@@ -299,7 +310,7 @@
 
       <h3>3.10 IP‑адреса та User‑Agent</h3>
       <p class="muted">
-        IP‑адреса та User‑Agent можуть враховуватися на стороні backend для захисту від зловживань (rate‑limit) і безпеки <b>в моменті обробки запиту</b>, без запису в постійні логи і без цілеспрямованого зберігання для маркетингу.
+        IP‑адреса та User‑Agent можуть враховуватися на стороні backend для захисту від зловживань (rate‑limit) і безпеки <b>в моменті обробки запиту</b>, без запису в постійні логи і без цілеспрямованого зберігання для маркетингу. Виняток — остання IP‑адреса акаунта (див. 3.13).
       </p>
 
       <h3>3.11 Мережевий контекст для Smart Connect</h3>
@@ -310,6 +321,16 @@
       <h3>3.12 Камера (прив’язка пристроїв)</h3>
       <p class="muted">
         Камера використовується, лише коли ви самі скануєте QR‑код для входу на іншому пристрої. Кадри обробляються на пристрої для зчитування коду й <b>не</b> зберігаються та не надсилаються.
+      </p>
+
+      <h3>3.13 Безкоштовний план: одна квота на пристрій</h3>
+      <p class="muted">
+        Щоб безкоштовний план залишався чесним, тижневий ліміт безкоштовного трафіку діє на пристрій, а не на акаунт. Для цього ми обробляємо: на Android — незворотний хеш ідентифікатора пристрою (ANDROID_ID); на iPhone, iPad і Mac — Apple DeviceCheck (Apple зберігає для нас два біти на пристрій, ідентифікатор пристрою ми не отримуємо); хеш ідентифікатора встановлення застосунку; у розширенні для браузера — технічний cookie (<span class="mono">fn_guest</span>) на домені нашого API. Коли з пристрою створюється безкоштовний акаунт, ми зберігаємо запис, що пов’язує ці хешовані ключі з акаунтом. Безкоштовні акаунти на одному пристрої ділять один тижневий ліміт, а додаткові безкоштовні акаунти на пристрої можуть отримати зменшений ліміт. Ці записи не використовуються для реклами й не містять вмісту трафіку чи історії відвідувань. Також ми зберігаємо останню IP‑адресу, з якої входили в акаунт, і визначену за нею країну — для безпеки та захисту від зловживань.
+      </p>
+
+      <h3>3.14 Публічна перевірка IP на сайті</h3>
+      <p class="muted">
+        Сторінка <span class="mono">/ip-check</span> показує дані про вашу IP‑адресу. Ми обробляємо адресу лише для цієї відповіді й не зберігаємо результат. Для перевірки IPv6 браузер звертається до ipify, а для перевірки WebRTC до STUN‑сервера Cloudflare; ці сервіси бачать вашу IP‑адресу й працюють за своїми політиками.
       </p>
 
       <h2>4. Правові підстави обробки (GDPR Art. 6)</h2>
@@ -353,6 +374,7 @@
         <li>Серверні логи подій (підключення, білінг Apple/Google Play, адмін‑дії) — не довше, ніж потрібно для роботи сервісу та підтримки.</li>
         <li>Тікети підтримки — поки це потрібно для обробки звернення та якості сервісу.</li>
         <li>Діагностика Firebase (Analytics, Crashlytics) — згідно зі строками та налаштуваннями зберігання Google/Firebase.</li>
+        <li>Записи пристроїв безкоштовного плану (3.13) — не довше 12 місяців від останнього використання, зокрема після видалення акаунта, щоб видалення й повторне створення акаунта не обнуляло безкоштовний ліміт.</li>
       </ul>
 
       <h2>9. Безпека</h2>
@@ -411,7 +433,7 @@
   <section class="doc" *ngSwitchCase="'de'">
     <div class="doc-header">
       <h1>FollowNet VPN Datenschutzerklärung</h1>
-      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Zuletzt aktualisiert: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Diese Erklärung beschreibt, welche Daten wir in den FollowNet VPN Apps (iOS und Android) und auf unserer Website verarbeiten, warum wir sie benötigen und welche Rechte Sie haben.
         Wir sammeln nur die Mindestmenge an Daten, die für Betrieb und Sicherheit erforderlich ist.
@@ -501,7 +523,7 @@
 
       <h3>3.10 IP‑Adresse und User‑Agent</h3>
       <p class="muted">
-        IP‑Adresse und User‑Agent können auf dem Backend für Abuse‑Prevention (Rate‑Limiting) und Sicherheit <b>im Rahmen der Request‑Verarbeitung</b> berücksichtigt werden, <b>ohne</b> dauerhafte Protokollierung und ohne zweckgebundene Speicherung für Marketing.
+        IP‑Adresse und User‑Agent können auf dem Backend für Abuse‑Prevention (Rate‑Limiting) und Sicherheit <b>im Rahmen der Request‑Verarbeitung</b> berücksichtigt werden, <b>ohne</b> dauerhafte Protokollierung und ohne zweckgebundene Speicherung für Marketing. Ausnahme: die letzte IP‑Adresse des Kontos (siehe 3.13).
       </p>
 
       <h3>3.11 Netzwerkkontext für Smart Connect</h3>
@@ -512,6 +534,16 @@
       <h3>3.12 Kamera (Geräte‑Kopplung)</h3>
       <p class="muted">
         Die Kamera wird nur verwendet, wenn Sie selbst einen Kopplungs‑QR‑Code scannen, um ein anderes Gerät anzumelden. Die Bilder werden auf dem Gerät zum Lesen des Codes verarbeitet und <b>weder</b> gespeichert noch hochgeladen.
+      </p>
+
+      <h3>3.13 Free‑Plan: ein Kontingent pro Gerät</h3>
+      <p class="muted">
+        Damit der Free‑Plan fair bleibt, gilt das wöchentliche Gratis‑Traffic‑Kontingent pro Gerät, nicht pro Konto. Dafür verarbeiten wir: unter Android einen nicht umkehrbaren Hash der Gerätekennung (ANDROID_ID); auf iPhone, iPad und Mac Apple DeviceCheck (Apple speichert für uns zwei Bits pro Gerät, eine Gerätekennung erhalten wir nicht); einen Hash der Installationskennung der App; in der Browser‑Erweiterung ein technisches Cookie (<span class="mono">fn_guest</span>) auf unserer API‑Domain. Wird auf einem Gerät ein kostenloses Konto erstellt, speichern wir einen Eintrag, der diese gehashten Schlüssel mit dem Konto verknüpft. Kostenlose Konten auf demselben Gerät teilen sich ein Wochenkontingent; weitere kostenlose Konten auf einem Gerät können ein reduziertes Kontingent erhalten. Diese Einträge werden nicht für Werbung genutzt und enthalten keine Traffic‑Inhalte oder Browserverläufe. Außerdem speichern wir die zuletzt verwendete IP‑Adresse des Kontos und das daraus abgeleitete Land – für Sicherheit und Missbrauchsschutz.
+      </p>
+
+      <h3>3.14 Öffentlicher IP‑Check auf der Website</h3>
+      <p class="muted">
+        Die Seite <span class="mono">/ip-check</span> zeigt Daten zu deiner IP‑Adresse. Wir verarbeiten die Adresse nur für diese Antwort und speichern das Ergebnis nicht. Für den IPv6‑Test ruft dein Browser ipify auf, für den WebRTC‑Test einen STUN‑Server von Cloudflare; diese Dienste sehen deine IP‑Adresse und arbeiten nach ihren eigenen Richtlinien.
       </p>
 
       <h2>4. Rechtsgrundlagen (DSGVO Art. 6)</h2>
@@ -555,6 +587,7 @@
         <li>Server‑Ereignislogs (Verbindungen, Apple/Google‑Play‑Billing, Admin‑Aktionen) — nicht länger als für Betrieb und Support nötig.</li>
         <li>Support‑Tickets — soweit nötig für Bearbeitung und Servicequalität.</li>
         <li>Firebase‑Diagnose (Analytics, Crashlytics) — gemäß Aufbewahrungsfristen und Einstellungen von Google/Firebase.</li>
+        <li>Geräte‑Einträge des Free‑Plans (3.13) – höchstens 12 Monate ab der letzten Nutzung, auch nach Löschung des Kontos, damit Löschen und Neuanlegen eines Kontos das Gratis‑Kontingent nicht zurücksetzt.</li>
       </ul>
 
       <h2>9. Sicherheit</h2>
@@ -613,7 +646,7 @@
   <section class="doc" *ngSwitchCase="'es'">
     <div class="doc-header">
       <h1>Política de privacidad de FollowNet VPN</h1>
-      <p class="muted">Última actualización: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Última actualización: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Esta política explica qué datos procesamos en las apps de FollowNet VPN (iOS y Android) y en el sitio, por qué los necesitamos y qué derechos tienes.
         Intentamos recopilar lo mínimo necesario para operar el servicio de forma segura.
@@ -703,7 +736,7 @@
 
       <h3>3.10 IP y User‑Agent</h3>
       <p class="muted">
-        La IP y el User‑Agent pueden tenerse en cuenta en el backend para prevención de abuso (rate‑limit) y seguridad <b>durante el procesamiento de la solicitud</b>, sin escribirse en logs persistentes ni conservarse con fines de marketing.
+        La IP y el User‑Agent pueden tenerse en cuenta en el backend para prevención de abuso (rate‑limit) y seguridad <b>durante el procesamiento de la solicitud</b>, sin escribirse en logs persistentes ni conservarse con fines de marketing. Excepción: la última dirección IP de la cuenta (ver 3.13).
       </p>
 
       <h3>3.11 Contexto de red para Smart Connect</h3>
@@ -714,6 +747,16 @@
       <h3>3.12 Cámara (vinculación de dispositivos)</h3>
       <p class="muted">
         La cámara solo se usa cuando tú escaneas un código QR de vinculación para iniciar sesión en otro dispositivo. Las imágenes se procesan en el dispositivo para leer el código y <b>no</b> se guardan ni se envían.
+      </p>
+
+      <h3>3.13 Plan Free: una cuota por dispositivo</h3>
+      <p class="muted">
+        Para que el plan Free sea justo, la cuota semanal de tráfico gratuito se aplica por dispositivo, no por cuenta. Para ello tratamos: en Android, un hash irreversible del identificador del dispositivo (ANDROID_ID); en iPhone, iPad y Mac, Apple DeviceCheck (Apple guarda para nosotros dos bits por dispositivo; no recibimos ningún identificador del dispositivo); un hash del identificador de instalación de la app; y, en la extensión del navegador, una cookie técnica (<span class="mono">fn_guest</span>) en el dominio de nuestra API. Cuando un dispositivo crea una cuenta gratuita, guardamos un registro que vincula estas claves con hash a la cuenta. Las cuentas gratuitas del mismo dispositivo comparten una cuota semanal, y las cuentas gratuitas adicionales en un dispositivo pueden recibir una cuota reducida. Estos registros no se usan para publicidad y no contienen contenido del tráfico ni historial de navegación. También guardamos la última dirección IP desde la que se usó la cuenta y el país derivado de ella, por seguridad y prevención de abusos.
+      </p>
+
+      <h3>3.14 Comprobación pública de IP en el sitio</h3>
+      <p class="muted">
+        La página <span class="mono">/ip-check</span> muestra datos de tu dirección IP. Tratamos la dirección solo para esta respuesta y no guardamos el resultado. Para la prueba de IPv6 tu navegador consulta ipify y para la de WebRTC un servidor STUN de Cloudflare; estos servicios ven tu IP y funcionan según sus propias políticas.
       </p>
 
       <h2>4. Bases legales (RGPD Art. 6)</h2>
@@ -757,6 +800,7 @@
         <li>Logs de eventos en servidor (conexiones, facturación Apple/Google Play, acciones admin) — no más de lo necesario para operación y soporte.</li>
         <li>Tickets de soporte — según sea necesario para atender solicitudes y calidad del servicio.</li>
         <li>Diagnóstico de Firebase (Analytics, Crashlytics) — según plazos y configuración de retención de Google/Firebase.</li>
+        <li>Registros de dispositivo del plan Free (3.13): como máximo 12 meses desde el último uso, también tras eliminar la cuenta, para que eliminar y volver a crear una cuenta no reinicie la cuota gratuita.</li>
       </ul>
 
       <h2>9. Seguridad</h2>
@@ -815,7 +859,7 @@
   <section class="doc" *ngSwitchCase="'fr'">
     <div class="doc-header">
       <h1>Politique de confidentialité FollowNet VPN</h1>
-      <p class="muted">Dernière mise à jour : <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Dernière mise à jour : <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Cette politique explique quelles données nous traitons dans les applications FollowNet VPN (iOS et Android) et sur le site, pourquoi, et quels sont vos droits.
         Nous collectons le minimum nécessaire au fonctionnement et à la sécurité.
@@ -905,7 +949,7 @@
 
       <h3>3.10 Adresse IP et User‑Agent</h3>
       <p class="muted">
-        L’adresse IP et le User‑Agent peuvent être pris en compte côté backend pour la prévention des abus (rate‑limit) et la sécurité <b>pendant le traitement de la requête</b>, sans écriture dans des logs persistants ni conservation à des fins marketing.
+        L’adresse IP et le User‑Agent peuvent être pris en compte côté backend pour la prévention des abus (rate‑limit) et la sécurité <b>pendant le traitement de la requête</b>, sans écriture dans des logs persistants ni conservation à des fins marketing. Exception : la dernière adresse IP du compte (voir 3.13).
       </p>
 
       <h3>3.11 Contexte réseau pour Smart Connect</h3>
@@ -916,6 +960,16 @@
       <h3>3.12 Caméra (association d’appareils)</h3>
       <p class="muted">
         La caméra n’est utilisée que lorsque vous scannez vous‑même un QR code d’association pour connecter un autre appareil. Les images sont traitées sur l’appareil pour lire le code et ne sont <b>ni</b> conservées ni envoyées.
+      </p>
+
+      <h3>3.13 Plan Free : un quota par appareil</h3>
+      <p class="muted">
+        Pour que le plan Free reste équitable, le quota hebdomadaire de trafic gratuit s’applique par appareil, et non par compte. Pour cela, nous traitons : sur Android, un hachage irréversible de l’identifiant de l’appareil (ANDROID_ID) ; sur iPhone, iPad et Mac, Apple DeviceCheck (Apple conserve pour nous deux bits par appareil ; nous ne recevons aucun identifiant de l’appareil) ; un hachage de l’identifiant d’installation de l’app ; et, dans l’extension de navigateur, un cookie technique (<span class="mono">fn_guest</span>) sur le domaine de notre API. Lorsqu’un appareil crée un compte gratuit, nous conservons un enregistrement qui relie ces clés hachées au compte. Les comptes gratuits d’un même appareil partagent un quota hebdomadaire, et les comptes gratuits supplémentaires sur un appareil peuvent recevoir un quota réduit. Ces enregistrements ne servent pas à la publicité et ne contiennent ni contenu du trafic ni historique de navigation. Nous conservons aussi la dernière adresse IP utilisée pour le compte et le pays qui en est déduit, pour la sécurité et la prévention des abus.
+      </p>
+
+      <h3>3.14 Vérification publique de l’IP sur le site</h3>
+      <p class="muted">
+        La page <span class="mono">/ip-check</span> affiche les données de votre adresse IP. Nous traitons l’adresse uniquement pour cette réponse et ne conservons pas le résultat. Pour le test IPv6, votre navigateur contacte ipify, et pour le test WebRTC un serveur STUN de Cloudflare ; ces services voient votre IP et appliquent leurs propres politiques.
       </p>
 
       <h2>4. Bases légales (RGPD Art. 6)</h2>
@@ -959,6 +1013,7 @@
         <li>Logs d’événements serveur (connexions, facturation Apple/Google Play, actions admin) — pas plus longtemps que nécessaire pour l’exploitation et le support.</li>
         <li>Tickets de support — selon la nécessité pour traiter les demandes et assurer la qualité.</li>
         <li>Diagnostics Firebase (Analytics, Crashlytics) — selon les délais et paramètres de conservation Google/Firebase.</li>
+        <li>Enregistrements d’appareil du plan Free (3.13) — au plus 12 mois après la dernière utilisation, y compris après la suppression du compte, afin que supprimer puis recréer un compte ne réinitialise pas le quota gratuit.</li>
       </ul>
 
       <h2>9. Sécurité</h2>
@@ -1017,7 +1072,7 @@
   <section class="doc" *ngSwitchCase="'pt'">
     <div class="doc-header">
       <h1>Política de privacidade do FollowNet VPN</h1>
-      <p class="muted">Última atualização: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Última atualização: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         Esta política explica quais dados processamos nos apps FollowNet VPN (iOS e Android) e no site, por que precisamos deles e quais são seus direitos.
         Buscamos coletar o mínimo necessário para operar o serviço com segurança.
@@ -1107,7 +1162,7 @@
 
       <h3>3.10 Endereço IP e User‑Agent</h3>
       <p class="muted">
-        Endereço IP e User‑Agent podem ser considerados no backend para prevenção de abuso (rate‑limit) e segurança <b>durante o processamento da solicitação</b>, sem gravação em logs persistentes nem retenção para marketing.
+        Endereço IP e User‑Agent podem ser considerados no backend para prevenção de abuso (rate‑limit) e segurança <b>durante o processamento da solicitação</b>, sem gravação em logs persistentes nem retenção para marketing. Exceção: o último endereço IP da conta (ver 3.13).
       </p>
 
       <h3>3.11 Contexto de rede para o Smart Connect</h3>
@@ -1118,6 +1173,16 @@
       <h3>3.12 Câmera (pareamento de dispositivos)</h3>
       <p class="muted">
         A câmera só é usada quando você mesmo escaneia um código QR de pareamento para entrar em outro dispositivo. As imagens são processadas no dispositivo para ler o código e <b>não</b> são salvas nem enviadas.
+      </p>
+
+      <h3>3.13 Plano Free: uma cota por dispositivo</h3>
+      <p class="muted">
+        Para manter o plano Free justo, a cota semanal de tráfego gratuito vale por dispositivo, não por conta. Para isso, tratamos: no Android, um hash irreversível do identificador do dispositivo (ANDROID_ID); no iPhone, iPad e Mac, o Apple DeviceCheck (a Apple guarda para nós dois bits por dispositivo; não recebemos nenhum identificador do dispositivo); um hash do identificador de instalação do app; e, na extensão do navegador, um cookie técnico (<span class="mono">fn_guest</span>) no domínio da nossa API. Quando um dispositivo cria uma conta gratuita, guardamos um registro que liga essas chaves com hash à conta. Contas gratuitas no mesmo dispositivo compartilham uma cota semanal, e contas gratuitas adicionais em um dispositivo podem receber uma cota reduzida. Esses registros não são usados para publicidade e não contêm conteúdo de tráfego nem histórico de navegação. Também guardamos o último endereço IP usado na conta e o país derivado dele, para segurança e prevenção de abuso.
+      </p>
+
+      <h3>3.14 Verificação pública de IP no site</h3>
+      <p class="muted">
+        A página <span class="mono">/ip-check</span> mostra dados do seu endereço IP. Tratamos o endereço apenas para esta resposta e não guardamos o resultado. Para o teste de IPv6, seu navegador consulta o ipify e, para o de WebRTC, um servidor STUN da Cloudflare; esses serviços veem seu IP e seguem suas próprias políticas.
       </p>
 
       <h2>4. Bases legais (GDPR Art. 6)</h2>
@@ -1161,6 +1226,7 @@
         <li>Logs de eventos no servidor (conexões, cobrança Apple/Google Play, ações admin) — não mais do que o necessário para operação e suporte.</li>
         <li>Tickets de suporte — conforme necessário para atender solicitações e garantir qualidade.</li>
         <li>Diagnóstico Firebase (Analytics, Crashlytics) — conforme prazos e configurações de retenção da Google/Firebase.</li>
+        <li>Registros de dispositivo do plano Free (3.13) — no máximo 12 meses após o último uso, inclusive após a exclusão da conta, para que excluir e recriar uma conta não reinicie a cota gratuita.</li>
       </ul>
 
       <h2>9. Segurança</h2>
@@ -1219,7 +1285,7 @@
   <section class="doc" *ngSwitchDefault>
     <div class="doc-header">
       <h1>FollowNet VPN Privacy Policy</h1>
-      <p class="muted">Last updated: <span class="mono">2026‑09‑30</span></p>
+      <p class="muted">Last updated: <span class="mono">2026‑11‑05</span></p>
       <p class="muted">
         This policy explains what data we process in the FollowNet VPN apps (iOS and Android) and on our website, why we need it, and what rights you have.
         We aim to collect the minimum data required to operate the service securely.
@@ -1309,7 +1375,7 @@
 
       <h3>3.10 IP address and User‑Agent</h3>
       <p class="muted">
-        IP address and User‑Agent may be considered on the backend for abuse prevention (rate‑limiting) and security <b>during request handling</b>, without writing them to persistent logs and without retention for marketing purposes.
+        IP address and User‑Agent may be considered on the backend for abuse prevention (rate‑limiting) and security <b>during request handling</b>, without writing them to persistent logs and without retention for marketing purposes. Exception: the last IP address of the account (see 3.13).
       </p>
 
       <h3>3.11 Smart Connect network context</h3>
@@ -1320,6 +1386,16 @@
       <h3>3.12 Camera (device pairing)</h3>
       <p class="muted">
         The camera is used only when you choose to scan a pairing QR code to sign in another device. Frames are processed on the device to read the code and are <b>not</b> stored or uploaded.
+      </p>
+
+      <h3>3.13 Free plan: one allowance per device</h3>
+      <p class="muted">
+        To keep the free plan fair, the free weekly traffic allowance applies per device, not per account. For this we process: on Android, a one‑way hash of the device identifier (ANDROID_ID); on iPhone, iPad and Mac, Apple DeviceCheck (Apple stores two bits per device for us; we receive no device identifier); a hash of the app installation identifier; and, in the browser extension, a technical cookie (<span class="mono">fn_guest</span>) on our API domain. When a device creates a free account, we keep a record linking these hashed keys to the account. Free accounts on the same device share one weekly allowance, and additional free accounts on a device may receive a reduced allowance. These records are not used for advertising and contain no traffic content or browsing history. We also store the last IP address used with the account and the country derived from it, for security and abuse prevention.
+      </p>
+
+      <h3>3.14 Public IP check on the website</h3>
+      <p class="muted">
+        The <span class="mono">/ip-check</span> page shows data about your IP address. We process the address only for that response and do not store the result. For the IPv6 test your browser contacts ipify, and for the WebRTC test a Cloudflare STUN server; these services see your IP address and follow their own policies.
       </p>
 
       <h2>4. Legal bases (GDPR Art. 6)</h2>
@@ -1363,6 +1439,7 @@
         <li>Server event logs (connections, Apple/Google Play billing events, admin actions) — no longer than needed for operation and support.</li>
         <li>Support tickets — as needed to handle requests and maintain service quality.</li>
         <li>Firebase diagnostics (Analytics, Crashlytics) — according to Google/Firebase retention periods and settings.</li>
+        <li>Free‑plan device records (3.13) — no longer than 12 months after last use, including after account deletion, so that deleting and re‑creating an account does not reset the free allowance.</li>
       </ul>
 
       <h2>9. Security</h2>
