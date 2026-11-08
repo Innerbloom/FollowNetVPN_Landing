@@ -13,7 +13,7 @@
 .press-hero {
   padding: 1.5rem 0 2.25rem;
   background:
-    radial-gradient(ellipse 80% 60% at 10% -10%, rgba(143, 176, 58, 0.12), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 10% -10%, rgba(29, 122, 77, 0.12), transparent 55%),
     radial-gradient(ellipse 60% 50% at 95% 0%, rgba(15, 23, 42, 0.04), transparent 50%);
 }
 
@@ -50,7 +50,7 @@
   max-width: 14ch;
   font-size: clamp(2.35rem, 5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.012em;
   line-height: 1.05;
 }
 
@@ -84,7 +84,7 @@
 
 .btn.primary {
   background: var(--green);
-  color: rgba(0, 0, 0, 0.85);
+  color: #fff;
 }
 
 .btn.ghost {
@@ -107,7 +107,7 @@
   margin: 0 0 1rem;
   font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
 }
 
 .prose {
@@ -144,7 +144,7 @@
 }
 
 .link-chips a:hover {
-  border-color: rgba(111, 143, 40, 0.45);
+  border-color: rgba(29, 122, 77, 0.45);
   background: var(--green-soft);
   color: var(--green-2);
 }
@@ -258,7 +258,7 @@
 }
 
 .asset-card:hover {
-  border-color: rgba(111, 143, 40, 0.4);
+  border-color: rgba(29, 122, 77, 0.4);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

@@ -83,6 +83,36 @@ export class SeoLandingComponent implements OnInit {
     return deepGuideCached(this.i18n.current, slug) ?? landingContent(slug, this.i18n.current);
   }
 
+  /** Screenshot next to the guide title, picked by topic words in the slug. */
+  private static readonly HERO_RULES: Array<[RegExp, string]> = [
+    [/chrome|extension/, 'ext-connected'],
+    [/mac/, 'mac-connected'],
+    [/multi-hop/, 'ios-multihop'],
+    [/tor-/, 'ios-tor'],
+    [/split/, 'ios-split'],
+    [/kill-switch|local-network/, 'ios-settings'],
+    [/dns/, 'ios-dns'],
+    [/(^|-)ip(-|$)|leak|webrtc|ipv6/, 'ios-ipcheck'],
+    [/setup|how-to|beginners|what-is-a-vpn|do-i-need/, 'ios-disconnected'],
+    [/speed|slow|battery/, 'ios-speed'],
+    [/profile|wifi|airport|hotel|captive|travel|remote|students/, 'ios-profiles'],
+    [/auto-connect|shortcut|widget/, 'ios-autoconnect'],
+    [/wireguard|ikev2|hysteria|vless|amnezia|protocol|smart-connect/, 'ios-protocol'],
+    [/gaming|banking|servers|best|premium|limit|free/, 'ios-servers'],
+  ];
+
+  get heroShot(): { src: string; srcset: string | null; kind: 'phone' | 'mac' | 'ext' } {
+    const slug = String(this.slug || '');
+    const hit = SeoLandingComponent.HERO_RULES.find(([re]) => re.test(slug));
+    const img = hit ? hit[1] : 'ios-connected';
+    const dir = 'assets/screenshots/v2/';
+    if (img.startsWith('mac')) {
+      return { src: `${dir}${img}-800.webp`, srcset: `${dir}${img}-800.webp 800w, ${dir}${img}.webp 1600w`, kind: 'mac' };
+    }
+    if (img.startsWith('ext')) return { src: `${dir}${img}.webp`, srcset: null, kind: 'ext' };
+    return { src: `${dir}${img}-400.webp`, srcset: `${dir}${img}-400.webp 400w, ${dir}${img}-560.webp 560w, ${dir}${img}.webp 760w`, kind: 'phone' };
+  }
+
   readLabel(minutes: number): string {
     return this.i18n.t('BLOG_READ_TIME').replace('{n}', String(minutes));
   }

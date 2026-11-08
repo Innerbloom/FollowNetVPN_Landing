@@ -26,7 +26,7 @@ import { LocalizePipe } from '../../shared/localize.pipe';
       text-align: center;
     }
     .code {
-      font-family: 'Sora', sans-serif;
+      font-family: var(--font-display);
       font-size: 72px;
       font-weight: 800;
       line-height: 1;

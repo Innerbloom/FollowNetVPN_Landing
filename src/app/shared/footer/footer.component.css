@@ -168,3 +168,29 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 2026-11 redesign: dark footer in the home page palette. */
+.footer {
+  --surface: #0f2a1e;
+  --text: #ffffff;
+  --muted: #b4c6bb;
+  --muted-2: #8fa69a;
+  --border: rgba(255, 255, 255, 0.12);
+  --green-2: #b9ec6a;
+  background: #0f2a1e;
+  border-top: 0;
+  font-family: Onest, var(--font-body);
+  padding-top: 3.5rem;
+}
+@media (max-width: 940px) {
+  .footer { padding-bottom: 96px; }
+}
+.footer-logo-suffix { color: #97b647; }
+
+@media (max-width: 700px) {
+  .footer-nav { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1.6rem 1rem; }
+  .footer-col a { display: block; padding: 7px 0; }
+  .footer-mail, .footer-social { padding: 6px 0; }
+  .footer-langs { gap: 4px 2px; }
+  .footer-langs a { padding: 8px 6px; }
+}

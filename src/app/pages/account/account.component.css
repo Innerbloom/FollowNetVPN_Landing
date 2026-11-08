@@ -26,7 +26,7 @@
   font-family: var(--font-display);
   font-size: var(--type-h2);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.012em;
   line-height: 1.15;
 }
 
@@ -401,7 +401,7 @@
   border-radius: var(--r-card);
   border: 1px solid var(--border);
   background:
-    radial-gradient(ellipse 60% 120% at 0% 0%, rgba(143, 176, 58, 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 120% at 0% 0%, rgba(29, 122, 77, 0.16), transparent 60%),
     var(--surface);
   box-shadow: var(--shadow-sm);
 }
@@ -552,8 +552,8 @@
 }
 
 .kpi--accent {
-  background: linear-gradient(160deg, rgba(143, 176, 58, 0.16), rgba(143, 176, 58, 0.05));
-  border-color: rgba(111, 143, 40, 0.2);
+  background: linear-gradient(160deg, rgba(29, 122, 77, 0.16), rgba(29, 122, 77, 0.05));
+  border-color: rgba(29, 122, 77, 0.2);
 }
 
 .kpi-label {
@@ -674,7 +674,7 @@
 
 .bar-col.is-active .bar-track {
   background: var(--green-soft);
-  box-shadow: inset 0 0 0 2px rgba(111, 143, 40, 0.35);
+  box-shadow: inset 0 0 0 2px rgba(29, 122, 77, 0.35);
 }
 
 .bar-tip {
@@ -887,7 +887,7 @@
 
 .plan-opt.is-on {
   border-color: var(--green);
-  background: linear-gradient(160deg, rgba(143, 176, 58, 0.12), rgba(143, 176, 58, 0.03));
+  background: linear-gradient(160deg, rgba(29, 122, 77, 0.12), rgba(29, 122, 77, 0.03));
 }
 
 .plan-opt:disabled {
@@ -1190,7 +1190,7 @@
 .apps {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 

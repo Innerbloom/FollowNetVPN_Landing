@@ -3,6 +3,8 @@ import { Inject, Injectable, Optional, PLATFORM_ID, REQUEST } from '@angular/cor
 import { NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, filter } from 'rxjs';
 import { localizedPath, splitLangPrefix } from './locale-url';
+import { HOME_V2_DICT } from './home-v2.i18n';
+import { BLOG_VISUAL_DICT } from '../shared/blog-visual/blog-visual.i18n';
 
 export type AppLang = 'en' | 'de' | 'es' | 'fr' | 'pt' | 'ru' | 'uk';
 
@@ -2103,6 +2105,8 @@ const DICT: Dict = {
     pt: 'WireGuard para iOS',
     uk: 'WireGuard для iOS',
   },
+  ...HOME_V2_DICT,
+  ...BLOG_VISUAL_DICT,
 };
 
 const STORAGE_KEY = 'follownet_lang';

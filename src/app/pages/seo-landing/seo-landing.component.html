@@ -1,12 +1,14 @@
 <article class="seo-landing" *ngIf="content as c">
   <header class="article-header">
-    <div class="container narrow">
+    <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a [routerLink]="'/' | localize">{{ i18n.t('SEO_LANDING_BREADCRUMB') }}</a>
         <span aria-hidden="true">/</span>
         <span>{{ relatedLabel(slug) }}</span>
       </nav>
 
+      <div class="hero-grid" [class.hero-grid--mac]="heroShot.kind === 'mac'">
+      <div class="hero-copy">
       <p class="kicker">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</p>
       <h1>{{ c.h1 }}</h1>
       <p class="lead">{{ c.lead }}</p>
@@ -30,12 +32,24 @@
         <a *ngIf="linksIpCheck" class="btn ghost" [routerLink]="'/ip-check' | localize">{{ i18n.t('NAV_IP_CHECK') }}</a>
         <a class="btn ghost" [routerLink]="'/' | localize">{{ i18n.t('SEO_LANDING_BACK_HOME') }}</a>
       </div>
+      </div>
+      <div class="hero-shot" [class.hero-shot--mac]="heroShot.kind === 'mac'" [class.hero-shot--ext]="heroShot.kind === 'ext'">
+        <img [src]="heroShot.src" [attr.srcset]="heroShot.srcset" [attr.sizes]="heroShot.kind === 'mac' ? '(max-width: 980px) 92vw, 900px' : '300px'" [alt]="c.h1" fetchpriority="high" />
+      </div>
+      </div>
     </div>
   </header>
 
-  <div class="container narrow body">
+  <div class="container body">
+    <div class="layout">
+    <aside class="toc" *ngIf="c.sections.length > 2" aria-label="Contents">
+      <p class="toc__title">{{ i18n.t('SEO_LANDING_ARTICLE_KICKER') }}</p>
+      <a *ngFor="let s of c.sections; let i = index" [routerLink]="[]" [fragment]="'s' + (i + 1)">{{ s.title }}</a>
+      <a *ngIf="c.faq.length" [routerLink]="[]" fragment="faq">{{ i18n.t('SEO_LANDING_FAQ_TITLE') }}</a>
+    </aside>
+    <div class="main-col">
     <div class="prose">
-      <section *ngFor="let s of c.sections" class="prose-block">
+      <section *ngFor="let s of c.sections; let i = index" class="prose-block" [id]="'s' + (i + 1)">
         <h2>{{ s.title }}</h2>
         <p>{{ s.body }}</p>
         <figure class="app-shot" *ngIf="s.image">
@@ -79,7 +93,7 @@
         </div>
       </section>
 
-      <section class="prose-block" *ngIf="c.bullets.length">
+      <section class="prose-block keypoints-card" *ngIf="c.bullets.length">
         <h2>{{ i18n.t('SEO_LANDING_KEYPOINTS') }}</h2>
         <ul class="keypoints">
           <li *ngFor="let b of c.bullets">{{ b }}</li>
@@ -87,7 +101,7 @@
       </section>
     </div>
 
-    <section class="faq-block" *ngIf="c.faq.length">
+    <section class="faq-block" id="faq" *ngIf="c.faq.length">
       <h2>{{ i18n.t('SEO_LANDING_FAQ_TITLE') }}</h2>
       <div class="faq">
         <details class="faq-item" *ngFor="let item of c.faq">
@@ -99,6 +113,9 @@
         </details>
       </div>
     </section>
+
+    </div>
+    </div>
 
     <nav class="related" *ngIf="posts.length" [attr.aria-label]="i18n.t('GUIDE_FROM_BLOG')">
       <div class="related-head">
@@ -128,4 +145,21 @@
       </div>
     </nav>
   </div>
+
+  <section class="end-cta">
+    <div class="container">
+      <h2>{{ i18n.t('HV_END_T') }}</h2>
+      <p>{{ i18n.t('HV_END_D') }}</p>
+      <div class="badges">
+        <a class="sb" [href]="appStoreHref()" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
+          <span><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>App Store</b></span>
+        </a>
+        <a class="sb" [href]="playStoreHref()" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#34a853" d="M4.6 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4l.1.1 8.7-8.7v-.2L4.7 2.7z"/><path fill="#fbbc04" d="M16.3 14.5l-2.9-2.9v-.2l2.9-2.9.1.1 3.4 2c1 .6 1 1.5 0 2.1l-3.4 2z"/><path fill="#ea4335" d="M16.4 14.4l-3-3-8.8 8.8c.3.3.9.4 1.5 0l10.3-5.8"/><path fill="#4285f4" d="M16.4 8.6L6.1 2.8c-.6-.4-1.2-.3-1.5 0l8.8 8.8z"/></svg>
+          <span><small>{{ i18n.t('PLAY_BADGE_TOP') }}</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
 </article>

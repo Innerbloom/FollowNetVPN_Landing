@@ -121,7 +121,7 @@ h1 {
   margin: 0;
   font-size: clamp(1.5rem, 4vw, 1.85rem);
   font-weight: 900;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.012em;
   line-height: 1.18;
 }
 
@@ -172,7 +172,7 @@ h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   line-height: 1.15;
 }
 
@@ -309,7 +309,7 @@ h1 {
 
 .btn.primary {
   background: var(--green);
-  color: rgba(0, 0, 0, 0.85);
+  color: #fff;
 }
 
 button.btn:disabled {

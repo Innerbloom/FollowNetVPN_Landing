@@ -23,6 +23,7 @@ import {
   premiumPlanTotal,
 } from '../../core/premium-plans';
 import { environment } from '../../../environments/environment';
+import { macAppStoreUrl } from '../../core/app-store-url';
 import { AccountKey, accountT } from './account.i18n';
 import {
   AccountApiService,
@@ -76,6 +77,7 @@ export class AccountComponent implements OnDestroy {
   readonly googleManageUrl = GOOGLE_MANAGE_URL;
   readonly iosUrl = environment.iosAppStoreUrl;
   readonly chromeUrl = environment.chromeWebStoreUrl;
+  readonly macUrl = macAppStoreUrl('account');
   readonly androidUrl = environment.androidPlayStoreUrl;
   readonly webCheckoutEnabled = environment.webWayForPayCheckoutEnabled;
 
@@ -715,6 +717,7 @@ export class AccountComponent implements OnDestroy {
 
   platformLabel(platform: string): string {
     if (platform === 'android') return this.t('platformAndroid');
+    if (platform === 'macos') return this.t('platformMac');
     if (platform === 'browser') return this.t('platformBrowser');
     return this.t('platformIos');
   }

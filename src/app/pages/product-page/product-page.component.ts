@@ -29,6 +29,41 @@ export class ProductPageComponent implements OnInit, OnChanges {
 
   readonly chromeUrl = environment.chromeWebStoreUrl;
 
+  /** Real screenshot next to the page title, picked by page. */
+  private static readonly HERO_SHOTS: Record<string, { img: string; wide?: boolean; ext?: boolean }> = {
+    features: { img: 'ios-connected' },
+    download: { img: 'ios-servers' },
+    'download/ios': { img: 'ios-connected' },
+    'download/mac': { img: 'mac-connected', wide: true },
+    'download/chrome': { img: 'ext-connected', ext: true },
+    about: { img: 'ios-multihop' },
+    support: { img: 'ios-settings' },
+    status: { img: 'ios-speed' },
+    affiliates: { img: 'ios-profiles' },
+  };
+
+  get heroShot(): { src: string; srcset: string | null; wide: boolean; ext: boolean } | null {
+    const key = (this.seoPath || '').replace(/^\/+|\/+$/g, '');
+    const hit = ProductPageComponent.HERO_SHOTS[key];
+    if (!hit) return null;
+    const dir = 'assets/screenshots/v2/';
+    if (hit.wide) {
+      return { src: `${dir}${hit.img}-800.webp`, srcset: `${dir}${hit.img}-800.webp 800w, ${dir}${hit.img}.webp 1600w`, wide: true, ext: false };
+    }
+    if (hit.ext) {
+      return { src: `${dir}${hit.img}.webp`, srcset: null, wide: false, ext: true };
+    }
+    return { src: `${dir}${hit.img}-400.webp`, srcset: `${dir}${hit.img}-400.webp 400w, ${dir}${hit.img}-560.webp 560w, ${dir}${hit.img}.webp 760w`, wide: false, ext: false };
+  }
+
+  appStoreBadgeHref(): string {
+    return appStoreUrl((this.seoPath.replace(/\//g, '-') || 'product') + '-end');
+  }
+
+  playBadgeHref(): string {
+    return playStoreUrl((this.seoPath.replace(/\//g, '-') || 'product') + '-end');
+  }
+
   constructor(
     public i18n: I18nService,
     private seo: SeoService,

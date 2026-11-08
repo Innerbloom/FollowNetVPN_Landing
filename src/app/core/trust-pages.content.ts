@@ -6,11 +6,11 @@ const ABOUT: Record<AppLang, ProductPage> = {
     kicker: 'About',
     h1: 'About FollowNet',
     lead:
-      'FollowNet is a focused VPN for iPhone and iPad, with a Chrome extension for desktop browsing. Built as a real product: clear Free vs Premium, modern protocols, and no marketing tricks.',
+      'FollowNet is a focused VPN for iPhone, iPad, Mac and Android, with a Chrome extension for the browser. Built as a real product: clear Free vs Premium, modern protocols, and no marketing tricks.',
     blocks: [
       {
         title: 'What we build',
-        body: 'The iOS app is a full-device VPN via Apple Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, DNS profiles, Auto-connect, Network Profiles, Speed Test, widgets, and Shortcuts. Chrome adds a browser proxy, Kill Switch for the extension, and ad blocking — not a full-desktop VPN yet.',
+        body: 'The apps for iPhone, iPad, Mac and Android are full-device VPNs: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, split tunneling, multi-hop, Tor over VPN, DNS profiles, auto-connect, network profiles and a speed test. On iPhone there are also widgets and Shortcuts. The Chrome extension adds a browser proxy with its own kill switch and ad blocking.',
       },
       {
         title: 'How we stay honest',
@@ -18,7 +18,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'What is not ready yet',
-        body: 'Auto-connect on iOS is not the same as a leak-blocking kill switch; that Kill Switch exists in the Chrome extension. Exact server locations and plan details always live in the current App Store build.',
+        body: 'There is no Windows app yet: on Windows and Linux, the Chrome extension protects the browser. Exact server locations and plan details always live in the current app build.',
       },
       {
         title: 'Contact',
@@ -26,7 +26,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
     ],
     bullets: [
-      'iOS full-device VPN + Chrome browser proxy',
+      'VPN for iPhone, iPad, Mac and Android + Chrome extension',
       'Free weekly limit · Premium unlimited',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'No fake audits or inflated coverage claims',
@@ -36,11 +36,11 @@ const ABOUT: Record<AppLang, ProductPage> = {
     kicker: 'О нас',
     h1: 'О FollowNet',
     lead:
-      'FollowNet — сфокусированный VPN для iPhone и iPad плюс расширение Chrome для браузера на десктопе. Реальный продукт: честный Free vs Premium, современные протоколы, без маркетинговых трюков.',
+      'FollowNet — сфокусированный VPN для iPhone, iPad, Mac и Android плюс расширение для Chrome. Реальный продукт: честный Free vs Premium, современные протоколы, без маркетинговых трюков.',
     blocks: [
       {
         title: 'Что мы делаем',
-        body: 'iOS-приложение — полноценный VPN через Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, автоподключение, профили сети, Speed Test, виджеты и Команды. В Chrome — proxy браузера, Kill Switch расширения и блокировка рекламы. Полноценного VPN на весь компьютер пока нет.',
+        body: 'Приложения для iPhone, iPad, Mac и Android — полноценный VPN на всё устройство: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, раздельное туннелирование, мультихоп, Tor через VPN, DNS-профили, автоподключение, профили сети и тест скорости. На iPhone есть ещё виджеты и Команды. Расширение Chrome — proxy браузера со своим Kill Switch и блокировкой рекламы.',
       },
       {
         title: 'Как мы остаёмся честными',
@@ -48,7 +48,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
       {
         title: 'Чего пока нет',
-        body: 'Автоподключение на iOS — не kill switch с блокировкой утечек; такой Kill Switch есть в Chrome. Актуальные локации и условия тарифов — в текущей сборке App Store.',
+        body: 'Приложения для Windows пока нет: на Windows и Linux браузер защищает расширение Chrome. Актуальные локации и условия тарифов — в текущей версии приложения.',
       },
       {
         title: 'Связь',
@@ -56,7 +56,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
     ],
     bullets: [
-      'iOS VPN на устройство + Chrome proxy',
+      'VPN для iPhone, iPad, Mac и Android + расширение Chrome',
       'Free — недельный лимит · Premium — безлимит',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Без фейковых аудитов и завышенных цифр покрытия',
@@ -66,19 +66,19 @@ const ABOUT: Record<AppLang, ProductPage> = {
     kicker: 'Про нас',
     h1: 'Про FollowNet',
     lead:
-      'FollowNet — сфокусований VPN для iPhone і iPad та розширення Chrome для браузера. Реальний продукт: чесний Free vs Premium, сучасні протоколи, без маркетингових трюків.',
+      'FollowNet — сфокусований VPN для iPhone, iPad, Mac і Android плюс розширення для Chrome. Реальний продукт: чесний Free vs Premium, сучасні протоколи, без маркетингових трюків.',
     blocks: [
       {
         title: 'Що ми робимо',
-        body: 'iOS-застосунок — повноцінний VPN через Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, автопідключення, профілі мережі, Speed Test, віджети й Команди. У Chrome — proxy браузера, Kill Switch і блокування реклами. Повного VPN на весь комп’ютер поки немає.',
+        body: 'Застосунки для iPhone, iPad, Mac і Android — повноцінний VPN на весь пристрій: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, роздільне тунелювання, мультихоп, Tor через VPN, DNS-профілі, автопідключення, профілі мережі й тест швидкості. На iPhone є ще віджети й Команди. Розширення Chrome — proxy браузера з власним Kill Switch і блокуванням реклами.',
       },
       {
-        title: 'Як ми залишаємось чесними',
-        body: 'Free має тижневий ліміт трафіку, щоб оцінити справжній тунель. Premium — безліміт, усі сервери з застосунку, до 5 пристроїв і без реклами. Без вигаданих аудитів, mixnet і «безліміт назавжди безкоштовно».',
+        title: 'Як ми лишаємося чесними',
+        body: 'Free — з тижневим лімітом трафіку, щоб оцінити справжній тунель. Premium — безліміт, усі сервери із застосунку, до 5 пристроїв і без реклами. Без вигаданих аудитів, mixnet і «безліміт назавжди безкоштовно».',
       },
       {
         title: 'Чого поки немає',
-        body: 'Автопідключення на iOS — не kill switch; такий Kill Switch є в Chrome. Актуальні локації й умови тарифів — у поточній збірці App Store.',
+        body: 'Застосунку для Windows поки немає: на Windows і Linux браузер захищає розширення Chrome. Актуальні локації й умови тарифів — у поточній версії застосунку.',
       },
       {
         title: 'Зв’язок',
@@ -86,7 +86,7 @@ const ABOUT: Record<AppLang, ProductPage> = {
       },
     ],
     bullets: [
-      'iOS VPN на пристрій + Chrome proxy',
+      'VPN для iPhone, iPad, Mac і Android + розширення Chrome',
       'Free — тижневий ліміт · Premium — безліміт',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Без фейкових аудитів і завищених цифр покриття',
@@ -96,58 +96,58 @@ const ABOUT: Record<AppLang, ProductPage> = {
     kicker: 'Über uns',
     h1: 'Über FollowNet',
     lead:
-      'FollowNet ist ein fokussiertes VPN für iPhone und iPad plus Chrome-Erweiterung für den Desktop-Browser. Echtes Produkt: klares Free vs Premium, moderne Protokolle, keine Marketingtricks.',
+      'FollowNet ist ein fokussiertes VPN für iPhone, iPad, Mac und Android, dazu eine Chrome-Erweiterung für den Browser. Ein echtes Produkt: klares Free vs Premium, moderne Protokolle, keine Marketingtricks.',
     blocks: [
       {
         title: 'Was wir bauen',
-        body: 'Die iOS-App ist ein geräteweites VPN über Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, Auto-Connect, Netzwerkprofile, Speed Test, Widgets und Shortcuts. Chrome bietet Browser-Proxy, Kill Switch und Werbeblocker — noch kein volles Desktop-VPN.',
+        body: 'Die Apps für iPhone, iPad, Mac und Android sind geräteweite VPNs: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, Kill Switch, Split Tunneling, Multi-Hop, Tor über VPN, DNS-Profile, Auto-Connect, Netzwerkprofile und Speedtest. Auf dem iPhone gibt es zusätzlich Widgets und Kurzbefehle. Die Chrome-Erweiterung bietet einen Browser-Proxy mit eigenem Kill Switch und Werbeblocker.',
       },
       {
         title: 'Wie wir ehrlich bleiben',
-        body: 'Free hat ein wöchentliches Traffic-Limit zum Testen. Premium entfernt das Limit, öffnet die in der App gezeigten Server, bis zu 5 Geräte und ist werbefrei. Keine erfundenen Audits, kein Mixnet-Marketing, kein „lifetime free“.',
+        body: 'Free hat ein wöchentliches Traffic-Limit, damit du einen echten Tunnel testen kannst. Premium bringt unbegrenzten Traffic, alle Server aus der App, bis zu 5 Geräte und keine Werbung. Keine erfundenen Audits, kein Mixnet, kein „für immer kostenlos unbegrenzt“.',
       },
       {
         title: 'Was noch fehlt',
-        body: 'Auto-Connect auf iOS ist kein Leak-Kill-Switch; der Kill Switch sitzt in der Chrome-Erweiterung. Standorte und Tarifdetails stehen in der aktuellen App-Store-Version.',
+        body: 'Eine Windows-App gibt es noch nicht: Unter Windows und Linux schützt die Chrome-Erweiterung den Browser. Aktuelle Standorte und Tarifdetails stehen in der aktuellen App-Version.',
       },
       {
         title: 'Kontakt',
-        body: 'Support: support@follow-net.com. Datenschutz und AGB liegen auf dieser Website. Status unter /status.',
+        body: 'Support: support@follow-net.com. Datenschutz und AGB findest du auf dieser Seite. Status-Updates erscheinen unter /status.',
       },
     ],
     bullets: [
-      'iOS-VPN fürs Gerät + Chrome-Proxy',
-      'Free Wochenlimit · Premium unbegrenzt',
+      'VPN für iPhone, iPad, Mac und Android + Chrome-Erweiterung',
+      'Free mit Wochenlimit · Premium unbegrenzt',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
-      'Keine Fake-Audits oder aufgeblähte Abdeckungszahlen',
+      'Keine Fake-Audits oder aufgeblähten Abdeckungszahlen',
     ],
   },
   es: {
-    kicker: 'Acerca de',
+    kicker: 'Sobre nosotros',
     h1: 'Sobre FollowNet',
     lead:
-      'FollowNet es un VPN centrado en iPhone y iPad, con extensión de Chrome para el navegador. Producto real: Free vs Premium claros, protocolos modernos, sin trucos de marketing.',
+      'FollowNet es una VPN enfocada para iPhone, iPad, Mac y Android, con una extensión de Chrome para el navegador. Un producto real: Free vs Premium claro, protocolos modernos y sin trucos de marketing.',
     blocks: [
       {
         title: 'Qué construimos',
-        body: 'La app iOS es un VPN de dispositivo completo vía Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, auto-conexión, perfiles, Speed Test, widgets y Atajos. Chrome añade proxy del navegador, Kill Switch y bloqueo de anuncios — aún no un VPN de escritorio completo.',
+        body: 'Las apps para iPhone, iPad, Mac y Android son VPN para todo el dispositivo: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, túnel dividido, multi-hop, Tor sobre VPN, perfiles DNS, conexión automática, perfiles de red y test de velocidad. En iPhone también hay widgets y Atajos. La extensión de Chrome añade un proxy del navegador con su propio Kill Switch y bloqueo de anuncios.',
       },
       {
-        title: 'Cómo somos honestos',
-        body: 'Free incluye un límite semanal de tráfico para probar un túnel real. Premium quita el tope, abre los servidores mostrados en la app, hasta 5 dispositivos y sin anuncios. Sin auditorías inventadas ni “gratis ilimitado para siempre”.',
+        title: 'Cómo seguimos siendo honestos',
+        body: 'Free incluye un límite semanal de tráfico para que pruebes un túnel real. Premium desbloquea tráfico ilimitado, todos los servidores de la app, hasta 5 dispositivos y sin anuncios. No inventamos auditorías, mixnet ni «ilimitado gratis para siempre».',
       },
       {
-        title: 'Qué aún no está',
-        body: 'La auto-conexión en iOS no es un kill switch anti-fugas; ese Kill Switch está en Chrome. Ubicaciones y planes actuales están en la build de App Store.',
+        title: 'Lo que aún no existe',
+        body: 'Todavía no hay app para Windows: en Windows y Linux, la extensión de Chrome protege el navegador. Las ubicaciones y los planes actuales están en la versión actual de la app.',
       },
       {
         title: 'Contacto',
-        body: 'Soporte: support@follow-net.com. Privacidad y términos en este sitio. Estado en /status.',
+        body: 'Soporte: support@follow-net.com. La Política de privacidad y los Términos están en este sitio. El estado se publica en /status.',
       },
     ],
     bullets: [
-      'VPN iOS de dispositivo + proxy Chrome',
-      'Free límite semanal · Premium ilimitado',
+      'VPN para iPhone, iPad, Mac y Android + extensión de Chrome',
+      'Free con límite semanal · Premium ilimitado',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Sin auditorías falsas ni cifras de cobertura infladas',
     ],
@@ -156,58 +156,58 @@ const ABOUT: Record<AppLang, ProductPage> = {
     kicker: 'À propos',
     h1: 'À propos de FollowNet',
     lead:
-      'FollowNet est un VPN centré sur iPhone et iPad, avec une extension Chrome pour le navigateur. Produit réel : Free vs Premium clairs, protocoles modernes, sans astuces marketing.',
+      'FollowNet est un VPN ciblé pour iPhone, iPad, Mac et Android, avec une extension Chrome pour le navigateur. Un vrai produit : Free vs Premium clair, protocoles modernes, sans astuces marketing.',
     blocks: [
       {
         title: 'Ce que nous construisons',
-        body: 'L’app iOS est un VPN système via Network Extension : Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, connexion auto, profils, Speed Test, widgets et Raccourcis. Chrome ajoute un proxy navigateur, Kill Switch et bloqueur de pubs — pas encore un VPN bureau complet.',
+        body: 'Les apps pour iPhone, iPad, Mac et Android sont des VPN pour tout l’appareil : Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, tunnel divisé, multi-hop, Tor via VPN, profils DNS, connexion auto, profils réseau et test de débit. Sur iPhone, il y a aussi des widgets et des Raccourcis. L’extension Chrome ajoute un proxy navigateur avec son propre Kill Switch et un bloqueur de pubs.',
       },
       {
-        title: 'Comment rester honnêtes',
-        body: 'Free inclut un plafond hebdomadaire pour tester un vrai tunnel. Premium retire le plafond, ouvre les serveurs affichés dans l’app, jusqu’à 5 appareils, sans pubs. Pas d’audits inventés ni de « gratuit illimité pour toujours ».',
+        title: 'Comment nous restons honnêtes',
+        body: 'Free inclut un plafond de trafic hebdomadaire pour tester un vrai tunnel. Premium débloque le trafic illimité, tous les serveurs de l’app, jusqu’à 5 appareils et zéro pub. Pas de faux audits, pas de mixnet, pas de « illimité gratuit pour toujours ».',
       },
       {
-        title: 'Ce qui n’est pas prêt',
-        body: 'La connexion auto iOS n’est pas un kill switch anti-fuite ; celui de Chrome l’est. Les emplacements et offres actuels sont dans la build App Store.',
+        title: 'Ce qui manque encore',
+        body: 'Il n’y a pas encore d’app Windows : sous Windows et Linux, l’extension Chrome protège le navigateur. Les emplacements et offres actuels sont dans la version actuelle de l’app.',
       },
       {
         title: 'Contact',
-        body: 'Support : support@follow-net.com. Confidentialité et conditions sur ce site. Statut sur /status.',
+        body: 'Support : support@follow-net.com. La politique de confidentialité et les conditions sont sur ce site. Le statut est publié sur /status.',
       },
     ],
     bullets: [
-      'VPN iOS appareil + proxy Chrome',
-      'Free quota hebdo · Premium illimité',
+      'VPN pour iPhone, iPad, Mac et Android + extension Chrome',
+      'Free avec limite hebdo · Premium illimité',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
-      'Pas de faux audits ni de couverture inventée',
+      'Pas de faux audits ni de chiffres de couverture gonflés',
     ],
   },
   pt: {
     kicker: 'Sobre',
     h1: 'Sobre o FollowNet',
     lead:
-      'FollowNet é um VPN focado em iPhone e iPad, com extensão Chrome para o navegador. Produto real: Free vs Premium claros, protocolos modernos, sem truques de marketing.',
+      'FollowNet é uma VPN focada para iPhone, iPad, Mac e Android, com uma extensão do Chrome para o navegador. Um produto real: Free vs Premium claro, protocolos modernos e sem truques de marketing.',
     blocks: [
       {
         title: 'O que construímos',
-        body: 'O app iOS é um VPN de dispositivo via Network Extension: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, DNS, auto-conexão, perfis, Speed Test, widgets e Atalhos. O Chrome adiciona proxy do navegador, Kill Switch e bloqueio de anúncios — ainda não um VPN completo de desktop.',
+        body: 'Os apps para iPhone, iPad, Mac e Android são VPN para o dispositivo inteiro: Smart Connect, WireGuard, IKEv2, AmneziaWG, Hysteria2, VLESS Reality, kill switch, túnel dividido, multi-hop, Tor via VPN, perfis de DNS, conexão automática, perfis de rede e teste de velocidade. No iPhone também há widgets e Atalhos. A extensão do Chrome adiciona um proxy do navegador com seu próprio Kill Switch e bloqueio de anúncios.',
       },
       {
-        title: 'Como somos honestos',
-        body: 'O Free tem limite semanal de tráfego para avaliar um túnel real. O Premium remove o limite, abre os servidores mostrados no app, até 5 dispositivos e sem anúncios. Sem auditorias inventadas nem “grátis ilimitado para sempre”.',
+        title: 'Como continuamos honestos',
+        body: 'O Free tem um limite semanal de tráfego para você testar um túnel real. O Premium libera tráfego ilimitado, todos os servidores do app, até 5 dispositivos e sem anúncios. Não inventamos auditorias, mixnet nem «ilimitado grátis para sempre».',
       },
       {
         title: 'O que ainda não existe',
-        body: 'Auto-conexão no iOS não é kill switch anti-vazamento; esse Kill Switch está no Chrome. Locais e planos atuais estão na build da App Store.',
+        body: 'Ainda não há app para Windows: no Windows e no Linux, a extensão do Chrome protege o navegador. Locais e planos atuais estão na versão atual do app.',
       },
       {
-        title: 'Contacto',
-        body: 'Suporte: support@follow-net.com. Privacidade e termos neste site. Estado em /status.',
+        title: 'Contato',
+        body: 'Suporte: support@follow-net.com. A Política de privacidade e os Termos estão neste site. O status é publicado em /status.',
       },
     ],
     bullets: [
-      'VPN iOS de dispositivo + proxy Chrome',
-      'Free limite semanal · Premium ilimitado',
+      'VPN para iPhone, iPad, Mac e Android + extensão do Chrome',
+      'Free com limite semanal · Premium ilimitado',
       'WireGuard · IKEv2 · AmneziaWG · Hysteria2 · VLESS Reality',
       'Sem auditorias falsas nem números de cobertura inflados',
     ],

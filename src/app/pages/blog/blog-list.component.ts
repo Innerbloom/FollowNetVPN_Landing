@@ -11,6 +11,7 @@ import {
   type BlogTopic,
 } from '../../core/blog.content';
 
+import { blogShot } from '../../core/blog-visuals';
 @Component({
   selector: 'app-blog-list',
   standalone: true,
@@ -19,6 +20,8 @@ import {
   styleUrls: ['./blog-list.component.css'],
 })
 export class BlogListComponent implements OnInit {
+  readonly cover = blogShot;
+
   posts: BlogPostView[] = [];
   featured: BlogPostView | null = null;
   rest: BlogPostView[] = [];

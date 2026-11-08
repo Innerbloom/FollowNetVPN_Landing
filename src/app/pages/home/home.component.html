@@ -1,575 +1,350 @@
 <div class="landing" id="top">
+  <a class="strip" [routerLink]="'/ip-check' | localize">
+    <span *ngIf="!ipInfo">{{ i18n.t('HV_STRIP') }}</span>
+    <span *ngIf="ipInfo && ipInfo.isOurNode" class="strip__good">{{ i18n.t('HV_STRIP_SAFE') }}</span>
+    <span *ngIf="ipInfo && !ipInfo.isOurNode"
+      ><span class="strip__bad">{{ i18n.t('HV_STRIP_EXPOSED') }}</span
+      ><span *ngIf="ipPlace"> · {{ ipPlace }}</span></span
+    >
+    <b>{{ i18n.t('HV_STRIP_CTA') }}</b>
+  </a>
+
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <img class="map-wash map-wash--hero" src="assets/world-map-alt.png" alt="" aria-hidden="true" width="800" height="449" />
-    </div>
-    <div class="container hero-stage">
-      <div class="hero-copy">
-        <h1>
-          {{ i18n.t('HERO_TITLE_1') }}
-          <span class="hero-line">
-            <span class="accent">{{ i18n.t('HERO_TITLE_2') }}</span>
-            {{ i18n.t('HERO_TITLE_3') }}
-          </span>
-        </h1>
-
-        <p class="lead">{{ i18n.t('HERO_LEAD') }}</p>
-
-        <div class="store-badges">
-          <a
-            class="store-badge"
-            [href]="appStoreHref('home-hero')"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('HERO_CTA_PRIMARY')"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>App Store</b></span
-            >
-          </a>
-          <a
-            class="store-badge"
-            [href]="playStoreHref('home-hero')"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('PLAY_CTA')"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34a853" d="M4.6 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4l.1.1 8.7-8.7v-.2L4.7 2.7z"/><path fill="#fbbc04" d="M16.3 14.5l-2.9-2.9v-.2l2.9-2.9.1.1 3.4 2c1 .6 1 1.5 0 2.1l-3.4 2z"/><path fill="#ea4335" d="M16.4 14.4l-3-3-8.8 8.8c.3.3.9.4 1.5 0l10.3-5.8"/><path fill="#4285f4" d="M16.4 8.6L6.1 2.8c-.6-.4-1.2-.3-1.5 0l8.8 8.8z"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('PLAY_BADGE_TOP') }}</small><b>Google Play</b></span
-            >
-          </a>
-        </div>
-        <a class="offer offer--under-cta offer--link" href="#pricing">
-          <span class="offer__dot" aria-hidden="true"></span>
-          {{ heroOfferLine() }}
-          <span class="offer__arrow" aria-hidden="true">→</span>
+    <div class="w">
+      <h1>{{ i18n.t('HERO_TITLE_1') }}</h1>
+      <p class="lead">{{ i18n.t('HERO_LEAD') }}</p>
+      <div class="badges">
+        <a class="sb" [href]="appStoreHref('home-hero')" target="_blank" rel="noopener noreferrer" [attr.aria-label]="i18n.t('HERO_CTA_PRIMARY')">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
+          <span><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>App Store</b></span>
+        </a>
+        <a class="sb" [href]="playStoreHref('home-hero')" target="_blank" rel="noopener noreferrer" [attr.aria-label]="i18n.t('PLAY_CTA')">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#34a853" d="M4.6 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4l.1.1 8.7-8.7v-.2L4.7 2.7z"/><path fill="#fbbc04" d="M16.3 14.5l-2.9-2.9v-.2l2.9-2.9.1.1 3.4 2c1 .6 1 1.5 0 2.1l-3.4 2z"/><path fill="#ea4335" d="M16.4 14.4l-3-3-8.8 8.8c.3.3.9.4 1.5 0l10.3-5.8"/><path fill="#4285f4" d="M16.4 8.6L6.1 2.8c-.6-.4-1.2-.3-1.5 0l8.8 8.8z"/></svg>
+          <span><small>{{ i18n.t('PLAY_BADGE_TOP') }}</small><b>Google Play</b></span>
+        </a>
+      </div>
+      <p class="fine">{{ i18n.t('HV_FINE') }}</p>
+      <a class="offer" href="#pricing">{{ heroOfferLine() }} →</a>
+      <div class="rating">
+        <a class="rating__item" [href]="appStoreHref('home-rating')" target="_blank" rel="noopener noreferrer">
+          <b>5,0</b><span class="stars" aria-hidden="true">★★★★★</span><small>{{ i18n.t('HV_RATE_AS') }}</small>
+        </a>
+        <a class="rating__item" [href]="playStoreHref('home-rating')" target="_blank" rel="noopener noreferrer">
+          <b>1 000+</b><small>{{ i18n.t('HV_RATE_PLAY') }}</small>
         </a>
       </div>
 
-      <div class="hero-visual">
-        <div
-          class="hero-phone"
-          aria-hidden="true"
-          (pointerdown)="onUserPointer()"
-          (touchstart)="onUserPointer()"
-        >
-          <img
-            *ngFor="let src of shots; let i = index"
-            class="hero-phone__shot"
-            [attr.src]="shotSrc(i)"
-            [attr.srcset]="shotSrcset(i)"
-            sizes="(max-width: 480px) 82vw, 380px"
-            [alt]="screenshotAlt(i)"
-            [class.is-active]="i === activeIndex"
-            [attr.loading]="i === 0 ? 'eager' : 'lazy'"
-            [attr.fetchpriority]="i === 0 ? 'high' : null"
-            width="760"
-            height="1508"
-            decoding="async"
-          />
+      <div class="stage">
+        <div class="map" aria-hidden="true"></div>
+        <svg class="route-svg" viewBox="0 0 980 560" fill="none" aria-hidden="true">
+          <path id="hv-r1" d="M104 372C190 170 340 120 490 210" />
+          <path id="hv-r2" d="M490 210C640 120 800 190 876 396" />
+          <circle r="6" class="pk"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#hv-r1" /></animateMotion></circle>
+          <circle r="6" class="pk pk--b"><animateMotion dur="3.6s" begin="1.8s" repeatCount="indefinite"><mpath href="#hv-r2" /></animateMotion></circle>
+          <circle cx="104" cy="372" r="8" class="pin" />
+          <circle cx="876" cy="396" r="8" class="pin pin--b" />
+        </svg>
+        <img
+          class="hero-shot"
+          src="assets/screenshots/v2/ios-connected-400.webp"
+          srcset="assets/screenshots/v2/ios-connected-400.webp 400w, assets/screenshots/v2/ios-connected-560.webp 560w, assets/screenshots/v2/ios-connected.webp 760w"
+          sizes="(max-width: 940px) 250px, 340px"
+          [alt]="i18n.t('SCREENSHOT_ALT_1')"
+          width="760"
+          height="1508"
+          fetchpriority="high"
+        />
+        <div class="glass glass--1">
+          <span>{{ i18n.t('HV_GL1_T') }}</span>
+          <b>{{ ipInfo?.ip || i18n.t('HV_GL1_B') }}</b>
+          <em>{{ ipPlace || i18n.t('HV_GL1_E') }}</em>
         </div>
-        <div class="hero-dots">
-          <button
-            type="button"
-            class="hero-dot"
-            *ngFor="let _ of shots; let i = index"
-            [class.is-active]="i === activeIndex"
-            (click)="goTo(i)"
-            [attr.aria-label]="screenshotAlt(i)"
-          ></button>
+        <div class="glass glass--2">
+          <span>{{ i18n.t('HV_GL2_T') }}</span>
+          <b>{{ i18n.t('HV_GL2_B') }}</b>
+          <em>{{ i18n.t('HV_GL2_E') }}</em>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="features" aria-labelledby="why-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('WHY_KICKER') }}</div>
-        <h2 id="why-title">{{ i18n.t('WHY_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('WHY_SUB') }}</p>
+  <div class="band"><div class="w"><span>iPhone</span><span>iPad</span><span>Mac</span><span>Android</span><span>Chrome</span></div></div>
+
+  <div class="trust">
+    <div class="w">
+      <div><b>{{ i18n.t('HV_TR1_B') }}</b><span>{{ i18n.t('HV_TR1_S') }}</span></div>
+      <div><b>{{ i18n.t('HV_TR2_B') }}</b><span>{{ i18n.t('HV_TR2_S') }}</span></div>
+      <div><b>{{ i18n.t('HV_TR3_B') }}</b><span>{{ i18n.t('HV_TR3_S') }}</span></div>
+      <div><b>{{ i18n.t('HV_TR4_B') }}</b><span>{{ i18n.t('HV_TR4_S') }}</span></div>
+    </div>
+  </div>
+
+  <section class="rvw">
+    <div class="w">
+      <div class="sh"><h2>{{ i18n.t('HV_RV_TITLE') }}</h2><p>{{ i18n.t('HV_RV_SUB') }}</p></div>
+      <div class="rg">
+        <figure class="rv rcard" *ngFor="let r of reviews">
+          <span class="stars" aria-label="5/5">★★★★★</span>
+          <blockquote>
+            <b>{{ r.title }}</b>
+            <p>{{ r.text }}</p>
+          </blockquote>
+          <figcaption><span>{{ r.author }}</span><small>{{ i18n.t('HV_RV_SRC') }}</small></figcaption>
+        </figure>
       </div>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M13 3.5L6.5 13.2h4.2L11 20.5 17.5 10.8h-4.2L13 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('WHY_3_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_3_TEXT') }}</p>
+    </div>
+  </section>
+
+  <section class="sc rv">
+    <div class="w">
+      <div class="sh"><h2>{{ i18n.t('HV_SC_TITLE') }}</h2><p>{{ i18n.t('HV_SC_SUB') }}</p></div>
+      <div class="sg">
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 54V22l22-12 22 12v32"/><path d="M24 54V36h16v18"/><path d="M26 24h12"/></svg>
+          <h3>{{ i18n.t('HV_SC1_T') }}</h3><p>{{ i18n.t('HV_SC1_D') }}</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4.5 12c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5-3.4 7.5-7.5 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M8 12h8M12 8.5v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M16.5 16.5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('WHY_2_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_2_TEXT') }}</p>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 26c14-13 34-13 48 0"/><path d="M18 36c8-7 20-7 28 0"/><path d="M27 46c3-3 7-3 10 0"/><circle cx="32" cy="54" r="2"/></svg>
+          <h3>{{ i18n.t('HV_SC2_T') }}</h3><p>{{ i18n.t('HV_SC2_D') }}</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 3.5l7 3v5.2c0 4.3-2.9 7.6-7 8.8-4.1-1.2-7-4.5-7-8.8V6.5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('VOICE_1_TITLE') }}</h3>
-          <p>{{ i18n.t('VOICE_1_BODY') }}</p>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="6" width="24" height="52" rx="5"/><path d="M29 12h6"/><path d="M27 42v6M32 36v12M37 30v18"/></svg>
+          <h3>{{ i18n.t('HV_SC3_T') }}</h3><p>{{ i18n.t('HV_SC3_D') }}</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="2.5" y="5" width="13" height="9.5" rx="1.8" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M6 18.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <rect x="16" y="8" width="5.5" height="11" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('VOICE_3_TITLE') }}</h3>
-          <p>{{ i18n.t('VOICE_3_BODY') }}</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M4.5 12h15M12 4.5c2.2 2.4 3.3 5 3.3 7.5S14.2 17.1 12 19.5M12 4.5C9.8 6.9 8.7 9.5 8.7 12s1.1 5.1 3.3 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('WHY_4_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_4_TEXT') }}</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4.5 16a7.5 7.5 0 1115 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M12 16l3.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="12" cy="16" r="1.4" fill="currentColor"/>
-            </svg>
-          </div>
-          <h3>{{ i18n.t('WHY_SPEED_TITLE') }}</h3>
-          <p>{{ i18n.t('WHY_SPEED_TEXT') }}</p>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M8 32h48M32 8c8 7 12 15 12 24s-4 17-12 24c-8-7-12-15-12-24s4-17 12-24z"/></svg>
+          <h3>{{ i18n.t('HV_SC4_T') }}</h3><p>{{ countriesLine() }}</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="locations" aria-label="Locations">
-    <div class="container">
-      <div class="locations-copy">
-        <p class="kicker">{{ i18n.t('LOCATIONS_LABEL') }}</p>
-        <h2>{{ i18n.t('COUNTRIES_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('COUNTRIES_SUB') }}</p>
+  <section id="features" class="feats">
+    <div class="w">
+      <div class="sh"><h2>{{ i18n.t('HV_FT_TITLE') }}</h2><p>{{ i18n.t('HV_FT_SUB') }}</p></div>
+    </div>
+    <div class="car">
+      <article class="cd" *ngFor="let f of featureCards" [ngClass]="f.tone">
+        <small>{{ i18n.t(f.k) }}</small>
+        <h3>{{ i18n.t(f.t) }}</h3>
+        <p>{{ i18n.t(f.d) }}</p>
+        <img [src]="shot(f.img)" [srcset]="shotSet(f.img)" sizes="(max-width: 940px) 240px, 236px" [alt]="i18n.t(f.t)" width="760" height="1508" loading="lazy" decoding="async" />
+      </article>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="w">
+      <div class="sh"><h2>{{ i18n.t('HV_CTRL_TITLE') }}</h2><p>{{ i18n.t('HV_CTRL_SUB') }}</p></div>
+      <div class="mh rv">
+        <div class="mt">
+          <small>Premium</small>
+          <h3>{{ i18n.t('HV_MH_T') }}</h3>
+          <p>{{ i18n.t('HV_MH_D') }}</p>
+          <div class="route">
+            <span>{{ i18n.t('HV_YOU') }}</span><i><u></u></i><span>{{ i18n.t('HV_CITY_1') }}</span><i><u class="d1"></u></i><span>{{ i18n.t('HV_CITY_2') }}</span><i><u class="d2"></u></i><span>{{ i18n.t('HV_SITE') }}</span>
+          </div>
+        </div>
+        <div class="mp">
+          <img [src]="shot('ios-multihop')" [srcset]="shotSet('ios-multihop')" sizes="300px" [alt]="i18n.t('HV_MH_T')" width="760" height="1508" loading="lazy" decoding="async" />
+        </div>
       </div>
-      <div class="loc-stat">
-        <strong class="loc-stat__num">{{ locationCodes.length }}</strong>
-        <span class="loc-stat__text">
-          <span class="loc-stat__label">{{ i18n.t('LOCATIONS_COUNT') }}</span>
-          <span class="loc-stat__note">{{ i18n.t('LOCATIONS_COUNT_NOTE') }}</span>
-        </span>
+      <div class="bento">
+        <div class="c rv" *ngFor="let b of controlCards">
+          <small>{{ b.k === 'Premium' ? 'Premium' : i18n.t(b.k) }}</small>
+          <h3>{{ i18n.t(b.t) }}</h3>
+          <p>{{ i18n.t(b.d) }}</p>
+          <div class="c__shot"><img [src]="shot(b.img)" [srcset]="shotSet(b.img)" sizes="220px" [alt]="i18n.t(b.t)" width="760" height="1508" loading="lazy" decoding="async" /></div>
+        </div>
       </div>
-      <ul class="loc-grid" [class.is-open]="showAllLocations">
-        <li class="loc-chip" *ngFor="let code of locationCodes">
-          <img
-            class="loc-chip__flag"
-            [src]="'assets/flags/' + code + '.webp'"
-            width="24"
-            height="18"
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
+    </div>
+  </section>
+
+  <section class="macs" id="mac">
+    <div class="w">
+      <div class="sh"><span class="kick">{{ i18n.t('HV_MAC_K') }}</span><h2>{{ i18n.t('HV_MAC_T') }}</h2><p>{{ i18n.t('HV_MAC_D') }}</p></div>
+      <div class="rv macw">
+        <img src="assets/screenshots/v2/mac-connected.webp" srcset="assets/screenshots/v2/mac-connected-800.webp 800w, assets/screenshots/v2/mac-connected.webp 1600w" sizes="(max-width: 900px) 92vw, 820px" [alt]="i18n.t('HV_MAC_T')" width="1600" height="1098" loading="lazy" decoding="async" />
+      </div>
+      <div class="macg">
+        <figure class="rv" *ngFor="let m of macShots">
+          <img [src]="'assets/screenshots/v2/' + m.img + '-800.webp'" [alt]="i18n.t(m.c)" width="800" height="549" loading="lazy" decoding="async" />
+          <figcaption>{{ i18n.t(m.c) }}</figcaption>
+        </figure>
+      </div>
+      <p class="center"><a class="btn ghost" [href]="macAppStoreHref('home-mac')" target="_blank" rel="noopener noreferrer">{{ i18n.t('HV_MAC_CTA') }}</a></p>
+    </div>
+  </section>
+
+  <section id="ip" class="ip-sec">
+    <div class="w">
+      <div class="rv ip">
+        <div class="ip__tx">
+          <span class="kick">{{ i18n.t('HV_IP_K') }}</span>
+          <h2>{{ i18n.t('HV_IP_T') }}</h2>
+          <p>{{ i18n.t('HV_IP_D') }}</p>
+          <a class="btn" [routerLink]="'/ip-check' | localize">{{ i18n.t('HV_IP_CTA') }}</a>
+        </div>
+        <div class="ip__shot">
+          <img [src]="shot('ios-ipcheck')" [srcset]="shotSet('ios-ipcheck')" sizes="300px" [alt]="i18n.t('HV_IP_T')" width="760" height="1508" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="extension" class="ext-sec">
+    <div class="w">
+      <div class="rv ext">
+        <div class="ext__shots">
+          <img src="assets/screenshots/v2/ext-connected.webp" [alt]="i18n.t('EXT_SHOT_ALT')" width="600" height="949" loading="lazy" decoding="async" />
+          <img src="assets/screenshots/v2/ext-servers.webp" [alt]="i18n.t('EXT_SHOT_ALT')" width="600" height="950" loading="lazy" decoding="async" />
+        </div>
+        <div class="ext__tx">
+          <span class="kick">{{ i18n.t('EXT_SHOW_KICKER') }}</span>
+          <h2>{{ i18n.t('EXT_SHOW_TITLE') }}</h2>
+          <p>{{ i18n.t('EXT_SHOW_SUB') }}</p>
+          <a class="btn ghost" [href]="chromeWebStoreUrl" target="_blank" rel="noopener noreferrer">{{ i18n.t('CHROME_EXT_CTA') }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="locs" aria-labelledby="locs-title">
+    <div class="w">
+      <div class="sh">
+        <span class="kick">{{ i18n.t('LOCATIONS_LABEL') }}</span>
+        <h2 id="locs-title">{{ i18n.t('COUNTRIES_TITLE') }}</h2>
+        <p>{{ i18n.t('COUNTRIES_SUB') }}</p>
+      </div>
+      <ul class="cc" [class.is-open]="showAllLocations">
+        <li *ngFor="let code of locationCodes">
+          <img [src]="'assets/flags/' + code + '.webp'" width="24" height="18" alt="" loading="lazy" decoding="async" />
           <span>{{ countryName(code) }}</span>
         </li>
       </ul>
-      <button
-        *ngIf="!showAllLocations"
-        type="button"
-        class="btn ghost loc-more"
-        (click)="showAllLocations = true"
-      >
-        {{ i18n.t('LOCATIONS_SHOW_ALL') }} · {{ locationCodes.length }}
-      </button>
+      <p class="center" *ngIf="!showAllLocations">
+        <button type="button" class="btn ghost sm" (click)="showAllLocations = true">{{ i18n.t('LOCATIONS_SHOW_ALL') }} · {{ locationCodes.length }}</button>
+      </p>
     </div>
   </section>
 
-  <section class="section" id="how">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('HOW_KICKER') }}</div>
-        <h2>{{ i18n.t('HOW_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('HOW_SUB') }}</p>
-      </div>
-      <ol class="steps">
-        <li class="step" *ngFor="let s of howSteps; let i = index">
-          <span class="step-num">{{ stepNum(i) }}</span>
-          <div>
-            <div class="step-title">{{ i18n.t(s.title) }}</div>
-            <div class="step-text">{{ i18n.t(s.text) }}</div>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="ext-section" id="extension" aria-labelledby="ext-title">
-    <div class="ext-bg" aria-hidden="true">
-      <img class="map-wash map-wash--ext" src="assets/world-map-alt.png" alt="" aria-hidden="true" width="800" height="449" loading="lazy" />
-    </div>
-    <div class="container ext-grid">
-      <div class="ext-visual">
-        <div class="ext-window" (pointerdown)="goToExt(extIndex)" (touchstart)="goToExt(extIndex)">
-          <div class="ext-window__chrome" aria-hidden="true">
-            <div class="ext-window__traffic">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="ext-window__bar">
-              <span class="ext-window__lock" aria-hidden="true"></span>
-              <span class="ext-window__url">chrome://extensions · FollowNet</span>
-            </div>
-            <div class="ext-window__pill">Chrome</div>
-          </div>
-          <div class="ext-window__stage">
-            <img
-              *ngFor="let src of extensionShots; let i = index"
-              class="ext-shot"
-              [src]="src"
-              [alt]="i18n.t('EXT_SHOT_ALT')"
-              [class.is-active]="i === extIndex"
-              width="648"
-              height="1024"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-        <div class="ext-dots" role="tablist" [attr.aria-label]="i18n.t('EXT_SHOT_ALT')">
-          <button
-            type="button"
-            class="ext-dot"
-            role="tab"
-            *ngFor="let label of extensionLabels; let i = index"
-            [class.is-active]="i === extIndex"
-            (click)="goToExt(i)"
-            [attr.aria-label]="label"
-            [attr.aria-selected]="i === extIndex"
-          ></button>
-        </div>
-      </div>
-
-      <div class="ext-copy">
-        <div class="kicker">{{ i18n.t('EXT_SHOW_KICKER') }}</div>
-        <h2 id="ext-title">{{ i18n.t('EXT_SHOW_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('EXT_SHOW_SUB') }}</p>
-        <div class="store-badges">
-          <a
-            class="store-badge"
-            [href]="chromeWebStoreUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('CHROME_EXT_CTA')"
-          >
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#ea4335" d="M24 12h20.78A24 24 0 0 0 3.22 12.003L13.61 30A12 12 0 0 1 24 12z"/><path fill="#fbbc04" d="M34.39 30.003 24 48A24 24 0 0 0 44.78 12.003H24A12 12 0 0 1 34.39 30.003z"/><path fill="#34a853" d="M13.61 30.003 3.22 12.006A24 24 0 0 0 24.002 48L34.39 30.003a12 12 0 0 1-20.78 0z"/><circle cx="24" cy="24" r="12" fill="#fff"/><circle cx="24" cy="24" r="9.5" fill="#1a73e8"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('CHROME_BADGE_TOP') }}</small><b>Chrome Web Store</b></span
-            >
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="apps-section" id="apps">
-    <span id="download" class="anchor"></span>
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('APPS_KICKER') }}</div>
-        <h2>{{ i18n.t('APPS_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('APPS_SUB') }}</p>
-      </div>
-      <div class="apps">
-        <div class="app-card app-card--primary">
-          <div class="app-icon app-icon--apple" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/>
-            </svg>
-          </div>
-          <div class="app-title">iPhone &amp; iPad</div>
-          <div class="app-sub">{{ i18n.t('IOS_SUB') }}</div>
-          <a
-            class="store-badge store-badge--block"
-            [href]="appStoreHref('home-download')"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('HERO_CTA_PRIMARY')"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>App Store</b></span
-            >
-          </a>
-        </div>
-        <div class="app-card app-card--primary">
-          <div class="app-icon app-icon--apple" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3.5" y="4.5" width="17" height="11.5" rx="1.6"/>
-              <path d="M1.5 19.5h21"/>
-            </svg>
-          </div>
-          <div class="app-title">Mac</div>
-          <div class="app-sub">{{ i18n.t('MAC_SUB') }}</div>
-          <a
-            class="store-badge store-badge--block"
-            [href]="macAppStoreHref('home-download')"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('DOWNLOAD_MAC_CTA')"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>Mac App Store</b></span
-            >
-          </a>
-        </div>
-        <div class="app-card app-card--primary">
-          <div class="app-icon app-icon--chrome" aria-hidden="true">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="fnChromeRed" x1="3.2" y1="15" x2="44.8" y2="15" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#d93025"/>
-                  <stop offset="1" stop-color="#ea4335"/>
-                </linearGradient>
-                <linearGradient id="fnChromeYellow" x1="20.7" y1="47.7" x2="41.5" y2="11.7" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#fcc934"/>
-                  <stop offset="1" stop-color="#fbbc04"/>
-                </linearGradient>
-                <linearGradient id="fnChromeGreen" x1="26.6" y1="46.5" x2="5.8" y2="10.5" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#1e8e3e"/>
-                  <stop offset="1" stop-color="#34a853"/>
-                </linearGradient>
-              </defs>
-              <path fill="url(#fnChromeRed)" d="M24 12h20.78A24 24 0 0 0 3.22 12.003L13.61 30l.01-.002A12 12 0 0 1 24 12z"/>
-              <path fill="url(#fnChromeYellow)" d="M34.39 30.003 24 48A24 24 0 0 0 44.78 12.003H24l-.003.009A12 12 0 0 1 34.39 30.003z"/>
-              <path fill="url(#fnChromeGreen)" d="M13.61 30.003 3.22 12.006A24 24 0 0 0 24.002 48L34.39 30.003l-.007-.007a12 12 0 0 1-20.778.007z"/>
-              <circle cx="24" cy="24" r="12" fill="#fff"/>
-              <circle cx="24" cy="24" r="9.5" fill="#1a73e8"/>
-            </svg>
-          </div>
-          <div class="app-title">{{ i18n.t('CHROME_EXT_TITLE') }}</div>
-          <div class="app-sub">{{ i18n.t('CHROME_EXT_SUB') }}</div>
-          <a
-            class="store-badge store-badge--block"
-            [href]="chromeWebStoreUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('CHROME_EXT_CTA')"
-          >
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#ea4335" d="M24 12h20.78A24 24 0 0 0 3.22 12.003L13.61 30A12 12 0 0 1 24 12z"/><path fill="#fbbc04" d="M34.39 30.003 24 48A24 24 0 0 0 44.78 12.003H24A12 12 0 0 1 34.39 30.003z"/><path fill="#34a853" d="M13.61 30.003 3.22 12.006A24 24 0 0 0 24.002 48L34.39 30.003a12 12 0 0 1-20.78 0z"/><circle cx="24" cy="24" r="12" fill="#fff"/><circle cx="24" cy="24" r="9.5" fill="#1a73e8"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('CHROME_BADGE_TOP') }}</small><b>Chrome Web Store</b></span
-            >
-          </a>
-        </div>
-        <div class="app-card app-card--primary">
-          <div class="app-icon app-icon--android" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.6 9.5l1.8-3.1c.2-.3.1-.7-.2-.9-.3-.2-.7-.1-.9.2l-1.8 3.2A8.3 8.3 0 0 0 12 7.8c-1.6 0-3.1.5-4.4 1.2L5.8 5.7c-.2-.3-.6-.4-.9-.2-.3.2-.4.6-.2.9l1.8 3.1C4.7 11.1 3.5 13.4 3.5 16h17c0-2.6-1.2-4.9-2.9-6.5zM8.2 14.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2zm7.6 0a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/>
-            </svg>
-          </div>
-          <div class="app-title">{{ i18n.t('ANDROID_TITLE') }}</div>
-          <div class="app-sub">{{ i18n.t('ANDROID_SUB') }}</div>
-          <a
-            class="store-badge store-badge--block"
-            [href]="playStoreHref('home-download')"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="i18n.t('PLAY_CTA')"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34a853" d="M4.6 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4l.1.1 8.7-8.7v-.2L4.7 2.7z"/><path fill="#fbbc04" d="M16.3 14.5l-2.9-2.9v-.2l2.9-2.9.1.1 3.4 2c1 .6 1 1.5 0 2.1l-3.4 2z"/><path fill="#ea4335" d="M16.4 14.4l-3-3-8.8 8.8c.3.3.9.4 1.5 0l10.3-5.8"/><path fill="#4285f4" d="M16.4 8.6L6.1 2.8c-.6-.4-1.2-.3-1.5 0l8.8 8.8z"/></svg>
-            <span class="store-badge__text"
-              ><small>{{ i18n.t('PLAY_BADGE_TOP') }}</small><b>Google Play</b></span
-            >
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="compare-section" id="compare" aria-labelledby="compare-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('COMPARE_KICKER') }}</div>
-        <h2 id="compare-title">{{ i18n.t('COMPARE_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('COMPARE_SUB') }}</p>
-      </div>
-
-      <div class="compare-table-wrap">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th scope="col" class="compare-table__feat">{{ i18n.t('COMPARE_COL_FEAT') }}</th>
-              <th scope="col">{{ i18n.t('COMPARE_COL_TYPICAL') }}</th>
-              <th scope="col" class="compare-table__us">{{ i18n.t('COMPARE_COL_US') }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let row of compareRows">
-              <th scope="row">{{ i18n.t(row.feat) }}</th>
-              <td>{{ i18n.t(row.typical) }}</td>
-              <td class="compare-table__us">{{ i18n.t(row.us) }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing-section" id="pricing">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('PRICING_KICKER') }}</div>
+  <section id="pricing" class="pricing">
+    <div class="w">
+      <div class="sh">
         <h2>{{ i18n.t('PRICING_TITLE') }}</h2>
-        <div class="sub sub--stacked">
-          <span class="sub__line">{{ i18n.t('PRICING_SUB_1') }}</span>
-          <span class="sub__line">{{ i18n.t('PRICING_SUB_2') }}</span>
-        </div>
+        <p>{{ i18n.t('PRICING_SUB_1') }} {{ i18n.t('PRICING_SUB_2') }}</p>
       </div>
-
-      <div class="pricing-grid">
-        <article class="pricing-card">
-          <h3 class="pricing-card__name">{{ i18n.t('PRICING_FREE') }}</h3>
-          <p class="pricing-card__tagline">{{ i18n.t('PRICING_FREE_DESC') }}</p>
-          <div class="pricing-card__price">
-            <span class="pricing-card__amount">$0</span>
-            <span class="pricing-card__period">{{ i18n.t('PRICE_FOREVER') }}</span>
-          </div>
-          <ul class="pricing-features">
+      <div class="pr">
+        <article class="rv p">
+          <h3>{{ i18n.t('PRICING_FREE') }}</h3>
+          <div class="num">$0</div>
+          <p class="sub">{{ i18n.t('PRICING_FREE_DESC') }}</p>
+          <ul>
             <li>{{ i18n.t('FREE_FEATURE_1') }}</li>
             <li>{{ i18n.t('FREE_FEATURE_2') }}</li>
             <li>{{ i18n.t('FREE_FEATURE_3') }}</li>
             <li>{{ i18n.t('FREE_FEATURE_4') }}</li>
             <li>{{ i18n.t('FREE_FEATURE_5') }}</li>
           </ul>
-          <a class="btn ghost pricing-cta pricing-cta--bottom" href="#download">{{ i18n.t('PRICING_FREE_CTA') }}</a>
+          <a class="btn ghost" href="#download">{{ i18n.t('PRICING_FREE_CTA') }}</a>
         </article>
-
-        <article class="pricing-card pricing-card--featured">
-          <div class="pricing-card__ribbon">{{ i18n.t('PRICING_MOST_POPULAR') }}</div>
-          <h3 class="pricing-card__name">Premium</h3>
-          <p class="pricing-card__tagline">{{ i18n.t('PREMIUM_DESC') }}</p>
-
-          <div class="pricing-period-toggle" role="tablist">
-            <button
-              type="button"
-              class="pricing-period-toggle__btn"
-              role="tab"
-              *ngFor="let p of premiumPlans"
-              (click)="selectPremiumPlan(p.id)"
-              [class.is-active]="p.id === selectedPremiumPlanId"
-              [attr.aria-selected]="p.id === selectedPremiumPlanId"
-            >
-              {{ premiumLabel(p) }}
-              <span class="pricing-period-toggle__save" *ngIf="p.id === 'y1' && premiumSave(p)">
-                −{{ premiumPlanSavePercent(p) }}%
-              </span>
-            </button>
-          </div>
-
-          <div class="pricing-card__price">
-            <span class="pricing-card__amount">{{ premiumHeroAmount(selectedPremiumPlan) }}</span>
-            <span class="pricing-card__period">{{ premiumHeroPeriod(selectedPremiumPlan) }}</span>
-          </div>
-          <p class="pricing-card__billed">{{ premiumBilledLine(selectedPremiumPlan) }}</p>
-          <p class="pricing-card__save" *ngIf="premiumSave(selectedPremiumPlan) as save">{{ save }}</p>
-
-          <ul class="pricing-features">
+        <article class="rv p" *ngFor="let p of premiumPlans" [class.top]="p.id === 'y1'">
+          <h3>
+            {{ premiumLabel(p) }}
+            <span class="tag" *ngIf="premiumPlanSavePercent(p) as pct">−{{ pct }}%</span>
+          </h3>
+          <div class="num">{{ premiumHeroAmount(p) }}<span>{{ premiumHeroPeriod(p) }}</span></div>
+          <p class="sub">{{ premiumBilledLine(p) }}</p>
+          <ul>
             <li>{{ i18n.t('PREMIUM_FEATURE_2') }}</li>
             <li>{{ i18n.t('PREMIUM_FEATURE_3') }}</li>
             <li>{{ i18n.t('PREMIUM_FEATURE_4') }}</li>
           </ul>
-
           <a
             *ngIf="webCheckoutEnabled"
-            class="btn primary pricing-cta"
+            class="btn"
+            [class.ghost]="p.id !== 'y1'"
             [routerLink]="(['/checkout']) | localize"
-            [queryParams]="{ plan: selectedPremiumPlanId }"
+            [queryParams]="{ plan: p.id }"
             >{{ i18n.t('WEB_CHECKOUT_OPEN_PAGE') }}</a
           >
-          <a
-            *ngIf="!webCheckoutEnabled"
-            class="btn primary pricing-cta"
-            href="#download"
-            >{{ i18n.t('NAV_DOWNLOAD') }}</a
-          >
-          <p class="pricing-inapp">
-            {{ i18n.t('PRICING_IN_APP') }}
-            <a [href]="appStoreHref('home-pricing-trial')" target="_blank" rel="noopener noreferrer">App Store</a>
-            <span aria-hidden="true">·</span>
-            <a [href]="playStoreHref('home-pricing-trial')" target="_blank" rel="noopener noreferrer">Google Play</a>
-          </p>
-          <p class="pricing-footnote">{{ i18n.t('PRICING_TRIAL_IOS') }}</p>
+          <a *ngIf="!webCheckoutEnabled" class="btn" [class.ghost]="p.id !== 'y1'" href="#download">{{ i18n.t('NAV_DOWNLOAD') }}</a>
         </article>
       </div>
-      <p class="pricing-regional-note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
+      <p class="note">
+        {{ i18n.t('PRICING_IN_APP') }}
+        <a [href]="appStoreHref('home-pricing-trial')" target="_blank" rel="noopener noreferrer">App Store</a>
+        ·
+        <a [href]="playStoreHref('home-pricing-trial')" target="_blank" rel="noopener noreferrer">Google Play</a>
+      </p>
+      <p class="note">{{ i18n.t('PRICING_TRIAL_IOS') }}</p>
+      <p class="note">{{ i18n.t('PRICING_REGIONAL_NOTE') }}</p>
     </div>
   </section>
 
-  <section class="learn-section" id="learn" aria-labelledby="learn-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('BLOG_HOME_KICKER') }}</div>
+  <section class="learn" id="learn" aria-labelledby="learn-title">
+    <div class="w">
+      <div class="sh">
         <h2 id="learn-title">{{ i18n.t('BLOG_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('BLOG_HOME_SUB') }}</p>
+        <p>{{ i18n.t('BLOG_HOME_SUB') }}</p>
       </div>
-      <div class="learn-grid">
+      <div class="lg">
         <a
-          class="learn-card"
+          class="lc"
           *ngFor="let post of learnPosts; trackBy: trackLearnPost"
           [routerLink]="(['/blog', post.slug]) | localize"
           (click)="openLearnPost(post, $event)"
         >
-          <span class="learn-topic">{{ blogTopic(post) }}</span>
-          <h3 class="learn-title">{{ post.title }}</h3>
-          <p class="learn-excerpt">{{ post.excerpt }}</p>
-          <span class="learn-meta">
-            {{ blogDate(post.date) }}
-            <span aria-hidden="true">·</span>
-            {{ blogRead(post.minutes) }}
-          </span>
+          <span class="lc__topic">{{ blogTopic(post) }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+          <span class="lc__meta">{{ blogDate(post.date) }} · {{ blogRead(post.minutes) }}</span>
         </a>
       </div>
-      <div class="learn-more">
-        <a class="btn ghost" [routerLink]="'/blog' | localize">{{ i18n.t('BLOG_ALL') }}</a>
-      </div>
+      <p class="center"><a class="btn ghost" [routerLink]="'/blog' | localize">{{ i18n.t('BLOG_ALL') }}</a></p>
     </div>
   </section>
 
-  <section class="faq-section" id="faq">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <div class="kicker">{{ i18n.t('FAQ_KICKER') }}</div>
-        <h2>{{ i18n.t('FAQ_TITLE') }}</h2>
-        <p class="sub">{{ i18n.t('FAQ_SUB') }}</p>
-      </div>
+  <section class="faq-sec" id="faq">
+    <div class="w">
+      <div class="sh"><h2>{{ i18n.t('FAQ_TITLE') }}</h2><p>{{ i18n.t('FAQ_SUB') }}</p></div>
       <div class="faq">
-        <details class="faq-item" *ngFor="let item of faqItems">
-          <summary>
-            <span class="faq-q">{{ i18n.t(item.q) }}</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-          </summary>
+        <details *ngFor="let item of faqItems; let first = first" [attr.open]="first ? '' : null">
+          <summary>{{ i18n.t(item.q) }}</summary>
           <p>{{ i18n.t(item.a) }}</p>
-          <p class="faq-more" *ngIf="item.guides?.length">
-            <span class="faq-more-label">{{ i18n.t('FAQ_READ_MORE') }}:</span>
-            <a *ngFor="let slug of item.guides; let last = last" [routerLink]="(['/', slug]) | localize">
-              {{ guideLabel(slug) }}<span *ngIf="!last" class="faq-more-sep"> · </span>
-            </a>
+          <p class="faq__more" *ngIf="item.guides?.length">
+            {{ i18n.t('FAQ_READ_MORE') }}:
+            <ng-container *ngFor="let slug of item.guides; let last = last"
+              ><a [routerLink]="(['/', slug]) | localize">{{ guideLabel(slug) }}</a><span *ngIf="!last"> · </span></ng-container
+            >
           </p>
         </details>
       </div>
     </div>
   </section>
+
+  <section class="end" id="download">
+    <span id="apps" class="anchor"></span>
+    <div class="w">
+      <h2>{{ i18n.t('HV_END_T') }}</h2>
+      <p>{{ i18n.t('HV_END_D') }}</p>
+      <div class="badges">
+        <a class="sb" [href]="appStoreHref('home-final')" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M16.7 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.1 2.9-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.5 2.7-1.4z"/></svg>
+          <span><small>{{ i18n.t('APP_STORE_BADGE_TOP') }}</small><b>App Store</b></span>
+        </a>
+        <a class="sb" [href]="playStoreHref('home-final')" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#34a853" d="M4.6 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4l.1.1 8.7-8.7v-.2L4.7 2.7z"/><path fill="#fbbc04" d="M16.3 14.5l-2.9-2.9v-.2l2.9-2.9.1.1 3.4 2c1 .6 1 1.5 0 2.1l-3.4 2z"/><path fill="#ea4335" d="M16.4 14.4l-3-3-8.8 8.8c.3.3.9.4 1.5 0l10.3-5.8"/><path fill="#4285f4" d="M16.4 8.6L6.1 2.8c-.6-.4-1.2-.3-1.5 0l8.8 8.8z"/></svg>
+          <span><small>{{ i18n.t('PLAY_BADGE_TOP') }}</small><b>Google Play</b></span>
+        </a>
+      </div>
+      <p class="end__more">
+        <a [href]="macAppStoreHref('home-final')" target="_blank" rel="noopener noreferrer">Mac</a>
+        ·
+        <a [href]="chromeWebStoreUrl" target="_blank" rel="noopener noreferrer">Chrome</a>
+      </p>
+    </div>
+  </section>
+
+  <a class="mcta" href="#download">{{ i18n.t('HV_MCTA') }}</a>
 </div>

@@ -238,7 +238,7 @@ export class SeoService {
           '@type': 'MobileApplication',
           '@id': `${origin}/#app`,
           name: 'FollowNet VPN',
-          operatingSystem: 'iOS, iPadOS, macOS',
+          operatingSystem: 'iOS, iPadOS, macOS, Android',
           applicationCategory: 'SecurityApplication',
           offers: {
             '@type': 'Offer',
@@ -249,6 +249,14 @@ export class SeoService {
           installUrl: APP_STORE,
           image: ogImage,
           description: getSeoCopy(lang, '/').description,
+          // Real App Store ratings (UA storefront, 2026-11-08), shown on the home page next to the badges.
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            ratingCount: '11',
+            bestRating: '5',
+            worstRating: '1',
+          },
         },
         {
           '@type': 'FAQPage',
@@ -301,7 +309,7 @@ export class SeoService {
           '@type': 'MobileApplication',
           '@id': `${p.origin}/#app`,
           name: 'FollowNet VPN',
-          operatingSystem: 'iOS, iPadOS, macOS',
+          operatingSystem: 'iOS, iPadOS, macOS, Android',
           applicationCategory: 'SecurityApplication',
           downloadUrl: APP_STORE,
           installUrl: APP_STORE,

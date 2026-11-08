@@ -1,11 +1,12 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   PLATFORM_ID,
   inject,
 } from '@angular/core';
-import { DOCUMENT, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, NgClass, NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { localizedPath } from '../../core/locale-url';
 import { LocalizePipe } from '../../shared/localize.pipe';
@@ -29,7 +30,7 @@ type FaqItem = {
 
 @Component({
   selector: 'app-home',
-  imports: [LocalizePipe, NgFor, NgIf, RouterLink],
+  imports: [LocalizePipe, NgClass, NgFor, NgIf, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
@@ -51,6 +52,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
   readonly chromeWebStoreUrl = environment.chromeWebStoreUrl;
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly document = inject(DOCUMENT);
+  private readonly cdr = inject(ChangeDetectorRef);
   private readonly router = inject(Router);
   private langSub: Subscription | null = null;
 
@@ -80,9 +83,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     link.id = id;
     link.setAttribute('rel', 'preload');
     link.setAttribute('as', 'image');
-    link.setAttribute('href', `/${this.shots[0]}-400.webp`);
-    link.setAttribute('imagesrcset', `/${this.shots[0]}-400.webp 400w, /${this.shots[0]}.webp 760w`);
-    link.setAttribute('imagesizes', '(max-width: 480px) 82vw, 380px');
+    link.setAttribute('href', `/${HomeComponent.SHOT_DIR}ios-connected-400.webp`);
+    link.setAttribute('imagesrcset', `/${HomeComponent.SHOT_DIR}ios-connected-400.webp 400w, /${HomeComponent.SHOT_DIR}ios-connected-560.webp 560w, /${HomeComponent.SHOT_DIR}ios-connected.webp 760w`);
+    link.setAttribute('imagesizes', '(max-width: 940px) 250px, 340px');
     link.setAttribute('fetchpriority', 'high');
     doc.head.appendChild(link);
   }
@@ -200,25 +203,55 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     return this.i18n.t(key).replace('{{AMOUNT}}', amount);
   }
 
-  /** Real iPhone mockups — hero carousel only (no duplicate gallery below) */
-  readonly shots = [
-    'assets/screenshots/mockups/IMG_6805-portrait', // Connect
-    'assets/screenshots/mockups/IMG_6807-portrait', // Protocols
-    'assets/screenshots/mockups/IMG_6808-portrait', // DNS
-    'assets/screenshots/mockups/IMG_6803-portrait', // Speed Test
-    'assets/screenshots/mockups/IMG_6804-portrait', // Servers
+  static readonly SHOT_DIR = 'assets/screenshots/v2/';
+
+  /** "What websites see" line in the strip and hero card; browser only, best effort. */
+  ipInfo: { ip: string; country?: string; city?: string; isOurNode?: boolean } | null = null;
+  ipPlace = '';
+
+  readonly featureCards = [
+    { k: 'HV_FT1_K', t: 'HV_FT1_T', d: 'HV_FT1_D', img: 'ios-disconnected', tone: 'cd--mint' },
+    { k: 'HV_FT2_K', t: 'HV_FT2_T', d: 'HV_FT2_D', img: 'ios-protocol', tone: 'cd--lime' },
+    { k: 'HV_FT3_K', t: 'HV_FT3_T', d: 'HV_FT3_D', img: 'ios-servers', tone: 'cd--ink' },
+    { k: 'HV_FT4_K', t: 'HV_FT4_T', d: 'HV_FT4_D', img: 'ios-speed', tone: 'cd--sand' },
+    { k: 'HV_FT5_K', t: 'HV_FT5_T', d: 'HV_FT5_D', img: 'ios-autoconnect', tone: 'cd--sea' },
+    { k: 'HV_FT6_K', t: 'HV_FT6_T', d: 'HV_FT6_D', img: 'ios-profiles', tone: 'cd--lime' },
   ];
 
-  readonly extensionShots = [
-    'assets/extension/chrome-vpn-v2.webp',
-    'assets/extension/chrome-servers-v2.webp',
-    'assets/extension/chrome-stats-v2.webp',
-    'assets/extension/chrome-settings-v2.webp',
+  readonly controlCards = [
+    { k: 'Premium', t: 'HV_TOR_T', d: 'HV_TOR_D', img: 'ios-tor' },
+    { k: 'HV_K_SECURITY', t: 'HV_KS_T', d: 'HV_KS_D', img: 'ios-settings' },
+    { k: 'HV_K_CONTROL', t: 'HV_ST_T', d: 'HV_ST_D', img: 'ios-split' },
+    { k: 'HV_K_PRIVACY', t: 'HV_DNS_T', d: 'HV_DNS_D', img: 'ios-dns' },
   ];
 
-  readonly extensionLabels = ['VPN', 'Servers', 'Stats', 'Settings'];
+  /** Real App Store reviews (UA storefront, fetched 2026-11-08), quoted as written. */
+  readonly reviews = [
+    { author: 'tslen-1', title: 'Super vpn', text: 'I really like this app. It’s a high-quality product, and I would like to buy a lifetime subscription if possible. Thanks a lot' },
+    { author: 'Jamaica123y', title: 'Wow', text: 'This the BEST VPN for Mac. Thanx <3' },
+    { author: 'Дімка777ххх777', title: 'Top', text: 'Швидкий конект, особливо на преміумі' },
+    { author: '🌸🤯', title: 'Крутое приложение', text: 'Очень быстрый и стабильный впн особенно с премиумом 🫶' },
+    { author: 'Man1ffest', title: 'Отличный vpn 😊', text: 'Быстро подключается, работает стабильно, все супер 😊' },
+    { author: '[Pavel] S.D.', title: 'Отличное приложени', text: 'Давно искал что то подобное!' },
+  ];
 
-  extIndex = 0;
+  readonly macShots = [
+    { img: 'mac-speed', c: 'HV_MAC_C1' },
+    { img: 'mac-stats', c: 'HV_MAC_C2' },
+    { img: 'mac-paywall', c: 'HV_MAC_C3' },
+  ];
+
+  shot(name: string): string {
+    return `${HomeComponent.SHOT_DIR}${name}-400.webp`;
+  }
+
+  shotSet(name: string): string {
+    return `${HomeComponent.SHOT_DIR}${name}-400.webp 400w, ${HomeComponent.SHOT_DIR}${name}-560.webp 560w, ${HomeComponent.SHOT_DIR}${name}.webp 760w`;
+  }
+
+  countriesLine(): string {
+    return this.i18n.t('HV_SC4_D').replace('{{n}}', String(this.locationCodes.length));
+  }
 
   /** ISO codes of server locations; flags are self-hosted so they render on Windows too. */
   readonly locationCodes = [
@@ -250,13 +283,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     { feat: 'COMPARE_R6_FEAT' as const, typical: 'COMPARE_R6_TYPICAL' as const, us: 'COMPARE_R6_US' as const },
   ];
 
-  activeIndex = 0;
-  /** Stacked carousel shots are all "in viewport"; only fetch the visible one and the next. */
-  private shotsLoadedUpTo = 1;
-
-  private autoplayId: number | null = null;
-  private stopAutoplayUntil = 0;
-
   countryName(code: string): string {
     const lang = this.i18n.current;
     if (this.regionNames?.lang !== lang) {
@@ -285,66 +311,70 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-    this.autoplayId = window.setInterval(() => this.autoplayStep(), 3400);
+    this.revealOnScroll();
+    this.watchStickyCta();
+    void this.loadIp();
   }
 
   ngOnDestroy() {
     this.langSub?.unsubscribe();
     this.langSub = null;
-    if (this.autoplayId != null) {
-      window.clearInterval(this.autoplayId);
-      this.autoplayId = null;
+    this.revealObserver?.disconnect();
+    this.revealObserver = null;
+    this.ctaObserver?.disconnect();
+    this.ctaObserver = null;
+  }
+
+  private ctaObserver: IntersectionObserver | null = null;
+
+  /** Phones: the sticky download button shows only while neither the hero badges nor the final CTA are on screen. */
+  private watchStickyCta(): void {
+    const root = this.document.querySelector('.landing');
+    const targets = [root?.querySelector('.hero .badges'), root?.querySelector('.end')].filter(Boolean) as Element[];
+    if (!root || !targets.length || typeof IntersectionObserver === 'undefined') return;
+    const visible = new Set<Element>();
+    this.ctaObserver = new IntersectionObserver((entries) => {
+      for (const e of entries) e.isIntersecting ? visible.add(e.target) : visible.delete(e.target);
+      const pastHero = (root.querySelector('.hero .badges')?.getBoundingClientRect().bottom ?? 0) < 0;
+      root.classList.toggle('show-mcta', visible.size === 0 && pastHero);
+    });
+    targets.forEach((t) => this.ctaObserver!.observe(t));
+  }
+
+  private revealObserver: IntersectionObserver | null = null;
+
+  /** Fade-in of `.rv` blocks; without IntersectionObserver (or with reduced motion) they just show. */
+  private revealOnScroll(): void {
+    const doc = this.document;
+    const root = doc.querySelector('.landing');
+    if (!root || typeof IntersectionObserver === 'undefined') return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('js-rv');
+    this.revealObserver = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.classList.add('in');
+          this.revealObserver?.unobserve(e.target);
+        }
+      },
+      { threshold: 0.12 },
+    );
+    root.querySelectorAll('.rv').forEach((el) => this.revealObserver!.observe(el));
+  }
+
+  private async loadIp(): Promise<void> {
+    try {
+      const url = `${environment.apiBaseUrl.replace(/\/$/, '')}/geo/ip-check/public`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return;
+      const d = await res.json();
+      if (!d?.ip) return;
+      this.ipInfo = { ip: String(d.ip), country: d.country, city: d.city, isOurNode: !!d.isOurNode };
+      this.ipPlace = [d.city, d.country].filter(Boolean).join(', ');
+      this.cdr.markForCheck();
+    } catch {
+      /* the static copy stays */
     }
-  }
-
-  shotSrc(i: number): string | null {
-    return i <= this.shotsLoadedUpTo ? `${this.shots[i]}-400.webp` : null;
-  }
-
-  shotSrcset(i: number): string | null {
-    return i <= this.shotsLoadedUpTo ? `${this.shots[i]}-400.webp 400w, ${this.shots[i]}.webp 760w` : null;
-  }
-
-  private showShot(index: number) {
-    this.activeIndex = index;
-    this.shotsLoadedUpTo = Math.max(this.shotsLoadedUpTo, Math.min(index + 1, this.shots.length - 1));
-  }
-
-  goTo(index: number) {
-    const clamped = Math.max(0, Math.min(index, this.shots.length - 1));
-    this.showShot(clamped);
-    this.pauseAutoplay(6000);
-  }
-
-  goToExt(index: number) {
-    const clamped = Math.max(0, Math.min(index, this.extensionShots.length - 1));
-    this.extIndex = clamped;
-    this.pauseAutoplay(7000);
-  }
-
-  screenshotAlt(index: number): string {
-    const keys = [
-      'SCREENSHOT_ALT_1',
-      'SCREENSHOT_ALT_2',
-      'SCREENSHOT_ALT_3',
-      'SCREENSHOT_ALT_4',
-      'SCREENSHOT_ALT_5',
-    ] as const;
-    const key = keys[index] ?? 'SCREENSHOT_ALT_1';
-    return this.i18n.t(key);
-  }
-
-  onUserPointer() {
-    this.pauseAutoplay(7000);
-  }
-
-  private pauseAutoplay(ms: number) {
-    this.stopAutoplayUntil = Date.now() + ms;
-  }
-
-  private autoplayStep() {
-    if (Date.now() < this.stopAutoplayUntil) return;
-    this.showShot((this.activeIndex + 1) % this.shots.length);
-    this.extIndex = (this.extIndex + 1) % this.extensionShots.length;
   }
 }
