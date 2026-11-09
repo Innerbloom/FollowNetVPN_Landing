@@ -91,10 +91,11 @@ function card(title, kicker, app) {
         app
           ? { type: 'img', props: { src: app === 'shell' ? shellLogo : pulseLogo, width: 64, height: 64, style: { borderRadius: 14 } } }
           : { type: 'img', props: { src: logo, width: 58, height: 64 } },
-        h('div', { display: 'flex', fontSize: 30, fontWeight: 800, letterSpacing: -0.5 }, [
-          'FollowNet',
-          h('span', { color: '#9cc23b', marginLeft: 10 }, app === 'shell' ? 'Shell' : app === 'pulse' ? 'Pulse' : 'VPN'),
-        ]),
+        h('div', { display: 'flex', fontSize: 30, fontWeight: 800, letterSpacing: -0.5 },
+          app === 'shell'
+            ? ['Remora']
+            : ['FollowNet', h('span', { color: '#9cc23b', marginLeft: 10 }, app === 'pulse' ? 'Pulse' : 'VPN')],
+        ),
       ]),
       h('div', { display: 'flex', flexDirection: 'column', gap: 22 }, [
         h(

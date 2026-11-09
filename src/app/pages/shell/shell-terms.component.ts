@@ -16,7 +16,7 @@ import { ProductPageComponent } from '../product-page/product-page.component';
       [primaryHref]="storeUrl"
       primaryLabel="App Store"
       secondaryHref="/shell"
-      secondaryLabel="FollowNet Shell"
+      secondaryLabel="Remora"
     />
   `,
 })

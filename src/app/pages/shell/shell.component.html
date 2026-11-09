@@ -6,7 +6,7 @@
           <img class="app-icon" src="/assets/shell/icon-192.webp" alt="" width="64" height="64" />
           <p class="kicker">{{ c.kicker }}</p>
         </div>
-        <h1>{{ c.h1 }} <span class="accent">{{ c.h1Accent }}</span></h1>
+        <h1>{{ c.h1 }}<ng-container *ngIf="c.h1Accent"> <span class="accent">{{ c.h1Accent }}</span></ng-container></h1>
         <p class="lead">{{ c.lead }}</p>
 
         <div class="cta-row">
@@ -144,7 +144,7 @@
         <span aria-hidden="true">·</span>
         <a [routerLink]="'/shell/terms' | localize">{{ c.termsLink }}</a>
         <span aria-hidden="true">·</span>
-        <a href="mailto:support@follow-net.com?subject=FollowNet%20Shell">{{ c.supportLink }}: support&#64;follow-net.com</a>
+        <a href="mailto:support@follow-net.com?subject=Remora">{{ c.supportLink }}: support&#64;follow-net.com</a>
       </p>
     </div>
   </section>

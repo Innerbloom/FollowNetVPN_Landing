@@ -66,8 +66,8 @@ const DICT: Dict = {
     pt: 'Terminal SSH para iPhone, iPad e Mac',
     uk: 'SSH-термінал для iPhone, iPad і Mac',
   },
-  SHELL_PRIVACY: { ru: 'Конфиденциальность Shell', en: 'Shell privacy', de: 'Datenschutz Shell', es: 'Privacidad de Shell', fr: 'Confidentialité Shell', pt: 'Privacidade do Shell', uk: 'Конфіденційність Shell' },
-  SHELL_TERMS: { ru: 'Условия Shell', en: 'Shell terms', de: 'Bedingungen Shell', es: 'Términos de Shell', fr: 'Conditions Shell', pt: 'Termos do Shell', uk: 'Умови Shell' },
+  SHELL_PRIVACY: { ru: 'Конфиденциальность Remora', en: 'Remora privacy', de: 'Datenschutz Remora', es: 'Privacidad de Remora', fr: 'Confidentialité Remora', pt: 'Privacidade do Remora', uk: 'Конфіденційність Remora' },
+  SHELL_TERMS: { ru: 'Условия Remora', en: 'Remora terms', de: 'Bedingungen Remora', es: 'Términos de Remora', fr: 'Conditions Remora', pt: 'Termos do Remora', uk: 'Умови Remora' },
   PULSE_PRIVACY: { ru: 'Конфиденциальность Pulse', en: 'Pulse privacy', de: 'Datenschutz Pulse', es: 'Privacidad de Pulse', fr: 'Confidentialité Pulse', pt: 'Privacidade do Pulse', uk: 'Конфіденційність Pulse' },
   PRODUCT_NEW: { ru: 'Новое', en: 'New', de: 'Neu', es: 'Nuevo', fr: 'Nouveau', pt: 'Novo', uk: 'Нове' },
   NAV_FEATURES_PAGE: {
