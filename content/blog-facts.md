@@ -27,7 +27,8 @@ France, Germany, Finland, United Kingdom, Spain, Canada, USA (Virginia and Orego
 
 ## Features
 - Auto-connect: Disabled, Wi‑Fi only, mobile data only, Always.
-- Kill Switch: blocks internet if the VPN drops unexpectedly; a manual Disconnect restores internet normally.
+- Kill switch: if the VPN drops unexpectedly, internet stays blocked until the VPN reconnects. Tapping
+  Disconnect yourself is not a drop — internet works normally after a manual Disconnect.
 - Split tunneling: choose which sites go outside the VPN (iPhone, iPad, Mac).
 - DNS presets: Default, Cloudflare, Google, AdGuard (ad blocking), AdGuard Family, Quad9.
 - Network Profiles: bundle protocol + DNS + auto-connect + server choice; presets Smart, Public Wi‑Fi,
@@ -38,6 +39,12 @@ France, Germany, Finland, United Kingdom, Spain, Canada, USA (Virginia and Orego
 - Chrome extension: protects Chrome traffic only (browser proxy), blocks ads with EasyList/AdGuard lists,
   stops browser traffic if the proxy drops. For the whole computer use the Mac app.
 
+## Where things are in the app (the ONLY menu paths you may write for FollowNet)
+- Settings → VPN Protocol · Settings → DNS · Settings → Auto-connect · Settings → Kill switch · Settings → Split tunneling
+  · Settings → Network Profiles · Settings → Shortcuts Automation
+- Main screen: the big Connect button and the server list.
+Any other FollowNet screen, button or feature name (e.g. "Quick Connect") does not exist — never invent one.
+
 ## Writing rules (also enforced by the editor pass)
 - Do not claim "no logs", "zero logs", "100% anonymous", "unhackable", military-grade, or speed numbers.
 - Do not promise access to specific streaming catalogs, banking apps or blocked services, and do not use
@@ -45,6 +52,7 @@ France, Germany, Finland, United Kingdom, Spain, Canada, USA (Virginia and Orego
   public Wi‑Fi, travel, and reliable connections on difficult networks instead.
 - Honest about limits: a VPN does not stop phishing, malware, or tracking by logged-in accounts.
 - No invented statistics, studies, quotes, or user stories.
+- Audience uses phones and Macs: give iPhone / Android / Mac steps; skip Windows Control Panel walkthroughs.
 - Mention FollowNet naturally where it actually helps (1–3 times), not in every section.
 - No URLs or markdown in the text (it is shown as plain text; the page already has download buttons).
 
