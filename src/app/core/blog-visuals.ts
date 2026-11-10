@@ -1,3 +1,4 @@
+import { AUTO_BLOG_SHOTS } from './blog.auto-seo';
 /** Screenshots that illustrate each blog post: [cover, mid-article]. */
 const BLOG_SHOTS: Record<string, [string, string]> = {
   'public-wifi-risks': ['ios-profiles', 'ios-ipcheck'],
@@ -30,7 +31,7 @@ const BLOG_SHOTS: Record<string, [string, string]> = {
 export type BlogShot = { src: string; srcset: string | null; ext: boolean };
 
 export function blogShot(slug: string, i: 0 | 1 = 0): BlogShot {
-  const img = (BLOG_SHOTS[slug] ?? ['ios-connected', 'ios-servers'])[i];
+  const img = (BLOG_SHOTS[slug] ?? AUTO_BLOG_SHOTS[slug] ?? ['ios-connected', 'ios-servers'])[i];
   const dir = 'assets/screenshots/v2/';
   if (img.startsWith('ext')) return { src: `${dir}${img}.webp`, srcset: null, ext: true };
   return { src: `${dir}${img}-400.webp`, srcset: `${dir}${img}-400.webp 400w, ${dir}${img}-560.webp 560w, ${dir}${img}.webp 760w`, ext: false };

@@ -1,5 +1,6 @@
 import { AppLang } from './i18n.service';
 import { EXTRA_BLOG_POSTS } from './blog.extra-posts';
+import { AUTO_BLOG_POSTS } from './blog.auto-posts';
 
 export type BlogTopic = 'product' | 'updates' | 'guides';
 
@@ -2821,6 +2822,8 @@ const CORE_BLOG_POSTS: BlogPostMeta[] = [
 export const BLOG_POSTS: BlogPostMeta[] = [
   ...CORE_BLOG_POSTS,
   ...(EXTRA_BLOG_POSTS as BlogPostMeta[]),
+  // content/blog-auto/*.json (n8n blog workflow), compiled by scripts/build-auto-blog.mjs.
+  ...(AUTO_BLOG_POSTS as BlogPostMeta[]),
 ];
 
 export type BlogPostView = BlogPostLocalized &

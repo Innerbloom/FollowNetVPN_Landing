@@ -1,5 +1,6 @@
 import { AppLang } from './i18n.service';
 import { EXTRA_BLOG_SEO } from './blog.extra-seo';
+import { AUTO_BLOG_SEO } from './blog.auto-seo';
 
 /** Title/excerpt only — SEO meta without pulling full blog bodies into the main bundle. */
 export type BlogSeoMeta = { title: string; excerpt: string };
@@ -181,7 +182,7 @@ const BLOG_SEO: Record<string, Record<AppLang, BlogSeoMeta>> = {
 const EXTRA_BLOG_SEO_MAP = EXTRA_BLOG_SEO;
 
 export function blogSeoMeta(slug: string, lang: AppLang): BlogSeoMeta | null {
-  const block = BLOG_SEO[slug] ?? EXTRA_BLOG_SEO_MAP[slug];
+  const block = BLOG_SEO[slug] ?? EXTRA_BLOG_SEO_MAP[slug] ?? AUTO_BLOG_SEO[slug];
   if (!block) return null;
   return block[lang];
 }

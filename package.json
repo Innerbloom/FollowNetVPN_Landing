@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "seo:routes": "node scripts/generate-seo-routes.mjs",
-    "build": "node scripts/generate-seo-routes.mjs && ng build && node scripts/flatten-prerender.mjs && node scripts/og-images.mjs",
+    "seo:routes": "node scripts/build-auto-blog.mjs && node scripts/generate-seo-routes.mjs",
+    "build": "node scripts/build-auto-blog.mjs && node scripts/generate-seo-routes.mjs && ng build && node scripts/flatten-prerender.mjs && node scripts/og-images.mjs",
     "build:prerender": "ng build && node scripts/flatten-prerender.mjs && node scripts/og-images.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
